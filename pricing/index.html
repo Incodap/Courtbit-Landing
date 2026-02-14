@@ -406,6 +406,144 @@
             }
         }
 
+        /* Comparison Table */
+        .comparison {
+            padding: 0 0 120px;
+        }
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .comparison-header h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+        .comparison-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            background: white;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 640px;
+        }
+        .comparison-table thead th {
+            padding: 20px 16px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: center;
+            border-bottom: 2px solid var(--border-light);
+            background: var(--bg-gray-50);
+        }
+        .comparison-table thead th:first-child {
+            text-align: left;
+            border-radius: 16px 0 0 0;
+        }
+        .comparison-table thead th:last-child {
+            border-radius: 0 16px 0 0;
+        }
+        .comparison-table thead th.highlighted-col {
+            background: linear-gradient(180deg, #ECFDF5, var(--bg-gray-50));
+            color: var(--green-dark);
+        }
+        .comparison-table tbody td {
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--text-gray);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .comparison-table tbody td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .comparison-table tbody td.highlighted-col {
+            background: rgba(0, 210, 106, 0.03);
+        }
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .comparison-table tbody tr:hover td {
+            background: var(--bg-gray-50);
+        }
+        .comparison-table tbody tr:hover td.highlighted-col {
+            background: rgba(0, 210, 106, 0.06);
+        }
+        .comparison-table .check {
+            color: var(--green-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .comparison-table .dash {
+            color: var(--border-gray);
+        }
+        .comparison-table .price-row td {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        @media (max-width: 768px) {
+            .comparison {
+                padding: 0 0 80px;
+            }
+        }
+
+        /* Custom CTA */
+        .custom-cta {
+            padding: 0 0 120px;
+        }
+        .custom-cta-card {
+            background: var(--bg-gray-50);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .custom-cta-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .custom-cta-card p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin-bottom: 28px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .custom-cta-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--text-dark);
+            color: white;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .custom-cta-btn:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        @media (max-width: 768px) {
+            .custom-cta {
+                padding: 0 0 80px;
+            }
+            .custom-cta-card {
+                padding: 32px 24px;
+            }
+        }
+
         /* Footer */
         footer {
             background: var(--bg-gray-50);
@@ -462,11 +600,11 @@
                             🥉
                         </div>
                         <div class="pricing-plan-name">Start</div>
-                        <div class="pricing-plan-focus">Torneos simples</div>
+                        <div class="pricing-plan-focus">Express + King of Court</div>
                         <div class="original-price"></div>
                         <div class="pricing-price">
                             <span class="currency">$</span>
-                            <span class="amount" data-monthly="499" data-annual="349">499</span>
+                            <span class="amount" data-monthly="399" data-annual="279">399</span>
                             <span class="period">MXN/mes</span>
                         </div>
                         <div class="pricing-price-note">+ IVA</div>
@@ -506,7 +644,7 @@
                         <div class="original-price"></div>
                         <div class="pricing-price">
                             <span class="currency">$</span>
-                            <span class="amount" data-monthly="999" data-annual="699">999</span>
+                            <span class="amount" data-monthly="749" data-annual="524">749</span>
                             <span class="period">MXN/mes</span>
                         </div>
                         <div class="pricing-price-note">+ IVA</div>
@@ -546,7 +684,7 @@
                         <div class="original-price"></div>
                         <div class="pricing-price">
                             <span class="currency">$</span>
-                            <span class="amount" data-monthly="1,999" data-annual="1,399">1,999</span>
+                            <span class="amount" data-monthly="1,499" data-annual="1,049">1,499</span>
                             <span class="period">MXN/mes</span>
                         </div>
                         <div class="pricing-price-note">+ IVA</div>
@@ -616,6 +754,138 @@
                         </ul>
                         <a href="/#contact" class="pricing-cta primary">Contactar</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison">
+            <div class="container">
+                <div class="comparison-header reveal">
+                    <span class="section-tag">Detalle</span>
+                    <h3>Comparativa de Planes</h3>
+                </div>
+                <div class="comparison-wrapper reveal">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Start</th>
+                                <th>Pro</th>
+                                <th>Liga</th>
+                                <th class="highlighted-col">Elite</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tipo de producto</td>
+                                <td>Torneos Express</td>
+                                <td>Torneos avanzados</td>
+                                <td>Ligas</td>
+                                <td class="highlighted-col">Circuito completo</td>
+                            </tr>
+                            <tr class="price-row">
+                                <td>Precio mensual</td>
+                                <td>$399</td>
+                                <td>$749</td>
+                                <td>$1,499</td>
+                                <td class="highlighted-col">$2,999</td>
+                            </tr>
+                            <tr>
+                                <td>Categorías múltiples</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Fase de grupos</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Brackets eliminatorios</td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Historial de torneos</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Temporadas</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Calendario automático</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Solicitudes de jugadores</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Ranking en tiempo real</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="check">&#10003;</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Ranking acumulado circuito</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Calendarización inteligente</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Reportes financieros</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Soporte prioritario</td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
+                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="custom-cta">
+            <div class="container">
+                <div class="custom-cta-card reveal">
+                    <h3>¿Necesitas algo diferente?</h3>
+                    <p>Si ningún plan se ajusta a tu operación, platiquemos. Diseñamos un paquete a la medida de tus necesidades.</p>
+                    <a href="/#contact" class="custom-cta-btn">Contáctanos</a>
                 </div>
             </div>
         </section>
