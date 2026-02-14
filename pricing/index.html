@@ -106,6 +106,23 @@
             margin: 0 auto;
         }
 
+        /* App Note */
+        .app-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        .app-note svg {
+            width: 16px;
+            height: 16px;
+            color: var(--green-primary);
+            flex-shrink: 0;
+        }
+
         /* Billing Toggle */
         .billing-toggle {
             display: flex;
@@ -211,10 +228,13 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
             align-items: start;
-            max-width: 800px;
+        }
+        .pricing-grid.single {
+            grid-template-columns: 1fr;
+            max-width: 400px;
             margin: 0 auto;
         }
 
@@ -396,6 +416,19 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .pricing-card.highlighted {
+                transform: scale(1);
+            }
+            .pricing-card.highlighted:hover {
+                transform: translateY(-8px);
+            }
+        }
         @media (max-width: 768px) {
             .pricing-grid {
                 grid-template-columns: 1fr;
@@ -406,12 +439,6 @@
             }
             .hero {
                 padding: 60px 0 20px;
-            }
-            .pricing-card.highlighted {
-                transform: scale(1);
-            }
-            .pricing-card.highlighted:hover {
-                transform: translateY(-8px);
             }
         }
 
@@ -597,15 +624,20 @@
                     <span class="billing-label" id="label-annual">Anual</span>
                     <span class="save-badge">-30%</span>
                 </div>
+
+                <div class="app-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Todos los planes incluyen acceso a la App para jugadores: roles, horarios, inscripciones y resultados.
+                </div>
             </div>
         </section>
 
         <section class="pricing" id="torneos">
             <div class="container">
                 <div class="pricing-section-header reveal">
-                    <span class="section-tag">Torneos</span>
+                    <span class="section-tag">Torneos de parejas fijas</span>
                     <h3>Organiza torneos de cualquier formato</h3>
-                    <p>Express, King of Court, fase de grupos y eliminatorias.</p>
+                    <p>Express, King of Court, fase de grupos y eliminatorias. Entre más grande el plan, más se automatiza tu operación.</p>
                 </div>
                 <div class="pricing-grid">
                     <!-- Start Plan -->
@@ -626,15 +658,11 @@
                         <ul class="pricing-features">
                             <li>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Torneos Express básicos
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                                 1 categoría por torneo
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Brackets automáticos
+                                Fase de grupos + brackets automáticos
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -642,7 +670,7 @@
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Visualización de resultados
+                                Resultados en la app para jugadores
                             </li>
                         </ul>
                         <a href="/#contact" class="pricing-cta secondary">Empezar</a>
@@ -687,6 +715,47 @@
                         </ul>
                         <a href="/#contact" class="pricing-cta secondary">Empezar</a>
                     </div>
+
+                    <!-- Elite Plan (Highlighted) -->
+                    <div class="pricing-card highlighted reveal">
+                        <span class="pricing-badge">Recomendado</span>
+                        <div class="pricing-icon" style="background: linear-gradient(135deg, var(--green-primary), var(--green-dark));">
+                            🏆
+                        </div>
+                        <div class="pricing-plan-name">Elite</div>
+                        <div class="pricing-plan-focus">Operación 100% automatizada</div>
+                        <div class="original-price"></div>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount" data-monthly="2,999" data-annual="2,099">2,999</span>
+                            <span class="period">MXN/mes</span>
+                        </div>
+                        <div class="pricing-price-note">+ IVA</div>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Todo de Pro
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Calendarización inteligente
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Ranking acumulado de circuito
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Reportes financieros y operativos
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Soporte prioritario
+                            </li>
+                        </ul>
+                        <a href="/#contact" class="pricing-cta primary">Contactar</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -698,7 +767,7 @@
                     <h3>Opera ligas completas con temporadas</h3>
                     <p>Jornadas automáticas, rankings, rotaciones y gestión de jugadores.</p>
                 </div>
-                <div class="pricing-grid">
+                <div class="pricing-grid single">
                     <!-- Liga Plan -->
                     <div class="pricing-card reveal">
                         <div class="pricing-icon" style="background: linear-gradient(135deg, #FEF9C3, #FDE047);">
@@ -738,47 +807,6 @@
                         </ul>
                         <a href="/#contact" class="pricing-cta secondary">Empezar</a>
                     </div>
-
-                    <!-- Elite Plan (Highlighted) -->
-                    <div class="pricing-card highlighted reveal">
-                        <span class="pricing-badge">Recomendado</span>
-                        <div class="pricing-icon" style="background: linear-gradient(135deg, var(--green-primary), var(--green-dark));">
-                            🏆
-                        </div>
-                        <div class="pricing-plan-name">Elite</div>
-                        <div class="pricing-plan-focus">Operación completa</div>
-                        <div class="original-price"></div>
-                        <div class="pricing-price">
-                            <span class="currency">$</span>
-                            <span class="amount" data-monthly="2,999" data-annual="2,099">2,999</span>
-                            <span class="period">MXN/mes</span>
-                        </div>
-                        <div class="pricing-price-note">+ IVA</div>
-                        <div class="pricing-divider"></div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Todo de Liga + Pro
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Ranking acumulado de circuito
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Calendarización inteligente
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Reportes financieros y operativos
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Soporte prioritario
-                            </li>
-                        </ul>
-                        <a href="/#contact" class="pricing-cta primary">Contactar</a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -787,7 +815,7 @@
             <div class="container">
                 <div class="comparison-header reveal">
                     <span class="section-tag">Detalle</span>
-                    <h3>Comparativa — Torneos</h3>
+                    <h3>Comparativa — Torneos de parejas fijas</h3>
                 </div>
                 <div class="comparison-wrapper reveal">
                     <table class="comparison-table">
@@ -795,123 +823,74 @@
                             <tr>
                                 <th></th>
                                 <th>Start</th>
-                                <th class="highlighted-col">Pro</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="price-row">
-                                <td>Precio mensual</td>
-                                <td>$399</td>
-                                <td class="highlighted-col">$749</td>
-                            </tr>
-                            <tr>
-                                <td>Categorías múltiples</td>
-                                <td><span class="dash">—</span></td>
-                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Fase de grupos</td>
-                                <td><span class="dash">—</span></td>
-                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Brackets eliminatorios</td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Registro desde la app</td>
-                                <td><span class="check">&#10003;</span></td>
-                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Resultados en tiempo real</td>
-                                <td><span class="dash">—</span></td>
-                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Historial de torneos</td>
-                                <td><span class="dash">—</span></td>
-                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <section class="comparison">
-            <div class="container">
-                <div class="comparison-header reveal">
-                    <h3>Comparativa — Ligas individuales</h3>
-                </div>
-                <div class="comparison-wrapper reveal">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Liga</th>
+                                <th>Pro</th>
                                 <th class="highlighted-col">Elite</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="price-row">
                                 <td>Precio mensual</td>
-                                <td>$1,499</td>
+                                <td>$399</td>
+                                <td>$749</td>
                                 <td class="highlighted-col">$2,999</td>
                             </tr>
                             <tr>
-                                <td>Temporadas completas</td>
+                                <td>Fase de grupos</td>
+                                <td><span class="check">&#10003;</span></td>
                                 <td><span class="check">&#10003;</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
-                                <td>Jornadas automáticas</td>
+                                <td>Brackets eliminatorios</td>
+                                <td><span class="check">&#10003;</span></td>
                                 <td><span class="check">&#10003;</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
-                                <td>Solicitudes de jugadores</td>
+                                <td>Registro desde la app</td>
+                                <td><span class="check">&#10003;</span></td>
                                 <td><span class="check">&#10003;</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
-                                <td>Calendario y rotaciones</td>
+                                <td>Resultados en la app</td>
+                                <td><span class="check">&#10003;</span></td>
                                 <td><span class="check">&#10003;</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
-                                <td>Ranking en tiempo real</td>
+                                <td>Categorías múltiples</td>
+                                <td><span class="dash">—</span></td>
                                 <td><span class="check">&#10003;</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
-                                <td>Tabla de posiciones</td>
+                                <td>Historial de torneos</td>
+                                <td><span class="dash">—</span></td>
                                 <td><span class="check">&#10003;</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
-                                <td>Torneos (Start + Pro incluidos)</td>
+                                <td>Calendarización inteligente</td>
+                                <td><span class="dash">—</span></td>
                                 <td><span class="dash">—</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
                                 <td>Ranking acumulado de circuito</td>
                                 <td><span class="dash">—</span></td>
-                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Calendarización inteligente</td>
                                 <td><span class="dash">—</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
                                 <td>Reportes financieros y operativos</td>
                                 <td><span class="dash">—</span></td>
+                                <td><span class="dash">—</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
                             <tr>
                                 <td>Soporte prioritario</td>
+                                <td><span class="dash">—</span></td>
                                 <td><span class="dash">—</span></td>
                                 <td class="highlighted-col"><span class="check">&#10003;</span></td>
                             </tr>
