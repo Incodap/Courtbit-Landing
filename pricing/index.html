@@ -106,6 +106,90 @@
             margin: 0 auto;
         }
 
+        /* Billing Toggle */
+        .billing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 32px 0 0;
+        }
+        .billing-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        .billing-label.active {
+            color: var(--text-dark);
+        }
+        .toggle-switch {
+            position: relative;
+            width: 52px;
+            height: 28px;
+            cursor: pointer;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-track {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--border-gray);
+            border-radius: 100px;
+            transition: background 0.3s ease;
+        }
+        .toggle-switch input:checked + .toggle-track {
+            background: var(--green-primary);
+        }
+        .toggle-knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        .toggle-switch input:checked ~ .toggle-knob {
+            transform: translateX(24px);
+        }
+        .save-badge {
+            display: inline-block;
+            background: #ECFDF5;
+            color: var(--green-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 100px;
+        }
+
+        /* Price animation */
+        .pricing-price .amount {
+            transition: opacity 0.2s ease;
+        }
+        .pricing-price .amount.switching {
+            opacity: 0;
+        }
+        .pricing-price-note {
+            transition: opacity 0.2s ease;
+        }
+        .pricing-price-note.switching {
+            opacity: 0;
+        }
+        .original-price {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-bottom: 4px;
+            height: 20px;
+        }
+
         /* Pricing Section */
         .pricing {
             padding: 40px 0 120px;
@@ -355,6 +439,17 @@
                 <span class="section-tag">Planes</span>
                 <h2 class="section-title">Elige el plan ideal para tu operación</h2>
                 <p class="section-description">Desde torneos express hasta circuitos con ranking. Escala cuando lo necesites.</p>
+
+                <div class="billing-toggle">
+                    <span class="billing-label active" id="label-monthly">Mensual</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="billing-toggle">
+                        <span class="toggle-track"></span>
+                        <span class="toggle-knob"></span>
+                    </label>
+                    <span class="billing-label" id="label-annual">Anual</span>
+                    <span class="save-badge">-30%</span>
+                </div>
             </div>
         </section>
 
@@ -368,9 +463,10 @@
                         </div>
                         <div class="pricing-plan-name">Start</div>
                         <div class="pricing-plan-focus">Torneos simples</div>
+                        <div class="original-price"></div>
                         <div class="pricing-price">
                             <span class="currency">$</span>
-                            <span class="amount">499</span>
+                            <span class="amount" data-monthly="499" data-annual="349">499</span>
                             <span class="period">MXN/mes</span>
                         </div>
                         <div class="pricing-price-note">+ IVA</div>
@@ -407,9 +503,10 @@
                         </div>
                         <div class="pricing-plan-name">Pro</div>
                         <div class="pricing-plan-focus">Torneos avanzados</div>
+                        <div class="original-price"></div>
                         <div class="pricing-price">
                             <span class="currency">$</span>
-                            <span class="amount">999</span>
+                            <span class="amount" data-monthly="999" data-annual="699">999</span>
                             <span class="period">MXN/mes</span>
                         </div>
                         <div class="pricing-price-note">+ IVA</div>
@@ -446,9 +543,10 @@
                         </div>
                         <div class="pricing-plan-name">Liga</div>
                         <div class="pricing-plan-focus">Ligas individuales</div>
+                        <div class="original-price"></div>
                         <div class="pricing-price">
                             <span class="currency">$</span>
-                            <span class="amount">1,999</span>
+                            <span class="amount" data-monthly="1,999" data-annual="1,399">1,999</span>
                             <span class="period">MXN/mes</span>
                         </div>
                         <div class="pricing-price-note">+ IVA</div>
@@ -486,9 +584,10 @@
                         </div>
                         <div class="pricing-plan-name">Elite</div>
                         <div class="pricing-plan-focus">Operación completa</div>
+                        <div class="original-price"></div>
                         <div class="pricing-price">
                             <span class="currency">$</span>
-                            <span class="amount">2,999</span>
+                            <span class="amount" data-monthly="2,999" data-annual="2,099">2,999</span>
                             <span class="period">MXN/mes</span>
                         </div>
                         <div class="pricing-price-note">+ IVA</div>
@@ -543,6 +642,51 @@
         }
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
+
+        // Billing toggle
+        var toggle = document.getElementById('billing-toggle');
+        var labelMonthly = document.getElementById('label-monthly');
+        var labelAnnual = document.getElementById('label-annual');
+        var amounts = document.querySelectorAll('.pricing-price .amount');
+        var notes = document.querySelectorAll('.pricing-price-note');
+        var originals = document.querySelectorAll('.original-price');
+
+        function updatePrices(isAnnual) {
+            amounts.forEach(function(el) { el.classList.add('switching'); });
+            notes.forEach(function(el) { el.classList.add('switching'); });
+
+            setTimeout(function() {
+                amounts.forEach(function(el) {
+                    el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+                    el.classList.remove('switching');
+                });
+                notes.forEach(function(el) {
+                    el.textContent = isAnnual ? 'Facturado anualmente + IVA' : '+ IVA';
+                    el.classList.remove('switching');
+                });
+                originals.forEach(function(el) {
+                    var amount = el.closest('.pricing-card').querySelector('.amount');
+                    el.textContent = isAnnual ? '$' + amount.dataset.monthly + '/mes' : '';
+                });
+            }, 200);
+
+            labelMonthly.classList.toggle('active', !isAnnual);
+            labelAnnual.classList.toggle('active', isAnnual);
+        }
+
+        toggle.addEventListener('change', function() {
+            updatePrices(this.checked);
+        });
+
+        labelMonthly.addEventListener('click', function() {
+            toggle.checked = false;
+            updatePrices(false);
+        });
+
+        labelAnnual.addEventListener('click', function() {
+            toggle.checked = true;
+            updatePrices(true);
+        });
     </script>
 </body>
 </html>
