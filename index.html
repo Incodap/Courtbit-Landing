@@ -45,7 +45,12 @@
         "name": "CourtBit",
         "applicationCategory": "SportsApplication",
         "operatingSystem": "iOS, Android",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MXN" },
+        "offers": [
+            { "@type": "Offer", "price": "0", "priceCurrency": "MXN", "name": "Free" },
+            { "@type": "Offer", "price": "99", "priceCurrency": "MXN", "name": "Express" },
+            { "@type": "Offer", "price": "499", "priceCurrency": "MXN", "name": "Profesional" },
+            { "@type": "Offer", "price": "1499", "priceCurrency": "MXN", "name": "Enterprise" }
+        ],
         "description": "El sistema operativo para organizadores de padel. Gestiona torneos, ligas, rankings de circuito y pagos desde una plataforma con apps nativas para jugadores."
     }
     </script>
@@ -360,7 +365,7 @@
         .payment-card p { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5; }
 
         /* ── PRICING ── */
-        .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: start; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; align-items: start; }
         .pricing-card {
             background: var(--white); border: 1.5px solid var(--border);
             border-radius: var(--radius-lg); padding: 32px 26px;
@@ -369,7 +374,7 @@
         .pricing-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
         .pricing-card.featured { border-color: var(--navy); position: relative; box-shadow: var(--shadow-lg); }
         .pricing-card.featured::before {
-            content: 'Mas Popular'; position: absolute; top: -11px; left: 50%;
+            content: 'Mas Popular'; position: absolute; top: -12px; left: 50%;
             transform: translateX(-50%); background: var(--navy); color: var(--white);
             font-size: 0.6875rem; font-weight: 700; padding: 4px 16px;
             border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.05em;
@@ -453,7 +458,8 @@
         .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
 
         /* ── RESPONSIVE ── */
-        @media (max-width:900px) { .pillars-grid,.compare-grid,.payments-grid,.pricing-grid { grid-template-columns: 1fr; } .player-grid { grid-template-columns: repeat(2,1fr); } }
+        @media (max-width:900px) { .pillars-grid,.compare-grid,.payments-grid { grid-template-columns: 1fr; } .pricing-grid { grid-template-columns: repeat(2,1fr); } .player-grid { grid-template-columns: repeat(2,1fr); } }
+        @media (max-width:560px) { .pricing-grid { grid-template-columns: 1fr; } }
         @media (max-width:768px) { .nav-center,.lang-switch { display: none; } .mobile-toggle { display: block; } .hero h1 { font-size: clamp(2rem,7vw,2.75rem); } .section { padding: 72px 0; } .player-grid { grid-template-columns: 1fr 1fr; gap: 10px; } footer .container { flex-direction: column; gap: 14px; text-align: center; } .footer-right { flex-wrap: wrap; justify-content: center; } }
         @media (max-width:480px) { .player-grid { grid-template-columns: 1fr; } .hero-pills { gap: 6px; } }
     </style>
@@ -544,7 +550,7 @@
                     <div class="compare-items">
                         <div class="compare-item old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Rotaciones en Excel</div>
                         <div class="compare-item old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Capturas de pago por WhatsApp</div>
-                        <div class="compare-item old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Registro con Google Forms</div>
+                        <div class="compare-item old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Registro con Google Forms o listas en WhatsApp</div>
                         <div class="compare-item old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Rankings manuales en hoja de calculo</div>
                     </div>
                 </div>
@@ -611,35 +617,46 @@
             <div class="section-header reveal"><span class="section-tag">Precios</span><h2 class="section-title">Empieza gratis. Escala cuando estes listo.</h2></div>
             <div class="pricing-grid">
                 <div class="pricing-card reveal">
-                    <div class="pricing-name">Gratis</div><div class="pricing-price">$0</div><div class="pricing-desc">Para organizadores que empiezan</div>
+                    <div class="pricing-name">Gratis</div><div class="pricing-price">$0</div><div class="pricing-desc">Para probar la plataforma</div>
                     <div class="pricing-features">
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hasta 2 torneos activos</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1 temporada de liga</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Brackets y calendarizacion</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1 torneo, 1 categoria</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hasta 32 parejas</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> App de jugadores incluida</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 5% comision por transaccion</div>
                     </div>
                     <a href="https://wa.me/526221464310?text=Hola%2C%20quiero%20empezar%20con%20CourtBit%20Gratis" class="pricing-btn outline" target="_blank">Empezar</a>
                 </div>
-                <div class="pricing-card featured reveal d1">
-                    <div class="pricing-name">Pro</div><div class="pricing-price">$29 <span>/ mes</span></div><div class="pricing-desc">Para organizadores con circuitos</div>
+                <div class="pricing-card reveal d1">
+                    <div class="pricing-name">Express</div><div class="pricing-price">$99 <span>/ mes</span></div><div class="pricing-desc">Para organizadores en crecimiento</div>
                     <div class="pricing-features">
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Torneos ilimitados</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multiples temporadas de liga</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ranking de circuito</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 3 torneos, 3 categorias</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1 temporada de liga</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Codigos de descuento</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Reportes en Excel</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Reportes Excel basicos</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 3% comision por transaccion</div>
                     </div>
-                    <a href="https://wa.me/526221464310?text=Hola%2C%20me%20interesa%20CourtBit%20Pro" class="pricing-btn primary" target="_blank">Empezar</a>
+                    <a href="https://wa.me/526221464310?text=Hola%2C%20me%20interesa%20CourtBit%20Express" class="pricing-btn outline" target="_blank">Prueba 30 dias gratis</a>
                 </div>
-                <div class="pricing-card reveal d2">
-                    <div class="pricing-name">Empresarial</div><div class="pricing-price">A medida</div><div class="pricing-desc">Para asociaciones y federaciones</div>
+                <div class="pricing-card featured reveal d2">
+                    <div class="pricing-name">Profesional</div><div class="pricing-price">$499 <span>/ mes</span></div><div class="pricing-desc">Para organizadores con circuitos</div>
                     <div class="pricing-features">
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Todo lo de Pro</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Todo ilimitado</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Soporte prioritario</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Onboarding personalizado</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 10 torneos, 5 categorias</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Temporadas ilimitadas</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ranking de circuito</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Reportes Excel avanzados</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1.5% comision por transaccion</div>
                     </div>
-                    <a href="https://wa.me/526221464310?text=Hola%2C%20quiero%20informacion%20sobre%20CourtBit%20Empresarial" class="pricing-btn outline" target="_blank">Contactar</a>
+                    <a href="https://wa.me/526221464310?text=Hola%2C%20me%20interesa%20CourtBit%20Profesional" class="pricing-btn primary" target="_blank">Empezar</a>
+                </div>
+                <div class="pricing-card reveal d3">
+                    <div class="pricing-name">Enterprise</div><div class="pricing-price">$1,499 <span>/ mes</span></div><div class="pricing-desc">Para asociaciones y federaciones</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Todo ilimitado</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 0% comision por transaccion</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> White-label personalizado</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Soporte prioritario</div>
+                    </div>
+                    <a href="https://wa.me/526221464310?text=Hola%2C%20quiero%20informacion%20sobre%20CourtBit%20Enterprise" class="pricing-btn outline" target="_blank">Contactar</a>
                 </div>
             </div>
         </div>
