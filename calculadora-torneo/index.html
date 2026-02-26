@@ -1,14 +1,101 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Torneos de Padel | CourtBit</title>
-    <meta name="description" content="Calcula costos, precio por pareja y margenes de ganancia para tu torneo de padel. Herramienta gratuita para organizadores.">
-    <meta property="og:title" content="Calculadora de Torneos de Padel | CourtBit">
-    <meta property="og:description" content="Calcula costos, precio por pareja y margenes de ganancia para tu torneo de padel.">
+    <title>Calculadora de Costos para Torneos de Padel | Presupuesto y Vista Previa Gratis - CourtBit</title>
+    <meta name="description" content="Calcula cuanto cuesta organizar un torneo de padel: costos de canchas, pelotas, precio por pareja y margen de ganancia. Genera vista previa de grupos y cuadro de eliminacion. Herramienta gratuita para organizadores.">
+    <meta name="keywords" content="calculadora torneo padel, organizar torneo de padel, presupuesto torneo padel, cuanto cuesta torneo padel, cuadro eliminacion padel, formato torneo padel, costos torneo padel, generador cuadros padel, llaves torneo padel, plantilla torneo padel">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://courtbit.com.mx/calculadora-torneo/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Calculadora de Costos para Torneos de Padel | CourtBit">
+    <meta property="og:description" content="Calcula presupuesto, costos por pareja y genera vista previa de grupos y brackets para tu torneo de padel. 100% gratis, sin registro.">
+    <meta property="og:url" content="https://courtbit.com.mx/calculadora-torneo/">
     <meta property="og:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+    <meta property="og:site_name" content="CourtBit">
+    <meta property="og:locale" content="es_MX">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Calculadora de Costos para Torneos de Padel | CourtBit">
+    <meta name="twitter:description" content="Calcula presupuesto, costos por pareja y genera vista previa de grupos y brackets para tu torneo de padel.">
     <link rel="icon" type="image/png" href="../Assets/courtbit-logo.svg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Calculadora de Costos para Torneos de Padel",
+        "description": "Herramienta gratuita para calcular costos, presupuesto por pareja y generar vista previa de la estructura de tu torneo de padel.",
+        "url": "https://courtbit.com.mx/calculadora-torneo/",
+        "applicationCategory": "SportsApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "MXN"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "CourtBit",
+            "url": "https://courtbit.com.mx"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Cuanto cuesta organizar un torneo de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El costo depende del numero de parejas, precio de renta de cancha, pelotas y formato del torneo. Por ejemplo, un torneo de 18 parejas en grupos de 3 con canchas a $500/hr y pelotas a $100/bote cuesta aproximadamente $13,500 MXN en total, o $750 por pareja. Usa nuestra calculadora gratuita para obtener un presupuesto exacto."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuantas parejas se necesitan para un torneo de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Se necesitan al menos 6 parejas para un torneo con fase de grupos de 3 y eliminacion directa. Lo mas comun son torneos de 12, 16, 18 o 24 parejas. El numero debe ser divisible entre el tamano del grupo (3 o 4)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuantos partidos se juegan en un torneo de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depende del formato. En grupos de 3 se juegan 3 partidos por grupo, en grupos de 4 se juegan 6. Despues, la fase de eliminacion directa suma N-1 partidos donde N es el numero de clasificados. Por ejemplo, 18 parejas en grupos de 3 generan 18 partidos de fase de grupos + 11 de eliminacion = 29 partidos totales."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Que formato de torneo es mejor para padel amateur?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El formato mas popular es fase de grupos + eliminacion directa. Los grupos de 3 son ideales para torneos rapidos (cada pareja juega 2 partidos), mientras que grupos de 4 ofrecen mas partidos (3 por pareja). El formato express (6 u 8 juegos) permite completar mas partidos en menos tiempo."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuanto cobrar de inscripcion en un torneo de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Calcula el costo total del torneo (canchas + pelotas) y dividelo entre el numero de parejas para obtener el costo base. Agrega un margen del 20-40% para cubrir gastos operativos, premios y ganancia. Nuestra calculadora te sugiere el precio automaticamente segun el margen que elijas."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuantas pelotas de padel necesito para un torneo?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depende del modo que elijas: 1 bote por partido (lo mas comun y recomendado para calidad de juego), 1 bote por fase (2 botes en total, mas economico), o una cantidad personalizada. Para un torneo de 18 parejas con 1 bote por partido necesitaras aproximadamente 29 botes."
+                }
+            }
+        ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -600,6 +687,71 @@
             background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
         }
 
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0 40px;
+        }
+        .faq-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 24px;
+        }
+        .faq-list {
+            max-width: 800px;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 0;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            line-height: 1.4;
+        }
+        .faq-question:hover {
+            color: var(--green-dark);
+        }
+        .faq-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--bg-gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            transition: transform 0.2s ease;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer-inner {
+            padding: 0 0 20px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
         /* CTA */
         .cta-section {
             padding: 0 0 80px;
@@ -613,7 +765,7 @@
             max-width: 720px;
             margin: 0 auto;
         }
-        .cta-card h3 {
+        .cta-card h2 {
             font-size: 1.5rem;
             font-weight: 800;
             margin-bottom: 12px;
@@ -1073,9 +1225,9 @@
     <main>
         <section class="hero">
             <div class="container reveal">
-                <span class="section-tag">Herramienta Gratuita</span>
-                <h2 class="section-title">Calculadora de Torneos</h2>
-                <p class="section-description">Calcula costos, precio por pareja y margen de ganancia para tu torneo de padel en segundos.</p>
+                <span class="section-tag">Herramienta Gratuita para Organizadores</span>
+                <h1 class="section-title">Calculadora de Costos para Torneos de Padel</h1>
+                <p class="section-description">Calcula el presupuesto de tu torneo de padel al instante: costos de canchas, pelotas, precio por pareja y margen de ganancia. Genera una vista previa de grupos y cuadro de eliminacion.</p>
             </div>
         </section>
 
@@ -1241,7 +1393,7 @@
                 <!-- Results -->
                 <div class="results-header reveal">
                     <span class="section-tag">Resultados</span>
-                    <h3>Desglose del Torneo</h3>
+                    <h2>Desglose del Torneo</h2>
                 </div>
 
                 <!-- Summary Cards -->
@@ -1320,11 +1472,11 @@
             <div class="container">
                 <div class="reveal">
                     <span class="section-tag">Vista Previa</span>
-                    <h3>Estructura del Torneo</h3>
+                    <h2>Estructura del Torneo</h2>
                 </div>
-                <h4 class="preview-sub-header reveal">Fase de Grupos</h4>
+                <h3 class="preview-sub-header reveal">Fase de Grupos</h3>
                 <div class="pv-groups-grid reveal" id="previewGroups"></div>
-                <h4 class="preview-sub-header reveal">Eliminacion Directa</h4>
+                <h3 class="preview-sub-header reveal">Cuadro de Eliminacion Directa</h3>
                 <div class="pv-bracket-scroll reveal">
                     <div class="pv-bracket" id="previewBracket"></div>
                 </div>
@@ -1335,9 +1487,9 @@
         <section class="examples">
             <div class="container">
                 <div class="examples-header reveal">
-                    <span class="section-tag">Ejemplos</span>
-                    <h3>Escenarios Precargados</h3>
-                    <p>Se recalculan automaticamente con tus precios base.</p>
+                    <span class="section-tag">Ejemplos de Presupuesto</span>
+                    <h2>Formatos de Torneo de Padel Mas Comunes</h2>
+                    <p>Compara costos entre formatos populares. Los precios se recalculan con tus costos base.</p>
                 </div>
                 <div class="examples-grid">
                     <!-- Example 1: Regular Groups of 3 -->
@@ -1364,11 +1516,77 @@
             </div>
         </section>
 
+        <!-- FAQ -->
+        <section class="faq-section" id="preguntas-frecuentes">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-tag" style="background: linear-gradient(135deg, #3B82F6, #1D4ED8);">Preguntas Frecuentes</span>
+                    <h2>Todo lo que Necesitas Saber para Organizar tu Torneo de Padel</h2>
+                </div>
+                <div class="faq-list reveal">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Cuanto cuesta organizar un torneo de padel?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">El costo depende del numero de parejas, precio de renta de cancha, pelotas y formato del torneo. Por ejemplo, un torneo de 18 parejas en grupos de 3 con canchas a $500/hr y pelotas a $100/bote cuesta aproximadamente $13,500 MXN en total, o $750 por pareja. Usa la calculadora de arriba para obtener un presupuesto exacto con tus precios.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Cuantas parejas se necesitan para un torneo de padel?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Se necesitan al menos 6 parejas para un torneo con fase de grupos de 3 y eliminacion directa. Lo mas comun son torneos de 12, 16, 18 o 24 parejas. El numero debe ser divisible entre el tamano del grupo: en grupos de 3 funciona bien con 9, 12, 15, 18 o 21 parejas; en grupos de 4 con 8, 12, 16, 20 o 24.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Cuantos partidos se juegan en un torneo de padel?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">En grupos de 3 se juegan 3 partidos por grupo (todos contra todos), y en grupos de 4 se juegan 6 partidos por grupo. La fase de eliminacion directa suma N-1 partidos donde N es el numero de clasificados (2 por grupo). Por ejemplo, 18 parejas en grupos de 3 generan 18 partidos de grupos + 11 de eliminacion = 29 partidos totales.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Que formato de torneo es mejor para padel amateur?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">El formato mas popular es fase de grupos + eliminacion directa. Los grupos de 3 son ideales para torneos rapidos donde cada pareja juega al menos 2 partidos, mientras que grupos de 4 ofrecen mas partidos (3 por pareja) garantizando mas tiempo de juego. El formato Express (6 u 8 juegos por partido) permite completar mas partidos en menos horas de cancha.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Cuanto cobrar de inscripcion en un torneo de padel?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Calcula el costo total del torneo (canchas + pelotas) y dividelo entre el numero de parejas para obtener el costo base por pareja. Agrega un margen del 20-40% para cubrir premios, gastos operativos y ganancia. La calculadora de arriba te sugiere el precio automaticamente segun el margen que configures con el slider.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Cuantas pelotas de padel necesito para un torneo?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Depende del modo: 1 bote por partido es lo mas comun y recomendado para calidad de juego, 1 bote por fase (solo 2 botes en total) es la opcion mas economica, o puedes configurar una cantidad personalizada por fase. Para un torneo de 18 parejas en formato regular con 1 bote por partido necesitaras aproximadamente 29 botes.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA -->
         <section class="cta-section">
             <div class="container">
                 <div class="cta-card reveal">
-                    <h3>Organiza Tu Torneo con CourtBit</h3>
+                    <h2>Organiza Tu Torneo con CourtBit</h2>
                     <p>Brackets, pagos, resultados en vivo y mas. Todo desde una sola plataforma.</p>
                     <a href="/#contact" class="cta-btn">Probar Gratis</a>
                 </div>
@@ -1920,6 +2138,31 @@
         }
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
+
+        /* ============================================================
+           FAQ TOGGLE
+        ============================================================ */
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = this.parentElement;
+                var answer = item.querySelector('.faq-answer');
+                var isOpen = item.classList.contains('open');
+
+                // Close all
+                document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-answer').style.maxHeight = null;
+                    openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+
+                // Open clicked if it was closed
+                if (!isOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
 
         /* ============================================================
            INIT
