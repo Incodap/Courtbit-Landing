@@ -716,6 +716,54 @@
             opacity: 1;
         }
 
+        /* Recalculate Button */
+        .recalc-bar {
+            display: none;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .recalc-bar.visible {
+            display: block;
+            animation: fadeSlideIn 0.3s ease;
+        }
+        .recalc-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            background: var(--green-primary);
+            color: white;
+            border: none;
+            border-radius: 100px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 210, 106, 0.35);
+        }
+        .recalc-btn:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 210, 106, 0.4);
+        }
+        .recalc-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .results-stale .summary-grid,
+        .results-stale .breakdown-wrapper,
+        .results-stale .margin-card {
+            opacity: 0.45;
+            filter: blur(1px);
+            transition: opacity 0.3s, filter 0.3s;
+            pointer-events: none;
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .calc-inputs {
@@ -821,7 +869,7 @@
                                 </span>
                             </label>
                             <div class="input-prefix">
-                                <input type="number" id="precioCancha" class="calc-input" min="0" step="50" value="350">
+                                <input type="number" id="precioCancha" class="calc-input" min="0" step="50" value="500">
                             </div>
                         </div>
                         <div class="field">
@@ -848,7 +896,7 @@
                         </div>
                         <div class="field">
                             <label class="field-label">Cantidad de parejas</label>
-                            <input type="number" id="cantidadParejas" class="calc-input" min="6" max="128" step="1" value="16">
+                            <input type="number" id="cantidadParejas" class="calc-input" min="6" max="128" step="1" value="18">
                             <div class="validation-warning" id="parejasWarning">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                                 <span id="parejasWarningText"></span>
@@ -949,6 +997,14 @@
                             </label>
                         </div>
                     </div>
+                </div>
+
+                <!-- Recalculate Button -->
+                <div class="recalc-bar" id="recalcBar">
+                    <button class="recalc-btn" id="recalcBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                        Recalcular
+                    </button>
                 </div>
 
                 <!-- Results -->
@@ -1087,7 +1143,7 @@
         /* ============================================================
            STORAGE KEY
         ============================================================ */
-        var STORAGE_KEY = 'courtbit_calc_torneo_v2';
+        var STORAGE_KEY = 'courtbit_calc_torneo_v3';
 
         /* ============================================================
            DOM REFERENCES
@@ -1112,7 +1168,10 @@
             resIngresoTotal:   document.getElementById('resIngresoTotal'),
             resGanancia:       document.getElementById('resGanancia'),
             example1Table:     document.getElementById('example1Table'),
-            example2Table:     document.getElementById('example2Table')
+            example2Table:     document.getElementById('example2Table'),
+            recalcBar:         document.getElementById('recalcBar'),
+            recalcBtn:         document.getElementById('recalcBtn'),
+            calcSection:       document.querySelector('.calculator .container')
         };
 
         /* ============================================================
@@ -1424,11 +1483,31 @@
         /* ============================================================
            EVENT LISTENERS
         ============================================================ */
-        // All inputs trigger recalculation
-        var allInputs = document.querySelectorAll('.calc-input, input[type="radio"], input[type="range"]');
-        allInputs.forEach(function(input) {
-            input.addEventListener('input', actualizarResultados);
-            input.addEventListener('change', actualizarResultados);
+        function mostrarRecalcular() {
+            dom.recalcBar.classList.add('visible');
+            dom.calcSection.classList.add('results-stale');
+        }
+
+        function ocultarRecalcular() {
+            dom.recalcBar.classList.remove('visible');
+            dom.calcSection.classList.remove('results-stale');
+        }
+
+        // Input changes show recalculate button
+        var configInputs = document.querySelectorAll('.calc-input, input[type="radio"]');
+        configInputs.forEach(function(input) {
+            input.addEventListener('input', mostrarRecalcular);
+            input.addEventListener('change', mostrarRecalcular);
+        });
+
+        // Margin slider updates in real-time (no recalculate needed)
+        dom.margenSlider.addEventListener('input', actualizarResultados);
+        dom.margenSlider.addEventListener('change', actualizarResultados);
+
+        // Recalculate button
+        dom.recalcBtn.addEventListener('click', function() {
+            actualizarResultados();
+            ocultarRecalcular();
         });
 
         // Show/hide custom balls inputs
