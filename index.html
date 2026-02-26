@@ -527,6 +527,11 @@
         .form-step span { font-size: 0.85rem; color: var(--text-secondary); }
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        /* ── PILLAR TOOL LINK ── */
+        .pillar-tool-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 8px 14px; background: rgba(200,255,0,.1); border: 1px solid rgba(200,255,0,.25); border-radius: 8px; color: #c8ff00; font-size: .85rem; font-weight: 500; text-decoration: none; transition: background .2s, border-color .2s; }
+        .pillar-tool-link:hover { background: rgba(200,255,0,.18); border-color: rgba(200,255,0,.4); }
+        .pillar-tool-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
         /* ── RESPONSIVE ── */
         @media (max-width:900px) { .pillars-grid,.compare-grid,.payments-grid { grid-template-columns: 1fr; } .pricing-grid { grid-template-columns: repeat(2,1fr); } .player-grid { grid-template-columns: repeat(2,1fr); } }
         @media (max-width:560px) { .pricing-grid { grid-template-columns: 1fr; } }
@@ -544,6 +549,7 @@
                 <a href="#funciones">Funciones</a>
                 <a href="#jugadores">Para Jugadores</a>
                 <a href="#precios">Precios</a>
+                <a href="/calculadora-torneo/">Herramientas</a>
             </div>
             <div class="nav-right">
                 <a href="en/" class="lang-switch">EN</a>
@@ -595,6 +601,10 @@
                         <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> Resultados en tiempo real</div>
                         <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Ranking de tu circuito</div>
                     </div>
+                    <a href="/calculadora-torneo/" class="pillar-tool-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="14" y2="18"/></svg>
+                        Calculadora de costos gratuita &rarr;
+                    </a>
                 </div>
                 <div class="pillar-card reveal d1">
                     <div class="pillar-header"><div class="pillar-icon leagues"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><span class="pillar-name">Ligas Individuales</span></div>
@@ -783,6 +793,7 @@
             <div class="footer-right">
                 <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="footer-link" target="_blank">App Store</a>
                 <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&hl=es_MX" class="footer-link" target="_blank">Google Play</a>
+                <a href="/calculadora-torneo/" class="footer-link">Calculadora</a>
                 <a href="https://wa.me/526221464310" class="footer-link" target="_blank">WhatsApp</a>
                 <span class="footer-copy">&copy; 2026 CourtBit</span>
             </div>
