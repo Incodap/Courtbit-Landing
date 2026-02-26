@@ -392,6 +392,18 @@
         .pricing-features { display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; }
         .pricing-feature { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--text-secondary); }
         .pricing-feature svg { width: 16px; height: 16px; color: #5a9e00; flex-shrink: 0; }
+        .pricing-feature.highlight {
+            background: linear-gradient(135deg, var(--lime-bg), rgba(184,240,43,0.12));
+            border: 1px solid rgba(184,240,43,0.4);
+            border-radius: 8px; padding: 7px 10px; margin: 2px -10px;
+            font-weight: 600; color: var(--navy); position: relative;
+        }
+        .pricing-feature.highlight svg { color: var(--navy); }
+        .pricing-feature.highlight::after {
+            content: 'PRO'; font-size: 0.55rem; font-weight: 800; letter-spacing: 0.08em;
+            background: var(--navy); color: var(--lime); padding: 1px 6px;
+            border-radius: var(--radius-full); margin-left: auto; flex-shrink: 0;
+        }
         .pricing-btn {
             display: block; text-align: center; padding: 12px;
             border-radius: var(--radius-full); font-weight: 600; font-size: 0.875rem;
@@ -703,8 +715,8 @@
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 10 active tournaments, 5 categories</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Unlimited seasons</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 5 organization members</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Auto-scheduling</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Circuit ranking</div>
+                        <div class="pricing-feature highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Auto-scheduling</div>
+                        <div class="pricing-feature highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Circuit ranking</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Advanced Excel reports</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1.5% platform fee*</div>
                     </div>
@@ -715,7 +727,7 @@
                     <div class="pricing-features">
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Unlimited everything</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Unlimited members</div>
-                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Auto-scheduling</div>
+                        <div class="pricing-feature highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Auto-scheduling</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1% platform fee*</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Priority support</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Custom plans available</div>
