@@ -671,6 +671,36 @@
         .position-cell.top-2 { color: #8B95A2; }
         .position-cell.top-3 { color: #B87333; }
 
+        .ranking-table tbody tr.current-user {
+            background: var(--lime-bg);
+        }
+
+        .ranking-table tbody tr.current-user:hover {
+            background: var(--lime-soft);
+        }
+
+        .ranking-table tbody tr.current-user .player-name {
+            color: var(--navy);
+            font-weight: 800;
+        }
+
+        .ranking-table tbody tr.current-user .player-avatar {
+            background: var(--lime);
+            color: var(--navy);
+        }
+
+        .current-user-tag {
+            font-size: 0.625rem;
+            font-weight: 700;
+            color: var(--green-accent);
+            background: rgba(90,158,0,0.1);
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
         .player-cell {
             display: flex;
             align-items: center;
@@ -1318,14 +1348,22 @@
 
             body.innerHTML = '';
 
+            var currentUserUid = null;
+            try {
+                var stored = localStorage.getItem('courtbit_user');
+                if (stored) currentUserUid = JSON.parse(stored).uid;
+            } catch (_) {}
+
             data.forEach(function(item, index) {
                 var pos = index + 1;
                 var name = getPlayerName(item);
                 var initials = getInitials(name);
                 var photoUrl = item.user ? item.user.photo_url : null;
                 var points = item.total_points || 0;
+                var isCurrentUser = currentUserUid && item.user && item.user.uid === currentUserUid;
 
                 var tr = document.createElement('tr');
+                if (isCurrentUser) tr.className = 'current-user';
 
                 // Position
                 var tdPos = document.createElement('td');
@@ -1361,6 +1399,13 @@
                 nameSpan.className = 'player-name';
                 nameSpan.textContent = name;
                 playerDiv.appendChild(nameSpan);
+
+                if (isCurrentUser) {
+                    var tag = document.createElement('span');
+                    tag.className = 'current-user-tag';
+                    tag.textContent = 'Tu';
+                    playerDiv.appendChild(tag);
+                }
 
                 tdPlayer.appendChild(playerDiv);
                 tr.appendChild(tdPlayer);
