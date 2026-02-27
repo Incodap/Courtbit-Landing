@@ -541,6 +541,60 @@
             display: block;
         }
 
+        .forgot-password-link {
+            display: block;
+            text-align: right;
+            font-size: 0.8125rem;
+            color: var(--navy);
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: -10px;
+            margin-bottom: 16px;
+            font-family: var(--font);
+            background: none;
+            border: none;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        .forgot-password-link:hover {
+            color: var(--green-accent);
+        }
+
+        .forgot-form-wrapper {
+            display: none;
+        }
+
+        .forgot-form-wrapper.active {
+            display: block;
+        }
+
+        .back-to-login {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 16px;
+            font-family: var(--font);
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .back-to-login:hover {
+            color: var(--navy);
+        }
+
+        .forgot-description {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 18px;
+        }
+
         .loading-inline {
             display: inline-block;
             width: 18px;
@@ -1496,8 +1550,25 @@
                                     </button>
                                 </div>
                             </div>
+                            <button type="button" class="forgot-password-link" id="forgot-password-link">¿Olvidaste tu contrasena?</button>
                             <button type="submit" class="submit-btn" id="login-btn">Iniciar Sesion</button>
                         </form>
+
+                        <!-- Forgot Password Form -->
+                        <div id="forgot-form-wrapper" class="forgot-form-wrapper">
+                            <button type="button" class="back-to-login" id="back-to-login">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                                Volver a iniciar sesion
+                            </button>
+                            <p class="forgot-description">Ingresa tu correo electronico y te enviaremos una contrasena temporal para que puedas acceder a tu cuenta.</p>
+                            <form id="forgot-form">
+                                <div class="form-group">
+                                    <label class="form-label">Correo electronico</label>
+                                    <input type="email" class="form-input" id="forgot-email" placeholder="tu@email.com" required>
+                                </div>
+                                <button type="submit" class="submit-btn" id="forgot-btn">Enviar contrasena temporal</button>
+                            </form>
+                        </div>
 
                         <!-- Signup Form -->
                         <form id="signup-form" class="auth-form">
@@ -1842,6 +1913,58 @@
                 document.getElementById(target + '-form').classList.add('active');
                 hideMessages();
             });
+        });
+
+        // ── Forgot Password ──
+        document.getElementById('forgot-password-link').addEventListener('click', function() {
+            hideMessages();
+            document.getElementById('login-form').classList.remove('active');
+            document.querySelectorAll('.auth-tab').forEach(function(t) { t.style.display = 'none'; });
+            document.getElementById('forgot-form-wrapper').classList.add('active');
+        });
+
+        document.getElementById('back-to-login').addEventListener('click', function() {
+            hideMessages();
+            document.getElementById('forgot-form-wrapper').classList.remove('active');
+            document.getElementById('forgot-form').reset();
+            document.querySelectorAll('.auth-tab').forEach(function(t) { t.style.display = ''; });
+            document.getElementById('login-form').classList.add('active');
+            document.querySelector('.auth-tab[data-tab="login"]').classList.add('active');
+            document.querySelector('.auth-tab[data-tab="signup"]').classList.remove('active');
+            document.getElementById('signup-form').classList.remove('active');
+        });
+
+        document.getElementById('forgot-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            hideMessages();
+
+            var btn = document.getElementById('forgot-btn');
+            btn.dataset.originalText = btn.textContent;
+            setLoading(btn, true);
+
+            var email = document.getElementById('forgot-email').value.trim().toLowerCase();
+
+            try {
+                var response = await fetch(API_URL + '/auth/forgot-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+
+                var data = await response.json();
+
+                if (!response.ok) {
+                    setLoading(btn, false);
+                    showError(data.error || data.message || 'No se pudo enviar el correo. Verifica tu email.');
+                    return;
+                }
+
+                setLoading(btn, false);
+                showSuccess('Se envio una contrasena temporal a tu correo. Revisalo e inicia sesion.');
+            } catch (err) {
+                setLoading(btn, false);
+                showError('Error de conexion. Intenta de nuevo.');
+            }
         });
 
         // ── Toggle Password Visibility ──
