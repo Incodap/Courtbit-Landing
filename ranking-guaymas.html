@@ -195,6 +195,34 @@
             padding-right: 40px;
         }
 
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper .form-input {
+            padding-right: 44px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.15s ease;
+        }
+
+        .toggle-password:hover {
+            color: var(--navy);
+        }
+
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1104,7 +1132,13 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Contrasena</label>
-                        <input type="password" class="form-input" id="login-password" placeholder="********" required>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-input" id="login-password" placeholder="********" required>
+                            <button type="button" class="toggle-password" data-target="login-password">
+                                <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                            </button>
+                        </div>
                     </div>
                     <button type="submit" class="submit-btn" id="login-btn">Iniciar Sesion</button>
                 </form>
@@ -1139,7 +1173,23 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Contrasena</label>
-                        <input type="password" class="form-input" id="signup-password" placeholder="Minimo 8 caracteres" minlength="8" required>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-input" id="signup-password" placeholder="Minimo 8 caracteres" minlength="8" required>
+                            <button type="button" class="toggle-password" data-target="signup-password">
+                                <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirmar contrasena</label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-input" id="signup-confirm-password" placeholder="Repite tu contrasena" minlength="8" required>
+                            <button type="button" class="toggle-password" data-target="signup-confirm-password">
+                                <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                            </button>
+                        </div>
                     </div>
                     <button type="submit" class="submit-btn" id="signup-btn">Crear Cuenta</button>
                 </form>
@@ -1414,6 +1464,17 @@
             });
         });
 
+        // ── Toggle Password Visibility ──
+        document.querySelectorAll('.toggle-password').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var input = document.getElementById(this.dataset.target);
+                var isPassword = input.type === 'password';
+                input.type = isPassword ? 'text' : 'password';
+                this.querySelector('.eye-icon').style.display = isPassword ? 'none' : 'block';
+                this.querySelector('.eye-off-icon').style.display = isPassword ? 'block' : 'none';
+            });
+        });
+
         // ── Login ──
         document.getElementById('login-form').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1465,6 +1526,13 @@
             var phone = document.getElementById('signup-phone').value.trim() || null;
             var gender = document.getElementById('signup-gender').value || null;
             var password = document.getElementById('signup-password').value;
+            var confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                setLoading(btn, false);
+                showError('Las contrasenas no coinciden');
+                return;
+            }
 
             try {
                 var response = await fetch(API_URL + '/auth/register', {
