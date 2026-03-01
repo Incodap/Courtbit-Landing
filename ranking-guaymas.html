@@ -2351,19 +2351,10 @@
     <script>
         const API_URL = 'https://courtbit-api-production.up.railway.app/api';
         const ORGANIZER_ID = '770b3dbf-5073-49d2-b4a1-64fbc34200c9';
-        const CATEGORIES = [
-            { id: 3, name: '3ra', group: 'Varonil' },
-            { id: 4, name: '4ta', group: 'Varonil' },
-            { id: 5, name: '5ta', group: 'Varonil' },
-            { id: 6, name: '6ta', group: 'Varonil' },
-            { id: 7, name: '7ma', group: 'Varonil' },
-            { id: 50, name: '3ra Femenil', group: 'Femenil' },
-            { id: 51, name: '4ta Femenil', group: 'Femenil' },
-            { id: 52, name: '5ta Femenil', group: 'Femenil' },
-            { id: 53, name: '6ta Femenil', group: 'Femenil' }
-        ];
+        let dynamicCategories = [];
+        let cachedRankingData = [];
 
-        let currentCategoryId = CATEGORIES[0].id;
+        let currentCategoryId = null;
         let selectedRegistrationCategoryId = null;
         let isAdminMode = false;
         let changeCatSelectedId = null;
@@ -2414,6 +2405,61 @@
             ]);
         }
 
+        // ── Fetch all ranking data and extract categories ──
+        function extractCategoriesFromData(data) {
+            var seen = {};
+            var categories = [];
+            data.forEach(function(item) {
+                if (item.category && !seen[item.category.id]) {
+                    seen[item.category.id] = true;
+                    var gender = (item.category.gender || '').toLowerCase();
+                    var group;
+                    if (gender === 'women') {
+                        group = 'Femenil';
+                    } else {
+                        group = 'Varonil';
+                    }
+                    categories.push({
+                        id: item.category.id,
+                        name: item.category.name,
+                        group: group,
+                        position: item.category.position || 0
+                    });
+                }
+            });
+            categories.sort(function(a, b) { return a.position - b.position; });
+            return categories;
+        }
+
+        async function fetchAllRankingData() {
+            var url;
+            var fetchOpts = null;
+            if (isAdminMode) {
+                url = API_URL + '/ranking/admin';
+                var token = localStorage.getItem('courtbit_token');
+                fetchOpts = { headers: { 'Authorization': 'Bearer ' + token } };
+            } else {
+                url = API_URL + '/ranking?organizer_id=' + ORGANIZER_ID;
+            }
+            var response = await fetchWithTimeout(url, fetchOpts, 15000);
+
+            if (response.status === 401) {
+                localStorage.removeItem('courtbit_token');
+                localStorage.removeItem('courtbit_user');
+                init();
+                return [];
+            }
+
+            if (!response.ok) {
+                throw new Error('HTTP ' + response.status);
+            }
+
+            var data = await response.json();
+            cachedRankingData = data;
+            dynamicCategories = extractCategoriesFromData(data);
+            return data;
+        }
+
         // ── Organizer Detection ──
         async function checkIfOrganizer(token) {
             try {
@@ -2433,6 +2479,9 @@
         // ── Init ──
         async function init() {
             isAdminMode = false;
+            cachedRankingData = [];
+            dynamicCategories = [];
+            currentCategoryId = null;
             var token = localStorage.getItem('courtbit_token');
             var userJson = localStorage.getItem('courtbit_user');
 
@@ -2452,7 +2501,7 @@
 
         async function checkRankingStatus(user) {
             // Show ranking section immediately as a loading state so the page is never blank
-            showRankingSection(user);
+            await showRankingSection(user);
             try {
                 var url = API_URL + '/ranking/status?user_id=' + encodeURIComponent(user.uid) + '&organizer_id=' + ORGANIZER_ID;
                 var response = await fetchWithTimeout(url, null, 8000);
@@ -2510,7 +2559,7 @@
             buildCategoryCards();
         }
 
-        function showRankingSection(user) {
+        async function showRankingSection(user) {
             document.getElementById('auth-section').style.display = 'none';
             document.getElementById('selection-section').style.display = 'none';
             document.getElementById('ranking-section').style.display = 'block';
@@ -2525,6 +2574,15 @@
                 nameEl.appendChild(badge);
             }
             document.getElementById('user-email').textContent = user.email || '';
+
+            try {
+                await fetchAllRankingData();
+                if (dynamicCategories.length > 0 && !currentCategoryId) {
+                    currentCategoryId = dynamicCategories[0].id;
+                }
+            } catch (err) {
+                // Will show error in loadRanking
+            }
 
             buildCategoryTabs();
             loadRanking();
@@ -2718,7 +2776,7 @@
             wrapper.innerHTML = '';
 
             var groups = {};
-            CATEGORIES.forEach(function(cat) {
+            dynamicCategories.forEach(function(cat) {
                 var g = cat.group || 'General';
                 if (!groups[g]) groups[g] = [];
                 groups[g].push(cat);
@@ -2764,31 +2822,20 @@
             error.style.display = 'none';
 
             try {
-                var url;
-                var fetchOpts = null;
-                if (isAdminMode) {
-                    url = API_URL + '/ranking/admin?category_id=' + currentCategoryId;
-                    var token = localStorage.getItem('courtbit_token');
-                    fetchOpts = { headers: { 'Authorization': 'Bearer ' + token } };
-                } else {
-                    url = API_URL + '/ranking?organizer_id=' + ORGANIZER_ID + '&category_id=' + currentCategoryId;
+                var didFetch = false;
+                if (cachedRankingData.length === 0) {
+                    await fetchAllRankingData();
+                    didFetch = true;
+                    if (dynamicCategories.length > 0 && !currentCategoryId) {
+                        currentCategoryId = dynamicCategories[0].id;
+                    }
+                    buildCategoryTabs();
                 }
-                var response = await fetchWithTimeout(url, fetchOpts, 10000);
-
-                if (response.status === 401) {
-                    localStorage.removeItem('courtbit_token');
-                    localStorage.removeItem('courtbit_user');
-                    init();
-                    return;
-                }
-
-                if (!response.ok) {
-                    throw new Error('HTTP ' + response.status);
-                }
-
-                var data = await response.json();
+                var filtered = cachedRankingData.filter(function(item) {
+                    return item.category && item.category.id === currentCategoryId;
+                });
                 loading.style.display = 'none';
-                renderRanking(data);
+                renderRanking(filtered);
             } catch (err) {
                 loading.style.display = 'none';
                 error.style.display = 'block';
@@ -2981,7 +3028,7 @@
         function openPlayerModal(position, name, points, photoUrl, initials) {
             var modal = document.getElementById('player-modal');
             var avatarEl = document.getElementById('modal-avatar');
-            var categoryName = CATEGORIES.find(function(c) { return c.id === currentCategoryId; });
+            var categoryName = dynamicCategories.find(function(c) { return c.id === currentCategoryId; });
 
             document.getElementById('modal-name').textContent = name;
             document.getElementById('modal-category').textContent = categoryName ? 'Categoria ' + categoryName.name : '';
@@ -3033,7 +3080,7 @@
             optionsContainer.innerHTML = '';
 
             var groups = {};
-            CATEGORIES.forEach(function(cat) {
+            dynamicCategories.forEach(function(cat) {
                 var g = cat.group || 'General';
                 if (!groups[g]) groups[g] = [];
                 groups[g].push(cat);
@@ -3135,6 +3182,7 @@
                 }
 
                 closeChangeCategoryModal();
+                cachedRankingData = [];
                 loadRanking();
             } catch (err) {
                 errorEl.textContent = 'Error de conexion. Intenta de nuevo.';
@@ -3217,6 +3265,7 @@
                 }
 
                 closeRemovePlayerModal();
+                cachedRankingData = [];
                 loadRanking();
             } catch (err) {
                 errorEl.textContent = 'Error de conexion. Intenta de nuevo.';
@@ -3253,7 +3302,7 @@
             var userGender = getUserGender();
 
             var groups = {};
-            CATEGORIES.forEach(function(cat) {
+            dynamicCategories.forEach(function(cat) {
                 var g = cat.group || 'General';
                 if (!groups[g]) groups[g] = [];
                 groups[g].push(cat);
@@ -3383,6 +3432,7 @@
                         return;
                     }
                     currentCategoryId = data.category_id || selectedRegistrationCategoryId;
+                    cachedRankingData = [];
                     var userJson = localStorage.getItem('courtbit_user');
                     var user = JSON.parse(userJson);
                     showRankingSection(user);
@@ -3399,7 +3449,7 @@
             if (!selectedRegistrationCategoryId) return;
 
             var userGender = getUserGender();
-            var selectedCat = CATEGORIES.find(function(c) { return c.id === selectedRegistrationCategoryId; });
+            var selectedCat = dynamicCategories.find(function(c) { return c.id === selectedRegistrationCategoryId; });
 
             if (selectedCat && isCategoryMismatch(selectedCat, userGender)) {
                 showGenderConfirmModal('Categoria ' + selectedCat.name, performRegistration);
@@ -3409,7 +3459,11 @@
         });
 
         // ── Retry button ──
-        document.getElementById('retry-btn').addEventListener('click', loadRanking);
+        document.getElementById('retry-btn').addEventListener('click', function() {
+            cachedRankingData = [];
+            dynamicCategories = [];
+            loadRanking();
+        });
 
         // ── Start ──
         init();
