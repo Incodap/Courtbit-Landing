@@ -965,7 +965,7 @@
 
         .ranking-table th.admin-col,
         .ranking-table td.admin-col {
-            width: 48px;
+            width: 86px;
             text-align: center;
             padding: 8px 4px;
         }
@@ -1127,6 +1127,165 @@
         }
 
         .change-cat-error.show {
+            display: block;
+        }
+
+        /* ── Admin Delete Button ── */
+        .admin-delete-btn {
+            width: 32px;
+            height: 32px;
+            border: 1.5px solid #fecaca;
+            border-radius: 8px;
+            background: #fef2f2;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            flex-shrink: 0;
+            padding: 0;
+        }
+
+        .admin-delete-btn:hover {
+            border-color: var(--red-500);
+            background: #fee2e2;
+        }
+
+        .admin-delete-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: #dc2626;
+        }
+
+        .admin-delete-btn:hover svg {
+            stroke: #b91c1c;
+        }
+
+        .admin-btns {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── Remove Player Modal ── */
+        .remove-player-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .remove-player-overlay.open {
+            display: flex;
+        }
+
+        .remove-player-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            max-width: 380px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .remove-player-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #fef2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .remove-player-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #dc2626;
+        }
+
+        .remove-player-card h3 {
+            font-size: 1.125rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .remove-player-name {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .remove-player-warning {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .remove-player-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .remove-player-actions button {
+            flex: 1;
+            padding: 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-family: var(--font);
+        }
+
+        .remove-player-cancel {
+            background: var(--white);
+            color: var(--navy);
+            border: 1.5px solid var(--border);
+        }
+
+        .remove-player-cancel:hover {
+            background: var(--bg);
+        }
+
+        .remove-player-confirm {
+            background: #dc2626;
+            color: var(--white);
+            border: 1.5px solid #dc2626;
+        }
+
+        .remove-player-confirm:hover {
+            background: #b91c1c;
+        }
+
+        .remove-player-confirm:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .remove-player-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-top: 12px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .remove-player-error.show {
             display: block;
         }
 
@@ -2146,6 +2305,23 @@
         </div>
     </div>
 
+    <!-- ════════ REMOVE PLAYER MODAL ════════ -->
+    <div class="remove-player-overlay" id="remove-player-modal">
+        <div class="remove-player-card">
+            <div class="remove-player-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+            </div>
+            <h3>Eliminar del Ranking</h3>
+            <p class="remove-player-name" id="remove-player-name"></p>
+            <p class="remove-player-warning">Esta accion eliminara al jugador del ranking. Su historial de torneos se conservara.</p>
+            <div class="remove-player-error" id="remove-player-error"></div>
+            <div class="remove-player-actions">
+                <button class="remove-player-cancel" id="remove-player-cancel">Cancelar</button>
+                <button class="remove-player-confirm" id="remove-player-confirm">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         const API_URL = 'https://courtbit-api-production.up.railway.app/api';
         const ORGANIZER_ID = '770b3dbf-5073-49d2-b4a1-64fbc34200c9';
@@ -2166,6 +2342,7 @@
         let isAdminMode = false;
         let changeCatSelectedId = null;
         let changeCatPlayerData = null;
+        let removePlayerData = null;
 
         // ── DOM helpers ──
         function showError(message) {
@@ -2678,10 +2855,13 @@
                 tdPoints.textContent = points;
                 tr.appendChild(tdPoints);
 
-                // Admin edit button
+                // Admin edit + delete buttons
                 if (isAdminMode) {
                     var tdAdmin = document.createElement('td');
                     tdAdmin.className = 'admin-col';
+                    var btnsDiv = document.createElement('div');
+                    btnsDiv.className = 'admin-btns';
+
                     var editBtn = document.createElement('button');
                     editBtn.className = 'admin-edit-btn';
                     editBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>';
@@ -2691,7 +2871,20 @@
                             openChangeCategoryModal(playerItem);
                         });
                     })(item);
-                    tdAdmin.appendChild(editBtn);
+                    btnsDiv.appendChild(editBtn);
+
+                    var deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'admin-delete-btn';
+                    deleteBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>';
+                    (function(playerItem) {
+                        deleteBtn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            openRemovePlayerModal(playerItem);
+                        });
+                    })(item);
+                    btnsDiv.appendChild(deleteBtn);
+
+                    tdAdmin.appendChild(btnsDiv);
                     tr.appendChild(tdAdmin);
                 }
 
@@ -2887,6 +3080,88 @@
                 errorEl.classList.add('show');
                 btn.disabled = false;
                 btn.textContent = 'Confirmar Cambio';
+            }
+        });
+
+        // ── Remove Player Modal ──
+        function openRemovePlayerModal(playerItem) {
+            var modal = document.getElementById('remove-player-modal');
+            var errorEl = document.getElementById('remove-player-error');
+            var confirmBtn = document.getElementById('remove-player-confirm');
+            var playerName = getPlayerName(playerItem);
+
+            document.getElementById('remove-player-name').textContent = playerName;
+            removePlayerData = playerItem;
+            errorEl.classList.remove('show');
+            confirmBtn.disabled = false;
+            confirmBtn.textContent = 'Eliminar';
+
+            modal.classList.add('open');
+        }
+
+        function closeRemovePlayerModal() {
+            document.getElementById('remove-player-modal').classList.remove('open');
+            removePlayerData = null;
+        }
+
+        document.getElementById('remove-player-cancel').addEventListener('click', closeRemovePlayerModal);
+        document.getElementById('remove-player-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeRemovePlayerModal();
+        });
+
+        document.getElementById('remove-player-confirm').addEventListener('click', async function() {
+            if (!removePlayerData) return;
+
+            var btn = this;
+            var errorEl = document.getElementById('remove-player-error');
+            errorEl.classList.remove('show');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-inline"></span>Eliminando...';
+
+            var token = localStorage.getItem('courtbit_token');
+            if (!token) {
+                closeRemovePlayerModal();
+                showAuthSection();
+                return;
+            }
+
+            var body = {
+                organizer_id: ORGANIZER_ID
+            };
+
+            if (removePlayerData.user && removePlayerData.user.uid) {
+                body.user_id = removePlayerData.user.uid;
+            } else if (removePlayerData.team_member_id) {
+                body.team_member_id = removePlayerData.team_member_id;
+            }
+
+            try {
+                var response = await fetchWithTimeout(API_URL + '/ranking/player', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify(body)
+                }, 10000);
+
+                var data = await response.json();
+
+                if (!response.ok) {
+                    errorEl.textContent = data.error || 'Error al eliminar jugador';
+                    errorEl.classList.add('show');
+                    btn.disabled = false;
+                    btn.textContent = 'Eliminar';
+                    return;
+                }
+
+                closeRemovePlayerModal();
+                loadRanking();
+            } catch (err) {
+                errorEl.textContent = 'Error de conexion. Intenta de nuevo.';
+                errorEl.classList.add('show');
+                btn.disabled = false;
+                btn.textContent = 'Eliminar';
             }
         });
 
