@@ -1594,6 +1594,32 @@
             color: var(--text);
         }
 
+        .player-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            min-width: 0;
+        }
+
+        .player-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin-top: 2px;
+        }
+
+        .contact-email,
+        .contact-phone {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            line-height: 1.3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 200px;
+        }
+
         .points-cell {
             font-weight: 800;
             font-size: 0.9375rem;
@@ -2738,8 +2764,16 @@
             error.style.display = 'none';
 
             try {
-                var url = API_URL + '/ranking?organizer_id=' + ORGANIZER_ID + '&category_id=' + currentCategoryId;
-                var response = await fetchWithTimeout(url, null, 10000);
+                var url;
+                var fetchOpts = null;
+                if (isAdminMode) {
+                    url = API_URL + '/ranking/admin?category_id=' + currentCategoryId;
+                    var token = localStorage.getItem('courtbit_token');
+                    fetchOpts = { headers: { 'Authorization': 'Bearer ' + token } };
+                } else {
+                    url = API_URL + '/ranking?organizer_id=' + ORGANIZER_ID + '&category_id=' + currentCategoryId;
+                }
+                var response = await fetchWithTimeout(url, fetchOpts, 10000);
 
                 if (response.status === 401) {
                     localStorage.removeItem('courtbit_token');
@@ -2834,10 +2868,37 @@
                 }
                 playerDiv.appendChild(avatarDiv);
 
+                var infoDiv = document.createElement('div');
+                infoDiv.className = 'player-info';
+
                 var nameSpan = document.createElement('span');
                 nameSpan.className = 'player-name';
                 nameSpan.textContent = name.toUpperCase();
-                playerDiv.appendChild(nameSpan);
+                infoDiv.appendChild(nameSpan);
+
+                if (isAdminMode) {
+                    var contactEmail = (item.user && item.user.email) || item.player_email;
+                    var contactPhone = (item.user && item.user.phone) || item.player_phone;
+                    if (contactEmail || contactPhone) {
+                        var contactDiv = document.createElement('div');
+                        contactDiv.className = 'player-contact';
+                        if (contactEmail) {
+                            var emailSpan = document.createElement('span');
+                            emailSpan.className = 'contact-email';
+                            emailSpan.textContent = contactEmail;
+                            contactDiv.appendChild(emailSpan);
+                        }
+                        if (contactPhone) {
+                            var phoneSpan = document.createElement('span');
+                            phoneSpan.className = 'contact-phone';
+                            phoneSpan.textContent = contactPhone;
+                            contactDiv.appendChild(phoneSpan);
+                        }
+                        infoDiv.appendChild(contactDiv);
+                    }
+                }
+
+                playerDiv.appendChild(infoDiv);
 
                 if (isCurrentUser) {
                     var tag = document.createElement('span');
