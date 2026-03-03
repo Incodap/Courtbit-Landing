@@ -575,8 +575,10 @@
                     <p>CourtBit se reserva el derecho de suspender o cancelar cuentas que violen estos términos.</p>
 
                     <h2 id="j-4">4. Pagos y Comisiones</h2>
-                    <p>Los pagos de inscripciones se procesan a través de <strong>Stripe Connect</strong>. El dinero se transfiere directamente a la cuenta bancaria del organizador.</p>
+                    <p>Los pagos de inscripciones se procesan a través de <strong>Stripe Connect</strong>.</p>
                     <ul>
+                        <li><strong>Protección de pagos:</strong> CourtBit puede retener los fondos de inscripción hasta que el evento se lleve a cabo, especialmente para organizadores nuevos en la plataforma. Esto protege al jugador en caso de cancelación o fraude. Los fondos se liberan al organizador una vez confirmada la realización del evento.</li>
+                        <li><strong>Verificación de organizadores:</strong> CourtBit verifica la identidad de los organizadores antes de permitirles recibir pagos a través de la plataforma. Esto incluye verificación de identidad y cuenta bancaria vía Stripe Connect.</li>
                         <li><strong>Comisión de plataforma:</strong> CourtBit cobra una comisión del 1% al 5% (dependiendo del plan del organizador) sobre el monto de inscripción. Esta comisión la paga el jugador y se muestra de forma transparente durante el checkout.</li>
                         <li><strong>Métodos de pago:</strong> Tarjetas de crédito y débito.</li>
                         <li><strong>IVA:</strong> La comisión de CourtBit incluye IVA. El monto total se desglosa en el checkout conforme al Artículo 7 BIS de la Ley Federal de Protección al Consumidor.</li>
@@ -686,8 +688,17 @@
                         <li>Los pagos realizados fuera de la app (efectivo, transferencia directa) no generan comisión de CourtBit.</li>
                     </ul>
 
+                    <h2 id="o-4b">4.1. Verificación y Liberación de Pagos</h2>
+                    <ul>
+                        <li><strong>Verificación de identidad:</strong> Para recibir pagos a través de CourtBit, el organizador debe completar el proceso de verificación de identidad y cuenta bancaria a través de Stripe Connect.</li>
+                        <li><strong>Retención de fondos:</strong> CourtBit se reserva el derecho de retener los fondos de inscripción hasta la realización del evento, especialmente para organizadores nuevos en la plataforma. Esto protege a los jugadores y a la integridad de la plataforma.</li>
+                        <li><strong>Liberación gradual:</strong> Conforme el organizador acumule un historial de eventos exitosos, los tiempos de liberación de fondos podrán reducirse.</li>
+                        <li><strong>Suspensión de pagos:</strong> CourtBit puede suspender la liberación de fondos si detecta actividad fraudulenta, quejas recurrentes de jugadores o incumplimiento de estos términos.</li>
+                    </ul>
+
                     <h2 id="o-5">5. Obligaciones del Organizador</h2>
                     <ul>
+                        <li>Completar y mantener vigente la verificación de identidad requerida por CourtBit y Stripe Connect.</li>
                         <li>Contar con los permisos y seguros necesarios para la realización de eventos deportivos.</li>
                         <li>Cumplir con la legislación mexicana aplicable (fiscal, deportiva, de protección civil).</li>
                         <li>Proporcionar información veraz sobre sus eventos (fechas, sedes, costos, categorías).</li>
@@ -960,15 +971,15 @@
                     <p>La comisión corresponde al servicio de intermediación tecnológica, el cual se considera prestado al momento de completarse la transacción de inscripción. En caso de retiro voluntario del jugador, la comisión no es reembolsable. Sin embargo, si el evento es cancelado por el organizador antes de su inicio, CourtBit evaluará el reembolso de la comisión caso por caso.</p>
 
                     <h2 id="r-3">3. Inscripciones a Eventos (Pagos al Organizador)</h2>
-                    <p>Los pagos de inscripción que se transfieren al organizador están sujetos a:</p>
+                    <p>Los pagos de inscripción se procesan a través de Stripe Connect y están sujetos a:</p>
                     <ol>
                         <li><strong>Las políticas de reembolso propias de cada organizador</strong>, las cuales el organizador debe comunicar a los jugadores antes de la inscripción.</li>
                         <li><strong>Los <a href="https://stripe.com/mx/legal/ssa" target="_blank" rel="noopener">Términos de Servicio de Stripe</a></strong>, ya que los pagos son procesados a través de Stripe Connect.</li>
                     </ol>
                     <div class="highlight-box">
-                        <p>CourtBit <strong>no controla ni es responsable</strong> de los reembolsos de inscripciones. El organizador es el receptor del pago y el único que puede autorizar un reembolso.</p>
+                        <p><strong>Protección de pagos:</strong> CourtBit puede retener los fondos de inscripción hasta que el evento se lleve a cabo, especialmente para organizadores nuevos en la plataforma. Si el evento no se realiza o el organizador resulta fraudulento, CourtBit gestionará el reembolso directamente al jugador con los fondos retenidos.</p>
                     </div>
-                    <p>CourtBit puede asistir como mediador entre jugador y organizador, pero no tiene obligación legal de reembolsar montos que ya fueron transferidos al organizador.</p>
+                    <p>Una vez que los fondos han sido liberados al organizador, CourtBit puede asistir como mediador entre jugador y organizador, pero no tiene obligación legal de reembolsar montos ya transferidos.</p>
 
                     <h2 id="r-4">4. Cancelación de Eventos</h2>
                     <ul>
