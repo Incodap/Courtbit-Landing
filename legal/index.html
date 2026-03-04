@@ -31,7 +31,8 @@
         {"@context":"https://schema.org","@type":"WebPage","name":"Términos de Servicio para Organizadores","url":"https://courtbit.com.mx/legal/#terminos-organizadores"},
         {"@context":"https://schema.org","@type":"WebPage","name":"Aviso de Privacidad Integral","url":"https://courtbit.com.mx/legal/#aviso-privacidad"},
         {"@context":"https://schema.org","@type":"WebPage","name":"Aviso de Privacidad Simplificado","url":"https://courtbit.com.mx/legal/#aviso-privacidad-simplificado"},
-        {"@context":"https://schema.org","@type":"WebPage","name":"Política de Reembolsos y Cancelaciones","url":"https://courtbit.com.mx/legal/#reembolsos"}
+        {"@context":"https://schema.org","@type":"WebPage","name":"Política de Reembolsos y Cancelaciones","url":"https://courtbit.com.mx/legal/#reembolsos"},
+        {"@context":"https://schema.org","@type":"WebPage","name":"Política de Cookies","url":"https://courtbit.com.mx/legal/#cookies"}
     ]
     </script>
 
@@ -264,6 +265,7 @@
         .badge-privacy { background: #fff4e6; color: #e67700; }
         .badge-simple { background: #f3f0ff; color: #7048e8; }
         .badge-refunds { background: #ffe3e3; color: #c92a2a; }
+        .badge-cookies { background: #e8f4f8; color: #0b7285; }
 
         .doc-title {
             font-size: 2rem;
@@ -487,6 +489,7 @@
         <button class="mobile-tab" data-doc="aviso-privacidad">Privacidad</button>
         <button class="mobile-tab" data-doc="aviso-privacidad-simplificado">Aviso Simplificado</button>
         <button class="mobile-tab" data-doc="reembolsos">Reembolsos</button>
+        <button class="mobile-tab" data-doc="cookies">Cookies</button>
     </div>
 
     <div class="legal-layout">
@@ -523,6 +526,12 @@
                     <button class="sidebar-tab" data-doc="reembolsos">
                         <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
                         Reembolsos
+                    </button>
+                </li>
+                <li>
+                    <button class="sidebar-tab" data-doc="cookies">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+                        Cookies
                     </button>
                 </li>
             </ul>
@@ -1019,6 +1028,101 @@
                 </div>
             </section>
 
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!-- DOC 6: POLÍTICA DE COOKIES                           -->
+            <!-- ═══════════════════════════════════════════════════ -->
+            <section class="doc-section" id="cookies">
+                <div class="doc-header">
+                    <span class="doc-badge badge-cookies">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+                        Todos los usuarios
+                    </span>
+                    <h1 class="doc-title">Política de Cookies y Almacenamiento Local</h1>
+                    <p class="doc-updated">Última actualización: 3 de marzo de 2026</p>
+                </div>
+                <div class="doc-body">
+
+                    <h2 id="ck-1">1. ¿Qué son las cookies y el almacenamiento local?</h2>
+                    <p>Las <strong>cookies</strong> son pequeños archivos de texto que un sitio web guarda en tu navegador para recordar información sobre tu visita. El <strong>almacenamiento local</strong> (localStorage) es una tecnología similar que permite guardar datos directamente en tu navegador de forma más eficiente.</p>
+                    <p>En esta política te explicamos de forma transparente qué tecnologías de almacenamiento utiliza CourtBit, para qué las usamos y cómo puedes gestionarlas.</p>
+
+                    <h2 id="ck-2">2. Responsable</h2>
+                    <ul>
+                        <li><strong>Nombre:</strong> Saúl Ulises Urías Guzmán</li>
+                        <li><strong>Domicilio:</strong> Calle Villa María 21, Ciudad Guaymas, Sonora, C.P. 85465, México</li>
+                        <li><strong>Contacto:</strong> contacto@courtbit.com.mx</li>
+                    </ul>
+
+                    <h2 id="ck-3">3. Tecnologías que utilizamos</h2>
+
+                    <div class="highlight-box">
+                        <p><strong>Transparencia:</strong> El sitio web courtbit.com.mx actualmente <strong>no utiliza cookies de rastreo ni analíticas</strong>. No usamos Google Analytics, Facebook Pixel ni ninguna herramienta de seguimiento publicitario.</p>
+                    </div>
+
+                    <h3>3.1 Almacenamiento local (localStorage) — solo en páginas con inicio de sesión</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Clave</th><th>Propósito</th><th>Duración</th><th>Tipo</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>courtbit_token</code></td><td>Mantener tu sesión iniciada (JWT)</td><td>Hasta cerrar sesión</td><td>Funcional / necesario</td></tr>
+                            <tr><td><code>courtbit_user</code></td><td>Almacenar datos básicos de tu perfil para la interfaz</td><td>Hasta cerrar sesión</td><td>Funcional / necesario</td></tr>
+                        </tbody>
+                    </table>
+                    <p>Estos datos se almacenan <strong>solo en tu dispositivo</strong> y se eliminan al cerrar sesión. No se comparten con terceros.</p>
+
+                    <h3>3.2 Recursos externos</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Servicio</th><th>Proveedor</th><th>Propósito</th><th>Cookies</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Google Fonts</td><td>Google LLC</td><td>Tipografía del sitio (solo CSS, sin JavaScript)</td><td>No instala cookies</td></tr>
+                            <tr><td>Formspree</td><td>Formspree, Inc.</td><td>Procesamiento de formularios de contacto</td><td>No instala cookies</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>3.3 Cookies de terceros — no utilizadas actualmente</h3>
+                    <p>CourtBit <strong>no utiliza</strong> actualmente:</p>
+                    <ul>
+                        <li>Cookies de analítica web (Google Analytics, Mixpanel, etc.)</li>
+                        <li>Pixels de marketing o retargeting (Facebook, TikTok, Google Ads)</li>
+                        <li>Cookies de seguimiento publicitario</li>
+                    </ul>
+                    <p>Si en el futuro CourtBit implementa alguna de estas tecnologías, esta política se actualizará y se solicitará tu consentimiento antes de activarlas.</p>
+
+                    <h2 id="ck-4">4. ¿Cómo gestionar estas tecnologías?</h2>
+
+                    <h3>4.1 Desde tu navegador</h3>
+                    <p>Puedes borrar o bloquear cookies y datos de almacenamiento local desde la configuración de tu navegador:</p>
+                    <ul>
+                        <li><strong>Chrome:</strong> Configuración &gt; Privacidad y seguridad &gt; Cookies — <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Guía de Google</a></li>
+                        <li><strong>Safari:</strong> Preferencias &gt; Privacidad — <a href="https://support.apple.com/es-mx/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Guía de Apple</a></li>
+                        <li><strong>Firefox:</strong> Configuración &gt; Privacidad — <a href="https://support.mozilla.org/es/kb/cookies-informacion-que-los-sitios-web-guardan-en-" target="_blank" rel="noopener">Guía de Mozilla</a></li>
+                        <li><strong>Edge:</strong> Configuración &gt; Cookies — <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Guía de Microsoft</a></li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <p><strong>Nota:</strong> Si borras los datos de almacenamiento local, se cerrará tu sesión y deberás iniciar sesión nuevamente.</p>
+                    </div>
+
+                    <h2 id="ck-5">5. Transferencia internacional de datos</h2>
+                    <p>Google Fonts y Formspree procesan datos en Estados Unidos. Para más información sobre transferencias internacionales, consulta nuestro <a href="#aviso-privacidad" onclick="switchDoc('aviso-privacidad')">Aviso de Privacidad Integral</a>.</p>
+
+                    <h2 id="ck-6">6. Actualizaciones de esta política</h2>
+                    <p>CourtBit puede actualizar esta política para reflejar cambios en las tecnologías utilizadas o en la legislación aplicable. La fecha de última actualización se muestra al inicio de este documento. Las versiones anteriores están disponibles bajo solicitud a contacto@courtbit.com.mx.</p>
+
+                    <h2 id="ck-7">7. Base legal</h2>
+                    <p>El almacenamiento local utilizado por CourtBit es estrictamente necesario para el funcionamiento de la plataforma (inicio de sesión y navegación). Conforme a los principios de la NLFPDPPP (2025), su uso se ampara en el interés legítimo del responsable. Si en el futuro se implementan tecnologías analíticas o de marketing, se solicitará el consentimiento del usuario.</p>
+
+                    <h2 id="ck-8">8. Contacto</h2>
+                    <ul>
+                        <li><strong>Dudas sobre cookies:</strong> contacto@courtbit.com.mx</li>
+                        <li><strong>Derechos ARCO:</strong> consulta el <a href="#aviso-privacidad" onclick="switchDoc('aviso-privacidad')">Aviso de Privacidad Integral</a></li>
+                    </ul>
+                </div>
+            </section>
+
         </main>
     </div>
 
@@ -1035,6 +1139,7 @@
                 <a href="/" class="footer-link">Inicio</a>
                 <a href="https://wa.me/526221464310" class="footer-link" target="_blank">WhatsApp</a>
                 <a href="mailto:contacto@courtbit.com.mx" class="footer-link">contacto@courtbit.com.mx</a>
+                <a href="#cookies" class="footer-link" onclick="switchDoc('cookies')">Política de Cookies</a>
                 <span class="footer-copy">&copy; 2026 CourtBit</span>
             </div>
         </div>
@@ -1134,7 +1239,7 @@
 
         // ── Init from URL hash ──
         const hash = window.location.hash.replace('#', '');
-        const validDocs = ['terminos-jugadores','terminos-organizadores','aviso-privacidad','aviso-privacidad-simplificado','reembolsos'];
+        const validDocs = ['terminos-jugadores','terminos-organizadores','aviso-privacidad','aviso-privacidad-simplificado','reembolsos','cookies'];
         if (hash && validDocs.includes(hash)) {
             switchDoc(hash);
         } else {
