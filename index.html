@@ -534,10 +534,128 @@
         .pillar-tool-link svg { width: 16px; height: 16px; flex-shrink: 0; }
 
         /* ── RESPONSIVE ── */
-        @media (max-width:900px) { .pillars-grid,.compare-grid,.payments-grid { grid-template-columns: 1fr; } .pricing-grid { grid-template-columns: repeat(2,1fr); } .player-grid { grid-template-columns: repeat(2,1fr); } }
-        @media (max-width:560px) { .pricing-grid { grid-template-columns: 1fr; } }
-        @media (max-width:768px) { .nav-center,.lang-switch { display: none; } .mobile-toggle { display: block; } .hero h1 { font-size: clamp(2rem,7vw,2.75rem); } .section { padding: 72px 0; } .player-grid { grid-template-columns: 1fr 1fr; gap: 10px; } footer .container { flex-direction: column; gap: 14px; text-align: center; } .footer-right { flex-wrap: wrap; justify-content: center; } }
-        @media (max-width:480px) { .player-grid { grid-template-columns: 1fr; } .hero-pills { gap: 6px; } }
+
+        /* Mobile nav open state */
+        .nav-center.show {
+            display: flex !important;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px 20px;
+            gap: 0;
+            box-shadow: var(--shadow-md);
+        }
+        .nav-center.show a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .nav-center.show a:last-child { border-bottom: none; }
+
+        @media (max-width:900px) {
+            .pillars-grid, .compare-grid, .payments-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: repeat(2,1fr); }
+            .player-grid { grid-template-columns: repeat(2,1fr); }
+        }
+
+        @media (max-width:768px) {
+            .nav-center { display: none; }
+            .lang-switch { display: none; }
+            .mobile-toggle { display: block; }
+
+            .hero { padding: 110px 0 60px; min-height: auto; }
+            .hero h1 { font-size: clamp(2rem, 7vw, 2.75rem); }
+            .hero-sub { font-size: 1rem; margin-bottom: 28px; }
+            .hero-cta { flex-direction: column; align-items: center; gap: 10px; }
+            .hero-cta .btn-primary,
+            .hero-cta .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
+            .hero-pills { gap: 6px; }
+            .hero-pill { font-size: 0.6875rem; padding: 5px 10px; }
+
+            .section { padding: 64px 0; }
+            .section-header { margin-bottom: 36px; }
+            .section-title { font-size: clamp(1.5rem, 5vw, 2rem); }
+
+            .pillar-card { padding: 24px 20px; }
+            .pillar-feature { font-size: 0.875rem; }
+            .pillar-tool-link { color: #5a9e00; background: var(--lime-bg); border-color: rgba(90,158,0,0.2); }
+            .pillar-tool-link:hover { background: rgba(184,240,43,0.25); border-color: rgba(90,158,0,0.35); }
+
+            .compare-col { padding: 22px 18px; }
+            .compare-item { font-size: 0.875rem; }
+
+            .player-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .player-card { padding: 20px 16px; }
+            .player-card h3 { font-size: 0.875rem; }
+            .player-card p { font-size: 0.75rem; }
+
+            .ranking-row { grid-template-columns: 36px 1fr 70px 60px; padding: 11px 16px; }
+            .ranking-row.row-header { padding: 8px 16px; font-size: 0.625rem; }
+            .rank-num { font-size: 0.875rem; }
+            .rank-player .name { font-size: 0.8125rem; }
+            .rank-player .cat { font-size: 0.6875rem; }
+            .rank-pts { font-size: 0.8125rem; }
+            .rank-events { font-size: 0.75rem; }
+            .ranking-header-bar { padding: 12px 16px; }
+            .ranking-header-bar span { font-size: 0.6875rem; }
+
+            .payment-card { padding: 22px 18px; }
+
+            .pricing-card { padding: 26px 20px; }
+            .pricing-price { font-size: 1.875rem; }
+            .pricing-card.featured { margin-top: 12px; }
+
+            .cta-final { padding: 72px 0; }
+            .cta-final h2 { font-size: clamp(1.5rem, 5.5vw, 2.25rem); }
+            .cta-final-btns { flex-direction: column; align-items: center; gap: 10px; }
+            .cta-final .btn-cta-lime,
+            .cta-final .btn-cta-outline { width: 100%; max-width: 300px; justify-content: center; }
+
+            footer .container { flex-direction: column; gap: 14px; text-align: center; }
+            .footer-right { flex-wrap: wrap; justify-content: center; }
+
+            .modal-content { padding: 28px 20px; width: 94%; }
+            .modal-title { font-size: 1.25rem; }
+        }
+
+        @media (max-width:560px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { margin-top: 16px; }
+        }
+
+        @media (max-width:480px) {
+            .container { padding: 0 16px; }
+            .player-grid { grid-template-columns: 1fr; }
+            .hero-badge { font-size: 0.75rem; padding: 6px 14px; }
+            .hero h1 { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+            .hero-pills { gap: 5px; }
+            .hero-pill { font-size: 0.625rem; padding: 4px 8px; gap: 4px; }
+
+            .ranking-row { grid-template-columns: 30px 1fr 60px 50px; padding: 10px 12px; gap: 4px; }
+            .ranking-row.row-header { padding: 8px 12px; }
+            .ranking-header-bar { padding: 10px 12px; flex-wrap: wrap; gap: 6px; }
+            .rank-player .name { font-size: 0.75rem; }
+            .rank-pts { font-size: 0.75rem; }
+            .rank-events { font-size: 0.6875rem; }
+
+            .faq-toggle { font-size: 0.9375rem; padding: 16px 0; }
+            .faq-answer-inner { font-size: 0.875rem; }
+
+            .section { padding: 52px 0; }
+        }
+
+        @media (max-width:360px) {
+            .ranking-row { grid-template-columns: 28px 1fr 55px; }
+            .ranking-row .rank-events { display: none; }
+            .ranking-row.row-header span:last-child { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -554,7 +672,7 @@
             </div>
             <div class="nav-right">
                 <a href="en/" class="lang-switch">EN</a>
-                <a href="https://wa.me/526221464310?text=Hola%2C%20me%20gustaria%20una%20demo%20de%20CourtBit" class="nav-cta" target="_blank">Solicitar Demo</a>
+                <a href="#" class="nav-cta" onclick="event.preventDefault();openModal();">Solicitar Demo</a>
                 <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-center').classList.toggle('show')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
             </div>
         </div>
@@ -567,7 +685,7 @@
             <h1 class="reveal d1">El <span class="highlight">Sistema Operativo</span> para Organizadores de Padel</h1>
             <p class="hero-sub reveal d2">Torneos, ligas, rankings de circuito y pagos. Una sola plataforma para gestionar toda tu comunidad de padel.</p>
             <div class="hero-cta reveal d3">
-                <a href="https://wa.me/526221464310?text=Hola%2C%20me%20gustaria%20una%20demo%20de%20CourtBit" class="btn-primary" target="_blank">Solicitar Demo</a>
+                <a href="#" class="btn-primary" onclick="event.preventDefault();openModal();">Solicitar Demo</a>
                 <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="btn-secondary" target="_blank">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     App Store
@@ -707,7 +825,7 @@
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> App de jugadores incluida</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 5% comision de plataforma*</div>
                     </div>
-                    <a href="https://wa.me/526221464310?text=Hola%2C%20quiero%20empezar%20con%20CourtBit%20Gratis" class="pricing-btn outline" target="_blank">Comienza gratis</a>
+                    <a href="#" class="pricing-btn outline" onclick="event.preventDefault();openModal();">Comienza gratis</a>
                 </div>
                 <div class="pricing-card reveal d1">
                     <div class="pricing-name">Express</div><div class="pricing-price">$99 <span>/ mes</span></div><div class="pricing-desc">Para organizadores en crecimiento</div>
@@ -720,7 +838,7 @@
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Reportes Excel basicos</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 3% comision de plataforma*</div>
                     </div>
-                    <a href="https://wa.me/526221464310?text=Hola%2C%20me%20interesa%20CourtBit%20Express" class="pricing-btn outline" target="_blank">Empezar</a>
+                    <a href="#" class="pricing-btn outline" onclick="event.preventDefault();openModal();">Empezar</a>
                 </div>
                 <div class="pricing-card featured reveal d2">
                     <div class="pricing-name">Profesional</div><div class="pricing-price">$499 <span>/ mes</span></div><div class="pricing-desc">Para organizadores con circuitos</div>
@@ -734,7 +852,7 @@
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Reportes Excel avanzados</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1.5% comision de plataforma*</div>
                     </div>
-                    <a href="https://wa.me/526221464310?text=Hola%2C%20me%20interesa%20CourtBit%20Profesional" class="pricing-btn primary" target="_blank">Prueba 14 dias gratis</a>
+                    <a href="#" class="pricing-btn primary" onclick="event.preventDefault();openModal();">Prueba 14 dias gratis</a>
                 </div>
                 <div class="pricing-card reveal d3">
                     <div class="pricing-name">Enterprise</div><div class="pricing-price">$1,499 <span>/ mes</span></div><div class="pricing-desc">Para asociaciones y federaciones</div>
@@ -745,7 +863,7 @@
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Soporte prioritario</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Planes personalizados disponibles</div>
                     </div>
-                    <a href="https://wa.me/526221464310?text=Hola%2C%20quiero%20informacion%20sobre%20CourtBit%20Enterprise" class="pricing-btn outline" target="_blank">Contactar</a>
+                    <a href="#" class="pricing-btn outline" onclick="event.preventDefault();openModal();">Contactar</a>
                 </div>
             </div>
             <p style="text-align:center; font-size:0.8125rem; color:var(--text-muted); margin-top:20px; max-width:540px; margin-left:auto; margin-right:auto; line-height:1.6;">* Aplica solo a pagos realizados desde la app. La comision de plataforma la paga el jugador. Las comisiones de Stripe se deducen del pago al organizador.</p>
@@ -772,9 +890,9 @@
     <section class="cta-final">
         <div class="container">
             <h2 class="reveal">Listo para gestionar<br>tu comunidad de padel?</h2>
-            <p class="reveal d1">Descubre como CourtBit puede reemplazar tus hojas de calculo, grupos de WhatsApp y procesos manuales — en una sola demo.</p>
+            <p class="reveal d1">Descubre como CourtBit puede reemplazar tus hojas de calculo y procesos manuales — en una sola demo.</p>
             <div class="cta-final-btns reveal d2">
-                <a href="https://wa.me/526221464310?text=Hola%2C%20me%20gustaria%20una%20demo%20de%20CourtBit" class="btn-cta-lime" target="_blank">Solicitar Demo</a>
+                <a href="#" class="btn-cta-lime" onclick="event.preventDefault();openModal();">Solicitar Demo</a>
                 <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="btn-cta-outline" target="_blank">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     App Store
@@ -795,7 +913,6 @@
                 <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="footer-link" target="_blank">App Store</a>
                 <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&hl=es_MX" class="footer-link" target="_blank">Google Play</a>
                 <a href="/calculadora-torneo/" class="footer-link">Calculadora</a>
-                <a href="https://wa.me/526221464310" class="footer-link" target="_blank">WhatsApp</a>
                 <a href="/legal/" class="footer-link">Legal</a>
                 <span class="footer-copy">&copy; 2026 CourtBit</span>
             </div>
@@ -868,7 +985,7 @@
         const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
         document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
         document.querySelectorAll('.faq-toggle').forEach(b=>{b.addEventListener('click',()=>{const i=b.parentElement,o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));if(!o)i.classList.add('open')})});
-        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const nc=document.querySelector('.nav-center');if(nc)nc.classList.remove('show');const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
         // Lead Modal
         const modal=document.getElementById('leadModal'),form=document.getElementById('leadForm'),formC=document.getElementById('formContainer'),successC=document.getElementById('successContainer');
@@ -886,14 +1003,6 @@
             catch(err){const ls=JSON.parse(localStorage.getItem('courtbit_leads')||'[]');ls.push(data);localStorage.setItem('courtbit_leads',JSON.stringify(ls));}
             formC.style.display='none';successC.style.display='block';
             btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg> Solicitar Demo';
-        });
-        // Intercept demo CTA links
-        document.querySelectorAll('a[href*="wa.me/526221464310"]').forEach(link=>{
-            const txt=link.textContent.trim().toLowerCase();
-            if(txt==='whatsapp'||txt==='contacto')return;
-            if(link.closest('.pricing-card'))return;
-            link.removeAttribute('target');link.href='#';
-            link.addEventListener('click',e=>{e.preventDefault();openModal();});
         });
     </script>
 </body>
