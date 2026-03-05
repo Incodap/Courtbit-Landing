@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Costos para Ligas de Padel | Presupuesto y Vista Previa Gratis - CourtBit</title>
+    <meta name="description" content="Calcula cuanto cuesta organizar una liga americana de padel: costos de canchas, pelotas, precio por jugador y margen de ganancia. Genera vista previa de jornadas y rotaciones. Herramienta gratuita para organizadores.">
+    <meta name="keywords" content="calculadora liga padel, organizar liga de padel, presupuesto liga padel, cuanto cuesta liga padel, liga americana padel, formato liga padel, costos liga padel, jornadas padel, rotaciones padel, liga round robin padel">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://courtbit.com.mx/calculadora-liga/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Calculadora de Costos para Ligas de Padel | CourtBit">
+    <meta property="og:description" content="Calcula presupuesto, costos por jugador y genera vista previa de jornadas y rotaciones para tu liga de padel. 100% gratis, sin registro.">
+    <meta property="og:url" content="https://courtbit.com.mx/calculadora-liga/">
+    <meta property="og:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+    <meta property="og:site_name" content="CourtBit">
+    <meta property="og:locale" content="es_MX">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Calculadora de Costos para Ligas de Padel | CourtBit">
+    <meta name="twitter:description" content="Calcula presupuesto, costos por jugador y genera vista previa de jornadas y rotaciones para tu liga de padel.">
+    <link rel="icon" type="image/png" href="../Assets/courtbit-logo.svg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Calculadora de Costos para Ligas de Padel",
+        "description": "Herramienta gratuita para calcular costos, presupuesto por jugador y generar vista previa de la estructura de tu liga americana de padel.",
+        "url": "https://courtbit.com.mx/calculadora-liga/",
+        "applicationCategory": "SportsApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "MXN"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "CourtBit",
+            "url": "https://courtbit.com.mx"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Que es una liga americana de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Una liga americana de padel es un formato donde los jugadores compiten individualmente a lo largo de multiples jornadas. En cada jornada se forman grupos de 4 jugadores que juegan 3 partidos de doubles con rotacion de parejas. Los grupos se reagrupan cada jornada para que todos los jugadores se enfrenten entre si."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuantas jornadas necesita una liga de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El numero de jornadas depende de la cantidad de jugadores. La formula es: ceil((jugadores - 1) / 3). Por ejemplo, con 16 jugadores se necesitan 5 jornadas, con 12 jugadores 4 jornadas, y con 8 jugadores 3 jornadas. Esto garantiza que todos los jugadores se enfrenten al menos una vez."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Como funcionan las rotaciones en una liga de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "En cada grupo de 4 jugadores (A, B, C, D) se juegan exactamente 3 partidos de doubles: A+B vs C+D (Rotacion 1), A+C vs B+D (Rotacion 2) y A+D vs B+C (Rotacion 3). Asi cada jugador hace pareja con todos los demas miembros de su grupo."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuantos jugadores se necesitan para una liga de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Se necesitan al menos 8 jugadores para formar una liga con 2 grupos de 4. Lo ideal es que el numero de jugadores sea multiplo de 4 (8, 12, 16, 20, 24, 28, 32). Los formatos mas populares son 12 y 16 jugadores."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuanto cuesta organizar una liga de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El costo depende del numero de jugadores, jornadas, precio de cancha y pelotas. Por ejemplo, una liga de 16 jugadores con 5 jornadas, canchas a $500/hr y pelotas a $100/bote cuesta aproximadamente entre $5,000 y $10,000 MXN. Usa nuestra calculadora gratuita para obtener un presupuesto exacto."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuanto cobrar de inscripcion en una liga de padel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Calcula el costo total de la liga (canchas + pelotas) y dividelo entre el numero de jugadores. Agrega un margen del 20-40% para cubrir gastos operativos, premios y ganancia. Nuestra calculadora te sugiere el precio automaticamente segun el margen que elijas."
+                }
+            }
+        ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"></noscript>
+    <style>
+        :root {
+            --green-primary: #00D26A;
+            --green-light: #4ADE80;
+            --green-dark: #00A855;
+            --blue-accent: #0066FF;
+            --bg-white: #FFFFFF;
+            --bg-gray-50: #F9FAFB;
+            --bg-gray-100: #F3F4F6;
+            --text-dark: #1F2937;
+            --text-gray: #4B5563;
+            --text-light: #6B7280;
+            --border-light: #E5E7EB;
+            --border-gray: #D1D5DB;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-display);
+            background: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-light);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+        .logo span { color: var(--green-primary); }
+        .back-link {
+            color: var(--green-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .hero { padding: 80px 0 40px; text-align: center; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--green-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .calculator { padding: 40px 0 80px; }
+
+        .calc-inputs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        .input-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s ease;
+        }
+        .input-card:hover { box-shadow: var(--shadow-md); }
+        .input-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .input-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        .input-card-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+
+        .field { margin-bottom: 20px; }
+        .field:last-child { margin-bottom: 0; }
+        .field-label {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        .calc-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--text-dark);
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            -moz-appearance: textfield;
+        }
+        .calc-input::-webkit-outer-spin-button,
+        .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .calc-input:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            box-shadow: 0 0 0 3px rgba(0, 210, 106, 0.1);
+        }
+        .input-prefix { position: relative; }
+        .input-prefix .calc-input { padding-left: 32px; }
+        .input-prefix::before {
+            content: '$';
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            pointer-events: none;
+        }
+
+        .segment-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .segment-option { flex: 1; min-width: 0; }
+        .segment-option input { display: none; }
+        .segment-option label {
+            display: block;
+            text-align: center;
+            padding: 10px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .segment-option label:hover { border-color: var(--green-primary); color: var(--text-dark); }
+        .segment-option input:checked + label {
+            background: var(--green-primary);
+            color: white;
+            border-color: var(--green-primary);
+            font-weight: 600;
+        }
+
+        .duration-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .duration-indicator svg { flex-shrink: 0; }
+
+        /* Liga mode info badge */
+        .liga-info {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .liga-info.info-green {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            color: #166534;
+        }
+        .liga-info.info-yellow {
+            background: #FEF3C7;
+            border: 1px solid #FDE68A;
+            color: #92400E;
+        }
+        .liga-info svg { flex-shrink: 0; margin-top: 2px; }
+        .liga-info-text { font-weight: 500; }
+        .liga-info-text strong { font-weight: 700; }
+
+        /* Liga info spacing */
+
+        /* Custom balls inputs */
+        .custom-balls {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+            margin-top: 0;
+        }
+        .custom-balls.visible { max-height: 200px; opacity: 1; margin-top: 16px; }
+        .custom-balls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        /* Results */
+        .results-header { text-align: center; margin-bottom: 32px; }
+        .results-header h3 { font-size: 1.5rem; font-weight: 800; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .summary-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .summary-card.highlight {
+            background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+            border-color: var(--green-primary);
+        }
+        .summary-icon { font-size: 1.5rem; margin-bottom: 8px; }
+        .summary-value { font-size: 1.75rem; font-weight: 800; color: var(--text-dark); line-height: 1.2; }
+        .summary-card.highlight .summary-value { color: var(--green-dark); }
+        .summary-label { font-size: 0.8125rem; color: var(--text-light); margin-top: 4px; font-weight: 500; }
+
+        .breakdown-wrapper {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 32px;
+        }
+        .breakdown-table { width: 100%; border-collapse: collapse; }
+        .breakdown-table thead th {
+            padding: 16px 20px;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: left;
+            background: var(--bg-gray-50);
+            border-bottom: 2px solid var(--border-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .breakdown-table thead th:last-child { text-align: right; }
+        .breakdown-table tbody td {
+            padding: 14px 20px;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .breakdown-table tbody td:last-child {
+            text-align: right;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+        }
+        .breakdown-table tbody tr:last-child td { border-bottom: none; }
+        .breakdown-table tbody tr.subtotal td {
+            font-weight: 700;
+            color: var(--text-dark);
+            background: var(--bg-gray-50);
+        }
+        .breakdown-table tbody tr.total td {
+            font-weight: 800;
+            color: var(--green-dark);
+            background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+            font-size: 0.9375rem;
+        }
+        .breakdown-table tbody tr.total td:last-child { font-size: 0.875rem; }
+        .breakdown-section-label {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            padding: 10px 20px 6px;
+            background: var(--bg-gray-50);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .margin-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 32px;
+        }
+        .margin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .margin-title { font-size: 1.125rem; font-weight: 700; }
+        .margin-badge {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            background: #DCFCE7;
+            padding: 6px 16px;
+            border-radius: 100px;
+        }
+        .margin-slider-container { margin-bottom: 28px; }
+        .margin-slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+        .margin-slider {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--bg-gray-100);
+            outline: none;
+            cursor: pointer;
+        }
+        .margin-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--green-primary);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 210, 106, 0.4);
+            border: 3px solid white;
+            transition: transform 0.2s;
+        }
+        .margin-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+        .margin-slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--green-primary);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 210, 106, 0.4);
+            border: 3px solid white;
+        }
+        .margin-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .margin-result-item {
+            text-align: center;
+            padding: 20px 16px;
+            background: var(--bg-gray-50);
+            border-radius: 14px;
+        }
+        .margin-result-item.primary { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); }
+        .margin-result-value { font-size: 1.5rem; font-weight: 800; color: var(--text-dark); }
+        .margin-result-item.primary .margin-result-value { color: var(--green-dark); }
+        .margin-result-label { font-size: 0.75rem; color: var(--text-light); margin-top: 4px; font-weight: 500; }
+
+        .examples { padding: 0 0 80px; }
+        .examples-header { text-align: center; margin-bottom: 32px; }
+        .examples-header h3 { font-size: 1.5rem; font-weight: 800; }
+        .examples-header p { color: var(--text-gray); font-size: 0.9375rem; margin-top: 8px; }
+        .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .example-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .example-card-header {
+            padding: 20px 24px;
+            background: var(--bg-gray-50);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .example-card-tag {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--green-primary);
+            margin-bottom: 4px;
+        }
+        .example-card-title { font-size: 1rem; font-weight: 700; }
+        .example-card-subtitle { font-size: 0.8125rem; color: var(--text-light); margin-top: 2px; }
+        .example-table { width: 100%; border-collapse: collapse; }
+        .example-table td {
+            padding: 12px 24px;
+            font-size: 0.8125rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .example-table td:first-child { color: var(--text-gray); font-weight: 500; }
+        .example-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+        }
+        .example-table tr:last-child td { border-bottom: none; }
+        .example-table tr.ex-total td {
+            font-weight: 800;
+            color: var(--green-dark);
+            background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+        }
+
+        .faq-section { padding: 60px 0 40px; }
+        .faq-section .faq-header { text-align: center; margin-bottom: 40px; }
+        .faq-section .faq-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--green-dark);
+            background: rgba(0, 210, 106, 0.1);
+            border: 1px solid rgba(0, 210, 106, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+        .faq-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 1.85rem);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.3;
+        }
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border-light); }
+        .faq-item:first-child { border-top: 1px solid var(--border-light); }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 18px 4px;
+            font-family: var(--font-display);
+            font-size: 0.975rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            line-height: 1.4;
+            transition: color 0.2s;
+        }
+        .faq-question:hover { color: var(--green-dark); }
+        .faq-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(0, 210, 106, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--green-primary);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(0, 210, 106, 0.15); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer-inner {
+            padding: 0 4px 20px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .cta-section { padding: 0 0 80px; }
+        .cta-card {
+            background: var(--bg-gray-50);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .cta-card h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+        .cta-card p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin-bottom: 28px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--green-primary);
+            color: white;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 210, 106, 0.3);
+        }
+
+        footer {
+            background: var(--bg-gray-50);
+            border-top: 1px solid var(--border-light);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-logo { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+        .footer-logo span { color: var(--green-primary); }
+        .footer-text { color: var(--text-gray); font-size: 0.875rem; }
+
+        .tooltip { position: relative; display: inline-flex; align-items: center; cursor: help; }
+        .tooltip .tooltip-icon {
+            width: 16px; height: 16px; border-radius: 50%;
+            background: var(--bg-gray-100); color: var(--text-light);
+            font-size: 0.625rem; font-weight: 700;
+            display: inline-flex; align-items: center; justify-content: center;
+            margin-left: 6px; flex-shrink: 0;
+        }
+        .tooltip .tooltip-text {
+            visibility: hidden; opacity: 0; position: absolute;
+            bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+            background: var(--text-dark); color: white;
+            font-size: 0.75rem; font-weight: 400; padding: 8px 12px;
+            border-radius: 8px; width: 220px; text-align: center;
+            transition: opacity 0.2s; z-index: 10; line-height: 1.4; pointer-events: none;
+        }
+        .tooltip .tooltip-text::after {
+            content: ''; position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%); border: 5px solid transparent;
+            border-top-color: var(--text-dark);
+        }
+        .tooltip:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+        .recalc-bar { display: none; text-align: center; margin-bottom: 32px; }
+        .recalc-bar.visible { display: block; animation: fadeSlideIn 0.3s ease; }
+        .recalc-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 36px; background: var(--green-primary); color: white;
+            border: none; border-radius: 100px; font-family: var(--font-display);
+            font-size: 1rem; font-weight: 700; cursor: pointer;
+            transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(0, 210, 106, 0.35);
+        }
+        .recalc-btn:hover {
+            background: var(--green-dark); transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 210, 106, 0.4);
+        }
+        .recalc-btn svg { width: 18px; height: 18px; }
+        .results-stale .summary-grid,
+        .results-stale .breakdown-wrapper,
+        .results-stale .margin-card {
+            opacity: 0.45; filter: blur(1px);
+            transition: opacity 0.3s, filter 0.3s; pointer-events: none;
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .preview-section { padding: 60px 0 40px; }
+        .preview-section .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #10B981, #0D9488);
+            color: white; padding: 6px 16px; border-radius: 100px;
+            font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.05em; margin-bottom: 12px;
+        }
+        .preview-section h3 {
+            font-family: var(--font-display); font-size: 1.75rem;
+            font-weight: 700; color: var(--text-dark); margin: 0 0 8px;
+        }
+        .preview-sub-header {
+            font-family: var(--font-display); font-size: 1.15rem;
+            font-weight: 600; color: var(--text-dark); margin: 32px 0 16px;
+        }
+
+        .pv-groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .pv-group-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .pv-group-header {
+            background: linear-gradient(135deg, #10B981, #0D9488);
+            color: white; padding: 10px 16px;
+            font-family: var(--font-display); font-weight: 700; font-size: 0.9rem;
+        }
+        .pv-group-players { padding: 12px 16px; }
+        .pv-group-players .pv-player-row {
+            display: flex; align-items: center; gap: 8px;
+            padding: 5px 0; font-size: 0.85rem; color: var(--text-dark);
+        }
+        .pv-player-badge {
+            width: 24px; height: 24px; border-radius: 50%;
+            background: var(--bg-gray-100);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 700; color: var(--text-gray); flex-shrink: 0;
+        }
+        .pv-rotations { border-top: 1px solid var(--border-light); padding: 12px 16px; }
+        .pv-rotation-match {
+            display: flex; align-items: center; gap: 8px;
+            padding: 6px 0; font-size: 0.8rem;
+        }
+        .pv-rotation-number {
+            font-family: var(--font-mono); font-size: 0.7rem;
+            font-weight: 700; color: var(--text-light); min-width: 22px;
+        }
+        .pv-team-pair {
+            display: flex; align-items: center; gap: 4px;
+            font-weight: 500; color: var(--text-dark);
+        }
+        .pv-vs {
+            font-size: 0.7rem; font-weight: 700;
+            color: var(--green-primary); margin: 0 4px;
+        }
+
+        .pv-liga-summary {
+            width: 100%; border-collapse: collapse; margin-top: 16px;
+            background: white; border: 1px solid var(--border-light);
+            border-radius: 12px; overflow: hidden;
+        }
+        .pv-liga-summary th {
+            text-align: left; padding: 10px 16px; font-weight: 600;
+            color: var(--text-light); border-bottom: 1px solid var(--border-light);
+            font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 0.04em; background: var(--bg-gray-50);
+        }
+        .pv-liga-summary td {
+            padding: 10px 16px; color: var(--text-dark);
+            font-size: 0.85rem; border-bottom: 1px solid #F3F4F6;
+        }
+        .pv-liga-summary tr:last-child td { border-bottom: none; }
+        .pv-liga-summary tr.pv-liga-total td {
+            font-weight: 700;
+            background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+            color: var(--green-dark);
+        }
+
+        @media (max-width: 1024px) {
+            .calc-inputs { grid-template-columns: 1fr 1fr; }
+            .calc-inputs .input-card:last-child { grid-column: 1 / -1; }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            .margin-results { grid-template-columns: repeat(3, 1fr); }
+            .pv-groups-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .hero { padding: 48px 0 16px; }
+            .section-title { font-size: clamp(1.5rem, 5vw, 2rem); }
+            .section-description { font-size: 1rem; }
+            .calculator { padding: 24px 0 60px; }
+            .calc-inputs { grid-template-columns: 1fr; }
+            .calc-inputs .input-card:last-child { grid-column: auto; }
+            .input-card { padding: 22px 18px; }
+            .summary-grid { grid-template-columns: 1fr 1fr; }
+            .summary-card { padding: 18px 14px; }
+            .summary-value { font-size: 1.375rem; }
+            .margin-results { grid-template-columns: 1fr; }
+            .margin-card { padding: 24px 20px; }
+            .examples-grid { grid-template-columns: 1fr; }
+            .cta-card { padding: 32px 24px; }
+            .breakdown-wrapper { border-radius: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .breakdown-table { min-width: 440px; }
+            .breakdown-table thead th, .breakdown-table tbody td { padding: 12px 14px; }
+            .segment-option label { padding: 10px 8px; font-size: 0.75rem; }
+            .pv-groups-grid { grid-template-columns: 1fr; }
+            .preview-section h3 { font-size: 1.35rem; }
+            .preview-section { padding: 40px 0 24px; }
+            .preview-sub-header { font-size: 1rem; margin: 24px 0 12px; }
+            .example-table td { padding: 10px 16px; }
+            .example-card-header { padding: 16px 18px; }
+            .faq-section { padding: 40px 0 24px; }
+            .examples { padding: 0 0 48px; }
+            .cta-section { padding: 0 0 48px; }
+            .tooltip .tooltip-text { left: auto; right: -8px; transform: none; width: 200px; }
+            .tooltip .tooltip-text::after { left: auto; right: 14px; transform: none; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .summary-card { padding: 16px 12px; }
+            .summary-value { font-size: 1.25rem; }
+            .custom-balls-grid { grid-template-columns: 1fr; }
+            .hero { padding: 36px 0 12px; }
+            .section-tag { font-size: 0.6875rem; letter-spacing: 0.12em; }
+            .segment-group { gap: 6px; }
+            .segment-option label { padding: 9px 6px; font-size: 0.6875rem; }
+            .cta-card h2 { font-size: 1.25rem; }
+            .cta-card p { font-size: 0.9375rem; }
+            .faq-question { font-size: 0.9rem; padding: 14px 0; }
+            .faq-answer-inner { font-size: 0.875rem; }
+            .margin-result-value { font-size: 1.25rem; }
+            .results-header h3 { font-size: 1.25rem; }
+            .examples-header h3 { font-size: 1.25rem; }
+            footer { padding: 28px 0; }
+        }
+
+        /* Elimination preview */
+        .pv-elim-round-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 24px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pv-elim-round-title .pv-elim-badge {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: white;
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+        .pv-elim-flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 0;
+            color: var(--text-light);
+        }
+        .pv-elim-flow-arrow svg {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">Court<span>Bit</span></a>
+            <a href="/" class="back-link">&larr; Volver al inicio</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container reveal">
+                <span class="section-tag">Herramienta Gratuita para Organizadores</span>
+                <h1 class="section-title">Calculadora de Costos para Ligas de Padel</h1>
+                <p class="section-description">Calcula el presupuesto de tu liga americana de padel al instante: costos de canchas, pelotas, precio por jugador y margen de ganancia. Genera una vista previa de jornadas y rotaciones de doubles.</p>
+            </div>
+        </section>
+
+        <section class="calculator">
+            <div class="container">
+                <div class="calc-inputs">
+                    <!-- Card 1: Costos Base -->
+                    <div class="input-card reveal">
+                        <div class="input-card-header">
+                            <div class="input-card-icon" style="background: linear-gradient(135deg, #F0FDF4, #BBF7D0);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00A855" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div class="input-card-title">Costos Base</div>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">
+                                Precio por hora de cancha
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Precio que cobra el club por hora de renta de cancha de padel.</span>
+                                </span>
+                            </label>
+                            <div class="input-prefix">
+                                <input type="number" id="precioCancha" class="calc-input" min="0" step="50" value="500">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">
+                                Precio por bote de pelotas
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Costo de un bote de 3 pelotas de padel.</span>
+                                </span>
+                            </label>
+                            <div class="input-prefix">
+                                <input type="number" id="precioPelotas" class="calc-input" min="0" step="10" value="100">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Formato de Liga -->
+                    <div class="input-card reveal">
+                        <div class="input-card-header">
+                            <div class="input-card-icon" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            </div>
+                            <div class="input-card-title">Formato de Liga</div>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">
+                                Cantidad de jugadores
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Jugadores individuales. Se forman grupos de 4 por jornada con rotacion de doubles.</span>
+                                </span>
+                            </label>
+                            <select id="cantidadJugadores" class="calc-input">
+                                <option value="8">8 jugadores &mdash; 2 grupos por jornada</option>
+                                <option value="12">12 jugadores &mdash; 3 grupos por jornada</option>
+                                <option value="16" selected>16 jugadores &mdash; 4 grupos por jornada</option>
+                                <option value="20">20 jugadores &mdash; 5 grupos por jornada</option>
+                                <option value="24">24 jugadores &mdash; 6 grupos por jornada</option>
+                                <option value="28">28 jugadores &mdash; 7 grupos por jornada</option>
+                                <option value="32">32 jugadores &mdash; 8 grupos por jornada</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">
+                                Jornadas
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">El maximo garantiza que todos se enfrenten sin repetir oponentes. Puedes elegir menos jornadas para una liga mas corta.</span>
+                                </span>
+                            </label>
+                            <select id="cantidadJornadas" class="calc-input"></select>
+                            <div class="liga-info info-green" id="ligaInfo"></div>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">
+                                Duracion del set
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Cada partido tiene 3 sets (rotaciones). Aqui defines cuanto dura cada set. 30 min es el estandar para sets a 6 juegos.</span>
+                                </span>
+                            </label>
+                            <select id="duracionSet" class="calc-input">
+                                <option value="15">15 min</option>
+                                <option value="20">20 min</option>
+                                <option value="25">25 min</option>
+                                <option value="30" selected>30 min</option>
+                                <option value="35">35 min</option>
+                                <option value="40">40 min</option>
+                                <option value="45">45 min</option>
+                            </select>
+                            <div class="duration-indicator" id="durationIndicator">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span id="durationText">1 partido = 3 sets &times; 30 min = 1h 30min</span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">
+                                Canchas disponibles
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Numero de canchas que puedes usar simultaneamente. Afecta la duracion de cada jornada.</span>
+                                </span>
+                            </label>
+                            <input type="number" id="canchasDisponibles" class="calc-input" min="1" max="8" step="1" value="2">
+                        </div>
+                        <div class="field">
+                            <label class="field-label">Unidad de facturacion</label>
+                            <div class="segment-group">
+                                <div class="segment-option">
+                                    <input type="radio" name="unidadFacturacion" id="factura30" value="30">
+                                    <label for="factura30">30 min</label>
+                                </div>
+                                <div class="segment-option">
+                                    <input type="radio" name="unidadFacturacion" id="factura60" value="60" checked>
+                                    <label for="factura60">1 hora</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">
+                                Clasificados a eliminatorias
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Numero de jugadores que avanzan a fase eliminatoria despues de la liga. Se juegan en formato grupo de 4 (mismo formato que jornadas).</span>
+                                </span>
+                            </label>
+                            <select id="clasificadosElim" class="calc-input">
+                                <option value="0" selected>Sin eliminatorias</option>
+                                <option value="4">4 jugadores &mdash; Solo final</option>
+                                <option value="6">6 jugadores &mdash; Semifinal + Final</option>
+                                <option value="8">8 jugadores &mdash; Semifinales + Final</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Pelotas -->
+                    <div class="input-card reveal">
+                        <div class="input-card-header">
+                            <div class="input-card-icon" style="background: linear-gradient(135deg, #E0E7FF, #C7D2FE);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            </div>
+                            <div class="input-card-title">Pelotas</div>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">
+                                Modo de pelotas
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Define cuantos botes de pelotas se usan durante la liga.</span>
+                                </span>
+                            </label>
+                            <div class="segment-group">
+                                <div class="segment-option">
+                                    <input type="radio" name="modoPelotas" id="porPartido" value="porPartido" checked>
+                                    <label for="porPartido">1 por partido</label>
+                                </div>
+                                <div class="segment-option">
+                                    <input type="radio" name="modoPelotas" id="porJornada" value="porJornada">
+                                    <label for="porJornada">1 por jornada</label>
+                                </div>
+                                <div class="segment-option">
+                                    <input type="radio" name="modoPelotas" id="personalizado" value="personalizado">
+                                    <label for="personalizado">Personalizado</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-balls" id="customBalls">
+                            <div class="custom-balls-grid">
+                                <div class="field">
+                                    <label class="field-label">Botes por jornada</label>
+                                    <input type="number" id="botesJornada" class="calc-input" min="1" value="4">
+                                </div>
+                                <div class="field">
+                                    <label class="field-label">Jornadas (auto)</label>
+                                    <input type="number" id="botesJornadasCount" class="calc-input" value="5" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field" style="margin-top: 20px;">
+                            <label class="field-label" style="font-size: 0.75rem; color: var(--text-light); font-weight: 400;">
+                                <strong>1 por partido:</strong> Un bote por grupo (3 rotaciones).<br>
+                                <strong>1 por jornada:</strong> Un bote compartido por jornada.<br>
+                                <strong>Personalizado:</strong> Define botes por jornada.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recalculate Button -->
+                <div class="recalc-bar" id="recalcBar">
+                    <button class="recalc-btn" id="recalcBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                        Recalcular
+                    </button>
+                </div>
+
+                <!-- Results -->
+                <div class="results-header reveal">
+                    <span class="section-tag">Resultados</span>
+                    <h2>Desglose de la Liga</h2>
+                </div>
+
+                <div class="summary-grid reveal">
+                    <div class="summary-card">
+                        <div class="summary-icon">&#128197;</div>
+                        <div class="summary-value" id="resJornadas">--</div>
+                        <div class="summary-label">Jornadas</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">&#127934;</div>
+                        <div class="summary-value" id="resPartidos">--</div>
+                        <div class="summary-label">Total Partidos</div>
+                    </div>
+                    <div class="summary-card highlight">
+                        <div class="summary-icon">&#128176;</div>
+                        <div class="summary-value" id="resCostoTotal">--</div>
+                        <div class="summary-label">Costo Total</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon">&#128100;</div>
+                        <div class="summary-value" id="resCostoJugador">--</div>
+                        <div class="summary-label">Costo por Jugador</div>
+                    </div>
+                </div>
+
+                <div class="breakdown-wrapper reveal">
+                    <table class="breakdown-table">
+                        <thead><tr><th>Concepto</th><th>Detalle</th><th>Valor</th></tr></thead>
+                        <tbody id="breakdownBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="margin-card reveal">
+                    <div class="margin-header">
+                        <div class="margin-title">Precio Sugerido con Margen</div>
+                        <div class="margin-badge" id="marginBadge">Margen: 30%</div>
+                    </div>
+                    <div class="margin-slider-container">
+                        <div class="margin-slider-labels"><span>0%</span><span>50%</span><span>100%</span></div>
+                        <input type="range" class="margin-slider" id="margenSlider" min="0" max="100" value="30">
+                    </div>
+                    <div class="margin-results">
+                        <div class="margin-result-item primary">
+                            <div class="margin-result-value" id="resPrecioSugerido">--</div>
+                            <div class="margin-result-label">Precio sugerido / jugador</div>
+                        </div>
+                        <div class="margin-result-item">
+                            <div class="margin-result-value" id="resIngresoTotal">--</div>
+                            <div class="margin-result-label">Ingreso total estimado</div>
+                        </div>
+                        <div class="margin-result-item">
+                            <div class="margin-result-value" id="resGanancia">--</div>
+                            <div class="margin-result-label">Ganancia estimada</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Liga Structure Preview -->
+        <section class="preview-section">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-tag">Vista Previa</span>
+                    <h3>Estructura de la Liga</h3>
+                </div>
+                <h4 class="preview-sub-header reveal">Vista Previa de Jornada (Jornada 1)</h4>
+                <div class="pv-groups-grid reveal" id="previewJornada"></div>
+                <h4 class="preview-sub-header reveal">Resumen de la Liga</h4>
+                <div class="reveal" id="previewResumenContainer"></div>
+                <div class="reveal" id="previewElimContainer"></div>
+            </div>
+        </section>
+
+        <!-- Examples -->
+        <section class="examples">
+            <div class="container">
+                <div class="examples-header reveal">
+                    <span class="section-tag">Ejemplos de Presupuesto</span>
+                    <h2>Formatos de Liga de Padel Mas Comunes</h2>
+                    <p>Compara costos entre formatos populares. Los precios se recalculan con tus costos base.</p>
+                </div>
+                <div class="examples-grid">
+                    <div class="example-card reveal">
+                        <div class="example-card-header">
+                            <div class="example-card-tag">Ejemplo 1</div>
+                            <div class="example-card-title" id="example1Title">16 jugadores &mdash; Todos contra todos</div>
+                            <div class="example-card-subtitle" id="example1Subtitle">5 jornadas &middot; 0.5h por partido &middot; Sin repeticiones</div>
+                        </div>
+                        <table class="example-table" id="example1Table"></table>
+                    </div>
+                    <div class="example-card reveal">
+                        <div class="example-card-header">
+                            <div class="example-card-tag">Ejemplo 2</div>
+                            <div class="example-card-title" id="example2Title">12 jugadores &mdash; Todos contra todos</div>
+                            <div class="example-card-subtitle" id="example2Subtitle">4 jornadas &middot; 0.5h por partido</div>
+                        </div>
+                        <table class="example-table" id="example2Table"></table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section" id="preguntas-frecuentes">
+            <div class="container">
+                <div class="faq-header reveal">
+                    <span class="faq-tag">Preguntas Frecuentes</span>
+                    <h2>Todo lo que Necesitas Saber para Organizar tu Liga de Padel</h2>
+                </div>
+                <div class="faq-list reveal">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Que es una liga americana de padel?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Una liga americana de padel es un formato donde los jugadores compiten individualmente a lo largo de multiples jornadas. En cada jornada se forman grupos de 4 jugadores que juegan 3 partidos de doubles con rotacion de parejas (A+B vs C+D, A+C vs B+D, A+D vs B+C). Los grupos se reagrupan cada jornada para que todos se enfrenten. Cada jugador acumula puntos en un ranking individual.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Cuantas jornadas necesita una liga de padel?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Depende del modo: en "Todos contra todos" se necesitan ceil((jugadores-1)/3) jornadas para que cada jugador enfrente a todos. Por ejemplo, 16 jugadores necesitan 5 jornadas y 12 jugadores necesitan 4. En modo "Sin repetir oponentes" puedes elegir menos jornadas, garantizando que ningun jugador repita oponente aunque no se enfrenten todos entre si.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Como funcionan las rotaciones en cada jornada?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">En cada grupo de 4 jugadores (A, B, C, D) se juegan exactamente 3 partidos de doubles: Rotacion 1 (A+B vs C+D), Rotacion 2 (A+C vs B+D) y Rotacion 3 (A+D vs B+C). De esta forma, cada jugador hace pareja con todos los demas miembros de su grupo y tambien se enfrenta a todos. Esto es constante sin importar el numero total de jugadores en la liga.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Cuantos jugadores se necesitan para una liga?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Se necesitan al menos 8 jugadores para formar una liga con 2 grupos de 4. El numero debe ser multiplo de 4 (8, 12, 16, 20, 24, 28, 32) para que los grupos queden parejos. Los formatos mas populares son ligas de 12 y 16 jugadores.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Que significa "sin repetir oponentes"?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">En modo "Sin repetir oponentes", los grupos se arman de forma que ningun jugador comparta grupo con otro mas de una vez a lo largo de la liga. Esto garantiza enfrentamientos siempre nuevos pero puede significar que no todos los jugadores se enfrenten entre si. Es ideal para ligas cortas donde se prioriza variedad sobre completitud.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Cuanto cobrar de inscripcion en una liga de padel?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Calcula el costo total de la liga (canchas + pelotas) y dividelo entre el numero de jugadores para obtener el costo base. Agrega un margen del 20-40% para cubrir premios, gastos operativos y ganancia. La calculadora de arriba te sugiere el precio por jugador automaticamente segun el margen que configures con el slider.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card reveal">
+                    <h2>Organiza Tu Liga con CourtBit</h2>
+                    <p>Jornadas, rotaciones, ranking en vivo y mas. Todo desde una sola plataforma.</p>
+                    <a href="/#contact" class="cta-btn">Probar Gratis</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Court<span>Bit</span></div>
+            <p class="footer-text">&copy; 2026 CourtBit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var STORAGE_KEY = 'courtbit_calc_liga_v1';
+
+        var ELIM_CONFIG = {
+            0: { rounds: [], totalPartidos: 0, label: 'Sin eliminatorias' },
+            4: { rounds: [{ partidos: 1, label: 'Final' }], totalPartidos: 1, label: 'Solo Final' },
+            6: { rounds: [{ partidos: 1, label: 'Semifinal' }, { partidos: 1, label: 'Final' }], totalPartidos: 2, label: 'Semi + Final' },
+            8: { rounds: [{ partidos: 2, label: 'Semifinales' }, { partidos: 1, label: 'Final' }], totalPartidos: 3, label: 'Semis + Final' }
+        };
+
+        /* ============================================================
+           DOM REFERENCES
+        ============================================================ */
+        var dom = {
+            precioCancha:        document.getElementById('precioCancha'),
+            precioPelotas:       document.getElementById('precioPelotas'),
+            cantidadJugadores:   document.getElementById('cantidadJugadores'),
+            canchasDisponibles:  document.getElementById('canchasDisponibles'),
+            cantidadJornadas:    document.getElementById('cantidadJornadas'),
+            ligaInfo:            document.getElementById('ligaInfo'),
+            margenSlider:        document.getElementById('margenSlider'),
+            marginBadge:         document.getElementById('marginBadge'),
+            customBalls:         document.getElementById('customBalls'),
+            botesJornada:        document.getElementById('botesJornada'),
+            botesJornadasCount:  document.getElementById('botesJornadasCount'),
+            breakdownBody:       document.getElementById('breakdownBody'),
+            resJornadas:         document.getElementById('resJornadas'),
+            resPartidos:         document.getElementById('resPartidos'),
+            resCostoTotal:       document.getElementById('resCostoTotal'),
+            resCostoJugador:     document.getElementById('resCostoJugador'),
+            resPrecioSugerido:   document.getElementById('resPrecioSugerido'),
+            resIngresoTotal:     document.getElementById('resIngresoTotal'),
+            resGanancia:         document.getElementById('resGanancia'),
+            durationText:        document.getElementById('durationText'),
+            example1Table:       document.getElementById('example1Table'),
+            example1Title:       document.getElementById('example1Title'),
+            example1Subtitle:    document.getElementById('example1Subtitle'),
+            example2Table:       document.getElementById('example2Table'),
+            example2Title:       document.getElementById('example2Title'),
+            example2Subtitle:    document.getElementById('example2Subtitle'),
+            recalcBar:           document.getElementById('recalcBar'),
+            recalcBtn:           document.getElementById('recalcBtn'),
+            calcSection:         document.querySelector('.calculator .container'),
+            previewJornada:      document.getElementById('previewJornada'),
+            previewResumen:      document.getElementById('previewResumenContainer'),
+            clasificadosElim:    document.getElementById('clasificadosElim'),
+            previewElim:         document.getElementById('previewElimContainer')
+        };
+
+        /* ============================================================
+           HELPERS
+        ============================================================ */
+        function formatCurrency(n) {
+            return '$' + Math.round(n).toLocaleString('es-MX');
+        }
+        function formatHours(n) {
+            if (n % 1 === 0) return n + ' hrs';
+            return n.toFixed(1) + ' hrs';
+        }
+        function getRadioValue(name) {
+            var el = document.querySelector('input[name="' + name + '"]:checked');
+            return el ? el.value : null;
+        }
+        function setRadioValue(name, value) {
+            var el = document.getElementById(value) || document.querySelector('input[name="' + name + '"][value="' + value + '"]');
+            if (el) el.checked = true;
+        }
+
+        /* ============================================================
+           JORNADAS
+           All-vs-all without repeating opponents is always possible.
+           The CourtBit API handles the group assignment algorithm.
+           Max jornadas = ceil((n-1)/3) guarantees everyone faces everyone.
+        ============================================================ */
+        function jornadasMax(jugadores) {
+            return Math.ceil((jugadores - 1) / 3);
+        }
+
+        function actualizarJornadas() {
+            var jugadores = parseInt(dom.cantidadJugadores.value) || 16;
+            var max = jornadasMax(jugadores);
+            var currentVal = parseInt(dom.cantidadJornadas.value) || max;
+
+            dom.cantidadJornadas.innerHTML = '';
+            for (var j = 1; j <= max; j++) {
+                var opt = document.createElement('option');
+                opt.value = j;
+                var oponentes = Math.min(j * 3, jugadores - 1);
+                opt.textContent = j + ' jornada' + (j > 1 ? 's' : '') + ' \u2014 ' + oponentes + ' de ' + (jugadores - 1) + ' oponentes';
+                if (j === max) opt.textContent += ' (todos)';
+                dom.cantidadJornadas.appendChild(opt);
+            }
+
+            if (currentVal >= 1 && currentVal <= max) {
+                dom.cantidadJornadas.value = currentVal;
+            } else {
+                dom.cantidadJornadas.value = max;
+            }
+
+            // Update info badge
+            var jornadas = parseInt(dom.cantidadJornadas.value) || max;
+            var oponentesEnfrentados = Math.min(jornadas * 3, jugadores - 1);
+            var esTodos = jornadas === max;
+
+            var svgCheck = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+            dom.ligaInfo.className = 'liga-info info-green';
+            dom.ligaInfo.innerHTML = svgCheck + '<span class="liga-info-text"><strong>' + oponentesEnfrentados + ' de ' + (jugadores - 1) + ' oponentes</strong> &middot; Sin repeticiones' + (esTodos ? ' &middot; Todos contra todos' : '') + '</span>';
+        }
+
+        /* ============================================================
+           CORE CALCULATION
+        ============================================================ */
+        function calcularTotalesLiga(config) {
+            var jugadores = config.jugadores;
+            var jornadas = config.jornadas || jornadasMax(jugadores);
+            var canchas = config.canchas;
+
+            // === ESTRUCTURA ===
+            var partidosPorJornada = Math.floor(jugadores / 4);
+            var rotacionesPorPartido = 3;
+            var rotacionesPorJornada = partidosPorJornada * rotacionesPorPartido;
+            var totalPartidos = partidosPorJornada * jornadas;
+            var totalRotaciones = totalPartidos * rotacionesPorPartido;
+
+            // === TIEMPOS (en minutos) ===
+            var duracionSet = config.duracionSet;                     // min
+            var duracionPartido = duracionSet * 3;                    // min
+            var rondasPorJornada = Math.ceil(partidosPorJornada / canchas);
+            var duracionJornadaReal = duracionPartido * rondasPorJornada; // min
+
+            // === FACTURACION ===
+            var unidadFacturacion = config.unidadFacturacion;         // 30 o 60 min
+            var duracionJornadaFacturada = Math.ceil(duracionJornadaReal / unidadFacturacion) * unidadFacturacion; // min
+            var horasFacturadasPorJornada = duracionJornadaFacturada / 60;
+            var horasTotalesCancha = horasFacturadasPorJornada * canchas * jornadas;
+
+            // === COSTOS CANCHA ===
+            var costoCancha = horasTotalesCancha * config.precioCancha;
+
+            // === PELOTAS ===
+            var totalBotes = 0;
+            if (config.modoPelotas === 'porPartido') {
+                totalBotes = totalPartidos;
+            } else if (config.modoPelotas === 'porJornada') {
+                totalBotes = jornadas;
+            } else {
+                totalBotes = (config.botesJornada || 0) * jornadas;
+            }
+            var costoPelotas = totalBotes * config.precioPelotas;
+
+            // === TOTALES LIGA ===
+            var costoLiga = costoCancha + costoPelotas;
+            var oponentesEnfrentados = Math.min(jornadas * 3, jugadores - 1);
+
+            // === ELIMINACION ===
+            var elimResult = calcularEliminacion(config, { duracionPartido: duracionSet * 3 });
+            var costoTotal = costoLiga + (elimResult ? elimResult.costoTotal : 0);
+            var costoJugador = jugadores > 0 ? costoTotal / jugadores : 0;
+            var precioSugerido = costoJugador * (1 + config.margen / 100);
+            var ingresoTotal = precioSugerido * jugadores;
+            var ganancia = ingresoTotal - costoTotal;
+
+            return {
+                jugadores: jugadores,
+                canchas: canchas,
+                partidosPorJornada: partidosPorJornada,
+                rotacionesPorPartido: rotacionesPorPartido,
+                rotacionesPorJornada: rotacionesPorJornada,
+                totalPartidos: totalPartidos,
+                totalRotaciones: totalRotaciones,
+                jornadas: jornadas,
+                duracionSet: duracionSet,
+                duracionPartido: duracionPartido,
+                rondasPorJornada: rondasPorJornada,
+                duracionJornadaReal: duracionJornadaReal,
+                duracionJornadaFacturada: duracionJornadaFacturada,
+                horasFacturadasPorJornada: horasFacturadasPorJornada,
+                horasTotalesCancha: horasTotalesCancha,
+                costoCancha: costoCancha,
+                totalBotes: totalBotes,
+                costoPelotas: costoPelotas,
+                costoLiga: costoLiga,
+                elimResult: elimResult,
+                costoTotal: costoTotal,
+                costoJugador: costoJugador,
+                precioSugerido: precioSugerido,
+                ingresoTotal: ingresoTotal,
+                ganancia: ganancia,
+                oponentesEnfrentados: oponentesEnfrentados,
+                jornadasMax: jornadasMax(jugadores)
+            };
+        }
+
+        /* ============================================================
+           ELIMINATION CALCULATION
+        ============================================================ */
+        function calcularEliminacion(config, ligaResult) {
+            var clasificados = config.clasificados || 0;
+            var elimConfig = ELIM_CONFIG[clasificados];
+            if (!elimConfig || clasificados === 0) return null;
+
+            var duracionPartido = ligaResult.duracionPartido;
+            var canchas = config.canchas;
+            var unidadFacturacion = config.unidadFacturacion;
+
+            var totalSlots = 0;
+            for (var i = 0; i < elimConfig.rounds.length; i++) {
+                totalSlots += Math.ceil(elimConfig.rounds[i].partidos / canchas);
+            }
+
+            var duracionReal = totalSlots * duracionPartido;
+            var duracionFacturada = Math.ceil(duracionReal / unidadFacturacion) * unidadFacturacion;
+            var horasCancha = (duracionFacturada / 60) * canchas;
+            var costoCancha = horasCancha * config.precioCancha;
+
+            var totalBotes = 0;
+            if (config.modoPelotas === 'porPartido') {
+                totalBotes = elimConfig.totalPartidos;
+            } else if (config.modoPelotas === 'porJornada') {
+                totalBotes = 1;
+            } else {
+                totalBotes = config.botesJornada || 0;
+            }
+            var costoPelotas = totalBotes * config.precioPelotas;
+
+            return {
+                clasificados: clasificados,
+                elimConfig: elimConfig,
+                totalPartidos: elimConfig.totalPartidos,
+                totalSlots: totalSlots,
+                duracionReal: duracionReal,
+                duracionFacturada: duracionFacturada,
+                horasCancha: horasCancha,
+                costoCancha: costoCancha,
+                totalBotes: totalBotes,
+                costoPelotas: costoPelotas,
+                costoTotal: costoCancha + costoPelotas
+            };
+        }
+
+        /* ============================================================
+           PREVIEW
+        ============================================================ */
+        function generarJornadaPreview(jugadores) {
+            var gruposPorJornada = Math.floor(jugadores / 4);
+            if (gruposPorJornada < 1) return '';
+            var html = '';
+            var jugadorNum = 1;
+            var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for (var g = 0; g < gruposPorJornada; g++) {
+                var j1 = jugadorNum, j2 = jugadorNum+1, j3 = jugadorNum+2, j4 = jugadorNum+3;
+                html += '<div class="pv-group-card"><div class="pv-group-header">Grupo ' + letras[g % 26] + '</div>';
+                html += '<div class="pv-group-players">';
+                html += '<div class="pv-player-row"><span class="pv-player-badge">J' + j1 + '</span> Jugador ' + j1 + '</div>';
+                html += '<div class="pv-player-row"><span class="pv-player-badge">J' + j2 + '</span> Jugador ' + j2 + '</div>';
+                html += '<div class="pv-player-row"><span class="pv-player-badge">J' + j3 + '</span> Jugador ' + j3 + '</div>';
+                html += '<div class="pv-player-row"><span class="pv-player-badge">J' + j4 + '</span> Jugador ' + j4 + '</div>';
+                html += '</div><div class="pv-rotations">';
+                html += '<div class="pv-rotation-match"><span class="pv-rotation-number">R1</span><span class="pv-team-pair">J' + j1 + ' + J' + j2 + '</span><span class="pv-vs">vs</span><span class="pv-team-pair">J' + j3 + ' + J' + j4 + '</span></div>';
+                html += '<div class="pv-rotation-match"><span class="pv-rotation-number">R2</span><span class="pv-team-pair">J' + j1 + ' + J' + j3 + '</span><span class="pv-vs">vs</span><span class="pv-team-pair">J' + j2 + ' + J' + j4 + '</span></div>';
+                html += '<div class="pv-rotation-match"><span class="pv-rotation-number">R3</span><span class="pv-team-pair">J' + j1 + ' + J' + j4 + '</span><span class="pv-vs">vs</span><span class="pv-team-pair">J' + j2 + ' + J' + j3 + '</span></div>';
+                html += '</div></div>';
+                jugadorNum += 4;
+            }
+            return html;
+        }
+
+        function generarResumenLiga(jugadores, jornadas) {
+            var partidosPorJornada = Math.floor(jugadores / 4);
+            if (partidosPorJornada < 1 || jornadas < 1) return '';
+            var rotacionesPorJornada = partidosPorJornada * 3;
+            var totalPartidos = jornadas * partidosPorJornada;
+            var totalRotaciones = jornadas * rotacionesPorJornada;
+
+            var html = '<table class="pv-liga-summary"><thead><tr>';
+            html += '<th>Jornada</th><th>Partidos</th><th>Rotaciones</th><th>Oponentes nuevos</th>';
+            html += '</tr></thead><tbody>';
+
+            for (var j = 1; j <= jornadas; j++) {
+                var opNuevos = Math.min(3, jugadores - 1 - (j - 1) * 3);
+                if (opNuevos < 0) opNuevos = 0;
+                html += '<tr>';
+                html += '<td>Jornada ' + j + '</td>';
+                html += '<td>' + partidosPorJornada + ' (' + partidosPorJornada + ' grupos)</td>';
+                html += '<td>' + rotacionesPorJornada + '</td>';
+                html += '<td>' + opNuevos + ' por jugador</td>';
+                html += '</tr>';
+            }
+            html += '<tr class="pv-liga-total"><td>Total</td><td>' + totalPartidos + ' partidos</td><td>' + totalRotaciones + '</td><td>' + Math.min(jornadas * 3, jugadores - 1) + ' de ' + (jugadores - 1) + '</td></tr>';
+            html += '</tbody></table>';
+            return html;
+        }
+
+        /* ============================================================
+           ELIMINATION PREVIEW
+        ============================================================ */
+        function generarEliminacionPreview(clasificados) {
+            var elimConfig = ELIM_CONFIG[clasificados];
+            if (!elimConfig || clasificados === 0) return '';
+
+            var html = '<h4 class="preview-sub-header">Fase de Eliminatorias</h4>';
+            var clasificadoNum = 1;
+
+            for (var r = 0; r < elimConfig.rounds.length; r++) {
+                var round = elimConfig.rounds[r];
+                html += '<div class="pv-elim-round-title"><span class="pv-elim-badge">' + round.label + '</span></div>';
+                html += '<div class="pv-groups-grid">';
+
+                if (r === 0) {
+                    // First round: use clasificados
+                    for (var p = 0; p < round.partidos; p++) {
+                        var j1, j2, j3, j4;
+                        if (clasificados === 4) {
+                            j1 = 'C1'; j2 = 'C2'; j3 = 'C3'; j4 = 'C4';
+                        } else if (clasificados === 6) {
+                            j1 = 'C3'; j2 = 'C4'; j3 = 'C5'; j4 = 'C6';
+                        } else {
+                            var base = p * 4;
+                            j1 = 'C' + (base + 1); j2 = 'C' + (base + 2); j3 = 'C' + (base + 3); j4 = 'C' + (base + 4);
+                        }
+                        var groupLabel = round.partidos > 1 ? round.label.replace('es', '') + ' ' + (p + 1) : round.label;
+                        html += '<div class="pv-group-card"><div class="pv-group-header">' + groupLabel + '</div>';
+                        html += '<div class="pv-group-players">';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">' + j1 + '</span> Clasificado ' + j1.slice(1) + '</div>';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">' + j2 + '</span> Clasificado ' + j2.slice(1) + '</div>';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">' + j3 + '</span> Clasificado ' + j3.slice(1) + '</div>';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">' + j4 + '</span> Clasificado ' + j4.slice(1) + '</div>';
+                        html += '</div><div class="pv-rotations">';
+                        html += '<div class="pv-rotation-match"><span class="pv-rotation-number">R1</span><span class="pv-team-pair">' + j1 + ' + ' + j2 + '</span><span class="pv-vs">vs</span><span class="pv-team-pair">' + j3 + ' + ' + j4 + '</span></div>';
+                        html += '<div class="pv-rotation-match"><span class="pv-rotation-number">R2</span><span class="pv-team-pair">' + j1 + ' + ' + j3 + '</span><span class="pv-vs">vs</span><span class="pv-team-pair">' + j2 + ' + ' + j4 + '</span></div>';
+                        html += '<div class="pv-rotation-match"><span class="pv-rotation-number">R3</span><span class="pv-team-pair">' + j1 + ' + ' + j4 + '</span><span class="pv-vs">vs</span><span class="pv-team-pair">' + j2 + ' + ' + j3 + '</span></div>';
+                        html += '</div></div>';
+                    }
+                } else {
+                    // Final round: generic winners
+                    html += '<div class="pv-group-card"><div class="pv-group-header">Final</div>';
+                    html += '<div class="pv-group-players">';
+                    if (clasificados === 6) {
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">C1</span> Clasificado 1 (bye)</div>';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">C2</span> Clasificado 2 (bye)</div>';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">F1</span> 1ro Semifinal</div>';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">F2</span> 2do Semifinal</div>';
+                    } else {
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">F1</span> 1ro Semi 1</div>';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">F2</span> 1ro Semi 2</div>';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">F3</span> 2do Semi 1</div>';
+                        html += '<div class="pv-player-row"><span class="pv-player-badge">F4</span> 2do Semi 2</div>';
+                    }
+                    html += '</div><div class="pv-rotations">';
+                    var f1 = clasificados === 6 ? 'C1' : 'F1', f2 = clasificados === 6 ? 'C2' : 'F2';
+                    var f3 = clasificados === 6 ? 'F1' : 'F3', f4 = clasificados === 6 ? 'F2' : 'F4';
+                    html += '<div class="pv-rotation-match"><span class="pv-rotation-number">R1</span><span class="pv-team-pair">' + f1 + ' + ' + f2 + '</span><span class="pv-vs">vs</span><span class="pv-team-pair">' + f3 + ' + ' + f4 + '</span></div>';
+                    html += '<div class="pv-rotation-match"><span class="pv-rotation-number">R2</span><span class="pv-team-pair">' + f1 + ' + ' + f3 + '</span><span class="pv-vs">vs</span><span class="pv-team-pair">' + f2 + ' + ' + f4 + '</span></div>';
+                    html += '<div class="pv-rotation-match"><span class="pv-rotation-number">R3</span><span class="pv-team-pair">' + f1 + ' + ' + f4 + '</span><span class="pv-vs">vs</span><span class="pv-team-pair">' + f2 + ' + ' + f3 + '</span></div>';
+                    html += '</div></div>';
+                }
+
+                html += '</div>';
+
+                // Flow arrow between rounds
+                if (r < elimConfig.rounds.length - 1) {
+                    html += '<div class="pv-elim-flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>';
+                }
+            }
+
+            return html;
+        }
+
+        /* ============================================================
+           UI UPDATE
+        ============================================================ */
+        function obtenerConfig() {
+            return {
+                precioCancha: parseFloat(dom.precioCancha.value) || 0,
+                precioPelotas: parseFloat(dom.precioPelotas.value) || 0,
+                jugadores: parseInt(dom.cantidadJugadores.value) || 16,
+                canchas: parseInt(dom.canchasDisponibles.value) || 1,
+                jornadas: parseInt(dom.cantidadJornadas.value) || jornadasMax(parseInt(dom.cantidadJugadores.value) || 16),
+                duracionSet: parseInt(document.getElementById('duracionSet').value) || 30,
+                unidadFacturacion: parseInt(getRadioValue('unidadFacturacion')) || 60,
+                modoPelotas: getRadioValue('modoPelotas') || 'porPartido',
+                botesJornada: parseInt(dom.botesJornada.value) || 0,
+                margen: parseInt(dom.margenSlider.value) || 0,
+                clasificados: parseInt(dom.clasificadosElim.value) || 0
+            };
+        }
+
+        function formatMinutos(min) {
+            var h = Math.floor(min / 60);
+            var m = min % 60;
+            if (h === 0) return m + ' min';
+            if (m === 0) return h + 'h';
+            return h + 'h ' + m + 'min';
+        }
+
+        function actualizarResultados() {
+            var config = obtenerConfig();
+            var r = calcularTotalesLiga(config);
+
+            // Update custom balls jornadas count
+            dom.botesJornadasCount.value = r.jornadas;
+
+            // Summary cards
+            dom.resJornadas.textContent = r.jornadas;
+            dom.resPartidos.textContent = r.totalPartidos;
+            dom.resCostoTotal.textContent = formatCurrency(r.costoTotal);
+            dom.resCostoJugador.textContent = formatCurrency(r.costoJugador);
+
+            // Margin
+            dom.marginBadge.textContent = 'Margen: ' + config.margen + '%';
+            dom.resPrecioSugerido.textContent = formatCurrency(r.precioSugerido);
+            dom.resIngresoTotal.textContent = formatCurrency(r.ingresoTotal);
+            dom.resGanancia.textContent = formatCurrency(r.ganancia);
+
+            // Duration indicator
+            dom.durationText.textContent = '1 partido = 3 sets \u00D7 ' + r.duracionSet + ' min = ' + formatMinutos(r.duracionPartido);
+
+            // Breakdown table
+            var modoLabels = { porPartido: '1 bote por partido', porJornada: '1 bote por jornada', personalizado: 'Personalizado' };
+            var jornadasLabel = r.jornadas === r.jornadasMax
+                ? r.jornadas + ' (todos contra todos)'
+                : r.jornadas + ' de ' + r.jornadasMax;
+
+            var html = '';
+            html += '<tr><td colspan="3" class="breakdown-section-label">Estructura de Liga</td></tr>';
+            html += '<tr><td>Jugadores</td><td>' + config.jugadores + ' jugadores individuales</td><td></td></tr>';
+            html += '<tr><td>Partidos por jornada</td><td>' + r.partidosPorJornada + ' partidos (grupos de 4)</td><td></td></tr>';
+            html += '<tr><td>Sets por partido</td><td>' + r.rotacionesPorPartido + ' sets (rotaciones)</td><td></td></tr>';
+            html += '<tr><td>Rotaciones por jornada</td><td>' + r.rotacionesPorJornada + '</td><td></td></tr>';
+            html += '<tr><td>Jornadas</td><td>' + jornadasLabel + '</td><td></td></tr>';
+            html += '<tr><td>Oponentes enfrentados</td><td>' + r.oponentesEnfrentados + ' de ' + (config.jugadores - 1) + ' &middot; Sin repeticiones</td><td></td></tr>';
+            html += '<tr class="subtotal"><td>Total partidos</td><td>' + r.totalPartidos + ' partidos (' + r.totalRotaciones + ' rotaciones)</td><td></td></tr>';
+
+            html += '<tr><td colspan="3" class="breakdown-section-label">Tiempos</td></tr>';
+            html += '<tr><td>Duracion del set</td><td>' + r.duracionSet + ' min</td><td></td></tr>';
+            html += '<tr><td>Duracion del partido</td><td>3 sets \u00D7 ' + r.duracionSet + ' min = ' + formatMinutos(r.duracionPartido) + '</td><td></td></tr>';
+            html += '<tr><td>Canchas</td><td>' + r.canchas + ' cancha' + (r.canchas > 1 ? 's' : '') + '</td><td></td></tr>';
+            html += '<tr><td>Rondas por jornada</td><td>' + r.rondasPorJornada + ' ronda' + (r.rondasPorJornada > 1 ? 's' : '') + ' (ceil(' + r.partidosPorJornada + '/' + r.canchas + '))</td><td></td></tr>';
+            html += '<tr><td>Duracion real jornada</td><td>' + formatMinutos(r.duracionJornadaReal) + '</td><td></td></tr>';
+            html += '<tr><td>Duracion facturada jornada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + ' (bloques de ' + config.unidadFacturacion + ' min)</td><td></td></tr>';
+            html += '<tr class="subtotal"><td>Horas totales de cancha</td><td>' + formatHours(r.horasTotalesCancha) + ' (' + formatHours(r.horasFacturadasPorJornada) + ' \u00D7 ' + r.canchas + ' canchas \u00D7 ' + r.jornadas + ' jornadas)</td><td></td></tr>';
+
+            html += '<tr><td colspan="3" class="breakdown-section-label">Resumen de Costos — Liga</td></tr>';
+            html += '<tr><td>Costo canchas</td><td>' + formatHours(r.horasTotalesCancha) + ' \u00D7 ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(r.costoCancha) + '</td></tr>';
+            html += '<tr><td>Costo pelotas</td><td>' + r.totalBotes + ' botes (' + (modoLabels[config.modoPelotas] || '') + ')</td><td>' + formatCurrency(r.costoPelotas) + '</td></tr>';
+            html += '<tr class="subtotal"><td>Subtotal Liga</td><td></td><td>' + formatCurrency(r.costoLiga) + '</td></tr>';
+
+            // Elimination breakdown
+            if (r.elimResult) {
+                var e = r.elimResult;
+                var roundsDetail = e.elimConfig.rounds.map(function(rd) { return rd.partidos + ' ' + rd.label.toLowerCase(); }).join(' + ');
+                html += '<tr><td colspan="3" class="breakdown-section-label">Eliminatorias</td></tr>';
+                html += '<tr><td>Clasificados</td><td>' + e.clasificados + ' jugadores \u2014 ' + e.elimConfig.label + '</td><td></td></tr>';
+                html += '<tr><td>Partidos eliminacion</td><td>' + e.totalPartidos + ' (' + roundsDetail + ')</td><td></td></tr>';
+                html += '<tr><td>Duracion real</td><td>' + formatMinutos(e.duracionReal) + '</td><td></td></tr>';
+                html += '<tr><td>Duracion facturada</td><td>' + formatMinutos(e.duracionFacturada) + ' (bloques de ' + config.unidadFacturacion + ' min)</td><td></td></tr>';
+                html += '<tr><td>Horas cancha elim</td><td>' + formatHours(e.horasCancha) + '</td><td></td></tr>';
+                html += '<tr><td>Costo canchas elim</td><td>' + formatHours(e.horasCancha) + ' \u00D7 ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(e.costoCancha) + '</td></tr>';
+                html += '<tr><td>Costo pelotas elim</td><td>' + e.totalBotes + ' botes</td><td>' + formatCurrency(e.costoPelotas) + '</td></tr>';
+                html += '<tr class="subtotal"><td>Subtotal Eliminatorias</td><td></td><td>' + formatCurrency(e.costoTotal) + '</td></tr>';
+            }
+
+            html += '<tr class="total"><td>Costo Total' + (r.elimResult ? ' (Liga + Elim)' : '') + '</td><td></td><td>' + formatCurrency(r.costoTotal) + '</td></tr>';
+            html += '<tr class="subtotal"><td>Costo por Jugador</td><td>' + config.jugadores + ' jugadores</td><td>' + formatCurrency(r.costoJugador) + '</td></tr>';
+
+            dom.breakdownBody.innerHTML = html;
+
+            // Examples
+            actualizarEjemplos(config.precioCancha, config.precioPelotas);
+
+            // Preview
+            dom.previewJornada.innerHTML = generarJornadaPreview(config.jugadores);
+            dom.previewResumen.innerHTML = generarResumenLiga(config.jugadores, r.jornadas);
+            dom.previewElim.innerHTML = generarEliminacionPreview(config.clasificados);
+
+            guardarConfig(config);
+        }
+
+        /* ============================================================
+           EXAMPLES
+        ============================================================ */
+        function generarEjemploHTML(r) {
+            var html = '';
+            html += '<tr><td>Jornadas</td><td>' + r.jornadas + '</td></tr>';
+            html += '<tr><td>Partidos por jornada</td><td>' + r.partidosPorJornada + '</td></tr>';
+            html += '<tr><td>Total partidos liga</td><td>' + r.totalPartidos + ' (' + r.totalRotaciones + ' rotaciones)</td></tr>';
+            html += '<tr><td>Duracion real jornada</td><td>' + formatMinutos(r.duracionJornadaReal) + '</td></tr>';
+            html += '<tr><td>Duracion facturada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + '</td></tr>';
+            html += '<tr><td>Horas de cancha liga</td><td>' + formatHours(r.horasTotalesCancha) + '</td></tr>';
+            html += '<tr><td>Costo canchas liga</td><td>' + formatCurrency(r.costoCancha) + '</td></tr>';
+            html += '<tr><td>Costo pelotas liga</td><td>' + formatCurrency(r.costoPelotas) + '</td></tr>';
+            if (r.elimResult) {
+                var e = r.elimResult;
+                html += '<tr><td>Eliminatorias</td><td>' + e.elimConfig.label + '</td></tr>';
+                html += '<tr><td>Partidos elim</td><td>' + e.totalPartidos + '</td></tr>';
+                html += '<tr><td>Costo elim</td><td>' + formatCurrency(e.costoTotal) + '</td></tr>';
+            }
+            html += '<tr class="ex-total"><td>Costo total</td><td>' + formatCurrency(r.costoTotal) + '</td></tr>';
+            html += '<tr><td>Costo por jugador</td><td>' + formatCurrency(r.costoJugador) + '</td></tr>';
+            return html;
+        }
+
+        function actualizarEjemplos(precioCancha, precioPelotas) {
+            var base = { precioCancha: precioCancha, precioPelotas: precioPelotas, canchas: 2, duracionSet: 30, unidadFacturacion: 60, modoPelotas: 'porPartido', botesJornada: 0, margen: 0 };
+
+            var ej1 = calcularTotalesLiga(Object.assign({}, base, { jugadores: 16, clasificados: 8 }));
+            dom.example1Table.innerHTML = generarEjemploHTML(ej1);
+            dom.example1Title.innerHTML = '16 jugadores &mdash; Liga + Eliminatorias';
+            dom.example1Subtitle.textContent = ej1.jornadas + ' jornadas \u00B7 ' + formatMinutos(ej1.duracionPartido) + '/partido \u00B7 8 clasificados';
+
+            var ej2 = calcularTotalesLiga(Object.assign({}, base, { jugadores: 12, clasificados: 4 }));
+            dom.example2Table.innerHTML = generarEjemploHTML(ej2);
+            dom.example2Title.innerHTML = '12 jugadores &mdash; Liga + Final';
+            dom.example2Subtitle.textContent = ej2.jornadas + ' jornadas \u00B7 ' + formatMinutos(ej2.duracionPartido) + '/partido \u00B7 4 clasificados';
+        }
+
+        /* ============================================================
+           LOCAL STORAGE
+        ============================================================ */
+        function guardarConfig(config) {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(config)); } catch (e) {}
+        }
+        function cargarConfig() {
+            try {
+                var saved = localStorage.getItem(STORAGE_KEY);
+                if (!saved) return;
+                var c = JSON.parse(saved);
+                if (c.precioCancha != null) dom.precioCancha.value = c.precioCancha;
+                if (c.precioPelotas != null) dom.precioPelotas.value = c.precioPelotas;
+                if (c.jugadores != null) dom.cantidadJugadores.value = c.jugadores;
+                var canchas = c.canchas || c.canchasDisponibles;
+                if (canchas != null) dom.canchasDisponibles.value = canchas;
+                if (c.duracionSet) document.getElementById('duracionSet').value = c.duracionSet;
+                if (c.unidadFacturacion) setRadioValue('unidadFacturacion', 'factura' + c.unidadFacturacion);
+                if (c.modoPelotas) setRadioValue('modoPelotas', c.modoPelotas);
+                if (c.botesJornada != null) dom.botesJornada.value = c.botesJornada;
+                if (c.margen != null) dom.margenSlider.value = c.margen;
+                if (c.clasificados != null) dom.clasificadosElim.value = c.clasificados;
+                if (c.modoPelotas === 'personalizado') dom.customBalls.classList.add('visible');
+                actualizarJornadas();
+                if (c.jornadas != null) dom.cantidadJornadas.value = c.jornadas;
+            } catch (e) {}
+        }
+
+        /* ============================================================
+           EVENT LISTENERS
+        ============================================================ */
+        function mostrarRecalcular() {
+            dom.recalcBar.classList.add('visible');
+            dom.calcSection.classList.add('results-stale');
+        }
+        function ocultarRecalcular() {
+            dom.recalcBar.classList.remove('visible');
+            dom.calcSection.classList.remove('results-stale');
+        }
+
+        var configInputs = document.querySelectorAll('.calc-input, input[type="radio"]');
+        configInputs.forEach(function(input) {
+            if (input.id === 'margenSlider') return;
+            input.addEventListener('input', mostrarRecalcular);
+            input.addEventListener('change', mostrarRecalcular);
+        });
+
+        dom.margenSlider.addEventListener('input', actualizarResultados);
+        dom.margenSlider.addEventListener('change', actualizarResultados);
+
+        dom.recalcBtn.addEventListener('click', function() {
+            actualizarJornadas();
+            actualizarResultados();
+            ocultarRecalcular();
+        });
+
+        // Update jornadas picker when player count changes
+        dom.cantidadJugadores.addEventListener('change', function() {
+            actualizarJornadas();
+        });
+        dom.cantidadJornadas.addEventListener('change', function() {
+            actualizarJornadas();
+        });
+
+        function actualizarIndicadorDuracion() {
+            var durSet = parseInt(document.getElementById('duracionSet').value) || 30;
+            var durPartido = durSet * 3;
+            var h = Math.floor(durPartido / 60);
+            var m = durPartido % 60;
+            var label = h > 0 ? (m > 0 ? h + 'h ' + m + 'min' : h + 'h') : m + ' min';
+            dom.durationText.textContent = '1 partido = 3 sets \u00D7 ' + durSet + ' min = ' + label;
+        }
+        document.getElementById('duracionSet').addEventListener('change', actualizarIndicadorDuracion);
+
+        document.querySelectorAll('input[name="modoPelotas"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                if (this.value === 'personalizado') dom.customBalls.classList.add('visible');
+                else dom.customBalls.classList.remove('visible');
+            });
+        });
+
+        /* ============================================================
+           SCROLL REVEAL & FAQ
+        ============================================================ */
+        function revealOnScroll() {
+            var els = document.querySelectorAll('.reveal');
+            var wh = window.innerHeight;
+            els.forEach(function(el) {
+                if (el.getBoundingClientRect().top < wh - 100) el.classList.add('visible');
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = this.parentElement;
+                var answer = item.querySelector('.faq-answer');
+                var isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item.open').forEach(function(oi) {
+                    oi.classList.remove('open');
+                    oi.querySelector('.faq-answer').style.maxHeight = null;
+                    oi.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        /* ============================================================
+           INIT
+        ============================================================ */
+        cargarConfig();
+        actualizarJornadas();
+        actualizarResultados();
+    })();
+    </script>
+</body>
+</html>
