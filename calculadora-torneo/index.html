@@ -388,27 +388,76 @@
             gap: 12px;
         }
 
-        /* Validation warning */
-        .validation-warning {
+        /* Warning Modal */
+        .warning-modal-overlay {
             display: none;
-            padding: 10px 14px;
-            background: #FEF3C7;
-            border: 1px solid #FDE68A;
-            border-radius: 10px;
-            font-size: 0.8125rem;
-            color: #92400E;
-            margin-top: 8px;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
         }
-        .validation-warning.visible {
+        .warning-modal-overlay.visible {
             display: flex;
-            align-items: flex-start;
-            gap: 8px;
         }
-        .validation-warning svg {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-            margin-top: 1px;
+        .warning-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 32px 28px 24px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: modalIn 0.25s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.92) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .warning-modal-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #FEF3C7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .warning-modal-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #D97706;
+        }
+        .warning-modal-title {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        .warning-modal-text {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .warning-modal-btn {
+            display: inline-block;
+            padding: 10px 32px;
+            background: var(--green-primary);
+            color: white;
+            border: none;
+            border-radius: 100px;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .warning-modal-btn:hover {
+            background: var(--green-dark);
         }
 
         /* Results Section */
@@ -1431,10 +1480,6 @@
                         <div class="field">
                             <label class="field-label">Cantidad de parejas</label>
                             <input type="number" id="cantidadParejas" class="calc-input" min="6" max="128" step="1" value="18">
-                            <div class="validation-warning" id="parejasWarning">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                                <span id="parejasWarningText"></span>
-                            </div>
                         </div>
                         <div class="field">
                             <label class="field-label">
@@ -1766,6 +1811,18 @@
         </div>
     </footer>
 
+    <!-- Warning Modal -->
+    <div class="warning-modal-overlay" id="warningModal">
+        <div class="warning-modal">
+            <div class="warning-modal-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="warning-modal-title">Configuración no válida</div>
+            <div class="warning-modal-text" id="warningModalText"></div>
+            <button class="warning-modal-btn" id="warningModalBtn">Entendido</button>
+        </div>
+    </div>
+
     <script>
     (function() {
         'use strict';
@@ -1789,8 +1846,9 @@
             botesEliminatorias:document.getElementById('botesEliminatorias'),
             tamanoGrupo:       document.getElementById('tamanoGrupo'),
             compositionLabel:  document.getElementById('compositionLabel'),
-            parejasWarning:    document.getElementById('parejasWarning'),
-            parejasWarningText:document.getElementById('parejasWarningText'),
+            warningModal:      document.getElementById('warningModal'),
+            warningModalText:  document.getElementById('warningModalText'),
+            warningModalBtn:   document.getElementById('warningModalBtn'),
             breakdownBody:     document.getElementById('breakdownBody'),
             resPartidos:       document.getElementById('resPartidos'),
             resHoras:          document.getElementById('resHoras'),
@@ -2236,17 +2294,14 @@
 
             var r = calcularTotales(config);
 
-            // Validation
+            // Validation — show modal if config is invalid
             if (!r.valido) {
-                dom.parejasWarning.classList.add('visible');
                 var validSizes = getValidGroupSizes(config.parejas);
                 if (validSizes.length === 0) {
-                    dom.parejasWarningText.textContent = 'Se necesitan al menos 6 parejas para armar un torneo con fase de grupos.';
+                    mostrarWarningModal('Se necesitan al menos 6 parejas para armar un torneo con fase de grupos.');
                 } else {
-                    dom.parejasWarningText.textContent = 'No se pueden formar grupos validos con esta configuracion.';
+                    mostrarWarningModal('No se pueden formar grupos válidos con esta configuración.');
                 }
-            } else {
-                dom.parejasWarning.classList.remove('visible');
             }
 
             // Summary cards
@@ -2395,6 +2450,23 @@
                 }
             } catch (e) { /* silently fail */ }
         }
+
+        /* ============================================================
+           WARNING MODAL
+        ============================================================ */
+        function mostrarWarningModal(texto) {
+            dom.warningModalText.textContent = texto;
+            dom.warningModal.classList.add('visible');
+        }
+
+        function cerrarWarningModal() {
+            dom.warningModal.classList.remove('visible');
+        }
+
+        dom.warningModalBtn.addEventListener('click', cerrarWarningModal);
+        dom.warningModal.addEventListener('click', function(e) {
+            if (e.target === dom.warningModal) cerrarWarningModal();
+        });
 
         /* ============================================================
            EVENT LISTENERS
