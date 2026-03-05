@@ -1160,19 +1160,6 @@
                             <input type="number" id="canchasDisponibles" class="calc-input" min="1" max="8" step="1" value="2">
                         </div>
                         <div class="field">
-                            <label class="field-label">Unidad de facturacion</label>
-                            <div class="segment-group">
-                                <div class="segment-option">
-                                    <input type="radio" name="unidadFacturacion" id="factura30" value="30">
-                                    <label for="factura30">30 min</label>
-                                </div>
-                                <div class="segment-option">
-                                    <input type="radio" name="unidadFacturacion" id="factura60" value="60" checked>
-                                    <label for="factura60">1 hora</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="field">
                             <label class="field-label">
                                 Clasificados a eliminatorias
                                 <span class="tooltip">
@@ -1907,7 +1894,7 @@
                 canchas: parseInt(dom.canchasDisponibles.value) || 1,
                 jornadas: parseInt(dom.cantidadJornadas.value) || jornadasMax(parseInt(dom.cantidadJugadores.value) || 16),
                 duracionSet: parseInt(document.getElementById('duracionSet').value) || 30,
-                unidadFacturacion: parseInt(getRadioValue('unidadFacturacion')) || 60,
+                unidadFacturacion: 30,
                 modoPelotas: getRadioValue('modoPelotas') || 'porPartido',
                 botesJornada: parseInt(dom.botesJornada.value) || 0,
                 margen: parseInt(dom.margenSlider.value) || 0,
@@ -1968,7 +1955,7 @@
             html += '<tr><td>Canchas</td><td>' + r.canchas + ' cancha' + (r.canchas > 1 ? 's' : '') + '</td><td></td></tr>';
             html += '<tr><td>Rondas por jornada</td><td>' + r.rondasPorJornada + ' ronda' + (r.rondasPorJornada > 1 ? 's' : '') + ' (ceil(' + r.partidosPorJornada + '/' + r.canchas + '))</td><td></td></tr>';
             html += '<tr><td>Duracion real jornada</td><td>' + formatMinutos(r.duracionJornadaReal) + '</td><td></td></tr>';
-            html += '<tr><td>Duracion facturada jornada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + ' (bloques de ' + config.unidadFacturacion + ' min)</td><td></td></tr>';
+            html += '<tr><td>Duracion facturada jornada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + ' (bloques de 30 min)</td><td></td></tr>';
             html += '<tr class="subtotal"><td>Horas totales de cancha</td><td>' + formatHours(r.horasTotalesCancha) + ' (' + formatHours(r.horasFacturadasPorJornada) + ' \u00D7 ' + r.canchas + ' canchas \u00D7 ' + r.jornadas + ' jornadas)</td><td></td></tr>';
 
             html += '<tr><td colspan="3" class="breakdown-section-label">Resumen de Costos — Liga</td></tr>';
@@ -1984,7 +1971,7 @@
                 html += '<tr><td>Clasificados</td><td>' + e.clasificados + ' jugadores \u2014 ' + e.elimConfig.label + '</td><td></td></tr>';
                 html += '<tr><td>Partidos eliminacion</td><td>' + e.totalPartidos + ' (' + roundsDetail + ')</td><td></td></tr>';
                 html += '<tr><td>Duracion real</td><td>' + formatMinutos(e.duracionReal) + '</td><td></td></tr>';
-                html += '<tr><td>Duracion facturada</td><td>' + formatMinutos(e.duracionFacturada) + ' (bloques de ' + config.unidadFacturacion + ' min)</td><td></td></tr>';
+                html += '<tr><td>Duracion facturada</td><td>' + formatMinutos(e.duracionFacturada) + ' (bloques de 30 min)</td><td></td></tr>';
                 html += '<tr><td>Horas cancha elim</td><td>' + formatHours(e.horasCancha) + '</td><td></td></tr>';
                 html += '<tr><td>Costo canchas elim</td><td>' + formatHours(e.horasCancha) + ' \u00D7 ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(e.costoCancha) + '</td></tr>';
                 html += '<tr><td>Costo pelotas elim</td><td>' + e.totalBotes + ' botes</td><td>' + formatCurrency(e.costoPelotas) + '</td></tr>';
@@ -2062,7 +2049,7 @@
         }
 
         function actualizarEjemplos(precioCancha, precioPelotas) {
-            var base = { precioCancha: precioCancha, precioPelotas: precioPelotas, canchas: 2, duracionSet: 30, unidadFacturacion: 60, modoPelotas: 'porPartido', botesJornada: 0, margen: 0, gastosCustom: [] };
+            var base = { precioCancha: precioCancha, precioPelotas: precioPelotas, canchas: 2, duracionSet: 30, unidadFacturacion: 30, modoPelotas: 'porPartido', botesJornada: 0, margen: 0, gastosCustom: [] };
 
             var ej1 = calcularTotalesLiga(Object.assign({}, base, { jugadores: 16, clasificados: 8 }));
             dom.example1Table.innerHTML = generarEjemploHTML(ej1);
@@ -2092,7 +2079,6 @@
                 var canchas = c.canchas || c.canchasDisponibles;
                 if (canchas != null) dom.canchasDisponibles.value = canchas;
                 if (c.duracionSet) document.getElementById('duracionSet').value = c.duracionSet;
-                if (c.unidadFacturacion) setRadioValue('unidadFacturacion', 'factura' + c.unidadFacturacion);
                 if (c.modoPelotas) setRadioValue('modoPelotas', c.modoPelotas);
                 if (c.botesJornada != null) dom.botesJornada.value = c.botesJornada;
                 if (c.margen != null) dom.margenSlider.value = c.margen;
