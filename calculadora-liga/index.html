@@ -883,6 +883,157 @@
             width: 24px;
             height: 24px;
         }
+
+        /* Custom Expenses */
+        .custom-expenses {
+            grid-column: 1 / -1;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s ease;
+        }
+        .custom-expenses:hover { box-shadow: var(--shadow-md); }
+        .expense-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .expense-row .expense-name {
+            flex: 1;
+            min-width: 0;
+            padding: 10px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            -moz-appearance: textfield;
+        }
+        .expense-row .expense-name:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            box-shadow: 0 0 0 3px rgba(0, 210, 106, 0.1);
+        }
+        .expense-amount-wrap {
+            position: relative;
+            width: 110px;
+            flex-shrink: 0;
+        }
+        .expense-amount-wrap::before {
+            content: '$';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-light);
+            pointer-events: none;
+        }
+        .expense-amount-wrap .expense-amount {
+            width: 100%;
+            padding: 10px 14px 10px 28px;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            -moz-appearance: textfield;
+        }
+        .expense-amount-wrap .expense-amount::-webkit-outer-spin-button,
+        .expense-amount-wrap .expense-amount::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .expense-amount-wrap .expense-amount:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            box-shadow: 0 0 0 3px rgba(0, 210, 106, 0.1);
+        }
+        .expense-type-toggle {
+            display: flex;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .expense-type-toggle .etoggle-opt {
+            padding: 10px 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            border: none;
+            background: white;
+            font-family: var(--font-display);
+        }
+        .expense-type-toggle .etoggle-opt:first-child { border-right: 1px solid var(--border-light); }
+        .expense-type-toggle .etoggle-opt.active {
+            background: var(--green-primary);
+            color: white;
+            font-weight: 600;
+        }
+        .expense-remove-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: white;
+            color: var(--text-light);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            font-family: var(--font-display);
+        }
+        .expense-remove-btn:hover {
+            background: #FEE2E2;
+            border-color: #FCA5A5;
+            color: #DC2626;
+        }
+        .expense-add-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 2px dashed var(--border-light);
+            border-radius: 12px;
+            background: transparent;
+            color: var(--green-primary);
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+        .expense-add-btn:hover {
+            border-color: var(--green-primary);
+            background: #F0FDF4;
+        }
+        .expense-empty {
+            font-size: 0.8125rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+        .expense-empty.hidden { display: none; }
+        @media (max-width: 768px) {
+            .expense-row { flex-wrap: wrap; }
+            .expense-row .expense-name { flex: 1 1 100%; }
+            .expense-amount-wrap { width: 100px; }
+            .expense-type-toggle .etoggle-opt { padding: 10px 8px; font-size: 0.6875rem; }
+        }
+        @media (max-width: 480px) {
+            .expense-amount-wrap { width: 90px; }
+        }
     </style>
 </head>
 <body>
@@ -1088,6 +1239,19 @@
                                 <strong>Personalizado:</strong> Define botes por jornada.
                             </label>
                         </div>
+                    </div>
+
+                    <!-- Custom Expenses (inside calc-inputs grid, spans full width) -->
+                    <div class="custom-expenses input-card reveal">
+                        <div class="input-card-header">
+                            <div class="input-card-icon" style="background: linear-gradient(135deg, #FEE2E2, #FECACA);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            </div>
+                            <div class="input-card-title">Otros Gastos</div>
+                        </div>
+                        <p class="expense-empty" id="expenseEmpty">Agrega gastos como premios, playeras, agua, trofeos, etc.</p>
+                        <div id="expensesList"></div>
+                        <button type="button" class="expense-add-btn" id="addExpenseBtn">+ Agregar gasto</button>
                     </div>
                 </div>
 
@@ -1304,6 +1468,9 @@
             8: { rounds: [{ partidos: 2, label: 'Semifinales' }, { partidos: 1, label: 'Final' }], totalPartidos: 3, label: 'Semis + Final' }
         };
 
+        var gastosCustom = [];
+        var gastoIdCounter = 0;
+
         /* ============================================================
            DOM REFERENCES
         ============================================================ */
@@ -1340,7 +1507,10 @@
             previewJornada:      document.getElementById('previewJornada'),
             previewResumen:      document.getElementById('previewResumenContainer'),
             clasificadosElim:    document.getElementById('clasificadosElim'),
-            previewElim:         document.getElementById('previewElimContainer')
+            previewElim:         document.getElementById('previewElimContainer'),
+            expensesList:        document.getElementById('expensesList'),
+            addExpenseBtn:       document.getElementById('addExpenseBtn'),
+            expenseEmpty:        document.getElementById('expenseEmpty')
         };
 
         /* ============================================================
@@ -1360,6 +1530,57 @@
         function setRadioValue(name, value) {
             var el = document.getElementById(value) || document.querySelector('input[name="' + name + '"][value="' + value + '"]');
             if (el) el.checked = true;
+        }
+
+        /* ============================================================
+           CUSTOM EXPENSES CRUD
+        ============================================================ */
+        function agregarGasto(nombre, monto, tipo) {
+            gastosCustom.push({ id: gastoIdCounter++, nombre: nombre || '', monto: monto || 0, tipo: tipo || 'fijo' });
+            renderizarGastos();
+        }
+
+        function eliminarGasto(id) {
+            gastosCustom = gastosCustom.filter(function(g) { return g.id !== id; });
+            renderizarGastos();
+        }
+
+        function renderizarGastos() {
+            var html = '';
+            for (var i = 0; i < gastosCustom.length; i++) {
+                var g = gastosCustom[i];
+                var activeFijo = g.tipo === 'fijo' ? ' active' : '';
+                var activePJ = g.tipo === 'porJugador' ? ' active' : '';
+                html += '<div class="expense-row" data-id="' + g.id + '">';
+                html += '<input type="text" class="expense-name" placeholder="Ej: Premios" value="' + (g.nombre || '').replace(/"/g, '&quot;') + '">';
+                html += '<div class="expense-amount-wrap"><input type="number" class="expense-amount" min="0" step="10" value="' + (g.monto || 0) + '"></div>';
+                html += '<div class="expense-type-toggle"><button type="button" class="etoggle-opt' + activePJ + '" data-tipo="porJugador">Por jugador</button><button type="button" class="etoggle-opt' + activeFijo + '" data-tipo="fijo">Fijo</button></div>';
+                html += '<button type="button" class="expense-remove-btn" data-id="' + g.id + '">&times;</button>';
+                html += '</div>';
+            }
+            dom.expensesList.innerHTML = html;
+            if (gastosCustom.length > 0) {
+                dom.expenseEmpty.classList.add('hidden');
+            } else {
+                dom.expenseEmpty.classList.remove('hidden');
+            }
+        }
+
+        function leerGastosDelDOM() {
+            var rows = dom.expensesList.querySelectorAll('.expense-row');
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                var id = parseInt(row.getAttribute('data-id'));
+                var gasto = null;
+                for (var j = 0; j < gastosCustom.length; j++) {
+                    if (gastosCustom[j].id === id) { gasto = gastosCustom[j]; break; }
+                }
+                if (!gasto) continue;
+                gasto.nombre = row.querySelector('.expense-name').value;
+                gasto.monto = parseFloat(row.querySelector('.expense-amount').value) || 0;
+                var activeBtn = row.querySelector('.etoggle-opt.active');
+                if (activeBtn) gasto.tipo = activeBtn.getAttribute('data-tipo');
+            }
         }
 
         /* ============================================================
@@ -1450,7 +1671,18 @@
 
             // === ELIMINACION ===
             var elimResult = calcularEliminacion(config, { duracionPartido: duracionSet * 3 });
-            var costoTotal = costoLiga + (elimResult ? elimResult.costoTotal : 0);
+
+            // === GASTOS CUSTOM ===
+            var customGastos = config.gastosCustom || [];
+            var gastosCustomTotal = 0;
+            for (var i = 0; i < customGastos.length; i++) {
+                var g = customGastos[i];
+                if (g.monto > 0) {
+                    gastosCustomTotal += (g.tipo === 'porJugador') ? g.monto * jugadores : g.monto;
+                }
+            }
+
+            var costoTotal = costoLiga + (elimResult ? elimResult.costoTotal : 0) + gastosCustomTotal;
             var costoJugador = jugadores > 0 ? costoTotal / jugadores : 0;
             var precioSugerido = costoJugador * (1 + config.margen / 100);
             var ingresoTotal = precioSugerido * jugadores;
@@ -1477,6 +1709,8 @@
                 costoPelotas: costoPelotas,
                 costoLiga: costoLiga,
                 elimResult: elimResult,
+                gastosCustom: customGastos,
+                gastosCustomTotal: gastosCustomTotal,
                 costoTotal: costoTotal,
                 costoJugador: costoJugador,
                 precioSugerido: precioSugerido,
@@ -1677,7 +1911,8 @@
                 modoPelotas: getRadioValue('modoPelotas') || 'porPartido',
                 botesJornada: parseInt(dom.botesJornada.value) || 0,
                 margen: parseInt(dom.margenSlider.value) || 0,
-                clasificados: parseInt(dom.clasificadosElim.value) || 0
+                clasificados: parseInt(dom.clasificadosElim.value) || 0,
+                gastosCustom: gastosCustom
             };
         }
 
@@ -1756,7 +1991,37 @@
                 html += '<tr class="subtotal"><td>Subtotal Eliminatorias</td><td></td><td>' + formatCurrency(e.costoTotal) + '</td></tr>';
             }
 
-            html += '<tr class="total"><td>Costo Total' + (r.elimResult ? ' (Liga + Elim)' : '') + '</td><td></td><td>' + formatCurrency(r.costoTotal) + '</td></tr>';
+            // Custom expenses breakdown
+            if (r.gastosCustom && r.gastosCustom.length > 0) {
+                var hasGastos = false;
+                for (var gi = 0; gi < r.gastosCustom.length; gi++) {
+                    if (r.gastosCustom[gi].monto > 0) { hasGastos = true; break; }
+                }
+                if (hasGastos) {
+                    html += '<tr><td colspan="3" class="breakdown-section-label">Otros Gastos</td></tr>';
+                    for (var gi = 0; gi < r.gastosCustom.length; gi++) {
+                        var g = r.gastosCustom[gi];
+                        if (g.monto <= 0) continue;
+                        var gNombre = g.nombre || 'Gasto ' + (gi + 1);
+                        var gDetalle, gValor;
+                        if (g.tipo === 'porJugador') {
+                            gValor = g.monto * config.jugadores;
+                            gDetalle = formatCurrency(g.monto) + ' \u00D7 ' + config.jugadores + ' jugadores';
+                        } else {
+                            gValor = g.monto;
+                            gDetalle = 'Gasto fijo';
+                        }
+                        html += '<tr><td>' + gNombre + '</td><td>' + gDetalle + '</td><td>' + formatCurrency(gValor) + '</td></tr>';
+                    }
+                    html += '<tr class="subtotal"><td>Subtotal Otros Gastos</td><td></td><td>' + formatCurrency(r.gastosCustomTotal) + '</td></tr>';
+                }
+            }
+
+            var totalLabel = 'Costo Total';
+            if (r.elimResult && r.gastosCustomTotal > 0) totalLabel = 'Costo Total (Liga + Elim + Otros)';
+            else if (r.elimResult) totalLabel = 'Costo Total (Liga + Elim)';
+            else if (r.gastosCustomTotal > 0) totalLabel = 'Costo Total (Liga + Otros)';
+            html += '<tr class="total"><td>' + totalLabel + '</td><td></td><td>' + formatCurrency(r.costoTotal) + '</td></tr>';
             html += '<tr class="subtotal"><td>Costo por Jugador</td><td>' + config.jugadores + ' jugadores</td><td>' + formatCurrency(r.costoJugador) + '</td></tr>';
 
             dom.breakdownBody.innerHTML = html;
@@ -1797,7 +2062,7 @@
         }
 
         function actualizarEjemplos(precioCancha, precioPelotas) {
-            var base = { precioCancha: precioCancha, precioPelotas: precioPelotas, canchas: 2, duracionSet: 30, unidadFacturacion: 60, modoPelotas: 'porPartido', botesJornada: 0, margen: 0 };
+            var base = { precioCancha: precioCancha, precioPelotas: precioPelotas, canchas: 2, duracionSet: 30, unidadFacturacion: 60, modoPelotas: 'porPartido', botesJornada: 0, margen: 0, gastosCustom: [] };
 
             var ej1 = calcularTotalesLiga(Object.assign({}, base, { jugadores: 16, clasificados: 8 }));
             dom.example1Table.innerHTML = generarEjemploHTML(ej1);
@@ -1833,6 +2098,11 @@
                 if (c.margen != null) dom.margenSlider.value = c.margen;
                 if (c.clasificados != null) dom.clasificadosElim.value = c.clasificados;
                 if (c.modoPelotas === 'personalizado') dom.customBalls.classList.add('visible');
+                if (c.gastosCustom && Array.isArray(c.gastosCustom)) {
+                    gastosCustom = c.gastosCustom;
+                    gastoIdCounter = gastosCustom.reduce(function(max, g) { return Math.max(max, g.id || 0); }, 0) + 1;
+                    renderizarGastos();
+                }
                 actualizarJornadas();
                 if (c.jornadas != null) dom.cantidadJornadas.value = c.jornadas;
             } catch (e) {}
@@ -1861,6 +2131,7 @@
         dom.margenSlider.addEventListener('change', actualizarResultados);
 
         dom.recalcBtn.addEventListener('click', function() {
+            leerGastosDelDOM();
             actualizarJornadas();
             actualizarResultados();
             ocultarRecalcular();
@@ -1883,6 +2154,39 @@
             dom.durationText.textContent = '1 partido = 3 sets \u00D7 ' + durSet + ' min = ' + label;
         }
         document.getElementById('duracionSet').addEventListener('change', actualizarIndicadorDuracion);
+
+        // Custom expenses events
+        dom.addExpenseBtn.addEventListener('click', function() {
+            agregarGasto('', 0, 'fijo');
+            mostrarRecalcular();
+        });
+
+        dom.expensesList.addEventListener('input', function(e) {
+            if (e.target.classList.contains('expense-name') || e.target.classList.contains('expense-amount')) {
+                leerGastosDelDOM();
+                mostrarRecalcular();
+            }
+        });
+
+        dom.expensesList.addEventListener('click', function(e) {
+            // Remove button
+            var removeBtn = e.target.closest('.expense-remove-btn');
+            if (removeBtn) {
+                var id = parseInt(removeBtn.getAttribute('data-id'));
+                eliminarGasto(id);
+                mostrarRecalcular();
+                return;
+            }
+            // Type toggle
+            var toggleOpt = e.target.closest('.etoggle-opt');
+            if (toggleOpt) {
+                var toggle = toggleOpt.parentElement;
+                toggle.querySelectorAll('.etoggle-opt').forEach(function(btn) { btn.classList.remove('active'); });
+                toggleOpt.classList.add('active');
+                leerGastosDelDOM();
+                mostrarRecalcular();
+            }
+        });
 
         document.querySelectorAll('input[name="modoPelotas"]').forEach(function(radio) {
             radio.addEventListener('change', function() {
