@@ -74,7 +74,7 @@
                 "name": "Que formato de torneo es mejor para padel amateur?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "El formato mas popular es fase de grupos + eliminacion directa. Los grupos de 3 son ideales para torneos rapidos (cada pareja juega 2 partidos), mientras que grupos de 4 ofrecen mas partidos (3 por pareja). El formato express (6 u 8 juegos) permite completar mas partidos en menos tiempo."
+                    "text": "El formato mas popular es fase de grupos + eliminacion directa. Los grupos de 3 son ideales para torneos rapidos (cada pareja juega 2 partidos), mientras que grupos de 4 ofrecen mas partidos (3 por pareja). Puedes personalizar la duracion eligiendo sets y puntos por set: 3 sets x 6 puntos dura ~1.5h (clasico), 1 set x 6 puntos dura ~30 min (express)."
                 }
             },
             {
@@ -344,6 +344,29 @@
             color: white;
             border-color: var(--green-primary);
             font-weight: 600;
+        }
+
+        /* Duration indicator */
+        .duration-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .duration-indicator svg {
+            flex-shrink: 0;
+        }
+
+        /* Composition label */
+        .composition-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-top: 6px;
+            min-height: 1.2em;
         }
 
         /* Custom balls inputs */
@@ -1415,44 +1438,68 @@
                         </div>
                         <div class="field">
                             <label class="field-label">
-                                Tamano de grupos
+                                Tamaño de grupos
                                 <span class="tooltip">
                                     <span class="tooltip-icon">?</span>
-                                    <span class="tooltip-text">Grupos de 3: cada pareja juega 3 partidos. Grupos de 4: cada pareja juega 6 partidos.</span>
+                                    <span class="tooltip-text">Elige cuantas parejas por grupo. El sistema distribuye los sobrantes automaticamente.</span>
                                 </span>
                             </label>
+                            <select id="tamanoGrupo" class="calc-input">
+                                <option value="3" selected>3 parejas por grupo</option>
+                                <option value="4">4 parejas por grupo</option>
+                            </select>
+                            <div class="composition-label" id="compositionLabel"></div>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">Sets por partido</label>
                             <div class="segment-group">
                                 <div class="segment-option">
-                                    <input type="radio" name="tamanoGrupo" id="grupo3" value="3" checked>
-                                    <label for="grupo3">Grupos de 3</label>
+                                    <input type="radio" name="sets" id="sets1" value="1">
+                                    <label for="sets1">1 set</label>
                                 </div>
                                 <div class="segment-option">
-                                    <input type="radio" name="tamanoGrupo" id="grupo4" value="4">
-                                    <label for="grupo4">Grupos de 4</label>
+                                    <input type="radio" name="sets" id="sets2" value="2">
+                                    <label for="sets2">2 sets</label>
+                                </div>
+                                <div class="segment-option">
+                                    <input type="radio" name="sets" id="sets3" value="3" checked>
+                                    <label for="sets3">3 sets</label>
                                 </div>
                             </div>
                         </div>
                         <div class="field">
                             <label class="field-label">
-                                Tipo de torneo
+                                Puntos por set
                                 <span class="tooltip">
                                     <span class="tooltip-icon">?</span>
-                                    <span class="tooltip-text">Regular: 3 sets (1.5h). Express 6: 1 set a 6 juegos (30 min). Express 8: 1 set a 8 juegos (45 min).</span>
+                                    <span class="tooltip-text">Cantidad de puntos/juegos que se juegan en cada set. 6 puntos equivalen a ~30 minutos.</span>
                                 </span>
                             </label>
                             <div class="segment-group">
                                 <div class="segment-option">
-                                    <input type="radio" name="tipoTorneo" id="regular" value="regular" checked>
-                                    <label for="regular">Regular</label>
+                                    <input type="radio" name="puntosPorSet" id="pts6" value="6" checked>
+                                    <label for="pts6">6</label>
                                 </div>
                                 <div class="segment-option">
-                                    <input type="radio" name="tipoTorneo" id="express6" value="express6">
-                                    <label for="express6">Express 6</label>
+                                    <input type="radio" name="puntosPorSet" id="pts8" value="8">
+                                    <label for="pts8">8</label>
                                 </div>
                                 <div class="segment-option">
-                                    <input type="radio" name="tipoTorneo" id="express8" value="express8">
-                                    <label for="express8">Express 8</label>
+                                    <input type="radio" name="puntosPorSet" id="pts12" value="12">
+                                    <label for="pts12">12</label>
                                 </div>
+                                <div class="segment-option">
+                                    <input type="radio" name="puntosPorSet" id="pts16" value="16">
+                                    <label for="pts16">16</label>
+                                </div>
+                                <div class="segment-option">
+                                    <input type="radio" name="puntosPorSet" id="pts24" value="24">
+                                    <label for="pts24">24</label>
+                                </div>
+                            </div>
+                            <div class="duration-indicator" id="durationIndicator">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span id="durationText">~90 min por partido</span>
                             </div>
                         </div>
                     </div>
@@ -1620,22 +1667,22 @@
                     <p>Compara costos entre formatos populares. Los precios se recalculan con tus costos base.</p>
                 </div>
                 <div class="examples-grid">
-                    <!-- Example 1: Regular Groups of 3 -->
+                    <!-- Example 1: 3 sets x 6 pts, Groups of 3 -->
                     <div class="example-card reveal">
                         <div class="example-card-header">
                             <div class="example-card-tag">Ejemplo 1</div>
-                            <div class="example-card-title">Torneo Regular &mdash; Grupos de 3</div>
-                            <div class="example-card-subtitle">12 parejas &middot; 3 sets &middot; 1 bote por partido</div>
+                            <div class="example-card-title" id="example1Title">3 sets &times; 6 pts &mdash; Grupos de 3</div>
+                            <div class="example-card-subtitle" id="example1Subtitle">12 parejas &middot; 1.5h por partido &middot; 1 bote por partido</div>
                         </div>
                         <table class="example-table" id="example1Table">
                         </table>
                     </div>
-                    <!-- Example 2: Express Groups of 4 -->
+                    <!-- Example 2: 1 set x 6 pts, Groups of 4 -->
                     <div class="example-card reveal">
                         <div class="example-card-header">
                             <div class="example-card-tag">Ejemplo 2</div>
-                            <div class="example-card-title">Torneo Express 6 &mdash; Grupos de 4</div>
-                            <div class="example-card-subtitle">16 parejas &middot; 1 set a 6 juegos &middot; 1 bote por partido</div>
+                            <div class="example-card-title" id="example2Title">1 set &times; 6 pts &mdash; Grupos de 4</div>
+                            <div class="example-card-subtitle" id="example2Subtitle">16 parejas &middot; 0.5h por partido &middot; 1 bote por partido</div>
                         </div>
                         <table class="example-table" id="example2Table">
                         </table>
@@ -1685,7 +1732,7 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <div class="faq-answer-inner">El formato mas popular es fase de grupos + eliminacion directa. Los grupos de 3 son ideales para torneos rapidos donde cada pareja juega al menos 2 partidos, mientras que grupos de 4 ofrecen mas partidos (3 por pareja) garantizando mas tiempo de juego. El formato Express (6 u 8 juegos por partido) permite completar mas partidos en menos horas de cancha.</div>
+                            <div class="faq-answer-inner">El formato mas popular es fase de grupos + eliminacion directa. Los grupos de 3 son ideales para torneos rapidos donde cada pareja juega al menos 2 partidos, mientras que grupos de 4 ofrecen mas partidos (3 por pareja) garantizando mas tiempo de juego. Puedes personalizar la duracion de cada partido eligiendo cuantos sets y puntos por set se juegan: por ejemplo, 3 sets x 6 puntos dura ~1.5h (formato clasico), mientras que 1 set x 6 puntos dura solo ~30 min (formato express).</div>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1736,7 +1783,7 @@
         /* ============================================================
            STORAGE KEY
         ============================================================ */
-        var STORAGE_KEY = 'courtbit_calc_torneo_v3';
+        var STORAGE_KEY = 'courtbit_calc_torneo_v4';
 
         /* ============================================================
            DOM REFERENCES
@@ -1750,6 +1797,8 @@
             customBalls:       document.getElementById('customBalls'),
             botesGrupos:       document.getElementById('botesGrupos'),
             botesEliminatorias:document.getElementById('botesEliminatorias'),
+            tamanoGrupo:       document.getElementById('tamanoGrupo'),
+            compositionLabel:  document.getElementById('compositionLabel'),
             parejasWarning:    document.getElementById('parejasWarning'),
             parejasWarningText:document.getElementById('parejasWarningText'),
             breakdownBody:     document.getElementById('breakdownBody'),
@@ -1760,8 +1809,14 @@
             resPrecioSugerido: document.getElementById('resPrecioSugerido'),
             resIngresoTotal:   document.getElementById('resIngresoTotal'),
             resGanancia:       document.getElementById('resGanancia'),
+            durationIndicator: document.getElementById('durationIndicator'),
+            durationText:      document.getElementById('durationText'),
             example1Table:     document.getElementById('example1Table'),
+            example1Title:     document.getElementById('example1Title'),
+            example1Subtitle:  document.getElementById('example1Subtitle'),
             example2Table:     document.getElementById('example2Table'),
+            example2Title:     document.getElementById('example2Title'),
+            example2Subtitle:  document.getElementById('example2Subtitle'),
             recalcBar:         document.getElementById('recalcBar'),
             recalcBtn:         document.getElementById('recalcBtn'),
             calcSection:       document.querySelector('.calculator .container'),
@@ -1792,28 +1847,139 @@
         }
 
         /* ============================================================
+           GROUP FORMATION (ported from Courtbit-Dashboard)
+        ============================================================ */
+
+        function roundRobin(n) { return (n * (n - 1)) / 2; }
+
+        /**
+         * Computes group formation from a desired group size.
+         * Extra teams are distributed across the last groups (+1 each).
+         */
+        function computeGroupsFromSize(teamCount, groupSize) {
+            if (teamCount < 4) return { groupCount: 0, groupSizes: [] };
+            if (groupSize >= teamCount) return { groupCount: 1, groupSizes: [teamCount] };
+            if (groupSize < 2) return { groupCount: 0, groupSizes: [] };
+
+            var groupCount = Math.floor(teamCount / groupSize);
+            var remainder = teamCount % groupSize;
+            var groupSizes = [];
+            for (var i = 0; i < groupCount; i++) groupSizes.push(groupSize);
+            for (var j = 0; j < remainder; j++) {
+                groupSizes[groupCount - 1 - j] += 1;
+            }
+            // Validate: no group < 2 or > 8
+            for (var k = 0; k < groupSizes.length; k++) {
+                if (groupSizes[k] < 2 || groupSizes[k] > 8) return { groupCount: 0, groupSizes: [] };
+            }
+            return { groupCount: groupSizes.length, groupSizes: groupSizes };
+        }
+
+        /**
+         * Returns valid group sizes (3-8) for a given team count.
+         */
+        function getValidGroupSizes(teamCount) {
+            var sizes = [];
+            var maxSize = Math.min(teamCount, 8);
+            for (var size = 3; size <= maxSize; size++) {
+                var formation = computeGroupsFromSize(teamCount, size);
+                if (formation.groupCount >= 2) sizes.push(size);
+            }
+            return sizes;
+        }
+
+        /**
+         * Builds human-readable composition label from group sizes.
+         * E.g. [3, 3, 4] → "2 grupos de 3 + 1 grupo de 4"
+         */
+        function buildCompositionLabel(groupSizes) {
+            var counts = {};
+            for (var i = 0; i < groupSizes.length; i++) {
+                var s = groupSizes[i];
+                counts[s] = (counts[s] || 0) + 1;
+            }
+            var keys = Object.keys(counts).sort(function(a, b) { return a - b; });
+            var parts = [];
+            for (var j = 0; j < keys.length; j++) {
+                var size = keys[j];
+                var count = counts[size];
+                parts.push(count + ' grupo' + (count > 1 ? 's' : '') + ' de ' + size);
+            }
+            return parts.join(' + ');
+        }
+
+        /**
+         * Updates the group size picker options based on team count.
+         */
+        function actualizarOpcionesGrupo(parejas) {
+            var validSizes = getValidGroupSizes(parejas);
+            var currentValue = parseInt(dom.tamanoGrupo.value) || 3;
+
+            dom.tamanoGrupo.innerHTML = '';
+            for (var i = 0; i < validSizes.length; i++) {
+                var opt = document.createElement('option');
+                opt.value = validSizes[i];
+                opt.textContent = validSizes[i] + ' parejas por grupo';
+                dom.tamanoGrupo.appendChild(opt);
+            }
+
+            // Keep current selection if still valid, otherwise pick first
+            if (validSizes.indexOf(currentValue) !== -1) {
+                dom.tamanoGrupo.value = currentValue;
+            } else if (validSizes.length > 0) {
+                dom.tamanoGrupo.value = validSizes[0];
+            }
+
+            // Update composition label
+            actualizarCompositionLabel(parejas, parseInt(dom.tamanoGrupo.value) || 3);
+        }
+
+        function actualizarCompositionLabel(parejas, tamanoGrupo) {
+            var formation = computeGroupsFromSize(parejas, tamanoGrupo);
+            if (formation.groupCount >= 2) {
+                dom.compositionLabel.textContent = buildCompositionLabel(formation.groupSizes);
+            } else {
+                dom.compositionLabel.textContent = '';
+            }
+        }
+
+        /* ============================================================
            CORE CALCULATION FUNCTIONS
         ============================================================ */
 
         /**
-         * Calcula datos de la fase de grupos.
+         * Calcula datos de la fase de grupos con soporte para grupos mixtos.
          * @param {number} parejas - Cantidad total de parejas
-         * @param {number} tamanoGrupo - Parejas por grupo (3 o 4)
-         * @returns {{ numGrupos: number, partidosPorGrupo: number, totalPartidosGrupos: number, clasificados: number, valido: boolean }}
+         * @param {number} tamanoGrupo - Tamaño base deseado (3-8)
+         * @returns {{ numGrupos: number, groupSizes: number[], totalPartidosGrupos: number, clasificados: number, valido: boolean, compositionLabel: string }}
          */
         function calcularGrupos(parejas, tamanoGrupo) {
-            var numGrupos = Math.floor(parejas / tamanoGrupo);
-            var partidosPorGrupo = tamanoGrupo === 3 ? 3 : 6;
-            var totalPartidosGrupos = numGrupos * partidosPorGrupo;
-            var clasificados = numGrupos * 2;
-            var valido = parejas % tamanoGrupo === 0 && numGrupos >= 2;
+            var formation = computeGroupsFromSize(parejas, tamanoGrupo);
+            if (formation.groupCount < 2) {
+                return {
+                    numGrupos: 0,
+                    groupSizes: [],
+                    totalPartidosGrupos: 0,
+                    clasificados: 0,
+                    valido: false,
+                    compositionLabel: ''
+                };
+            }
+
+            var totalPartidosGrupos = 0;
+            for (var i = 0; i < formation.groupSizes.length; i++) {
+                totalPartidosGrupos += roundRobin(formation.groupSizes[i]);
+            }
+
+            var clasificados = formation.groupCount * 2;
 
             return {
-                numGrupos: numGrupos,
-                partidosPorGrupo: partidosPorGrupo,
+                numGrupos: formation.groupCount,
+                groupSizes: formation.groupSizes,
                 totalPartidosGrupos: totalPartidosGrupos,
                 clasificados: clasificados,
-                valido: valido
+                valido: true,
+                compositionLabel: buildCompositionLabel(formation.groupSizes)
             };
         }
 
@@ -1836,8 +2002,10 @@
          * @returns {{ totalHoras: number, costoCancha: number }}
          */
         function calcularCostosCancha(totalPartidos, duracion, precioHora) {
-            var totalHoras = totalPartidos * duracion;
+            var horasExactas = totalPartidos * duracion;
+            var totalHoras = Math.ceil(horasExactas);
             return {
+                horasExactas: horasExactas,
                 totalHoras: totalHoras,
                 costoCancha: totalHoras * precioHora
             };
@@ -1875,8 +2043,10 @@
          * @returns {object} Todos los resultados calculados
          */
         function calcularTotales(config) {
-            var duraciones = { regular: 1.5, express6: 0.5, express8: 0.75 };
-            var duracion = duraciones[config.tipoTorneo] || 1.5;
+            var sets = config.sets || 3;
+            var puntosPorSet = config.puntosPorSet || 6;
+            var minsPorSet = puntosPorSet * 5;
+            var duracion = sets * minsPorSet / 60;
 
             var grupos = calcularGrupos(config.parejas, config.tamanoGrupo);
             var elim = calcularEliminacion(grupos.clasificados);
@@ -1895,12 +2065,14 @@
 
             return {
                 numGrupos: grupos.numGrupos,
-                partidosPorGrupo: grupos.partidosPorGrupo,
+                groupSizes: grupos.groupSizes,
+                compositionLabel: grupos.compositionLabel,
                 totalPartidosGrupos: grupos.totalPartidosGrupos,
                 clasificados: grupos.clasificados,
                 partidosEliminacion: elim.partidosEliminacion,
                 totalPartidos: totalPartidos,
                 duracion: duracion,
+                horasExactas: cancha.horasExactas,
                 totalHoras: cancha.totalHoras,
                 costoCancha: cancha.costoCancha,
                 totalBotes: pelotas.totalBotes,
@@ -1919,19 +2091,20 @@
         ============================================================ */
 
         function generarGruposPreview(parejas, tamanoGrupo) {
-            var numGrupos = Math.floor(parejas / tamanoGrupo);
-            if (numGrupos < 1) return '<p style="color:var(--text-light);font-size:0.9rem;">Configura las parejas para ver la vista previa.</p>';
+            var formation = computeGroupsFromSize(parejas, tamanoGrupo);
+            if (formation.groupCount < 1) return '<p style="color:var(--text-light);font-size:0.9rem;">Configura las parejas para ver la vista previa.</p>';
 
             var html = '';
             var parejaNum = 1;
             var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-            for (var g = 0; g < numGrupos; g++) {
+            for (var g = 0; g < formation.groupCount; g++) {
+                var groupSize = formation.groupSizes[g];
                 html += '<div class="pv-group-card">';
                 html += '<div class="pv-group-header">Grupo ' + letras[g % 26] + '</div>';
                 html += '<table class="pv-group-table"><thead><tr><th>#</th><th>Pareja</th><th>PJ</th><th>PG</th></tr></thead><tbody>';
 
-                for (var p = 0; p < tamanoGrupo; p++) {
+                for (var p = 0; p < groupSize; p++) {
                     var isAdvancing = p < 2;
                     html += '<tr class="' + (isAdvancing ? 'pv-advancing' : '') + '">';
                     html += '<td>' + (p + 1) + '</td>';
@@ -2053,8 +2226,9 @@
                 precioCancha: parseFloat(dom.precioCancha.value) || 0,
                 precioPelotas: parseFloat(dom.precioPelotas.value) || 0,
                 parejas: parseInt(dom.cantidadParejas.value) || 0,
-                tamanoGrupo: parseInt(getRadioValue('tamanoGrupo')) || 4,
-                tipoTorneo: getRadioValue('tipoTorneo') || 'regular',
+                tamanoGrupo: parseInt(dom.tamanoGrupo.value) || 3,
+                sets: parseInt(getRadioValue('sets')) || 3,
+                puntosPorSet: parseInt(getRadioValue('puntosPorSet')) || 6,
                 modoPelotas: getRadioValue('modoPelotas') || 'porPartido',
                 botesGrupos: parseInt(dom.botesGrupos.value) || 0,
                 botesEliminatorias: parseInt(dom.botesEliminatorias.value) || 0,
@@ -2064,18 +2238,22 @@
 
         function actualizarResultados() {
             var config = obtenerConfig();
+
+            // Update group picker options based on parejas count
+            actualizarOpcionesGrupo(config.parejas);
+            // Re-read tamanoGrupo in case it changed
+            config.tamanoGrupo = parseInt(dom.tamanoGrupo.value) || 3;
+
             var r = calcularTotales(config);
 
             // Validation
-            var sobrantes = config.parejas % config.tamanoGrupo;
-            if (sobrantes !== 0 || config.parejas < config.tamanoGrupo * 2) {
+            if (!r.valido) {
                 dom.parejasWarning.classList.add('visible');
-                if (config.parejas < config.tamanoGrupo * 2) {
-                    dom.parejasWarningText.textContent = 'Se necesitan al menos ' + (config.tamanoGrupo * 2) + ' parejas para grupos de ' + config.tamanoGrupo + '.';
+                var validSizes = getValidGroupSizes(config.parejas);
+                if (validSizes.length === 0) {
+                    dom.parejasWarningText.textContent = 'Se necesitan al menos 6 parejas para armar un torneo con fase de grupos.';
                 } else {
-                    var menor = config.parejas - sobrantes;
-                    var mayor = config.parejas - sobrantes + config.tamanoGrupo;
-                    dom.parejasWarningText.textContent = config.parejas + ' no es divisible entre ' + config.tamanoGrupo + '. Prueba con ' + menor + ' o ' + mayor + ' parejas.';
+                    dom.parejasWarningText.textContent = 'No se pueden formar grupos validos con esta configuracion.';
                 }
             } else {
                 dom.parejasWarning.classList.remove('visible');
@@ -2093,15 +2271,22 @@
             dom.resIngresoTotal.textContent = formatCurrency(r.ingresoTotal);
             dom.resGanancia.textContent = formatCurrency(r.ganancia);
 
+            // Duration indicator
+            var totalMinutos = Math.round(r.duracion * 60);
+            dom.durationText.textContent = '~' + totalMinutos + ' min por partido';
+
             // Breakdown table
-            var tipoLabels = { regular: 'Regular (3 sets)', express6: 'Express 6 juegos', express8: 'Express 8 juegos' };
+            var formatoLabel = config.sets + ' set' + (config.sets > 1 ? 's' : '') + ' \u00D7 ' + config.puntosPorSet + ' pts (' + r.duracion + 'h/partido)';
             var modoLabels = { porPartido: '1 bote por partido', porFase: '1 bote por fase', personalizado: 'Personalizado' };
+            var horasLabel = formatHours(r.horasExactas);
+            if (r.horasExactas !== r.totalHoras) {
+                horasLabel = formatHours(r.horasExactas) + ' \u2192 ' + formatHours(r.totalHoras) + ' (redondeado)';
+            }
 
             var html = '';
             // Fase de grupos
             html += '<tr><td colspan="3" class="breakdown-section-label">Fase de Grupos</td></tr>';
-            html += '<tr><td>Grupos</td><td>' + r.numGrupos + ' grupos de ' + config.tamanoGrupo + '</td><td></td></tr>';
-            html += '<tr><td>Partidos por grupo</td><td>' + r.partidosPorGrupo + ' partidos</td><td></td></tr>';
+            html += '<tr><td>Grupos</td><td>' + (r.compositionLabel || r.numGrupos + ' grupos de ' + config.tamanoGrupo) + '</td><td></td></tr>';
             html += '<tr><td>Total partidos grupos</td><td>' + r.totalPartidosGrupos + ' partidos</td><td></td></tr>';
             html += '<tr><td>Clasificados</td><td>' + r.clasificados + ' parejas (2 por grupo)</td><td></td></tr>';
             // Eliminacion
@@ -2110,8 +2295,8 @@
             // Resumen
             html += '<tr><td colspan="3" class="breakdown-section-label">Resumen de Costos</td></tr>';
             html += '<tr class="subtotal"><td>Total partidos</td><td>' + r.totalPartidos + ' partidos</td><td></td></tr>';
-            html += '<tr><td>Formato</td><td>' + (tipoLabels[config.tipoTorneo] || '') + ' (' + r.duracion + 'h/partido)</td><td></td></tr>';
-            html += '<tr><td>Horas de cancha</td><td>' + formatHours(r.totalHoras) + '</td><td></td></tr>';
+            html += '<tr><td>Formato</td><td>' + formatoLabel + '</td><td></td></tr>';
+            html += '<tr><td>Horas de cancha</td><td>' + horasLabel + '</td><td></td></tr>';
             html += '<tr><td>Costo canchas</td><td>' + formatHours(r.totalHoras) + ' x ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(r.costoCancha) + '</td></tr>';
             html += '<tr><td>Costo pelotas</td><td>' + r.totalBotes + ' botes (' + (modoLabels[config.modoPelotas] || '') + ')</td><td>' + formatCurrency(r.costoPelotas) + '</td></tr>';
             html += '<tr class="total"><td>Costo Total</td><td></td><td>' + formatCurrency(r.costoTotal) + '</td></tr>';
@@ -2140,7 +2325,11 @@
             html += '<tr><td>Clasificados</td><td>' + resultado.clasificados + '</td></tr>';
             html += '<tr><td>Partidos eliminacion</td><td>' + resultado.partidosEliminacion + '</td></tr>';
             html += '<tr><td>Total partidos</td><td>' + resultado.totalPartidos + '</td></tr>';
-            html += '<tr><td>Horas de cancha</td><td>' + formatHours(resultado.totalHoras) + '</td></tr>';
+            var ejHorasLabel = formatHours(resultado.horasExactas);
+            if (resultado.horasExactas !== resultado.totalHoras) {
+                ejHorasLabel = formatHours(resultado.horasExactas) + ' \u2192 ' + formatHours(resultado.totalHoras);
+            }
+            html += '<tr><td>Horas de cancha</td><td>' + ejHorasLabel + '</td></tr>';
             html += '<tr><td>Costo canchas</td><td>' + formatCurrency(resultado.costoCancha) + '</td></tr>';
             html += '<tr><td>Costo pelotas</td><td>' + formatCurrency(resultado.costoPelotas) + '</td></tr>';
             html += '<tr class="ex-total"><td>Costo total</td><td>' + formatCurrency(resultado.costoTotal) + '</td></tr>';
@@ -2149,33 +2338,39 @@
         }
 
         function actualizarEjemplos(precioCancha, precioPelotas) {
-            // Ejemplo 1: Regular, grupos de 3, 12 parejas, 1 bote/partido
+            // Ejemplo 1: 3 sets x 6 pts, grupos de 3, 12 parejas, 1 bote/partido
             var ej1 = calcularTotales({
                 precioCancha: precioCancha,
                 precioPelotas: precioPelotas,
                 parejas: 12,
                 tamanoGrupo: 3,
-                tipoTorneo: 'regular',
+                sets: 3,
+                puntosPorSet: 6,
                 modoPelotas: 'porPartido',
                 botesGrupos: 0,
                 botesEliminatorias: 0,
                 margen: 0
             });
             dom.example1Table.innerHTML = generarEjemploHTML(ej1, 12);
+            dom.example1Title.innerHTML = '3 sets &times; 6 pts &mdash; Grupos de 3';
+            dom.example1Subtitle.textContent = '12 parejas \u00B7 ' + ej1.duracion + 'h por partido \u00B7 1 bote por partido';
 
-            // Ejemplo 2: Express 6, grupos de 4, 16 parejas, 1 bote/partido
+            // Ejemplo 2: 1 set x 6 pts, grupos de 4, 16 parejas, 1 bote/partido
             var ej2 = calcularTotales({
                 precioCancha: precioCancha,
                 precioPelotas: precioPelotas,
                 parejas: 16,
                 tamanoGrupo: 4,
-                tipoTorneo: 'express6',
+                sets: 1,
+                puntosPorSet: 6,
                 modoPelotas: 'porPartido',
                 botesGrupos: 0,
                 botesEliminatorias: 0,
                 margen: 0
             });
             dom.example2Table.innerHTML = generarEjemploHTML(ej2, 16);
+            dom.example2Title.innerHTML = '1 set &times; 6 pts &mdash; Grupos de 4';
+            dom.example2Subtitle.textContent = '16 parejas \u00B7 ' + ej2.duracion + 'h por partido \u00B7 1 bote por partido';
         }
 
         /* ============================================================
@@ -2196,8 +2391,9 @@
                 if (config.precioCancha != null) dom.precioCancha.value = config.precioCancha;
                 if (config.precioPelotas != null) dom.precioPelotas.value = config.precioPelotas;
                 if (config.parejas != null) dom.cantidadParejas.value = config.parejas;
-                if (config.tamanoGrupo) setRadioValue('tamanoGrupo', config.tamanoGrupo === 3 ? 'grupo3' : 'grupo4');
-                if (config.tipoTorneo) setRadioValue('tipoTorneo', config.tipoTorneo);
+                if (config.tamanoGrupo) dom.tamanoGrupo.value = config.tamanoGrupo;
+                if (config.sets) setRadioValue('sets', 'sets' + config.sets);
+                if (config.puntosPorSet) setRadioValue('puntosPorSet', 'pts' + config.puntosPorSet);
                 if (config.modoPelotas) setRadioValue('modoPelotas', config.modoPelotas);
                 if (config.botesGrupos != null) dom.botesGrupos.value = config.botesGrupos;
                 if (config.botesEliminatorias != null) dom.botesEliminatorias.value = config.botesEliminatorias;
@@ -2238,6 +2434,23 @@
         dom.recalcBtn.addEventListener('click', function() {
             actualizarResultados();
             ocultarRecalcular();
+        });
+
+        // Update composition label when group size changes
+        dom.tamanoGrupo.addEventListener('change', function() {
+            var parejas = parseInt(dom.cantidadParejas.value) || 0;
+            actualizarCompositionLabel(parejas, parseInt(dom.tamanoGrupo.value) || 3);
+        });
+
+        // Update duration indicator on sets/points change
+        function actualizarIndicadorDuracion() {
+            var sets = parseInt(getRadioValue('sets')) || 3;
+            var puntos = parseInt(getRadioValue('puntosPorSet')) || 6;
+            var totalMin = sets * puntos * 5;
+            dom.durationText.textContent = '~' + totalMin + ' min por partido';
+        }
+        document.querySelectorAll('input[name="sets"], input[name="puntosPorSet"]').forEach(function(radio) {
+            radio.addEventListener('change', actualizarIndicadorDuracion);
         });
 
         // Show/hide custom balls inputs
