@@ -1475,28 +1475,18 @@
                                     <span class="tooltip-text">Cantidad de puntos/juegos que se juegan en cada set. 6 puntos equivalen a ~30 minutos.</span>
                                 </span>
                             </label>
-                            <div class="segment-group">
-                                <div class="segment-option">
-                                    <input type="radio" name="puntosPorSet" id="pts6" value="6" checked>
-                                    <label for="pts6">6</label>
-                                </div>
-                                <div class="segment-option">
-                                    <input type="radio" name="puntosPorSet" id="pts8" value="8">
-                                    <label for="pts8">8</label>
-                                </div>
-                                <div class="segment-option">
-                                    <input type="radio" name="puntosPorSet" id="pts12" value="12">
-                                    <label for="pts12">12</label>
-                                </div>
-                                <div class="segment-option">
-                                    <input type="radio" name="puntosPorSet" id="pts16" value="16">
-                                    <label for="pts16">16</label>
-                                </div>
-                                <div class="segment-option">
-                                    <input type="radio" name="puntosPorSet" id="pts24" value="24">
-                                    <label for="pts24">24</label>
-                                </div>
-                            </div>
+                            <select id="puntosPorSet" class="calc-input">
+                                <option value="3">3 puntos</option>
+                                <option value="4">4 puntos</option>
+                                <option value="5">5 puntos</option>
+                                <option value="6" selected>6 puntos</option>
+                                <option value="7">7 puntos</option>
+                                <option value="8">8 puntos</option>
+                                <option value="9">9 puntos</option>
+                                <option value="10">10 puntos</option>
+                                <option value="11">11 puntos</option>
+                                <option value="12">12 puntos</option>
+                            </select>
                             <div class="duration-indicator" id="durationIndicator">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                                 <span id="durationText">~90 min por partido</span>
@@ -2228,7 +2218,7 @@
                 parejas: parseInt(dom.cantidadParejas.value) || 0,
                 tamanoGrupo: parseInt(dom.tamanoGrupo.value) || 3,
                 sets: parseInt(getRadioValue('sets')) || 3,
-                puntosPorSet: parseInt(getRadioValue('puntosPorSet')) || 6,
+                puntosPorSet: parseInt(document.getElementById('puntosPorSet').value) || 6,
                 modoPelotas: getRadioValue('modoPelotas') || 'porPartido',
                 botesGrupos: parseInt(dom.botesGrupos.value) || 0,
                 botesEliminatorias: parseInt(dom.botesEliminatorias.value) || 0,
@@ -2393,7 +2383,7 @@
                 if (config.parejas != null) dom.cantidadParejas.value = config.parejas;
                 if (config.tamanoGrupo) dom.tamanoGrupo.value = config.tamanoGrupo;
                 if (config.sets) setRadioValue('sets', 'sets' + config.sets);
-                if (config.puntosPorSet) setRadioValue('puntosPorSet', 'pts' + config.puntosPorSet);
+                if (config.puntosPorSet) document.getElementById('puntosPorSet').value = config.puntosPorSet;
                 if (config.modoPelotas) setRadioValue('modoPelotas', config.modoPelotas);
                 if (config.botesGrupos != null) dom.botesGrupos.value = config.botesGrupos;
                 if (config.botesEliminatorias != null) dom.botesEliminatorias.value = config.botesEliminatorias;
@@ -2445,13 +2435,14 @@
         // Update duration indicator on sets/points change
         function actualizarIndicadorDuracion() {
             var sets = parseInt(getRadioValue('sets')) || 3;
-            var puntos = parseInt(getRadioValue('puntosPorSet')) || 6;
+            var puntos = parseInt(document.getElementById('puntosPorSet').value) || 6;
             var totalMin = sets * puntos * 5;
             dom.durationText.textContent = '~' + totalMin + ' min por partido';
         }
-        document.querySelectorAll('input[name="sets"], input[name="puntosPorSet"]').forEach(function(radio) {
+        document.querySelectorAll('input[name="sets"]').forEach(function(radio) {
             radio.addEventListener('change', actualizarIndicadorDuracion);
         });
+        document.getElementById('puntosPorSet').addEventListener('change', actualizarIndicadorDuracion);
 
         // Show/hide custom balls inputs
         document.querySelectorAll('input[name="modoPelotas"]').forEach(function(radio) {
