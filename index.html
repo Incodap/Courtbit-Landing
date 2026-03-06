@@ -152,9 +152,12 @@
         .nav-dropdown { position: relative; }
         .nav-dropdown > a { cursor: default; }
         .nav-dropdown-menu {
-            display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+            display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            padding-top: 12px; min-width: 210px; z-index: 100;
+        }
+        .nav-dropdown-menu-inner {
             background: var(--white); border: 1px solid var(--border); border-radius: 10px;
-            box-shadow: var(--shadow-lg); padding: 6px; min-width: 210px; z-index: 100;
+            box-shadow: var(--shadow-lg); padding: 6px;
         }
         .nav-dropdown:hover .nav-dropdown-menu { display: block; }
         .nav-dropdown-menu a {
@@ -576,8 +579,10 @@
         .nav-center.show a:last-child { border-bottom: none; }
         .nav-center.show .nav-dropdown-menu {
             display: block; position: static; transform: none;
-            box-shadow: none; border: none; padding: 0 0 0 16px; min-width: auto;
-            background: transparent;
+            padding: 0 0 0 16px; min-width: auto;
+        }
+        .nav-center.show .nav-dropdown-menu-inner {
+            box-shadow: none; border: none; padding: 0; background: transparent;
         }
         .nav-center.show .nav-dropdown-menu a {
             padding: 12px 0; border-radius: 0; border-bottom: 1px solid var(--border-light);
@@ -695,7 +700,7 @@
                 <a href="#precios">Precios</a>
                 <div class="nav-dropdown">
                     <a href="#">Herramientas</a>
-                    <div class="nav-dropdown-menu">
+                    <div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner">
                         <a href="/calculadora-torneo/">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
                             Calculadora Torneo
@@ -704,7 +709,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                             Calculadora Liga
                         </a>
-                    </div>
+                    </div></div>
                 </div>
             </div>
             <div class="nav-right">
