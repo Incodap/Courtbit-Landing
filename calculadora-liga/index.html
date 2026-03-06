@@ -1024,7 +1024,93 @@
             color: var(--text-light);
             margin-bottom: 12px;
         }
-        .expense-empty.hidden { display: none; }
+        .expense-empty.hidden, .liga-info.hidden { display: none; }
+
+        /* Inline CTA nudges */
+        .inline-cta {
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 28px 28px 24px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: var(--bg-gray-50);
+            transition: box-shadow 0.3s;
+        }
+        .inline-cta:hover { box-shadow: var(--shadow-md); }
+        .inline-cta-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #F0FDF4, #BBF7D0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .inline-cta-body { flex: 1; min-width: 0; }
+        .inline-cta-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        .inline-cta-features {
+            list-style: none;
+            margin: 0 0 14px;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+        }
+        .inline-cta-features li {
+            font-size: 0.8125rem;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .inline-cta-features li svg { color: var(--green-primary); flex-shrink: 0; }
+        .inline-cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--green-primary);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+        .inline-cta-link:hover { gap: 10px; }
+
+        .preview-nudge {
+            margin: 20px 0 8px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0,210,106,0.06), rgba(0,210,106,0.02));
+            border: 1px dashed rgba(0,210,106,0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8125rem;
+            color: var(--text-gray);
+        }
+        .preview-nudge strong { color: var(--text-dark); }
+        .preview-nudge a {
+            color: var(--green-primary);
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .preview-nudge a:hover { text-decoration: underline; }
+        .preview-nudge svg { flex-shrink: 0; color: var(--green-primary); }
+
+        @media (max-width: 768px) {
+            .inline-cta { flex-direction: column; gap: 12px; padding: 22px 20px 20px; }
+            .inline-cta-features { flex-direction: column; gap: 4px; }
+            .preview-nudge { flex-direction: column; text-align: center; gap: 8px; }
+        }
         @media (max-width: 768px) {
             .expense-row { flex-wrap: wrap; }
             .expense-row .expense-name { flex: 1 1 100%; }
@@ -1099,8 +1185,8 @@
                             <div class="input-card-title">Formato de Liga</div>
                         </div>
                         <div class="field">
-                            <label class="field-label">
-                                Cantidad de jugadores
+                            <label class="field-label" id="jugadoresLabel">
+                                Jugadores
                                 <span class="tooltip">
                                     <span class="tooltip-icon">?</span>
                                     <span class="tooltip-text">Jugadores individuales. Se forman grupos de 4 por jornada con rotacion de doubles.</span>
@@ -1115,6 +1201,22 @@
                                 <option value="28">28 jugadores &mdash; 7 grupos por jornada</option>
                                 <option value="32">32 jugadores &mdash; 8 grupos por jornada</option>
                             </select>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">
+                                Grupos en la liga
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Numero de grupos independientes. Cada grupo juega su propia liga y eliminatorias.</span>
+                                </span>
+                            </label>
+                            <select id="numGrupos" class="calc-input">
+                                <option value="1" selected>1 grupo (estandar)</option>
+                                <option value="2">2 grupos</option>
+                                <option value="3">3 grupos</option>
+                                <option value="4">4 grupos</option>
+                            </select>
+                            <div class="liga-info info-green hidden" id="gruposInfo"></div>
                         </div>
                         <div class="field">
                             <label class="field-label">
@@ -1310,6 +1412,23 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Inline CTA: after pricing -->
+                <div class="inline-cta reveal">
+                    <div class="inline-cta-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A855" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div class="inline-cta-body">
+                        <div class="inline-cta-title">Ya tienes el presupuesto. Automatiza el resto.</div>
+                        <ul class="inline-cta-features">
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Jornadas y rotaciones automaticas</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Inscripciones con pago en linea</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ranking y resultados en vivo</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>App para tus jugadores</li>
+                        </ul>
+                        <a href="/#contact" class="inline-cta-link">Probar CourtBit gratis <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1427,8 +1546,8 @@
         <section class="cta-section">
             <div class="container">
                 <div class="cta-card reveal">
-                    <h2>Organiza Tu Liga con CourtBit</h2>
-                    <p>Jornadas, rotaciones, ranking en vivo y mas. Todo desde una sola plataforma.</p>
+                    <h2 id="ctaTitle">Organiza Tu Liga con CourtBit</h2>
+                    <p id="ctaDescription">Jornadas, rotaciones, ranking en vivo y pagos en linea. Todo desde una sola plataforma.</p>
                     <a href="/#contact" class="cta-btn">Probar Gratis</a>
                 </div>
             </div>
@@ -1497,7 +1616,12 @@
             previewElim:         document.getElementById('previewElimContainer'),
             expensesList:        document.getElementById('expensesList'),
             addExpenseBtn:       document.getElementById('addExpenseBtn'),
-            expenseEmpty:        document.getElementById('expenseEmpty')
+            expenseEmpty:        document.getElementById('expenseEmpty'),
+            numGrupos:           document.getElementById('numGrupos'),
+            gruposInfo:          document.getElementById('gruposInfo'),
+            jugadoresLabel:      document.getElementById('jugadoresLabel'),
+            ctaTitle:            document.getElementById('ctaTitle'),
+            ctaDescription:      document.getElementById('ctaDescription')
         };
 
         /* ============================================================
@@ -1659,20 +1783,27 @@
             // === ELIMINACION ===
             var elimResult = calcularEliminacion(config, { duracionPartido: duracionSet * 3 });
 
-            // === GASTOS CUSTOM ===
+            // === GRUPOS ===
+            var numGrupos = config.numGrupos || 1;
+            var totalJugadores = jugadores * numGrupos;
+
+            // === GASTOS CUSTOM (usan totalJugadores) ===
             var customGastos = config.gastosCustom || [];
             var gastosCustomTotal = 0;
             for (var i = 0; i < customGastos.length; i++) {
                 var g = customGastos[i];
                 if (g.monto > 0) {
-                    gastosCustomTotal += (g.tipo === 'porJugador') ? g.monto * jugadores : g.monto;
+                    gastosCustomTotal += (g.tipo === 'porJugador') ? g.monto * totalJugadores : g.monto;
                 }
             }
 
-            var costoTotal = costoLiga + (elimResult ? elimResult.costoTotal : 0) + gastosCustomTotal;
-            var costoJugador = jugadores > 0 ? costoTotal / jugadores : 0;
+            // === COSTOS MULTIPLICADOS POR GRUPOS ===
+            var costoLigaTotal = costoLiga * numGrupos;
+            var costoElimTotal = (elimResult ? elimResult.costoTotal : 0) * numGrupos;
+            var costoTotal = costoLigaTotal + costoElimTotal + gastosCustomTotal;
+            var costoJugador = totalJugadores > 0 ? costoTotal / totalJugadores : 0;
             var precioSugerido = costoJugador * (1 + config.margen / 100);
-            var ingresoTotal = precioSugerido * jugadores;
+            var ingresoTotal = precioSugerido * totalJugadores;
             var ganancia = ingresoTotal - costoTotal;
 
             return {
@@ -1695,6 +1826,10 @@
                 totalBotes: totalBotes,
                 costoPelotas: costoPelotas,
                 costoLiga: costoLiga,
+                numGrupos: numGrupos,
+                totalJugadores: totalJugadores,
+                costoLigaTotal: costoLigaTotal,
+                costoElimTotal: costoElimTotal,
                 elimResult: elimResult,
                 gastosCustom: customGastos,
                 gastosCustomTotal: gastosCustomTotal,
@@ -1899,7 +2034,8 @@
                 botesJornada: parseInt(dom.botesJornada.value) || 0,
                 margen: parseInt(dom.margenSlider.value) || 0,
                 clasificados: parseInt(dom.clasificadosElim.value) || 0,
-                gastosCustom: gastosCustom
+                gastosCustom: gastosCustom,
+                numGrupos: parseInt(dom.numGrupos.value) || 1
             };
         }
 
@@ -1920,7 +2056,7 @@
 
             // Summary cards
             dom.resJornadas.textContent = r.jornadas;
-            dom.resPartidos.textContent = r.totalPartidos;
+            dom.resPartidos.textContent = r.numGrupos > 1 ? r.totalPartidos * r.numGrupos : r.totalPartidos;
             dom.resCostoTotal.textContent = formatCurrency(r.costoTotal);
             dom.resCostoJugador.textContent = formatCurrency(r.costoJugador);
 
@@ -1934,51 +2070,40 @@
             dom.durationText.textContent = '1 partido = 3 sets \u00D7 ' + r.duracionSet + ' min = ' + formatMinutos(r.duracionPartido);
 
             // Breakdown table
-            var modoLabels = { porPartido: '1 bote por partido', porJornada: '1 bote por jornada', personalizado: 'Personalizado' };
             var jornadasLabel = r.jornadas === r.jornadasMax
                 ? r.jornadas + ' (todos contra todos)'
                 : r.jornadas + ' de ' + r.jornadasMax;
 
             var html = '';
-            html += '<tr><td colspan="3" class="breakdown-section-label">Estructura de Liga</td></tr>';
-            html += '<tr><td>Jugadores</td><td>' + config.jugadores + ' jugadores individuales</td><td></td></tr>';
-            html += '<tr><td>Partidos por jornada</td><td>' + r.partidosPorJornada + ' partidos (grupos de 4)</td><td></td></tr>';
-            html += '<tr><td>Sets por partido</td><td>' + r.rotacionesPorPartido + ' sets (rotaciones)</td><td></td></tr>';
-            html += '<tr><td>Rotaciones por jornada</td><td>' + r.rotacionesPorJornada + '</td><td></td></tr>';
+            var g1 = r.numGrupos > 1;
+            var totalPartidosAll = r.totalPartidos * r.numGrupos;
+            var totalHorasAll = r.horasTotalesCancha * r.numGrupos;
+
+            // --- Liga ---
+            html += '<tr><td colspan="3" class="breakdown-section-label">Liga</td></tr>';
+            var jugDetail = g1 ? r.totalJugadores + ' (' + r.numGrupos + ' grupos &times; ' + config.jugadores + ')' : config.jugadores + ' jugadores';
+            html += '<tr><td>Jugadores</td><td>' + jugDetail + '</td><td></td></tr>';
             html += '<tr><td>Jornadas</td><td>' + jornadasLabel + '</td><td></td></tr>';
-            html += '<tr><td>Oponentes enfrentados</td><td>' + r.oponentesEnfrentados + ' de ' + (config.jugadores - 1) + ' &middot; Sin repeticiones</td><td></td></tr>';
-            html += '<tr class="subtotal"><td>Total partidos</td><td>' + r.totalPartidos + ' partidos (' + r.totalRotaciones + ' rotaciones)</td><td></td></tr>';
+            html += '<tr><td>Partidos</td><td>' + totalPartidosAll + (g1 ? ' (' + r.totalPartidos + ' por grupo)' : '') + '</td><td></td></tr>';
+            html += '<tr><td>Duracion por jornada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + ' &middot; ' + r.canchas + ' cancha' + (r.canchas > 1 ? 's' : '') + '</td><td></td></tr>';
+            html += '<tr><td>Canchas</td><td>' + formatHours(totalHorasAll) + ' &times; ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(r.costoCancha * r.numGrupos) + '</td></tr>';
+            html += '<tr><td>Pelotas</td><td>' + (r.totalBotes * r.numGrupos) + ' botes &times; ' + formatCurrency(config.precioPelotas) + '</td><td>' + formatCurrency(r.costoPelotas * r.numGrupos) + '</td></tr>';
+            html += '<tr class="subtotal"><td>Subtotal Liga</td><td></td><td>' + formatCurrency(r.costoLigaTotal) + '</td></tr>';
 
-            html += '<tr><td colspan="3" class="breakdown-section-label">Tiempos</td></tr>';
-            html += '<tr><td>Duracion del set</td><td>' + r.duracionSet + ' min</td><td></td></tr>';
-            html += '<tr><td>Duracion del partido</td><td>3 sets \u00D7 ' + r.duracionSet + ' min = ' + formatMinutos(r.duracionPartido) + '</td><td></td></tr>';
-            html += '<tr><td>Canchas</td><td>' + r.canchas + ' cancha' + (r.canchas > 1 ? 's' : '') + '</td><td></td></tr>';
-            html += '<tr><td>Rondas por jornada</td><td>' + r.rondasPorJornada + ' ronda' + (r.rondasPorJornada > 1 ? 's' : '') + ' (ceil(' + r.partidosPorJornada + '/' + r.canchas + '))</td><td></td></tr>';
-            html += '<tr><td>Duracion real jornada</td><td>' + formatMinutos(r.duracionJornadaReal) + '</td><td></td></tr>';
-            html += '<tr><td>Duracion facturada jornada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + ' (bloques de 30 min)</td><td></td></tr>';
-            html += '<tr class="subtotal"><td>Horas totales de cancha</td><td>' + formatHours(r.horasTotalesCancha) + ' (' + formatHours(r.horasFacturadasPorJornada) + ' \u00D7 ' + r.canchas + ' canchas \u00D7 ' + r.jornadas + ' jornadas)</td><td></td></tr>';
-
-            html += '<tr><td colspan="3" class="breakdown-section-label">Resumen de Costos — Liga</td></tr>';
-            html += '<tr><td>Costo canchas</td><td>' + formatHours(r.horasTotalesCancha) + ' \u00D7 ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(r.costoCancha) + '</td></tr>';
-            html += '<tr><td>Costo pelotas</td><td>' + r.totalBotes + ' botes (' + (modoLabels[config.modoPelotas] || '') + ')</td><td>' + formatCurrency(r.costoPelotas) + '</td></tr>';
-            html += '<tr class="subtotal"><td>Subtotal Liga</td><td></td><td>' + formatCurrency(r.costoLiga) + '</td></tr>';
-
-            // Elimination breakdown
+            // --- Eliminatorias ---
             if (r.elimResult) {
                 var e = r.elimResult;
-                var roundsDetail = e.elimConfig.rounds.map(function(rd) { return rd.partidos + ' ' + rd.label.toLowerCase(); }).join(' + ');
                 html += '<tr><td colspan="3" class="breakdown-section-label">Eliminatorias</td></tr>';
-                html += '<tr><td>Clasificados</td><td>' + e.clasificados + ' jugadores \u2014 ' + e.elimConfig.label + '</td><td></td></tr>';
-                html += '<tr><td>Partidos eliminacion</td><td>' + e.totalPartidos + ' (' + roundsDetail + ')</td><td></td></tr>';
-                html += '<tr><td>Duracion real</td><td>' + formatMinutos(e.duracionReal) + '</td><td></td></tr>';
-                html += '<tr><td>Duracion facturada</td><td>' + formatMinutos(e.duracionFacturada) + ' (bloques de 30 min)</td><td></td></tr>';
-                html += '<tr><td>Horas cancha elim</td><td>' + formatHours(e.horasCancha) + '</td><td></td></tr>';
-                html += '<tr><td>Costo canchas elim</td><td>' + formatHours(e.horasCancha) + ' \u00D7 ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(e.costoCancha) + '</td></tr>';
-                html += '<tr><td>Costo pelotas elim</td><td>' + e.totalBotes + ' botes</td><td>' + formatCurrency(e.costoPelotas) + '</td></tr>';
-                html += '<tr class="subtotal"><td>Subtotal Eliminatorias</td><td></td><td>' + formatCurrency(e.costoTotal) + '</td></tr>';
+                var elimLabel = e.elimConfig.label + ' &middot; ' + e.clasificados + ' clasificados' + (g1 ? ' por grupo' : '');
+                html += '<tr><td>Formato</td><td>' + elimLabel + '</td><td></td></tr>';
+                var elimCanchaHrs = e.horasCancha * r.numGrupos;
+                html += '<tr><td>Canchas</td><td>' + formatHours(elimCanchaHrs) + ' &times; ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(e.costoCancha * r.numGrupos) + '</td></tr>';
+                var elimBotes = e.totalBotes * r.numGrupos;
+                html += '<tr><td>Pelotas</td><td>' + elimBotes + ' botes &times; ' + formatCurrency(config.precioPelotas) + '</td><td>' + formatCurrency(e.costoPelotas * r.numGrupos) + '</td></tr>';
+                html += '<tr class="subtotal"><td>Subtotal Eliminatorias</td><td></td><td>' + formatCurrency(r.costoElimTotal) + '</td></tr>';
             }
 
-            // Custom expenses breakdown
+            // --- Otros Gastos ---
             if (r.gastosCustom && r.gastosCustom.length > 0) {
                 var hasGastos = false;
                 for (var gi = 0; gi < r.gastosCustom.length; gi++) {
@@ -1987,29 +2112,26 @@
                 if (hasGastos) {
                     html += '<tr><td colspan="3" class="breakdown-section-label">Otros Gastos</td></tr>';
                     for (var gi = 0; gi < r.gastosCustom.length; gi++) {
-                        var g = r.gastosCustom[gi];
-                        if (g.monto <= 0) continue;
-                        var gNombre = g.nombre || 'Gasto ' + (gi + 1);
+                        var gc = r.gastosCustom[gi];
+                        if (gc.monto <= 0) continue;
+                        var gNombre = gc.nombre || 'Gasto ' + (gi + 1);
                         var gDetalle, gValor;
-                        if (g.tipo === 'porJugador') {
-                            gValor = g.monto * config.jugadores;
-                            gDetalle = formatCurrency(g.monto) + ' \u00D7 ' + config.jugadores + ' jugadores';
+                        if (gc.tipo === 'porJugador') {
+                            gValor = gc.monto * r.totalJugadores;
+                            gDetalle = formatCurrency(gc.monto) + ' &times; ' + r.totalJugadores + ' jugadores';
                         } else {
-                            gValor = g.monto;
+                            gValor = gc.monto;
                             gDetalle = 'Gasto fijo';
                         }
                         html += '<tr><td>' + gNombre + '</td><td>' + gDetalle + '</td><td>' + formatCurrency(gValor) + '</td></tr>';
                     }
-                    html += '<tr class="subtotal"><td>Subtotal Otros Gastos</td><td></td><td>' + formatCurrency(r.gastosCustomTotal) + '</td></tr>';
+                    html += '<tr class="subtotal"><td>Subtotal Otros</td><td></td><td>' + formatCurrency(r.gastosCustomTotal) + '</td></tr>';
                 }
             }
 
-            var totalLabel = 'Costo Total';
-            if (r.elimResult && r.gastosCustomTotal > 0) totalLabel = 'Costo Total (Liga + Elim + Otros)';
-            else if (r.elimResult) totalLabel = 'Costo Total (Liga + Elim)';
-            else if (r.gastosCustomTotal > 0) totalLabel = 'Costo Total (Liga + Otros)';
-            html += '<tr class="total"><td>' + totalLabel + '</td><td></td><td>' + formatCurrency(r.costoTotal) + '</td></tr>';
-            html += '<tr class="subtotal"><td>Costo por Jugador</td><td>' + config.jugadores + ' jugadores</td><td>' + formatCurrency(r.costoJugador) + '</td></tr>';
+            // --- Total ---
+            html += '<tr class="total"><td>Costo Total</td><td></td><td>' + formatCurrency(r.costoTotal) + '</td></tr>';
+            html += '<tr class="subtotal"><td>Costo por Jugador</td><td>' + r.totalJugadores + ' jugadores</td><td>' + formatCurrency(r.costoJugador) + '</td></tr>';
 
             dom.breakdownBody.innerHTML = html;
 
@@ -2017,9 +2139,15 @@
             actualizarEjemplos(config.precioCancha, config.precioPelotas);
 
             // Preview
-            dom.previewJornada.innerHTML = generarJornadaPreview(config.jugadores);
+            var previewNote = r.numGrupos > 1 ? '<div class="liga-info info-green" style="margin-bottom:16px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span class="liga-info-text">Mostrando 1 de ' + r.numGrupos + ' grupos</span></div>' : '';
+            var previewNudge = '<div class="preview-nudge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span>Esta es solo la <strong>Jornada 1</strong>. <a href="/#contact">CourtBit</a> genera las ' + r.jornadas + ' jornadas, asigna grupos sin repetir oponentes y actualiza el ranking automaticamente.</span></div>';
+            dom.previewJornada.innerHTML = previewNote + generarJornadaPreview(config.jugadores) + previewNudge;
             dom.previewResumen.innerHTML = generarResumenLiga(config.jugadores, r.jornadas);
             dom.previewElim.innerHTML = generarEliminacionPreview(config.clasificados);
+
+            // Dynamic CTA
+            dom.ctaTitle.textContent = 'Tu liga de ' + r.totalJugadores + ' jugadores, lista en minutos';
+            dom.ctaDescription.textContent = r.jornadas + ' jornadas, ' + (r.totalPartidos * r.numGrupos) + ' partidos y ranking automatico. Cobra ' + formatCurrency(r.precioSugerido) + ' por jugador con pagos en linea.';
 
             guardarConfig(config);
         }
@@ -2029,19 +2157,15 @@
         ============================================================ */
         function generarEjemploHTML(r) {
             var html = '';
+            var eg = r.numGrupos > 1;
+            html += '<tr><td>Jugadores</td><td>' + r.totalJugadores + (eg ? ' (' + r.numGrupos + ' grupos &times; ' + r.jugadores + ')' : '') + '</td></tr>';
             html += '<tr><td>Jornadas</td><td>' + r.jornadas + '</td></tr>';
-            html += '<tr><td>Partidos por jornada</td><td>' + r.partidosPorJornada + '</td></tr>';
-            html += '<tr><td>Total partidos liga</td><td>' + r.totalPartidos + ' (' + r.totalRotaciones + ' rotaciones)</td></tr>';
-            html += '<tr><td>Duracion real jornada</td><td>' + formatMinutos(r.duracionJornadaReal) + '</td></tr>';
-            html += '<tr><td>Duracion facturada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + '</td></tr>';
-            html += '<tr><td>Horas de cancha liga</td><td>' + formatHours(r.horasTotalesCancha) + '</td></tr>';
-            html += '<tr><td>Costo canchas liga</td><td>' + formatCurrency(r.costoCancha) + '</td></tr>';
-            html += '<tr><td>Costo pelotas liga</td><td>' + formatCurrency(r.costoPelotas) + '</td></tr>';
+            html += '<tr><td>Total partidos</td><td>' + (r.totalPartidos * r.numGrupos) + '</td></tr>';
+            html += '<tr><td>Duracion jornada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + '</td></tr>';
+            html += '<tr><td>Horas cancha</td><td>' + formatHours(r.horasTotalesCancha * r.numGrupos) + '</td></tr>';
+            html += '<tr><td>Costo liga</td><td>' + formatCurrency(r.costoLigaTotal) + '</td></tr>';
             if (r.elimResult) {
-                var e = r.elimResult;
-                html += '<tr><td>Eliminatorias</td><td>' + e.elimConfig.label + '</td></tr>';
-                html += '<tr><td>Partidos elim</td><td>' + e.totalPartidos + '</td></tr>';
-                html += '<tr><td>Costo elim</td><td>' + formatCurrency(e.costoTotal) + '</td></tr>';
+                html += '<tr><td>Costo eliminatorias</td><td>' + formatCurrency(r.costoElimTotal) + '</td></tr>';
             }
             html += '<tr class="ex-total"><td>Costo total</td><td>' + formatCurrency(r.costoTotal) + '</td></tr>';
             html += '<tr><td>Costo por jugador</td><td>' + formatCurrency(r.costoJugador) + '</td></tr>';
@@ -2051,12 +2175,12 @@
         function actualizarEjemplos(precioCancha, precioPelotas) {
             var base = { precioCancha: precioCancha, precioPelotas: precioPelotas, canchas: 2, duracionSet: 30, unidadFacturacion: 30, modoPelotas: 'porPartido', botesJornada: 0, margen: 0, gastosCustom: [] };
 
-            var ej1 = calcularTotalesLiga(Object.assign({}, base, { jugadores: 16, clasificados: 8 }));
+            var ej1 = calcularTotalesLiga(Object.assign({}, base, { jugadores: 16, clasificados: 8, numGrupos: 2 }));
             dom.example1Table.innerHTML = generarEjemploHTML(ej1);
-            dom.example1Title.innerHTML = '16 jugadores &mdash; Liga + Eliminatorias';
-            dom.example1Subtitle.textContent = ej1.jornadas + ' jornadas \u00B7 ' + formatMinutos(ej1.duracionPartido) + '/partido \u00B7 8 clasificados';
+            dom.example1Title.innerHTML = '32 jugadores (2 &times; 16) &mdash; Liga + Eliminatorias';
+            dom.example1Subtitle.textContent = ej1.jornadas + ' jornadas \u00B7 ' + formatMinutos(ej1.duracionPartido) + '/partido \u00B7 2 grupos \u00B7 8 clasificados/grupo';
 
-            var ej2 = calcularTotalesLiga(Object.assign({}, base, { jugadores: 12, clasificados: 4 }));
+            var ej2 = calcularTotalesLiga(Object.assign({}, base, { jugadores: 12, clasificados: 4, numGrupos: 1 }));
             dom.example2Table.innerHTML = generarEjemploHTML(ej2);
             dom.example2Title.innerHTML = '12 jugadores &mdash; Liga + Final';
             dom.example2Subtitle.textContent = ej2.jornadas + ' jornadas \u00B7 ' + formatMinutos(ej2.duracionPartido) + '/partido \u00B7 4 clasificados';
@@ -2083,6 +2207,7 @@
                 if (c.botesJornada != null) dom.botesJornada.value = c.botesJornada;
                 if (c.margen != null) dom.margenSlider.value = c.margen;
                 if (c.clasificados != null) dom.clasificadosElim.value = c.clasificados;
+                if (c.numGrupos) dom.numGrupos.value = c.numGrupos;
                 if (c.modoPelotas === 'personalizado') dom.customBalls.classList.add('visible');
                 if (c.gastosCustom && Array.isArray(c.gastosCustom)) {
                     gastosCustom = c.gastosCustom;
@@ -2126,10 +2251,37 @@
         // Update jornadas picker when player count changes
         dom.cantidadJugadores.addEventListener('change', function() {
             actualizarJornadas();
+            actualizarInfoGrupos();
         });
         dom.cantidadJornadas.addEventListener('change', function() {
             actualizarJornadas();
         });
+
+        // Update grupos info when group count changes
+        dom.numGrupos.addEventListener('change', function() {
+            mostrarRecalcular();
+            actualizarInfoGrupos();
+        });
+
+        function actualizarInfoGrupos() {
+            var numGrupos = parseInt(dom.numGrupos.value) || 1;
+            var jugadores = parseInt(dom.cantidadJugadores.value) || 16;
+            // Toggle label
+            var tooltipSpan = dom.jugadoresLabel.querySelector('.tooltip');
+            var labelText = numGrupos > 1 ? 'Jugadores por grupo' : 'Jugadores';
+            dom.jugadoresLabel.textContent = '';
+            dom.jugadoresLabel.appendChild(document.createTextNode(labelText + ' '));
+            if (tooltipSpan) dom.jugadoresLabel.appendChild(tooltipSpan);
+            // Toggle badge
+            if (numGrupos > 1) {
+                var total = numGrupos * jugadores;
+                var svgCheck = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+                dom.gruposInfo.innerHTML = svgCheck + '<span class="liga-info-text"><strong>' + total + ' jugadores totales</strong></span>';
+                dom.gruposInfo.classList.remove('hidden');
+            } else {
+                dom.gruposInfo.classList.add('hidden');
+            }
+        }
 
         function actualizarIndicadorDuracion() {
             var durSet = parseInt(document.getElementById('duracionSet').value) || 30;
@@ -2217,6 +2369,7 @@
         ============================================================ */
         cargarConfig();
         actualizarJornadas();
+        actualizarInfoGrupos();
         actualizarResultados();
     })();
     </script>
