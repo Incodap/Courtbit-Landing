@@ -388,29 +388,6 @@
             gap: 12px;
         }
 
-        /* Validation warning */
-        .validation-warning {
-            display: none;
-            padding: 10px 14px;
-            background: #FEF3C7;
-            border: 1px solid #FDE68A;
-            border-radius: 10px;
-            font-size: 0.8125rem;
-            color: #92400E;
-            margin-top: 8px;
-        }
-        .validation-warning.visible {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-        .validation-warning svg {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
         /* Results Section */
         .results-header {
             text-align: center;
@@ -1431,10 +1408,6 @@
                         <div class="field">
                             <label class="field-label">Cantidad de parejas</label>
                             <input type="number" id="cantidadParejas" class="calc-input" min="6" max="128" step="1" value="18">
-                            <div class="validation-warning" id="parejasWarning">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                                <span id="parejasWarningText"></span>
-                            </div>
                         </div>
                         <div class="field">
                             <label class="field-label">
@@ -1789,8 +1762,6 @@
             botesEliminatorias:document.getElementById('botesEliminatorias'),
             tamanoGrupo:       document.getElementById('tamanoGrupo'),
             compositionLabel:  document.getElementById('compositionLabel'),
-            parejasWarning:    document.getElementById('parejasWarning'),
-            parejasWarningText:document.getElementById('parejasWarningText'),
             breakdownBody:     document.getElementById('breakdownBody'),
             resPartidos:       document.getElementById('resPartidos'),
             resHoras:          document.getElementById('resHoras'),
@@ -2236,18 +2207,6 @@
 
             var r = calcularTotales(config);
 
-            // Validation
-            if (!r.valido) {
-                dom.parejasWarning.classList.add('visible');
-                var validSizes = getValidGroupSizes(config.parejas);
-                if (validSizes.length === 0) {
-                    dom.parejasWarningText.textContent = 'Se necesitan al menos 6 parejas para armar un torneo con fase de grupos.';
-                } else {
-                    dom.parejasWarningText.textContent = 'No se pueden formar grupos validos con esta configuracion.';
-                }
-            } else {
-                dom.parejasWarning.classList.remove('visible');
-            }
 
             // Summary cards
             dom.resPartidos.textContent = r.totalPartidos;
