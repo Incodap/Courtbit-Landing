@@ -1253,16 +1253,6 @@
                         </div>
                         <div class="field">
                             <label class="field-label">
-                                Canchas disponibles
-                                <span class="tooltip">
-                                    <span class="tooltip-icon">?</span>
-                                    <span class="tooltip-text">Numero de canchas que puedes usar simultaneamente. Afecta la duracion de cada jornada.</span>
-                                </span>
-                            </label>
-                            <input type="number" id="canchasDisponibles" class="calc-input" min="1" max="8" step="1" value="2">
-                        </div>
-                        <div class="field">
-                            <label class="field-label">
                                 Clasificados a eliminatorias
                                 <span class="tooltip">
                                     <span class="tooltip-icon">?</span>
@@ -1584,7 +1574,6 @@
             precioCancha:        document.getElementById('precioCancha'),
             precioPelotas:       document.getElementById('precioPelotas'),
             cantidadJugadores:   document.getElementById('cantidadJugadores'),
-            canchasDisponibles:  document.getElementById('canchasDisponibles'),
             cantidadJornadas:    document.getElementById('cantidadJornadas'),
             ligaInfo:            document.getElementById('ligaInfo'),
             margenSlider:        document.getElementById('margenSlider'),
@@ -1741,8 +1730,6 @@
         function calcularTotalesLiga(config) {
             var jugadores = config.jugadores;
             var jornadas = config.jornadas || jornadasMax(jugadores);
-            var canchas = config.canchas;
-
             // === ESTRUCTURA ===
             var partidosPorJornada = Math.floor(jugadores / 4);
             var rotacionesPorPartido = 3;
@@ -1753,14 +1740,11 @@
             // === TIEMPOS (en minutos) ===
             var duracionSet = config.duracionSet;                     // min
             var duracionPartido = duracionSet * 3;                    // min
-            var rondasPorJornada = Math.ceil(partidosPorJornada / canchas);
-            var duracionJornadaReal = duracionPartido * rondasPorJornada; // min
-
             // === FACTURACION ===
             var unidadFacturacion = config.unidadFacturacion;         // 30 o 60 min
-            var duracionJornadaFacturada = Math.ceil(duracionJornadaReal / unidadFacturacion) * unidadFacturacion; // min
-            var horasFacturadasPorJornada = duracionJornadaFacturada / 60;
-            var horasTotalesCancha = horasFacturadasPorJornada * canchas * jornadas;
+            // Cada partido se factura redondeado a la unidad de facturacion
+            var duracionPartidoFacturada = Math.ceil(duracionPartido / unidadFacturacion) * unidadFacturacion;
+            var horasTotalesCancha = (duracionPartidoFacturada / 60) * totalPartidos;
 
             // === COSTOS CANCHA ===
             var costoCancha = horasTotalesCancha * config.precioCancha;
@@ -1808,7 +1792,6 @@
 
             return {
                 jugadores: jugadores,
-                canchas: canchas,
                 partidosPorJornada: partidosPorJornada,
                 rotacionesPorPartido: rotacionesPorPartido,
                 rotacionesPorJornada: rotacionesPorJornada,
@@ -1817,10 +1800,7 @@
                 jornadas: jornadas,
                 duracionSet: duracionSet,
                 duracionPartido: duracionPartido,
-                rondasPorJornada: rondasPorJornada,
-                duracionJornadaReal: duracionJornadaReal,
-                duracionJornadaFacturada: duracionJornadaFacturada,
-                horasFacturadasPorJornada: horasFacturadasPorJornada,
+                duracionPartidoFacturada: duracionPartidoFacturada,
                 horasTotalesCancha: horasTotalesCancha,
                 costoCancha: costoCancha,
                 totalBotes: totalBotes,
@@ -1852,17 +1832,10 @@
             if (!elimConfig || clasificados === 0) return null;
 
             var duracionPartido = ligaResult.duracionPartido;
-            var canchas = config.canchas;
             var unidadFacturacion = config.unidadFacturacion;
 
-            var totalSlots = 0;
-            for (var i = 0; i < elimConfig.rounds.length; i++) {
-                totalSlots += Math.ceil(elimConfig.rounds[i].partidos / canchas);
-            }
-
-            var duracionReal = totalSlots * duracionPartido;
-            var duracionFacturada = Math.ceil(duracionReal / unidadFacturacion) * unidadFacturacion;
-            var horasCancha = (duracionFacturada / 60) * canchas;
+            var duracionPartidoFacturada = Math.ceil(duracionPartido / unidadFacturacion) * unidadFacturacion;
+            var horasCancha = (duracionPartidoFacturada / 60) * elimConfig.totalPartidos;
             var costoCancha = horasCancha * config.precioCancha;
 
             var totalBotes = 0;
@@ -1879,9 +1852,6 @@
                 clasificados: clasificados,
                 elimConfig: elimConfig,
                 totalPartidos: elimConfig.totalPartidos,
-                totalSlots: totalSlots,
-                duracionReal: duracionReal,
-                duracionFacturada: duracionFacturada,
                 horasCancha: horasCancha,
                 costoCancha: costoCancha,
                 totalBotes: totalBotes,
@@ -2026,7 +1996,6 @@
                 precioCancha: parseFloat(dom.precioCancha.value) || 0,
                 precioPelotas: parseFloat(dom.precioPelotas.value) || 0,
                 jugadores: parseInt(dom.cantidadJugadores.value) || 16,
-                canchas: parseInt(dom.canchasDisponibles.value) || 1,
                 jornadas: parseInt(dom.cantidadJornadas.value) || jornadasMax(parseInt(dom.cantidadJugadores.value) || 16),
                 duracionSet: parseInt(document.getElementById('duracionSet').value) || 30,
                 unidadFacturacion: 30,
@@ -2085,7 +2054,7 @@
             html += '<tr><td>Jugadores</td><td>' + jugDetail + '</td><td></td></tr>';
             html += '<tr><td>Jornadas</td><td>' + jornadasLabel + '</td><td></td></tr>';
             html += '<tr><td>Partidos</td><td>' + totalPartidosAll + (g1 ? ' (' + r.totalPartidos + ' por grupo)' : '') + '</td><td></td></tr>';
-            html += '<tr><td>Duracion por jornada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + ' &middot; ' + r.canchas + ' cancha' + (r.canchas > 1 ? 's' : '') + '</td><td></td></tr>';
+            html += '<tr><td>Duracion por partido</td><td>' + formatMinutos(r.duracionPartido) + ' (facturado: ' + formatMinutos(r.duracionPartidoFacturada) + ')</td><td></td></tr>';
             html += '<tr><td>Canchas</td><td>' + formatHours(totalHorasAll) + ' &times; ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(r.costoCancha * r.numGrupos) + '</td></tr>';
             html += '<tr><td>Pelotas</td><td>' + (r.totalBotes * r.numGrupos) + ' botes &times; ' + formatCurrency(config.precioPelotas) + '</td><td>' + formatCurrency(r.costoPelotas * r.numGrupos) + '</td></tr>';
             html += '<tr class="subtotal"><td>Subtotal Liga</td><td></td><td>' + formatCurrency(r.costoLigaTotal) + '</td></tr>';
@@ -2161,7 +2130,7 @@
             html += '<tr><td>Jugadores</td><td>' + r.totalJugadores + (eg ? ' (' + r.numGrupos + ' grupos &times; ' + r.jugadores + ')' : '') + '</td></tr>';
             html += '<tr><td>Jornadas</td><td>' + r.jornadas + '</td></tr>';
             html += '<tr><td>Total partidos</td><td>' + (r.totalPartidos * r.numGrupos) + '</td></tr>';
-            html += '<tr><td>Duracion jornada</td><td>' + formatMinutos(r.duracionJornadaFacturada) + '</td></tr>';
+            html += '<tr><td>Duracion por partido</td><td>' + formatMinutos(r.duracionPartidoFacturada) + '</td></tr>';
             html += '<tr><td>Horas cancha</td><td>' + formatHours(r.horasTotalesCancha * r.numGrupos) + '</td></tr>';
             html += '<tr><td>Costo liga</td><td>' + formatCurrency(r.costoLigaTotal) + '</td></tr>';
             if (r.elimResult) {
@@ -2173,7 +2142,7 @@
         }
 
         function actualizarEjemplos(precioCancha, precioPelotas) {
-            var base = { precioCancha: precioCancha, precioPelotas: precioPelotas, canchas: 2, duracionSet: 30, unidadFacturacion: 30, modoPelotas: 'porPartido', botesJornada: 0, margen: 0, gastosCustom: [] };
+            var base = { precioCancha: precioCancha, precioPelotas: precioPelotas, duracionSet: 30, unidadFacturacion: 30, modoPelotas: 'porPartido', botesJornada: 0, margen: 0, gastosCustom: [] };
 
             var ej1 = calcularTotalesLiga(Object.assign({}, base, { jugadores: 16, clasificados: 8, numGrupos: 2 }));
             dom.example1Table.innerHTML = generarEjemploHTML(ej1);
@@ -2200,8 +2169,6 @@
                 if (c.precioCancha != null) dom.precioCancha.value = c.precioCancha;
                 if (c.precioPelotas != null) dom.precioPelotas.value = c.precioPelotas;
                 if (c.jugadores != null) dom.cantidadJugadores.value = c.jugadores;
-                var canchas = c.canchas || c.canchasDisponibles;
-                if (canchas != null) dom.canchasDisponibles.value = canchas;
                 if (c.duracionSet) document.getElementById('duracionSet').value = c.duracionSet;
                 if (c.modoPelotas) setRadioValue('modoPelotas', c.modoPelotas);
                 if (c.botesJornada != null) dom.botesJornada.value = c.botesJornada;

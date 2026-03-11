@@ -1164,6 +1164,228 @@
             color: var(--text-dark);
         }
 
+        /* Custom Expenses */
+        .custom-expenses {
+            grid-column: 1 / -1;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s ease;
+        }
+        .custom-expenses:hover { box-shadow: var(--shadow-md); }
+        .expense-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .expense-row .expense-name {
+            flex: 1;
+            min-width: 0;
+            padding: 10px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            -moz-appearance: textfield;
+        }
+        .expense-row .expense-name:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            box-shadow: 0 0 0 3px rgba(0, 210, 106, 0.1);
+        }
+        .expense-amount-wrap {
+            position: relative;
+            width: 110px;
+            flex-shrink: 0;
+        }
+        .expense-amount-wrap::before {
+            content: '$';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-light);
+            pointer-events: none;
+        }
+        .expense-amount-wrap .expense-amount {
+            width: 100%;
+            padding: 10px 14px 10px 28px;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            -moz-appearance: textfield;
+        }
+        .expense-amount-wrap .expense-amount::-webkit-outer-spin-button,
+        .expense-amount-wrap .expense-amount::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .expense-amount-wrap .expense-amount:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            box-shadow: 0 0 0 3px rgba(0, 210, 106, 0.1);
+        }
+        .expense-type-toggle {
+            display: flex;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .expense-type-toggle .etoggle-opt {
+            padding: 10px 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            border: none;
+            background: white;
+            font-family: var(--font-display);
+        }
+        .expense-type-toggle .etoggle-opt:first-child { border-right: 1px solid var(--border-light); }
+        .expense-type-toggle .etoggle-opt.active {
+            background: var(--green-primary);
+            color: white;
+            font-weight: 600;
+        }
+        .expense-remove-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: white;
+            color: var(--text-light);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            font-family: var(--font-display);
+        }
+        .expense-remove-btn:hover {
+            background: #FEE2E2;
+            border-color: #FCA5A5;
+            color: #DC2626;
+        }
+        .expense-add-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 2px dashed var(--border-light);
+            border-radius: 12px;
+            background: transparent;
+            color: var(--green-primary);
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+        .expense-add-btn:hover {
+            border-color: var(--green-primary);
+            background: #F0FDF4;
+        }
+        .expense-empty {
+            font-size: 0.8125rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+        .expense-empty.hidden { display: none; }
+
+        /* Inline CTA nudges */
+        .inline-cta {
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 28px 28px 24px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: var(--bg-gray-50);
+            transition: box-shadow 0.3s;
+        }
+        .inline-cta:hover { box-shadow: var(--shadow-md); }
+        .inline-cta-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #F0FDF4, #BBF7D0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .inline-cta-body { flex: 1; min-width: 0; }
+        .inline-cta-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        .inline-cta-features {
+            list-style: none;
+            margin: 0 0 14px;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+        }
+        .inline-cta-features li {
+            font-size: 0.8125rem;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .inline-cta-features li svg { color: var(--green-primary); flex-shrink: 0; }
+        .inline-cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--green-primary);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+        .inline-cta-link:hover { gap: 10px; }
+
+        .preview-nudge {
+            margin: 20px 0 8px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0,210,106,0.06), rgba(0,210,106,0.02));
+            border: 1px dashed rgba(0,210,106,0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8125rem;
+            color: var(--text-gray);
+        }
+        .preview-nudge strong { color: var(--text-dark); }
+        .preview-nudge a {
+            color: var(--green-primary);
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .preview-nudge a:hover { text-decoration: underline; }
+        .preview-nudge svg { flex-shrink: 0; color: var(--green-primary); }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .calc-inputs {
@@ -1242,6 +1464,13 @@
                 padding: 10px 8px;
                 font-size: 0.75rem;
             }
+            .expense-row { flex-wrap: wrap; }
+            .expense-row .expense-name { flex: 1 1 100%; }
+            .expense-amount-wrap { width: 100px; }
+            .expense-type-toggle .etoggle-opt { padding: 10px 8px; font-size: 0.6875rem; }
+            .inline-cta { flex-direction: column; gap: 12px; padding: 22px 20px 20px; }
+            .inline-cta-features { flex-direction: column; gap: 4px; }
+            .preview-nudge { flex-direction: column; text-align: center; gap: 8px; }
             .pv-groups-grid {
                 grid-template-columns: 1fr;
             }
@@ -1518,6 +1747,19 @@
                             </label>
                         </div>
                     </div>
+
+                    <!-- Card 4: Otros Gastos -->
+                    <div class="custom-expenses input-card reveal">
+                        <div class="input-card-header">
+                            <div class="input-card-icon" style="background: linear-gradient(135deg, #FEE2E2, #FECACA);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            </div>
+                            <div class="input-card-title">Otros Gastos</div>
+                        </div>
+                        <p class="expense-empty" id="expenseEmpty">Agrega gastos como premios, playeras, agua, trofeos, etc.</p>
+                        <div id="expensesList"></div>
+                        <button type="button" class="expense-add-btn" id="addExpenseBtn">+ Agregar gasto</button>
+                    </div>
                 </div>
 
                 <!-- Recalculate Button -->
@@ -1602,6 +1844,23 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Inline CTA: after pricing -->
+                <div class="inline-cta reveal">
+                    <div class="inline-cta-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A855" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div class="inline-cta-body">
+                        <div class="inline-cta-title">Ya tienes el presupuesto. Automatiza el resto.</div>
+                        <ul class="inline-cta-features">
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Brackets y grupos automaticos</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Inscripciones con pago en linea</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Resultados y marcador en vivo</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>App para tus jugadores</li>
+                        </ul>
+                        <a href="/#contact" class="inline-cta-link">Probar CourtBit gratis <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1618,6 +1877,7 @@
                 <div class="pv-bracket-scroll reveal">
                     <div class="pv-bracket" id="previewBracket"></div>
                 </div>
+                <div class="preview-nudge reveal" id="previewNudge"></div>
             </div>
         </section>
 
@@ -1724,8 +1984,8 @@
         <section class="cta-section">
             <div class="container">
                 <div class="cta-card reveal">
-                    <h2>Organiza Tu Torneo con CourtBit</h2>
-                    <p>Brackets, pagos, resultados en vivo y mas. Todo desde una sola plataforma.</p>
+                    <h2 id="ctaTitle">Organiza Tu Torneo con CourtBit</h2>
+                    <p id="ctaDescription">Brackets, pagos, resultados en vivo y mas. Todo desde una sola plataforma.</p>
                     <a href="/#contact" class="cta-btn">Probar Gratis</a>
                 </div>
             </div>
@@ -1747,6 +2007,12 @@
            STORAGE KEY
         ============================================================ */
         var STORAGE_KEY = 'courtbit_calc_torneo_v4';
+
+        /* ============================================================
+           CUSTOM EXPENSES STATE
+        ============================================================ */
+        var gastosCustom = [];
+        var gastoIdCounter = 0;
 
         /* ============================================================
            DOM REFERENCES
@@ -1778,11 +2044,17 @@
             example2Table:     document.getElementById('example2Table'),
             example2Title:     document.getElementById('example2Title'),
             example2Subtitle:  document.getElementById('example2Subtitle'),
+            expensesList:      document.getElementById('expensesList'),
+            expenseEmpty:      document.getElementById('expenseEmpty'),
+            addExpenseBtn:     document.getElementById('addExpenseBtn'),
             recalcBar:         document.getElementById('recalcBar'),
             recalcBtn:         document.getElementById('recalcBtn'),
             calcSection:       document.querySelector('.calculator .container'),
             previewGroups:     document.getElementById('previewGroups'),
-            previewBracket:    document.getElementById('previewBracket')
+            previewBracket:    document.getElementById('previewBracket'),
+            previewNudge:      document.getElementById('previewNudge'),
+            ctaTitle:          document.getElementById('ctaTitle'),
+            ctaDescription:    document.getElementById('ctaDescription')
         };
 
         /* ============================================================
@@ -1805,6 +2077,57 @@
         function setRadioValue(name, value) {
             var el = document.getElementById(value) || document.querySelector('input[name="' + name + '"][value="' + value + '"]');
             if (el) el.checked = true;
+        }
+
+        /* ============================================================
+           CUSTOM EXPENSES CRUD
+        ============================================================ */
+        function agregarGasto(nombre, monto, tipo) {
+            gastosCustom.push({ id: gastoIdCounter++, nombre: nombre || '', monto: monto || 0, tipo: tipo || 'fijo' });
+            renderizarGastos();
+        }
+
+        function eliminarGasto(id) {
+            gastosCustom = gastosCustom.filter(function(g) { return g.id !== id; });
+            renderizarGastos();
+        }
+
+        function renderizarGastos() {
+            var html = '';
+            for (var i = 0; i < gastosCustom.length; i++) {
+                var g = gastosCustom[i];
+                var activeFijo = g.tipo === 'fijo' ? ' active' : '';
+                var activePJ = g.tipo === 'porJugador' ? ' active' : '';
+                html += '<div class="expense-row" data-id="' + g.id + '">';
+                html += '<input type="text" class="expense-name" placeholder="Ej: Premios" value="' + (g.nombre || '').replace(/"/g, '&quot;') + '">';
+                html += '<div class="expense-amount-wrap"><input type="number" class="expense-amount" min="0" step="10" value="' + (g.monto || 0) + '"></div>';
+                html += '<div class="expense-type-toggle"><button type="button" class="etoggle-opt' + activePJ + '" data-tipo="porJugador">Por pareja</button><button type="button" class="etoggle-opt' + activeFijo + '" data-tipo="fijo">Fijo</button></div>';
+                html += '<button type="button" class="expense-remove-btn" data-id="' + g.id + '">&times;</button>';
+                html += '</div>';
+            }
+            dom.expensesList.innerHTML = html;
+            if (gastosCustom.length > 0) {
+                dom.expenseEmpty.classList.add('hidden');
+            } else {
+                dom.expenseEmpty.classList.remove('hidden');
+            }
+        }
+
+        function leerGastosDelDOM() {
+            var rows = dom.expensesList.querySelectorAll('.expense-row');
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                var id = parseInt(row.getAttribute('data-id'));
+                var gasto = null;
+                for (var j = 0; j < gastosCustom.length; j++) {
+                    if (gastosCustom[j].id === id) { gasto = gastosCustom[j]; break; }
+                }
+                if (!gasto) continue;
+                gasto.nombre = row.querySelector('.expense-name').value;
+                gasto.monto = parseFloat(row.querySelector('.expense-amount').value) || 0;
+                var activeBtn = row.querySelector('.etoggle-opt.active');
+                if (activeBtn) gasto.tipo = activeBtn.getAttribute('data-tipo');
+            }
         }
 
         /* ============================================================
@@ -2018,7 +2341,16 @@
                 config.botesGrupos, config.botesEliminatorias
             );
 
-            var costoTotal = cancha.costoCancha + pelotas.costoPelotas;
+            var customGastos = config.gastosCustom || [];
+            var gastosCustomTotal = 0;
+            for (var i = 0; i < customGastos.length; i++) {
+                var g = customGastos[i];
+                if (g.monto > 0) {
+                    gastosCustomTotal += (g.tipo === 'porJugador') ? g.monto * config.parejas : g.monto;
+                }
+            }
+
+            var costoTotal = cancha.costoCancha + pelotas.costoPelotas + gastosCustomTotal;
             var costoPareja = config.parejas > 0 ? costoTotal / config.parejas : 0;
             var precioSugerido = costoPareja * (1 + config.margen / 100);
             var ingresoTotal = precioSugerido * config.parejas;
@@ -2038,6 +2370,8 @@
                 costoCancha: cancha.costoCancha,
                 totalBotes: pelotas.totalBotes,
                 costoPelotas: pelotas.costoPelotas,
+                gastosCustom: customGastos,
+                gastosCustomTotal: gastosCustomTotal,
                 costoTotal: costoTotal,
                 costoPareja: costoPareja,
                 precioSugerido: precioSugerido,
@@ -2193,7 +2527,8 @@
                 modoPelotas: getRadioValue('modoPelotas') || 'porPartido',
                 botesGrupos: parseInt(dom.botesGrupos.value) || 0,
                 botesEliminatorias: parseInt(dom.botesEliminatorias.value) || 0,
-                margen: parseInt(dom.margenSlider.value) || 0
+                margen: parseInt(dom.margenSlider.value) || 0,
+                gastosCustom: gastosCustom
             };
         }
 
@@ -2248,6 +2583,33 @@
             html += '<tr><td>Horas de cancha</td><td>' + horasLabel + '</td><td></td></tr>';
             html += '<tr><td>Costo canchas</td><td>' + formatHours(r.totalHoras) + ' x ' + formatCurrency(config.precioCancha) + '/hr</td><td>' + formatCurrency(r.costoCancha) + '</td></tr>';
             html += '<tr><td>Costo pelotas</td><td>' + r.totalBotes + ' botes (' + (modoLabels[config.modoPelotas] || '') + ')</td><td>' + formatCurrency(r.costoPelotas) + '</td></tr>';
+
+            // Otros Gastos
+            if (r.gastosCustom && r.gastosCustom.length > 0) {
+                var hasGastos = false;
+                for (var gi = 0; gi < r.gastosCustom.length; gi++) {
+                    if (r.gastosCustom[gi].monto > 0) { hasGastos = true; break; }
+                }
+                if (hasGastos) {
+                    html += '<tr><td colspan="3" class="breakdown-section-label">Otros Gastos</td></tr>';
+                    for (var gi = 0; gi < r.gastosCustom.length; gi++) {
+                        var gc = r.gastosCustom[gi];
+                        if (gc.monto <= 0) continue;
+                        var gNombre = gc.nombre || 'Gasto ' + (gi + 1);
+                        var gDetalle, gValor;
+                        if (gc.tipo === 'porJugador') {
+                            gValor = gc.monto * config.parejas;
+                            gDetalle = formatCurrency(gc.monto) + ' &times; ' + config.parejas + ' parejas';
+                        } else {
+                            gValor = gc.monto;
+                            gDetalle = 'Gasto fijo';
+                        }
+                        html += '<tr><td>' + gNombre + '</td><td>' + gDetalle + '</td><td>' + formatCurrency(gValor) + '</td></tr>';
+                    }
+                    html += '<tr class="subtotal"><td>Subtotal Otros</td><td></td><td>' + formatCurrency(r.gastosCustomTotal) + '</td></tr>';
+                }
+            }
+
             html += '<tr class="total"><td>Costo Total</td><td></td><td>' + formatCurrency(r.costoTotal) + '</td></tr>';
             html += '<tr class="subtotal"><td>Costo por Pareja</td><td>' + config.parejas + ' parejas</td><td>' + formatCurrency(r.costoPareja) + '</td></tr>';
 
@@ -2259,6 +2621,13 @@
             // Preview
             dom.previewGroups.innerHTML = generarGruposPreview(config.parejas, config.tamanoGrupo);
             dom.previewBracket.innerHTML = generarBracketPreview(r.clasificados, r.numGrupos);
+
+            // Preview nudge
+            dom.previewNudge.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span>Esta es solo una <strong>vista previa</strong>. <a href="/#contact">CourtBit</a> genera los ' + r.numGrupos + ' grupos, brackets de ' + r.clasificados + ' parejas y resultados en tiempo real.</span>';
+
+            // Dynamic CTA
+            dom.ctaTitle.textContent = 'Tu torneo de ' + config.parejas + ' parejas, listo en minutos';
+            dom.ctaDescription.textContent = r.numGrupos + ' grupos, ' + r.totalPartidos + ' partidos y brackets automaticos. Cobra ' + formatCurrency(r.precioSugerido) + ' por pareja con pagos en linea.';
 
             // Save to localStorage
             guardarConfig(config);
@@ -2352,6 +2721,13 @@
                 if (config.modoPelotas === 'personalizado') {
                     dom.customBalls.classList.add('visible');
                 }
+
+                // Restore custom expenses
+                if (config.gastosCustom && Array.isArray(config.gastosCustom)) {
+                    gastosCustom = config.gastosCustom;
+                    gastoIdCounter = gastosCustom.reduce(function(max, g) { return Math.max(max, g.id || 0); }, 0) + 1;
+                    renderizarGastos();
+                }
             } catch (e) { /* silently fail */ }
         }
 
@@ -2381,6 +2757,7 @@
 
         // Recalculate button
         dom.recalcBtn.addEventListener('click', function() {
+            leerGastosDelDOM();
             actualizarResultados();
             ocultarRecalcular();
         });
@@ -2412,6 +2789,39 @@
                     dom.customBalls.classList.remove('visible');
                 }
             });
+        });
+
+        // Custom expenses events
+        dom.addExpenseBtn.addEventListener('click', function() {
+            agregarGasto('', 0, 'fijo');
+            mostrarRecalcular();
+        });
+
+        dom.expensesList.addEventListener('input', function(e) {
+            if (e.target.classList.contains('expense-name') || e.target.classList.contains('expense-amount')) {
+                leerGastosDelDOM();
+                mostrarRecalcular();
+            }
+        });
+
+        dom.expensesList.addEventListener('click', function(e) {
+            // Remove button
+            var removeBtn = e.target.closest('.expense-remove-btn');
+            if (removeBtn) {
+                var id = parseInt(removeBtn.getAttribute('data-id'));
+                eliminarGasto(id);
+                mostrarRecalcular();
+                return;
+            }
+            // Type toggle
+            var toggleOpt = e.target.closest('.etoggle-opt');
+            if (toggleOpt) {
+                var toggle = toggleOpt.parentElement;
+                toggle.querySelectorAll('.etoggle-opt').forEach(function(btn) { btn.classList.remove('active'); });
+                toggleOpt.classList.add('active');
+                leerGastosDelDOM();
+                mostrarRecalcular();
+            }
         });
 
         /* ============================================================
