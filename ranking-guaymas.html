@@ -2445,11 +2445,10 @@
 
         async function fetchAllRankingData() {
             var url;
-            var fetchOpts = null;
+            var token = localStorage.getItem('courtbit_token');
+            var fetchOpts = { headers: { 'Authorization': 'Bearer ' + token } };
             if (isAdminMode) {
                 url = API_URL + '/ranking/admin';
-                var token = localStorage.getItem('courtbit_token');
-                fetchOpts = { headers: { 'Authorization': 'Bearer ' + token } };
             } else {
                 url = API_URL + '/ranking?organizer_id=' + ORGANIZER_ID;
             }
