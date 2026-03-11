@@ -2501,7 +2501,7 @@
                 try {
                     var user = JSON.parse(userJson);
                     await checkIfOrganizer(token);
-                    await checkRankingStatus(user);
+                    await checkRankingStatus(user, token);
                     return;
                 } catch (e) {
                     localStorage.removeItem('courtbit_token');
@@ -2511,12 +2511,21 @@
             showAuthSection();
         }
 
-        async function checkRankingStatus(user) {
+        async function checkRankingStatus(user, token) {
             // Show ranking section immediately as a loading state so the page is never blank
             await showRankingSection(user);
             try {
                 var url = API_URL + '/ranking/status?user_id=' + encodeURIComponent(user.uid) + '&organizer_id=' + ORGANIZER_ID;
-                var response = await fetchWithTimeout(url, null, 8000);
+                var response = await fetchWithTimeout(url, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                }, 8000);
+
+                if (response.status === 401) {
+                    localStorage.removeItem('courtbit_token');
+                    localStorage.removeItem('courtbit_user');
+                    init();
+                    return;
+                }
 
                 if (!response.ok) {
                     return;
