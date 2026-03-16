@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Primary Tags -->
+    <title>Programa de Referidos para Organizadores | CourtBit</title>
+    <meta name="description" content="Gana dinero refiriendo organizadores a CourtBit. Recibe el 20% del fee generado por las inscripciones de los torneos que organicen tus referidos.">
+    <meta name="keywords" content="referidos courtbit, programa referidos padel, ganar dinero padel, referir organizadores padel, comisiones padel, ingresos recurrentes padel">
+    <meta name="author" content="CourtBit">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://courtbit.com.mx/referidos/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://courtbit.com.mx/referidos/">
+    <meta property="og:title" content="Programa de Referidos para Organizadores | CourtBit">
+    <meta property="og:description" content="Gana dinero refiriendo organizadores a CourtBit. Recibe el 20% del fee generado por las inscripciones de los torneos que organicen tus referidos.">
+    <meta property="og:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="CourtBit">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://courtbit.com.mx/referidos/">
+    <meta name="twitter:title" content="Programa de Referidos para Organizadores | CourtBit">
+    <meta name="twitter:description" content="Gana dinero refiriendo organizadores a CourtBit. Recibe el 20% del fee generado por las inscripciones.">
+    <meta name="twitter:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+
+    <!-- Additional SEO -->
+    <meta name="geo.region" content="MX">
+    <meta name="geo.placename" content="Mexico">
+    <meta name="language" content="Spanish">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../Assets/courtbit-logo.svg">
+    <link rel="apple-touch-icon" href="../Assets/courtbit-logo.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap"></noscript>
+
+    <style>
+        :root {
+            --lime: #B8F02B;
+            --lime-hover: #a5d827;
+            --lime-soft: #e8faa0;
+            --lime-bg: #f4fdd6;
+            --navy: #0f1d4d;
+            --navy-light: #1a2e6b;
+            --blue: #2e59fb;
+            --blue-soft: #eef2ff;
+            --white: #ffffff;
+            --bg: #fafbfc;
+            --bg-warm: #f5f6f8;
+            --text: #1a1f36;
+            --text-secondary: #5a6178;
+            --text-muted: #8b92a8;
+            --border: #e4e7ec;
+            --border-light: #f0f1f4;
+            --shadow-sm: 0 1px 3px rgba(15,29,77,0.06);
+            --shadow-md: 0 4px 12px rgba(15,29,77,0.08);
+            --shadow-lg: 0 12px 32px rgba(15,29,77,0.1);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-full: 100px;
+            --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --green-accent: #5a9e00;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: .08s; }
+        .d2 { transition-delay: .16s; }
+        .d3 { transition-delay: .24s; }
+        .d4 { transition-delay: .32s; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 14px 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 56px; width: auto; }
+        .nav-center { display: flex; gap: 28px; }
+        .nav-center a {
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.875rem; font-weight: 500; transition: color 0.2s;
+        }
+        .nav-center a:hover { color: var(--text); }
+        .nav-center a.active { color: var(--text); font-weight: 600; }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > a { cursor: default; }
+        .nav-dropdown-menu {
+            display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            padding-top: 12px; min-width: 210px; z-index: 100;
+        }
+        .nav-dropdown-menu-inner {
+            background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+            box-shadow: var(--shadow-lg); padding: 6px;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a {
+            display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+            color: var(--text-secondary) !important; font-size: 0.85rem !important; font-weight: 500;
+            border-radius: 7px; text-decoration: none; transition: background 0.15s;
+            white-space: nowrap;
+        }
+        .nav-dropdown-menu a:hover { background: var(--bg); color: var(--text) !important; }
+        .nav-dropdown-menu a svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.5; }
+        .nav-right { display: flex; align-items: center; gap: 10px; }
+        .lang-switch {
+            color: var(--text-muted); text-decoration: none; font-size: 0.8125rem;
+            padding: 6px 14px; border: 1px solid var(--border);
+            border-radius: var(--radius-full); transition: border-color 0.2s;
+        }
+        .lang-switch:hover { border-color: var(--text-muted); }
+        .nav-cta {
+            display: flex; align-items: center; gap: 6px;
+            background: var(--navy); color: var(--white);
+            padding: 10px 22px; border-radius: var(--radius-full);
+            font-weight: 600; font-size: 0.875rem;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .nav-cta:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .mobile-toggle { display: none; background: none; border: none; color: var(--text); cursor: pointer; padding: 8px; }
+        .mobile-toggle svg { width: 24px; height: 24px; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 80vh; display: flex; align-items: center;
+            padding: 130px 0 80px; position: relative;
+            background: linear-gradient(165deg, #f0fde4 0%, var(--white) 40%, var(--blue-soft) 100%);
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(184,240,43,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(46,89,251,0.05) 0%, transparent 50%);
+        }
+        .hero .container { position: relative; z-index: 2; max-width: 820px; text-align: center; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--white); border: 1px solid var(--border);
+            padding: 7px 18px; border-radius: var(--radius-full);
+            font-size: 0.8125rem; color: var(--text-secondary);
+            font-weight: 500; margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .hero-badge .dot {
+            width: 7px; height: 7px; background: var(--lime);
+            border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(184,240,43,0.5);
+        }
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5.5vw, 3.5rem); font-weight: 800;
+            line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px;
+            color: var(--navy);
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #6dbf00 0%, #4a9e00 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.125rem; color: var(--text-secondary);
+            margin-bottom: 36px; max-width: 580px;
+            margin-left: auto; margin-right: auto; line-height: 1.65;
+        }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--navy); color: var(--white);
+            padding: 14px 28px; border-radius: var(--radius-full);
+            font-weight: 700; font-size: 0.9375rem;
+            text-decoration: none; transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(15,29,77,0.15);
+            border: none; cursor: pointer; font-family: var(--font);
+        }
+        .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,29,77,0.2); }
+
+        /* ── SECTIONS ── */
+        .section { padding: 96px 0; }
+        .section-gray { background: var(--bg); }
+        .section-header { text-align: center; max-width: 600px; margin: 0 auto 52px; }
+        .section-tag {
+            display: inline-block; font-size: 0.6875rem; font-weight: 700;
+            color: #5a9e00; text-transform: uppercase; letter-spacing: 0.15em;
+            margin-bottom: 12px; background: var(--lime-bg);
+            padding: 4px 14px; border-radius: var(--radius-full);
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800;
+            letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 12px;
+            color: var(--navy);
+        }
+        .section-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* ── HOW IT WORKS (STEPS) ── */
+        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .step-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px 22px; text-align: center;
+            transition: all 0.25s; box-shadow: var(--shadow-sm); position: relative;
+        }
+        .step-card:hover { border-color: #b0d840; transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .step-num {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--navy); color: var(--white);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; font-weight: 800; margin: 0 auto 16px;
+        }
+        .step-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+        .step-card p { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5; }
+        .step-card.highlight-card { border-color: #b0d840; background: linear-gradient(180deg, #fafde8 0%, var(--white) 100%); }
+        .step-card.highlight-card .step-num { background: linear-gradient(135deg, #5a9e00, #4a8700); }
+
+        /* ── EXAMPLE CALC ── */
+        .example-wrapper { max-width: 660px; margin: 0 auto; }
+        .example-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);
+        }
+        .example-header {
+            padding: 16px 28px; background: var(--navy);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .example-header span { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
+        .example-header .example-tag { color: var(--lime); background: rgba(184,240,43,0.15); padding: 3px 12px; border-radius: var(--radius-full); font-size: 0.6875rem; }
+        .example-body { padding: 28px; }
+        .example-rows { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+        .example-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0; border-bottom: 1px solid var(--border-light);
+        }
+        .example-row:last-child { border-bottom: none; }
+        .example-row .label { font-size: 0.9375rem; color: var(--text-secondary); font-weight: 500; }
+        .example-row .value { font-size: 0.9375rem; color: var(--text); font-weight: 600; }
+        .example-divider { height: 1px; background: var(--border); margin: 8px 0; }
+        .example-calc-steps { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .example-calc-step {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.875rem; color: var(--text-muted); font-weight: 500;
+        }
+        .example-calc-step code {
+            font-family: 'DM Sans', monospace; background: var(--bg);
+            padding: 3px 10px; border-radius: 6px; font-size: 0.8125rem;
+            color: var(--text-secondary); border: 1px solid var(--border-light);
+        }
+        .example-result {
+            background: linear-gradient(135deg, var(--lime-bg), rgba(184,240,43,0.15));
+            border: 1.5px solid rgba(184,240,43,0.4);
+            border-radius: var(--radius); padding: 20px 24px;
+            text-align: center;
+        }
+        .example-result-label {
+            font-size: 0.6875rem; font-weight: 700; color: #5a9e00;
+            text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px;
+        }
+        .example-result-amount { font-size: 2.25rem; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; }
+        .example-result-note { font-size: 0.8125rem; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+
+        /* ── WHY REFER CARDS ── */
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .why-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px 24px;
+            transition: all 0.25s; box-shadow: var(--shadow-sm);
+        }
+        .why-card:hover { border-color: #b0d840; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .why-card-icon {
+            width: 42px; height: 42px; background: var(--lime-bg);
+            border-radius: 12px; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 16px;
+        }
+        .why-card-icon svg { width: 20px; height: 20px; color: #5a9e00; }
+        .why-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+        .why-card p { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* ── WHO CAN YOU REFER ── */
+        .who-list { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+        .who-item {
+            display: flex; align-items: center; gap: 12px;
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius); padding: 16px 20px;
+            transition: all 0.2s; box-shadow: var(--shadow-sm);
+        }
+        .who-item:hover { border-color: #b0d840; transform: translateX(4px); }
+        .who-item svg { width: 20px; height: 20px; color: #5a9e00; flex-shrink: 0; }
+        .who-item span { font-size: 0.9375rem; font-weight: 600; color: var(--text); }
+
+        /* ── AUTH SECTION ── */
+        .auth-section { padding: 96px 0; background: var(--bg); }
+        .auth-container { width: 100%; max-width: 440px; margin: 0 auto; }
+        .auth-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 40px;
+            box-shadow: var(--shadow-lg);
+        }
+        .auth-tabs {
+            display: flex; gap: 4px; margin-bottom: 28px;
+            background: var(--bg-warm); padding: 4px; border-radius: var(--radius-full);
+        }
+        .auth-tab {
+            flex: 1; padding: 10px 16px; border: none;
+            background: transparent; color: var(--text-muted);
+            font-family: var(--font); font-size: 0.875rem; font-weight: 600;
+            border-radius: var(--radius-full); cursor: pointer; transition: all 0.2s ease;
+        }
+        .auth-tab.active { background: var(--white); color: var(--navy); box-shadow: var(--shadow-sm); }
+        .auth-tab:hover:not(.active) { color: var(--text); }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+        .form-group { margin-bottom: 18px; }
+        .form-label { display: block; margin-bottom: 6px; font-size: 0.8125rem; font-weight: 600; color: var(--text); }
+        .form-input {
+            width: 100%; padding: 12px 16px;
+            background: var(--white); border: 1.5px solid var(--border); border-radius: 12px;
+            color: var(--text); font-family: var(--font); font-size: 0.9375rem; transition: all 0.2s ease;
+        }
+        .form-input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(15,29,77,0.08); }
+        .form-input::placeholder { color: var(--text-muted); }
+        select.form-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238b92a8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px;
+        }
+        .phone-wrapper { display: flex; gap: 8px; }
+        .phone-code-select {
+            width: 100px; flex-shrink: 0; padding: 12px 8px 12px 12px;
+            background: var(--white); border: 1.5px solid var(--border); border-radius: 12px;
+            color: var(--text); font-family: var(--font); font-size: 0.875rem; font-weight: 600;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b92a8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 8px center; padding-right: 24px;
+            transition: all 0.2s ease;
+        }
+        .phone-code-select:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(15,29,77,0.08); }
+        .phone-wrapper .form-input { flex: 1; min-width: 0; }
+        .password-wrapper { position: relative; }
+        .password-wrapper .form-input { padding-right: 44px; }
+        .toggle-password {
+            position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+            background: none; border: none; cursor: pointer; color: var(--text-muted);
+            padding: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.15s ease;
+        }
+        .toggle-password:hover { color: var(--navy); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .submit-btn {
+            width: 100%; padding: 14px; background: var(--navy); border: none;
+            border-radius: var(--radius-full); color: var(--white);
+            font-family: var(--font); font-size: 0.9375rem; font-weight: 700;
+            cursor: pointer; transition: all 0.2s ease; margin-top: 8px;
+            box-shadow: 0 2px 8px rgba(15,29,77,0.15);
+        }
+        .submit-btn:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,29,77,0.2); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .error-message {
+            background: #fef2f2; border: 1px solid #fecaca; color: #dc2626;
+            padding: 10px 14px; border-radius: 12px; margin-bottom: 18px;
+            font-size: 0.8125rem; font-weight: 500; display: none;
+        }
+        .error-message.show { display: block; }
+        .success-message {
+            background: var(--lime-bg); border: 1px solid rgba(184,240,43,0.4);
+            color: var(--green-accent); padding: 10px 14px; border-radius: 12px;
+            margin-bottom: 18px; font-size: 0.8125rem; font-weight: 500; display: none;
+        }
+        .success-message.show { display: block; }
+        .forgot-password-link {
+            display: block; text-align: right; font-size: 0.8125rem;
+            color: var(--navy); font-weight: 600; cursor: pointer;
+            margin-top: -10px; margin-bottom: 16px; font-family: var(--font);
+            background: none; border: none; padding: 0; text-decoration: none;
+        }
+        .forgot-password-link:hover { color: var(--green-accent); }
+        .forgot-form-wrapper { display: none; }
+        .forgot-form-wrapper.active { display: block; }
+        .back-to-login {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.8125rem; color: var(--text-secondary); font-weight: 600;
+            cursor: pointer; margin-bottom: 16px; font-family: var(--font);
+            background: none; border: none; padding: 0;
+        }
+        .back-to-login:hover { color: var(--navy); }
+        .forgot-description { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 18px; }
+        .loading-inline {
+            display: inline-block; width: 18px; height: 18px;
+            border: 2px solid transparent; border-top-color: currentColor;
+            border-radius: 50%; animation: spin 0.8s linear infinite;
+            margin-right: 8px; vertical-align: middle;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── DASHBOARD (POST-LOGIN) ── */
+        .dashboard-section {
+            display: none; min-height: 100vh;
+            background: linear-gradient(165deg, #f0fde4 0%, var(--white) 40%, var(--blue-soft) 100%);
+        }
+        .dashboard-section.active { display: block; }
+        .dashboard-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 14px 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .dashboard-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .dashboard-user { display: flex; align-items: center; gap: 14px; }
+        .dashboard-user-info { text-align: right; }
+        .dashboard-user-name { font-size: 0.875rem; font-weight: 700; color: var(--navy); }
+        .dashboard-user-email { font-size: 0.75rem; color: var(--text-muted); }
+        .logout-btn {
+            padding: 8px 18px; background: none; border: 1.5px solid var(--border);
+            border-radius: var(--radius-full); font-family: var(--font);
+            font-size: 0.8125rem; font-weight: 600; color: var(--text-secondary);
+            cursor: pointer; transition: all 0.2s;
+        }
+        .logout-btn:hover { border-color: var(--text-muted); color: var(--text); }
+
+        .dashboard-body { padding: 120px 24px 80px; max-width: 800px; margin: 0 auto; }
+
+        /* ── EMPTY STATE ── */
+        .empty-state {
+            text-align: center; padding: 60px 20px;
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
+        }
+        .empty-state-icon {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: var(--lime-bg); display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 24px;
+        }
+        .empty-state-icon svg { width: 36px; height: 36px; color: #5a9e00; }
+        .empty-state h2 {
+            font-size: 1.5rem; font-weight: 800; color: var(--navy);
+            margin-bottom: 8px; letter-spacing: -0.02em;
+        }
+        .empty-state p { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.6; max-width: 420px; margin: 0 auto; }
+        .empty-state-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--bg-warm); border: 1px solid var(--border);
+            padding: 6px 16px; border-radius: var(--radius-full);
+            font-size: 0.75rem; font-weight: 600; color: var(--text-muted);
+            margin-top: 24px;
+        }
+        .empty-state-badge .dot {
+            width: 6px; height: 6px; background: #f59e0b;
+            border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        /* ── DASHBOARD STATS PREVIEW (placeholder) ── */
+        .stats-preview {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 24px 20px;
+            text-align: center; box-shadow: var(--shadow-sm);
+        }
+        .stat-card-value {
+            font-size: 2rem; font-weight: 800; color: var(--navy);
+            letter-spacing: -0.03em; margin-bottom: 2px;
+        }
+        .stat-card-value.muted { color: var(--border); }
+        .stat-card-label { font-size: 0.8125rem; color: var(--text-muted); font-weight: 500; }
+
+        /* ── FINAL CTA ── */
+        .cta-final {
+            padding: 96px 0; text-align: center; position: relative;
+            background: var(--navy); color: var(--white); overflow: hidden;
+        }
+        .cta-final::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background:
+                radial-gradient(ellipse 60% 60% at 30% 100%, rgba(184,240,43,0.12), transparent),
+                radial-gradient(ellipse 50% 50% at 80% 0%, rgba(46,89,251,0.1), transparent);
+        }
+        .cta-final .container { position: relative; z-index: 2; }
+        .cta-final h2 { font-size: clamp(1.875rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; }
+        .cta-final p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-final .btn-cta-lime {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--lime); color: var(--navy); padding: 14px 28px;
+            border-radius: var(--radius-full); font-weight: 700; font-size: 0.9375rem;
+            text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; font-family: var(--font);
+        }
+        .cta-final .btn-cta-lime:hover { background: var(--lime-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,240,43,0.3); }
+
+        /* ── FOOTER ── */
+        footer { padding: 28px 0; border-top: 1px solid var(--border-light); background: var(--white); }
+        footer .container { display: flex; justify-content: space-between; align-items: center; }
+        .footer-brand { font-size: 1.125rem; font-weight: 800; color: var(--navy); }
+        .footer-brand span { color: #5a9e00; }
+        .footer-right { display: flex; align-items: center; gap: 18px; }
+        .footer-link { color: var(--text-muted); text-decoration: none; font-size: 0.8125rem; transition: color 0.2s; }
+        .footer-link:hover { color: var(--text); }
+        .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* ── MOBILE NAV ── */
+        .nav-center.show {
+            display: flex !important; flex-direction: column;
+            position: absolute; top: 100%; left: 0; right: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px 20px; gap: 0; box-shadow: var(--shadow-md);
+        }
+        .nav-center.show a { display: block; padding: 14px 0; font-size: 1rem; border-bottom: 1px solid var(--border-light); }
+        .nav-center.show a:last-child { border-bottom: none; }
+        .nav-center.show .nav-dropdown-menu { display: block; position: static; transform: none; padding: 0 0 0 16px; min-width: auto; }
+        .nav-center.show .nav-dropdown-menu-inner { box-shadow: none; border: none; padding: 0; background: transparent; }
+        .nav-center.show .nav-dropdown-menu a { padding: 12px 0; border-radius: 0; border-bottom: 1px solid var(--border-light); }
+        .nav-center.show .nav-dropdown > a { border-bottom: none; padding-bottom: 4px; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width:900px) {
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: 1fr; }
+            .stats-preview { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width:768px) {
+            .nav-center { display: none; }
+            .lang-switch { display: none; }
+            .mobile-toggle { display: block; }
+
+            .hero { padding: 110px 0 60px; min-height: auto; }
+            .hero h1 { font-size: clamp(2rem, 7vw, 2.75rem); }
+            .hero-sub { font-size: 1rem; margin-bottom: 28px; }
+
+            .section { padding: 64px 0; }
+            .section-header { margin-bottom: 36px; }
+            .section-title { font-size: clamp(1.5rem, 5vw, 2rem); }
+
+            .steps-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .step-card { padding: 22px 16px; }
+
+            .example-body { padding: 20px; }
+            .example-row .label, .example-row .value { font-size: 0.875rem; }
+            .example-result-amount { font-size: 1.875rem; }
+
+            .why-card { padding: 22px 18px; }
+            .who-item { padding: 14px 16px; }
+            .who-item span { font-size: 0.875rem; }
+
+            .auth-section { padding: 64px 0; }
+            .auth-card { padding: 28px 20px; }
+            .form-row { grid-template-columns: 1fr; }
+
+            .cta-final { padding: 72px 0; }
+            .cta-final h2 { font-size: clamp(1.5rem, 5.5vw, 2.25rem); }
+
+            .dashboard-body { padding: 100px 16px 60px; }
+            .dashboard-user-info { display: none; }
+            .empty-state { padding: 40px 16px; }
+            .empty-state h2 { font-size: 1.25rem; }
+            .stat-card { padding: 18px 14px; }
+            .stat-card-value { font-size: 1.5rem; }
+
+            footer .container { flex-direction: column; gap: 14px; text-align: center; }
+            .footer-right { flex-wrap: wrap; justify-content: center; }
+        }
+
+        @media (max-width:480px) {
+            .container { padding: 0 16px; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .hero-badge { font-size: 0.75rem; padding: 6px 14px; }
+            .hero h1 { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+            .section { padding: 52px 0; }
+            .example-header { padding: 12px 16px; flex-wrap: wrap; gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════════ PUBLIC LANDING ════════ -->
+    <div id="public-section">
+
+        <!-- NAV -->
+        <nav>
+            <div class="container">
+                <a href="/" class="logo"><img src="../Assets/courtbit-logo.svg" alt="CourtBit"></a>
+                <div class="nav-center">
+                    <a href="/#funciones">Funciones</a>
+                    <a href="/#jugadores">Para Jugadores</a>
+                    <a href="/#precios">Precios</a>
+                    <div class="nav-dropdown">
+                        <a href="#">Herramientas</a>
+                        <div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner">
+                            <a href="/calculadora-torneo/">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                                Calculadora Torneo
+                            </a>
+                            <a href="/calculadora-liga/">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                Calculadora Liga
+                            </a>
+                        </div></div>
+                    </div>
+                    <a href="/referidos/" class="active">Referidos</a>
+                </div>
+                <div class="nav-right">
+                    <a href="/en/" class="lang-switch">EN</a>
+                    <a href="#auth" class="nav-cta">Iniciar Sesion</a>
+                    <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-center').classList.toggle('show')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge reveal"><span class="dot"></span> Programa de Referidos</div>
+                <h1 class="reveal d1">Gana dinero refiriendo <span class="highlight">organizadores</span> a CourtBit</h1>
+                <p class="hero-sub reveal d2">Invita a otros organizadores de padel a usar CourtBit y recibe una comision por cada inscripcion que se genere en sus torneos.</p>
+                <div class="reveal d3">
+                    <a href="#auth" class="btn-primary">Empezar a referir</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="section section-gray">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Como Funciona</span>
+                    <h2 class="section-title">4 pasos para generar ingresos</h2>
+                    <p class="section-desc">Sin complicaciones. Refieres, ellos organizan, tu ganas.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card reveal">
+                        <div class="step-num">1</div>
+                        <h3>Refieres a un organizador</h3>
+                        <p>Compartes tu enlace de referido con organizadores de padel que conozcas.</p>
+                    </div>
+                    <div class="step-card reveal d1">
+                        <div class="step-num">2</div>
+                        <h3>El organizador crea torneos en CourtBit</h3>
+                        <p>Tu referido se registra y comienza a gestionar sus eventos en la plataforma.</p>
+                    </div>
+                    <div class="step-card reveal d2">
+                        <div class="step-num">3</div>
+                        <h3>Los jugadores se inscriben y pagan desde la app</h3>
+                        <p>Los jugadores pagan sus inscripciones directamente desde la app de CourtBit.</p>
+                    </div>
+                    <div class="step-card highlight-card reveal d3">
+                        <div class="step-num">4</div>
+                        <h3>Recibes el 20% del fee generado</h3>
+                        <p>Por cada inscripcion pagada en la app, recibes el 20% de la comision de CourtBit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXAMPLE -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Ejemplo</span>
+                    <h2 class="section-title">Mira cuanto puedes ganar por torneo</h2>
+                    <p class="section-desc">Un ejemplo real con numeros conservadores.</p>
+                </div>
+                <div class="example-wrapper reveal">
+                    <div class="example-card">
+                        <div class="example-header">
+                            <span>Simulacion de Comision</span>
+                            <span class="example-tag">Ejemplo</span>
+                        </div>
+                        <div class="example-body">
+                            <div class="example-rows">
+                                <div class="example-row">
+                                    <span class="label">Inscripcion por jugador</span>
+                                    <span class="value">$600 MXN</span>
+                                </div>
+                                <div class="example-row">
+                                    <span class="label">Jugadores inscritos</span>
+                                    <span class="value">64</span>
+                                </div>
+                                <div class="example-row">
+                                    <span class="label">Fee CourtBit</span>
+                                    <span class="value">3%</span>
+                                </div>
+                            </div>
+                            <div class="example-divider"></div>
+                            <div class="example-calc-steps">
+                                <div class="example-calc-step">
+                                    <span>Fee por jugador</span>
+                                    <code>$600 &times; 3% = $18</code>
+                                </div>
+                                <div class="example-calc-step">
+                                    <span>Fee total del torneo</span>
+                                    <code>$18 &times; 64 = $1,152</code>
+                                </div>
+                            </div>
+                            <div class="example-result">
+                                <div class="example-result-label">Tu comision de referido (20%)</div>
+                                <div class="example-result-amount">$230 MXN</div>
+                                <div class="example-result-note">Esto pasa cada vez que tu referido organiza un torneo.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY REFER -->
+        <section class="section section-gray">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Beneficios</span>
+                    <h2 class="section-title">Por que referir organizadores?</h2>
+                </div>
+                <div class="why-grid">
+                    <div class="why-card reveal">
+                        <div class="why-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3>Monetiza tu red</h3>
+                        <p>Muchos organizadores conocen a otros organizadores. Convierte esas conexiones en ingresos reales.</p>
+                    </div>
+                    <div class="why-card reveal d1">
+                        <div class="why-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        </div>
+                        <h3>Ingresos recurrentes</h3>
+                        <p>Ganas cada vez que los organizadores que referiste hagan torneos con inscripciones por la app.</p>
+                    </div>
+                    <div class="why-card reveal d2">
+                        <div class="why-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                        <h3>Crece la comunidad</h3>
+                        <p>Mas organizadores significa mas torneos y mas jugadores. Tu ayudas a crecer el ecosistema del padel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO CAN YOU REFER -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">A quien referir</span>
+                    <h2 class="section-title">A quien puedes referir?</h2>
+                    <p class="section-desc">Cualquier persona u organizacion que organice eventos de padel.</p>
+                </div>
+                <div class="who-list">
+                    <div class="who-item reveal">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span>Organizadores independientes</span>
+                    </div>
+                    <div class="who-item reveal d1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        <span>Academias de padel</span>
+                    </div>
+                    <div class="who-item reveal d2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                        <span>Clubs deportivos</span>
+                    </div>
+                    <div class="who-item reveal d3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <span>Organizadores de ligas</span>
+                    </div>
+                    <div class="who-item reveal d4">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                        <span>Circuitos regionales</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTH SECTION -->
+        <section class="auth-section" id="auth">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Acceso</span>
+                    <h2 class="section-title">Inicia sesion para acceder al programa</h2>
+                    <p class="section-desc">Crea una cuenta o inicia sesion para obtener tu enlace de referido.</p>
+                </div>
+                <div class="auth-container reveal">
+                    <div class="auth-card">
+                        <div class="auth-tabs">
+                            <button class="auth-tab active" data-tab="login">Iniciar Sesion</button>
+                            <button class="auth-tab" data-tab="signup">Crear Cuenta</button>
+                        </div>
+
+                        <div id="error-message" class="error-message"></div>
+                        <div id="success-message" class="success-message"></div>
+
+                        <!-- Login Form -->
+                        <form id="login-form" class="auth-form active">
+                            <div class="form-group">
+                                <label class="form-label">Correo electronico</label>
+                                <input type="email" class="form-input" id="login-email" placeholder="tu@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Contrasena</label>
+                                <div class="password-wrapper">
+                                    <input type="password" class="form-input" id="login-password" placeholder="********" required>
+                                    <button type="button" class="toggle-password" data-target="login-password">
+                                        <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                        <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button" class="forgot-password-link" id="forgot-password-link">Olvidaste tu contrasena?</button>
+                            <button type="submit" class="submit-btn" id="login-btn">Iniciar Sesion</button>
+                        </form>
+
+                        <!-- Forgot Password Form -->
+                        <div id="forgot-form-wrapper" class="forgot-form-wrapper">
+                            <button type="button" class="back-to-login" id="back-to-login">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                                Volver a iniciar sesion
+                            </button>
+                            <p class="forgot-description">Ingresa tu correo electronico y te enviaremos una contrasena temporal para que puedas acceder a tu cuenta.</p>
+                            <form id="forgot-form">
+                                <div class="form-group">
+                                    <label class="form-label">Correo electronico</label>
+                                    <input type="email" class="form-input" id="forgot-email" placeholder="tu@email.com" required>
+                                </div>
+                                <button type="submit" class="submit-btn" id="forgot-btn">Enviar contrasena temporal</button>
+                            </form>
+                        </div>
+
+                        <!-- Signup Form -->
+                        <form id="signup-form" class="auth-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Nombre</label>
+                                    <input type="text" class="form-input" id="signup-firstname" placeholder="Juan" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Apellido</label>
+                                    <input type="text" class="form-input" id="signup-lastname" placeholder="Perez" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Correo electronico</label>
+                                <input type="email" class="form-input" id="signup-email" placeholder="tu@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Telefono</label>
+                                <div class="phone-wrapper">
+                                    <select class="phone-code-select" id="signup-phone-code">
+                                        <option value="+52">MX +52</option>
+                                        <option value="+1">US +1</option>
+                                        <option value="+54">AR +54</option>
+                                        <option value="+56">CL +56</option>
+                                        <option value="+57">CO +57</option>
+                                        <option value="+34">ES +34</option>
+                                    </select>
+                                    <input type="tel" class="form-input" id="signup-phone" placeholder="6221234567">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Contrasena</label>
+                                <div class="password-wrapper">
+                                    <input type="password" class="form-input" id="signup-password" placeholder="Minimo 8 caracteres" minlength="8" required>
+                                    <button type="button" class="toggle-password" data-target="signup-password">
+                                        <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                        <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Confirmar contrasena</label>
+                                <div class="password-wrapper">
+                                    <input type="password" class="form-input" id="signup-confirm-password" placeholder="Repite tu contrasena" minlength="8" required>
+                                    <button type="button" class="toggle-password" data-target="signup-confirm-password">
+                                        <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                        <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top:8px">
+                                <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-size:13px;line-height:1.4">
+                                    <input type="checkbox" id="signup-terms" required style="margin-top:3px;accent-color:var(--green-accent)">
+                                    <span>Acepto los <a href="/legal/#terminos-jugadores" target="_blank" rel="noopener" style="color:var(--green-accent);text-decoration:underline">Terminos y Condiciones</a></span>
+                                </label>
+                            </div>
+                            <div class="form-group" style="margin-top:4px">
+                                <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-size:13px;line-height:1.4">
+                                    <input type="checkbox" id="signup-privacy" required style="margin-top:3px;accent-color:var(--green-accent)">
+                                    <span>Acepto el <a href="/legal/#aviso-privacidad" target="_blank" rel="noopener" style="color:var(--green-accent);text-decoration:underline">Aviso de Privacidad</a></span>
+                                </label>
+                            </div>
+                            <button type="submit" class="submit-btn" id="signup-btn">Crear Cuenta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="cta-final">
+            <div class="container">
+                <h2 class="reveal">Empieza a ganar con tu<br>red de organizadores</h2>
+                <p class="reveal d1">Solicita acceso al programa de referidos y empieza a generar ingresos recurrentes.</p>
+                <div class="reveal d2">
+                    <a href="#auth" class="btn-cta-lime">Solicitar acceso al programa</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="container">
+                <div class="footer-brand">Court<span>Bit</span></div>
+                <div class="footer-right">
+                    <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="footer-link" target="_blank">App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&hl=es_MX" class="footer-link" target="_blank">Google Play</a>
+                    <a href="/calculadora-torneo/" class="footer-link">Calc. Torneo</a>
+                    <a href="/calculadora-liga/" class="footer-link">Calc. Liga</a>
+                    <a href="/legal/" class="footer-link">Legal</a>
+                    <span class="footer-copy">&copy; 2026 CourtBit</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ════════ DASHBOARD (POST-LOGIN) ════════ -->
+    <div class="dashboard-section" id="dashboard-section">
+
+        <div class="dashboard-header">
+            <div class="container">
+                <a href="/" class="logo"><img src="../Assets/courtbit-logo.svg" alt="CourtBit"></a>
+                <div class="dashboard-user">
+                    <div class="dashboard-user-info">
+                        <div class="dashboard-user-name" id="dashboard-user-name"></div>
+                        <div class="dashboard-user-email" id="dashboard-user-email"></div>
+                    </div>
+                    <button class="logout-btn" id="logout-btn">Cerrar sesion</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-body">
+            <!-- Stats preview (placeholder) -->
+            <div class="stats-preview">
+                <div class="stat-card">
+                    <div class="stat-card-value muted">0</div>
+                    <div class="stat-card-label">Organizadores referidos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-value muted">0</div>
+                    <div class="stat-card-label">Torneos generados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-value muted">$0</div>
+                    <div class="stat-card-label">Comisiones ganadas</div>
+                </div>
+            </div>
+
+            <!-- Empty state -->
+            <div class="empty-state">
+                <div class="empty-state-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <h2>Programa en construccion</h2>
+                <p>Estamos preparando todo para que puedas empezar a referir organizadores y ganar comisiones. Te notificaremos cuando este listo.</p>
+                <div class="empty-state-badge">
+                    <span class="dot"></span>
+                    Proximamente
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const API_URL = 'https://courtbit-api-production.up.railway.app/api';
+
+        // ── DOM helpers ──
+        function showError(msg) {
+            var el = document.getElementById('error-message');
+            el.textContent = msg;
+            el.classList.add('show');
+            document.getElementById('success-message').classList.remove('show');
+        }
+        function showSuccess(msg) {
+            var el = document.getElementById('success-message');
+            el.textContent = msg;
+            el.classList.add('show');
+            document.getElementById('error-message').classList.remove('show');
+        }
+        function hideMessages() {
+            document.getElementById('error-message').classList.remove('show');
+            document.getElementById('success-message').classList.remove('show');
+        }
+        function setLoading(btn, loading) {
+            if (loading) {
+                btn.disabled = true;
+                btn.innerHTML = '<span class="loading-inline"></span>Cargando...';
+            } else {
+                btn.disabled = false;
+                btn.textContent = btn.dataset.originalText;
+            }
+        }
+        function fetchWithTimeout(url, options, ms) {
+            ms = ms || 10000;
+            var controller = new AbortController();
+            var opts = Object.assign({}, options || {}, { signal: controller.signal });
+            return Promise.race([
+                fetch(url, opts),
+                new Promise(function(_, reject) {
+                    setTimeout(function() { controller.abort(); reject(new Error('Timeout')); }, ms);
+                })
+            ]);
+        }
+
+        // ── Section Management ──
+        function showPublicSection() {
+            document.getElementById('public-section').style.display = 'block';
+            document.getElementById('dashboard-section').classList.remove('active');
+        }
+
+        function showDashboard(user) {
+            document.getElementById('public-section').style.display = 'none';
+            var dash = document.getElementById('dashboard-section');
+            dash.classList.add('active');
+
+            var fullName = ((user.first_name || '') + ' ' + (user.last_name || '')).trim() || 'Usuario';
+            document.getElementById('dashboard-user-name').textContent = fullName;
+            document.getElementById('dashboard-user-email').textContent = user.email || '';
+            window.scrollTo(0, 0);
+        }
+
+        // ── Init ──
+        function init() {
+            var token = localStorage.getItem('courtbit_token');
+            var userJson = localStorage.getItem('courtbit_user');
+
+            if (token && userJson) {
+                try {
+                    var user = JSON.parse(userJson);
+                    showDashboard(user);
+                    return;
+                } catch (e) {
+                    localStorage.removeItem('courtbit_token');
+                    localStorage.removeItem('courtbit_user');
+                }
+            }
+            showPublicSection();
+        }
+
+        // ── Reveal animation ──
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(el) { if (el.isIntersecting) el.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+        // ── Auth tab switching ──
+        document.querySelectorAll('.auth-tab').forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                var target = this.getAttribute('data-tab');
+                document.querySelectorAll('.auth-tab').forEach(function(t) { t.classList.remove('active'); });
+                document.querySelectorAll('.auth-form').forEach(function(f) { f.classList.remove('active'); });
+                this.classList.add('active');
+                document.getElementById(target + '-form').classList.add('active');
+                document.getElementById('forgot-form-wrapper').classList.remove('active');
+                hideMessages();
+            });
+        });
+
+        // ── Forgot Password ──
+        document.getElementById('forgot-password-link').addEventListener('click', function() {
+            hideMessages();
+            document.getElementById('login-form').classList.remove('active');
+            document.querySelectorAll('.auth-tab').forEach(function(t) { t.style.display = 'none'; });
+            document.getElementById('forgot-form-wrapper').classList.add('active');
+        });
+
+        document.getElementById('back-to-login').addEventListener('click', function() {
+            hideMessages();
+            document.getElementById('forgot-form-wrapper').classList.remove('active');
+            document.getElementById('forgot-form').reset();
+            document.querySelectorAll('.auth-tab').forEach(function(t) { t.style.display = ''; });
+            document.getElementById('login-form').classList.add('active');
+            document.querySelector('.auth-tab[data-tab="login"]').classList.add('active');
+            document.querySelector('.auth-tab[data-tab="signup"]').classList.remove('active');
+            document.getElementById('signup-form').classList.remove('active');
+        });
+
+        document.getElementById('forgot-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            hideMessages();
+            var btn = document.getElementById('forgot-btn');
+            btn.dataset.originalText = btn.textContent;
+            setLoading(btn, true);
+            var email = document.getElementById('forgot-email').value.trim().toLowerCase();
+            try {
+                var response = await fetchWithTimeout(API_URL + '/auth/forgot-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                }, 10000);
+                var data = await response.json();
+                if (!response.ok) {
+                    setLoading(btn, false);
+                    showError(data.error || data.message || 'No se pudo enviar el correo. Verifica tu email.');
+                    return;
+                }
+                setLoading(btn, false);
+                showSuccess('Se envio una contrasena temporal a tu correo. Revisalo e inicia sesion.');
+            } catch (err) {
+                setLoading(btn, false);
+                showError('Error de conexion. Intenta de nuevo.');
+            }
+        });
+
+        // ── Toggle Password Visibility ──
+        document.querySelectorAll('.toggle-password').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var input = document.getElementById(this.dataset.target);
+                var isPassword = input.type === 'password';
+                input.type = isPassword ? 'text' : 'password';
+                this.querySelector('.eye-icon').style.display = isPassword ? 'none' : 'block';
+                this.querySelector('.eye-off-icon').style.display = isPassword ? 'block' : 'none';
+            });
+        });
+
+        // ── Login ──
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            hideMessages();
+            var btn = document.getElementById('login-btn');
+            btn.dataset.originalText = btn.textContent;
+            setLoading(btn, true);
+            var email = document.getElementById('login-email').value.trim().toLowerCase();
+            var password = document.getElementById('login-password').value;
+            try {
+                var response = await fetchWithTimeout(API_URL + '/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, password: password })
+                }, 10000);
+                var data = await response.json();
+                if (!response.ok) {
+                    setLoading(btn, false);
+                    showError(data.error || 'Correo o contrasena incorrectos');
+                    return;
+                }
+                localStorage.setItem('courtbit_token', data.token);
+                localStorage.setItem('courtbit_user', JSON.stringify(data.user));
+                showDashboard(data.user);
+            } catch (err) {
+                setLoading(btn, false);
+                showError('Error de conexion. Intenta de nuevo.');
+            }
+        });
+
+        // ── Signup ──
+        document.getElementById('signup-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            hideMessages();
+            var btn = document.getElementById('signup-btn');
+            btn.dataset.originalText = btn.textContent;
+            setLoading(btn, true);
+            var firstName = document.getElementById('signup-firstname').value.trim();
+            var lastName = document.getElementById('signup-lastname').value.trim();
+            var email = document.getElementById('signup-email').value.trim().toLowerCase();
+            var phoneRaw = document.getElementById('signup-phone').value.trim().replace(/\D/g, '');
+            var phone = null;
+            if (phoneRaw) {
+                var code = document.getElementById('signup-phone-code').value;
+                phone = code + phoneRaw;
+            }
+            var password = document.getElementById('signup-password').value;
+            var confirmPassword = document.getElementById('signup-confirm-password').value;
+            if (password !== confirmPassword) {
+                setLoading(btn, false);
+                showError('Las contrasenas no coinciden');
+                return;
+            }
+            var termsAccepted = document.getElementById('signup-terms').checked;
+            var privacyAccepted = document.getElementById('signup-privacy').checked;
+            if (!termsAccepted || !privacyAccepted) {
+                setLoading(btn, false);
+                showError('Debes aceptar los Terminos y Condiciones y el Aviso de Privacidad.');
+                return;
+            }
+            try {
+                var response = await fetchWithTimeout(API_URL + '/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        first_name: firstName,
+                        last_name: lastName,
+                        phone: phone,
+                        terms_accepted: true,
+                        privacy_accepted: true
+                    })
+                }, 10000);
+                var data = await response.json();
+                if (!response.ok) {
+                    setLoading(btn, false);
+                    if (data.errors && Array.isArray(data.errors)) {
+                        showError(data.errors.join(' '));
+                    } else {
+                        showError(data.error || 'Error al crear la cuenta');
+                    }
+                    return;
+                }
+                localStorage.setItem('courtbit_token', data.token);
+                localStorage.setItem('courtbit_user', JSON.stringify(data.user));
+                showDashboard(data.user);
+            } catch (err) {
+                setLoading(btn, false);
+                showError('Error de conexion. Intenta de nuevo.');
+            }
+        });
+
+        // ── Logout ──
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            localStorage.removeItem('courtbit_token');
+            localStorage.removeItem('courtbit_user');
+            showPublicSection();
+            window.scrollTo(0, 0);
+        });
+
+        // ── Smooth scroll for anchor links ──
+        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                var nc = document.querySelector('.nav-center');
+                if (nc) nc.classList.remove('show');
+                var target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ── Run ──
+        init();
+    </script>
+</body>
+</html>
