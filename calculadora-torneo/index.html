@@ -2414,51 +2414,33 @@
             return html;
         }
 
+        var BRACKET_API = 'https://courtbit-api-production.up.railway.app/api';
+
         function generarBracketPreview(clasificados, numGrupos) {
             if (clasificados < 2) return '';
+            // Render loading state immediately
+            var loadingHtml = '<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.9rem;">Generando bracket...</div>';
+            dom.previewBracket.innerHTML = loadingHtml;
 
-            // Calculate bracket size (next power of 2)
-            var bracketSize = 1;
-            while (bracketSize < clasificados) bracketSize *= 2;
+            // Fetch from API
+            fetch(BRACKET_API + '/brackets/preview-template?groups=' + numGrupos + '&advancing=2')
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    dom.previewBracket.innerHTML = renderBracketFromAPI(data);
+                })
+                .catch(function() {
+                    // Fallback: render a simple structure if API is unavailable
+                    dom.previewBracket.innerHTML = renderBracketFallback(clasificados, numGrupos);
+                });
 
-            var byes = bracketSize - clasificados;
-            var numRounds = Math.log2(bracketSize);
+            return loadingHtml;
+        }
 
-            // Build round names
-            var roundNames = [];
-            for (var i = 0; i < numRounds; i++) {
-                var matchesInRound = bracketSize / Math.pow(2, i + 1);
-                if (matchesInRound === 1) roundNames.push('Final');
-                else if (matchesInRound === 2) roundNames.push('Semifinal');
-                else if (matchesInRound === 4) roundNames.push('Cuartos');
-                else if (matchesInRound === 8) roundNames.push('Octavos');
-                else roundNames.push('Ronda ' + (i + 1));
-            }
-
-            // Build first round matchups with cross-seeding
-            var firstRoundMatches = bracketSize / 2;
-            var matchups = [];
-            var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-            for (var m = 0; m < firstRoundMatches; m++) {
-                var team1, team2;
-                var groupA = m % numGrupos;
-                var groupB = (numGrupos - 1 - m % numGrupos);
-                if (groupB === groupA) groupB = (groupA + 1) % numGrupos;
-
-                if (m < firstRoundMatches - byes) {
-                    // Seed: 1st from one group vs 2nd from another
-                    team1 = { name: '1\u00B0 ' + letras[groupA % 26], isBye: false };
-                    team2 = { name: '2\u00B0 ' + letras[groupB % 26], isBye: false };
-                } else {
-                    // BYE slots
-                    team1 = { name: '1\u00B0 ' + letras[groupA % 26], isBye: false };
-                    team2 = { name: 'BYE', isBye: true };
-                }
-                matchups.push({ team1: team1, team2: team2 });
-            }
-
-            // Generate HTML
+        function renderBracketFromAPI(data) {
+            var bracketSize = data.bracketSize;
+            var numRounds = data.totalRounds;
+            var roundNames = data.roundNames;
+            var matchups = data.r1Matches;
             var html = '';
 
             for (var r = 0; r < numRounds; r++) {
@@ -2475,13 +2457,20 @@
 
                     if (r === 0) {
                         var match = matchups[mi];
+                        var t1 = match.team1;
+                        var t2 = match.team2;
+                        var t1Label = t1 ? t1.label : 'BYE';
+                        var t2Label = t2 ? t2.label : 'BYE';
+                        var t1Bye = !t1;
+                        var t2Bye = !t2;
+
                         html += '<div class="bk-team-row">';
                         html += '<span class="bk-team-seed">' + (mi * 2 + 1) + '</span>';
-                        html += '<span class="bk-team-name' + (match.team1.isBye ? ' bk-team-bye' : '') + '">' + match.team1.name + '</span>';
+                        html += '<span class="bk-team-name' + (t1Bye ? ' bk-team-bye' : '') + '">' + (t1Bye ? 'Pase directo' : t1Label) + '</span>';
                         html += '</div>';
                         html += '<div class="bk-team-row">';
                         html += '<span class="bk-team-seed">' + (mi * 2 + 2) + '</span>';
-                        html += '<span class="bk-team-name' + (match.team2.isBye ? ' bk-team-bye' : '') + '">' + (match.team2.isBye ? 'Pase directo' : match.team2.name) + '</span>';
+                        html += '<span class="bk-team-name' + (t2Bye ? ' bk-team-bye' : '') + '">' + (t2Bye ? 'Pase directo' : t2Label) + '</span>';
                         html += '</div>';
                     } else {
                         html += '<div class="bk-team-row"><span class="bk-team-name" style="color:var(--text-light)">Por definir</span></div>';
@@ -2493,7 +2482,6 @@
 
                 html += '</div></div>';
 
-                // Add connectors between rounds (except after the last round)
                 if (r < numRounds - 1) {
                     var pairs = matchesInRound / 2;
                     html += '<div class="bk-connectors">';
@@ -2504,12 +2492,48 @@
                 }
             }
 
-            // Champion column
             html += '<div class="bk-champion">';
             html += '<div class="bk-trophy">\uD83C\uDFC6</div>';
-            html += '<div class="bk-champion-label">Campeon</div>';
+            html += '<div class="bk-champion-label">Campe\u00F3n</div>';
             html += '</div>';
 
+            return html;
+        }
+
+        function renderBracketFallback(clasificados, numGrupos) {
+            if (clasificados < 2) return '';
+            var bracketSize = 1;
+            while (bracketSize < clasificados) bracketSize *= 2;
+            var numRounds = Math.log2(bracketSize);
+            var roundNames = [];
+            for (var i = 0; i < numRounds; i++) {
+                var m = bracketSize / Math.pow(2, i + 1);
+                if (m === 1) roundNames.push('Final');
+                else if (m === 2) roundNames.push('Semifinal');
+                else if (m === 4) roundNames.push('Cuartos');
+                else if (m === 8) roundNames.push('Octavos');
+                else roundNames.push('Ronda ' + (i + 1));
+            }
+            var html = '';
+            for (var r = 0; r < numRounds; r++) {
+                var matchesInRound = bracketSize / Math.pow(2, r + 1);
+                var isFinal = matchesInRound === 1;
+                html += '<div class="bk-round"><div class="bk-round-label">' + roundNames[r] + '</div><div class="bk-round-matches">';
+                for (var mi = 0; mi < matchesInRound; mi++) {
+                    html += '<div class="bk-match' + (isFinal ? ' bk-final' : '') + '">';
+                    html += '<div class="bk-team-row"><span class="bk-team-name" style="color:var(--text-light)">Por definir</span></div>';
+                    html += '<div class="bk-team-row"><span class="bk-team-name" style="color:var(--text-light)">Por definir</span></div>';
+                    html += '</div>';
+                }
+                html += '</div></div>';
+                if (r < numRounds - 1) {
+                    var pairs = matchesInRound / 2;
+                    html += '<div class="bk-connectors">';
+                    for (var cp = 0; cp < pairs; cp++) html += '<div class="bk-conn-pair"><div class="bk-conn-top"></div><div class="bk-conn-bottom"></div></div>';
+                    html += '</div>';
+                }
+            }
+            html += '<div class="bk-champion"><div class="bk-trophy">\uD83C\uDFC6</div><div class="bk-champion-label">Campe\u00F3n</div></div>';
             return html;
         }
 
