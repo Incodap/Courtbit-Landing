@@ -239,89 +239,26 @@
         .step-card.highlight-card { border-color: #b0d840; background: linear-gradient(180deg, #fafde8 0%, var(--white) 100%); }
         .step-card.highlight-card .step-num { background: linear-gradient(135deg, #5a9e00, #4a8700); }
 
-        /* ── EXAMPLE CALC ── */
-        .example-wrapper { max-width: 660px; margin: 0 auto; }
-        .example-card {
+        /* ── PROGRAM PILLARS ── */
+        .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .pillar-card {
             background: var(--white); border: 1.5px solid var(--border);
-            border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);
-        }
-        .example-header {
-            padding: 16px 28px; background: var(--navy);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .example-header span { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
-        .example-header .example-tag { color: var(--lime); background: rgba(184,240,43,0.15); padding: 3px 12px; border-radius: var(--radius-full); font-size: 0.6875rem; }
-        .example-body { padding: 28px; }
-        .example-rows { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-        .example-row {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 0; border-bottom: 1px solid var(--border-light);
-        }
-        .example-row:last-child { border-bottom: none; }
-        .example-row .label { font-size: 0.9375rem; color: var(--text-secondary); font-weight: 500; }
-        .example-row .value { font-size: 0.9375rem; color: var(--text); font-weight: 600; }
-        .example-divider { height: 1px; background: var(--border); margin: 8px 0; }
-        .example-calc-steps { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-        .example-calc-step {
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.875rem; color: var(--text-muted); font-weight: 500;
-        }
-        .example-calc-step code {
-            font-family: 'DM Sans', monospace; background: var(--bg);
-            padding: 3px 10px; border-radius: 6px; font-size: 0.8125rem;
-            color: var(--text-secondary); border: 1px solid var(--border-light);
-        }
-        .example-result {
-            background: linear-gradient(135deg, var(--lime-bg), rgba(184,240,43,0.15));
-            border: 1.5px solid rgba(184,240,43,0.4);
-            border-radius: var(--radius); padding: 20px 24px;
-            text-align: center;
-        }
-        .example-result-label {
-            font-size: 0.6875rem; font-weight: 700; color: #5a9e00;
-            text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px;
-        }
-        .example-result-amount { font-size: 2.25rem; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; }
-        .example-result-note { font-size: 0.8125rem; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
-
-        /* ── ANNUAL PROJECTION ── */
-        .projection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
-        .projection-card {
-            background: var(--white); border: 1.5px solid var(--border);
-            border-radius: var(--radius); padding: 20px 16px; text-align: center;
+            border-radius: var(--radius-lg); padding: 32px 26px;
             transition: all 0.25s; box-shadow: var(--shadow-sm);
         }
-        .projection-card:hover { border-color: #b0d840; transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .projection-card.featured {
-            border-color: var(--navy); background: var(--navy); color: var(--white);
-            box-shadow: var(--shadow-lg); position: relative;
+        .pillar-card:hover { border-color: #b0d840; transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .pillar-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            background: var(--lime-bg); display: flex; align-items: center;
+            justify-content: center; margin-bottom: 18px;
         }
-        .projection-card.featured .projection-label { color: rgba(255,255,255,0.6); }
-        .projection-card.featured .projection-amount { color: var(--lime); }
-        .projection-card.featured .projection-detail { color: rgba(255,255,255,0.5); }
-        .projection-card.featured::before {
-            content: 'Proyección'; position: absolute; top: -10px; left: 50%;
-            transform: translateX(-50%); background: var(--lime); color: var(--navy);
-            font-size: 0.6rem; font-weight: 800; padding: 2px 10px;
-            border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.06em;
-        }
-        .projection-label { font-size: 0.6875rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
-        .projection-amount { font-size: 1.5rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
-        .projection-detail { font-size: 0.6875rem; color: var(--text-muted); margin-top: 4px; }
-
-        .multiplier-section { margin-top: 24px; }
-        .multiplier-note {
+        .pillar-icon svg { width: 22px; height: 22px; color: #5a9e00; }
+        .pillar-card h3 { font-size: 1.0625rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+        .pillar-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+        .pillars-note {
             text-align: center; font-size: 0.8125rem; color: var(--text-muted);
-            margin-bottom: 14px; font-weight: 500;
+            margin-top: 32px; font-style: italic;
         }
-        .multiplier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .multiplier-card {
-            background: var(--bg); border: 1px solid var(--border-light);
-            border-radius: 12px; padding: 14px 12px; text-align: center;
-        }
-        .multiplier-card-orgs { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
-        .multiplier-card-amount { font-size: 1.125rem; font-weight: 800; color: var(--navy); }
-        .multiplier-card-period { font-size: 0.6875rem; color: var(--text-muted); }
 
         /* ── WHY REFER CARDS ── */
         .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -580,6 +517,7 @@
         /* ── RESPONSIVE ── */
         @media (max-width:900px) {
             .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .pillars-grid { grid-template-columns: 1fr; }
             .why-grid { grid-template-columns: 1fr; }
             .stats-preview { grid-template-columns: 1fr; }
         }
@@ -600,12 +538,7 @@
             .steps-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
             .step-card { padding: 22px 16px; }
 
-            .example-body { padding: 20px; }
-            .example-row .label, .example-row .value { font-size: 0.875rem; }
-            .example-result-amount { font-size: 1.875rem; }
-            .projection-grid { grid-template-columns: 1fr; gap: 10px; }
-            .projection-amount { font-size: 1.25rem; }
-            .multiplier-grid { grid-template-columns: 1fr; gap: 8px; }
+            .pillar-card { padding: 24px 20px; }
 
             .why-card { padding: 22px 18px; }
             .who-item { padding: 14px 16px; }
@@ -635,7 +568,6 @@
             .hero-badge { font-size: 0.75rem; padding: 6px 14px; }
             .hero h1 { font-size: clamp(1.75rem, 8vw, 2.25rem); }
             .section { padding: 52px 0; }
-            .example-header { padding: 12px 16px; flex-wrap: wrap; gap: 6px; }
         }
     </style>
 </head>
@@ -680,7 +612,7 @@
             <div class="container">
                 <div class="hero-badge reveal"><span class="dot"></span> Programa de Referidos</div>
                 <h1 class="reveal d1">Gana dinero refiriendo <span class="highlight">organizadores</span> a CourtBit</h1>
-                <p class="hero-sub reveal d2">Invita a otros organizadores de padel a usar CourtBit y recibe una comisión por cada inscripción que se genere en sus torneos.</p>
+                <p class="hero-sub reveal d2">Invita a otros organizadores de padel a usar CourtBit y gana cada vez que sus jugadores paguen inscripciones desde la app.</p>
                 <div class="reveal d3">
                     <a href="#auth" class="btn-primary">Empezar a referir</a>
                 </div>
@@ -713,103 +645,45 @@
                     </div>
                     <div class="step-card highlight-card reveal d3">
                         <div class="step-num">4</div>
-                        <h3>Recibes el 20% del fee generado</h3>
-                        <p>Por cada inscripción pagada en la app, recibes el 20% de la comisión de CourtBit.</p>
+                        <h3>Recibes una comisión</h3>
+                        <p>Cada vez que un jugador paga desde la app, tú ganas. Así de simple.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- EXAMPLE -->
+        <!-- PROGRAM PILLARS -->
         <section class="section">
             <div class="container">
                 <div class="section-header reveal">
-                    <span class="section-tag">Ejemplo</span>
-                    <h2 class="section-title">Mira cuánto puedes ganar al año</h2>
-                    <p class="section-desc">Números conservadores: un organizador promedio hace 2 torneos al mes.</p>
+                    <span class="section-tag">El Programa</span>
+                    <h2 class="section-title">Un ingreso que crece con tu red</h2>
+                    <p class="section-desc">Mientras más organizadores traigas y más torneos hagan, más ganas. Sin tope, sin límite de tiempo.</p>
                 </div>
-                <div class="example-wrapper reveal">
-                    <div class="example-card">
-                        <div class="example-header">
-                            <span>Simulación por Organizador Referido</span>
-                            <span class="example-tag">Ejemplo</span>
+                <div class="pillars-grid">
+                    <div class="pillar-card reveal">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                         </div>
-                        <div class="example-body">
-                            <div class="example-rows">
-                                <div class="example-row">
-                                    <span class="label">Inscripción por jugador</span>
-                                    <span class="value">$600 MXN</span>
-                                </div>
-                                <div class="example-row">
-                                    <span class="label">Jugadores inscritos</span>
-                                    <span class="value">64</span>
-                                </div>
-                                <div class="example-row">
-                                    <span class="label">Fee CourtBit</span>
-                                    <span class="value">3%</span>
-                                </div>
-                                <div class="example-row">
-                                    <span class="label">Torneos por mes</span>
-                                    <span class="value">2</span>
-                                </div>
-                            </div>
-                            <div class="example-divider"></div>
-                            <div class="example-calc-steps">
-                                <div class="example-calc-step">
-                                    <span>Fee por jugador</span>
-                                    <code>$600 &times; 3% = $18</code>
-                                </div>
-                                <div class="example-calc-step">
-                                    <span>Fee total por torneo</span>
-                                    <code>$18 &times; 64 = $1,152</code>
-                                </div>
-                                <div class="example-calc-step">
-                                    <span>Tu comisión (20%)</span>
-                                    <code>$1,152 &times; 20% = $230</code>
-                                </div>
-                            </div>
-
-                            <div class="projection-grid">
-                                <div class="projection-card">
-                                    <div class="projection-label">Por torneo</div>
-                                    <div class="projection-amount">$230</div>
-                                    <div class="projection-detail">1 evento</div>
-                                </div>
-                                <div class="projection-card">
-                                    <div class="projection-label">Mensual</div>
-                                    <div class="projection-amount">$460</div>
-                                    <div class="projection-detail">2 torneos / mes</div>
-                                </div>
-                                <div class="projection-card featured">
-                                    <div class="projection-label">Anual</div>
-                                    <div class="projection-amount">$5,520</div>
-                                    <div class="projection-detail">24 torneos / año</div>
-                                </div>
-                            </div>
-
-                            <div class="multiplier-section">
-                                <div class="multiplier-note">Y esto es con un solo referido. Imagina con más:</div>
-                                <div class="multiplier-grid">
-                                    <div class="multiplier-card">
-                                        <div class="multiplier-card-orgs">3 organizadores</div>
-                                        <div class="multiplier-card-amount">$16,560</div>
-                                        <div class="multiplier-card-period">al año</div>
-                                    </div>
-                                    <div class="multiplier-card">
-                                        <div class="multiplier-card-orgs">5 organizadores</div>
-                                        <div class="multiplier-card-amount">$27,600</div>
-                                        <div class="multiplier-card-period">al año</div>
-                                    </div>
-                                    <div class="multiplier-card">
-                                        <div class="multiplier-card-orgs">10 organizadores</div>
-                                        <div class="multiplier-card-amount">$55,200</div>
-                                        <div class="multiplier-card-period">al año</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <h3>Ingreso recurrente</h3>
+                        <p>No es un pago único. Ganas una comisión cada vez que los organizadores que referiste cobren inscripciones desde la app. Torneo tras torneo.</p>
+                    </div>
+                    <div class="pillar-card reveal d1">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         </div>
+                        <h3>Sin límite de referidos</h3>
+                        <p>Puedes referir a tantos organizadores como quieras. Entre más organizadores activos traigas, mayor será tu ingreso acumulado.</p>
+                    </div>
+                    <div class="pillar-card reveal d2">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-6"/></svg>
+                        </div>
+                        <h3>Transparencia total</h3>
+                        <p>Desde tu dashboard podrás ver tus referidos, los torneos que organizan y las comisiones que generas. Todo en tiempo real.</p>
                     </div>
                 </div>
+                <p class="pillars-note reveal">Las condiciones y porcentajes del programa se comparten al activar tu cuenta de referido.</p>
             </div>
         </section>
 
