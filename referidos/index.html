@@ -284,6 +284,45 @@
         .example-result-amount { font-size: 2.25rem; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; }
         .example-result-note { font-size: 0.8125rem; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
 
+        /* ── ANNUAL PROJECTION ── */
+        .projection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+        .projection-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius); padding: 20px 16px; text-align: center;
+            transition: all 0.25s; box-shadow: var(--shadow-sm);
+        }
+        .projection-card:hover { border-color: #b0d840; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .projection-card.featured {
+            border-color: var(--navy); background: var(--navy); color: var(--white);
+            box-shadow: var(--shadow-lg); position: relative;
+        }
+        .projection-card.featured .projection-label { color: rgba(255,255,255,0.6); }
+        .projection-card.featured .projection-amount { color: var(--lime); }
+        .projection-card.featured .projection-detail { color: rgba(255,255,255,0.5); }
+        .projection-card.featured::before {
+            content: 'Proyección'; position: absolute; top: -10px; left: 50%;
+            transform: translateX(-50%); background: var(--lime); color: var(--navy);
+            font-size: 0.6rem; font-weight: 800; padding: 2px 10px;
+            border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.06em;
+        }
+        .projection-label { font-size: 0.6875rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+        .projection-amount { font-size: 1.5rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+        .projection-detail { font-size: 0.6875rem; color: var(--text-muted); margin-top: 4px; }
+
+        .multiplier-section { margin-top: 24px; }
+        .multiplier-note {
+            text-align: center; font-size: 0.8125rem; color: var(--text-muted);
+            margin-bottom: 14px; font-weight: 500;
+        }
+        .multiplier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .multiplier-card {
+            background: var(--bg); border: 1px solid var(--border-light);
+            border-radius: 12px; padding: 14px 12px; text-align: center;
+        }
+        .multiplier-card-orgs { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .multiplier-card-amount { font-size: 1.125rem; font-weight: 800; color: var(--navy); }
+        .multiplier-card-period { font-size: 0.6875rem; color: var(--text-muted); }
+
         /* ── WHY REFER CARDS ── */
         .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
         .why-card {
@@ -564,6 +603,9 @@
             .example-body { padding: 20px; }
             .example-row .label, .example-row .value { font-size: 0.875rem; }
             .example-result-amount { font-size: 1.875rem; }
+            .projection-grid { grid-template-columns: 1fr; gap: 10px; }
+            .projection-amount { font-size: 1.25rem; }
+            .multiplier-grid { grid-template-columns: 1fr; gap: 8px; }
 
             .why-card { padding: 22px 18px; }
             .who-item { padding: 14px 16px; }
@@ -627,7 +669,7 @@
                 </div>
                 <div class="nav-right">
                     <a href="/en/" class="lang-switch">EN</a>
-                    <a href="#auth" class="nav-cta">Iniciar Sesion</a>
+                    <a href="#auth" class="nav-cta">Iniciar Sesión</a>
                     <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-center').classList.toggle('show')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
                 </div>
             </div>
@@ -638,7 +680,7 @@
             <div class="container">
                 <div class="hero-badge reveal"><span class="dot"></span> Programa de Referidos</div>
                 <h1 class="reveal d1">Gana dinero refiriendo <span class="highlight">organizadores</span> a CourtBit</h1>
-                <p class="hero-sub reveal d2">Invita a otros organizadores de padel a usar CourtBit y recibe una comision por cada inscripcion que se genere en sus torneos.</p>
+                <p class="hero-sub reveal d2">Invita a otros organizadores de padel a usar CourtBit y recibe una comisión por cada inscripción que se genere en sus torneos.</p>
                 <div class="reveal d3">
                     <a href="#auth" class="btn-primary">Empezar a referir</a>
                 </div>
@@ -649,7 +691,7 @@
         <section class="section section-gray">
             <div class="container">
                 <div class="section-header reveal">
-                    <span class="section-tag">Como Funciona</span>
+                    <span class="section-tag">Cómo Funciona</span>
                     <h2 class="section-title">4 pasos para generar ingresos</h2>
                     <p class="section-desc">Sin complicaciones. Refieres, ellos organizan, tu ganas.</p>
                 </div>
@@ -672,7 +714,7 @@
                     <div class="step-card highlight-card reveal d3">
                         <div class="step-num">4</div>
                         <h3>Recibes el 20% del fee generado</h3>
-                        <p>Por cada inscripcion pagada en la app, recibes el 20% de la comision de CourtBit.</p>
+                        <p>Por cada inscripción pagada en la app, recibes el 20% de la comisión de CourtBit.</p>
                     </div>
                 </div>
             </div>
@@ -683,19 +725,19 @@
             <div class="container">
                 <div class="section-header reveal">
                     <span class="section-tag">Ejemplo</span>
-                    <h2 class="section-title">Mira cuanto puedes ganar por torneo</h2>
-                    <p class="section-desc">Un ejemplo real con numeros conservadores.</p>
+                    <h2 class="section-title">Mira cuánto puedes ganar al año</h2>
+                    <p class="section-desc">Números conservadores: un organizador promedio hace 2 torneos al mes.</p>
                 </div>
                 <div class="example-wrapper reveal">
                     <div class="example-card">
                         <div class="example-header">
-                            <span>Simulacion de Comision</span>
+                            <span>Simulación por Organizador Referido</span>
                             <span class="example-tag">Ejemplo</span>
                         </div>
                         <div class="example-body">
                             <div class="example-rows">
                                 <div class="example-row">
-                                    <span class="label">Inscripcion por jugador</span>
+                                    <span class="label">Inscripción por jugador</span>
                                     <span class="value">$600 MXN</span>
                                 </div>
                                 <div class="example-row">
@@ -706,6 +748,10 @@
                                     <span class="label">Fee CourtBit</span>
                                     <span class="value">3%</span>
                                 </div>
+                                <div class="example-row">
+                                    <span class="label">Torneos por mes</span>
+                                    <span class="value">2</span>
+                                </div>
                             </div>
                             <div class="example-divider"></div>
                             <div class="example-calc-steps">
@@ -714,14 +760,52 @@
                                     <code>$600 &times; 3% = $18</code>
                                 </div>
                                 <div class="example-calc-step">
-                                    <span>Fee total del torneo</span>
+                                    <span>Fee total por torneo</span>
                                     <code>$18 &times; 64 = $1,152</code>
                                 </div>
+                                <div class="example-calc-step">
+                                    <span>Tu comisión (20%)</span>
+                                    <code>$1,152 &times; 20% = $230</code>
+                                </div>
                             </div>
-                            <div class="example-result">
-                                <div class="example-result-label">Tu comision de referido (20%)</div>
-                                <div class="example-result-amount">$230 MXN</div>
-                                <div class="example-result-note">Esto pasa cada vez que tu referido organiza un torneo.</div>
+
+                            <div class="projection-grid">
+                                <div class="projection-card">
+                                    <div class="projection-label">Por torneo</div>
+                                    <div class="projection-amount">$230</div>
+                                    <div class="projection-detail">1 evento</div>
+                                </div>
+                                <div class="projection-card">
+                                    <div class="projection-label">Mensual</div>
+                                    <div class="projection-amount">$460</div>
+                                    <div class="projection-detail">2 torneos / mes</div>
+                                </div>
+                                <div class="projection-card featured">
+                                    <div class="projection-label">Anual</div>
+                                    <div class="projection-amount">$5,520</div>
+                                    <div class="projection-detail">24 torneos / año</div>
+                                </div>
+                            </div>
+
+                            <div class="multiplier-section">
+                                <div class="multiplier-note">Y esto es con un solo referido. Imagina con más:</div>
+                                <div class="multiplier-grid">
+                                    <div class="multiplier-card">
+                                        <div class="multiplier-card-orgs">3 organizadores</div>
+                                        <div class="multiplier-card-amount">$16,560</div>
+                                        <div class="multiplier-card-period">al año</div>
+                                    </div>
+                                    <div class="multiplier-card">
+                                        <div class="multiplier-card-orgs">5 organizadores</div>
+                                        <div class="multiplier-card-amount">$27,600</div>
+                                        <div class="multiplier-card-period">al año</div>
+                                    </div>
+                                    <div class="multiplier-card">
+                                        <div class="multiplier-card-orgs">10 organizadores</div>
+                                        <div class="multiplier-card-amount">$55,200</div>
+                                        <div class="multiplier-card-period">al año</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -734,7 +818,7 @@
             <div class="container">
                 <div class="section-header reveal">
                     <span class="section-tag">Beneficios</span>
-                    <h2 class="section-title">Por que referir organizadores?</h2>
+                    <h2 class="section-title">Por qué referir organizadores?</h2>
                 </div>
                 <div class="why-grid">
                     <div class="why-card reveal">
@@ -756,7 +840,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                         </div>
                         <h3>Crece la comunidad</h3>
-                        <p>Mas organizadores significa mas torneos y mas jugadores. Tu ayudas a crecer el ecosistema del padel.</p>
+                        <p>Más organizadores significa más torneos y más jugadores. Tú ayudas a crecer el ecosistema del padel.</p>
                     </div>
                 </div>
             </div>
@@ -766,9 +850,9 @@
         <section class="section">
             <div class="container">
                 <div class="section-header reveal">
-                    <span class="section-tag">A quien referir</span>
-                    <h2 class="section-title">A quien puedes referir?</h2>
-                    <p class="section-desc">Cualquier persona u organizacion que organice eventos de padel.</p>
+                    <span class="section-tag">A quién referir</span>
+                    <h2 class="section-title">A quién puedes referir?</h2>
+                    <p class="section-desc">Cualquier persona u organización que organice eventos de padel.</p>
                 </div>
                 <div class="who-list">
                     <div class="who-item reveal">
@@ -800,13 +884,13 @@
             <div class="container">
                 <div class="section-header reveal">
                     <span class="section-tag">Acceso</span>
-                    <h2 class="section-title">Inicia sesion para acceder al programa</h2>
-                    <p class="section-desc">Crea una cuenta o inicia sesion para obtener tu enlace de referido.</p>
+                    <h2 class="section-title">Inicia sesión para acceder al programa</h2>
+                    <p class="section-desc">Crea una cuenta o inicia sesión para obtener tu enlace de referido.</p>
                 </div>
                 <div class="auth-container reveal">
                     <div class="auth-card">
                         <div class="auth-tabs">
-                            <button class="auth-tab active" data-tab="login">Iniciar Sesion</button>
+                            <button class="auth-tab active" data-tab="login">Iniciar Sesión</button>
                             <button class="auth-tab" data-tab="signup">Crear Cuenta</button>
                         </div>
 
@@ -816,11 +900,11 @@
                         <!-- Login Form -->
                         <form id="login-form" class="auth-form active">
                             <div class="form-group">
-                                <label class="form-label">Correo electronico</label>
+                                <label class="form-label">Correo electrónico</label>
                                 <input type="email" class="form-input" id="login-email" placeholder="tu@email.com" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Contrasena</label>
+                                <label class="form-label">Contraseña</label>
                                 <div class="password-wrapper">
                                     <input type="password" class="form-input" id="login-password" placeholder="********" required>
                                     <button type="button" class="toggle-password" data-target="login-password">
@@ -829,23 +913,23 @@
                                     </button>
                                 </div>
                             </div>
-                            <button type="button" class="forgot-password-link" id="forgot-password-link">Olvidaste tu contrasena?</button>
-                            <button type="submit" class="submit-btn" id="login-btn">Iniciar Sesion</button>
+                            <button type="button" class="forgot-password-link" id="forgot-password-link">¿Olvidaste tu contraseña?</button>
+                            <button type="submit" class="submit-btn" id="login-btn">Iniciar Sesión</button>
                         </form>
 
                         <!-- Forgot Password Form -->
                         <div id="forgot-form-wrapper" class="forgot-form-wrapper">
                             <button type="button" class="back-to-login" id="back-to-login">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-                                Volver a iniciar sesion
+                                Volver a Iniciar Sesión
                             </button>
-                            <p class="forgot-description">Ingresa tu correo electronico y te enviaremos una contrasena temporal para que puedas acceder a tu cuenta.</p>
+                            <p class="forgot-description">Ingresa tu correo electrónico y te enviaremos una contraseña temporal para que puedas acceder a tu cuenta.</p>
                             <form id="forgot-form">
                                 <div class="form-group">
-                                    <label class="form-label">Correo electronico</label>
+                                    <label class="form-label">Correo electrónico</label>
                                     <input type="email" class="form-input" id="forgot-email" placeholder="tu@email.com" required>
                                 </div>
-                                <button type="submit" class="submit-btn" id="forgot-btn">Enviar contrasena temporal</button>
+                                <button type="submit" class="submit-btn" id="forgot-btn">Enviar contraseña temporal</button>
                             </form>
                         </div>
 
@@ -862,11 +946,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Correo electronico</label>
+                                <label class="form-label">Correo electrónico</label>
                                 <input type="email" class="form-input" id="signup-email" placeholder="tu@email.com" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Telefono</label>
+                                <label class="form-label">Teléfono</label>
                                 <div class="phone-wrapper">
                                     <select class="phone-code-select" id="signup-phone-code">
                                         <option value="+52">MX +52</option>
@@ -880,9 +964,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Contrasena</label>
+                                <label class="form-label">Contraseña</label>
                                 <div class="password-wrapper">
-                                    <input type="password" class="form-input" id="signup-password" placeholder="Minimo 8 caracteres" minlength="8" required>
+                                    <input type="password" class="form-input" id="signup-password" placeholder="Mínimo 8 caracteres" minlength="8" required>
                                     <button type="button" class="toggle-password" data-target="signup-password">
                                         <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                                         <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
@@ -890,9 +974,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Confirmar contrasena</label>
+                                <label class="form-label">Confirmar contraseña</label>
                                 <div class="password-wrapper">
-                                    <input type="password" class="form-input" id="signup-confirm-password" placeholder="Repite tu contrasena" minlength="8" required>
+                                    <input type="password" class="form-input" id="signup-confirm-password" placeholder="Repetir contraseña" minlength="8" required>
                                     <button type="button" class="toggle-password" data-target="signup-confirm-password">
                                         <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                                         <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
@@ -902,7 +986,7 @@
                             <div class="form-group" style="margin-top:8px">
                                 <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-size:13px;line-height:1.4">
                                     <input type="checkbox" id="signup-terms" required style="margin-top:3px;accent-color:var(--green-accent)">
-                                    <span>Acepto los <a href="/legal/#terminos-jugadores" target="_blank" rel="noopener" style="color:var(--green-accent);text-decoration:underline">Terminos y Condiciones</a></span>
+                                    <span>Acepto los <a href="/legal/#terminos-jugadores" target="_blank" rel="noopener" style="color:var(--green-accent);text-decoration:underline">Términos y Condiciones</a></span>
                                 </label>
                             </div>
                             <div class="form-group" style="margin-top:4px">
@@ -957,7 +1041,7 @@
                         <div class="dashboard-user-name" id="dashboard-user-name"></div>
                         <div class="dashboard-user-email" id="dashboard-user-email"></div>
                     </div>
-                    <button class="logout-btn" id="logout-btn">Cerrar sesion</button>
+                    <button class="logout-btn" id="logout-btn">Cerrar sesión</button>
                 </div>
             </div>
         </div>
@@ -984,11 +1068,11 @@
                 <div class="empty-state-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
-                <h2>Programa en construccion</h2>
-                <p>Estamos preparando todo para que puedas empezar a referir organizadores y ganar comisiones. Te notificaremos cuando este listo.</p>
+                <h2>Programa en construcción</h2>
+                <p>Estamos preparando todo para que puedas empezar a referir organizadores y ganar comisiones. Te notificaremos cuando esté listo.</p>
                 <div class="empty-state-badge">
                     <span class="dot"></span>
-                    Proximamente
+                    Próximamente
                 </div>
             </div>
         </div>
@@ -1129,10 +1213,10 @@
                     return;
                 }
                 setLoading(btn, false);
-                showSuccess('Se envio una contrasena temporal a tu correo. Revisalo e inicia sesion.');
+                showSuccess('Se envió una contraseña temporal a tu correo. Revísalo e inicia sesión.');
             } catch (err) {
                 setLoading(btn, false);
-                showError('Error de conexion. Intenta de nuevo.');
+                showError('Error de conexión. Inténtalo de nuevo.');
             }
         });
 
@@ -1165,7 +1249,7 @@
                 var data = await response.json();
                 if (!response.ok) {
                     setLoading(btn, false);
-                    showError(data.error || 'Correo o contrasena incorrectos');
+                    showError(data.error || 'Correo o contraseña incorrectos.');
                     return;
                 }
                 localStorage.setItem('courtbit_token', data.token);
@@ -1173,7 +1257,7 @@
                 showDashboard(data.user);
             } catch (err) {
                 setLoading(btn, false);
-                showError('Error de conexion. Intenta de nuevo.');
+                showError('Error de conexión. Inténtalo de nuevo.');
             }
         });
 
@@ -1197,14 +1281,14 @@
             var confirmPassword = document.getElementById('signup-confirm-password').value;
             if (password !== confirmPassword) {
                 setLoading(btn, false);
-                showError('Las contrasenas no coinciden');
+                showError('Las contraseñas no coinciden.');
                 return;
             }
             var termsAccepted = document.getElementById('signup-terms').checked;
             var privacyAccepted = document.getElementById('signup-privacy').checked;
             if (!termsAccepted || !privacyAccepted) {
                 setLoading(btn, false);
-                showError('Debes aceptar los Terminos y Condiciones y el Aviso de Privacidad.');
+                showError('Debes aceptar los Términos y Condiciones y el Aviso de Privacidad.');
                 return;
             }
             try {
@@ -1236,7 +1320,7 @@
                 showDashboard(data.user);
             } catch (err) {
                 setLoading(btn, false);
-                showError('Error de conexion. Intenta de nuevo.');
+                showError('Error de conexión. Inténtalo de nuevo.');
             }
         });
 
