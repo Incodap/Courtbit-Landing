@@ -466,6 +466,63 @@
         .stat-card-value.muted { color: var(--border); }
         .stat-card-label { font-size: 0.8125rem; color: var(--text-muted); font-weight: 500; }
 
+        /* ── REFERRAL CODE CARD ── */
+        .referral-code-section { margin-bottom: 24px; }
+        .referral-code-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2a5e 100%);
+            border-radius: var(--radius-lg); padding: 32px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .referral-code-card::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(ellipse 50% 50% at 80% 20%, rgba(184,240,43,0.1), transparent);
+        }
+        .referral-code-label { font-size: 0.8125rem; color: rgba(255,255,255,0.6); margin-bottom: 8px; font-weight: 500; position: relative; }
+        .referral-code-value {
+            font-size: 2rem; font-weight: 800; color: var(--lime); letter-spacing: 0.05em;
+            font-family: monospace; margin-bottom: 16px; position: relative;
+        }
+        .copy-link-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--lime); color: var(--navy); border: none;
+            padding: 10px 24px; border-radius: var(--radius-full);
+            font-weight: 700; font-size: 0.875rem; cursor: pointer;
+            transition: all 0.2s; position: relative;
+        }
+        .copy-link-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(184,240,43,0.3); }
+        .copy-link-btn.copied { background: #22c55e; color: #fff; }
+
+        /* ── REFERRAL ORGANIZERS LIST ── */
+        .referral-orgs-section h3 { color: var(--navy); }
+        .referral-orgs-list { display: flex; flex-direction: column; gap: 12px; }
+        .referral-org-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 20px;
+            display: flex; align-items: center; gap: 16px;
+            box-shadow: var(--shadow-sm); transition: border-color 0.2s;
+        }
+        .referral-org-card:hover { border-color: var(--accent); }
+        .referral-org-logo {
+            width: 48px; height: 48px; border-radius: 12px; background: var(--bg-warm);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem; font-weight: 800; color: var(--navy); flex-shrink: 0;
+            overflow: hidden;
+        }
+        .referral-org-logo img { width: 100%; height: 100%; object-fit: cover; }
+        .referral-org-info { flex: 1; min-width: 0; }
+        .referral-org-name { font-weight: 700; color: var(--navy); font-size: 0.9375rem; }
+        .referral-org-meta { font-size: 0.8125rem; color: var(--text-muted); margin-top: 2px; }
+        .referral-org-commission {
+            text-align: right; flex-shrink: 0;
+        }
+        .referral-org-commission-value { font-size: 1.125rem; font-weight: 800; color: var(--navy); }
+        .referral-org-commission-label { font-size: 0.75rem; color: var(--text-muted); }
+
+        @media (max-width: 600px) {
+            .referral-org-card { flex-wrap: wrap; }
+            .referral-org-commission { width: 100%; text-align: left; margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--border); }
+        }
+
         /* ── FINAL CTA ── */
         .cta-final {
             padding: 96px 0; text-align: center; position: relative;
@@ -921,33 +978,55 @@
         </div>
 
         <div class="dashboard-body">
-            <!-- Stats preview (placeholder) -->
+            <!-- Referral code section -->
+            <div class="referral-code-section" id="referral-code-section" style="display:none;">
+                <div class="referral-code-card">
+                    <div class="referral-code-label">Tu código de referido</div>
+                    <div class="referral-code-value" id="referral-code-value">---</div>
+                    <button class="copy-link-btn" id="copy-link-btn" onclick="copyReferralLink()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copiar link de referido
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats -->
             <div class="stats-preview">
                 <div class="stat-card">
-                    <div class="stat-card-value muted">0</div>
+                    <div class="stat-card-value" id="stat-organizers">0</div>
                     <div class="stat-card-label">Organizadores referidos</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-card-value muted">0</div>
+                    <div class="stat-card-value" id="stat-tournaments">0</div>
                     <div class="stat-card-label">Torneos generados</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-card-value muted">$0</div>
+                    <div class="stat-card-value" id="stat-commissions">$0</div>
                     <div class="stat-card-label">Comisiones ganadas</div>
                 </div>
             </div>
 
-            <!-- Empty state -->
-            <div class="empty-state">
+            <!-- Organizers list -->
+            <div class="referral-orgs-section" id="referral-orgs-section" style="display:none;">
+                <h3 style="color:#fff; margin-bottom:16px;">Organizadores referidos</h3>
+                <div class="referral-orgs-list" id="referral-orgs-list"></div>
+            </div>
+
+            <!-- Empty state (shown when no referrals yet) -->
+            <div class="empty-state" id="empty-state" style="display:none;">
                 <div class="empty-state-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
                 </div>
-                <h2>Programa en construcción</h2>
-                <p>Estamos preparando todo para que puedas empezar a referir organizadores y ganar comisiones. Te notificaremos cuando esté listo.</p>
-                <div class="empty-state-badge">
-                    <span class="dot"></span>
-                    Próximamente
+                <h2>Aún no tienes referidos</h2>
+                <p>Comparte tu link de referido con organizadores de padel para empezar a ganar comisiones del 20% por cada inscripción en sus eventos.</p>
+            </div>
+
+            <!-- Loading state -->
+            <div class="empty-state" id="dashboard-loading">
+                <div class="empty-state-icon">
+                    <span class="loading-inline" style="width:32px;height:32px;"></span>
                 </div>
+                <p>Cargando tu dashboard...</p>
             </div>
         </div>
 
@@ -1009,10 +1088,107 @@
             document.getElementById('dashboard-user-name').textContent = fullName;
             document.getElementById('dashboard-user-email').textContent = user.email || '';
             window.scrollTo(0, 0);
+
+            loadDashboardData(user);
+        }
+
+        async function loadDashboardData(user) {
+            var token = localStorage.getItem('courtbit_token');
+            if (!token) return;
+
+            var firstName = user.first_name || 'REF';
+            try {
+                var response = await fetchWithTimeout(API_URL + '/referrals/dashboard?first_name=' + encodeURIComponent(firstName), {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                }, 15000);
+
+                if (!response.ok) {
+                    document.getElementById('dashboard-loading').style.display = 'none';
+                    document.getElementById('empty-state').style.display = 'block';
+                    return;
+                }
+
+                var data = await response.json();
+                document.getElementById('dashboard-loading').style.display = 'none';
+
+                // Show referral code
+                if (data.referral_code) {
+                    document.getElementById('referral-code-value').textContent = data.referral_code;
+                    document.getElementById('referral-code-section').style.display = 'block';
+                    window._referralCode = data.referral_code;
+                }
+
+                // Update stats
+                document.getElementById('stat-organizers').textContent = data.total_organizers || 0;
+                document.getElementById('stat-tournaments').textContent = data.total_tournaments || 0;
+                var commissionMXN = ((data.total_commission_cents || 0) / 100).toLocaleString('es-MX', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+                document.getElementById('stat-commissions').textContent = '$' + commissionMXN;
+
+                // Show organizers or empty state
+                if (data.organizers && data.organizers.length > 0) {
+                    renderOrganizers(data.organizers);
+                    document.getElementById('referral-orgs-section').style.display = 'block';
+                } else {
+                    document.getElementById('empty-state').style.display = 'block';
+                }
+            } catch (err) {
+                document.getElementById('dashboard-loading').style.display = 'none';
+                document.getElementById('empty-state').style.display = 'block';
+            }
+        }
+
+        function renderOrganizers(organizers) {
+            var container = document.getElementById('referral-orgs-list');
+            container.innerHTML = '';
+            organizers.forEach(function(org) {
+                var commissionMXN = ((org.commission_cents || 0) / 100).toLocaleString('es-MX', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+                var revenueMXN = ((org.total_revenue_cents || 0) / 100).toLocaleString('es-MX', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+                var linkedDate = new Date(org.linked_at).toLocaleDateString('es-MX', { day: 'numeric', month: 'short', year: 'numeric' });
+                var initials = (org.organizer_name || '?').substring(0, 2).toUpperCase();
+                var logoHtml = org.logo_url
+                    ? '<img src="' + org.logo_url + '" alt="">'
+                    : initials;
+
+                var card = document.createElement('div');
+                card.className = 'referral-org-card';
+                card.innerHTML =
+                    '<div class="referral-org-logo">' + logoHtml + '</div>' +
+                    '<div class="referral-org-info">' +
+                        '<div class="referral-org-name">' + (org.organizer_name || 'Organizador') + '</div>' +
+                        '<div class="referral-org-meta">' + org.tournament_count + ' torneos &middot; Desde ' + linkedDate + '</div>' +
+                    '</div>' +
+                    '<div class="referral-org-commission">' +
+                        '<div class="referral-org-commission-value">$' + commissionMXN + '</div>' +
+                        '<div class="referral-org-commission-label">comisión</div>' +
+                    '</div>';
+                container.appendChild(card);
+            });
+        }
+
+        function copyReferralLink() {
+            var code = window._referralCode;
+            if (!code) return;
+            var link = 'https://courtbit.com.mx/referidos/?code=' + code;
+            navigator.clipboard.writeText(link).then(function() {
+                var btn = document.getElementById('copy-link-btn');
+                btn.classList.add('copied');
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M20 6L9 17l-5-5"/></svg> Copiado!';
+                setTimeout(function() {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar link de referido';
+                }, 2000);
+            });
         }
 
         // ── Init ──
         function init() {
+            // Capture referral code from URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var refCode = urlParams.get('code');
+            if (refCode) {
+                localStorage.setItem('courtbit_referral_code', refCode);
+            }
+
             var token = localStorage.getItem('courtbit_token');
             var userJson = localStorage.getItem('courtbit_user');
 
