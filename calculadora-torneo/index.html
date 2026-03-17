@@ -2418,22 +2418,24 @@
 
         function generarBracketPreview(clasificados, numGrupos) {
             if (clasificados < 2) return '';
-            // Render loading state immediately
-            var loadingHtml = '<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.9rem;">Generando bracket...</div>';
-            dom.previewBracket.innerHTML = loadingHtml;
 
-            // Fetch from API
-            fetch(BRACKET_API + '/brackets/preview-template?groups=' + numGrupos + '&advancing=2')
-                .then(function(res) { return res.json(); })
-                .then(function(data) {
-                    dom.previewBracket.innerHTML = renderBracketFromAPI(data);
-                })
-                .catch(function() {
-                    // Fallback: render a simple structure if API is unavailable
-                    dom.previewBracket.innerHTML = renderBracketFallback(clasificados, numGrupos);
-                });
+            // Render fallback immediately so the bracket is always visible
+            var fallbackHtml = renderBracketFallback(clasificados, numGrupos);
+            dom.previewBracket.innerHTML = fallbackHtml;
 
-            return loadingHtml;
+            // Try to upgrade with server-side anti-rematch seeding
+            if (numGrupos >= 2) {
+                fetch(BRACKET_API + '/brackets/preview-template?groups=' + numGrupos + '&advancing=2')
+                    .then(function(res) { if (!res.ok) throw new Error(); return res.json(); })
+                    .then(function(data) {
+                        if (data && data.r1Matches) {
+                            dom.previewBracket.innerHTML = renderBracketFromAPI(data);
+                        }
+                    })
+                    .catch(function() { /* keep fallback */ });
+            }
+
+            return fallbackHtml;
         }
 
         function renderBracketFromAPI(data) {
