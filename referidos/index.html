@@ -983,9 +983,9 @@
                 <div class="referral-code-card">
                     <div class="referral-code-label">Tu código de referido</div>
                     <div class="referral-code-value" id="referral-code-value">---</div>
-                    <button class="copy-link-btn" id="copy-link-btn" onclick="copyReferralLink()">
+                    <button class="copy-link-btn" id="copy-link-btn" onclick="copyReferralCode()">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copiar link de referido
+                        Copiar código
                     </button>
                 </div>
             </div>
@@ -1165,30 +1165,22 @@
             });
         }
 
-        function copyReferralLink() {
+        function copyReferralCode() {
             var code = window._referralCode;
             if (!code) return;
-            var link = 'https://courtbit.com.mx/referidos/?code=' + code;
-            navigator.clipboard.writeText(link).then(function() {
+            navigator.clipboard.writeText(code).then(function() {
                 var btn = document.getElementById('copy-link-btn');
                 btn.classList.add('copied');
                 btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M20 6L9 17l-5-5"/></svg> Copiado!';
                 setTimeout(function() {
                     btn.classList.remove('copied');
-                    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar link de referido';
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar código';
                 }, 2000);
             });
         }
 
         // ── Init ──
         function init() {
-            // Capture referral code from URL
-            var urlParams = new URLSearchParams(window.location.search);
-            var refCode = urlParams.get('code');
-            if (refCode) {
-                localStorage.setItem('courtbit_referral_code', refCode);
-            }
-
             var token = localStorage.getItem('courtbit_token');
             var userJson = localStorage.getItem('courtbit_user');
 
