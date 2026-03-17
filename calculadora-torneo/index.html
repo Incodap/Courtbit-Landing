@@ -2502,6 +2502,45 @@
             return html;
         }
 
+        function buildFallbackSeeds(bracketSize, numGrupos) {
+            var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var seeds = [];
+            for (var g = 0; g < numGrupos; g++) {
+                seeds.push('1\u00B0 Grupo ' + letras[g % 26]);
+                seeds.push('2\u00B0 Grupo ' + letras[g % 26]);
+            }
+            // Fill remaining bracket slots with BYE
+            while (seeds.length < bracketSize) seeds.push(null);
+
+            // Standard bracket seeding order (1v16, 8v9, 5v12, 4v13, ...)
+            var order = [];
+            function fillOrder(lo, hi) {
+                if (hi - lo < 1) return;
+                if (hi - lo === 1) { order.push(lo); order.push(hi); return; }
+                fillOrder(lo, lo + (hi - lo) / 2);
+                fillOrder(lo + (hi - lo) / 2 + 1, hi);
+            }
+            // Simple sequential for fallback — just pair 1° vs 2° from different groups
+            var top = [], bottom = [];
+            for (var g = 0; g < numGrupos; g++) {
+                top.push('1\u00B0 ' + letras[g % 26]);
+                bottom.push('2\u00B0 ' + letras[g % 26]);
+            }
+            // Pair: 1°A vs 2°B, 1°B vs 2°A, 1°C vs 2°D, etc. (anti-rematch)
+            var matches = [];
+            var usedTop = [], usedBot = [];
+            for (var i = 0; i < top.length; i++) {
+                var oppIdx = (i % 2 === 0) ? Math.min(i + 1, bottom.length - 1) : i - 1;
+                matches.push({ t1: top[i], t2: bottom[oppIdx] });
+                usedTop.push(i);
+                usedBot.push(oppIdx);
+            }
+            // Fill remaining bracket slots (byes) up to bracketSize/2 matches
+            var totalR1 = bracketSize / 2;
+            while (matches.length < totalR1) matches.push({ t1: null, t2: null });
+            return matches;
+        }
+
         function renderBracketFallback(clasificados, numGrupos) {
             if (clasificados < 2) return '';
             var bracketSize = 1;
@@ -2516,15 +2555,35 @@
                 else if (m === 8) roundNames.push('Octavos');
                 else roundNames.push('Ronda ' + (i + 1));
             }
+
+            var r1Matches = buildFallbackSeeds(bracketSize, numGrupos);
+
             var html = '';
             for (var r = 0; r < numRounds; r++) {
                 var matchesInRound = bracketSize / Math.pow(2, r + 1);
                 var isFinal = matchesInRound === 1;
                 html += '<div class="bk-round"><div class="bk-round-label">' + roundNames[r] + '</div><div class="bk-round-matches">';
                 for (var mi = 0; mi < matchesInRound; mi++) {
-                    html += '<div class="bk-match' + (isFinal ? ' bk-final' : '') + '">';
-                    html += '<div class="bk-team-row"><span class="bk-team-name" style="color:var(--text-light)">Por definir</span></div>';
-                    html += '<div class="bk-team-row"><span class="bk-team-name" style="color:var(--text-light)">Por definir</span></div>';
+                    var finalClass = isFinal ? ' bk-final' : '';
+                    html += '<div class="bk-match' + finalClass + '">';
+
+                    if (r === 0) {
+                        var match = r1Matches[mi];
+                        var t1 = match.t1;
+                        var t2 = match.t2;
+                        html += '<div class="bk-team-row">';
+                        html += '<span class="bk-team-seed">' + (mi * 2 + 1) + '</span>';
+                        html += '<span class="bk-team-name' + (!t1 ? ' bk-team-bye' : '') + '">' + (t1 || 'Pase directo') + '</span>';
+                        html += '</div>';
+                        html += '<div class="bk-team-row">';
+                        html += '<span class="bk-team-seed">' + (mi * 2 + 2) + '</span>';
+                        html += '<span class="bk-team-name' + (!t2 ? ' bk-team-bye' : '') + '">' + (t2 || 'Pase directo') + '</span>';
+                        html += '</div>';
+                    } else {
+                        html += '<div class="bk-team-row"><span class="bk-team-name" style="color:var(--text-light)">Por definir</span></div>';
+                        html += '<div class="bk-team-row"><span class="bk-team-name" style="color:var(--text-light)">Por definir</span></div>';
+                    }
+
                     html += '</div>';
                 }
                 html += '</div></div>';
