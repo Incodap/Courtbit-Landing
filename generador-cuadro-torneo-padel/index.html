@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Generador de Cuadro de Torneo de Padel | Grupos + Eliminacion Gratis - CourtBit</title>
+    <meta name="description" content="Genera cuadros de torneo de padel gratis: fase de grupos y eliminacion directa con seeding inteligente. Herramienta visual para organizadores. Configura parejas, grupos y ve el bracket al instante.">
+    <meta name="keywords" content="cuadro eliminacion padel, generador cuadro torneo padel, brackets padel, cuadro torneo padel 16 parejas, fase de grupos padel, generar grupos torneo padel, llaves torneo padel, bracket padel gratis">
+    <meta name="author" content="CourtBit">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://courtbit.com.mx/generador-cuadro-torneo-padel/">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://courtbit.com.mx/generador-cuadro-torneo-padel/">
+    <meta property="og:title" content="Generador de Cuadro de Torneo de Padel | Gratis">
+    <meta property="og:description" content="Genera cuadros de torneo de padel gratis: grupos y eliminacion directa con seeding inteligente.">
+    <meta property="og:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="CourtBit">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Generador de Cuadro de Torneo de Padel | Gratis">
+    <meta name="twitter:description" content="Genera cuadros de torneo de padel gratis: grupos y eliminacion directa.">
+    <meta name="twitter:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+
+    <!-- Geo -->
+    <meta name="geo.region" content="MX">
+    <meta name="geo.placename" content="Mexico">
+    <meta name="language" content="Spanish">
+
+    <!-- Schema: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Generador de Cuadro de Torneo de Padel",
+        "url": "https://courtbit.com.mx/generador-cuadro-torneo-padel/",
+        "applicationCategory": "SportsApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MXN" },
+        "description": "Herramienta gratuita para generar cuadros de torneo de padel con fase de grupos y eliminacion directa. Seeding inteligente anti-rematch.",
+        "creator": { "@type": "Organization", "name": "CourtBit", "url": "https://courtbit.com.mx" }
+    }
+    </script>
+
+    <!-- Schema: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "Que es un cuadro de grupos mas eliminacion directa en padel?", "acceptedAnswer": { "@type": "Answer", "text": "Es el formato estandar de torneos de padel: las parejas se dividen en grupos de 3-4, juegan round robin dentro del grupo, y los mejores de cada grupo avanzan a un cuadro de eliminacion directa (cuartos, semifinales, final)." } },
+            { "@type": "Question", "name": "Cuantas parejas necesito para este formato?", "acceptedAnswer": { "@type": "Answer", "text": "El minimo recomendado es 8 parejas (2 grupos de 4). Lo ideal es 12-32 parejas. Con mas de 32 se recomienda dividir en categorias." } },
+            { "@type": "Question", "name": "Que es el seeding anti-rematch?", "acceptedAnswer": { "@type": "Answer", "text": "Es un algoritmo que distribuye a los equipos en el cuadro de eliminacion de forma que parejas del mismo grupo no se enfrenten hasta la ronda mas tardia posible (idealmente la final). Esto garantiza partidos mas justos y emocionantes." } },
+            { "@type": "Question", "name": "Cuantos partidos se juegan en fase de grupos?", "acceptedAnswer": { "@type": "Answer", "text": "En un grupo de 4 parejas se juegan 6 partidos (cada pareja juega 3). En un grupo de 3 se juegan 3 partidos. Para un torneo de 16 parejas en 4 grupos de 4: 24 partidos en fase de grupos mas 4-7 en eliminacion." } },
+            { "@type": "Question", "name": "Como se decide quien avanza de cada grupo?", "acceptedAnswer": { "@type": "Answer", "text": "Avanzan las parejas con mas partidos ganados. En caso de empate, se usa diferencia de sets, diferencia de games, y finalmente el resultado directo entre las parejas empatadas." } }
+        ]
+    }
+    </script>
+
+    <!-- Schema: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "CourtBit", "item": "https://courtbit.com.mx/" },
+            { "@type": "ListItem", "position": 2, "name": "Generador de Cuadro de Torneo", "item": "https://courtbit.com.mx/generador-cuadro-torneo-padel/" }
+        ]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../Assets/courtbit-logo.svg">
+    <link rel="apple-touch-icon" href="../Assets/courtbit-logo.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://courtbit-api-production.up.railway.app">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=optional" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=optional"></noscript>
+
+    <style>
+        :root {
+            --lime: #B8F02B; --lime-hover: #a5d827; --lime-soft: #e8faa0; --lime-bg: #f4fdd6;
+            --navy: #0f1d4d; --navy-light: #1a2e6b;
+            --blue: #2e59fb; --blue-soft: #eef2ff;
+            --white: #ffffff; --bg: #fafbfc; --bg-warm: #f5f6f8;
+            --text: #1a1f36; --text-secondary: #5a6178; --text-muted: #8b92a8;
+            --border: #e4e7ec; --border-light: #f0f1f4;
+            --shadow-sm: 0 1px 3px rgba(15,29,77,0.06);
+            --shadow-md: 0 4px 12px rgba(15,29,77,0.08);
+            --shadow-lg: 0 12px 32px rgba(15,29,77,0.1);
+            --radius: 16px; --radius-lg: 24px; --radius-full: 100px;
+            --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); background: var(--white); color: var(--text); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+        .container-narrow { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-light); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 56px; width: auto; }
+        .nav-right { display: flex; align-items: center; gap: 10px; }
+        .nav-cta { display: flex; align-items: center; gap: 6px; background: var(--navy); color: var(--white); padding: 10px 22px; border-radius: var(--radius-full); font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: all 0.2s; }
+        .nav-cta:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.8125rem; font-weight: 500; transition: color 0.2s; }
+        .nav-back:hover { color: var(--text); }
+
+        /* BREADCRUMB */
+        .breadcrumb { padding: 100px 0 0; font-size: 0.8125rem; color: var(--text-muted); }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--text); text-decoration: underline; }
+        .breadcrumb span { margin: 0 6px; }
+
+        /* HERO */
+        .hero-tool { padding: 32px 0 48px; background: linear-gradient(180deg, var(--white) 0%, var(--bg) 100%); }
+        .hero-tool h1 { font-size: clamp(1.75rem, 4.5vw, 2.75rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.03em; color: var(--navy); margin-bottom: 14px; }
+        .hero-tool h1 .hl { background: linear-gradient(135deg, #6dbf00 0%, #4a9e00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-sub { font-size: 1.0625rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.65; max-width: 620px; }
+
+        /* TOOL */
+        .tool-section { padding: 0 0 64px; }
+        .tool-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); overflow: hidden; }
+        .tool-controls { padding: 28px; background: var(--bg); border-bottom: 1px solid var(--border-light); }
+        .controls-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: end; }
+        .control-group { display: flex; flex-direction: column; gap: 6px; }
+        .control-label { font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+        .control-input { padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 0.9375rem; color: var(--text); background: var(--white); outline: none; transition: border-color 0.2s; width: 100%; }
+        .control-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(15,29,77,0.08); }
+        .btn-generate { padding: 10px 24px; background: var(--navy); color: var(--white); border: none; border-radius: var(--radius-full); font-family: var(--font); font-weight: 700; font-size: 0.875rem; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .btn-generate:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+        /* RESULTS */
+        .tool-results { padding: 28px; min-height: 200px; }
+        .results-empty { text-align: center; padding: 48px 0; color: var(--text-muted); font-size: 0.9375rem; }
+        .results-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+        .stat-pill { display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--bg); border: 1px solid var(--border-light); border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); }
+        .stat-pill strong { color: var(--navy); }
+
+        /* GROUPS */
+        .groups-container { margin-bottom: 36px; }
+        .groups-title { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #5a9e00; margin-bottom: 14px; }
+        .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+        .group-card { background: var(--bg); border: 1px solid var(--border-light); border-radius: 14px; overflow: hidden; }
+        .group-card-header { padding: 10px 16px; background: var(--navy); color: var(--white); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+        .group-card-body { padding: 8px 0; }
+        .group-team { display: flex; align-items: center; gap: 10px; padding: 7px 16px; font-size: 0.8125rem; color: var(--text); border-bottom: 1px solid var(--border-light); }
+        .group-team:last-child { border-bottom: none; }
+        .group-team-seed { width: 22px; height: 22px; border-radius: 6px; background: var(--lime-bg); display: flex; align-items: center; justify-content: center; font-size: 0.6875rem; font-weight: 800; color: #5a9e00; flex-shrink: 0; }
+
+        /* BRACKET */
+        .bracket-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .bracket-title { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--blue); margin-bottom: 14px; }
+        .bk-wrap { display: flex; align-items: stretch; gap: 0; min-width: fit-content; padding-bottom: 8px; }
+        .bk-round { flex-shrink: 0; width: 170px; display: flex; flex-direction: column; }
+        .bk-round-label { font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); text-align: center; margin-bottom: 10px; padding: 0 4px; }
+        .bk-round-matches { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 8px; }
+        .bk-match { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-sm); }
+        .bk-match.bk-final { border-color: var(--navy); box-shadow: 0 2px 12px rgba(15,29,77,0.12); }
+        .bk-team-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; font-size: 0.75rem; border-bottom: 1px solid var(--border-light); }
+        .bk-team-row:last-child { border-bottom: none; }
+        .bk-team-seed { font-weight: 800; color: var(--navy); min-width: 18px; text-align: center; font-size: 0.6875rem; }
+        .bk-team-name { font-weight: 600; color: var(--text); }
+        .bk-team-bye { color: var(--text-muted); font-style: italic; font-weight: 500; }
+        .bk-connectors { flex-shrink: 0; width: 28px; display: flex; flex-direction: column; justify-content: space-around; }
+        .bk-conn-pair { flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; min-height: 40px; }
+        .bk-conn-top, .bk-conn-bottom { position: absolute; right: 0; width: 14px; border-right: 2px solid var(--border); }
+        .bk-conn-top { top: 25%; bottom: 50%; border-top: 2px solid var(--border); border-radius: 0 6px 0 0; }
+        .bk-conn-bottom { top: 50%; bottom: 25%; border-bottom: 2px solid var(--border); border-radius: 0 0 6px 0; }
+        .bk-champion { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 16px; gap: 4px; }
+        .bk-trophy { font-size: 2rem; }
+        .bk-champion-label { font-size: 0.6875rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08em; }
+
+        /* CONTENT SECTIONS */
+        .content-section { padding: 64px 0; }
+        .content-section.gray { background: var(--bg); }
+        .content-section h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 16px; }
+        .content-section p { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; max-width: 680px; }
+        .content-section p:last-child { margin-bottom: 0; }
+        .content-section strong { color: var(--text); }
+        .section-tag { display: inline-block; font-size: 0.6875rem; font-weight: 700; color: #5a9e00; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px; background: var(--lime-bg); padding: 4px 14px; border-radius: var(--radius-full); }
+
+        .format-explainer { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 28px 0; }
+        .explainer-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); }
+        .explainer-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+        .explainer-card p { font-size: 0.875rem; margin-bottom: 0; }
+
+        .tip-box { background: var(--blue-soft); border-left: 4px solid var(--blue); border-radius: 0 var(--radius) var(--radius) 0; padding: 20px 24px; margin: 24px 0; }
+        .tip-box-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 6px; }
+        .tip-box p { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.6; margin: 0; max-width: none; }
+        .tip-box a { color: var(--blue); font-weight: 600; }
+
+        /* CTA */
+        .cta-section { padding: 80px 0; text-align: center; background: var(--navy); color: var(--white); position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 60% at 30% 100%, rgba(184,240,43,0.12), transparent), radial-gradient(ellipse 50% 50% at 80% 0%, rgba(46,89,251,0.1), transparent); }
+        .cta-section .container { position: relative; z-index: 2; }
+        .cta-section h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; color: var(--white); }
+        .cta-section p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn-cta-lime { display: inline-flex; align-items: center; gap: 8px; background: var(--lime); color: var(--navy); padding: 14px 28px; border-radius: var(--radius-full); font-weight: 700; font-size: 0.9375rem; text-decoration: none; transition: all 0.2s; }
+        .btn-cta-lime:hover { background: var(--lime-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,240,43,0.3); }
+        .btn-cta-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--white); padding: 14px 28px; border-radius: var(--radius-full); font-weight: 600; font-size: 0.9375rem; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); transition: all 0.2s; }
+        .btn-cta-outline:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
+
+        /* FAQ */
+        .faq-section { padding: 72px 0; }
+        .faq-section-title { font-size: 1.5rem; font-weight: 800; color: var(--navy); text-align: center; margin-bottom: 36px; }
+        .faq-list { max-width: 680px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border-light); }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-toggle { width: 100%; background: none; border: none; color: var(--text); font-family: var(--font); font-size: 1rem; font-weight: 600; text-align: left; padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+        .faq-toggle:hover { color: var(--navy); }
+        .faq-toggle svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--text-muted); transition: transform 0.3s; }
+        .faq-item.open .faq-toggle svg { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; }
+        .faq-answer-inner { padding-bottom: 20px; font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; }
+        .faq-answer-inner a { color: var(--blue); font-weight: 600; }
+
+        /* FOOTER */
+        footer { padding: 28px 0; border-top: 1px solid var(--border-light); background: var(--white); }
+        footer .container { display: flex; justify-content: space-between; align-items: center; }
+        .footer-brand { font-size: 1.125rem; font-weight: 800; color: var(--navy); }
+        .footer-brand span { color: #5a9e00; }
+        .footer-right { display: flex; align-items: center; gap: 18px; }
+        .footer-link { color: var(--text-muted); text-decoration: none; font-size: 0.8125rem; transition: color 0.2s; }
+        .footer-link:hover { color: var(--text); }
+        .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) { .controls-grid { grid-template-columns: repeat(2, 1fr); } .format-explainer { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .hero-tool h1 { font-size: clamp(1.5rem, 6vw, 2rem); }
+            .controls-grid { grid-template-columns: 1fr 1fr; }
+            .bk-round { width: 140px; }
+            .cta-section { padding: 56px 0; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .btn-cta-lime, .btn-cta-outline { width: 100%; max-width: 300px; justify-content: center; }
+            footer .container { flex-direction: column; gap: 14px; text-align: center; }
+            .footer-right { flex-wrap: wrap; justify-content: center; }
+        }
+        @media (max-width: 480px) { .controls-grid { grid-template-columns: 1fr; } .container-narrow, .container { padding: 0 16px; } .groups-grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="/" class="logo"><img src="../Assets/courtbit-logo.svg" alt="CourtBit"></a>
+            <div class="nav-right">
+                <a href="/" class="nav-back">&larr; Inicio</a>
+                <a href="/como-organizar-torneo-padel/" class="nav-back">Guia Torneos</a>
+                <a href="/#contact" class="nav-cta">Solicitar Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container"><a href="/">CourtBit</a><span>/</span>Generador de Cuadro de Torneo</div>
+    </div>
+
+    <section class="hero-tool">
+        <div class="container">
+            <h1 class="reveal">Generador de <span class="hl">Cuadro de Torneo</span> de Padel</h1>
+            <p class="hero-sub reveal d1">Configura el numero de parejas, tamano de grupo y cuantas avanzan. Genera al instante la fase de grupos y el cuadro de eliminacion directa con seeding inteligente.</p>
+        </div>
+    </section>
+
+    <!-- TOOL -->
+    <section class="tool-section">
+        <div class="container">
+            <div class="tool-card reveal">
+                <div class="tool-controls">
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label class="control-label">Parejas</label>
+                            <select class="control-input" id="inputParejas">
+                                <option value="8">8 parejas</option>
+                                <option value="12">12 parejas</option>
+                                <option value="16" selected>16 parejas</option>
+                                <option value="20">20 parejas</option>
+                                <option value="24">24 parejas</option>
+                                <option value="32">32 parejas</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Parejas por grupo</label>
+                            <select class="control-input" id="inputGrupoSize">
+                                <option value="3">3 por grupo</option>
+                                <option value="4" selected>4 por grupo</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Avanzan por grupo</label>
+                            <select class="control-input" id="inputAvanzan">
+                                <option value="1">1 por grupo</option>
+                                <option value="2" selected>2 por grupo</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">&nbsp;</label>
+                            <button class="btn-generate" id="btnGenerar">Generar Cuadro</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-results" id="toolResults">
+                    <div class="results-empty">Configura los parametros y presiona <strong>Generar Cuadro</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT: HOW IT WORKS -->
+    <section class="content-section gray">
+        <div class="container-narrow">
+            <span class="section-tag reveal">Como Funciona</span>
+            <h2 class="reveal">Grupos + Eliminacion Directa: El Formato Estandar</h2>
+            <p class="reveal">Es el formato mas usado en torneos de padel en Mexico y el mundo. Combina la emocion de la fase de grupos (donde todos juegan varios partidos) con la adrenalina de la eliminacion directa (donde cada punto cuenta).</p>
+
+            <div class="format-explainer">
+                <div class="explainer-card reveal">
+                    <h3>Fase de Grupos</h3>
+                    <p>Las parejas se dividen en grupos de 3-4. Dentro de cada grupo juegan round robin (todos contra todos). Los mejores de cada grupo avanzan al cuadro de eliminacion.</p>
+                </div>
+                <div class="explainer-card reveal d1">
+                    <h3>Eliminacion Directa</h3>
+                    <p>Los clasificados de cada grupo se enfrentan en un cuadro tipo bracket. Se juegan cuartos de final, semifinales y final. El seeding evita que parejas del mismo grupo se enfrenten pronto.</p>
+                </div>
+            </div>
+
+            <div class="tip-box reveal">
+                <div class="tip-box-label">Seeding inteligente</div>
+                <p>El cuadro de eliminacion usa un <strong>algoritmo anti-rematch</strong> que distribuye a las parejas para que equipos del mismo grupo no se enfrenten hasta la ronda mas tardia posible. Esto garantiza enfrentamientos mas justos y emocionantes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT: WHEN TO USE -->
+    <section class="content-section">
+        <div class="container-narrow">
+            <span class="section-tag reveal">Cuando Usar Este Formato</span>
+            <h2 class="reveal">Ideal para torneos de 8 a 32 parejas</h2>
+            <p class="reveal">Este formato funciona mejor cuando quieres que <strong>todos los jugadores tengan al menos 2-3 partidos garantizados</strong> (en la fase de grupos), pero tambien quieres la emocion de fases finales definitorias.</p>
+            <p class="reveal">Es el formato que usan los torneos profesionales de padel (World Padel Tour, Premier Padel) y la mayoria de los torneos amateur en Mexico.</p>
+
+            <div class="tip-box reveal">
+                <div class="tip-box-label">Calcula tu presupuesto</div>
+                <p>Ya tienes el cuadro — ahora calcula cuanto te va a costar. Usa nuestra <a href="/calculadora-torneo/">calculadora de costos gratuita</a> para estimar renta de canchas, pelotas y precio por pareja.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="reveal">Lleva tu torneo al siguiente nivel</h2>
+            <p class="reveal d1">El cuadro es solo el inicio. Inscripciones, pagos, resultados en vivo y rankings automaticos — todo en una plataforma.</p>
+            <div class="cta-buttons reveal d2">
+                <a href="/" class="btn-cta-lime">Conocer CourtBit</a>
+                <a href="/calculadora-torneo/" class="btn-cta-outline">Calculadora de Costos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="faq-section-title reveal">Preguntas Frecuentes</h2>
+            <div class="faq-list reveal">
+                <div class="faq-item"><button class="faq-toggle">Que es un cuadro de grupos mas eliminacion directa? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Es el formato estandar de torneos de padel: las parejas se dividen en grupos de 3-4, juegan round robin dentro del grupo, y los mejores de cada grupo avanzan a un cuadro de eliminacion directa (cuartos, semifinales, final).</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Cuantas parejas necesito para este formato? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">El minimo recomendado es 8 parejas (2 grupos de 4). Lo ideal es 12-32 parejas. Con mas de 32 se recomienda dividir en categorias.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Que es el seeding anti-rematch? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Es un algoritmo que distribuye a los equipos en el cuadro de eliminacion de forma que parejas del mismo grupo no se enfrenten hasta la ronda mas tardia posible (idealmente la final). Esto garantiza partidos mas justos y emocionantes.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Cuantos partidos se juegan en fase de grupos? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">En un grupo de 4 parejas se juegan 6 partidos (cada pareja juega 3). En un grupo de 3 se juegan 3 partidos. Para un torneo de 16 parejas en 4 grupos de 4: 24 partidos en fase de grupos mas 4-7 en eliminacion.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Como se decide quien avanza de cada grupo? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Avanzan las parejas con mas partidos ganados. En caso de empate, se usa diferencia de sets, diferencia de games, y finalmente el resultado directo entre las parejas empatadas.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Puedo usar este cuadro para mi torneo real? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Esta herramienta genera una vista previa con parejas genericas. Para un torneo real con nombres, inscripciones, pagos y resultados en tiempo real, usa <a href="/">CourtBit</a> — la plataforma completa para organizadores de padel.</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand">Court<span>Bit</span></div>
+            <div class="footer-right">
+                <a href="/" class="footer-link">Inicio</a>
+                <a href="/como-organizar-torneo-padel/" class="footer-link">Guia Torneos</a>
+                <a href="/calculadora-torneo/" class="footer-link">Calc. Torneo</a>
+                <a href="/calculadora-liga/" class="footer-link">Calc. Liga</a>
+                <a href="/legal/" class="footer-link">Legal</a>
+                <span class="footer-copy">&copy; 2026 CourtBit</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal
+        var obs = new IntersectionObserver(function(e) { e.forEach(function(el) { if (el.isIntersecting) el.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+        // FAQ
+        document.querySelectorAll('.faq-toggle').forEach(function(b) { b.addEventListener('click', function() { var i = b.parentElement, o = i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(function(x) { x.classList.remove('open'); }); if (!o) i.classList.add('open'); }); });
+
+        // Tool
+        var BRACKET_API = 'https://courtbit-api-production.up.railway.app/api';
+        var letras = 'ABCDEFGHIJKLMNOP';
+
+        document.getElementById('btnGenerar').addEventListener('click', generar);
+
+        function generar() {
+            var parejas = parseInt(document.getElementById('inputParejas').value);
+            var grupoSize = parseInt(document.getElementById('inputGrupoSize').value);
+            var avanzan = parseInt(document.getElementById('inputAvanzan').value);
+            var numGrupos = Math.floor(parejas / grupoSize);
+            var sobrantes = parejas % grupoSize;
+            var clasificados = numGrupos * avanzan;
+
+            // Stats
+            var partidosGrupo = numGrupos * (grupoSize * (grupoSize - 1) / 2);
+            var bracketSize = 1;
+            while (bracketSize < clasificados) bracketSize *= 2;
+            var partidosElim = clasificados - 1;
+
+            var html = '';
+
+            // Stats pills
+            html += '<div class="results-stats">';
+            html += '<div class="stat-pill"><strong>' + numGrupos + '</strong> grupos de ' + grupoSize + '</div>';
+            if (sobrantes > 0) html += '<div class="stat-pill"><strong>' + sobrantes + '</strong> parejas sin grupo</div>';
+            html += '<div class="stat-pill"><strong>' + clasificados + '</strong> clasifican</div>';
+            html += '<div class="stat-pill"><strong>' + partidosGrupo + '</strong> partidos en grupos</div>';
+            html += '<div class="stat-pill"><strong>' + partidosElim + '</strong> partidos eliminacion</div>';
+            html += '<div class="stat-pill"><strong>' + (partidosGrupo + partidosElim) + '</strong> partidos totales</div>';
+            html += '</div>';
+
+            // Groups
+            html += '<div class="groups-container"><div class="groups-title">Fase de Grupos</div><div class="groups-grid">';
+            var teamIdx = 1;
+            for (var g = 0; g < numGrupos; g++) {
+                html += '<div class="group-card"><div class="group-card-header">Grupo ' + letras[g] + '</div><div class="group-card-body">';
+                for (var t = 0; t < grupoSize; t++) {
+                    html += '<div class="group-team"><span class="group-team-seed">' + (t + 1) + '</span>Pareja ' + teamIdx + '</div>';
+                    teamIdx++;
+                }
+                html += '</div></div>';
+            }
+            html += '</div></div>';
+
+            // Bracket - fallback
+            html += '<div class="bracket-container"><div class="bracket-title">Cuadro de Eliminacion Directa</div><div class="bk-wrap" id="bracketWrap">';
+            html += renderBracketPlaceholder(bracketSize, numGrupos, avanzan);
+            html += '</div></div>';
+
+            document.getElementById('toolResults').innerHTML = html;
+
+            // Upgrade with API
+            if (numGrupos >= 2) {
+                fetch(BRACKET_API + '/brackets/preview-template?groups=' + numGrupos + '&advancing=' + avanzan)
+                    .then(function(r) { if (!r.ok) throw new Error(); return r.json(); })
+                    .then(function(data) {
+                        if (data && data.r1Matches) {
+                            var wrap = document.getElementById('bracketWrap');
+                            if (wrap) wrap.innerHTML = renderBracketFromAPI(data);
+                        }
+                    })
+                    .catch(function() { /* keep placeholder */ });
+            }
+        }
+
+        function renderBracketPlaceholder(bracketSize, numGrupos, avanzan) {
+            var numRounds = Math.log2(bracketSize);
+            var roundNames = getRoundNames(bracketSize, numRounds);
+            var totalR1 = bracketSize / 2;
+            var matches = [];
+            var teams = [];
+            for (var g = 0; g < numGrupos; g++) {
+                for (var p = 1; p <= avanzan; p++) {
+                    teams.push(p + '\u00B0 ' + letras[g]);
+                }
+            }
+            for (var i = 0; i < totalR1; i++) {
+                matches.push({ t1: i * 2 < teams.length ? teams[i * 2] : null, t2: i * 2 + 1 < teams.length ? teams[i * 2 + 1] : null });
+            }
+            return buildBracketHTML(bracketSize, numRounds, roundNames, matches);
+        }
+
+        function renderBracketFromAPI(data) {
+            var bracketSize = data.bracketSize;
+            var numRounds = data.totalRounds;
+            var roundNames = data.roundNames;
+            var matchups = data.r1Matches;
+            var matches = matchups.map(function(m) {
+                return { t1: m.team1 ? m.team1.label : null, t2: m.team2 ? m.team2.label : null };
+            });
+            return buildBracketHTML(bracketSize, numRounds, roundNames, matches);
+        }
+
+        function buildBracketHTML(bracketSize, numRounds, roundNames, r1Matches) {
+            var html = '';
+            for (var r = 0; r < numRounds; r++) {
+                var matchesInRound = bracketSize / Math.pow(2, r + 1);
+                var isFinal = matchesInRound === 1;
+                html += '<div class="bk-round"><div class="bk-round-label">' + roundNames[r] + '</div><div class="bk-round-matches">';
+                for (var mi = 0; mi < matchesInRound; mi++) {
+                    html += '<div class="bk-match' + (isFinal ? ' bk-final' : '') + '">';
+                    if (r === 0) {
+                        var m = r1Matches[mi];
+                        html += '<div class="bk-team-row"><span class="bk-team-seed">' + (mi * 2 + 1) + '</span><span class="bk-team-name' + (!m.t1 ? ' bk-team-bye' : '') + '">' + (m.t1 || 'Pase directo') + '</span></div>';
+                        html += '<div class="bk-team-row"><span class="bk-team-seed">' + (mi * 2 + 2) + '</span><span class="bk-team-name' + (!m.t2 ? ' bk-team-bye' : '') + '">' + (m.t2 || 'Pase directo') + '</span></div>';
+                    } else {
+                        html += '<div class="bk-team-row"><span class="bk-team-name" style="color:var(--text-muted)">Por definir</span></div>';
+                        html += '<div class="bk-team-row"><span class="bk-team-name" style="color:var(--text-muted)">Por definir</span></div>';
+                    }
+                    html += '</div>';
+                }
+                html += '</div></div>';
+                if (r < numRounds - 1) {
+                    var pairs = matchesInRound / 2;
+                    html += '<div class="bk-connectors">';
+                    for (var cp = 0; cp < pairs; cp++) html += '<div class="bk-conn-pair"><div class="bk-conn-top"></div><div class="bk-conn-bottom"></div></div>';
+                    html += '</div>';
+                }
+            }
+            html += '<div class="bk-champion"><div class="bk-trophy">\uD83C\uDFC6</div><div class="bk-champion-label">Campe\u00F3n</div></div>';
+            return html;
+        }
+
+        function getRoundNames(bracketSize, numRounds) {
+            var names = [];
+            for (var i = 0; i < numRounds; i++) {
+                var m = bracketSize / Math.pow(2, i + 1);
+                if (m === 1) names.push('Final');
+                else if (m === 2) names.push('Semifinal');
+                else if (m === 4) names.push('Cuartos');
+                else if (m === 8) names.push('Octavos');
+                else names.push('Ronda ' + (i + 1));
+            }
+            return names;
+        }
+
+        // Auto-generate on load
+        generar();
+    </script>
+</body>
+</html>
