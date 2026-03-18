@@ -2502,42 +2502,24 @@
             return html;
         }
 
+        /**
+         * Fallback seed list — sequential placeholder only.
+         * The real bracket seeding comes from the API (server-side algorithm).
+         */
         function buildFallbackSeeds(bracketSize, numGrupos) {
-            var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            var seeds = [];
+            var letras = 'ABCDEFGHIJKLMNOP';
+            var teams = [];
             for (var g = 0; g < numGrupos; g++) {
-                seeds.push('1\u00B0 Grupo ' + letras[g % 26]);
-                seeds.push('2\u00B0 Grupo ' + letras[g % 26]);
+                teams.push('1\u00B0 ' + letras[g % 16]);
+                teams.push('2\u00B0 ' + letras[g % 16]);
             }
-            // Fill remaining bracket slots with BYE
-            while (seeds.length < bracketSize) seeds.push(null);
-
-            // Standard bracket seeding order (1v16, 8v9, 5v12, 4v13, ...)
-            var order = [];
-            function fillOrder(lo, hi) {
-                if (hi - lo < 1) return;
-                if (hi - lo === 1) { order.push(lo); order.push(hi); return; }
-                fillOrder(lo, lo + (hi - lo) / 2);
-                fillOrder(lo + (hi - lo) / 2 + 1, hi);
-            }
-            // Simple sequential for fallback — just pair 1° vs 2° from different groups
-            var top = [], bottom = [];
-            for (var g = 0; g < numGrupos; g++) {
-                top.push('1\u00B0 ' + letras[g % 26]);
-                bottom.push('2\u00B0 ' + letras[g % 26]);
-            }
-            // Pair: 1°A vs 2°B, 1°B vs 2°A, 1°C vs 2°D, etc. (anti-rematch)
-            var matches = [];
-            var usedTop = [], usedBot = [];
-            for (var i = 0; i < top.length; i++) {
-                var oppIdx = (i % 2 === 0) ? Math.min(i + 1, bottom.length - 1) : i - 1;
-                matches.push({ t1: top[i], t2: bottom[oppIdx] });
-                usedTop.push(i);
-                usedBot.push(oppIdx);
-            }
-            // Fill remaining bracket slots (byes) up to bracketSize/2 matches
             var totalR1 = bracketSize / 2;
-            while (matches.length < totalR1) matches.push({ t1: null, t2: null });
+            var matches = [];
+            for (var i = 0; i < totalR1; i++) {
+                var t1 = i * 2 < teams.length ? teams[i * 2] : null;
+                var t2 = i * 2 + 1 < teams.length ? teams[i * 2 + 1] : null;
+                matches.push({ t1: t1, t2: t2 });
+            }
             return matches;
         }
 
