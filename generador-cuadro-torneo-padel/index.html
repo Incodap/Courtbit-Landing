@@ -166,10 +166,13 @@
         /* BRACKET */
         .bracket-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
         .bracket-title { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--blue); margin-bottom: 14px; }
-        .bk-wrap { display: flex; align-items: stretch; gap: 0; min-width: fit-content; padding-bottom: 8px; }
+        .bk-outer { position: relative; min-width: fit-content; padding-bottom: 8px; }
+        .bk-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .bk-wrap { display: flex; align-items: stretch; gap: 0; min-width: fit-content; position: relative; z-index: 1; }
         .bk-round { flex-shrink: 0; width: 170px; display: flex; flex-direction: column; }
         .bk-round-label { font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); text-align: center; margin-bottom: 10px; padding: 0 4px; }
         .bk-round-matches { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 8px; }
+        .bk-gap { flex-shrink: 0; width: 40px; }
         .bk-match { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-sm); }
         .bk-match.bk-final { border-color: var(--navy); box-shadow: 0 2px 12px rgba(15,29,77,0.12); }
         .bk-team-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; font-size: 0.75rem; border-bottom: 1px solid var(--border-light); }
@@ -177,11 +180,6 @@
         .bk-team-seed { font-weight: 800; color: var(--navy); min-width: 18px; text-align: center; font-size: 0.6875rem; }
         .bk-team-name { font-weight: 600; color: var(--text); }
         .bk-team-bye { color: var(--text-muted); font-style: italic; font-weight: 500; }
-        .bk-connectors { flex-shrink: 0; width: 28px; display: flex; flex-direction: column; justify-content: space-around; }
-        .bk-conn-pair { flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; min-height: 40px; }
-        .bk-conn-top, .bk-conn-bottom { position: absolute; right: 0; width: 14px; border-right: 2px solid var(--border); }
-        .bk-conn-top { top: 25%; bottom: 50%; border-top: 2px solid var(--border); border-radius: 0 6px 0 0; }
-        .bk-conn-bottom { top: 50%; bottom: 25%; border-bottom: 2px solid var(--border); border-radius: 0 0 6px 0; }
         .bk-champion { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 16px; gap: 4px; }
         .bk-trophy { font-size: 2rem; }
         .bk-champion-label { font-size: 0.6875rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08em; }
@@ -460,11 +458,12 @@
             html += '</div></div>';
 
             // Bracket - fallback
-            html += '<div class="bracket-container"><div class="bracket-title">Cuadro de Eliminacion Directa</div><div class="bk-wrap" id="bracketWrap">';
+            html += '<div class="bracket-container"><div class="bracket-title">Cuadro de Eliminacion Directa</div><div class="bk-outer"><div class="bk-wrap" id="bracketWrap">';
             html += renderBracketPlaceholder(bracketSize, numGrupos, avanzan);
-            html += '</div></div>';
+            html += '</div></div></div>';
 
             document.getElementById('toolResults').innerHTML = html;
+            requestAnimationFrame(drawConnectors);
 
             // Upgrade with API
             if (numGrupos >= 2) {
@@ -473,7 +472,10 @@
                     .then(function(data) {
                         if (data && data.r1Matches) {
                             var wrap = document.getElementById('bracketWrap');
-                            if (wrap) wrap.innerHTML = renderBracketFromAPI(data);
+                            if (wrap) {
+                                wrap.innerHTML = renderBracketFromAPI(data);
+                                requestAnimationFrame(drawConnectors);
+                            }
                         }
                     })
                     .catch(function() { /* keep placeholder */ });
@@ -513,9 +515,10 @@
             for (var r = 0; r < numRounds; r++) {
                 var matchesInRound = bracketSize / Math.pow(2, r + 1);
                 var isFinal = matchesInRound === 1;
-                html += '<div class="bk-round"><div class="bk-round-label">' + roundNames[r] + '</div><div class="bk-round-matches">';
+                if (r > 0) html += '<div class="bk-gap"></div>';
+                html += '<div class="bk-round" data-round="' + r + '"><div class="bk-round-label">' + roundNames[r] + '</div><div class="bk-round-matches">';
                 for (var mi = 0; mi < matchesInRound; mi++) {
-                    html += '<div class="bk-match' + (isFinal ? ' bk-final' : '') + '">';
+                    html += '<div class="bk-match' + (isFinal ? ' bk-final' : '') + '" data-round="' + r + '" data-match="' + mi + '">';
                     if (r === 0) {
                         var m = r1Matches[mi];
                         html += '<div class="bk-team-row"><span class="bk-team-seed">' + (mi * 2 + 1) + '</span><span class="bk-team-name' + (!m.t1 ? ' bk-team-bye' : '') + '">' + (m.t1 || 'Pase directo') + '</span></div>';
@@ -527,15 +530,67 @@
                     html += '</div>';
                 }
                 html += '</div></div>';
-                if (r < numRounds - 1) {
-                    var pairs = matchesInRound / 2;
-                    html += '<div class="bk-connectors">';
-                    for (var cp = 0; cp < pairs; cp++) html += '<div class="bk-conn-pair"><div class="bk-conn-top"></div><div class="bk-conn-bottom"></div></div>';
-                    html += '</div>';
-                }
             }
             html += '<div class="bk-champion"><div class="bk-trophy">\uD83C\uDFC6</div><div class="bk-champion-label">Campe\u00F3n</div></div>';
             return html;
+        }
+
+        function drawConnectors() {
+            var outer = document.querySelector('.bk-outer');
+            if (!outer) return;
+            var old = outer.querySelector('.bk-svg');
+            if (old) old.remove();
+
+            var rounds = outer.querySelectorAll('.bk-round');
+            if (rounds.length < 2) return;
+
+            var oRect = outer.getBoundingClientRect();
+            var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('class', 'bk-svg');
+            svg.setAttribute('width', oRect.width);
+            svg.setAttribute('height', oRect.height);
+
+            for (var r = 0; r < rounds.length - 1; r++) {
+                var srcMatches = rounds[r].querySelectorAll('.bk-match');
+                var dstMatches = rounds[r + 1].querySelectorAll('.bk-match');
+
+                for (var d = 0; d < dstMatches.length; d++) {
+                    var s1 = srcMatches[d * 2];
+                    var s2 = srcMatches[d * 2 + 1];
+                    var dst = dstMatches[d];
+                    if (!s1 || !s2 || !dst) continue;
+
+                    var s1R = s1.getBoundingClientRect();
+                    var s2R = s2.getBoundingClientRect();
+                    var dR = dst.getBoundingClientRect();
+
+                    var x1 = s1R.right - oRect.left;
+                    var y1 = s1R.top + s1R.height / 2 - oRect.top;
+                    var x4 = dR.left - oRect.left;
+                    var y4 = dR.top + dR.height / 2 - oRect.top;
+                    var y2 = s2R.top + s2R.height / 2 - oRect.top;
+                    var xMid = x1 + (x4 - x1) / 2;
+
+                    var path1 = 'M' + x1 + ',' + y1 + ' H' + xMid + ' V' + y4 + ' H' + x4;
+                    var path2 = 'M' + x1 + ',' + y2 + ' H' + xMid + ' V' + y4 + ' H' + x4;
+
+                    var p1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    p1.setAttribute('d', path1);
+                    p1.setAttribute('fill', 'none');
+                    p1.setAttribute('stroke', '#d1d5db');
+                    p1.setAttribute('stroke-width', '1.5');
+                    svg.appendChild(p1);
+
+                    var p2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    p2.setAttribute('d', path2);
+                    p2.setAttribute('fill', 'none');
+                    p2.setAttribute('stroke', '#d1d5db');
+                    p2.setAttribute('stroke-width', '1.5');
+                    svg.appendChild(p2);
+                }
+            }
+
+            outer.insertBefore(svg, outer.firstChild);
         }
 
         function getRoundNames(bracketSize, numRounds) {
@@ -550,6 +605,10 @@
             }
             return names;
         }
+
+        // Redraw connectors on resize
+        var resizeTimer;
+        window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawConnectors, 150); });
 
         // Auto-generate on load
         generar();
