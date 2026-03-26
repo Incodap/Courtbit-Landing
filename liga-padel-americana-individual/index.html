@@ -261,6 +261,10 @@
         .rot .rn { color: var(--text-muted); font-weight: 700; min-width: 42px; }
         .rot .tm { color: var(--text); font-weight: 600; }
         .rot .vs { color: var(--red); font-weight: 700; font-size: 0.7rem; margin: 0 4px; }
+        .rot-rep { background: var(--amber-bg); border-radius: 6px; padding-left: 8px !important; padding-right: 8px !important; margin: 2px -8px; border-left: 2px solid var(--amber); }
+        .gc-rep { border-color: var(--amber-border); }
+        .ptag-rep { background: var(--amber-bg) !important; border-color: var(--amber-border) !important; color: var(--amber-text) !important; }
+        .rep-note { font-size: 0.75rem; color: var(--amber-text); background: var(--amber-bg); border: 1px solid var(--amber-border); border-radius: 6px; padding: 6px 10px; margin-bottom: 10px; font-weight: 500; }
 
         .explainer { background: var(--bg-gray); border: 1px solid var(--border); border-radius: var(--radius-xs); padding: 14px 18px; margin-bottom: 16px; font-size: 0.82rem; color: var(--text-gray); line-height: 1.6; }
         .explainer b { color: var(--text); font-weight: 700; }
@@ -418,8 +422,19 @@ function renderEncuentrosTable(r,names){const gpm=r.groupsPerMatchday,hr=r.rests
 r.matchdays.forEach((md,mi)=>{const jc='j'+(mi%10);h+=`<tr class="${jc} jfirst"><td rowspan="2" class="jlabel">Jornada ${mi+1}</td>`;md.groups.forEach((g,gi)=>{h+=`<td${gi>0?' class="gs"':''}>${names[g[0]]}</td><td>${names[g[1]]}</td>`;});if(hr)h+=`<td rowspan="2" class="rcell">${md.resting.length>0?md.resting.map(p=>names[p]).join('<br>'):'—'}</td>`;h+='</tr>';h+=`<tr class="${jc}">`;md.groups.forEach((g,gi)=>{h+=`<td${gi>0?' class="gs"':''}>${names[g[2]]}</td><td>${names[g[3]]}</td>`;});h+='</tr>';});
 h+='</tbody></table></div>';return h;}
 
-function renderMatchday(md,idx,names){const rotH=g=>getRotations(g).map((r,ri)=>`<div class="rot"><span class="rn">Rot ${ri+1}</span><span class="tm">${names[r.team1[0]]} + ${names[r.team1[1]]}</span><span class="vs">VS</span><span class="tm">${names[r.team2[0]]} + ${names[r.team2[1]]}</span></div>`).join('');
-const gH=md.groups.map((g,gi)=>`<div class="gc"><h4>Cancha ${gi+1}</h4><div class="gc-players">${g.map(p=>`<span class="ptag">${names[p]}</span>`).join('')}</div>${rotH(g)}</div>`).join('');
+function renderMatchday(md,idx,names,repeatedPairs){
+// repeatedPairs: Set of "min-max" strings for pairs that already met BEFORE this matchday
+const isRep=(a,b)=>repeatedPairs&&repeatedPairs.has(Math.min(a,b)+'-'+Math.max(a,b));
+const rotH=g=>{const rots=getRotations(g);return rots.map((r,ri)=>{
+// Check if any pair across teams already met
+const pairs=[[r.team1[0],r.team2[0]],[r.team1[0],r.team2[1]],[r.team1[1],r.team2[0]],[r.team1[1],r.team2[1]]];
+const hasRep=pairs.some(([a,b])=>isRep(a,b));
+return`<div class="rot${hasRep?' rot-rep':''}"><span class="rn">Rot ${ri+1}</span><span class="tm">${names[r.team1[0]]} + ${names[r.team1[1]]}</span><span class="vs">VS</span><span class="tm">${names[r.team2[0]]} + ${names[r.team2[1]]}</span></div>`;}).join('');};
+const gH=md.groups.map((g,gi)=>{
+// Find which players in this group already faced each other
+const repPlayers=new Set();for(let a=0;a<g.length;a++)for(let b=a+1;b<g.length;b++){if(isRep(g[a],g[b])){repPlayers.add(g[a]);repPlayers.add(g[b]);}}
+const repPairsList=[];for(let a=0;a<g.length;a++)for(let b=a+1;b<g.length;b++){if(isRep(g[a],g[b]))repPairsList.push(`${names[g[a]]} y ${names[g[b]]}`);}
+return`<div class="gc${repPairsList.length>0?' gc-rep':''}"><h4>Cancha ${gi+1}</h4><div class="gc-players">${g.map(p=>`<span class="ptag${repPlayers.has(p)?' ptag-rep':''}">${names[p]}</span>`).join('')}</div>${repPairsList.length>0?`<div class="rep-note">Ya se enfrentaron: ${repPairsList.join(', ')}</div>`:''}${rotH(g)}</div>`;}).join('');
 const badges=[];if(md.resting.length>0)badges.push(`<span class="badge b-rest">${md.resting.length} descansa${md.resting.length>1?'n':''}</span>`);if(md.strict!==undefined)badges.push(md.strict?'<span class="badge b-ok">sin repeticiones</span>':'<span class="badge b-fail">con repeticiones</span>');
 const restH=md.resting.length>0?`<div class="rest-bar">Descansan: <b>${md.resting.map(p=>names[p]).join(', ')}</b></div>`:'';
 return`<div class="md-card${!md.strict&&md.strict!==undefined?' has-rep':''}"><div class="md-head" onclick="toggleMd(this)"><h3>Jornada ${idx+1}</h3><div class="md-badges">${badges.join('')}<span class="chevron">&#9660;</span></div></div><div class="md-body">${restH}<div class="groups-grid">${gH}</div></div></div>`;}
@@ -452,7 +467,10 @@ document.getElementById('statsBar').innerHTML=renderStatsBar(result);
 document.getElementById('insightsSection').innerHTML=renderInsights(result,names);
 document.getElementById('matchdaysTitle').textContent=`Tabla de Encuentros (${result.matchdayCount} jornadas)`;
 document.getElementById('encuentrosTable').innerHTML=renderEncuentrosTable(result,names);
-const rotTab=document.getElementById('tab-rotaciones');rotTab.innerHTML=`<div class="explainer"><b>Detalle de rotaciones por cancha.</b> Los 4 jugadores rotan de pareja 3 veces para enfrentarse todos contra todos.</div>`+result.matchdays.map((md,i)=>renderMatchday(md,i,names)).join('');const fh=rotTab.querySelector('.md-head');if(fh){fh.classList.add('open');fh.nextElementSibling.classList.add('open');}
+// Pre-calculate which pairs already met BEFORE each matchday
+const seenBefore=[];const cumSeen=new Set();
+for(let mi=0;mi<result.matchdays.length;mi++){seenBefore.push(new Set(cumSeen));const md=result.matchdays[mi];for(const g of md.groups)for(let a=0;a<g.length;a++)for(let b=a+1;b<g.length;b++)cumSeen.add(Math.min(g[a],g[b])+'-'+Math.max(g[a],g[b]));}
+const rotTab=document.getElementById('tab-rotaciones');rotTab.innerHTML=`<div class="explainer"><b>Detalle de rotaciones por cancha.</b> Los 4 jugadores rotan de pareja 3 veces para enfrentarse todos contra todos. Los jugadores marcados en amarillo ya se enfrentaron en una jornada anterior.</div>`+result.matchdays.map((md,i)=>renderMatchday(md,i,names,seenBefore[i])).join('');const fh=rotTab.querySelector('.md-head');if(fh){fh.classList.add('open');fh.nextElementSibling.classList.add('open');}
 document.getElementById('tab-rest').innerHTML=renderRestCalendar(result,names);
 document.getElementById('tab-missing').innerHTML=renderMissingPairs(result,names);
 document.getElementById('tab-heatmap').innerHTML=renderHeatmap(result,names);
