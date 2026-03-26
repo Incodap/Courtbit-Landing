@@ -281,6 +281,14 @@
         .footer-logo span { color: var(--green); }
         .footer-text { font-size: 0.82rem; color: var(--text-light); }
 
+        .cta-results { margin-top: 40px; }
+        .cta-results-inner { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 2px solid var(--green-border); border-radius: var(--radius); padding: 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+        .cta-results-text { flex: 1; min-width: 240px; }
+        .cta-results-text h3 { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+        .cta-results-text p { font-size: 0.9rem; color: var(--text-gray); line-height: 1.5; }
+        .cta-results-btn { display: inline-block; padding: 14px 28px; background: var(--green); color: white; text-decoration: none; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.95rem; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+        .cta-results-btn:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,210,106,0.3); }
+
         .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 8px; vertical-align: middle; }
         @keyframes spin { to { transform: rotate(360deg); } }
     </style>
@@ -354,14 +362,27 @@
                 <div class="tab-panel" id="tab-heatmap"></div>
                 <div class="tab-panel" id="tab-players"></div>
             </div>
+
+            <div id="ctaResults" style="display:none" class="cta-results">
+                <div class="cta-results-inner">
+                    <div class="cta-results-text">
+                        <h3>Te gusto el calendario? Llevalo a la practica</h3>
+                        <p>Registra a tus jugadores, programa las jornadas, captura resultados en vivo y lleva el ranking automaticamente desde el dashboard de CourtBit.</p>
+                    </div>
+                    <a href="https://dashboard.courtbit.com.mx/" class="cta-results-btn">Crear mi liga en CourtBit &rarr;</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="cta-section"><div class="container">
         <div class="cta-card">
-            <h2>Organiza Tu Liga con CourtBit</h2>
-            <p>Jornadas, rotaciones, ranking en vivo y pagos en linea. Todo desde una sola plataforma.</p>
-            <a href="/#contact" class="cta-btn">Probar Gratis</a>
+            <h2>Listo para organizar tu liga?</h2>
+            <p>Registra jugadores, genera jornadas automaticamente, captura resultados en vivo y comparte el ranking. Todo desde una sola plataforma.</p>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                <a href="https://dashboard.courtbit.com.mx/" class="cta-btn">Crear mi liga gratis</a>
+                <a href="/liga-americana-padel/" class="cta-btn" style="background:transparent;color:var(--green);border:2px solid var(--green);">Como funciona el formato &rarr;</a>
+            </div>
         </div>
     </div></section>
 
@@ -471,6 +492,7 @@ document.getElementById('tab-rest').innerHTML=renderRestCalendar(result,names);
 document.getElementById('tab-missing').innerHTML=renderMissingPairs(result,names);
 document.getElementById('tab-heatmap').innerHTML=renderHeatmap(result,names);
 document.getElementById('tab-players').innerHTML=renderPlayerStats(result,names);
+document.getElementById('ctaResults').style.display='block';
 $res.scrollIntoView({behavior:'smooth',block:'start'});},20);}
 
 $pc.addEventListener('input',updateDerived);$cc.addEventListener('input',updateDerived);$mc.addEventListener('input',updateDerived);document.getElementById('generateBtn').addEventListener('click',onGenerate);updateDerived();onGenerate();
