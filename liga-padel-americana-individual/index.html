@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Liga Americana de Padel Individual | Grupos, Jornadas y Rotaciones - CourtBit</title>
+    <meta name="description" content="Genera automaticamente el calendario de tu liga americana de padel individual: jornadas, grupos de 4, rotaciones de dobles y descansos rotativos. Sin repetir rival. Gratis.">
+    <meta name="keywords" content="liga americana padel, generador liga padel, rotaciones padel, jornadas padel, grupos padel, formato americano padel, liga individual padel, calendario padel, round robin padel">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://courtbit.com.mx/liga-padel-americana-individual/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Generador de Liga Americana de Padel Individual | CourtBit">
+    <meta property="og:description" content="Genera el calendario de tu liga americana: jornadas, grupos, rotaciones y descansos. Sin repetir rival. 100% gratis.">
+    <meta property="og:url" content="https://courtbit.com.mx/liga-padel-americana-individual/">
+    <meta property="og:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+    <meta property="og:site_name" content="CourtBit">
+    <meta property="og:locale" content="es_MX">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Generador de Liga Americana de Padel Individual | CourtBit">
+    <meta name="twitter:description" content="Genera el calendario de tu liga americana: jornadas, grupos, rotaciones y descansos. Sin repetir rival.">
+    <link rel="icon" type="image/png" href="../Assets/courtbit-logo.svg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Generador de Liga Americana de Padel Individual",
+        "description": "Herramienta gratuita para generar el calendario completo de una liga americana de padel en formato individual: jornadas, grupos de 4, rotaciones de dobles y descansos rotativos.",
+        "url": "https://courtbit.com.mx/liga-padel-americana-individual/",
+        "applicationCategory": "SportsApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MXN" },
+        "author": { "@type": "Organization", "name": "CourtBit", "url": "https://courtbit.com.mx" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Que es una liga americana de padel individual?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Es un formato donde los jugadores compiten individualmente a lo largo de varias jornadas. En cada jornada se forman grupos de 4 que juegan 3 partidos de dobles rotando parejas, para que todos se enfrenten entre si. Los puntos se acumulan de forma individual." }
+            },
+            {
+                "@type": "Question",
+                "name": "Como funcionan las rotaciones en cada grupo?",
+                "acceptedAnswer": { "@type": "Answer", "text": "En cada grupo de 4 jugadores (A, B, C, D) se juegan 3 partidos: A+B vs C+D, A+C vs B+D, y A+D vs B+C. Asi cada jugador se enfrenta contra los otros 3 como rival exactamente 2 veces." }
+            },
+            {
+                "@type": "Question",
+                "name": "Cuantas jornadas necesita mi liga?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Depende de cuantos jugadores y canchas tengas. Con 20 jugadores y 4 canchas puedes hacer hasta 7 jornadas sin que nadie repita rival. Con 16 jugadores y 4 canchas, 5 jornadas. El generador te calcula automaticamente el maximo recomendado." }
+            }
+        ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=optional" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=optional"></noscript>
+    <style>
+        :root {
+            --green: #00D26A; --green-light: #4ADE80; --green-dark: #00A855; --green-bg: #F0FDF4; --green-border: #BBF7D0;
+            --amber: #F59E0B; --amber-bg: #FEF3C7; --amber-border: #FDE68A; --amber-text: #92400E;
+            --red: #EF4444; --red-bg: #FEF2F2; --red-border: #FECACA; --red-text: #991B1B;
+            --blue-bg: #EFF6FF; --blue-border: #BFDBFE; --blue-text: #1E40AF;
+            --bg: #FFFFFF; --bg-gray: #F9FAFB; --text: #1F2937; --text-gray: #4B5563; --text-light: #6B7280; --text-muted: #9CA3AF;
+            --border: #E5E7EB; --border-dark: #D1D5DB;
+            --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05); --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1); --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --radius: 16px; --radius-sm: 12px; --radius-xs: 8px;
+            --font: 'Outfit', sans-serif; --mono: 'Space Mono', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        nav { background: var(--bg); border-bottom: 1px solid var(--border); padding: 20px 0; position: sticky; top: 0; z-index: 100; }
+        .nav-c { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--text); }
+        .logo span { color: var(--green); }
+        .back-link { color: var(--green); text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+
+        /* Hero */
+        .hero { padding: 64px 0 32px; text-align: center; }
+        .tag { display: inline-block; font-family: var(--mono); font-size: 0.75rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 16px; font-weight: 700; }
+        .hero h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .hero p { font-size: 1.125rem; color: var(--text-gray); max-width: 640px; margin: 0 auto; }
+
+        /* Config */
+        .config-section { padding: 0 0 48px; }
+        .config-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; }
+        @media (max-width: 700px) { .config-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .config-grid { grid-template-columns: 1fr; } }
+        .input-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 24px; box-shadow: var(--shadow-sm); transition: box-shadow 0.3s; }
+        .input-card:hover { box-shadow: var(--shadow-md); }
+        .input-card-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 12px; }
+        .input-card-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; }
+        .calc-input { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font); font-size: 1rem; color: var(--text); background: white; transition: border-color 0.2s, box-shadow 0.2s; -moz-appearance: textfield; }
+        .calc-input::-webkit-outer-spin-button, .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+        .calc-input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(0,210,106,0.1); }
+        .input-hint { font-size: 0.78rem; color: var(--text-light); margin-top: 6px; }
+        .input-hint b { color: var(--green-dark); font-weight: 700; }
+
+        .derived-chips { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+        .chip { font-size: 0.82rem; color: var(--text-gray); background: var(--bg-gray); padding: 6px 14px; border-radius: 99px; border: 1px solid var(--border); font-weight: 500; }
+        .chip b { color: var(--text); }
+
+        .toggle-row { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+        .toggle input { opacity: 0; width: 0; height: 0; }
+        .toggle .slider { position: absolute; inset: 0; background: var(--border-dark); border-radius: 99px; cursor: pointer; transition: background 0.2s; }
+        .toggle .slider::before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: white; border-radius: 50%; transition: all 0.2s; box-shadow: var(--shadow-sm); }
+        .toggle input:checked + .slider { background: var(--green); }
+        .toggle input:checked + .slider::before { transform: translateX(20px); }
+        .toggle-label { font-size: 0.9rem; font-weight: 600; }
+        .toggle-hint { font-size: 0.78rem; color: var(--text-light); display: block; margin-top: 2px; }
+
+        .btn-generate { display: block; width: 100%; padding: 16px; background: var(--green); color: white; border: none; border-radius: var(--radius-sm); font-family: var(--font); font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+        .btn-generate:hover { background: var(--green-dark); }
+
+        /* Results */
+        #results { display: none; padding-bottom: 80px; }
+        .results-header { text-align: center; margin-bottom: 32px; }
+        .results-header h2 { font-size: 1.5rem; font-weight: 800; }
+
+        /* Stats bar */
+        .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 32px; }
+        .stat-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; box-shadow: var(--shadow-sm); }
+        .stat-card .val { font-size: 1.5rem; font-weight: 800; color: var(--text); }
+        .stat-card .lbl { font-size: 0.72rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; font-weight: 600; }
+        .stat-card.good .val { color: var(--green-dark); }
+        .stat-card.warn .val { color: var(--amber); }
+        .stat-card.bad .val { color: var(--red); }
+
+        /* Insights */
+        .insight-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-bottom: 20px; }
+        .insight-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; display: flex; gap: 14px; align-items: flex-start; box-shadow: var(--shadow-sm); }
+        .insight-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+        .d-green { background: var(--green); } .d-amber { background: var(--amber); } .d-red { background: var(--red); }
+        .insight-body { flex: 1; }
+        .insight-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 2px; }
+        .insight-value { font-size: 1.2rem; font-weight: 800; color: var(--green-dark); }
+        .insight-card.warn .insight-value { color: var(--amber); }
+        .insight-card.bad .insight-value { color: var(--red); }
+        .insight-detail { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; line-height: 1.4; }
+
+        .info-box { padding: 12px 16px; border-radius: var(--radius-xs); font-size: 0.82rem; line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; font-weight: 500; }
+        .info-box b { font-weight: 700; }
+        .info-box.info { background: var(--blue-bg); border: 1px solid var(--blue-border); color: var(--blue-text); }
+        .info-box.success { background: var(--green-bg); border: 1px solid var(--green-border); color: #166534; }
+        .info-box.caution { background: var(--amber-bg); border: 1px solid var(--amber-border); color: var(--amber-text); }
+
+        /* Encounters table */
+        .enc-wrap { overflow-x: auto; margin-bottom: 32px; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+        .enc-table { border-collapse: collapse; width: 100%; font-size: 0.92rem; text-align: center; }
+        .enc-table th { padding: 12px 8px; font-size: 0.72rem; color: var(--text-light); text-transform: uppercase; font-weight: 700; letter-spacing: 0.04em; background: var(--bg-gray); }
+        .enc-table td { padding: 10px 14px; font-weight: 600; }
+        .enc-table .jlabel { font-weight: 700; font-size: 0.82rem; text-align: left; padding: 12px 16px; white-space: nowrap; background: var(--bg-gray) !important; color: var(--text); }
+        .enc-table .rcell { font-size: 0.75rem; font-weight: 500; color: var(--amber-text); background: var(--amber-bg) !important; padding: 8px 10px; text-align: center; vertical-align: middle; line-height: 1.3; }
+        .enc-table .gs { border-left: 2px solid var(--border-dark); }
+        .enc-table .jfirst td { border-top: 2px solid var(--border-dark); }
+        .enc-table .j0 td:not(.jlabel):not(.rcell) { background: #dcfce7; color: #166534; }
+        .enc-table .j1 td:not(.jlabel):not(.rcell) { background: #fef9c3; color: #854d0e; }
+        .enc-table .j2 td:not(.jlabel):not(.rcell) { background: #dbeafe; color: #1e40af; }
+        .enc-table .j3 td:not(.jlabel):not(.rcell) { background: #fce7f3; color: #9d174d; }
+        .enc-table .j4 td:not(.jlabel):not(.rcell) { background: #ede9fe; color: #5b21b6; }
+        .enc-table .j5 td:not(.jlabel):not(.rcell) { background: #ccfbf1; color: #115e59; }
+        .enc-table .j6 td:not(.jlabel):not(.rcell) { background: #ffedd5; color: #9a3412; }
+        .enc-table .j7 td:not(.jlabel):not(.rcell) { background: #fce7f3; color: #831843; }
+        .enc-table .j8 td:not(.jlabel):not(.rcell) { background: #ecfdf5; color: #065f46; }
+        .enc-table .j9 td:not(.jlabel):not(.rcell) { background: #fefce8; color: #713f12; }
+
+        /* Tabs */
+        .tabs { margin-top: 40px; }
+        .tab-bar { display: flex; gap: 4px; border-bottom: 2px solid var(--border); overflow-x: auto; margin-bottom: 24px; }
+        .tab-btn { background: none; border: none; color: var(--text-muted); font-family: var(--font); font-size: 0.85rem; font-weight: 600; padding: 12px 18px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; white-space: nowrap; }
+        .tab-btn.active { color: var(--green-dark); border-bottom-color: var(--green); }
+        .tab-btn:hover { color: var(--text); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* Rest calendar */
+        .rest-cal-wrap { overflow-x: auto; }
+        .rest-cal { border-collapse: collapse; font-size: 0.8rem; width: 100%; }
+        .rest-cal th { padding: 10px 8px; font-weight: 700; text-align: center; color: var(--text-light); font-size: 0.72rem; text-transform: uppercase; border-bottom: 2px solid var(--border); }
+        .rest-cal th:first-child { text-align: left; }
+        .rest-cal td { padding: 8px; text-align: center; border-bottom: 1px solid var(--border); }
+        .rest-cal td:first-child { text-align: left; font-weight: 600; }
+        .rest-cal tr:hover td { background: var(--bg-gray); }
+        .dot-p { display: inline-block; width: 24px; height: 24px; line-height: 24px; border-radius: 50%; background: var(--green-bg); color: var(--green-dark); font-size: 0.7rem; font-weight: 700; }
+        .dot-r { display: inline-block; width: 24px; height: 24px; line-height: 24px; border-radius: 50%; background: var(--amber-bg); color: var(--amber-text); font-size: 0.7rem; font-weight: 700; }
+        .rest-cal .sum-row td { border-top: 2px solid var(--border); font-weight: 700; color: var(--text-light); }
+
+        /* Missing pairs */
+        .missing-list { display: flex; flex-direction: column; gap: 10px; }
+        .mp { background: white; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 18px; box-shadow: var(--shadow-sm); }
+        .mp-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .mp-name { font-weight: 700; }
+        .mp-count { font-size: 0.78rem; color: var(--text-light); }
+        .mp-bar { height: 6px; background: var(--border); border-radius: 99px; margin-bottom: 8px; overflow: hidden; }
+        .mp-fill { height: 100%; border-radius: 99px; }
+        .mp-fill.fg { background: var(--green); } .mp-fill.fa { background: var(--amber); } .mp-fill.fr { background: var(--red); }
+        .mp-tags { font-size: 0.78rem; color: var(--text-light); }
+        .mt { display: inline-block; background: var(--red-bg); color: var(--red-text); padding: 2px 8px; border-radius: 99px; font-size: 0.72rem; margin: 2px; border: 1px solid var(--red-border); font-weight: 500; }
+        .mp.ok { border-color: var(--green-border); }
+        .mp.ok .mp-name { color: var(--green-dark); }
+
+        /* Heatmap */
+        .hm-wrap { overflow-x: auto; }
+        .hm { border-collapse: collapse; font-size: 0.65rem; }
+        .hm th { padding: 4px 3px; color: var(--text-muted); font-weight: 700; }
+        .hm .rl { text-align: right; padding-right: 6px; }
+        .hm td { width: 24px; height: 24px; text-align: center; border: 1px solid var(--bg); font-weight: 700; }
+        .hm td.s { background: var(--bg-gray); }
+        .hm td.h0 { background: #fecaca; color: var(--red-text); }
+        .hm td.h1 { background: #bbf7d0; color: #166534; }
+        .hm td.h2 { background: #fde68a; color: #92400e; }
+        .hm td.h3 { background: #fed7aa; color: #9a3412; }
+        .hm td[data-t]:hover::after { content: attr(data-t); position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: var(--text); color: white; padding: 4px 8px; border-radius: 6px; white-space: nowrap; font-size: 0.72rem; font-weight: 400; z-index: 10; pointer-events: none; }
+        .hm td { position: relative; }
+        .hm-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; font-size: 0.78rem; color: var(--text-light); }
+        .sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: middle; margin-right: 4px; }
+
+        /* Stats table */
+        .st { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .st th { text-align: left; padding: 12px 14px; color: var(--text-light); font-weight: 700; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em; border-bottom: 2px solid var(--border); cursor: pointer; }
+        .st th:hover { color: var(--text); }
+        .st th.sorted { color: var(--green-dark); }
+        .st td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+        .st tr:hover td { background: var(--bg-gray); }
+        .cov-ok { color: var(--green-dark); font-weight: 700; }
+        .cov-low { color: var(--red); }
+
+        /* Matchday cards */
+        .md-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; box-shadow: var(--shadow-sm); }
+        .md-card.has-rep { border-left: 3px solid var(--amber); }
+        .md-head { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; cursor: pointer; transition: background 0.15s; }
+        .md-head:hover { background: var(--bg-gray); }
+        .md-head h3 { font-size: 0.95rem; font-weight: 700; }
+        .md-badges { display: flex; align-items: center; gap: 8px; }
+        .badge { font-size: 0.72rem; padding: 3px 10px; border-radius: 99px; font-weight: 600; }
+        .b-rest { background: var(--amber-bg); color: var(--amber-text); border: 1px solid var(--amber-border); }
+        .b-ok { background: var(--green-bg); color: #166534; border: 1px solid var(--green-border); }
+        .b-fail { background: var(--red-bg); color: var(--red-text); border: 1px solid var(--red-border); }
+        .chevron { color: var(--text-muted); transition: transform 0.2s; font-size: 1.1rem; }
+        .md-head.open .chevron { transform: rotate(180deg); }
+        .md-body { display: none; padding: 0 18px 18px; }
+        .md-body.open { display: block; }
+        .rest-bar { font-size: 0.82rem; color: var(--amber-text); margin-bottom: 14px; padding: 8px 12px; background: var(--amber-bg); border-radius: var(--radius-xs); border-left: 3px solid var(--amber); }
+        .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+        .gc { background: var(--bg-gray); border: 1px solid var(--border); border-radius: var(--radius-xs); padding: 14px; }
+        .gc h4 { font-size: 0.8rem; color: var(--green-dark); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; font-weight: 700; }
+        .gc-players { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+        .ptag { background: white; padding: 3px 10px; border-radius: 99px; font-size: 0.78rem; font-weight: 500; border: 1px solid var(--border); }
+        .rot { font-size: 0.78rem; color: var(--text-light); padding: 6px 0; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 6px; }
+        .rot:first-of-type { border-top: none; }
+        .rot .rn { color: var(--text-muted); font-weight: 700; min-width: 42px; }
+        .rot .tm { color: var(--text); font-weight: 600; }
+        .rot .vs { color: var(--red); font-weight: 700; font-size: 0.7rem; margin: 0 4px; }
+
+        .explainer { background: var(--bg-gray); border: 1px solid var(--border); border-radius: var(--radius-xs); padding: 14px 18px; margin-bottom: 16px; font-size: 0.82rem; color: var(--text-gray); line-height: 1.6; }
+        .explainer b { color: var(--text); font-weight: 700; }
+
+        /* CTA */
+        .cta-section { padding: 64px 0; }
+        .cta-card { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border: 1px solid var(--green-border); border-radius: var(--radius-lg, 24px); padding: 48px 32px; text-align: center; }
+        .cta-card h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+        .cta-card p { color: var(--text-gray); margin-bottom: 24px; }
+        .cta-btn { display: inline-block; padding: 14px 32px; background: var(--green); color: white; text-decoration: none; border-radius: var(--radius-sm); font-weight: 700; transition: background 0.2s; }
+        .cta-btn:hover { background: var(--green-dark); }
+
+        footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); }
+        .footer-logo { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+        .footer-logo span { color: var(--green); }
+        .footer-text { font-size: 0.82rem; color: var(--text-light); }
+
+        .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 8px; vertical-align: middle; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <nav><div class="nav-c">
+        <a href="/" class="logo">Court<span>Bit</span></a>
+        <a href="/" class="back-link">&larr; Volver al inicio</a>
+    </div></nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="tag">Herramienta Gratuita</span>
+            <h1>Generador de Liga Americana Individual</h1>
+            <p>Configura tu liga de padel, genera jornadas, grupos y rotaciones automaticamente. Sin que nadie repita rival.</p>
+        </div>
+    </section>
+
+    <section class="config-section">
+        <div class="container">
+            <div class="config-grid">
+                <div class="input-card">
+                    <div class="input-card-icon" style="background:#F0FDF4;color:#166534;">&#9899;</div>
+                    <div class="input-card-title">Jugadores</div>
+                    <input type="number" class="calc-input" id="playerCount" min="4" max="200" value="20">
+                    <div class="input-hint">Minimo 4</div>
+                </div>
+                <div class="input-card">
+                    <div class="input-card-icon" style="background:#EFF6FF;color:#1E40AF;">&#9878;</div>
+                    <div class="input-card-title">Canchas disponibles</div>
+                    <input type="number" class="calc-input" id="courtCount" min="1" max="50" value="4">
+                    <div class="input-hint">Menos canchas = mas descanso y mas jornadas para que todos se enfrenten</div>
+                </div>
+                <div class="input-card">
+                    <div class="input-card-icon" style="background:#FEF3C7;color:#92400E;">&#128197;</div>
+                    <div class="input-card-title">Jornadas</div>
+                    <input type="number" class="calc-input" id="matchdayCount" min="1" max="100" value="5">
+                    <div class="input-hint">Estimado sin repetir: <b id="recommendedMd">7</b></div>
+                </div>
+            </div>
+            <div class="derived-chips" id="derived"></div>
+            <div class="toggle-row">
+                <label class="toggle"><input type="checkbox" id="strictMode" checked><span class="slider"></span></label>
+                <div>
+                    <span class="toggle-label">Que nadie repita rival</span>
+                    <span class="toggle-hint">El algoritmo busca hasta 500 combinaciones por jornada para garantizar 0 repeticiones.</span>
+                </div>
+            </div>
+            <button class="btn-generate" id="generateBtn">Generar Calendario</button>
+        </div>
+    </section>
+
+    <section id="results">
+        <div class="container">
+            <div id="modeBanner"></div>
+            <div class="stats-bar" id="statsBar"></div>
+            <div id="insightsSection"></div>
+            <div class="results-header"><h2 id="matchdaysTitle">Tabla de Encuentros</h2></div>
+            <div id="encuentrosTable"></div>
+            <div class="tabs">
+                <div class="tab-bar">
+                    <button class="tab-btn active" data-tab="rotaciones">Rotaciones</button>
+                    <button class="tab-btn" data-tab="rest">Descansos</button>
+                    <button class="tab-btn" data-tab="missing">Rivales Faltantes</button>
+                    <button class="tab-btn" data-tab="heatmap">Mapa de Cruces</button>
+                    <button class="tab-btn" data-tab="players">Estadisticas</button>
+                </div>
+                <div class="tab-panel active" id="tab-rotaciones"></div>
+                <div class="tab-panel" id="tab-rest"></div>
+                <div class="tab-panel" id="tab-missing"></div>
+                <div class="tab-panel" id="tab-heatmap"></div>
+                <div class="tab-panel" id="tab-players"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section"><div class="container">
+        <div class="cta-card">
+            <h2>Organiza Tu Liga con CourtBit</h2>
+            <p>Jornadas, rotaciones, ranking en vivo y pagos en linea. Todo desde una sola plataforma.</p>
+            <a href="/#contact" class="cta-btn">Probar Gratis</a>
+        </div>
+    </div></section>
+
+    <footer><div class="container">
+        <div class="footer-logo">Court<span>Bit</span></div>
+        <p class="footer-text">&copy; 2026 CourtBit. Todos los derechos reservados.</p>
+    </div></footer>
+
+<script>
+// === ALGORITHM (audited) ===
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function constrainedGreedy(pool,seen,ng){const rem=[...pool],groups=[];for(let g=0;g<ng;g++){if(rem.length<4)return null;let li=0,lc=Infinity;for(let i=0;i<rem.length;i++){let c=0;for(let j=0;j<rem.length;j++){if(i!==j&&!seen[rem[i]][rem[j]])c++;}if(c<lc){lc=c;li=i;}}if(lc<3)return null;const group=[rem.splice(li,1)[0]];for(let p=0;p<3;p++){let bi=-1,bs=-1;for(let i=0;i<rem.length;i++){let ok=true;for(const gp of group){if(seen[rem[i]][gp]){ok=false;break;}}if(!ok)continue;let f=0;for(let j=0;j<rem.length;j++){if(j!==i&&!seen[rem[i]][rem[j]])f++;}if(f>bs){bs=f;bi=i;}}if(bi===-1)return null;group.push(rem.splice(bi,1)[0]);}groups.push(group);}return groups;}
+
+function backtrackPartition(pool,seen,ng,dl){if(ng===0)return pool.length===0?[]:null;if(pool.length<4*ng||Date.now()>dl)return null;let pi=0,pc=Infinity;for(let i=0;i<pool.length;i++){let c=0;for(let j=0;j<pool.length;j++){if(i!==j&&!seen[pool[i]][pool[j]])c++;}if(c<pc){pc=c;pi=i;}}if(pc<3)return null;const pivot=pool[pi],comp=[];for(let i=0;i<pool.length;i++){if(i!==pi&&!seen[pivot][pool[i]])comp.push(pool[i]);}for(let i=0;i<comp.length-2;i++){if(Date.now()>dl)return null;const b=comp[i];for(let j=i+1;j<comp.length-1;j++){if(seen[b][comp[j]])continue;const c=comp[j];for(let k=j+1;k<comp.length;k++){if(Date.now()>dl)return null;const d=comp[k];if(seen[b][d]||seen[c][d])continue;const g=[pivot,b,c,d],gs=new Set(g);const sub=backtrackPartition(pool.filter(p=>!gs.has(p)),seen,ng-1,dl);if(sub)return[g,...sub];}}}return null;}
+
+function findStrictPartition(active,seen,ng){let res=constrainedGreedy(active,seen,ng);if(res)return res;for(let i=0;i<500;i++){res=constrainedGreedy(shuffle([...active]),seen,ng);if(res)return res;}return backtrackPartition(active,seen,ng,Date.now()+3000);}
+
+function greedyPartition(pool,seen){const rem=[...pool],groups=[];while(rem.length>=4){const g=[];let bi=0,bs=-1;for(let i=0;i<rem.length;i++){let s=0;for(let j=0;j<rem.length;j++){if(i!==j&&!seen[rem[i]][rem[j]])s++;}if(s>bs){bs=s;bi=i;}}g.push(rem.splice(bi,1)[0]);for(let p=0;p<3;p++){let b2=0,s2=-1;for(let i=0;i<rem.length;i++){let s=0;for(const gp of g){if(!seen[rem[i]][gp])s++;}if(s>s2){s2=s;b2=i;}}g.push(rem.splice(b2,1)[0]);}groups.push(g);}return groups;}
+
+function selectResting(r,n,rc,seen){if(r===0)return[];const idx=Array.from({length:n},(_,i)=>i);idx.sort((a,b)=>{if(rc[a]!==rc[b])return rc[a]-rc[b];let sa=0,sb=0;for(let k=0;k<n;k++){if(seen[a][k]>0)sa++;if(seen[b][k]>0)sb++;}if(sa!==sb)return sb-sa;return a-b;});const rest=[];for(let i=0;i<r;i++){rest.push(idx[i]);rc[idx[i]]++;}return rest;}
+
+function recommendedMatchdays(n,courts){const a=Math.min(courts*4,n);if(a<4)return 1;return Math.max(1,Math.floor(n*(n-1)/2/((a/4)*6)));}
+
+function generate(playerCount,matchdayCount,strict,courts){const groupsPerMd=Math.min(courts,Math.floor(playerCount/4));const activePerMd=groupsPerMd*4;const r=playerCount-activePerMd;const totalPairs=playerCount*(playerCount-1)/2;const seen=[];for(let i=0;i<playerCount;i++)seen.push(new Int32Array(playerCount));const rc=new Int32Array(playerCount);const matchdays=[];let strictOk=0,strictFail=0;
+for(let md=0;md<matchdayCount;md++){let resting=selectResting(r,playerCount,rc,seen);let active=[];for(let i=0;i<playerCount;i++){if(!new Set(resting).has(i))active.push(i);}let groups=null,usedStrict=false;
+if(strict){groups=findStrictPartition(active,seen,groupsPerMd);if(!groups&&r>0&&r<=3){for(const p of resting)rc[p]--;const cands=Array.from({length:playerCount},(_,i)=>i);cands.sort((a,b)=>{if(rc[a]!==rc[b])return rc[a]-rc[b];let sa=0,sb=0;for(let k=0;k<playerCount;k++){if(seen[a][k]>0)sa++;if(seen[b][k]>0)sb++;}if(sa!==sb)return sb-sa;return a-b;});const tp=cands.slice(0,Math.min(r+6,playerCount));const combos=[];function gc(s,cur){if(cur.length===r){combos.push([...cur]);return;}if(combos.length>=30)return;for(let i=s;i<tp.length;i++){cur.push(tp[i]);gc(i+1,cur);cur.pop();}}gc(0,[]);for(let ci=1;ci<combos.length;ci++){const ar=combos[ci],ars=new Set(ar),aa=[];for(let i=0;i<playerCount;i++){if(!ars.has(i))aa.push(i);}const ag=findStrictPartition(aa,seen,groupsPerMd);if(ag){resting=ar;active=aa;groups=ag;break;}}for(const p of resting)rc[p]++;}if(groups){usedStrict=true;strictOk++;}}
+if(!groups){groups=greedyPartition(active,seen);if(strict)strictFail++;}
+for(const g of groups)for(let a=0;a<g.length;a++)for(let b=a+1;b<g.length;b++){seen[g[a]][g[b]]++;seen[g[b]][g[a]]++;}
+matchdays.push({groups,resting:resting.sort((a,b)=>a-b),strict:usedStrict});}
+let covered=0,repeated=0;for(let i=0;i<playerCount;i++)for(let j=i+1;j<playerCount;j++){if(seen[i][j]>0)covered++;if(seen[i][j]>1)repeated++;}
+const ps=[];for(let i=0;i<playerCount;i++){let o=0;for(let j=0;j<playerCount;j++){if(j!==i&&seen[i][j]>0)o++;}ps.push({index:i,played:matchdayCount-rc[i],rested:rc[i],opponents:o,coveragePct:(o/(playerCount-1))*100});}
+return{matchdays,playerCount,matchdayCount,groupsPerMatchday:groupsPerMd,restsPerMatchday:r,pairsCovered:covered,totalPairs,repeated,coverage:totalPairs>0?(covered/totalPairs*100):100,pairCount:seen,restCounts:Array.from(rc),playerStats:ps,strictMode:strict,strictOk,strictFail};}
+
+function getRotations(g){return[{team1:[g[0],g[1]],team2:[g[2],g[3]]},{team1:[g[0],g[2]],team2:[g[1],g[3]]},{team1:[g[0],g[3]],team2:[g[1],g[2]]}];}
+function makeNames(n){return Array.from({length:n},(_,i)=>'J'+(i+1));}
+
+// === RENDER ===
+function renderStatsBar(r){const cc=r.coverage>=100?'good':r.coverage>=80?'warn':'bad';const rc=r.repeated===0?'good':'bad';return`<div class="stat-card"><div class="val">${r.playerCount}</div><div class="lbl">Jugadores</div></div><div class="stat-card"><div class="val">${r.matchdayCount}</div><div class="lbl">Jornadas</div></div><div class="stat-card"><div class="val">${r.groupsPerMatchday}</div><div class="lbl">Canchas/Jornada</div></div><div class="stat-card ${cc}"><div class="val">${r.coverage.toFixed(1)}%</div><div class="lbl">Cobertura</div></div><div class="stat-card"><div class="val">${r.pairsCovered}/${r.totalPairs}</div><div class="lbl">Cruces realizados</div></div><div class="stat-card ${rc}"><div class="val">${r.repeated}</div><div class="lbl">Cruces repetidos</div></div>`;}
+
+function renderInsights(r,names){const n=r.playerCount,rec=recommendedMatchdays(n,$cc.value);const minO=Math.min(...r.playerStats.map(s=>s.opponents)),maxO=Math.max(...r.playerStats.map(s=>s.opponents));const minR=Math.min(...r.restCounts),maxR=Math.max(...r.restCounts),rr=maxR-minR;const miss=r.totalPairs-r.pairsCovered;
+let h='<div class="insight-cards">';
+h+=`<div class="insight-card${r.repeated===0?'':' bad'}"><span class="insight-dot ${r.repeated===0?'d-green':'d-red'}"></span><div class="insight-body"><div class="insight-title">Rivales repetidos</div><div class="insight-value">${r.repeated===0?'Ninguno':r.repeated}</div><div class="insight-detail">${r.repeated===0?'Cada jornada, todos enfrentaron rivales nuevos.':`${r.repeated} cruces se repitieron. Prueba con ${rec} jornadas o menos.`}</div></div></div>`;
+const ov=minO===maxO?`${minO} de ${n-1}`:`${minO} a ${maxO} de ${n-1}`;
+h+=`<div class="insight-card${minO>=n-1?'':' warn'}"><span class="insight-dot ${minO>=n-1?'d-green':'d-amber'}"></span><div class="insight-body"><div class="insight-title">Rivales por jugador</div><div class="insight-value">${ov}</div><div class="insight-detail">${minO>=n-1?'Todos jugaron contra todos.':n-1>3?`Para enfrentar a los ${n-1} se necesitan unas ${rec} jornadas.`:''}</div></div></div>`;
+if(r.restsPerMatchday===0){h+=`<div class="insight-card"><span class="insight-dot d-green"></span><div class="insight-body"><div class="insight-title">Descansos</div><div class="insight-value">No aplica</div><div class="insight-detail">Todos juegan siempre.</div></div></div>`;}else{const rv=minR===maxR?`${minR} cada uno`:`${minR} a ${maxR}`;h+=`<div class="insight-card${rr<=1?'':' warn'}"><span class="insight-dot ${rr<=1?'d-green':'d-amber'}"></span><div class="insight-body"><div class="insight-title">Descansos por jugador</div><div class="insight-value">${rv}</div><div class="insight-detail">${rr<=1?'Bien repartidos.':'Hay diferencia de '+rr+' descansos entre jugadores.'}</div></div></div>`;}
+h+=`<div class="insight-card${miss===0?'':' warn'}"><span class="insight-dot ${miss===0?'d-green':'d-amber'}"></span><div class="insight-body"><div class="insight-title">Cruces faltantes</div><div class="insight-value">${miss===0?'Ninguno':miss+' de '+r.totalPairs}</div><div class="insight-detail">${miss===0?'Todos se enfrentaron contra todos.':'Ve la pestana "Rivales Faltantes" para el detalle.'}</div></div></div>`;
+h+='</div>';
+// Info boxes
+if(r.restsPerMatchday>0){const c=r.groupsPerMatchday;h+=`<div class="info-box info"><b>Descansos:</b> Con ${c} cancha${c>1?'s':''}, juegan ${c*4} por jornada. Los ${r.restsPerMatchday} restantes descansan y rotan.${n%4===0?' Si usas '+Math.floor(n/4)+' canchas, nadie descansa.':''}</div>`;}
+if(miss>0&&r.matchdayCount<rec)h+=`<div class="info-box info"><b>Cobertura:</b> Para que todos se enfrenten se necesitan unas ${rec} jornadas (tienes ${r.matchdayCount}).</div>`;
+if(r.repeated===0&&r.strictMode)h+=`<div class="info-box success"><b>Calendario perfecto.</b> Ningun jugador repitio rival.</div>`;
+if(r.strictFail>0)h+=`<div class="info-box caution"><b>Repeticiones en ${r.strictFail} jornada${r.strictFail>1?'s':''}.</b> Prueba con ${rec} jornadas o menos para evitarlas.</div>`;
+return h;}
+
+function renderEncuentrosTable(r,names){const gpm=r.groupsPerMatchday,hr=r.restsPerMatchday>0;let h='<div class="enc-wrap"><table class="enc-table"><thead><tr><th></th>';for(let g=0;g<gpm;g++)h+=`<th colspan="2">Cancha ${g+1}</th>`;if(hr)h+='<th>Descansa</th>';h+='</tr></thead><tbody>';
+r.matchdays.forEach((md,mi)=>{const jc='j'+(mi%10);h+=`<tr class="${jc} jfirst"><td rowspan="2" class="jlabel">Jornada ${mi+1}</td>`;md.groups.forEach((g,gi)=>{h+=`<td${gi>0?' class="gs"':''}>${names[g[0]]}</td><td>${names[g[1]]}</td>`;});if(hr)h+=`<td rowspan="2" class="rcell">${md.resting.length>0?md.resting.map(p=>names[p]).join('<br>'):'—'}</td>`;h+='</tr>';h+=`<tr class="${jc}">`;md.groups.forEach((g,gi)=>{h+=`<td${gi>0?' class="gs"':''}>${names[g[2]]}</td><td>${names[g[3]]}</td>`;});h+='</tr>';});
+h+='</tbody></table></div>';return h;}
+
+function renderMatchday(md,idx,names){const rotH=g=>getRotations(g).map((r,ri)=>`<div class="rot"><span class="rn">Rot ${ri+1}</span><span class="tm">${names[r.team1[0]]} + ${names[r.team1[1]]}</span><span class="vs">VS</span><span class="tm">${names[r.team2[0]]} + ${names[r.team2[1]]}</span></div>`).join('');
+const gH=md.groups.map((g,gi)=>`<div class="gc"><h4>Cancha ${gi+1}</h4><div class="gc-players">${g.map(p=>`<span class="ptag">${names[p]}</span>`).join('')}</div>${rotH(g)}</div>`).join('');
+const badges=[];if(md.resting.length>0)badges.push(`<span class="badge b-rest">${md.resting.length} descansa${md.resting.length>1?'n':''}</span>`);if(md.strict!==undefined)badges.push(md.strict?'<span class="badge b-ok">sin repeticiones</span>':'<span class="badge b-fail">con repeticiones</span>');
+const restH=md.resting.length>0?`<div class="rest-bar">Descansan: <b>${md.resting.map(p=>names[p]).join(', ')}</b></div>`:'';
+return`<div class="md-card${!md.strict&&md.strict!==undefined?' has-rep':''}"><div class="md-head" onclick="toggleMd(this)"><h3>Jornada ${idx+1}</h3><div class="md-badges">${badges.join('')}<span class="chevron">&#9660;</span></div></div><div class="md-body">${restH}<div class="groups-grid">${gH}</div></div></div>`;}
+
+function renderRestCalendar(r,names){const n=r.playerCount,mds=r.matchdays;if(r.restsPerMatchday===0)return`<div class="explainer"><b>No hay descansos.</b> Todos juegan todas las jornadas.</div>`;const rm=Array.from({length:n},()=>new Set());mds.forEach((md,mi)=>md.resting.forEach(p=>rm[p].add(mi)));let h=`<div class="explainer"><b>Como leer:</b> <span style="color:var(--green-dark)">&#10003;</span> = jugo, <span style="color:var(--amber-text)">D</span> = descanso.</div><div class="rest-cal-wrap"><table class="rest-cal"><thead><tr><th>Jugador</th>`;for(let j=0;j<mds.length;j++)h+=`<th>J${j+1}</th>`;h+='<th>Desc.</th><th>Jugadas</th></tr></thead><tbody>';for(let i=0;i<n;i++){h+=`<tr><td>${names[i]}</td>`;for(let j=0;j<mds.length;j++)h+=rm[i].has(j)?'<td><span class="dot-r">D</span></td>':'<td><span class="dot-p">&#10003;</span></td>';h+=`<td style="font-weight:700;color:var(--amber)">${r.restCounts[i]}</td><td style="font-weight:700;color:var(--green-dark)">${mds.length-r.restCounts[i]}</td></tr>`;}h+='<tr class="sum-row"><td>Descansan</td>';for(let j=0;j<mds.length;j++)h+=`<td>${mds[j].resting.length}</td>`;h+='<td></td><td></td></tr></tbody></table></div>';return h;}
+
+function renderMissingPairs(r,names){const n=r.playerCount,pc=r.pairCount,mt=r.totalPairs-r.pairsCovered;if(mt===0)return`<div class="explainer" style="border-color:var(--green-border)"><b style="color:var(--green-dark)">Todos se enfrentaron contra todos.</b> No falta ningun cruce.</div>`;const rec=recommendedMatchdays(n,$cc.value);let h=`<div class="explainer"><b>${mt} cruce${mt>1?'s':''}</b> que no se dieron. Para cubrir todos se necesitan unas <b>${rec} jornadas</b>.</div><div class="missing-list">`;const pm=[];for(let i=0;i<n;i++){const m=[];for(let j=0;j<n;j++){if(j!==i&&pc[i][j]===0)m.push(j);}pm.push({index:i,missing:m});}pm.sort((a,b)=>b.missing.length-a.missing.length);for(const p of pm){const t=n-1,f=t-p.missing.length,pct=(f/t)*100;const bar=pct>=100?'fg':pct>=70?'fa':'fr';const ok=p.missing.length===0;h+=`<div class="mp${ok?' ok':''}"><div class="mp-head"><span class="mp-name">${names[p.index]}</span><span class="mp-count">${f} de ${t} (${pct.toFixed(0)}%)</span></div><div class="mp-bar"><div class="mp-fill ${bar}" style="width:${pct}%"></div></div>`;h+=ok?'<div class="mp-tags" style="color:var(--green-dark)">&#10003; Enfrento a todos</div>':'<div class="mp-tags">No jugo contra: '+p.missing.map(j=>`<span class="mt">${names[j]}</span>`).join(' ')+'</div>';h+='</div>';}h+='</div>';return h;}
+
+function renderHeatmap(r,names){const n=r.playerCount;if(n>50)return`<div class="explainer">El mapa se muestra para 50 jugadores o menos.</div>`;let h=`<div class="explainer"><b>Como leer:</b> <span style="color:#166534">Verde (1)</span> = una vez. <span style="color:var(--red-text)">Rojo (0)</span> = nunca. <span style="color:#92400e">Amarillo (2+)</span> = repetido.</div><div class="hm-wrap"><table class="hm"><tr><th></th>`;for(let j=0;j<n;j++)h+=`<th>${names[j]}</th>`;h+='</tr>';for(let i=0;i<n;i++){h+=`<tr><th class="rl">${names[i]}</th>`;for(let j=0;j<n;j++){if(i===j){h+='<td class="s"></td>';continue;}const v=r.pairCount[i][j];const c=v===0?'h0':v===1?'h1':v===2?'h2':'h3';h+=`<td class="${c}" data-t="${names[i]} vs ${names[j]}: ${v} vez${v!==1?'es':''}">${v}</td>`;}h+='</tr>';}h+='</table></div><div class="hm-legend"><span><span class="sw" style="background:#fecaca"></span> 0 = Nunca</span><span><span class="sw" style="background:#bbf7d0"></span> 1 = Una vez</span><span><span class="sw" style="background:#fde68a"></span> 2+ = Repetido</span></div>';return h;}
+
+function renderPlayerStats(r,names){let h=`<div class="explainer"><b>Datos de cada jugador.</b> Haz clic en los encabezados para ordenar.</div><table class="st" id="statsTable"><thead><tr><th data-sort="i">#</th><th data-sort="n">Jugador</th><th data-sort="p">Jugadas</th><th data-sort="d">Desc.</th><th data-sort="o">Rivales</th><th data-sort="c">Cobertura</th></tr></thead><tbody>`;for(const s of r.playerStats){const mx=r.playerCount-1;const cc=s.coveragePct>=100?'cov-ok':s.coveragePct<70?'cov-low':'';h+=`<tr><td>${s.index+1}</td><td>${names[s.index]}</td><td>${s.played}</td><td>${s.rested}</td><td>${s.opponents} / ${mx}</td><td class="${cc}">${s.coveragePct.toFixed(1)}%</td></tr>`;}h+='</tbody></table>';return h;}
+
+function renderModeBanner(r){if(!r.strictMode)return`<div class="info-box caution" style="margin-bottom:20px"><b>Modo libre</b> — Puede haber rivales repetidos.</div>`;if(r.strictFail===0)return`<div class="info-box success" style="margin-bottom:20px"><b>${r.strictOk} de ${r.matchdayCount} jornadas sin repeticiones</b> — Nadie repitio rival.</div>`;const rec=recommendedMatchdays(r.playerCount,$cc.value);return`<div class="info-box caution" style="margin-bottom:20px"><b>${r.strictOk} de ${r.matchdayCount} sin repeticiones.</b> Prueba con ${rec} jornadas o menos.</div>`;}
+
+// === INTERACTIONS ===
+function toggleMd(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open');}
+document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-'+btn.dataset.tab).classList.add('active');});});
+let sortSt={col:'i',asc:true};document.addEventListener('click',e=>{const th=e.target.closest('#statsTable th[data-sort]');if(!th)return;const col=th.dataset.sort;if(sortSt.col===col)sortSt.asc=!sortSt.asc;else{sortSt.col=col;sortSt.asc=true;}const tbody=document.querySelector('#statsTable tbody');const rows=Array.from(tbody.querySelectorAll('tr'));rows.sort((a,b)=>{const ci=Array.from(th.parentElement.children).indexOf(th);const va=a.children[ci].textContent.trim(),vb=b.children[ci].textContent.trim();const na=parseFloat(va),nb=parseFloat(vb);if(!isNaN(na)&&!isNaN(nb))return sortSt.asc?na-nb:nb-na;return sortSt.asc?va.localeCompare(vb):vb.localeCompare(va);});rows.forEach(r=>tbody.appendChild(r));document.querySelectorAll('#statsTable th').forEach(t=>t.classList.remove('sorted'));th.classList.add('sorted');});
+
+// === MAIN ===
+const $pc=document.getElementById('playerCount'),$cc=document.getElementById('courtCount'),$mc=document.getElementById('matchdayCount'),$rec=document.getElementById('recommendedMd'),$der=document.getElementById('derived'),$res=document.getElementById('results'),$strict=document.getElementById('strictMode');
+
+function updateDerived(){const n=parseInt($pc.value)||4;const maxC=Math.floor(n/4);let courts=Math.min(parseInt($cc.value)||maxC,maxC);if(courts<1)courts=1;$cc.value=courts;$cc.max=maxC;const g=courts,active=g*4,r=n-active,rec=recommendedMatchdays(n,courts);$rec.textContent=rec;$mc.max=Math.min(rec*2,n*(n-1)/2);let h=`<span class="chip"><b>${g}</b> cancha${g!==1?'s':''}/jornada</span><span class="chip"><b>${active}</b> juegan</span><span class="chip"><b>${r}</b> descansa${r!==1?'n':''}</span><span class="chip"><b>${n*(n-1)/2}</b> cruces posibles</span>`;$der.innerHTML=h;}
+
+function onGenerate(){const n=Math.max(4,parseInt($pc.value)||4);const maxC=Math.floor(n/4);const courts=Math.min(Math.max(1,parseInt($cc.value)||maxC),maxC);const m=Math.max(1,parseInt($mc.value)||1);$pc.value=n;$cc.value=courts;$mc.value=m;const strict=$strict.checked,names=makeNames(n);
+$res.style.display='block';document.getElementById('modeBanner').innerHTML='';document.getElementById('statsBar').innerHTML='<div style="text-align:center;padding:24px;color:var(--text-light)"><span class="spinner"></span>Generando calendario...</div>';document.getElementById('insightsSection').innerHTML='';document.getElementById('encuentrosTable').innerHTML='';['rotaciones','rest','missing','heatmap','players'].forEach(t=>document.getElementById('tab-'+t).innerHTML='');
+setTimeout(()=>{const t0=performance.now();const result=generate(n,m,strict,courts);const ms=(performance.now()-t0).toFixed(0);
+document.getElementById('modeBanner').innerHTML=renderModeBanner(result)+`<div style="font-size:0.72rem;color:var(--text-muted);margin-top:-12px;margin-bottom:16px">Generado en ${ms}ms</div>`;
+document.getElementById('statsBar').innerHTML=renderStatsBar(result);
+document.getElementById('insightsSection').innerHTML=renderInsights(result,names);
+document.getElementById('matchdaysTitle').textContent=`Tabla de Encuentros (${result.matchdayCount} jornadas)`;
+document.getElementById('encuentrosTable').innerHTML=renderEncuentrosTable(result,names);
+const rotTab=document.getElementById('tab-rotaciones');rotTab.innerHTML=`<div class="explainer"><b>Detalle de rotaciones por cancha.</b> Los 4 jugadores rotan de pareja 3 veces para enfrentarse todos contra todos.</div>`+result.matchdays.map((md,i)=>renderMatchday(md,i,names)).join('');const fh=rotTab.querySelector('.md-head');if(fh){fh.classList.add('open');fh.nextElementSibling.classList.add('open');}
+document.getElementById('tab-rest').innerHTML=renderRestCalendar(result,names);
+document.getElementById('tab-missing').innerHTML=renderMissingPairs(result,names);
+document.getElementById('tab-heatmap').innerHTML=renderHeatmap(result,names);
+document.getElementById('tab-players').innerHTML=renderPlayerStats(result,names);
+$res.scrollIntoView({behavior:'smooth',block:'start'});},20);}
+
+$pc.addEventListener('input',updateDerived);$cc.addEventListener('input',updateDerived);$mc.addEventListener('input',updateDerived);document.getElementById('generateBtn').addEventListener('click',onGenerate);updateDerived();onGenerate();
+</script>
+</body>
+</html>
