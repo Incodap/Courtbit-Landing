@@ -258,6 +258,98 @@
         }
         .hero-pill svg { width: 14px; height: 14px; color: #5a9e00; flex-shrink: 0; }
 
+        /* ── SOCIAL PROOF BAR ── */
+        .proof-bar {
+            padding: 28px 0;
+            background: var(--navy);
+            border-bottom: 1px solid rgba(184,240,43,0.12);
+        }
+        .proof-bar .container {
+            display: flex; justify-content: center; align-items: center;
+            gap: 40px; flex-wrap: wrap;
+        }
+        .proof-stat {
+            display: flex; flex-direction: column; align-items: center; gap: 2px;
+        }
+        .proof-stat-num {
+            font-size: 1.5rem; font-weight: 800; color: var(--lime);
+            letter-spacing: -0.02em;
+        }
+        .proof-stat-label {
+            font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.6);
+            text-transform: uppercase; letter-spacing: 0.08em;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+        }
+        .testimonial-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px 24px;
+            transition: all 0.25s; box-shadow: var(--shadow-sm);
+            display: flex; flex-direction: column;
+        }
+        .testimonial-card:hover { border-color: #b0d840; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .testimonial-stars { color: #f59e0b; font-size: 0.875rem; margin-bottom: 12px; letter-spacing: 2px; }
+        .testimonial-quote {
+            font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.65;
+            margin-bottom: 18px; flex: 1;
+        }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--lime-bg), var(--blue-soft));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.875rem; color: var(--navy);
+        }
+        .testimonial-name { font-size: 0.875rem; font-weight: 700; color: var(--navy); }
+        .testimonial-org { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* ── WHATSAPP FLOAT ── */
+        .wa-float {
+            position: fixed; bottom: 24px; right: 24px; z-index: 90;
+            width: 56px; height: 56px; border-radius: 50%;
+            background: #25D366; color: white;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+        .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+        .wa-float svg { width: 28px; height: 28px; }
+
+        /* ── MOBILE STICKY CTA ── */
+        .sticky-cta {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 80;
+            padding: 12px 16px; background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border-light);
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+        }
+        .sticky-cta-inner { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
+        .sticky-cta-inner a {
+            flex: 1; text-align: center; padding: 12px 16px;
+            border-radius: var(--radius-full); font-weight: 700;
+            font-size: 0.875rem; text-decoration: none; transition: all 0.2s;
+        }
+        .sticky-cta-primary { background: var(--navy); color: var(--white); }
+        .sticky-cta-secondary { background: var(--white); color: var(--navy); border: 1.5px solid var(--border); }
+
+        @media (max-width:768px) {
+            .sticky-cta { display: block; }
+            .wa-float { bottom: 84px; }
+            .proof-bar .container { gap: 24px; }
+            .proof-stat-num { font-size: 1.25rem; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width:480px) {
+            .proof-bar .container { gap: 16px; }
+            .proof-stat-num { font-size: 1.125rem; }
+            .proof-stat-label { font-size: 0.6875rem; }
+        }
+
         /* ── SECTIONS ── */
         .section { padding: 96px 0; }
         .section-gray { background: var(--bg); }
@@ -744,7 +836,7 @@
             </div>
             <div class="nav-right">
                 <a href="en/" class="lang-switch">EN</a>
-                <a href="#" class="nav-cta" onclick="event.preventDefault();openModal();">Solicitar Demo</a>
+                <a href="#" class="nav-cta" onclick="event.preventDefault();openModal();">Empieza gratis</a>
                 <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-center').classList.toggle('show')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
             </div>
         </div>
@@ -757,7 +849,7 @@
             <h1 class="reveal d1">El <span class="highlight">Sistema Operativo</span> para Organizadores de Padel</h1>
             <p class="hero-sub reveal d2">Torneos, ligas, rankings de circuito y pagos. Una sola plataforma para gestionar toda tu comunidad de padel.</p>
             <div class="hero-cta reveal d3">
-                <a href="#" class="btn-primary" onclick="event.preventDefault();openModal();">Solicitar Demo</a>
+                <a href="#" class="btn-primary" onclick="event.preventDefault();openModal();">Crea tu torneo gratis</a>
                 <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="btn-secondary" target="_blank">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     App Store
@@ -774,6 +866,15 @@
                 <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Pagos</span>
                 <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> App de Jugadores</span>
             </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF BAR -->
+    <section class="proof-bar">
+        <div class="container">
+            <div class="proof-stat"><span class="proof-stat-num">2,000+</span><span class="proof-stat-label">Jugadores activos</span></div>
+            <div class="proof-stat"><span class="proof-stat-num">30+</span><span class="proof-stat-label">Organizadores</span></div>
+            <div class="proof-stat"><span class="proof-stat-num">150+</span><span class="proof-stat-label">Parejas en un torneo</span></div>
         </div>
     </section>
 
@@ -887,6 +988,53 @@
         </div>
     </section>
 
+    <!-- TESTIMONIALS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Organizadores Reales</span>
+                <h2 class="section-title">Ellos ya gestionan con CourtBit</h2>
+                <p class="section-desc">Clubs, academias y organizadores en todo Mexico confian en la plataforma.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">"Antes armaba brackets en Excel y perseguia pagos por WhatsApp. Con CourtBit mis torneos se ven profesionales y los jugadores se inscriben solos."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CD</div>
+                        <div><div class="testimonial-name">Club Deportivo Miramar</div><div class="testimonial-org">Organizador de torneos</div></div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal d1">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">"La auto-calendarizacion nos ahorra horas. Configuramos la liga, y CourtBit genera los horarios considerando canchas y disponibilidad. Increible."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LP</div>
+                        <div><div class="testimonial-name">Lagartos Padel</div><div class="testimonial-org">Liga individual</div></div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal d2">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">"Nuestros jugadores aman la app. Ven sus partidos, rankings y resultados en tiempo real. Ya no tenemos que publicar nada en grupos de WhatsApp."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">OP</div>
+                        <div><div class="testimonial-name">One Padel Park</div><div class="testimonial-org">Academia y torneos</div></div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-top:36px; align-items:center;">
+                <span style="font-size:0.8125rem; color:var(--text-muted); font-weight:500;">Tambien confian en CourtBit:</span>
+                <span style="font-size:0.875rem; font-weight:600; color:var(--text-secondary);">Padel Factory GDL</span>
+                <span style="color:var(--border);">|</span>
+                <span style="font-size:0.875rem; font-weight:600; color:var(--text-secondary);">APJ</span>
+                <span style="color:var(--border);">|</span>
+                <span style="font-size:0.875rem; font-weight:600; color:var(--text-secondary);">CUP Jalisco</span>
+                <span style="color:var(--border);">|</span>
+                <span style="font-size:0.875rem; font-weight:600; color:var(--text-secondary);">Padel Arena Culiacan</span>
+            </div>
+        </div>
+    </section>
+
     <!-- PRICING -->
     <section class="section" id="precios">
         <div class="container">
@@ -994,9 +1142,9 @@
     <section class="cta-final">
         <div class="container">
             <h2 class="reveal">Listo para gestionar<br>tu comunidad de padel?</h2>
-            <p class="reveal d1">Descubre como CourtBit puede reemplazar tus hojas de calculo y procesos manuales — en una sola demo.</p>
+            <p class="reveal d1">Crea tu primer torneo gratis en minutos. Sin tarjeta, sin compromiso.</p>
             <div class="cta-final-btns reveal d2">
-                <a href="#" class="btn-cta-lime" onclick="event.preventDefault();openModal();">Solicitar Demo</a>
+                <a href="#" class="btn-cta-lime" onclick="event.preventDefault();openModal();">Crea tu torneo gratis</a>
                 <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="btn-cta-outline" target="_blank">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     App Store
@@ -1031,8 +1179,8 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
             <div id="formContainer">
-                <h2 class="modal-title">Solicita tu demo gratuita</h2>
-                <p class="modal-subtitle">Te contactamos en menos de 24 horas para agendar una llamada personalizada.</p>
+                <h2 class="modal-title">Empieza gratis hoy</h2>
+                <p class="modal-subtitle">Dejanos tus datos y te ayudamos a configurar tu primer torneo en minutos.</p>
                 <form class="modal-form" id="leadForm">
                     <div class="form-group">
                         <label class="form-label">Nombre completo *</label>
@@ -1063,7 +1211,7 @@
                     </div>
                     <button type="submit" class="form-submit" id="submitBtn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
-                        Solicitar Demo
+                        Empezar gratis
                     </button>
                     <p class="form-note">Te responderemos por WhatsApp o email. Sin spam.</p>
                 </form>
@@ -1086,11 +1234,37 @@
         </div>
     </div>
 
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/526221471800?text=Hola%2C%20me%20interesa%20CourtBit" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- MOBILE STICKY CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-cta-inner">
+            <a href="#" class="sticky-cta-primary" onclick="event.preventDefault();openModal();">Crea tu torneo gratis</a>
+            <a href="https://wa.me/526221471800?text=Hola%2C%20me%20interesa%20CourtBit" class="sticky-cta-secondary" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+    </div>
+
     <script>
         const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
         document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
         document.querySelectorAll('.faq-toggle').forEach(b=>{b.addEventListener('click',()=>{const i=b.parentElement,o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));if(!o)i.classList.add('open')})});
         document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const nc=document.querySelector('.nav-center');if(nc)nc.classList.remove('show');const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+        // Sticky CTA — show after scrolling past hero
+        const stickyCta=document.getElementById('stickyCta');
+        const heroEl=document.querySelector('.hero');
+        if(stickyCta&&heroEl){
+            stickyCta.style.transform='translateY(100%)';stickyCta.style.transition='transform 0.3s ease';
+            let stickyVisible=false;
+            window.addEventListener('scroll',()=>{
+                const past=window.scrollY>heroEl.offsetHeight;
+                if(past&&!stickyVisible){stickyCta.style.transform='translateY(0)';stickyVisible=true;}
+                else if(!past&&stickyVisible){stickyCta.style.transform='translateY(100%)';stickyVisible=false;}
+            },{passive:true});
+        }
 
         // Lead Modal
         const modal=document.getElementById('leadModal'),form=document.getElementById('leadForm'),formC=document.getElementById('formContainer'),successC=document.getElementById('successContainer');
@@ -1107,7 +1281,7 @@
             try{const r=await fetch('https://formspree.io/f/meezozgv',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});if(!r.ok)throw new Error();}
             catch(err){const ls=JSON.parse(localStorage.getItem('courtbit_leads')||'[]');ls.push(data);localStorage.setItem('courtbit_leads',JSON.stringify(ls));}
             formC.style.display='none';successC.style.display='block';
-            btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg> Solicitar Demo';
+            btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg> Empezar gratis';
         });
     </script>
 </body>
