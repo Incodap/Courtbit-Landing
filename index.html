@@ -258,6 +258,21 @@
         }
         .hero-pill svg { width: 14px; height: 14px; color: #5a9e00; flex-shrink: 0; }
 
+        /* ── VIDEO DEMO ── */
+        .video-section { padding: 72px 0 0; background: var(--white); }
+        .video-wrapper {
+            max-width: 880px; margin: 0 auto;
+            border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: 0 20px 60px rgba(15,29,77,0.12);
+            border: 1.5px solid var(--border);
+            aspect-ratio: 16/9; position: relative;
+        }
+        .video-wrapper iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+        @media (max-width:768px) {
+            .video-section { padding: 48px 0 0; }
+            .video-wrapper { border-radius: 12px; }
+        }
+
         /* ── SOCIAL PROOF BAR ── */
         .proof-bar {
             padding: 28px 0;
@@ -875,6 +890,19 @@
             <div class="proof-stat"><span class="proof-stat-num">2,000+</span><span class="proof-stat-label">Jugadores activos</span></div>
             <div class="proof-stat"><span class="proof-stat-num">30+</span><span class="proof-stat-label">Organizadores</span></div>
             <div class="proof-stat"><span class="proof-stat-num">150+</span><span class="proof-stat-label">Parejas en un torneo</span></div>
+        </div>
+    </section>
+
+    <!-- VIDEO DEMO -->
+    <section class="video-section">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:32px;" class="reveal">
+                <span class="section-tag">Ve como funciona</span>
+                <h2 class="section-title">Tu proximo torneo en 60 segundos</h2>
+            </div>
+            <div class="video-wrapper reveal d1">
+                <iframe src="https://www.youtube.com/embed/a3DlW1BjFg0?rel=0" title="CourtBit — Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
         </div>
     </section>
 
