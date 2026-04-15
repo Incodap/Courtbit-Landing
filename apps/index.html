@@ -129,18 +129,20 @@
             display: flex;
             gap: 16px;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
             margin-bottom: 48px;
         }
         .badge-link {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             transition: transform 0.2s ease;
         }
         .badge-link:hover { transform: translateY(-2px); }
-        .badge-link img {
-            height: 56px;
-            display: block;
-        }
+        .badge-link img { display: block; }
+        .badge-link.apple img { height: 56px; }
+        .badge-link.google img { height: 84px; }
 
         .qr-section {
             display: none;
@@ -213,10 +215,10 @@
             </div>
 
             <div class="badges">
-                <a id="appStoreBtn" class="badge-link" href="https://apps.apple.com/mx/app/courtbit/id6757516543" rel="noopener">
+                <a id="appStoreBtn" class="badge-link apple" href="https://apps.apple.com/mx/app/courtbit/id6757516543" rel="noopener">
                     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store" loading="lazy">
                 </a>
-                <a id="googlePlayBtn" class="badge-link" href="https://play.google.com/store/apps/details?id=com.incodap.courtbit" rel="noopener">
+                <a id="googlePlayBtn" class="badge-link google" href="https://play.google.com/store/apps/details?id=com.incodap.courtbit" rel="noopener">
                     <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play" loading="lazy">
                 </a>
             </div>
