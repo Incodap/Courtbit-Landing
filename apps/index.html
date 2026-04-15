@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descarga CourtBit | App de Pádel</title>
+    <meta name="description" content="Descarga CourtBit, la app para jugadores y organizadores de pádel. Disponible en App Store y Google Play.">
+    <meta property="og:title" content="Descarga CourtBit">
+    <meta property="og:description" content="La app para vivir el pádel: ligas, torneos, ranking y resultados. Disponible en iOS y Android.">
+    <meta property="og:image" content="https://courtbit.com.mx/Assets/Logo-CB-icono.png">
+    <meta property="og:url" content="https://courtbit.com.mx/apps/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="apple-itunes-app" content="app-id=6757516543">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://courtbit.com.mx/apps/">
+    <link rel="icon" type="image/png" href="../Assets/Logo-CB-icono.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        :root {
+            --green-primary: #00D26A;
+            --green-dark: #00A855;
+            --bg-white: #FFFFFF;
+            --bg-gray-50: #F9FAFB;
+            --text-dark: #1F2937;
+            --text-gray: #4B5563;
+            --text-light: #6B7280;
+            --border-light: #E5E7EB;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --font-display: 'Outfit', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-display);
+            background: linear-gradient(135deg, var(--bg-gray-50) 0%, #ECFDF5 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-light);
+            padding: 20px 0;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+        .logo span { color: var(--green-primary); }
+        .back-link {
+            color: var(--green-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .app-icon {
+            width: 96px;
+            height: 96px;
+            border-radius: 22px;
+            box-shadow: var(--shadow-lg);
+            margin: 0 auto 24px;
+            display: block;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .redirect-notice {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            display: none;
+        }
+        .redirect-notice.visible { display: block; }
+        .redirect-notice strong { color: var(--green-dark); }
+
+        .badges {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+        .badge-link {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        .badge-link:hover { transform: translateY(-2px); }
+        .badge-link img {
+            height: 56px;
+            display: block;
+        }
+
+        .qr-section {
+            display: none;
+        }
+        .qr-section.visible { display: block; }
+        .qr-section h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+        }
+        .qr-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .qr-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+        }
+        .qr-card img {
+            width: 100%;
+            max-width: 160px;
+            height: auto;
+            margin: 0 auto 12px;
+            display: block;
+        }
+        .qr-card .platform {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 480px) {
+            .qr-grid { grid-template-columns: 1fr; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+        footer a { color: var(--green-primary); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">Court<span>bit</span></a>
+            <a href="/" class="back-link">← Inicio</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <img src="../Assets/Logo-CB-icono.png" alt="CourtBit" class="app-icon">
+            <h1>Descarga CourtBit</h1>
+            <p class="subtitle">La app para vivir el pádel: ligas, torneos, ranking y resultados al instante.</p>
+
+            <div id="redirectNotice" class="redirect-notice">
+                <strong>Abriendo la tienda...</strong> Si no se abre automáticamente, toca el botón de tu plataforma.
+            </div>
+
+            <div class="badges">
+                <a id="appStoreBtn" class="badge-link" href="https://apps.apple.com/mx/app/courtbit/id6757516543" rel="noopener">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store" loading="lazy">
+                </a>
+                <a id="googlePlayBtn" class="badge-link" href="https://play.google.com/store/apps/details?id=com.incodap.courtbit" rel="noopener">
+                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play" loading="lazy">
+                </a>
+            </div>
+
+            <div id="qrSection" class="qr-section">
+                <h2>Escanea con tu teléfono</h2>
+                <div class="qr-grid">
+                    <div class="qr-card">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fapps.apple.com%2Fmx%2Fapp%2Fcourtbit%2Fid6757516543" alt="QR App Store" loading="lazy">
+                        <div class="platform">iPhone / iPad</div>
+                    </div>
+                    <div class="qr-card">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.incodap.courtbit" alt="QR Google Play" loading="lazy">
+                        <div class="platform">Android</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="/">courtbit.com.mx</a>
+    </footer>
+
+    <script>
+        (function () {
+            var APP_STORE = 'https://apps.apple.com/mx/app/courtbit/id6757516543';
+            var GOOGLE_PLAY = 'https://play.google.com/store/apps/details?id=com.incodap.courtbit';
+
+            var ua = navigator.userAgent || '';
+            var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+            var isAndroid = /android/i.test(ua);
+
+            var params = new URLSearchParams(window.location.search);
+            var utm = params.toString();
+            function withUtm(url) {
+                if (!utm) return url;
+                var sep = url.indexOf('?') === -1 ? '?' : '&';
+                return url + sep + utm;
+            }
+
+            document.getElementById('appStoreBtn').href = withUtm(APP_STORE);
+            document.getElementById('googlePlayBtn').href = withUtm(GOOGLE_PLAY);
+
+            if (isIOS || isAndroid) {
+                document.getElementById('redirectNotice').classList.add('visible');
+                var target = isIOS ? withUtm(APP_STORE) : withUtm(GOOGLE_PLAY);
+                setTimeout(function () { window.location.href = target; }, 1200);
+            } else {
+                document.getElementById('qrSection').classList.add('visible');
+            }
+        })();
+    </script>
+</body>
+</html>
