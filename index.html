@@ -987,8 +987,188 @@
 
     <!-- FOR PLAYERS -->
     <section class="section section-gray" id="jugadores">
+        <style>
+            /* ── APP SHOWCASE ── */
+            @keyframes app-float-1 { 0%,100%{ transform: translate(0,0) rotate(-2deg); } 50%{ transform: translate(4px,-8px) rotate(-1deg); } }
+            @keyframes app-float-2 { 0%,100%{ transform: translate(0,0) rotate(1deg); } 50%{ transform: translate(-5px,-10px) rotate(2deg); } }
+            @keyframes app-float-3 { 0%,100%{ transform: translate(0,0) rotate(0deg); } 50%{ transform: translate(6px,-6px) rotate(-1.5deg); } }
+            @keyframes app-float-4 { 0%,100%{ transform: translate(0,0) rotate(2deg); } 50%{ transform: translate(-4px,-9px) rotate(0deg); } }
+            @keyframes app-float-5 { 0%,100%{ transform: translate(0,0) rotate(-1deg); } 50%{ transform: translate(5px,-7px) rotate(1deg); } }
+            @keyframes app-float-6 { 0%,100%{ transform: translate(0,0) rotate(1.5deg); } 50%{ transform: translate(-3px,-11px) rotate(-0.5deg); } }
+
+            .app-showcase { position: relative; max-width: 780px; margin: 0 auto 56px; min-height: 520px; }
+
+            .app-phone {
+                width: 230px; margin: 0 auto; position: relative; z-index: 3;
+            }
+            .app-phone-bezel {
+                background: #0f1d4d; border-radius: 36px; padding: 10px;
+                box-shadow:
+                    0 40px 80px rgba(15,29,77,0.18),
+                    0 16px 32px rgba(15,29,77,0.10),
+                    0 0 0 1px rgba(255,255,255,0.08);
+            }
+            .app-phone-notch {
+                position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+                width: 72px; height: 24px; background: #0f1d4d;
+                border-radius: 0 0 16px 16px; z-index: 4;
+            }
+            .app-phone-notch::after {
+                content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+                width: 36px; height: 5px; background: rgba(255,255,255,0.12);
+                border-radius: 4px;
+            }
+            .app-phone-screen {
+                border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;
+                background: #f5f5f5;
+            }
+            .app-phone-screen img {
+                width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
+            }
+
+            .app-floater {
+                position: absolute; z-index: 4;
+                background: var(--white); border: 1.5px solid var(--border);
+                border-radius: 16px; padding: 14px 18px;
+                box-shadow: 0 8px 28px rgba(15,29,77,0.09), 0 1px 3px rgba(15,29,77,0.05);
+                font-family: var(--font); white-space: nowrap;
+                will-change: transform;
+            }
+            .app-floater-sm { padding: 10px 14px; border-radius: 12px; }
+
+            .fl-tournament { top: 6%; left: -4%; animation: app-float-1 5s ease-in-out infinite; }
+            .fl-elo { top: 4%; right: -2%; animation: app-float-2 6s ease-in-out infinite 0.5s; }
+            .fl-calendar { top: 42%; left: -10%; animation: app-float-3 5.5s ease-in-out infinite 1s; }
+            .fl-score { top: 38%; right: -8%; animation: app-float-4 4.8s ease-in-out infinite 0.3s; }
+            .fl-notif { bottom: 14%; left: -6%; animation: app-float-5 5.2s ease-in-out infinite 0.8s; }
+            .fl-avatars { bottom: 10%; right: -4%; animation: app-float-6 6.2s ease-in-out infinite 1.2s; }
+
+            .fl-label { font-size: 0.625rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+            .fl-value { font-size: 1rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+            .fl-value-green { color: #5a9e00; }
+            .fl-sub { font-size: 0.6875rem; color: var(--text-muted); margin-top: 2px; }
+
+            .fl-dot-live {
+                display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+                background: #e05252; margin-right: 5px;
+                box-shadow: 0 0 6px rgba(224,82,82,0.5);
+                animation: pulse-dot 1.5s ease-in-out infinite;
+            }
+
+            .fl-avatar-stack { display: flex; align-items: center; }
+            .fl-avatar {
+                width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--white);
+                margin-left: -8px; display: flex; align-items: center; justify-content: center;
+                font-size: 0.6875rem; font-weight: 700; color: var(--white);
+            }
+            .fl-avatar:first-child { margin-left: 0; }
+
+            .app-pills {
+                display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+                margin-bottom: 48px;
+            }
+            .app-pill {
+                font-size: 0.75rem; font-weight: 600; color: var(--text-secondary);
+                padding: 7px 18px; background: var(--white); border: 1.5px solid var(--border);
+                border-radius: var(--radius-full); transition: all 0.25s;
+                box-shadow: var(--shadow-sm); cursor: default;
+            }
+            .app-pill:hover { border-color: #b0d840; color: #5a9e00; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+            @media (max-width:768px) {
+                .app-showcase { min-height: 440px; max-width: 400px; }
+                .app-phone { width: 200px; }
+                .app-floater { transform: scale(0.85) !important; }
+                .fl-tournament { left: 2%; top: 2%; }
+                .fl-elo { right: 2%; top: 0%; }
+                .fl-calendar { left: -2%; }
+                .fl-score { right: -2%; }
+                .fl-notif { left: 2%; bottom: 8%; }
+                .fl-avatars { right: 2%; bottom: 4%; }
+            }
+            @media (max-width:480px) {
+                .app-showcase { min-height: 380px; }
+                .app-phone { width: 170px; }
+                .app-floater { display: none; }
+                .app-phone-bezel { border-radius: 28px; padding: 8px; }
+                .app-phone-screen { border-radius: 20px; }
+            }
+        </style>
         <div class="container">
             <div class="section-header reveal"><span class="section-tag">Para Jugadores</span><h2 class="section-title">Tus jugadores reciben la mejor app de padel</h2><p class="section-desc">Gratis en iOS y Android. Todo lo que necesitan en su bolsillo.</p></div>
+
+            <!-- App Showcase with floating elements -->
+            <div class="app-showcase reveal">
+                <!-- Phone -->
+                <div class="app-phone">
+                    <div class="app-phone-bezel">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-phone-screen">
+                            <img src="Assets/app-screenshot.png" alt="CourtBit App - Feed de torneos y ligas" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating cards -->
+                <div class="app-floater fl-tournament">
+                    <div class="fl-label">Proximo torneo</div>
+                    <div class="fl-value">Premier Padel</div>
+                    <div class="fl-sub">15 Abr · 3ra Categoria</div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-elo">
+                    <div class="fl-label">Tu ranking</div>
+                    <div class="fl-value fl-value-green">1,547 ELO</div>
+                    <div class="fl-sub" style="color:#5a9e00;">↑ +47 esta temporada</div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-calendar">
+                    <div class="fl-label">Tu partido</div>
+                    <div class="fl-value">10:00 AM</div>
+                    <div class="fl-sub">Cancha 1 · Hoy</div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-score">
+                    <div class="fl-label"><span class="fl-dot-live"></span>En vivo</div>
+                    <div class="fl-value">6-4, 3-2</div>
+                    <div class="fl-sub">Semifinal</div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-notif">
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <div style="width:28px;height:28px;border-radius:8px;background:var(--lime-bg);display:flex;align-items:center;justify-content:center;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5a9e00" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:0.75rem;font-weight:700;color:var(--navy);">3 nuevas</div>
+                            <div style="font-size:0.625rem;color:var(--text-muted);">notificaciones</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-avatars">
+                    <div class="fl-label" style="margin-bottom:8px;">Jugadores activos</div>
+                    <div class="fl-avatar-stack">
+                        <div class="fl-avatar" style="background:linear-gradient(135deg,#2e59fb,#6b8cff);">CM</div>
+                        <div class="fl-avatar" style="background:linear-gradient(135deg,#5a9e00,#8bc34a);">AR</div>
+                        <div class="fl-avatar" style="background:linear-gradient(135deg,#e88a17,#f5b74e);">DP</div>
+                        <div class="fl-avatar" style="background:linear-gradient(135deg,#9333ea,#c084fc);">SL</div>
+                        <div class="fl-avatar" style="background:var(--border);color:var(--text-muted);font-size:0.6rem;">+86</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature pills -->
+            <div class="app-pills reveal d1">
+                <span class="app-pill">Torneos</span>
+                <span class="app-pill">Inscripciones</span>
+                <span class="app-pill">Calendario</span>
+                <span class="app-pill">Rankings</span>
+                <span class="app-pill">Marcadores</span>
+                <span class="app-pill">Notificaciones</span>
+            </div>
+
+            <!-- Feature cards -->
             <div class="player-grid">
                 <div class="player-card reveal"><div class="player-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>Explorar y Descubrir</h3><p>Encuentra eventos cerca de ti. Sigue organizadores.</p></div>
                 <div class="player-card reveal d1"><div class="player-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><h3>Registrarse y Pagar</h3><p>Checkout en 5 pasos. Tarjetas, OXXO, wallets.</p></div>
