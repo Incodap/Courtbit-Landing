@@ -1,0 +1,152 @@
+================================================================
+COURTBIT FRONT · MARKETING ASSETS NEEDED
+================================================================
+
+Sketch de referencia: .planning/sketches/008-front-hero-audience/
+Variante adoptada:    E · Playtomic-grade Bold
+Fecha:                2026-05-07
+Estructura base:      Courtbit-Front/Assets/marketing/
+
+----------------------------------------------------------------
+NAMING RULES
+----------------------------------------------------------------
+
+* kebab-case (sin espacios, sin acentos, sin ñ)
+* lowercase
+* sin sufijos `_v2` ni `_final` — sobreescribir
+* @2x: subir al doble del tamaño display
+* fotos        → .jpg o .webp (preferido webp)
+* screenshots  → .png
+* logos        → .svg
+
+================================================================
+1) HERO  ·  Courtbit-Front/Assets/marketing/hero/
+================================================================
+
+  hero-clubes.jpg                     ← 1200×1500 · 4:5 · JPG/WebP
+    Foto cinematográfica de una cancha de padel mexicana.
+    Plano amplio, iluminación natural o de noche.
+    Sugerencias de locación:
+      - Club Lagartos (Guaymas)
+      - Pitch DUO Padel Park (Obregón)
+      - Club Deportivo Miramar
+      - One Padel Park
+    Acción de juego o jugadores celebrando.
+    Encuadre vertical (4:5) — la silueta del hero corta el bottom
+    como una U redondeada (estilo Playtomic).
+
+================================================================
+2) PRESS LOGOS  ·  Courtbit-Front/Assets/marketing/press/
+================================================================
+
+  ~140×40 · SVG · color sólido o ya en su versión monocromo
+  Si la marca tiene PNG transparente, sirve como fallback.
+  Renombrar al archivo con la marca real, ej: la-jugada.svg
+
+  logo-1.svg
+  logo-2.svg
+  logo-3.svg
+  logo-4.svg
+  logo-5.svg
+
+  Candidatos (medios/podcasts/partners que han mencionado CourtBit):
+    - La Jugada
+    - Padel Magazine
+    - Padel Pro Mx
+    - Sonora Sports
+    - Padel World Press
+    - + cualquier club ancla cuyo logo dé credibilidad
+
+  IMPORTANTE: si NO tenemos logos reales que cubran 5 slots,
+  reducir a 3 reales en lugar de inventar 5 falsos.
+
+================================================================
+3) PRODUCT  ·  Courtbit-Front/Assets/marketing/product/
+================================================================
+
+  dashboard-calendar.png              ← 1440×900 · PNG @2x
+    Captura del Dashboard real (Courtbit-Dashboard).
+    Vista: calendario semanal multi-cancha con reservas activas.
+    Mostrar 5–7 reservas distribuidas en horarios distintos.
+    Sin datos sensibles (nombres de socios reales) — usar mock.
+
+  app-reservar.png                    ← 844×1882 · PNG @3x  (iPhone 15 Pro)
+    Captura del flujo "Reservar cancha" en la app de jugador.
+    Pantalla con: selector de fecha, slots de horario, botón
+    "Confirmar reserva $XXX". Limpia, sin notificaciones del OS.
+
+  app-mi-reserva.png                  ← 844×1882 · PNG @3x  (iPhone 15 Pro)
+    Pantalla "Mi próxima reserva" en app de jugador.
+    Detalles: club, cancha, fecha, hora, jugadores invitados,
+    estado de pago.
+
+  socio-foto.jpg                      ← 1200×900 · JPG/WebP @2x
+    Foto de un socio real de un club usando su teléfono
+    en la cancha (cancha de fondo, foco en persona+phone).
+    Estilo cinematográfico, mismo tono que hero-clubes.jpg.
+    Esta foto va en el showcase "Tu app de socio, incluida"
+    con mockups de iPhone flotando encima.
+
+================================================================
+4) TESTIMONIALS  ·  Courtbit-Front/Assets/marketing/testimonials/
+================================================================
+
+  80×80 cuadrado · idealmente 160×160 (@2x) · JPG/PNG
+  Foto profesional o casual del entrevistado, encuadre vertical
+  centrado en la cara.
+
+  marosy-gutierrez.jpg
+    Marosy Gutiérrez · Directora · Club Deportivo Miramar
+    Quote: "Antes pagábamos $3,500 al mes y aún así perdíamos
+            reservas. Con CourtBit es $0 y los socios reservan
+            solos desde su teléfono."
+
+  ricardo-almada.jpg
+    Ricardo Almada · Dueño · One Padel Park
+    Quote: "Lo arrancamos en una tarde. Para el viernes ya
+            estábamos cobrando reservas en línea — sin demos
+            ni reuniones."
+
+  joaquin-rivera.jpg
+    Joaquín Rivera · Director · Pitch DUO Obregón
+    Quote: "El dinero llega directo a nuestro Stripe. Nunca
+            dudamos cuándo nos van a depositar — porque no hay
+            nadie en medio."
+
+  ATENCIÓN: las quotes son borradores propuestos en el sketch.
+  Antes de shippear, pedir cita textual real a cada persona y
+  consentimiento explícito para usar foto + nombre + cargo.
+
+================================================================
+ALT TEXT (SEO + accesibilidad)
+================================================================
+
+Cuando integre los assets, ya tengo redactado el alt text para
+cada uno. Si quieres revisarlo o ajustar, está en el sketch
+(README de 008) y se aplicará automáticamente.
+
+================================================================
+RESUMEN — TOTAL DE ARCHIVOS A SUBIR
+================================================================
+
+  1  · hero/hero-clubes.jpg
+  5  · press/logo-1.svg ... logo-5.svg
+  4  · product/{dashboard-calendar, app-reservar, app-mi-reserva, socio-foto}
+  3  · testimonials/{marosy, ricardo, joaquin}
+  ----
+ 13  archivos en total
+
+================================================================
+WORKFLOW
+================================================================
+
+1. Sube los archivos a sus rutas correspondientes.
+2. Ejecuta: ls Courtbit-Front/Assets/marketing/**/*
+   para confirmar que están todos.
+3. Avísame "ya subí los assets" en sesión de Claude Code.
+4. Yo reemplazo cada placeholder en el sketch Variante E con
+   la ruta del archivo real.
+5. Validas visualmente.
+6. Cuando OK, porteo a Courtbit-Front/index.html real.
+
+================================================================
