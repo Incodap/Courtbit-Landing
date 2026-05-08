@@ -600,6 +600,246 @@
       box-shadow: 0 24px 48px -12px rgba(15, 29, 77, 0.28);
       display: block;
     }
+
+    /* ═══════════════════════════════════════════════════════ */
+    /* Dashboard mockup (HTML replacement for screenshot)      */
+    /* High-fidelity vector mock of the calendar reservas view */
+    /* ═══════════════════════════════════════════════════════ */
+    .dm-mockup {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #e6e8ef;
+      overflow: hidden;
+      font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+      color: #0f1d4d;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .dm-mockup-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px 12px;
+      border-bottom: 1px solid #eef0f6;
+    }
+    .dm-mockup-header h4 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.012em;
+      margin: 0;
+      color: #0f1d4d;
+    }
+    .dm-mockup-header .meta {
+      font-size: 11px;
+      color: #6b7191;
+      margin-top: 1px;
+    }
+    .dm-add-btn {
+      background: #0a1238;
+      color: #ffffff;
+      border: none;
+      padding: 7px 13px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .dm-filters {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-bottom: 1px solid #eef0f6;
+      flex-wrap: wrap;
+    }
+    .dm-tabs {
+      display: inline-flex;
+      background: #f4f6fb;
+      border-radius: 999px;
+      padding: 2px;
+    }
+    .dm-tabs button {
+      padding: 5px 11px;
+      border: none;
+      background: transparent;
+      font-size: 11px;
+      font-weight: 600;
+      color: #6b7191;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .dm-tabs button.active {
+      background: #ffffff;
+      color: #0f1d4d;
+      box-shadow: 0 1px 3px rgba(15, 29, 77, 0.08);
+    }
+    .dm-tabs button.hoy { color: #4d7244; }
+    .dm-date-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 8px;
+      background: #f4f6fb;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .dm-date-nav .chev {
+      width: 18px; height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7191;
+      cursor: pointer;
+    }
+    .dm-search {
+      flex: 1;
+      max-width: 200px;
+      padding: 5px 10px;
+      background: #f4f6fb;
+      border-radius: 8px;
+      font-size: 11px;
+      color: #9aa0bb;
+    }
+    .dm-people {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-bottom: 1px solid #eef0f6;
+      flex-wrap: wrap;
+    }
+    .dm-people .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .dm-people .pill.active {
+      background: #B8F02B;
+      color: #0a1238;
+    }
+    .dm-people .person {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: #3a4262;
+      font-weight: 500;
+    }
+    .dm-avatar {
+      width: 18px; height: 18px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .dm-avatar.c1 { background: #de8f6c; }
+    .dm-avatar.c2 { background: #2e59fb; }
+    .dm-avatar.c3 { background: #4d7244; }
+
+    .dm-grid {
+      display: grid;
+      grid-template-columns: 52px repeat(5, 1fr);
+      background: #eef0f6;
+      gap: 1px;
+    }
+    .dm-cell {
+      background: #ffffff;
+      min-height: 44px;
+      padding: 5px 7px;
+      position: relative;
+    }
+    .dm-cell.head {
+      background: #f9fafc;
+      font-size: 10px;
+      font-weight: 700;
+      color: #6b7191;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 7px;
+      min-height: 0;
+      text-align: left;
+    }
+    .dm-cell.time {
+      background: #f9fafc;
+      font-size: 10px;
+      color: #6b7191;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 6px;
+    }
+    .dm-slot {
+      background: #d9f088;
+      border-radius: 4px;
+      padding: 4px 6px;
+      font-size: 10px;
+      line-height: 1.25;
+      color: #2c3d0b;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2px;
+      position: relative;
+    }
+    .dm-slot .dm-name {
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .dm-slot .dm-when {
+      font-size: 9px;
+      color: #4d6a16;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .dm-slot.unpaid {
+      background: #d9f088;
+      background-image: repeating-linear-gradient(135deg, transparent 0 6px, rgba(220, 38, 38, 0.10) 6px 10px);
+    }
+    .dm-slot.unpaid::after {
+      content: 'Sin pagar';
+      position: absolute;
+      top: 4px; right: 4px;
+      background: #dc2626;
+      color: #ffffff;
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .dm-slot.clase {
+      background: #c1d5e8;
+      color: #1a45e0;
+    }
+    .dm-slot.clase .dm-when { color: #2e59fb; }
+    .dm-slot.clinica {
+      background: #d8d4f0;
+      color: #4c1d95;
+    }
+    .dm-slot.clinica .dm-when { color: #6d28d9; }
+    .dm-slot.maint {
+      background: #0a1238;
+      background-image: repeating-linear-gradient(135deg, #0a1238 0 6px, #1a2c6e 6px 11px);
+      color: #ffffff;
+    }
+    .dm-slot.maint .dm-when { color: rgba(255, 255, 255, 0.6); }
+
+    @media (max-width: 900px) {
+      .dm-mockup { font-size: 11px; }
+      .dm-grid { grid-template-columns: 44px repeat(5, 1fr); }
+      .dm-cell { min-height: 38px; padding: 4px 5px; }
+      .dm-slot { padding: 3px 5px; font-size: 9px; }
+      .dm-search { display: none; }
+    }
     .e-showcase-visual .ph-floating {
       position: absolute;
       box-shadow: 0 24px 48px -12px rgba(15, 29, 77, 0.28);
@@ -1119,11 +1359,99 @@
         </div>
 
         <div class="e-showcase-visual">
-          <img src="Assets/marketing/product/dashboard-calendar.png"
-               alt="Dashboard de CourtBit · vista de calendario semanal multi-cancha"
-               class="ph-base"
-               loading="lazy"
-               width="1440" height="900">
+          <!-- HTML mockup of the Reservas dashboard (vector-crisp at any density) -->
+          <div class="dm-mockup ph-base" role="img" aria-label="Dashboard de CourtBit · vista de calendario diario multi-cancha">
+            <header class="dm-mockup-header">
+              <div>
+                <h4>Reservas de cancha</h4>
+                <div class="meta">5 canchas · CDMX</div>
+              </div>
+              <button class="dm-add-btn" type="button">+ Reserva</button>
+            </header>
+            <div class="dm-filters">
+              <div class="dm-tabs">
+                <button class="active" type="button">Día</button>
+                <button type="button">Semana</button>
+                <button class="hoy" type="button">Hoy</button>
+              </div>
+              <div class="dm-date-nav">
+                <span class="chev">‹</span>
+                <span>jueves 7 de mayo 2026</span>
+                <span class="chev">›</span>
+              </div>
+              <div class="dm-search">Buscar en calendario…</div>
+            </div>
+            <div class="dm-people">
+              <span class="pill active">Todos</span>
+              <span class="person"><span class="dm-avatar c1">CM</span> Christian M.</span>
+              <span class="person"><span class="dm-avatar c2">SG</span> Sofía G.</span>
+              <span class="person"><span class="dm-avatar c3">DV</span> Daniel V.</span>
+            </div>
+            <div class="dm-grid">
+              <div class="dm-cell head">HORA</div>
+              <div class="dm-cell head">Cancha 1</div>
+              <div class="dm-cell head">Cancha 2</div>
+              <div class="dm-cell head">Cancha 3</div>
+              <div class="dm-cell head">Cancha 4</div>
+              <div class="dm-cell head">Cancha 5</div>
+
+              <div class="dm-cell time">09:00</div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">M. Hinojosa</div><div class="dm-when">09:00 · 10:30</div></div></div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">A. Salazar</div><div class="dm-when">09:00 · 10:30</div></div></div>
+              <div class="dm-cell"><div class="dm-slot unpaid"><div class="dm-name">F. Quiroz</div><div class="dm-when">09:00 · 10:00</div></div></div>
+              <div class="dm-cell"></div>
+
+              <div class="dm-cell time">10:00</div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">M. Hinojosa</div><div class="dm-when">·</div></div></div>
+              <div class="dm-cell"><div class="dm-slot clase"><div class="dm-name">Clase Infantil</div><div class="dm-when">10:00 · 11:30</div></div></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">A. Salazar</div><div class="dm-when">·</div></div></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">D. Vega</div><div class="dm-when">10:00 · 11:30</div></div></div>
+              <div class="dm-cell"></div>
+
+              <div class="dm-cell time">11:00</div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"><div class="dm-slot clase"><div class="dm-name">Clase Infantil</div><div class="dm-when">·</div></div></div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">D. Vega</div><div class="dm-when">·</div></div></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">L. Mata</div><div class="dm-when">11:00 · 12:30</div></div></div>
+
+              <div class="dm-cell time">12:00</div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">N. Pérez</div><div class="dm-when">12:00 · 13:00</div></div></div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">F. Soto</div><div class="dm-when">12:00 · 13:30</div></div></div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">L. Mata</div><div class="dm-when">·</div></div></div>
+
+              <div class="dm-cell time">13:00</div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"><div class="dm-slot clinica"><div class="dm-name">Clínica</div><div class="dm-when">13:00 · 14:30</div></div></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">F. Soto</div><div class="dm-when">·</div></div></div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"></div>
+
+              <div class="dm-cell time">14:00</div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">A. Galán</div><div class="dm-when">14:00 · 15:30</div></div></div>
+              <div class="dm-cell"><div class="dm-slot clinica"><div class="dm-name">Clínica</div><div class="dm-when">·</div></div></div>
+              <div class="dm-cell"><div class="dm-slot unpaid"><div class="dm-name">A. Tapia</div><div class="dm-when">14:00 · 15:30</div></div></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">A. Coello</div><div class="dm-when">14:00 · 15:30</div></div></div>
+              <div class="dm-cell"><div class="dm-slot maint"><div class="dm-name">Mantenimiento</div><div class="dm-when">14:00 · 16:00</div></div></div>
+
+              <div class="dm-cell time">15:00</div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">A. Galán</div><div class="dm-when">·</div></div></div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">A. Tapia</div><div class="dm-when">·</div></div></div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">A. Coello</div><div class="dm-when">·</div></div></div>
+              <div class="dm-cell"><div class="dm-slot maint"><div class="dm-name">Mantenimiento</div><div class="dm-when">·</div></div></div>
+
+              <div class="dm-cell time">16:00</div>
+              <div class="dm-cell"><div class="dm-slot"><div class="dm-name">A. Ruiz</div><div class="dm-when">16:00 · 17:00</div></div></div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"></div>
+              <div class="dm-cell"></div>
+            </div>
+          </div>
           <img src="Assets/marketing/product/app-reservar.png"
                alt="App de CourtBit · pantalla de reserva del jugador"
                class="ph-floating delay-1"
