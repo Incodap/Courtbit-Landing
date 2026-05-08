@@ -549,6 +549,34 @@
             .b-free-card { padding: 36px 28px; }
             .b-breakdown .b-number { font-size: 3.5rem; }
         }
+        @media (max-width: 600px) {
+            .b-pricing-hero { padding: 56px 0 32px; }
+            .b-pricing-hero-header h1 { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+            .b-pricing-desc { font-size: 0.9375rem; padding: 0 8px; }
+            .b-free-card { padding: 28px 22px; }
+            .b-free-card h2 { font-size: 1.625rem; }
+            .b-free-card .b-price-display { font-size: 3rem; }
+            .b-free-card .b-price-display small { font-size: 0.9375rem; }
+            .b-free-card .b-fee-note { font-size: 0.875rem; }
+            .b-free-card .b-bullets li { font-size: 0.875rem; }
+            .b-free-card .b-cta-row { flex-direction: column; align-items: stretch; gap: 8px; }
+            .b-free-card .b-cta-row .p-btn { width: 100%; justify-content: center; padding: 14px 20px; }
+            .b-divider { margin: 36px 14px 0; padding: 18px 22px; }
+            .b-divider strong { font-size: 1rem; }
+            .b-divider span { font-size: 0.875rem; }
+            .tier-table-intro { padding: 48px 0 24px; }
+            .tier-table-intro h2 { font-size: clamp(1.5rem, 6vw, 2rem); }
+            .tier-table-intro p { font-size: 0.9375rem; padding: 0 8px; }
+        }
+        /* Touch targets ≥ 44pt on mobile */
+        @media (max-width: 768px) {
+            .b-free-card .p-btn,
+            .b-minor-card,
+            .nav a,
+            .nav button {
+                min-height: 44px;
+            }
+        }
 
         /* ═══════════════════════════════════════════════════════ */
         /* Tier table intro                                       */
