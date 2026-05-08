@@ -858,12 +858,193 @@
     }
     .e-showcase .visual-photo {
       width: 100%;
-      min-height: 460px;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
+      object-position: center 30%;
       border-radius: 18px;
       box-shadow: 0 24px 48px -12px rgba(15, 29, 77, 0.28);
       display: block;
     }
+
+    /* ═══════════════════════════════════════════════════════ */
+    /* Player app phone mockup (HTML replacement for screenshot)*/
+    /* iPhone 15 Pro frame · 9:19.5 aspect · "Mis reservas"    */
+    /* ═══════════════════════════════════════════════════════ */
+    .pm-phone {
+      width: 200px;
+      aspect-ratio: 9 / 19.5;
+      background: #0a1238;
+      border-radius: 32px;
+      padding: 6px;
+      box-shadow: 0 24px 48px -12px rgba(15, 29, 77, 0.4);
+      overflow: hidden;
+      animation: e-float 5s ease-in-out infinite;
+    }
+    .pm-phone-screen {
+      width: 100%;
+      height: 100%;
+      background: #fbfbfd;
+      border-radius: 26px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #0f1d4d;
+    }
+    .pm-statusbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 16px 4px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #0a1238;
+      background: #fbfbfd;
+    }
+    .pm-statusbar .icons {
+      letter-spacing: 1px;
+    }
+    .pm-header {
+      padding: 6px 12px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      border-bottom: 1px solid #eef0f6;
+    }
+    .pm-header .back {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: #f4f6fb;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #6b7191;
+    }
+    .pm-header h5 {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.012em;
+    }
+    .pm-tabs {
+      display: flex;
+      padding: 0 12px;
+      border-bottom: 1px solid #eef0f6;
+    }
+    .pm-tabs button {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 6px 0 6px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #9aa0bb;
+      cursor: pointer;
+      font-family: inherit;
+      position: relative;
+    }
+    .pm-tabs button.active {
+      color: #0f1d4d;
+    }
+    .pm-tabs button.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 25%; right: 25%;
+      height: 2px;
+      background: #B8F02B;
+      border-radius: 999px 999px 0 0;
+    }
+    .pm-list {
+      flex: 1;
+      overflow: hidden;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: #f9fafc;
+    }
+    .pm-card {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #eef0f6;
+      padding: 7px 9px;
+      font-size: 8.5px;
+    }
+    .pm-card .pm-club {
+      font-weight: 700;
+      color: #0a1238;
+      margin-bottom: 1px;
+    }
+    .pm-card .pm-court {
+      color: #6b7191;
+      font-size: 7.5px;
+      margin-bottom: 4px;
+    }
+    .pm-card .pm-meta {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 6px;
+      background: #f4f6fb;
+      border-radius: 5px;
+      font-size: 7.5px;
+      color: #3a4262;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .pm-card .pm-meta .icon {
+      width: 9px; height: 9px;
+      border-radius: 2px;
+      background: #B8F02B;
+      flex-shrink: 0;
+    }
+    .pm-card .pm-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+      font-size: 7.5px;
+      color: #6b7191;
+    }
+    .pm-card .pm-total b {
+      color: #0a1238;
+      font-weight: 700;
+    }
+    .pm-section-label {
+      font-size: 8px;
+      font-weight: 700;
+      color: #6b7191;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 0;
+    }
+    .pm-tabbar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 4px 8px 6px;
+      border-top: 1px solid #eef0f6;
+      background: #ffffff;
+    }
+    .pm-tabbar .tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      font-size: 6.5px;
+      font-weight: 600;
+      color: #9aa0bb;
+    }
+    .pm-tabbar .tab.active { color: #0a1238; }
+    .pm-tabbar .tab .ic {
+      width: 12px; height: 12px;
+      border-radius: 3px;
+      background: currentColor;
+      opacity: 0.65;
+    }
+    .pm-tabbar .tab.active .ic { opacity: 1; }
 
     /* ─── Audience cards ─── */
     .e-audiences {
@@ -1489,10 +1670,51 @@
                class="visual-photo"
                loading="lazy"
                width="1200" height="900">
-          <img src="Assets/marketing/product/app-mi-reserva.png"
-               alt="App de CourtBit · pantalla Mi reserva"
-               class="ph-floating delay-2"
-               loading="lazy">
+          <!-- HTML phone mockup (vector-crisp, no image dependency) -->
+          <div class="pm-phone ph-floating delay-2" role="img" aria-label="App de CourtBit · pantalla Mis reservas del jugador">
+            <div class="pm-phone-screen">
+              <div class="pm-statusbar">
+                <span>9:41</span>
+                <span class="icons">●●●●  100</span>
+              </div>
+              <div class="pm-header">
+                <span class="back">‹</span>
+                <h5>Mis reservas</h5>
+                <span style="width:16px;"></span>
+              </div>
+              <div class="pm-tabs">
+                <button class="active" type="button">Próximas</button>
+                <button type="button">Historial</button>
+              </div>
+              <div class="pm-list">
+                <div class="pm-card">
+                  <div class="pm-club">Club Lagartos</div>
+                  <div class="pm-court">Cancha 1 · Exterior</div>
+                  <div class="pm-meta"><span class="icon"></span> Jue 7 may · 17:00 – 18:30</div>
+                  <div class="pm-total"><span>Pagado</span><b>$320</b></div>
+                </div>
+                <div class="pm-card">
+                  <div class="pm-club">Club Lagartos</div>
+                  <div class="pm-court">Cancha 2 · Cubierta</div>
+                  <div class="pm-meta"><span class="icon"></span> Vie 8 may · 19:00 – 20:30</div>
+                  <div class="pm-total"><span>Pagado</span><b>$320</b></div>
+                </div>
+                <div class="pm-card">
+                  <div class="pm-club">DÚO Pádel Park</div>
+                  <div class="pm-court">Cancha 3 · Exterior</div>
+                  <div class="pm-meta"><span class="icon"></span> Sáb 9 may · 11:00 – 12:30</div>
+                  <div class="pm-total"><span>Por pagar</span><b>$280</b></div>
+                </div>
+              </div>
+              <div class="pm-tabbar">
+                <span class="tab"><span class="ic"></span>Inicio</span>
+                <span class="tab"><span class="ic"></span>Buscar</span>
+                <span class="tab active"><span class="ic"></span>Reservas</span>
+                <span class="tab"><span class="ic"></span>Vivo</span>
+                <span class="tab"><span class="ic"></span>Perfil</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
