@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Primary Tags -->
+    <title>CourtBit - El Sistema Operativo para Organizadores de Padel</title>
+    <meta name="description" content="Gestiona torneos, ligas individuales, rankings de circuito y pagos desde una sola plataforma. El sistema todo-en-uno para organizadores que construyen las comunidades de padel mas grandes.">
+    <meta name="keywords" content="software torneos padel, gestion ligas padel, plataforma organizador padel, ranking circuito padel, liga individual padel, rotaciones padel, calendario padel, pagos padel, brackets padel, ranking por puntos padel, round robin padel">
+    <meta name="author" content="CourtBit">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://courtbit.com.mx/competencias/">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link rel="alternate" hreflang="es" href="https://courtbit.com.mx/competencias/">
+    <link rel="alternate" hreflang="en" href="https://courtbit.com.mx/en/">
+    <link rel="alternate" hreflang="x-default" href="https://courtbit.com.mx/competencias/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://courtbit.com.mx/competencias/">
+    <meta property="og:title" content="CourtBit - El Sistema Operativo para Organizadores de Padel">
+    <meta property="og:description" content="Torneos, ligas, rankings y pagos — una plataforma para organizadores que construyen las comunidades de padel mas grandes.">
+    <meta property="og:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="CourtBit">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://courtbit.com.mx/competencias/">
+    <meta name="twitter:title" content="CourtBit - El Sistema Operativo para Organizadores de Padel">
+    <meta name="twitter:description" content="Torneos, ligas, rankings y pagos — una plataforma para organizadores de padel.">
+    <meta name="twitter:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+
+    <!-- Additional SEO -->
+    <meta name="geo.region" content="MX">
+    <meta name="geo.placename" content="Mexico">
+    <meta name="language" content="Spanish">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "CourtBit",
+        "applicationCategory": "SportsApplication",
+        "operatingSystem": "iOS, Android",
+        "offers": [
+            { "@type": "Offer", "price": "0", "priceCurrency": "MXN", "name": "Free" },
+            { "@type": "Offer", "price": "99", "priceCurrency": "MXN", "name": "Express" },
+            { "@type": "Offer", "price": "499", "priceCurrency": "MXN", "name": "Profesional" },
+            { "@type": "Offer", "price": "1499", "priceCurrency": "MXN", "name": "Enterprise" }
+        ],
+        "description": "El sistema operativo para organizadores de padel. Gestiona torneos, ligas, rankings de circuito y pagos desde una plataforma con apps nativas para jugadores."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "Como empiezo a usar CourtBit?", "acceptedAnswer": { "@type": "Answer", "text": "Prueba gratis el plan Profesional por 14 dias desde el inicio, sin cobros. Pagas solo cuando confirmes que CourtBit se adapta a ti." } },
+            { "@type": "Question", "name": "Mis jugadores necesitan descargar algo?", "acceptedAnswer": { "@type": "Answer", "text": "Si, pero la app es gratis en iOS y Android. Desde la app pueden registrarse, pagar, ver brackets, consultar calendarios, ingresar resultados y seguir su ranking." } },
+            { "@type": "Question", "name": "Como funcionan los pagos y las comisiones?", "acceptedAnswer": { "@type": "Answer", "text": "Solo los pagos realizados desde la app incluyen comisiones. Los jugadores tambien pueden pagar por transferencia, efectivo o el metodo que el organizador defina. CourtBit cobra una pequena comision al jugador y Stripe cobra sus fees al organizador." } },
+            { "@type": "Question", "name": "Puedo gestionar torneos y ligas al mismo tiempo?", "acceptedAnswer": { "@type": "Answer", "text": "Si. Dependiendo de tu plan puedes tener varios torneos y ligas activos al mismo tiempo, todo desde el mismo dashboard." } },
+            { "@type": "Question", "name": "Puedo tener mi propia app?", "acceptedAnswer": { "@type": "Answer", "text": "Si. Desarrollamos apps white-label a la medida con tu marca, colores y dominio. Contactanos para mas informacion." } },
+            { "@type": "Question", "name": "Quien es dueno de mis datos?", "acceptedAnswer": { "@type": "Answer", "text": "Tu. Toda la informacion pertenece a los organizadores. Puedes exportar tus datos en todo momento para analisis internos o migracion a otras plataformas." } },
+            { "@type": "Question", "name": "Puedo cambiar de plan despues?", "acceptedAnswer": { "@type": "Answer", "text": "Si, puedes subir o bajar de plan en cualquier momento. Sin contratos ni permanencias." } }
+        ]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../Assets/courtbit-logo.svg">
+    <link rel="apple-touch-icon" href="../Assets/courtbit-logo.svg">
+
+    <!-- Fonts (non-blocking) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://formspree.io">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=optional" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=optional"></noscript>
+
+    <style>
+        :root {
+            --lime: #B8F02B;
+            --lime-hover: #a5d827;
+            --lime-soft: #e8faa0;
+            --lime-bg: #f4fdd6;
+            --navy: #0f1d4d;
+            --navy-light: #1a2e6b;
+            --blue: #2e59fb;
+            --blue-soft: #eef2ff;
+            --white: #ffffff;
+            --bg: #fafbfc;
+            --bg-warm: #f5f6f8;
+            --text: #1a1f36;
+            --text-secondary: #5a6178;
+            --text-muted: #8b92a8;
+            --border: #e4e7ec;
+            --border-light: #f0f1f4;
+            --shadow-sm: 0 1px 3px rgba(15,29,77,0.06);
+            --shadow-md: 0 4px 12px rgba(15,29,77,0.08);
+            --shadow-lg: 0 12px 32px rgba(15,29,77,0.1);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-full: 100px;
+            --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: .08s; }
+        .d2 { transition-delay: .16s; }
+        .d3 { transition-delay: .24s; }
+        .d4 { transition-delay: .32s; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 14px 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 56px; width: auto; }
+        .nav-center { display: flex; align-items: center; gap: 28px; }
+        .nav-center a {
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.875rem; font-weight: 500; transition: color 0.2s;
+        }
+        .nav-center a:hover { color: var(--text); }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > a { cursor: default; }
+        .nav-dropdown-menu {
+            display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            padding-top: 12px; min-width: 210px; z-index: 100;
+        }
+        .nav-dropdown-menu-inner {
+            background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+            box-shadow: var(--shadow-lg); padding: 6px;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a {
+            display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+            color: var(--text-secondary) !important; font-size: 0.85rem !important; font-weight: 500;
+            border-radius: 7px; text-decoration: none; transition: background 0.15s;
+            white-space: nowrap;
+        }
+        .nav-dropdown-menu a:hover { background: var(--bg-subtle); color: var(--text) !important; }
+        .nav-dropdown-menu a svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.5; }
+        .nav-right { display: flex; align-items: center; gap: 10px; }
+        .nav-login {
+            display: flex; align-items: center; gap: 6px;
+            color: var(--text-secondary); text-decoration: none; font-size: 0.875rem;
+            font-weight: 600; padding: 10px 18px; border-radius: var(--radius-full);
+            transition: all 0.2s; border: 1px solid transparent;
+        }
+        .nav-login svg { flex-shrink: 0; }
+        .nav-login:hover { color: var(--text); border-color: var(--border); }
+        .lang-switch {
+            color: var(--text-muted); text-decoration: none; font-size: 0.8125rem;
+            padding: 6px 14px; border: 1px solid var(--border);
+            border-radius: var(--radius-full); transition: border-color 0.2s;
+        }
+        .lang-switch:hover { border-color: var(--text-muted); }
+        .nav-cta {
+            display: flex; align-items: center; gap: 6px;
+            background: var(--navy); color: var(--white);
+            padding: 10px 22px; border-radius: var(--radius-full);
+            font-weight: 600; font-size: 0.875rem;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .nav-cta:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .mobile-toggle { display: none; background: none; border: none; color: var(--text); cursor: pointer; padding: 8px; }
+        .mobile-toggle svg { width: 24px; height: 24px; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 130px 0 80px; position: relative;
+            background: linear-gradient(165deg, #f0fde4 0%, var(--white) 40%, var(--blue-soft) 100%);
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(184,240,43,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(46,89,251,0.05) 0%, transparent 50%);
+        }
+        .hero .container { position: relative; z-index: 2; max-width: 820px; text-align: center; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--white); border: 1px solid var(--border);
+            padding: 7px 18px; border-radius: var(--radius-full);
+            font-size: 0.8125rem; color: var(--text-secondary);
+            font-weight: 500; margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .hero-badge .dot {
+            width: 7px; height: 7px; background: var(--lime);
+            border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(184,240,43,0.5);
+        }
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 800;
+            line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px;
+            color: var(--navy);
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #6dbf00 0%, #4a9e00 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.125rem; color: var(--text-secondary);
+            margin-bottom: 36px; max-width: 560px;
+            margin-left: auto; margin-right: auto; line-height: 1.65;
+        }
+        .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 44px; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--navy); color: var(--white);
+            padding: 14px 28px; border-radius: var(--radius-full);
+            font-weight: 700; font-size: 0.9375rem;
+            text-decoration: none; transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(15,29,77,0.15);
+        }
+        .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,29,77,0.2); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--white); color: var(--text);
+            padding: 14px 28px; border-radius: var(--radius-full);
+            font-weight: 600; font-size: 0.9375rem;
+            text-decoration: none; border: 1.5px solid var(--border);
+            transition: all 0.2s; box-shadow: var(--shadow-sm);
+        }
+        .btn-secondary:hover { border-color: var(--text-muted); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-secondary svg { width: 18px; height: 18px; }
+        .hero-pills { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .hero-pill {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.75rem; font-weight: 600; color: var(--text-muted);
+            padding: 6px 14px; background: var(--white);
+            border: 1px solid var(--border-light); border-radius: var(--radius-full);
+            box-shadow: var(--shadow-sm);
+        }
+        .hero-pill svg { width: 14px; height: 14px; color: #5a9e00; flex-shrink: 0; }
+
+        /* ── VIDEO DEMO ── */
+        .video-section { padding: 72px 0 0; background: var(--white); }
+        .video-wrapper {
+            max-width: 880px; margin: 0 auto;
+            border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: 0 20px 60px rgba(15,29,77,0.12);
+            border: 1.5px solid var(--border);
+            aspect-ratio: 16/9; position: relative;
+        }
+        .video-wrapper iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+        @media (max-width:768px) {
+            .video-section { padding: 48px 0 0; }
+            .video-wrapper { border-radius: 12px; }
+        }
+
+        /* ── SOCIAL PROOF BAR ── */
+        .proof-bar {
+            padding: 28px 0;
+            background: var(--navy);
+            border-bottom: 1px solid rgba(184,240,43,0.12);
+        }
+        .proof-bar .container {
+            display: flex; justify-content: center; align-items: center;
+            gap: 40px; flex-wrap: wrap;
+        }
+        .proof-stat {
+            display: flex; flex-direction: column; align-items: center; gap: 2px;
+        }
+        .proof-stat-num {
+            font-size: 1.5rem; font-weight: 800; color: var(--lime);
+            letter-spacing: -0.02em;
+        }
+        .proof-stat-label {
+            font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.6);
+            text-transform: uppercase; letter-spacing: 0.08em;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+        }
+        .testimonial-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px 24px;
+            transition: all 0.25s; box-shadow: var(--shadow-sm);
+            display: flex; flex-direction: column;
+        }
+        .testimonial-card:hover { border-color: #b0d840; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .testimonial-stars { color: #f59e0b; font-size: 0.875rem; margin-bottom: 12px; letter-spacing: 2px; }
+        .testimonial-quote {
+            font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.65;
+            margin-bottom: 18px; flex: 1;
+        }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--lime-bg), var(--blue-soft));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.875rem; color: var(--navy);
+        }
+        .testimonial-name { font-size: 0.875rem; font-weight: 700; color: var(--navy); }
+        .testimonial-org { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* ── WHATSAPP FLOAT ── */
+        .wa-float {
+            position: fixed; bottom: 24px; right: 24px; z-index: 90;
+            width: 56px; height: 56px; border-radius: 50%;
+            background: #25D366; color: white;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+        .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+        .wa-float svg { width: 28px; height: 28px; }
+
+        /* ── MOBILE STICKY CTA ── */
+        .sticky-cta {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 80;
+            padding: 12px 16px; background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border-light);
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+        }
+        .sticky-cta-inner { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
+        .sticky-cta-inner a {
+            flex: 1; text-align: center; padding: 12px 16px;
+            border-radius: var(--radius-full); font-weight: 700;
+            font-size: 0.875rem; text-decoration: none; transition: all 0.2s;
+        }
+        .sticky-cta-primary { background: var(--navy); color: var(--white); }
+        .sticky-cta-secondary { background: var(--white); color: var(--navy); border: 1.5px solid var(--border); }
+
+        @media (max-width:768px) {
+            .sticky-cta { display: block; }
+            .wa-float { bottom: 84px; }
+            .proof-bar .container { gap: 24px; }
+            .proof-stat-num { font-size: 1.25rem; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width:480px) {
+            .proof-bar .container { gap: 16px; }
+            .proof-stat-num { font-size: 1.125rem; }
+            .proof-stat-label { font-size: 0.6875rem; }
+        }
+
+        /* ── SECTIONS ── */
+        .section { padding: 96px 0; }
+        .section-gray { background: var(--bg); }
+        .section-header { text-align: center; max-width: 600px; margin: 0 auto 52px; }
+        .section-tag {
+            display: inline-block; font-size: 0.6875rem; font-weight: 700;
+            color: #5a9e00; text-transform: uppercase; letter-spacing: 0.15em;
+            margin-bottom: 12px; background: var(--lime-bg);
+            padding: 4px 14px; border-radius: var(--radius-full);
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800;
+            letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 12px;
+            color: var(--navy);
+        }
+        .section-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* ── TWO PILLARS ── */
+        .pillars-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .pillar-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 32px 28px;
+            transition: all 0.25s; box-shadow: var(--shadow-sm);
+        }
+        .pillar-card:hover { border-color: #b0d840; box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .pillar-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+        .pillar-icon {
+            width: 46px; height: 46px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .pillar-icon svg { width: 22px; height: 22px; }
+        .pillar-icon.tournaments { background: linear-gradient(135deg, #5a9e00, #4a8700); color: white; }
+        .pillar-icon.leagues { background: linear-gradient(135deg, var(--blue), #1a45e0); color: white; }
+        .pillar-name { font-size: 1.1875rem; font-weight: 700; color: var(--navy); }
+        .pillar-features { display: flex; flex-direction: column; gap: 11px; }
+        .pillar-feature {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.9375rem; color: var(--text-secondary); font-weight: 500;
+        }
+        .pillar-feature svg { width: 18px; height: 18px; color: var(--text-muted); flex-shrink: 0; }
+
+        /* ── AUTOMATION ── */
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 860px; margin: 0 auto; }
+        .compare-col {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm);
+        }
+        .compare-col.after { border-color: #b0d840; background: linear-gradient(180deg, #fafde8 0%, var(--white) 100%); }
+        .compare-label {
+            font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.12em; margin-bottom: 20px; padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .compare-label.before-label { color: var(--text-muted); }
+        .compare-label.after-label { color: #5a9e00; }
+        .compare-items { display: flex; flex-direction: column; gap: 14px; }
+        .compare-item { display: flex; align-items: center; gap: 10px; font-size: 0.9375rem; font-weight: 500; }
+        .compare-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .compare-item.old { color: var(--text-muted); }
+        .compare-item.old svg { color: #e05252; }
+        .compare-item.new { color: var(--text); }
+        .compare-item.new svg { color: #5a9e00; }
+
+        /* ── PLAYER APP ── */
+        .player-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+        .player-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px 22px; text-align: center;
+            transition: all 0.25s; box-shadow: var(--shadow-sm);
+        }
+        .player-card:hover { border-color: #b0d840; transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .player-card-icon {
+            width: 48px; height: 48px; margin: 0 auto 14px;
+            background: var(--lime-bg); border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .player-card-icon svg { width: 22px; height: 22px; color: #5a9e00; }
+        .player-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+        .player-card p { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.45; }
+
+        /* ── CIRCUIT RANKING ── */
+        .ranking-wrapper { max-width: 660px; margin: 0 auto; }
+        .ranking-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);
+        }
+        .ranking-header-bar {
+            padding: 14px 24px; background: var(--navy);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .ranking-header-bar span { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
+        .ranking-header-bar .season-tag { color: var(--lime); background: rgba(184,240,43,0.15); padding: 3px 12px; border-radius: var(--radius-full); font-size: 0.6875rem; }
+        .ranking-table { width: 100%; }
+        .ranking-row {
+            display: grid; grid-template-columns: 50px 1fr 90px 70px;
+            align-items: center; padding: 13px 24px;
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.15s;
+        }
+        .ranking-row:last-child { border-bottom: none; }
+        .ranking-row:hover { background: var(--bg); }
+        .ranking-row.row-header {
+            font-size: 0.6875rem; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.08em;
+            padding: 10px 24px; background: var(--bg);
+        }
+        .rank-num { font-weight: 800; font-size: 1rem; color: var(--navy); }
+        .rank-player { display: flex; flex-direction: column; }
+        .rank-player .name { font-weight: 600; font-size: 0.9375rem; color: var(--text); }
+        .rank-player .cat { font-size: 0.75rem; color: var(--text-muted); }
+        .rank-pts { font-weight: 800; font-size: 0.9375rem; text-align: right; color: #5a9e00; }
+        .rank-events { font-size: 0.8125rem; color: var(--text-muted); text-align: right; }
+
+        /* ── PAYMENTS ── */
+        .payments-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+        .payment-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px 24px;
+            transition: all 0.25s; box-shadow: var(--shadow-sm);
+        }
+        .payment-card:hover { border-color: #b0d840; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .payment-card-icon {
+            width: 42px; height: 42px; background: var(--lime-bg);
+            border-radius: 12px; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 16px;
+        }
+        .payment-card-icon svg { width: 20px; height: 20px; color: #5a9e00; }
+        .payment-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+        .payment-card p { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* ── PRICING ── */
+        .pricing-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; align-items: start; }
+        .pricing-card {
+            background: var(--white); border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg); padding: 32px 26px;
+            transition: all 0.25s; box-shadow: var(--shadow-sm);
+        }
+        .pricing-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .pricing-card.featured { border-color: var(--navy); position: relative; box-shadow: var(--shadow-lg); }
+        .pricing-card.featured::before {
+            content: 'Mas Popular'; position: absolute; top: -12px; left: 50%;
+            transform: translateX(-50%); background: var(--navy); color: var(--white);
+            font-size: 0.6875rem; font-weight: 700; padding: 4px 16px;
+            border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .pricing-name {
+            font-size: 0.75rem; font-weight: 700; color: #5a9e00;
+            text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px;
+        }
+        .pricing-price { font-size: 2.25rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 2px; color: var(--navy); }
+        .pricing-price span { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+        .pricing-desc { font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 22px; }
+        .pricing-features { display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; }
+        .pricing-feature { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--text-secondary); }
+        .pricing-feature svg { width: 16px; height: 16px; color: #5a9e00; flex-shrink: 0; }
+        .pricing-feature.highlight {
+            background: linear-gradient(135deg, var(--lime-bg), rgba(184,240,43,0.12));
+            border: 1px solid rgba(184,240,43,0.4);
+            border-radius: 8px; padding: 7px 10px; margin: 2px -10px;
+            font-weight: 600; color: var(--navy); position: relative;
+        }
+        .pricing-feature.highlight svg { color: var(--navy); }
+        .pricing-feature.highlight::after {
+            content: 'PRO'; font-size: 0.55rem; font-weight: 800; letter-spacing: 0.08em;
+            background: var(--navy); color: var(--lime); padding: 1px 6px;
+            border-radius: var(--radius-full); margin-left: auto; flex-shrink: 0;
+        }
+        .pricing-card:last-child .pricing-feature.highlight::after { content: none; }
+        .pricing-btn {
+            display: block; text-align: center; padding: 12px;
+            border-radius: var(--radius-full); font-weight: 600; font-size: 0.875rem;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .pricing-btn.primary { background: var(--navy); color: var(--white); }
+        .pricing-btn.primary:hover { background: var(--navy-light); transform: translateY(-1px); }
+        .pricing-btn.outline { border: 1.5px solid var(--border); color: var(--text); background: var(--white); }
+        .pricing-btn.outline:hover { border-color: var(--text-muted); background: var(--bg); }
+
+        /* ── FAQ ── */
+        .faq-list { max-width: 680px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border-light); }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-toggle {
+            width: 100%; background: none; border: none; color: var(--text);
+            font-family: var(--font); font-size: 1rem; font-weight: 600;
+            text-align: left; padding: 20px 0; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center; gap: 16px;
+        }
+        .faq-toggle:hover { color: var(--navy); }
+        .faq-toggle svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--text-muted); transition: transform 0.3s; }
+        .faq-item.open .faq-toggle svg { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-item.open .faq-answer { max-height: 200px; }
+        .faq-answer-inner { padding-bottom: 20px; font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; }
+
+        /* ── FINAL CTA ── */
+        .cta-final {
+            padding: 96px 0; text-align: center; position: relative;
+            background: var(--navy); color: var(--white); overflow: hidden;
+        }
+        .cta-final::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background:
+                radial-gradient(ellipse 60% 60% at 30% 100%, rgba(184,240,43,0.12), transparent),
+                radial-gradient(ellipse 50% 50% at 80% 0%, rgba(46,89,251,0.1), transparent);
+        }
+        .cta-final .container { position: relative; z-index: 2; }
+        .cta-final h2 { font-size: clamp(1.875rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; }
+        .cta-final p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-final-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .cta-final .btn-cta-lime {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--lime); color: var(--navy); padding: 14px 28px;
+            border-radius: var(--radius-full); font-weight: 700; font-size: 0.9375rem;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .cta-final .btn-cta-lime:hover { background: var(--lime-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,240,43,0.3); }
+        .cta-final .btn-cta-outline {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent; color: var(--white); padding: 14px 28px;
+            border-radius: var(--radius-full); font-weight: 600; font-size: 0.9375rem;
+            text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); transition: all 0.2s;
+        }
+        .cta-final .btn-cta-outline:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
+        .cta-final .btn-cta-outline svg { width: 18px; height: 18px; }
+
+        /* ── FOOTER ── */
+        footer { padding: 28px 0; border-top: 1px solid var(--border-light); background: var(--white); }
+        footer .container { display: flex; justify-content: space-between; align-items: center; }
+        .footer-brand { font-size: 1.125rem; font-weight: 800; color: var(--navy); }
+        .footer-brand span { color: #5a9e00; }
+        .footer-right { display: flex; align-items: center; gap: 18px; }
+        .footer-link { color: var(--text-muted); text-decoration: none; font-size: 0.8125rem; transition: color 0.2s; }
+        .footer-link:hover { color: var(--text); }
+        .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* ── LEAD MODAL ── */
+        .modal-overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(15,29,77,0.45); backdrop-filter: blur(6px);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.25s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            background: var(--white); border-radius: var(--radius-lg); padding: 40px;
+            width: 90%; max-width: 460px; position: relative;
+            box-shadow: 0 24px 64px rgba(15,29,77,0.18);
+            transform: translateY(16px) scale(0.97); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
+        .modal-close {
+            position: absolute; top: 16px; right: 16px; background: none; border: none;
+            cursor: pointer; color: var(--text-muted); padding: 4px; transition: color 0.2s;
+        }
+        .modal-close:hover { color: var(--text); }
+        .modal-close svg { width: 20px; height: 20px; }
+        .modal-title { font-size: 1.375rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; letter-spacing: -0.02em; }
+        .modal-subtitle { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.5; }
+        .modal-form { display: flex; flex-direction: column; gap: 16px; }
+        .form-group { display: flex; flex-direction: column; gap: 5px; }
+        .form-label { font-size: 0.8125rem; font-weight: 600; color: var(--text); }
+        .form-input {
+            padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px;
+            font-family: var(--font); font-size: 0.9375rem; color: var(--text);
+            background: var(--bg); transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+        }
+        .form-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(15,29,77,0.08); }
+        .form-input::placeholder { color: var(--text-muted); }
+        .form-submit {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: var(--navy); color: var(--white); padding: 13px 24px;
+            border-radius: var(--radius-full); font-weight: 700; font-size: 0.9375rem;
+            border: none; cursor: pointer; font-family: var(--font); transition: all 0.2s; margin-top: 4px;
+        }
+        .form-submit:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .form-submit svg { width: 18px; height: 18px; }
+        .form-note { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 4px; }
+        .form-success { text-align: center; padding: 20px 0; }
+        .form-success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--lime-bg); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+        .form-success-icon svg { width: 28px; height: 28px; color: #4a8c00; }
+        .form-success h3 { font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+        .form-success p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+        .form-steps { background: var(--bg); border-radius: var(--radius); padding: 18px; text-align: left; margin: 20px 0; }
+        .form-step { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+        .form-step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+        .form-step span { font-size: 0.85rem; color: var(--text-secondary); }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── PILLAR TOOL LINK ── */
+        .pillar-tool-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 8px 14px; background: rgba(200,255,0,.1); border: 1px solid rgba(200,255,0,.25); border-radius: 8px; color: #c8ff00; font-size: .85rem; font-weight: 500; text-decoration: none; transition: background .2s, border-color .2s; }
+        .pillar-tool-link:hover { background: rgba(200,255,0,.18); border-color: rgba(200,255,0,.4); }
+        .pillar-tool-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+        /* ── GUIDE CTA ── */
+        .guide-cta {
+            display: flex; align-items: center; gap: 32px;
+            background: linear-gradient(135deg, var(--lime-bg) 0%, #eef2ff 100%);
+            border: 1.5px solid var(--border); border-radius: 24px;
+            padding: 40px 36px; box-shadow: 0 4px 12px rgba(15,29,77,0.06);
+        }
+        .guide-cta-text { flex: 1; min-width: 0; }
+        .guide-cta-tag { display: inline-block; font-size: 0.6875rem; font-weight: 700; color: #5a9e00; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; background: rgba(184,240,43,0.25); padding: 4px 14px; border-radius: 100px; }
+        .guide-cta-title { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.2; }
+        .guide-cta-desc { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 18px; max-width: 480px; }
+        .guide-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--white); padding: 12px 24px; border-radius: 100px; font-weight: 700; font-size: 0.875rem; text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 8px rgba(15,29,77,0.15); }
+        .guide-cta-btn:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,29,77,0.2); }
+        .guide-cta-checks { flex-shrink: 0; display: flex; flex-direction: column; gap: 10px; }
+        .guide-check { display: flex; align-items: center; gap: 10px; font-size: 0.8125rem; color: var(--text-secondary); font-weight: 500; }
+        .guide-check svg { flex-shrink: 0; }
+
+        /* ── RESPONSIVE ── */
+
+        /* Mobile nav open state */
+        .nav-center.show {
+            display: flex !important;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px 20px;
+            gap: 0;
+            box-shadow: var(--shadow-md);
+        }
+        .nav-center.show a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .nav-center.show a:last-child { border-bottom: none; }
+        .nav-center.show .nav-dropdown-menu {
+            display: block; position: static; transform: none;
+            padding: 0 0 0 16px; min-width: auto;
+        }
+        .nav-center.show .nav-dropdown-menu-inner {
+            box-shadow: none; border: none; padding: 0; background: transparent;
+        }
+        .nav-center.show .nav-dropdown-menu a {
+            padding: 12px 0; border-radius: 0; border-bottom: 1px solid var(--border-light);
+        }
+        .nav-center.show .nav-dropdown > a { border-bottom: none; padding-bottom: 4px; }
+
+        @media (max-width:900px) {
+            .pillars-grid, .compare-grid, .payments-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: repeat(2,1fr); }
+            .player-grid { grid-template-columns: repeat(2,1fr); }
+        }
+
+        @media (max-width:768px) {
+            .nav-center { display: none; }
+            .nav-login { display: none; }
+            .lang-switch { display: none; }
+            .mobile-toggle { display: block; }
+
+            .hero { padding: 110px 0 60px; min-height: auto; }
+            .hero h1 { font-size: clamp(2rem, 7vw, 2.75rem); }
+            .hero-sub { font-size: 1rem; margin-bottom: 28px; }
+            .hero-cta { flex-direction: column; align-items: center; gap: 10px; }
+            .hero-cta .btn-primary,
+            .hero-cta .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
+            .hero-pills { gap: 6px; }
+            .hero-pill { font-size: 0.6875rem; padding: 5px 10px; }
+
+            .section { padding: 64px 0; }
+            .section-header { margin-bottom: 36px; }
+            .section-title { font-size: clamp(1.5rem, 5vw, 2rem); }
+
+            .pillar-card { padding: 24px 20px; }
+            .pillar-feature { font-size: 0.875rem; }
+            .pillar-tool-link { color: #5a9e00; background: var(--lime-bg); border-color: rgba(90,158,0,0.2); }
+            .pillar-tool-link:hover { background: rgba(184,240,43,0.25); border-color: rgba(90,158,0,0.35); }
+
+            .compare-col { padding: 22px 18px; }
+            .compare-item { font-size: 0.875rem; }
+
+            .player-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .player-card { padding: 20px 16px; }
+            .player-card h3 { font-size: 0.875rem; }
+            .player-card p { font-size: 0.75rem; }
+
+            .ranking-row { grid-template-columns: 36px 1fr 70px 60px; padding: 11px 16px; }
+            .ranking-row.row-header { padding: 8px 16px; font-size: 0.625rem; }
+            .rank-num { font-size: 0.875rem; }
+            .rank-player .name { font-size: 0.8125rem; }
+            .rank-player .cat { font-size: 0.6875rem; }
+            .rank-pts { font-size: 0.8125rem; }
+            .rank-events { font-size: 0.75rem; }
+            .ranking-header-bar { padding: 12px 16px; }
+            .ranking-header-bar span { font-size: 0.6875rem; }
+
+            .payment-card { padding: 22px 18px; }
+
+            .pricing-card { padding: 26px 20px; }
+            .pricing-price { font-size: 1.875rem; }
+            .pricing-card.featured { margin-top: 12px; }
+
+            .guide-cta { flex-direction: column; gap: 20px; padding: 28px 24px; }
+            .guide-cta-checks { width: 100%; }
+
+            .cta-final { padding: 72px 0; }
+            .cta-final h2 { font-size: clamp(1.5rem, 5.5vw, 2.25rem); }
+            .cta-final-btns { flex-direction: column; align-items: center; gap: 10px; }
+            .cta-final .btn-cta-lime,
+            .cta-final .btn-cta-outline { width: 100%; max-width: 300px; justify-content: center; }
+
+            footer .container { flex-direction: column; gap: 14px; text-align: center; }
+            .footer-right { flex-wrap: wrap; justify-content: center; }
+
+            .modal-content { padding: 28px 20px; width: 94%; }
+            .modal-title { font-size: 1.25rem; }
+        }
+
+        @media (max-width:560px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { margin-top: 16px; }
+        }
+
+        @media (max-width:480px) {
+            .container { padding: 0 16px; }
+            .player-grid { grid-template-columns: 1fr; }
+            .hero-badge { font-size: 0.75rem; padding: 6px 14px; }
+            .hero h1 { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+            .hero-pills { gap: 5px; }
+            .hero-pill { font-size: 0.625rem; padding: 4px 8px; gap: 4px; }
+
+            .ranking-row { grid-template-columns: 30px 1fr 60px 50px; padding: 10px 12px; gap: 4px; }
+            .ranking-row.row-header { padding: 8px 12px; }
+            .ranking-header-bar { padding: 10px 12px; flex-wrap: wrap; gap: 6px; }
+            .rank-player .name { font-size: 0.75rem; }
+            .rank-pts { font-size: 0.75rem; }
+            .rank-events { font-size: 0.6875rem; }
+
+            .faq-toggle { font-size: 0.9375rem; padding: 16px 0; }
+            .faq-answer-inner { font-size: 0.875rem; }
+
+            .section { padding: 52px 0; }
+        }
+
+        @media (max-width:360px) {
+            .ranking-row { grid-template-columns: 28px 1fr 55px; }
+            .ranking-row .rank-events { display: none; }
+            .ranking-row.row-header span:last-child { display: none; }
+        }
+    </style>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo"><img src="../Assets/courtbit-logo.svg" alt="CourtBit"></a>
+            <div class="nav-center">
+                <a href="#funciones">Funciones</a>
+                <a href="#jugadores">Para Jugadores</a>
+                <a href="#precios">Precios</a>
+                <div class="nav-dropdown">
+                    <a href="#">Herramientas</a>
+                    <div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner">
+                        <a href="/calculadora-torneo/">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                            Calculadora Torneo
+                        </a>
+                        <a href="/calculadora-liga/">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            Calculadora Liga
+                        </a>
+                        <a href="/generador-cuadro-torneo-padel/">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                            Generador de Cuadro
+                        </a>
+                        <a href="/liga-padel-americana-individual/">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                            Liga Americana
+                        </a>
+                    </div></div>
+                </div>
+                <a href="/referidos/">Referidos</a>
+            </div>
+            <div class="nav-right">
+                <a href="https://dashboard.courtbit.com.mx" class="nav-login"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Dashboard</a>
+                <a href="en/" class="lang-switch">EN</a>
+                <a href="#" class="nav-cta" onclick="event.preventDefault();openModal();">Solicitar demo</a>
+                <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-center').classList.toggle('show')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge reveal"><span class="dot"></span> Hecho para organizadores que construyen comunidad</div>
+            <h1 class="reveal d1">El <span class="highlight">Sistema Operativo</span> para Organizadores de Padel</h1>
+            <p class="hero-sub reveal d2">Torneos, ligas, rankings de circuito y pagos. Una sola plataforma para gestionar toda tu comunidad de padel.</p>
+            <div class="hero-cta reveal d3">
+                <a href="https://dashboard.courtbit.com.mx" class="btn-primary">Crea tu torneo gratis</a>
+                <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="btn-secondary" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    App Store
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&hl=es_MX" class="btn-secondary" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 0 1 0 1.732l-2.808 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.3 2.3-8.636-8.632z"/></svg>
+                    Google Play
+                </a>
+            </div>
+            <div class="hero-pills reveal d4">
+                <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg> Torneos</span>
+                <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Ligas</span>
+                <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Rankings</span>
+                <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Pagos</span>
+                <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> App de Jugadores</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF BAR -->
+    <section class="proof-bar">
+        <div class="container">
+            <div class="proof-stat"><span class="proof-stat-num">2,000+</span><span class="proof-stat-label">Jugadores activos</span></div>
+            <div class="proof-stat"><span class="proof-stat-num">30+</span><span class="proof-stat-label">Organizadores</span></div>
+            <div class="proof-stat"><span class="proof-stat-num">150+</span><span class="proof-stat-label">Parejas en un torneo</span></div>
+        </div>
+    </section>
+
+    <!-- VIDEO DEMO -->
+    <section class="video-section">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:32px;" class="reveal">
+                <span class="section-tag">Ve como funciona</span>
+                <h2 class="section-title">Tu proximo torneo en 60 segundos</h2>
+            </div>
+            <div class="video-wrapper reveal d1">
+                <iframe src="https://www.youtube.com/embed/a3DlW1BjFg0?rel=0" title="CourtBit — Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- TWO PILLARS -->
+    <section class="section section-gray" id="funciones">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-tag">Dos Productos, Una Plataforma</span><h2 class="section-title">Todo lo que un organizador necesita</h2><p class="section-desc">Gestiona torneos y ligas individuales desde un solo dashboard.</p></div>
+            <div class="pillars-grid">
+                <div class="pillar-card reveal">
+                    <div class="pillar-header"><div class="pillar-icon tournaments"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div><span class="pillar-name">Torneos</span></div>
+                    <div class="pillar-features">
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Configura tu torneo</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> Inscripciones y pagos desde la app</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Grupos y fases finales automaticas</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Auto-calendarizacion con restricciones</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> Resultados en tiempo real</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Ranking de tu circuito</div>
+                    </div>
+                    <a href="/calculadora-torneo/" class="pillar-tool-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="14" y2="18"/></svg>
+                        Calculadora de costos gratuita &rarr;
+                    </a>
+                </div>
+                <div class="pillar-card reveal d1">
+                    <div class="pillar-header"><div class="pillar-icon leagues"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><span class="pillar-name">Ligas Individuales</span></div>
+                    <div class="pillar-features">
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Configura tu liga y categorias</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg> Inscripciones y pagos desde la app</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Rotaciones round robin automaticas</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Auto-calendarizacion con disponibilidad</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Resultados y rankings por puntos en vivo</div>
+                        <div class="pillar-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg> Playoffs</div>
+                    </div>
+                    <a href="/calculadora-liga/" class="pillar-tool-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="14" y2="18"/></svg>
+                        Calculadora de costos gratuita &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTOMATION -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-tag">Automatizacion</span><h2 class="section-title">Configura torneos en minutos.<br>Los jugadores se vuelven autonomos.</h2></div>
+            <div class="compare-grid">
+                <div class="compare-col reveal">
+                    <div class="compare-label before-label">Antes de CourtBit</div>
+                    <div class="compare-items">
+                        <div class="compare-item old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Armas calendarios a mano en Excel</div>
+                        <div class="compare-item old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Persigues pagos por WhatsApp</div>
+                        <div class="compare-item old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Inscribes jugadores uno por uno</div>
+                        <div class="compare-item old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Actualizas rankings manualmente</div>
+                    </div>
+                </div>
+                <div class="compare-col after reveal d1">
+                    <div class="compare-label after-label">Con CourtBit</div>
+                    <div class="compare-items">
+                        <div class="compare-item new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Genera calendarios automaticos en segundos</div>
+                        <div class="compare-item new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Recibe pagos directo en tu cuenta bancaria</div>
+                        <div class="compare-item new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Los jugadores se inscriben y pagan solos</div>
+                        <div class="compare-item new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Rankings que se actualizan en tiempo real</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOR PLAYERS -->
+    <section class="section section-gray" id="jugadores">
+        <style>
+            /* ── APP SHOWCASE ── */
+            @keyframes app-float-1 { 0%,100%{ transform: translate(0,0) rotate(-2deg); } 50%{ transform: translate(4px,-8px) rotate(-1deg); } }
+            @keyframes app-float-2 { 0%,100%{ transform: translate(0,0) rotate(1deg); } 50%{ transform: translate(-5px,-10px) rotate(2deg); } }
+            @keyframes app-float-3 { 0%,100%{ transform: translate(0,0) rotate(0deg); } 50%{ transform: translate(6px,-6px) rotate(-1.5deg); } }
+            @keyframes app-float-4 { 0%,100%{ transform: translate(0,0) rotate(2deg); } 50%{ transform: translate(-4px,-9px) rotate(0deg); } }
+            @keyframes app-float-5 { 0%,100%{ transform: translate(0,0) rotate(-1deg); } 50%{ transform: translate(5px,-7px) rotate(1deg); } }
+            @keyframes app-float-6 { 0%,100%{ transform: translate(0,0) rotate(1.5deg); } 50%{ transform: translate(-3px,-11px) rotate(-0.5deg); } }
+
+            .app-showcase { position: relative; max-width: 780px; margin: 0 auto 56px; min-height: 520px; }
+
+            .app-phone {
+                width: 230px; margin: 0 auto; position: relative; z-index: 3;
+            }
+            .app-phone-bezel {
+                background: #0f1d4d; border-radius: 36px; padding: 10px;
+                box-shadow:
+                    0 40px 80px rgba(15,29,77,0.18),
+                    0 16px 32px rgba(15,29,77,0.10),
+                    0 0 0 1px rgba(255,255,255,0.08);
+            }
+            .app-phone-notch {
+                position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+                width: 72px; height: 24px; background: #0f1d4d;
+                border-radius: 0 0 16px 16px; z-index: 4;
+            }
+            .app-phone-notch::after {
+                content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+                width: 36px; height: 5px; background: rgba(255,255,255,0.12);
+                border-radius: 4px;
+            }
+            .app-phone-screen {
+                border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;
+                background: #f5f5f5;
+            }
+            .app-phone-screen img {
+                width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
+            }
+
+            .app-floater {
+                position: absolute; z-index: 4;
+                background: var(--white); border: 1.5px solid var(--border);
+                border-radius: 16px; padding: 14px 18px;
+                box-shadow: 0 8px 28px rgba(15,29,77,0.09), 0 1px 3px rgba(15,29,77,0.05);
+                font-family: var(--font); white-space: nowrap;
+                will-change: transform;
+            }
+            .app-floater-sm { padding: 10px 14px; border-radius: 12px; }
+
+            .fl-tournament { top: 6%; left: -4%; animation: app-float-1 5s ease-in-out infinite; }
+            .fl-points { top: 4%; right: -2%; animation: app-float-2 6s ease-in-out infinite 0.5s; }
+            .fl-calendar { top: 42%; left: -10%; animation: app-float-3 5.5s ease-in-out infinite 1s; }
+            .fl-score { top: 38%; right: -8%; animation: app-float-4 4.8s ease-in-out infinite 0.3s; }
+            .fl-notif { bottom: 14%; left: -6%; animation: app-float-5 5.2s ease-in-out infinite 0.8s; }
+            .fl-avatars { bottom: 10%; right: -4%; animation: app-float-6 6.2s ease-in-out infinite 1.2s; }
+
+            .fl-label { font-size: 0.625rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+            .fl-value { font-size: 1rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+            .fl-value-green { color: #5a9e00; }
+            .fl-sub { font-size: 0.6875rem; color: var(--text-muted); margin-top: 2px; }
+
+            .fl-dot-live {
+                display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+                background: #e05252; margin-right: 5px;
+                box-shadow: 0 0 6px rgba(224,82,82,0.5);
+                animation: pulse-dot 1.5s ease-in-out infinite;
+            }
+
+            .fl-avatar-stack { display: flex; align-items: center; }
+            .fl-avatar {
+                width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--white);
+                margin-left: -8px; display: flex; align-items: center; justify-content: center;
+                font-size: 0.6875rem; font-weight: 700; color: var(--white);
+            }
+            .fl-avatar:first-child { margin-left: 0; }
+
+            .app-pills {
+                display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+                margin-bottom: 48px;
+            }
+            .app-pill {
+                font-size: 0.75rem; font-weight: 600; color: var(--text-secondary);
+                padding: 7px 18px; background: var(--white); border: 1.5px solid var(--border);
+                border-radius: var(--radius-full); transition: all 0.25s;
+                box-shadow: var(--shadow-sm); cursor: default;
+            }
+            .app-pill:hover { border-color: #b0d840; color: #5a9e00; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+            @media (max-width:768px) {
+                .app-showcase { min-height: 440px; max-width: 400px; }
+                .app-phone { width: 200px; }
+                .app-floater { transform: scale(0.85) !important; }
+                .fl-tournament { left: 2%; top: 2%; }
+                .fl-points { right: 2%; top: 0%; }
+                .fl-calendar { left: -2%; }
+                .fl-score { right: -2%; }
+                .fl-notif { left: 2%; bottom: 8%; }
+                .fl-avatars { right: 2%; bottom: 4%; }
+            }
+            @media (max-width:480px) {
+                .app-showcase { min-height: 380px; }
+                .app-phone { width: 170px; }
+                .app-floater { display: none; }
+                .app-phone-bezel { border-radius: 28px; padding: 8px; }
+                .app-phone-screen { border-radius: 20px; }
+            }
+        </style>
+        <div class="container">
+            <div class="section-header reveal"><span class="section-tag">Para Jugadores</span><h2 class="section-title">Tus jugadores reciben la mejor app de padel</h2><p class="section-desc">Gratis en iOS y Android. Todo lo que necesitan en su bolsillo.</p></div>
+
+            <!-- App Showcase with floating elements -->
+            <div class="app-showcase reveal">
+                <!-- Phone -->
+                <div class="app-phone">
+                    <div class="app-phone-bezel">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-phone-screen">
+                            <img src="../Assets/app-screenshot.png" alt="CourtBit App - Feed de torneos y ligas" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating cards -->
+                <div class="app-floater fl-tournament">
+                    <div class="fl-label">Proximo torneo</div>
+                    <div class="fl-value">Premier Padel</div>
+                    <div class="fl-sub">15 Abr · 3ra Categoria</div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-points">
+                    <div class="fl-label">Tu ranking</div>
+                    <div class="fl-value fl-value-green">1,547 pts</div>
+                    <div class="fl-sub" style="color:#5a9e00;">↑ +47 esta temporada</div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-calendar">
+                    <div class="fl-label">Tu partido</div>
+                    <div class="fl-value">10:00 AM</div>
+                    <div class="fl-sub">Cancha 1 · Hoy</div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-score">
+                    <div class="fl-label"><span class="fl-dot-live"></span>En vivo</div>
+                    <div class="fl-value">6-4, 3-2</div>
+                    <div class="fl-sub">Semifinal</div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-notif">
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <div style="width:28px;height:28px;border-radius:8px;background:var(--lime-bg);display:flex;align-items:center;justify-content:center;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5a9e00" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:0.75rem;font-weight:700;color:var(--navy);">3 nuevas</div>
+                            <div style="font-size:0.625rem;color:var(--text-muted);">notificaciones</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-floater app-floater-sm fl-avatars">
+                    <div class="fl-label" style="margin-bottom:8px;">Jugadores activos</div>
+                    <div class="fl-avatar-stack">
+                        <div class="fl-avatar" style="background:linear-gradient(135deg,#2e59fb,#6b8cff);">CM</div>
+                        <div class="fl-avatar" style="background:linear-gradient(135deg,#5a9e00,#8bc34a);">AR</div>
+                        <div class="fl-avatar" style="background:linear-gradient(135deg,#e88a17,#f5b74e);">DP</div>
+                        <div class="fl-avatar" style="background:linear-gradient(135deg,#9333ea,#c084fc);">SL</div>
+                        <div class="fl-avatar" style="background:var(--border);color:var(--text-muted);font-size:0.6rem;">+86</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature pills -->
+            <div class="app-pills reveal d1">
+                <span class="app-pill">Torneos</span>
+                <span class="app-pill">Inscripciones</span>
+                <span class="app-pill">Calendario</span>
+                <span class="app-pill">Rankings</span>
+                <span class="app-pill">Marcadores</span>
+                <span class="app-pill">Notificaciones</span>
+            </div>
+
+            <!-- Feature cards -->
+            <div class="player-grid">
+                <div class="player-card reveal"><div class="player-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>Explorar y Descubrir</h3><p>Encuentra eventos cerca de ti. Sigue organizadores.</p></div>
+                <div class="player-card reveal d1"><div class="player-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><h3>Registrarse y Pagar</h3><p>Checkout en 5 pasos. Tarjetas, OXXO, wallets.</p></div>
+                <div class="player-card reveal d2"><div class="player-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Calendario y Resultados</h3><p>Ve tus partidos. Captura resultados en vivo.</p></div>
+                <div class="player-card reveal d3"><div class="player-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><h3>Rankings y Estadisticas</h3><p>Sigue tus puntos. Consulta perfiles de jugadores.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CIRCUIT RANKINGS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-tag">Ranking de Circuito</span><h2 class="section-title">Construye tu circuito. Domina tu ranking.</h2><p class="section-desc">Agrega resultados de todos tus torneos en un solo ranking — igual que los circuitos profesionales.</p></div>
+            <div class="ranking-wrapper reveal">
+                <div class="ranking-card">
+                    <div class="ranking-header-bar"><span>Ranking de Circuito</span><span class="season-tag">Temporada 2026</span></div>
+                    <div class="ranking-table">
+                        <div class="ranking-row row-header"><span>#</span><span>Jugador</span><span style="text-align:right">Puntos</span><span style="text-align:right">Eventos</span></div>
+                        <div class="ranking-row"><span class="rank-num">1</span><div class="rank-player"><span class="name">Carlos M.</span><span class="cat">Primera</span></div><span class="rank-pts">2,450</span><span class="rank-events">8 / 12</span></div>
+                        <div class="ranking-row"><span class="rank-num">2</span><div class="rank-player"><span class="name">Ana R.</span><span class="cat">Primera</span></div><span class="rank-pts">2,180</span><span class="rank-events">10 / 12</span></div>
+                        <div class="ranking-row"><span class="rank-num">3</span><div class="rank-player"><span class="name">Diego P.</span><span class="cat">Primera</span></div><span class="rank-pts">1,920</span><span class="rank-events">9 / 12</span></div>
+                        <div class="ranking-row"><span class="rank-num">4</span><div class="rank-player"><span class="name">Sofia L.</span><span class="cat">Primera</span></div><span class="rank-pts">1,750</span><span class="rank-events">7 / 12</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAYMENTS -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-tag">Pagos</span><h2 class="section-title">Pagos integrados.<br>No mas perseguir transferencias.</h2></div>
+            <div class="payments-grid">
+                <div class="payment-card reveal"><div class="payment-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>Pago en la App</h3><p>Los jugadores pagan directo desde la app. Tarjetas, OXXO, monederos digitales.</p></div>
+                <div class="payment-card reveal d1"><div class="payment-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg></div><h3>Stripe Connect</h3><p>El dinero va directo a tu cuenta bancaria. Pagos automaticos.</p></div>
+                <div class="payment-card reveal d2"><div class="payment-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><h3>Dashboard Financiero</h3><p>Transacciones, comisiones, pagos y saldos. Todo en tiempo real.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Organizadores Reales</span>
+                <h2 class="section-title">Ellos ya gestionan con CourtBit</h2>
+                <p class="section-desc">Clubs, academias y organizadores en todo Mexico confian en la plataforma.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">"Antes armaba brackets en Excel y perseguia pagos por WhatsApp. Con CourtBit mis torneos se ven profesionales y los jugadores se inscriben solos."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CD</div>
+                        <div><div class="testimonial-name">Club Deportivo Miramar</div><div class="testimonial-org">Organizador de torneos</div></div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal d1">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">"La auto-calendarizacion nos ahorra horas. Configuramos la liga, y CourtBit genera los horarios considerando canchas y disponibilidad. Increible."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LP</div>
+                        <div><div class="testimonial-name">Lagartos Padel</div><div class="testimonial-org">Liga individual</div></div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal d2">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-quote">"Nuestros jugadores aman la app. Ven sus partidos, rankings y resultados en tiempo real. Ya no tenemos que publicar nada en grupos de WhatsApp."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">OP</div>
+                        <div><div class="testimonial-name">One Padel Park</div><div class="testimonial-org">Academia y torneos</div></div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-top:36px; align-items:center;">
+                <span style="font-size:0.8125rem; color:var(--text-muted); font-weight:500;">Tambien confian en CourtBit:</span>
+                <span style="font-size:0.875rem; font-weight:600; color:var(--text-secondary);">Padel Factory GDL</span>
+                <span style="color:var(--border);">|</span>
+                <span style="font-size:0.875rem; font-weight:600; color:var(--text-secondary);">APJ</span>
+                <span style="color:var(--border);">|</span>
+                <span style="font-size:0.875rem; font-weight:600; color:var(--text-secondary);">CUP Jalisco</span>
+                <span style="color:var(--border);">|</span>
+                <span style="font-size:0.875rem; font-weight:600; color:var(--text-secondary);">Padel Arena Culiacan</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="precios">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-tag">Precios</span><h2 class="section-title">Empieza gratis. Escala cuando estes listo.</h2></div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <div class="pricing-name">Gratis</div><div class="pricing-price">$0</div><div class="pricing-desc">Para probar la plataforma</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1 torneo activo, 1 categoria</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hasta 32 parejas</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1 miembro en la organizacion</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> App de jugadores incluida</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 7% comision de plataforma*</div>
+                    </div>
+                    <a href="#" class="pricing-btn outline" onclick="event.preventDefault();openModal();">Comienza gratis</a>
+                </div>
+                <div class="pricing-card reveal d1">
+                    <div class="pricing-name">Express</div><div class="pricing-price">$99 <span>/ mes</span></div><div class="pricing-desc">Para organizadores en crecimiento</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 3 torneos activos, 3 categorias</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hasta 64 parejas</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1 temporada de liga</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 2 miembros en la organizacion</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Codigos de descuento</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Reportes Excel basicos</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 6% comision de plataforma*</div>
+                    </div>
+                    <a href="#" class="pricing-btn outline" onclick="event.preventDefault();openModal();">Empezar</a>
+                </div>
+                <div class="pricing-card featured reveal d2">
+                    <div class="pricing-name">Profesional</div><div class="pricing-price">$499 <span>/ mes</span></div><div class="pricing-desc">Para organizadores con circuitos</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 10 torneos activos, 5 categorias</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Parejas ilimitadas</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Temporadas ilimitadas</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 5 miembros en la organizacion</div>
+                        <div class="pricing-feature highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Auto-calendarizacion</div>
+                        <div class="pricing-feature highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ranking de circuito</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Reportes Excel avanzados</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 5% comision de plataforma*</div>
+                    </div>
+                    <a href="#" class="pricing-btn primary" onclick="event.preventDefault();openModal();">Prueba 14 dias gratis</a>
+                </div>
+                <div class="pricing-card reveal d3">
+                    <div class="pricing-name">Enterprise</div><div class="pricing-price">$1,499 <span>/ mes</span></div><div class="pricing-desc">Para asociaciones y federaciones</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Todo lo del plan Profesional</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Torneos activos ilimitados</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Categorias ilimitadas</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Miembros de organizacion ilimitados</div>
+                        <div class="pricing-feature highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multimedia (exportar PDF con tu marca)</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 5% comision de plataforma*</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Soporte prioritario</div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Planes personalizados disponibles</div>
+                        <div class="pricing-feature highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Pantalla de partidos en vivo (TV)</div>
+                    </div>
+                    <a href="#" class="pricing-btn outline" onclick="event.preventDefault();openModal();">Contactar</a>
+                </div>
+            </div>
+            <p style="text-align:center; font-size:0.8125rem; color:var(--text-muted); margin-top:20px; max-width:540px; margin-left:auto; margin-right:auto; line-height:1.6;">* Aplica solo a pagos realizados desde la app. La comision de plataforma la paga el jugador. Las comisiones de Stripe se deducen del pago al organizador.</p>
+        </div>
+    </section>
+
+    <!-- GUIDE CTA -->
+    <section class="section">
+        <div class="container">
+            <div class="guide-cta reveal">
+                <div class="guide-cta-text">
+                    <span class="guide-cta-tag">Guia Gratuita</span>
+                    <h2 class="guide-cta-title">Como Organizar un Torneo de Padel</h2>
+                    <p class="guide-cta-desc">Formato, presupuesto, inscripciones, calendario y resultados — paso a paso. La guia completa para organizadores en Mexico.</p>
+                    <a href="/como-organizar-torneo-padel/" class="guide-cta-btn">
+                        Leer la guia
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+                <div class="guide-cta-checks">
+                    <div class="guide-check"><svg viewBox="0 0 24 24" fill="none" stroke="#5a9e00" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg> Elige el formato ideal</div>
+                    <div class="guide-check"><svg viewBox="0 0 24 24" fill="none" stroke="#5a9e00" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg> Calcula tu presupuesto</div>
+                    <div class="guide-check"><svg viewBox="0 0 24 24" fill="none" stroke="#5a9e00" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg> Arma inscripciones y calendario</div>
+                    <div class="guide-check"><svg viewBox="0 0 24 24" fill="none" stroke="#5a9e00" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg> Opera el dia del torneo</div>
+                    <div class="guide-check"><svg viewBox="0 0 24 24" fill="none" stroke="#5a9e00" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg> Publica resultados y ranking</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-tag">FAQ</span><h2 class="section-title">Preguntas Frecuentes</h2></div>
+            <div class="faq-list reveal">
+                <div class="faq-item"><button class="faq-toggle">Como empiezo a usar CourtBit? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Prueba gratis el plan Profesional por 14 dias desde el inicio — sin cobros, sin tarjeta de credito. Explora todas las funciones y pagas solo cuando confirmes que CourtBit se adapta a ti.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Mis jugadores necesitan descargar algo? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Si, pero la app es gratis para ellos en iOS y Android. Desde la app pueden descubrir tus eventos, registrarse, pagar, ver brackets, consultar el calendario de partidos, ingresar resultados y seguir su ranking — sin que tu tengas que gestionar nada de eso manualmente.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Como funcionan los pagos y las comisiones? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Solo los pagos realizados desde la app incluyen comisiones. Los jugadores tambien pueden pagar por transferencia, efectivo o el metodo que tu definas como organizador. Cuando pagan por la app, CourtBit cobra una pequena comision al jugador (5% a 7% segun tu plan) y Stripe cobra sus fees de procesamiento al organizador. Todo queda desglosado en tu dashboard financiero.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Puedo gestionar torneos y ligas al mismo tiempo? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Si. Dependiendo de tu plan puedes tener varios torneos y temporadas de liga activos al mismo tiempo. Todo se gestiona desde el mismo dashboard y tus jugadores ven todos los eventos en una sola app.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Puedo tener mi propia app? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Si. Desarrollamos apps white-label a la medida con tu marca, colores y dominio. Tu comunidad vive en tu propia app. Contactanos para mas informacion.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Quien es dueno de mis datos? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Tu. Toda la informacion pertenece a los organizadores. Puedes exportar tus datos en todo momento para analisis internos o migracion a otras plataformas. Sin candados ni restricciones.</div></div></div>
+                <div class="faq-item"><button class="faq-toggle">Puedo cambiar de plan despues? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Si, puedes subir o bajar de plan en cualquier momento desde tu dashboard. Si subes, se te cobra la diferencia prorrateada. Si bajas, recibes credito a favor para tu siguiente factura. Sin contratos ni permanencias.</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-final">
+        <div class="container">
+            <h2 class="reveal">Listo para gestionar<br>tu comunidad de padel?</h2>
+            <p class="reveal d1">Crea tu primer torneo gratis en minutos. Sin tarjeta, sin compromiso.</p>
+            <div class="cta-final-btns reveal d2">
+                <a href="https://dashboard.courtbit.com.mx" class="btn-cta-lime">Crea tu torneo gratis</a>
+                <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="btn-cta-outline" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    App Store
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&hl=es_MX" class="btn-cta-outline" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 0 1 0 1.732l-2.808 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.3 2.3-8.636-8.632z"/></svg>
+                    Google Play
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">Court<span>Bit</span></div>
+            <div class="footer-right">
+                <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="footer-link" target="_blank">App Store</a>
+                <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&hl=es_MX" class="footer-link" target="_blank">Google Play</a>
+                <a href="/calculadora-torneo/" class="footer-link">Calc. Torneo</a>
+                <a href="/calculadora-liga/" class="footer-link">Calc. Liga</a>
+                <a href="/legal/" class="footer-link">Legal</a>
+                <span class="footer-copy">&copy; 2026 CourtBit</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LEAD MODAL -->
+    <div class="modal-overlay" id="leadModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div id="formContainer">
+                <h2 class="modal-title">Empieza gratis hoy</h2>
+                <p class="modal-subtitle">Dejanos tus datos y te ayudamos a configurar tu primer torneo en minutos.</p>
+                <form class="modal-form" id="leadForm">
+                    <div class="form-group">
+                        <label class="form-label">Nombre completo *</label>
+                        <input type="text" class="form-input" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-input" name="email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Telefono (WhatsApp) *</label>
+                        <input type="tel" class="form-input" name="telefono" placeholder="+52 000 000 0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Club o Liga</label>
+                        <input type="text" class="form-input" name="club" placeholder="Nombre de tu club o liga">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Que te interesa?</label>
+                        <select class="form-input" name="interes">
+                            <option value="">Selecciona una opcion</option>
+                            <option value="torneos">Torneos express</option>
+                            <option value="circuitos">Circuitos y rankings</option>
+                            <option value="ligas">Ligas individuales</option>
+                            <option value="todo">Todo lo anterior</option>
+                            <option value="personalizado">Algo personalizado</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="form-submit" id="submitBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+                        Empezar gratis
+                    </button>
+                    <p class="form-note">Te responderemos por WhatsApp o email. Sin spam.</p>
+                </form>
+            </div>
+            <div id="successContainer" style="display:none;">
+                <div class="form-success">
+                    <div class="form-success-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Solicitud enviada!</h3>
+                    <p>Te contactaremos en menos de 24 horas por WhatsApp o email para agendar tu demo personalizada.</p>
+                    <div class="form-steps">
+                        <div class="form-step"><span class="form-step-num">1</span><span>Revisamos tu informacion</span></div>
+                        <div class="form-step"><span class="form-step-num">2</span><span>Te contactamos para agendar</span></div>
+                        <div class="form-step"><span class="form-step-num">3</span><span>Demo personalizada de 15 min</span></div>
+                    </div>
+                    <button onclick="closeModal()" class="form-submit">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/526221471800?text=Hola%2C%20me%20interesa%20CourtBit" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- MOBILE STICKY CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-cta-inner">
+            <a href="https://dashboard.courtbit.com.mx" class="sticky-cta-primary">Ir al Dashboard</a>
+            <a href="#" class="sticky-cta-secondary" onclick="event.preventDefault();openModal();">Solicitar demo</a>
+        </div>
+    </div>
+
+    <script>
+        const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+        document.querySelectorAll('.faq-toggle').forEach(b=>{b.addEventListener('click',()=>{const i=b.parentElement,o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));if(!o)i.classList.add('open')})});
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const nc=document.querySelector('.nav-center');if(nc)nc.classList.remove('show');const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+        // Sticky CTA — show after scrolling past hero
+        const stickyCta=document.getElementById('stickyCta');
+        const heroEl=document.querySelector('.hero');
+        if(stickyCta&&heroEl){
+            stickyCta.style.transform='translateY(100%)';stickyCta.style.transition='transform 0.3s ease';
+            let stickyVisible=false;
+            window.addEventListener('scroll',()=>{
+                const past=window.scrollY>heroEl.offsetHeight;
+                if(past&&!stickyVisible){stickyCta.style.transform='translateY(0)';stickyVisible=true;}
+                else if(!past&&stickyVisible){stickyCta.style.transform='translateY(100%)';stickyVisible=false;}
+            },{passive:true});
+        }
+
+        // Lead Modal
+        const modal=document.getElementById('leadModal'),form=document.getElementById('leadForm'),formC=document.getElementById('formContainer'),successC=document.getElementById('successContainer');
+        function openModal(){modal.classList.add('active');document.body.style.overflow='hidden';formC.style.display='block';successC.style.display='none';form.reset();}
+        function closeModal(){modal.classList.remove('active');document.body.style.overflow='';}
+        modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+        document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+        form.addEventListener('submit',async e=>{
+            e.preventDefault();
+            const btn=document.getElementById('submitBtn');
+            btn.disabled=true;btn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="30 70" style="animation:spin 1s linear infinite"/></svg> Enviando...';
+            const fd=new FormData(form);
+            const data={nombre:fd.get('nombre'),email:fd.get('email'),telefono:fd.get('telefono'),club:fd.get('club')||'No especificado',interes:fd.get('interes')||'No especificado',fecha:new Date().toISOString(),fuente:'Landing Page ES'};
+            try{const r=await fetch('https://formspree.io/f/meezozgv',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});if(!r.ok)throw new Error();}
+            catch(err){const ls=JSON.parse(localStorage.getItem('courtbit_leads')||'[]');ls.push(data);localStorage.setItem('courtbit_leads',JSON.stringify(ls));}
+            formC.style.display='none';successC.style.display='block';
+            btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg> Empezar gratis';
+        });
+    </script>
+</body>
+</html>
