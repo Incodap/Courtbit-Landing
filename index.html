@@ -1200,11 +1200,26 @@
       border: 1.5px solid rgba(255,255,255,0.18);
       padding: 0;
       overflow: hidden;
+      width: 56px; height: 56px;
+      box-shadow: inset 0 0 0 1px rgba(15, 29, 77, 0.06);
+      flex-shrink: 0;
     }
     .e-test-avatar.has-logo img {
       width: 100%; height: 100%;
       object-fit: contain;
-      padding: 6px;
+      padding: 8px;
+      background: var(--paper);
+    }
+    a.e-test-avatar-link {
+      display: inline-block;
+      transition: transform 200ms;
+      text-decoration: none;
+    }
+    a.e-test-avatar-link:hover { transform: scale(1.06); }
+    a.e-test-avatar-link:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+      border-radius: 999px;
     }
     .e-test-card .name { font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.012em; }
     .e-test-card .role { font-size: 0.8125rem; opacity: 0.78; }
@@ -1960,12 +1975,14 @@
       <div class="e-test-grid">
         <article class="e-test-card">
           <div class="e-test-head">
-            <div class="e-test-avatar has-logo" title="Logo de Liga Municipal Pádel Guaymas">
-              <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/9172bc43-112c-4737-b549-7296559e12a4"
-                   alt="Liga Municipal Pádel Guaymas"
-                   loading="lazy"
-                   onerror="this.parentElement.classList.remove('has-logo')">
-            </div>
+            <a class="e-test-avatar-link" href="https://www.instagram.com/padelguaymas/" target="_blank" rel="noopener" aria-label="Instagram de Liga Municipal Pádel Guaymas">
+              <div class="e-test-avatar has-logo" title="Logo de Liga Municipal Pádel Guaymas — abrir Instagram">
+                <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/9172bc43-112c-4737-b549-7296559e12a4"
+                     alt="Liga Municipal Pádel Guaymas"
+                     loading="lazy"
+                     onerror="this.parentElement.classList.remove('has-logo')">
+              </div>
+            </a>
             <div>
               <div class="name">Liga Municipal Pádel Guaymas</div>
               <div class="role">Organizador · Cliente verificado</div>
@@ -1976,12 +1993,14 @@
         </article>
         <article class="e-test-card">
           <div class="e-test-head">
-            <div class="e-test-avatar has-logo" title="Logo de Club Deportivo Miramar">
-              <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/18794d39-05c1-4781-97c3-f0da3452179b"
-                   alt="Club Deportivo Miramar"
-                   loading="lazy"
-                   onerror="this.parentElement.classList.remove('has-logo')">
-            </div>
+            <a class="e-test-avatar-link" href="https://www.instagram.com/clubdeportivomiramar/" target="_blank" rel="noopener" aria-label="Instagram de Club Deportivo Miramar">
+              <div class="e-test-avatar has-logo" title="Logo de Club Deportivo Miramar — abrir Instagram">
+                <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/18794d39-05c1-4781-97c3-f0da3452179b"
+                     alt="Club Deportivo Miramar"
+                     loading="lazy"
+                     onerror="this.parentElement.classList.remove('has-logo')">
+              </div>
+            </a>
             <div>
               <div class="name">Club Deportivo Miramar</div>
               <div class="role">Club · Cliente verificado</div>
@@ -1992,12 +2011,14 @@
         </article>
         <article class="e-test-card">
           <div class="e-test-head">
-            <div class="e-test-avatar has-logo" title="Logo de One Padel Guaymas">
-              <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/b32976bf-1ef7-449b-91d6-b7e236cce0ea"
-                   alt="One Padel Guaymas"
-                   loading="lazy"
-                   onerror="this.parentElement.classList.remove('has-logo')">
-            </div>
+            <a class="e-test-avatar-link" href="https://www.instagram.com/one.padelpark/" target="_blank" rel="noopener" aria-label="Instagram de One Padel Guaymas">
+              <div class="e-test-avatar has-logo" title="Logo de One Padel Guaymas — abrir Instagram">
+                <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/b32976bf-1ef7-449b-91d6-b7e236cce0ea"
+                     alt="One Padel Guaymas"
+                     loading="lazy"
+                     onerror="this.parentElement.classList.remove('has-logo')">
+              </div>
+            </a>
             <div>
               <div class="name">One Padel Guaymas</div>
               <div class="role">Club · Cliente verificado</div>
@@ -2008,12 +2029,14 @@
         </article>
         <article class="e-test-card">
           <div class="e-test-head">
-            <div class="e-test-avatar has-logo" title="Logo de DÚO PÁDEL PARK">
-              <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e884f2a0-08da-4e4f-9c7c-f457bc83cb7c"
-                   alt="DÚO PÁDEL PARK"
-                   loading="lazy"
-                   onerror="this.parentElement.classList.remove('has-logo')">
-            </div>
+            <a class="e-test-avatar-link" href="https://www.instagram.com/duopadelparkobr/" target="_blank" rel="noopener" aria-label="Instagram de DÚO PÁDEL PARK">
+              <div class="e-test-avatar has-logo" title="Logo de DÚO PÁDEL PARK — abrir Instagram">
+                <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e884f2a0-08da-4e4f-9c7c-f457bc83cb7c"
+                     alt="DÚO PÁDEL PARK"
+                     loading="lazy"
+                     onerror="this.parentElement.classList.remove('has-logo')">
+              </div>
+            </a>
             <div>
               <div class="name">DÚO PÁDEL PARK</div>
               <div class="role">Club · Cliente verificado</div>
@@ -2024,12 +2047,14 @@
         </article>
         <article class="e-test-card">
           <div class="e-test-head">
-            <div class="e-test-avatar has-logo" title="Logo de GM Padel">
-              <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e0240092-8a14-420d-9fb2-632f341f9314"
-                   alt="GM Padel"
-                   loading="lazy"
-                   onerror="this.parentElement.classList.remove('has-logo')">
-            </div>
+            <a class="e-test-avatar-link" href="https://www.instagram.com/geermanmilla/" target="_blank" rel="noopener" aria-label="Instagram de GM Padel">
+              <div class="e-test-avatar has-logo" title="Logo de GM Padel — abrir Instagram">
+                <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e0240092-8a14-420d-9fb2-632f341f9314"
+                     alt="GM Padel"
+                     loading="lazy"
+                     onerror="this.parentElement.classList.remove('has-logo')">
+              </div>
+            </a>
             <div>
               <div class="name">GM Padel</div>
               <div class="role">Academia · Cliente verificado</div>
