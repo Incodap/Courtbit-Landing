@@ -242,7 +242,10 @@
       background: var(--paper);
       border: 1.5px solid rgba(255,255,255,0.18);
       overflow: hidden; flex-shrink: 0;
+      display: block;
+      transition: transform 180ms, border-color 180ms;
     }
+    a.e-test-avatar:hover { transform: scale(1.06); border-color: rgba(184,240,43,0.5); }
     .e-test-avatar img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
     .e-test-card .stars { color: var(--lime); letter-spacing: 3px; font-size: 1.05rem; margin-bottom: 12px; }
     .e-test-card blockquote { font-style: italic; opacity: 0.94; margin: 0; font-size: 1.1rem; line-height: 1.5; }
@@ -452,7 +455,7 @@
     </div>
   </section>
 
-  <!-- 4. Testimonial (1 card, real Supabase logo: One Padel Guaymas) -->
+  <!-- 4. Testimonial (1 card, real Supabase logo: PADEL FACTORY GDL) -->
   <section class="e-testimonial">
     <div class="container">
       <div class="header-wrap">
@@ -461,14 +464,14 @@
       </div>
       <article class="e-test-card">
         <header class="e-test-head">
-          <div class="e-test-avatar">
-            <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/b32976bf-1ef7-449b-91d6-b7e236cce0ea"
-                 alt="One Padel Guaymas" loading="lazy"
+          <a href="https://www.instagram.com/padelfactorygdl/" target="_blank" rel="noopener" class="e-test-avatar" aria-label="PADEL FACTORY GDL en Instagram">
+            <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/dc68e9ba-edb3-449b-92ef-2d081021965e?v=1777882466949"
+                 alt="PADEL FACTORY GDL" loading="lazy"
                  onerror="this.style.display='none'">
-          </div>
+          </a>
           <div>
-            <strong>One Padel Guaymas</strong>
-            <small>Academia · Cliente verificado</small>
+            <strong>PADEL FACTORY GDL</strong>
+            <small>Academia · Guadalajara</small>
           </div>
         </header>
         <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
