@@ -394,10 +394,159 @@
         }
         .b-minor-card:hover .b-link { gap: 10px; }
 
+        /* ═══════════════════════════════════════════════════════ */
+        /* Free-tier dual-card layout (Reservas + Academias)     */
+        /* Two equal saturated-blue cards side-by-side            */
+        /* ═══════════════════════════════════════════════════════ */
+        .b-free-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .b-free-card {
+            background: var(--blue);
+            color: var(--paper);
+            border-radius: 24px;
+            padding: 44px 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 24px 48px -16px rgba(46, 89, 251, 0.4);
+            display: flex;
+            flex-direction: column;
+        }
+        .b-free-card::before {
+            content: '';
+            position: absolute;
+            top: -40%; right: -15%;
+            width: 70%; height: 180%;
+            background: var(--lime);
+            opacity: 0.18;
+            transform: skewX(-15deg) rotate(8deg);
+            pointer-events: none;
+        }
+        .b-free-card > * { position: relative; z-index: 2; }
+        .b-free-card .ribbon {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: var(--lime);
+            color: var(--navy);
+            font-size: 0.6875rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            align-self: flex-start;
+        }
+        .b-free-card h2 {
+            font-family: 'DM Sans', system-ui, sans-serif;
+            font-size: clamp(1.875rem, 3.4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.028em;
+            line-height: 1.05;
+            margin: 0 0 8px;
+            color: var(--paper);
+        }
+        .b-free-card .b-price-display {
+            font-family: 'DM Sans', system-ui, sans-serif;
+            font-size: clamp(3.5rem, 6.5vw, 4.75rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: var(--lime);
+            margin: 6px 0 4px;
+        }
+        .b-free-card .b-price-display small {
+            font-size: 1.0625rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.78);
+            letter-spacing: -0.01em;
+        }
+        .b-free-card .b-fee-note {
+            font-size: 0.9375rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0 0 20px;
+        }
+        .b-free-card .b-fee-note b { color: var(--lime); font-weight: 700; }
+        .b-free-card .b-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .b-free-card .b-bullets li {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9375rem;
+            color: rgba(255, 255, 255, 0.92);
+        }
+        .b-free-card .b-bullets li .check {
+            width: 22px; height: 22px;
+            border-radius: 999px;
+            background: var(--lime);
+            color: var(--navy);
+            display: inline-flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.8125rem;
+            flex-shrink: 0;
+        }
+        .b-free-card .b-bullets li .check::before { content: '✓'; }
+        .b-free-card .b-cta-row {
+            display: flex; gap: 10px; flex-wrap: wrap;
+            margin-top: auto;
+        }
+        .b-free-card .p-btn-ghost {
+            background: transparent;
+            color: var(--paper);
+            border-color: rgba(255, 255, 255, 0.32);
+        }
+        .b-free-card .p-btn-ghost:hover {
+            border-color: var(--paper);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* ═══════════════════════════════════════════════════════ */
+        /* Divider band between FREE section and Competencias    */
+        /* ═══════════════════════════════════════════════════════ */
+        .b-divider {
+            margin: 56px auto 0;
+            max-width: 760px;
+            text-align: center;
+            padding: 24px 32px;
+            background: var(--bg-tint, #f4f6ff);
+            border: 1.5px dashed var(--border, #d6dbe8);
+            border-radius: 18px;
+        }
+        .b-divider .arrow {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: var(--blue);
+            margin-bottom: 4px;
+        }
+        .b-divider strong {
+            display: block;
+            font-family: 'DM Sans', system-ui, sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            letter-spacing: -0.012em;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .b-divider span {
+            font-size: 0.9375rem;
+            color: var(--text-muted, #6b7191);
+        }
+
         /* Variant B mobile */
         @media (max-width: 900px) {
             .b-hero-card { grid-template-columns: 1fr; gap: 32px; padding: 36px 28px; }
             .b-minor-grid { grid-template-columns: 1fr; }
+            .b-free-grid { grid-template-columns: 1fr; }
+            .b-free-card { padding: 36px 28px; }
             .b-breakdown .b-number { font-size: 3.5rem; }
         }
 
@@ -890,72 +1039,61 @@
                     <p class="b-pricing-desc">Reservas y Academias son gratis para siempre. CourtBit cobra 4% al pagador (jugador o alumno) solo cuando paga por la app, nunca al club ni al instructor. Competencias tiene 4 planes según tu volumen de torneos.</p>
                 </div>
 
-                <div class="b-stack">
-                    <!-- Hero card: Reservas $0 (saturated blue, full-width) -->
-                    <article class="b-hero-card reveal">
-                        <div>
-                            <span class="ribbon">★ Reservas para clubes</span>
-                            <h2>Tu sistema de reservas, <em>$0 al mes</em>.</h2>
-                            <p class="b-tagline">Calendario multi-cancha, app de socios, pagos directos a tu Stripe. Sin renta mensual, sin contratos, para siempre.</p>
-                            <ul class="b-bullets">
-                                <li><span class="check"></span> Setup en 10 minutos · Listo el mismo día</li>
-                                <li><span class="check"></span> Pagos directos a tu Stripe · CourtBit nunca toca el dinero</li>
-                                <li><span class="check"></span> Sin costo por cancha, ni por reserva, ni por sede</li>
-                                <li><span class="check"></span> App nativa para socios (iOS + Android) incluida</li>
-                            </ul>
-                            <div class="b-ctas">
-                                <a href="/auth.html" class="p-btn p-btn-lime">Empezar gratis →</a>
-                                <a href="/#contact" class="p-btn p-btn-ghost">Hablar con ventas</a>
-                            </div>
+                <!-- ═══ SECTION 1: GRATIS PARA SIEMPRE ═══ -->
+                <!-- Two equal saturated-blue cards: Reservas + Academias both $0 -->
+                <div class="b-free-grid reveal">
+                    <article class="b-free-card">
+                        <span class="ribbon">★ Para clubes</span>
+                        <h2>Reservas</h2>
+                        <div class="b-price-display">$0 <small>/mes para siempre</small></div>
+                        <p class="b-fee-note">Solo <b>4% al jugador</b> cuando paga reservas por la app. Sin renta, sin contratos.</p>
+                        <ul class="b-bullets">
+                            <li><span class="check"></span> Calendario multi-cancha · multi-sede</li>
+                            <li><span class="check"></span> App nativa para socios (iOS + Android)</li>
+                            <li><span class="check"></span> Pagos directos a tu Stripe</li>
+                            <li><span class="check"></span> Setup en 10 minutos</li>
+                        </ul>
+                        <div class="b-cta-row">
+                            <a href="/auth.html" class="p-btn p-btn-lime">Empezar gratis →</a>
+                            <a href="/clubes/" class="p-btn p-btn-ghost">Ver detalles</a>
                         </div>
-                        <aside class="b-breakdown">
-                            <h4>Tu costo mensual</h4>
-                            <div class="b-number">$0 <small>/mes</small></div>
-                            <strong>Tu costo mensual: $0</strong>
-                            <ul>
-                                <li><b>Reservas:</b> $0 al club, para siempre</li>
-                                <li><b>Stripe (procesador):</b> ~3.6% + IVA</li>
-                                <li><b>CourtBit:</b> 4% al jugador en pagos por app</li>
-                                <li><b>Setup, soporte, actualizaciones:</b> incluidos</li>
-                            </ul>
-                        </aside>
                     </article>
 
-                    <!-- Two minor cards: Academias + Competencias -->
-                    <div class="b-minor-grid reveal">
-                        <a class="b-minor-card" href="/academias/">
-                            <div class="label">Para entrenadores · Gratis</div>
-                            <h3>Academias</h3>
-                            <div class="price-line">
-                                <span class="b-price-minor">$0</span>
-                                <span class="price-unit">/ mes para siempre</span>
-                            </div>
-                            <p>Inscripciones, cobros recurrentes, asistencia y comunicación con padres. <b>4% al alumno</b> solo cuando paga colegiatura por la app.</p>
-                            <span class="b-link">Ver detalles →</span>
-                        </a>
-                        <a class="b-minor-card" href="/competencias/">
-                            <div class="label">Para organizadores · 4 planes</div>
-                            <h3>Competencias</h3>
-                            <div class="price-line">
-                                <span class="b-price-minor">Desde $0</span>
-                                <span class="price-unit">· 4 planes</span>
-                            </div>
-                            <p>Free, Express, Profesional y Enterprise. Brackets automáticos, ranking por puntos y Live Control en cancha. Empieza gratis y crece según tu volumen.</p>
-                            <span class="b-link">Ver planes →</span>
-                        </a>
-                    </div>
+                    <article class="b-free-card">
+                        <span class="ribbon">★ Para entrenadores</span>
+                        <h2>Academias</h2>
+                        <div class="b-price-display">$0 <small>/mes para siempre</small></div>
+                        <p class="b-fee-note">Solo <b>4% al alumno</b> cuando paga colegiatura por la app. Sin renta, sin contratos.</p>
+                        <ul class="b-bullets">
+                            <li><span class="check"></span> Inscripciones online y cobros recurrentes</li>
+                            <li><span class="check"></span> Asistencia y comunicación con padres</li>
+                            <li><span class="check"></span> App para alumnos y padres</li>
+                            <li><span class="check"></span> Reportes de ingresos y operación</li>
+                        </ul>
+                        <div class="b-cta-row">
+                            <a href="/auth.html" class="p-btn p-btn-lime">Empezar gratis →</a>
+                            <a href="/academias/" class="p-btn p-btn-ghost">Ver detalles</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ═══ DIVIDER BAND — separates FREE from Competencias ═══ -->
+                <div class="b-divider reveal">
+                    <span class="arrow">↓</span>
+                    <strong>¿Solo necesitas reservas o academia? Ya tienes lo que necesitas.</strong>
+                    <span>Sigue scrolleando solo si organizas torneos.</span>
                 </div>
             </div>
         </section>
 
         <!-- ════════════════════════════════════════════════════ -->
-        <!-- Tier table intro                                     -->
+        <!-- SECTION 2: ¿Organizas torneos? — Competencias gated  -->
         <!-- ════════════════════════════════════════════════════ -->
         <section class="tier-table-intro">
             <div class="container reveal">
-                <span class="p-eyebrow"><span class="dot"></span> Competencias</span>
-                <h2>Compara los <em>4 planes</em> de Competencias</h2>
-                <p>Para organizadores que necesitan más control: brackets, calendario, ranking por puntos, equipos. Elige el plan que crece con tu liga o torneo.</p>
+                <span class="p-eyebrow"><span class="dot"></span> Opcional · Solo para organizadores</span>
+                <h2>¿Organizas <em>torneos</em>?</h2>
+                <p>Si solo gestionas reservas o tu academia, las dos secciones de arriba ya cubren tu negocio — todo gratis. Competencias es un módulo opcional para clubes y operadores que necesitan brackets automáticos, calendario de jornadas, ranking por puntos y Live Control en cancha. Tiene 4 planes según tu volumen.</p>
             </div>
         </section>
 
