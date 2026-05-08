@@ -83,21 +83,33 @@
 
     <style>
         :root {
-            --lime: #B8F02B;
-            --lime-hover: #a5d827;
-            --lime-soft: #e8faa0;
-            --lime-bg: #f4fdd6;
-            --navy: #0f1d4d;
-            --navy-light: #1a2e6b;
+            /* Variant E "Playtomic-grade Bold" canonical palette (synced with marketing.css) */
             --blue: #2e59fb;
-            --blue-soft: #eef2ff;
-            --white: #ffffff;
-            --bg: #fafbfc;
-            --bg-warm: #f5f6f8;
-            --text: #1a1f36;
-            --text-secondary: #5a6178;
-            --text-muted: #8b92a8;
-            --border: #e4e7ec;
+            --blue-deep: #1a45e0;
+            --blue-soft: #5a7afc;
+            --blue-mist: #eaf0ff;
+            --navy: #0f1d4d;
+            --navy-950: #060a26;
+            --lime: #B8F02B;
+            --lime-soft: #e9fbb8;
+            --lime-deep: #9fd121;
+            --paper: #ffffff;
+            --bg: #fbfbfd;
+            --bg-tint: #f4f6ff;
+            --text: #0f1d4d;
+            --text-soft: #3a4262;
+            --text-muted: #6b7191;
+            --text-faint: #9aa0bb;
+            --border: #e6e8ef;
+            --hairline: rgba(15, 29, 77, 0.08);
+
+            /* Aliases — preserve existing variable names used throughout this file */
+            --lime-hover: var(--lime-deep);
+            --lime-bg: #f4fdd6;
+            --navy-light: #1a2c6e;
+            --white: var(--paper);
+            --bg-warm: var(--bg-tint);
+            --text-secondary: var(--text-soft);
             --border-light: #f0f1f4;
             --shadow-sm: 0 1px 3px rgba(15,29,77,0.06);
             --shadow-md: 0 4px 12px rgba(15,29,77,0.08);
@@ -106,6 +118,14 @@
             --radius-lg: 24px;
             --radius-full: 100px;
             --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Variant E italic-lime keyword pattern — used by <em> wraps in headings */
+        h1 em, h2 em, h3 em {
+            font-style: italic;
+            color: var(--lime-deep);
+            font-weight: 800;
+            font-family: 'DM Sans', system-ui, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -228,8 +248,9 @@
             color: var(--navy);
         }
         .hero h1 .highlight {
-            background: linear-gradient(135deg, #6dbf00 0%, #4a9e00 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            font-style: italic;
+            color: var(--lime-deep);
+            font-weight: 800;
         }
         .hero-sub {
             font-size: 1.125rem; color: var(--text-secondary);
@@ -922,7 +943,7 @@
     <!-- TWO PILLARS -->
     <section class="section section-gray" id="funciones">
         <div class="container">
-            <div class="section-header reveal"><span class="section-tag">Dos Productos, Una Plataforma</span><h2 class="section-title">Todo lo que un organizador necesita</h2><p class="section-desc">Gestiona torneos y ligas individuales desde un solo dashboard.</p></div>
+            <div class="section-header reveal"><span class="section-tag">Dos Productos, Una Plataforma</span><h2 class="section-title">Todo lo que un <em>organizador</em> necesita</h2><p class="section-desc">Gestiona torneos y ligas individuales desde un solo dashboard.</p></div>
             <div class="pillars-grid">
                 <div class="pillar-card reveal">
                     <div class="pillar-header"><div class="pillar-icon tournaments"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div><span class="pillar-name">Torneos</span></div>
@@ -1181,7 +1202,7 @@
     <!-- CIRCUIT RANKINGS -->
     <section class="section">
         <div class="container">
-            <div class="section-header reveal"><span class="section-tag">Ranking de Circuito</span><h2 class="section-title">Construye tu circuito. Domina tu ranking.</h2><p class="section-desc">Agrega resultados de todos tus torneos en un solo ranking — igual que los circuitos profesionales.</p></div>
+            <div class="section-header reveal"><span class="section-tag">Ranking de Circuito</span><h2 class="section-title">Construye tu circuito. Domina tu <em>ranking</em>.</h2><p class="section-desc">Agrega resultados de todos tus torneos en un solo ranking — igual que los circuitos profesionales.</p></div>
             <div class="ranking-wrapper reveal">
                 <div class="ranking-card">
                     <div class="ranking-header-bar"><span>Ranking de Circuito</span><span class="season-tag">Temporada 2026</span></div>
@@ -1259,7 +1280,7 @@
     <!-- PRICING -->
     <section class="section" id="precios">
         <div class="container">
-            <div class="section-header reveal"><span class="section-tag">Precios</span><h2 class="section-title">Empieza gratis. Escala cuando estes listo.</h2></div>
+            <div class="section-header reveal"><span class="section-tag">Precios</span><h2 class="section-title">Empieza <em>gratis</em>. Escala cuando estes listo.</h2></div>
             <div class="pricing-grid">
                 <div class="pricing-card reveal">
                     <div class="pricing-name">Gratis</div><div class="pricing-price">$0</div><div class="pricing-desc">Para probar la plataforma</div>
@@ -1315,7 +1336,12 @@
                     <a href="#" class="pricing-btn outline" onclick="event.preventDefault();openModal();">Contactar</a>
                 </div>
             </div>
-            <p style="text-align:center; font-size:0.8125rem; color:var(--text-muted); margin-top:20px; max-width:540px; margin-left:auto; margin-right:auto; line-height:1.6;">* Aplica solo a pagos realizados desde la app. La comision de plataforma la paga el jugador. Las comisiones de Stripe se deducen del pago al organizador.</p>
+            <p style="text-align:center; font-size:0.8125rem; color:var(--text-muted); margin-top:20px; max-width:620px; margin-left:auto; margin-right:auto; line-height:1.6;">Todos los precios + IVA. * Aplica solo a pagos realizados desde la app. CourtBit cobra la comision al jugador, nunca al organizador. Las comisiones de Stripe se deducen del pago al organizador.</p>
+            <div style="text-align:center; margin-top:24px;">
+                <a href="/pricing/" class="pricing-btn outline" style="display:inline-flex; align-items:center; gap:8px;">Ver planes y precios completos
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
         </div>
     </section>
 
