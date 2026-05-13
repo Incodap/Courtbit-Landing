@@ -1,0 +1,2652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f1d4d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:8080 https://courtbit-api-production.up.railway.app https://courtbit-develop-production.up.railway.app; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>Torneo — CourtBit</title>
+    <meta name="description" content="Detalle del torneo: rol de juegos, categorías y resultados en tiempo real.">
+    <meta property="og:title" content="Torneo — CourtBit">
+    <meta property="og:description" content="Rol de juegos, categorías y resultados.">
+    <meta property="og:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="../Assets/courtbit-logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=JetBrains+Mono:wght@500;700&display=swap">
+    <style>
+        :root {
+            --blue: #2e59fb;
+            --blue-deep: #1a45e0;
+            --blue-soft: #5a7afc;
+            --blue-mist: #eaf0ff;
+            --navy: #0f1d4d;
+            --navy-950: #060a26;
+            --lime: #B8F02B;
+            --lime-soft: #e9fbb8;
+            --paper: #ffffff;
+            --bg: #fbfbfd;
+            --bg-tint: #f4f6ff;
+            --text: #0f1d4d;
+            --text-soft: #3a4262;
+            --text-muted: #6b7191;
+            --text-faint: #9aa0bb;
+            --border: #e6e8ef;
+            --border-soft: #eef0f6;
+            --success: #16a34a;
+            --warning: #d97706;
+            --shadow-sm: 0 1px 2px 0 rgba(15, 29, 77, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(15, 29, 77, 0.10);
+            --shadow-lg: 0 10px 15px -3px rgba(15, 29, 77, 0.10);
+            --font-display: 'DM Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+        body {
+            font-family: var(--font-display), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.55;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overscroll-behavior-y: contain;
+        }
+        button, input, select, textarea {
+            font-family: inherit;
+            -webkit-tap-highlight-color: transparent;
+        }
+        button { -webkit-touch-callout: none; user-select: none; }
+        a, button { touch-action: manipulation; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        @supports (padding: max(0px)) {
+            .container {
+                padding-left: max(24px, env(safe-area-inset-left));
+                padding-right: max(24px, env(safe-area-inset-right));
+            }
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: saturate(180%) blur(12px);
+            -webkit-backdrop-filter: saturate(180%) blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            padding-top: max(14px, env(safe-area-inset-top));
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 44px;
+        }
+        @supports (padding: max(0px)) {
+            .nav-container {
+                padding-left: max(24px, env(safe-area-inset-left));
+                padding-right: max(24px, env(safe-area-inset-right));
+            }
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--navy);
+        }
+        .logo span { color: var(--blue); }
+        .back-link {
+            color: var(--blue-deep);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .nav-right { display: flex; align-items: center; gap: 14px; }
+        .login-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            min-height: 40px;
+            border-radius: 999px;
+            background: var(--navy);
+            color: var(--paper);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: transform 120ms, background 150ms;
+        }
+        .login-btn:hover { background: var(--blue-deep); }
+        .login-btn:active { transform: scale(0.96); }
+        .user-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 6px 6px 12px;
+            border-radius: 999px;
+            background: var(--bg-tint);
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .user-chip .avatar {
+            width: 28px; height: 28px;
+            border-radius: 999px;
+            background: var(--blue);
+            color: var(--paper);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .logout-link {
+            background: none;
+            border: none;
+            font-family: inherit;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .logout-link:hover { color: var(--text); }
+
+        /* Subtle login hint (when not logged in) */
+        .login-hint {
+            background: var(--bg-tint);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .login-hint a {
+            color: var(--blue-deep);
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .login-hint a:hover { text-decoration: underline; }
+        .login-hint::before {
+            content: "👋";
+            font-size: 1.1rem;
+        }
+
+        /* Link account banner */
+        .link-banner {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #fbbf24;
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 24px;
+        }
+        .link-banner h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #78350f;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .link-banner h3::before {
+            content: "🔗";
+            font-size: 1.1rem;
+        }
+        .link-banner > p {
+            color: #92400e;
+            font-size: 0.88rem;
+            margin: 0 0 12px;
+        }
+        .link-item {
+            background: var(--paper);
+            border: 1px solid #fde68a;
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .link-item-info { flex: 1; min-width: 240px; }
+        .link-item-name {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        .link-item-meta {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            margin-top: 3px;
+        }
+        .link-item-fuzzy {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-left: 6px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .link-item-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            min-height: 40px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: background 150ms, border-color 150ms, transform 120ms;
+        }
+        .link-btn:active { transform: scale(0.96); }
+        .link-btn-yes { background: var(--blue); color: var(--paper); }
+        .link-btn-yes:hover { background: var(--blue-deep); }
+        .link-btn-yes:disabled { background: var(--success); cursor: default; }
+        .link-btn-no {
+            background: var(--paper);
+            color: var(--text-soft);
+            border-color: var(--border);
+        }
+        .link-btn-no:hover { border-color: var(--text-muted); color: var(--text); }
+        .link-feedback {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .link-feedback::before { content: "✓"; }
+
+        .state {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 48px 24px;
+        }
+        .state h2 { font-size: 1.5rem; margin-bottom: 8px; }
+        .state p { color: var(--text-muted); max-width: 480px; }
+        .spinner {
+            width: 32px; height: 32px;
+            border: 3px solid var(--blue-mist);
+            border-top-color: var(--blue);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 16px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .hero {
+            background: var(--paper);
+            border-bottom: 1px solid var(--border);
+            padding: 48px 0 32px;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+        .hero-flyer {
+            aspect-ratio: 1 / 1;
+            background: var(--bg-tint);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+        .hero-flyer img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-flyer-fallback { font-size: 4rem; color: var(--text-faint); }
+        .hero-info h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            line-height: 1.15;
+        }
+        .organizer-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: var(--blue-mist);
+            color: var(--blue-deep);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .organizer-pill img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 28px;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+        }
+        .hero-meta div { display: flex; align-items: center; gap: 8px; }
+        .hero-meta svg { width: 18px; height: 18px; color: var(--blue); flex-shrink: 0; }
+        .hero-description {
+            margin-top: 16px;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+        }
+        .tz-note {
+            margin-top: 10px;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tz-note::before {
+            content: "🕒";
+            font-size: 0.9rem;
+        }
+
+        .tabs {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: saturate(180%) blur(12px);
+            -webkit-backdrop-filter: saturate(180%) blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: var(--nav-h, 67px);
+            z-index: 50;
+        }
+        .tabs-inner {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .tabs-inner::-webkit-scrollbar { display: none; }
+        .tab-btn {
+            flex-shrink: 0;
+            padding: 16px 6px;
+            margin-right: 24px;
+            min-height: 48px;
+            background: transparent;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: color 200ms, border-bottom-color 200ms;
+        }
+        .tab-btn:hover { color: var(--text); }
+        .tab-btn.active { color: var(--blue-deep); border-bottom-color: var(--blue); }
+        .tab-btn:active { color: var(--blue); }
+
+        section.panel { padding: 32px 0 64px; }
+        .panel-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .panel-subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Search */
+        .search-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            flex: 1;
+            min-width: 240px;
+            min-height: 44px;
+            padding: 12px 16px 12px 42px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--paper);
+            font-size: 1rem;
+            color: var(--text);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236b7191' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 14px center;
+            transition: border-color 150ms;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px rgba(46, 89, 251, 0.12);
+        }
+        .search-clear {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 10px 16px;
+            min-height: 44px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            cursor: pointer;
+            transition: transform 120ms, border-color 150ms;
+        }
+        .search-clear:active { transform: scale(0.96); border-color: var(--text-muted); }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .filter-chip {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 9px 16px;
+            min-height: 38px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            cursor: pointer;
+            transition: background 150ms, border-color 150ms, transform 120ms;
+            white-space: nowrap;
+        }
+        .filter-chip:hover { border-color: var(--text-muted); }
+        .filter-chip:active { transform: scale(0.96); }
+        .filter-chip.active { background: var(--navy); color: var(--paper); border-color: var(--navy); }
+
+        /* Mis partidos block */
+        .my-block {
+            background: linear-gradient(135deg, var(--blue-mist), #f8faff);
+            border: 1px solid rgba(46, 89, 251, 0.18);
+            border-radius: 18px;
+            padding: 24px 24px 32px;
+            margin-bottom: 32px;
+        }
+        .my-block .panel-title { color: var(--navy); }
+        .my-block .panel-title .badge {
+            background: var(--blue);
+            color: var(--paper);
+            font-size: 0.7rem;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+        .sub-section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 20px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sub-section-title:first-child { margin-top: 4px; }
+        .sub-section-title .count {
+            background: var(--paper);
+            color: var(--text-soft);
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .past-section { opacity: 0.85; }
+        .past-section .match-card { background: var(--bg-tint); }
+
+        .day-block { margin-bottom: 32px; }
+        .day-header {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-soft);
+            text-transform: capitalize;
+        }
+
+        .match-list { display: flex; flex-direction: column; gap: 8px; }
+        .match-card {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: grid;
+            grid-template-columns: 96px 1fr 1fr 90px;
+            gap: 16px;
+            align-items: center;
+            transition: border-color 150ms, transform 120ms;
+        }
+        .match-card:hover { border-color: var(--blue-soft); }
+        .match-card:active { transform: scale(0.997); }
+        .match-card.mine { border-color: var(--blue); border-width: 2px; background: #f7faff; }
+        .match-time {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text);
+            font-family: var(--font-mono);
+            line-height: 1.2;
+        }
+        .match-time .day-mini {
+            display: block;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            font-family: var(--font-display);
+        }
+        .match-time .court {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-top: 4px;
+            font-family: var(--font-display);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .match-team {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .match-team .player {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .match-team .player.empty { color: var(--text-faint); font-style: italic; font-weight: 400; }
+        .match-team .player mark { background: var(--lime-soft); color: var(--text); padding: 0 2px; border-radius: 3px; }
+        .match-team.winner .player { color: var(--success); }
+        .match-team .seed {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            background: var(--bg-tint);
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-right: 6px;
+        }
+        .match-score {
+            text-align: right;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+        .match-score .score-line { display: block; font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+        .match-score.pending { color: var(--text-faint); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+        .match-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+        .match-card.mine .match-tag::after {
+            content: "Tú juegas";
+            display: inline-block;
+            margin-left: 6px;
+            color: var(--blue-deep);
+            background: var(--blue-mist);
+            padding: 1px 6px;
+            border-radius: 4px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 32px 20px;
+            color: var(--text-muted);
+            background: var(--paper);
+            border: 1px dashed var(--border);
+            border-radius: 14px;
+            font-size: 0.92rem;
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+        .cat-card {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: border-color 150ms;
+        }
+        .cat-card.expanded { border-color: var(--blue-soft); }
+        .cat-header {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            color: inherit;
+            transition: background 150ms;
+        }
+        .cat-header:hover { background: var(--bg); }
+        .cat-header:active { background: var(--bg-tint); }
+        .cat-header-text { flex: 1; min-width: 0; }
+        .cat-name { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
+        .cat-meta { color: var(--text-muted); font-size: 0.85rem; }
+        .cat-meta strong { color: var(--text); font-weight: 700; }
+        .cat-chevron {
+            width: 20px; height: 20px;
+            color: var(--text-muted);
+            transition: transform 200ms;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+        .cat-card.expanded .cat-chevron { transform: rotate(180deg); color: var(--blue-deep); }
+
+        .cat-teams {
+            border-top: 1px solid var(--border-soft);
+            background: var(--bg);
+            padding: 8px 0;
+            display: none;
+        }
+        .cat-card.expanded .cat-teams { display: block; }
+        .cat-teams-empty {
+            padding: 24px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .pair-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 20px;
+            min-height: 56px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+        .pair-row:last-child { border-bottom: none; }
+        .pair-avatars {
+            display: flex;
+            flex-shrink: 0;
+        }
+        .pair-avatars .avatar { margin-left: -10px; }
+        .pair-avatars .avatar:first-child { margin-left: 0; }
+        .avatar {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            background: var(--blue-mist);
+            color: var(--blue-deep);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            border: 2px solid var(--paper);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            position: relative;
+        }
+        .avatar.has-photo { background-color: var(--bg-tint); color: transparent; }
+        .avatar img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+            display: block;
+        }
+        .avatar.linked::after {
+            content: '';
+            position: absolute;
+            right: -1px;
+            bottom: -1px;
+            width: 10px;
+            height: 10px;
+            background: var(--success);
+            border: 2px solid var(--paper);
+            border-radius: 50%;
+        }
+        .pair-names {
+            flex: 1;
+            min-width: 0;
+            line-height: 1.3;
+        }
+        .pair-names .player-name {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .pair-names .player-name + .player-name { margin-top: 2px; }
+
+        /* Auth modal (bottom sheet on mobile, centered on desktop) */
+        .auth-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 29, 77, 0.45);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 200;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms;
+        }
+        .auth-backdrop.open { opacity: 1; pointer-events: auto; }
+        body.modal-open { overflow: hidden; }
+
+        .auth-sheet {
+            background: var(--paper);
+            width: 100%;
+            max-width: 460px;
+            border-radius: 24px 24px 0 0;
+            padding: 8px 24px 24px;
+            padding-bottom: max(24px, env(safe-area-inset-bottom));
+            max-height: 92vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -20px 60px -10px rgba(15, 29, 77, 0.25);
+        }
+        .auth-backdrop.open .auth-sheet { transform: translateY(0); }
+        .auth-handle {
+            width: 44px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 999px;
+            margin: 8px auto 16px;
+        }
+        .auth-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .auth-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+        .auth-close {
+            background: var(--bg);
+            border: none;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 150ms;
+        }
+        .auth-close:hover { background: var(--bg-tint); }
+        .auth-close:active { transform: scale(0.94); }
+        .auth-subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .auth-tabs {
+            display: flex;
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 20px;
+            gap: 4px;
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 10px 14px;
+            min-height: 40px;
+            background: transparent;
+            border: none;
+            border-radius: 9px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            cursor: pointer;
+            transition: background 150ms, color 150ms;
+        }
+        .auth-tab.active {
+            background: var(--paper);
+            color: var(--navy);
+            box-shadow: var(--shadow-sm);
+        }
+        .auth-form { display: flex; flex-direction: column; gap: 12px; }
+        .auth-form.hidden { display: none; }
+        .auth-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .auth-field { display: flex; flex-direction: column; gap: 6px; }
+        .auth-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            letter-spacing: 0.02em;
+        }
+        .auth-input {
+            padding: 12px 14px;
+            min-height: 44px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--paper);
+            font-size: 1rem;
+            color: var(--text);
+            transition: border-color 150ms, box-shadow 150ms;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .auth-input:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px rgba(46, 89, 251, 0.12);
+        }
+        .auth-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .auth-error.hidden { display: none; }
+        .auth-submit {
+            margin-top: 6px;
+            padding: 13px 18px;
+            min-height: 48px;
+            background: var(--navy);
+            color: var(--paper);
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 150ms, transform 120ms, opacity 150ms;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .auth-submit:hover { background: var(--blue-deep); }
+        .auth-submit:active { transform: scale(0.98); }
+        .auth-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        .auth-submit-spinner {
+            display: inline-block;
+            width: 16px; height: 16px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-top-color: var(--paper);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        .auth-foot {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 14px;
+        }
+
+        /* Phone field with country prefix */
+        .phone-group {
+            display: flex;
+            gap: 8px;
+        }
+        .phone-prefix {
+            min-width: 78px;
+            padding: 12px 12px;
+            min-height: 44px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--paper);
+            font-size: 1rem;
+            color: var(--text);
+            font-family: inherit;
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b7191' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            padding-right: 28px;
+        }
+        .phone-prefix:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px rgba(46, 89, 251, 0.12);
+        }
+        .phone-input { flex: 1; min-width: 0; }
+
+        /* Gender radio chips */
+        .gender-row { display: flex; gap: 8px; }
+        .gender-chip {
+            flex: 1;
+            position: relative;
+        }
+        .gender-chip input {
+            position: absolute;
+            opacity: 0;
+            inset: 0;
+            cursor: pointer;
+        }
+        .gender-chip span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 10px 12px;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            transition: all 150ms;
+        }
+        .gender-chip input:checked + span {
+            background: var(--navy);
+            color: var(--paper);
+            border-color: var(--navy);
+        }
+        .gender-chip input:focus-visible + span {
+            box-shadow: 0 0 0 4px rgba(46, 89, 251, 0.18);
+        }
+        .gender-chip:active span { transform: scale(0.97); }
+
+        /* Password input with reveal toggle */
+        .password-wrap { position: relative; }
+        .password-wrap .auth-input { padding-right: 46px; }
+        .password-toggle {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 150ms, color 150ms;
+        }
+        .password-toggle:hover { background: var(--bg-tint); color: var(--text); }
+        .password-toggle:active { transform: translateY(-50%) scale(0.94); }
+        .password-toggle svg { width: 18px; height: 18px; }
+
+        /* Auxiliary links inside the modal (forgot, back) */
+        .auth-aux {
+            display: flex;
+            justify-content: center;
+            margin-top: 8px;
+        }
+        .auth-link {
+            background: none;
+            border: none;
+            color: var(--blue-deep);
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background 150ms;
+        }
+        .auth-link:hover { background: var(--blue-mist); }
+        .auth-link:active { transform: scale(0.97); }
+
+        .auth-success {
+            background: #ecfdf5;
+            color: #065f46;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+        .auth-success.hidden { display: none; }
+
+        .auth-consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--bg);
+            border-radius: 10px;
+            font-size: 0.82rem;
+            line-height: 1.4;
+            color: var(--text-soft);
+            cursor: pointer;
+        }
+        .auth-consent input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            margin-top: 1px;
+            accent-color: var(--blue);
+            cursor: pointer;
+        }
+        .auth-consent a {
+            color: var(--blue-deep);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        @media (min-width: 600px) {
+            .auth-backdrop { align-items: center; padding: 20px; }
+            .auth-sheet { border-radius: 20px; max-height: 88vh; padding-top: 20px; }
+            .auth-handle { display: none; }
+        }
+
+        footer {
+            background: var(--paper);
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        footer a { color: var(--blue-deep); text-decoration: none; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
+
+        /* Day quick-jump */
+        .day-jump-wrap {
+            position: sticky;
+            top: calc(var(--nav-h, 67px) + var(--tabs-h, 50px));
+            z-index: 40;
+            background: var(--bg);
+            margin: 0 -24px 16px;
+            padding: 10px 24px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+        @supports (padding: max(0px)) {
+            .day-jump-wrap {
+                padding-left: max(24px, env(safe-area-inset-left));
+                padding-right: max(24px, env(safe-area-inset-right));
+            }
+        }
+        .day-jump {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x proximity;
+        }
+        .day-jump::-webkit-scrollbar { display: none; }
+        .day-jump button {
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            padding: 8px 14px;
+            min-height: 42px;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            line-height: 1;
+            transition: transform 120ms, border-color 150ms, background 150ms;
+        }
+        .day-jump button .dj-day {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .day-jump button .dj-date {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--text);
+            font-family: var(--font-mono);
+        }
+        .day-jump button:active { transform: scale(0.94); }
+        .day-jump button.today { border-color: var(--blue); }
+        .day-jump button.today .dj-date { color: var(--blue-deep); }
+        .day-jump button.past { opacity: 0.5; }
+
+        /* Skeleton loader */
+        .skeleton-list { display: flex; flex-direction: column; gap: 8px; }
+        .skeleton-card {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 18px;
+            height: 88px;
+            position: relative;
+            overflow: hidden;
+        }
+        .skeleton-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(46, 89, 251, 0.05) 50%, transparent);
+            animation: shimmer 1.4s linear infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @media (max-width: 720px) {
+            .container { padding: 0 16px; }
+            @supports (padding: max(0px)) {
+                .container {
+                    padding-left: max(16px, env(safe-area-inset-left));
+                    padding-right: max(16px, env(safe-area-inset-right));
+                }
+                .nav-container, .day-jump-wrap {
+                    padding-left: max(16px, env(safe-area-inset-left));
+                    padding-right: max(16px, env(safe-area-inset-right));
+                }
+            }
+            nav { padding: 10px 0; padding-top: max(10px, env(safe-area-inset-top)); }
+            .nav-container { min-height: 40px; }
+            .logo { font-size: 1.25rem; }
+            .login-btn { padding: 8px 14px; font-size: 0.8rem; }
+            .back-link { display: none; }
+            .user-chip { padding: 4px 4px 4px 10px; font-size: 0.8rem; }
+            .user-chip .avatar { width: 26px; height: 26px; }
+            .logout-link { display: none; }
+
+            .hero { padding: 16px 0 14px; }
+            .hero-grid { grid-template-columns: 76px 1fr; gap: 14px; align-items: start; }
+            .hero-flyer { max-width: none; aspect-ratio: 1 / 1; border-radius: 12px; box-shadow: var(--shadow-sm); }
+            .hero-info h1 { font-size: 1.2rem; margin-bottom: 6px; line-height: 1.2; }
+            .organizer-pill { padding: 3px 9px; font-size: 0.7rem; margin-bottom: 6px; gap: 6px; }
+            .organizer-pill img { width: 14px; height: 14px; }
+            .hero-meta { gap: 4px 14px; font-size: 0.78rem; }
+            .hero-meta div { gap: 6px; }
+            .hero-meta svg { width: 13px; height: 13px; }
+            .hero-description { margin-top: 10px; font-size: 0.82rem; }
+            .tz-note { margin-top: 6px; font-size: 0.7rem; }
+
+            section.panel { padding: 16px 0 48px; }
+            .tabs { top: var(--nav-h, 60px); }
+            .day-jump-wrap { margin: 0 -16px 12px; padding: 10px 16px; }
+            .panel-title { font-size: 1.1rem; }
+
+            .search-row { gap: 8px; margin-bottom: 14px; }
+            .search-input { min-width: 0; padding: 10px 14px 10px 38px; font-size: 1rem; background-position: 12px center; }
+            .search-clear { padding: 10px 14px; }
+
+            .filter-chip { padding: 8px 14px; min-height: 36px; font-size: 0.82rem; }
+
+            .my-block { padding: 16px 14px 22px; margin: 0 -16px 24px; border-radius: 0; border-left: none; border-right: none; }
+            .my-block .panel-title { font-size: 1rem; }
+            .sub-section-title { font-size: 0.75rem; margin: 14px 0 10px; }
+            .login-hint { font-size: 0.83rem; padding: 10px 14px; }
+            .link-banner {
+                margin: 0 -16px 20px;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                padding: 16px 14px;
+            }
+            .link-item { padding: 12px 14px; flex-direction: column; align-items: stretch; gap: 10px; }
+            .link-item-actions { width: 100%; }
+            .link-item-actions .link-btn { flex: 1; }
+
+            .match-card {
+                display: block;
+                padding: 12px 14px;
+                border-radius: 12px;
+                position: relative;
+            }
+            .match-card > div:nth-child(1) {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 6px;
+                padding-right: 90px;
+            }
+            .match-card > div:nth-child(1) .match-time {
+                font-size: 0.95rem;
+                display: inline-flex;
+                align-items: baseline;
+                gap: 10px;
+                font-weight: 700;
+            }
+            .match-card > div:nth-child(1) .match-time .day-mini {
+                display: inline-block;
+                font-size: 0.65rem;
+                margin: 0;
+            }
+            .match-card > div:nth-child(1) .match-time .court {
+                display: inline-block;
+                margin: 0;
+                font-size: 0.7rem;
+                color: var(--text-muted);
+            }
+            .match-card > div:nth-child(2),
+            .match-card > div:nth-child(3) {
+                padding: 0;
+                margin: 0;
+            }
+            .match-card > div:nth-child(2) .match-tag {
+                display: block;
+                font-size: 0.65rem;
+                margin-bottom: 6px;
+            }
+            .match-card > div:nth-child(3) .match-tag { display: none; }
+            .match-card > div:nth-child(3) {
+                margin-top: 6px;
+                padding-top: 6px;
+                border-top: 1px dashed var(--border-soft);
+            }
+            .match-card > div:nth-child(3)::before {
+                content: 'vs';
+                display: inline-block;
+                font-size: 0.62rem;
+                font-weight: 700;
+                color: var(--text-faint);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-bottom: 4px;
+            }
+            .match-card .match-team { gap: 0; }
+            .match-card .match-team .player {
+                font-size: 0.9rem;
+                white-space: normal;
+                overflow-wrap: anywhere;
+                line-height: 1.35;
+            }
+            .match-card .match-score {
+                position: absolute;
+                top: 12px;
+                right: 14px;
+                text-align: right;
+                font-size: 0.95rem;
+            }
+            .match-card .match-score .score-line { font-size: 0.7rem; }
+            .match-card .match-score.pending {
+                font-size: 0.65rem;
+                letter-spacing: 0.06em;
+            }
+            .day-header { font-size: 0.95rem; margin-bottom: 12px; }
+            .day-block { margin-bottom: 24px; }
+
+            footer { padding: 20px 0; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+        }
+
+        @media (max-width: 380px) {
+            .hero-info h1 { font-size: 1.2rem; }
+            .match-card { padding: 10px 12px; }
+            .match-card > div:nth-child(1) { padding-right: 80px; }
+            .match-card > div:nth-child(1) .match-time { font-size: 0.88rem; }
+            .match-card .match-team .player { font-size: 0.85rem; }
+            .match-card .match-score { right: 12px; top: 10px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">court<span>bit</span></a>
+            <div class="nav-right" id="nav-right">
+                <a href="/" class="back-link">← Inicio</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+        <div id="loading">
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-grid">
+                        <div class="hero-flyer skeleton-card" style="height: 100%;"></div>
+                        <div class="hero-info">
+                            <div class="skeleton-card" style="height: 28px; max-width: 220px; margin-bottom: 12px; border-radius: 8px;"></div>
+                            <div class="skeleton-card" style="height: 18px; max-width: 280px; margin-bottom: 8px; border-radius: 6px;"></div>
+                            <div class="skeleton-card" style="height: 18px; max-width: 200px; border-radius: 6px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="container">
+                    <div class="skeleton-list">
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Organiza tu torneo con <a href="/">CourtBit</a></p>
+    </footer>
+
+    <div id="auth-modal" class="auth-backdrop" role="dialog" aria-modal="true" aria-labelledby="auth-title" hidden>
+        <div class="auth-sheet">
+            <div class="auth-handle" aria-hidden="true"></div>
+            <div class="auth-header">
+                <div class="auth-title" id="auth-title">Iniciar sesión</div>
+                <button type="button" class="auth-close" id="auth-close" aria-label="Cerrar">×</button>
+            </div>
+            <div class="auth-subtitle" id="auth-subtitle">Entra para ver tus partidos y vincular tu inscripción.</div>
+            <div class="auth-tabs" role="tablist">
+                <button type="button" class="auth-tab active" id="tab-login" role="tab" aria-selected="true" data-auth-mode="login">Entrar</button>
+                <button type="button" class="auth-tab" id="tab-signup" role="tab" aria-selected="false" data-auth-mode="signup">Crear cuenta</button>
+            </div>
+            <div id="auth-error" class="auth-error hidden" role="alert"></div>
+
+            <form id="form-login" class="auth-form" autocomplete="on" novalidate>
+                <div class="auth-field">
+                    <label class="auth-label" for="login-email">Correo</label>
+                    <input id="login-email" class="auth-input" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" required placeholder="tu@correo.com">
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label" for="login-password">Contraseña</label>
+                    <div class="password-wrap">
+                        <input id="login-password" class="auth-input" name="password" type="password" autocomplete="current-password" required placeholder="Tu contraseña">
+                        <button type="button" class="password-toggle" data-toggle-pw="login-password" aria-label="Mostrar contraseña"></button>
+                    </div>
+                </div>
+                <button type="submit" class="auth-submit" id="submit-login">Iniciar sesión</button>
+                <div class="auth-aux">
+                    <button type="button" class="auth-link" data-auth-mode="forgot">¿Olvidaste tu contraseña?</button>
+                </div>
+            </form>
+
+            <form id="form-signup" class="auth-form hidden" autocomplete="on" novalidate>
+                <div class="auth-field-grid">
+                    <div class="auth-field">
+                        <label class="auth-label" for="signup-first">Nombre</label>
+                        <input id="signup-first" class="auth-input" name="given-name" type="text" autocomplete="given-name" required>
+                    </div>
+                    <div class="auth-field">
+                        <label class="auth-label" for="signup-last">Apellido</label>
+                        <input id="signup-last" class="auth-input" name="family-name" type="text" autocomplete="family-name" required>
+                    </div>
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label" for="signup-email">Correo</label>
+                    <input id="signup-email" class="auth-input" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" required placeholder="tu@correo.com">
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label" for="signup-phone">Teléfono</label>
+                    <div class="phone-group">
+                        <select id="signup-phone-prefix" class="phone-prefix" aria-label="Código de país">
+                            <option value="+52" selected>🇲🇽 +52</option>
+                            <option value="+1">🇺🇸 +1</option>
+                            <option value="+34">🇪🇸 +34</option>
+                            <option value="+54">🇦🇷 +54</option>
+                            <option value="+56">🇨🇱 +56</option>
+                            <option value="+57">🇨🇴 +57</option>
+                            <option value="+58">🇻🇪 +58</option>
+                            <option value="+502">🇬🇹 +502</option>
+                            <option value="+503">🇸🇻 +503</option>
+                            <option value="+504">🇭🇳 +504</option>
+                            <option value="+505">🇳🇮 +505</option>
+                            <option value="+506">🇨🇷 +506</option>
+                            <option value="+507">🇵🇦 +507</option>
+                            <option value="+51">🇵🇪 +51</option>
+                            <option value="+593">🇪🇨 +593</option>
+                            <option value="+595">🇵🇾 +595</option>
+                            <option value="+598">🇺🇾 +598</option>
+                            <option value="+591">🇧🇴 +591</option>
+                        </select>
+                        <input id="signup-phone" class="auth-input phone-input" name="tel-national" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="10 dígitos">
+                    </div>
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label">Género</label>
+                    <div class="gender-row" role="radiogroup" aria-label="Género">
+                        <label class="gender-chip"><input type="radio" name="signup-gender" value="male"><span>Hombre</span></label>
+                        <label class="gender-chip"><input type="radio" name="signup-gender" value="female"><span>Mujer</span></label>
+                        <label class="gender-chip"><input type="radio" name="signup-gender" value="other"><span>Otro</span></label>
+                    </div>
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label" for="signup-password">Contraseña</label>
+                    <div class="password-wrap">
+                        <input id="signup-password" class="auth-input" name="new-password" type="password" autocomplete="new-password" required minlength="8" placeholder="Mínimo 8 caracteres">
+                        <button type="button" class="password-toggle" data-toggle-pw="signup-password" aria-label="Mostrar contraseña"></button>
+                    </div>
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label" for="signup-password-confirm">Confirmar contraseña</label>
+                    <div class="password-wrap">
+                        <input id="signup-password-confirm" class="auth-input" name="confirm-password" type="password" autocomplete="new-password" required minlength="8" placeholder="Repite la contraseña">
+                        <button type="button" class="password-toggle" data-toggle-pw="signup-password-confirm" aria-label="Mostrar contraseña"></button>
+                    </div>
+                </div>
+                <label class="auth-consent">
+                    <input type="checkbox" id="signup-consent" required>
+                    <span>Acepto los <a href="/legal/terms" target="_blank" rel="noopener">Términos y Condiciones</a> y el <a href="/legal/privacy" target="_blank" rel="noopener">Aviso de Privacidad</a> de CourtBit.</span>
+                </label>
+                <button type="submit" class="auth-submit" id="submit-signup">Crear cuenta</button>
+            </form>
+
+            <form id="form-forgot" class="auth-form hidden" autocomplete="on" novalidate>
+                <div class="auth-field">
+                    <label class="auth-label" for="forgot-email">Correo registrado</label>
+                    <input id="forgot-email" class="auth-input" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" required placeholder="tu@correo.com">
+                </div>
+                <div id="forgot-success" class="auth-success hidden" role="status"></div>
+                <button type="submit" class="auth-submit" id="submit-forgot">Enviar enlace</button>
+                <div class="auth-aux">
+                    <button type="button" class="auth-link" data-auth-mode="login">← Volver al inicio de sesión</button>
+                </div>
+            </form>
+
+            <div class="auth-foot">Tus datos personales están protegidos por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.</div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = (() => {
+            const h = location.hostname;
+            if (h === 'localhost' || h === '127.0.0.1') return 'http://localhost:8080/api';
+            if (/develop|staging|preview|vercel\.app$/i.test(h)) return 'https://courtbit-develop-production.up.railway.app/api';
+            return 'https://courtbit-api-production.up.railway.app/api';
+        })();
+
+        const DEFAULT_TZ = 'America/Mexico_City';
+        const TOKEN_KEY = 'courtbit_token';
+        const DAY_NAMES = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+        const DAY_SHORT = ['dom','lun','mar','mié','jue','vie','sáb'];
+        const MONTH_NAMES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+        const ICON_PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+        const ICON_CAL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+        const ICON_USERS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
+
+        const state = {
+            tournament: null,
+            calendar: null,
+            myTeamIds: new Set(),
+            search: '',
+            filterCategory: '',
+            filterCourt: '',
+            tab: 'calendar',
+            user: null,
+            session: false,
+            pendingLinks: [],
+            dismissedLinks: new Set(),
+            linkingTeams: new Set(),
+            linkedTeams: new Set(),
+            teamsByCategory: null,
+            expandedCategories: new Set()
+        };
+
+        function loadSession() {
+            const token = localStorage.getItem(TOKEN_KEY);
+            if (!token) { state.session = false; state.user = null; return; }
+            state.session = true;
+            try {
+                const raw = localStorage.getItem('courtbit_user');
+                state.user = raw ? JSON.parse(raw) : null;
+            } catch { state.user = null; }
+        }
+
+        function openAuth(mode = 'login') {
+            const modal = document.getElementById('auth-modal');
+            if (!modal) return;
+            setAuthMode(mode);
+            clearAuthError();
+            modal.hidden = false;
+            requestAnimationFrame(() => modal.classList.add('open'));
+            document.body.classList.add('modal-open');
+            const firstInput = document.querySelector(mode === 'signup' ? '#signup-first' : '#login-email');
+            setTimeout(() => firstInput && firstInput.focus(), 280);
+        }
+
+        function closeAuth() {
+            const modal = document.getElementById('auth-modal');
+            if (!modal) return;
+            modal.classList.remove('open');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => { modal.hidden = true; }, 280);
+        }
+
+        function setAuthMode(mode) {
+            const titleEl = document.getElementById('auth-title');
+            const subEl = document.getElementById('auth-subtitle');
+            const tabLogin = document.getElementById('tab-login');
+            const tabSignup = document.getElementById('tab-signup');
+            const tabs = document.querySelector('.auth-tabs');
+            const formLogin = document.getElementById('form-login');
+            const formSignup = document.getElementById('form-signup');
+            const formForgot = document.getElementById('form-forgot');
+
+            if (mode === 'forgot') {
+                titleEl.textContent = 'Recuperar contraseña';
+                subEl.textContent = 'Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.';
+                tabs.style.display = 'none';
+                formLogin.classList.add('hidden');
+                formSignup.classList.add('hidden');
+                formForgot.classList.remove('hidden');
+                const success = document.getElementById('forgot-success');
+                success.textContent = '';
+                success.classList.add('hidden');
+            } else {
+                const isSignup = mode === 'signup';
+                titleEl.textContent = isSignup ? 'Crear cuenta' : 'Iniciar sesión';
+                subEl.textContent = isSignup
+                    ? 'Crea tu cuenta para ver tus partidos y vincular tu inscripción.'
+                    : 'Entra para ver tus partidos y vincular tu inscripción.';
+                tabs.style.display = '';
+                tabLogin.classList.toggle('active', !isSignup);
+                tabSignup.classList.toggle('active', isSignup);
+                tabLogin.setAttribute('aria-selected', String(!isSignup));
+                tabSignup.setAttribute('aria-selected', String(isSignup));
+                formLogin.classList.toggle('hidden', isSignup);
+                formSignup.classList.toggle('hidden', !isSignup);
+                formForgot.classList.add('hidden');
+            }
+            clearAuthError();
+        }
+
+        const EYE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+        const EYE_OFF_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+
+        function initPasswordToggles() {
+            document.querySelectorAll('.password-toggle').forEach(btn => {
+                if (btn.dataset.wired) return;
+                btn.dataset.wired = 'true';
+                btn.innerHTML = EYE_ICON;
+                btn.addEventListener('click', () => {
+                    const input = document.getElementById(btn.dataset.togglePw);
+                    if (!input) return;
+                    const isHidden = input.type === 'password';
+                    input.type = isHidden ? 'text' : 'password';
+                    btn.innerHTML = isHidden ? EYE_OFF_ICON : EYE_ICON;
+                    btn.setAttribute('aria-label', isHidden ? 'Ocultar contraseña' : 'Mostrar contraseña');
+                });
+            });
+        }
+
+        async function handleForgot(e) {
+            e.preventDefault();
+            clearAuthError();
+            const successEl = document.getElementById('forgot-success');
+            successEl.classList.add('hidden');
+            const email = document.getElementById('forgot-email').value.trim().toLowerCase();
+            if (!email || !email.includes('@')) { showAuthError('Correo inválido.'); return; }
+            setSubmitLoading('submit-forgot', true, 'Enviar enlace');
+            try {
+                await fetch(`${API_URL}/auth/forgot-password`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                // Backend always returns 200 (anti-enumeration)
+                successEl.textContent = 'Si el correo está registrado, te enviamos un enlace para restablecer la contraseña. Revisa tu bandeja de entrada y spam.';
+                successEl.classList.remove('hidden');
+                document.getElementById('forgot-email').value = '';
+            } catch (err) {
+                showAuthError('Error de conexión. Intenta de nuevo.');
+            }
+            setSubmitLoading('submit-forgot', false, 'Enviar enlace');
+        }
+
+        function showAuthError(msg) {
+            const el = document.getElementById('auth-error');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+        }
+
+        function clearAuthError() {
+            const el = document.getElementById('auth-error');
+            el.textContent = '';
+            el.classList.add('hidden');
+        }
+
+        function setSubmitLoading(btnId, loading, label) {
+            const btn = document.getElementById(btnId);
+            if (!btn) return;
+            btn.disabled = loading;
+            btn.innerHTML = loading
+                ? '<span class="auth-submit-spinner" aria-hidden="true"></span>Procesando…'
+                : label;
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            clearAuthError();
+            const email = document.getElementById('login-email').value.trim().toLowerCase();
+            const password = document.getElementById('login-password').value;
+            if (!email || !password) { showAuthError('Correo y contraseña son obligatorios.'); return; }
+            setSubmitLoading('submit-login', true, 'Iniciar sesión');
+            try {
+                const res = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                    showAuthError(data?.error || 'Correo o contraseña incorrectos.');
+                    setSubmitLoading('submit-login', false, 'Iniciar sesión');
+                    return;
+                }
+                onAuthSuccess(data);
+            } catch (err) {
+                showAuthError('Error de conexión. Intenta de nuevo.');
+                setSubmitLoading('submit-login', false, 'Iniciar sesión');
+            }
+        }
+
+        const PHONE_RULES = {
+            '+52': { iso: 'MX', length: 10 },
+            '+1':  { iso: 'US', length: 10 },
+            '+34': { iso: 'ES', length: 9 },
+            '+54': { iso: 'AR', length: 10 },
+            '+56': { iso: 'CL', length: 9 },
+            '+57': { iso: 'CO', length: 10 },
+            '+58': { iso: 'VE', length: 10 },
+            '+502':{ iso: 'GT', length: 8 },
+            '+503':{ iso: 'SV', length: 8 },
+            '+504':{ iso: 'HN', length: 8 },
+            '+505':{ iso: 'NI', length: 8 },
+            '+506':{ iso: 'CR', length: 8 },
+            '+507':{ iso: 'PA', length: 8 },
+            '+51': { iso: 'PE', length: 9 },
+            '+593':{ iso: 'EC', length: 9 },
+            '+595':{ iso: 'PY', length: 9 },
+            '+598':{ iso: 'UY', length: 8 },
+            '+591':{ iso: 'BO', length: 8 }
+        };
+
+        function normalizePhone(prefix, raw) {
+            const digits = String(raw || '').replace(/[^0-9]/g, '');
+            if (!digits) return '';
+            return `${prefix}${digits}`;
+        }
+
+        function countryIsoForPrefix(prefix) {
+            return PHONE_RULES[prefix]?.iso || null;
+        }
+
+        function validatePhoneInput(prefix, raw) {
+            const digits = String(raw || '').replace(/[^0-9]/g, '');
+            if (!digits) return 'Ingresa tu número de teléfono.';
+            const rule = PHONE_RULES[prefix];
+            if (rule && digits.length !== rule.length) {
+                return `El teléfono para ${prefix} debe tener exactamente ${rule.length} dígitos.`;
+            }
+            if (/^0+$/.test(digits)) return 'Teléfono inválido.';
+            if (/^(\d)\1{6,}$/.test(digits)) return 'Teléfono inválido (todos los dígitos iguales).';
+            if (/^(0|1)/.test(digits)) return 'El teléfono no puede empezar con 0 o 1.';
+            return null;
+        }
+
+        async function handleSignup(e) {
+            e.preventDefault();
+            clearAuthError();
+            const first = document.getElementById('signup-first').value.trim();
+            const last = document.getElementById('signup-last').value.trim();
+            const email = document.getElementById('signup-email').value.trim().toLowerCase();
+            const password = document.getElementById('signup-password').value;
+            const prefix = document.getElementById('signup-phone-prefix').value;
+            const phoneRaw = document.getElementById('signup-phone').value;
+            const gender = (document.querySelector('input[name="signup-gender"]:checked') || {}).value || '';
+
+            const passwordConfirm = document.getElementById('signup-password-confirm').value;
+            if (!first || !last) { showAuthError('Nombre y apellido son obligatorios.'); return; }
+            if (!email || !email.includes('@')) { showAuthError('Correo inválido.'); return; }
+            if (password.length < 8) { showAuthError('La contraseña debe tener al menos 8 caracteres.'); return; }
+            if (password !== passwordConfirm) { showAuthError('Las contraseñas no coinciden.'); return; }
+            const phoneError = validatePhoneInput(prefix, phoneRaw);
+            if (phoneError) { showAuthError(phoneError); return; }
+            if (!gender) { showAuthError('Selecciona tu género.'); return; }
+            const consent = document.getElementById('signup-consent').checked;
+            if (!consent) { showAuthError('Debes aceptar los Términos y el Aviso de Privacidad.'); return; }
+            const phone = normalizePhone(prefix, phoneRaw);
+
+            setSubmitLoading('submit-signup', true, 'Crear cuenta');
+            try {
+                const res = await fetch(`${API_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        password,
+                        first_name: first,
+                        last_name: last,
+                        phone,
+                        gender,
+                        country_iso: countryIsoForPrefix(prefix),
+                        terms_accepted: true,
+                        privacy_accepted: true
+                    })
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                    const msg = data?.errors ? data.errors.join(' ') : (data?.error || 'No pudimos crear la cuenta.');
+                    const looksLikeExistingEmail = /ya.*registrad|already.*exists|409/i.test(msg) && /email|correo/i.test(msg);
+                    if (looksLikeExistingEmail) {
+                        showAuthError('Si ya tienes cuenta con este correo, inicia sesión o recupera tu contraseña.');
+                        const errEl = document.getElementById('auth-error');
+                        if (errEl) {
+                            errEl.innerHTML = `Si ya tienes cuenta con este correo, <button type="button" class="auth-link" data-auth-mode="login" style="padding:0">inicia sesión</button> o <button type="button" class="auth-link" data-auth-mode="forgot" style="padding:0">recupera tu contraseña</button>.`;
+                        }
+                    } else {
+                        showAuthError(msg);
+                    }
+                    setSubmitLoading('submit-signup', false, 'Crear cuenta');
+                    return;
+                }
+                onAuthSuccess(data);
+            } catch (err) {
+                showAuthError('Error de conexión. Intenta de nuevo.');
+                setSubmitLoading('submit-signup', false, 'Crear cuenta');
+            }
+        }
+
+        async function onAuthSuccess(data) {
+            localStorage.setItem(TOKEN_KEY, data.token);
+            if (data.user) localStorage.setItem('courtbit_user', JSON.stringify(data.user));
+            state.session = true;
+            state.user = data.user || null;
+            closeAuth();
+            setSubmitLoading('submit-login', false, 'Iniciar sesión');
+            setSubmitLoading('submit-signup', false, 'Crear cuenta');
+            if (state.calendar?.tournament_id) {
+                state.myTeamIds = new Set();
+                await loadMyContext(state.calendar.tournament_id);
+                state.pendingLinks = await loadPendingLinks(state.calendar.tournament_id);
+            }
+            renderNavRight();
+            refreshDynamic();
+        }
+
+        function wireAuthModal() {
+            document.getElementById('auth-close').addEventListener('click', closeAuth);
+            document.getElementById('auth-modal').addEventListener('click', e => {
+                if (e.target.id === 'auth-modal') closeAuth();
+            });
+            document.querySelectorAll('[data-auth-mode]').forEach(btn => {
+                btn.addEventListener('click', () => setAuthMode(btn.dataset.authMode));
+            });
+            document.getElementById('form-login').addEventListener('submit', handleLogin);
+            document.getElementById('form-signup').addEventListener('submit', handleSignup);
+            document.getElementById('form-forgot').addEventListener('submit', handleForgot);
+            initPasswordToggles();
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && document.getElementById('auth-modal')?.classList.contains('open')) closeAuth();
+            });
+            document.addEventListener('click', e => {
+                const trigger = e.target.closest('[data-open-auth]');
+                if (!trigger) return;
+                e.preventDefault();
+                openAuth(trigger.dataset.openAuth || 'login');
+            });
+        }
+
+        function userInitials() {
+            const u = state.user || {};
+            const first = (u.first_name || '').trim();
+            const last = (u.last_name || '').trim();
+            const fromName = (first[0] || '') + (last[0] || '');
+            if (fromName) return fromName.toUpperCase();
+            const email = (u.email || '').trim();
+            return email ? email[0].toUpperCase() : '?';
+        }
+
+        function userDisplayName() {
+            const u = state.user || {};
+            const first = (u.first_name || '').trim();
+            return first || (u.email || '').split('@')[0] || 'Usuario';
+        }
+
+        function renderNavRight() {
+            const el = document.getElementById('nav-right');
+            if (!el) return;
+            if (state.session) {
+                el.innerHTML = `
+                    <span class="user-chip">
+                        <span>${escapeHtml(userDisplayName())}</span>
+                        <span class="avatar">${escapeHtml(userInitials())}</span>
+                    </span>
+                    <button class="logout-link" id="logout-btn" type="button">Cerrar sesión</button>`;
+                document.getElementById('logout-btn').addEventListener('click', () => {
+                    localStorage.removeItem(TOKEN_KEY);
+                    localStorage.removeItem('courtbit_user');
+                    state.session = false;
+                    state.user = null;
+                    state.myTeamIds = new Set();
+                    renderNavRight();
+                    refreshDynamic();
+                });
+            } else {
+                el.innerHTML = `<button type="button" class="login-btn" data-open-auth="login">Iniciar sesión</button>`;
+            }
+        }
+
+        function renderLoginCTA() {
+            if (state.session) return '';
+            return `<div class="login-hint">
+                <span>¿Juegas este torneo? <a href="#" data-open-auth="login">Inicia sesión</a> · <a href="#" data-open-auth="signup">Crear cuenta</a> para verlos primero.</span>
+            </div>`;
+        }
+
+        function visiblePendingLinks() {
+            return (state.pendingLinks || []).filter(link => {
+                const key = `${link.team_id}:${link.player_position}`;
+                return !state.dismissedLinks.has(key) && !state.linkedTeams.has(link.team_id);
+            });
+        }
+
+        function renderLinkBanner() {
+            if (!state.session) return '';
+            const visible = visiblePendingLinks();
+            if (visible.length === 0) return '';
+            const intro = visible.length === 1
+                ? '<p>Encontramos un partido a tu nombre que aún no está vinculado. Confirma para verlo en "Mis partidos".</p>'
+                : `<p>Encontramos ${visible.length} partidos a tu nombre. Confirma cuáles te pertenecen.</p>`;
+            const items = visible.map(link => {
+                const key = `${link.team_id}:${link.player_position}`;
+                const isLinking = state.linkingTeams.has(key);
+                const isFuzzy = link.match_type === 'fuzzy';
+                return `<div class="link-item" data-link-key="${escapeHtml(key)}">
+                    <div class="link-item-info">
+                        <div class="link-item-name">${escapeHtml(link.name)}${isFuzzy ? '<span class="link-item-fuzzy">Revisa</span>' : ''}</div>
+                        <div class="link-item-meta">${escapeHtml(link.category_name)} · ${escapeHtml(link.tournament_name)}${isFuzzy ? ' · tu teléfono difiere por 1 dígito' : ''}</div>
+                    </div>
+                    <div class="link-item-actions">
+                        <button class="link-btn link-btn-yes" data-link-action="confirm" data-team-id="${escapeHtml(link.team_id)}" data-position="${escapeHtml(link.player_position)}"${isLinking ? ' disabled' : ''}>${isLinking ? 'Vinculando…' : 'Sí, soy yo'}</button>
+                        <button class="link-btn link-btn-no" data-link-action="dismiss" data-key="${escapeHtml(key)}">No es mío</button>
+                    </div>
+                </div>`;
+            }).join('');
+            return `<div class="link-banner">
+                <h3>¿Eres tú?</h3>
+                ${intro}
+                ${items}
+            </div>`;
+        }
+
+        async function loadPendingLinks(tournamentId) {
+            const token = localStorage.getItem(TOKEN_KEY);
+            if (!token) return [];
+            try {
+                const res = await fetch(`${API_URL}/player-links/pending?tournament_id=${encodeURIComponent(tournamentId)}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.status === 401) { localStorage.removeItem(TOKEN_KEY); return []; }
+                if (!res.ok) return [];
+                const data = await res.json();
+                return Array.isArray(data?.tournament_links) ? data.tournament_links : [];
+            } catch (err) {
+                console.warn('pending-links failed', err);
+                return [];
+            }
+        }
+
+        async function confirmLink(teamId, position) {
+            const token = localStorage.getItem(TOKEN_KEY);
+            if (!token) return false;
+            const key = `${teamId}:${position}`;
+            state.linkingTeams.add(key);
+            refreshLinkBanner();
+            try {
+                const res = await fetch(`${API_URL}/player-links/link-tournament`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ team_id: teamId, player_position: position })
+                });
+                state.linkingTeams.delete(key);
+                if (res.ok) {
+                    state.linkedTeams.add(teamId);
+                    state.myTeamIds.add(teamId);
+                    refreshDynamic();
+                    return true;
+                }
+                refreshLinkBanner();
+                return false;
+            } catch (err) {
+                state.linkingTeams.delete(key);
+                refreshLinkBanner();
+                return false;
+            }
+        }
+
+        function refreshLinkBanner() {
+            const slot = document.getElementById('link-banner-slot');
+            if (slot) slot.innerHTML = renderLinkBanner();
+        }
+
+        function attachLinkBannerEvents() {
+            document.addEventListener('click', e => {
+                const btn = e.target.closest('[data-link-action]');
+                if (!btn) return;
+                const action = btn.dataset.linkAction;
+                if (action === 'confirm') {
+                    const teamId = btn.dataset.teamId;
+                    const position = btn.dataset.position;
+                    confirmLink(teamId, position);
+                } else if (action === 'dismiss') {
+                    state.dismissedLinks.add(btn.dataset.key);
+                    refreshLinkBanner();
+                }
+            });
+        }
+
+        function extractShareCode() {
+            const path = location.pathname.replace(/\/+$/, '');
+            const fromPath = path.match(/\/torneo\/([a-z0-9]{8})/i);
+            if (fromPath) return fromPath[1].toLowerCase();
+            const qs = new URLSearchParams(location.search);
+            return (qs.get('code') || qs.get('share_code') || '').toLowerCase();
+        }
+
+        function escapeHtml(text) {
+            if (text == null) return '';
+            return String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        }
+
+        function highlight(text, query) {
+            if (!query || !text) return escapeHtml(text);
+            const safe = escapeHtml(text);
+            const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const re = new RegExp(`(${escapedQuery})`, 'gi');
+            return safe.replace(re, '<mark>$1</mark>');
+        }
+
+        function formatDate(iso) {
+            const d = new Date(iso + (iso.length === 10 ? 'T00:00:00' : ''));
+            return `${d.getDate()} ${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`;
+        }
+
+        function formatDateRange(start, end) {
+            if (!start) return '';
+            if (!end || start === end) return formatDate(start);
+            const a = new Date(start + 'T00:00:00');
+            const b = new Date(end + 'T00:00:00');
+            if (a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth()) {
+                return `${a.getDate()}–${b.getDate()} ${MONTH_NAMES[a.getMonth()]} ${a.getFullYear()}`;
+            }
+            return `${formatDate(start)} — ${formatDate(end)}`;
+        }
+
+        function tournamentTZ() {
+            return state.calendar?.organizer_timezone
+                || state.tournament?.organizer?.timezone
+                || DEFAULT_TZ;
+        }
+
+        function toLocalParts(isoString) {
+            const d = new Date(isoString);
+            const fmt = new Intl.DateTimeFormat('en-CA', {
+                timeZone: tournamentTZ(),
+                year: 'numeric', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', hour12: false
+            });
+            const parts = Object.fromEntries(fmt.formatToParts(d).map(p => [p.type, p.value]));
+            return {
+                date: `${parts.year}-${parts.month}-${parts.day}`,
+                time: `${parts.hour}:${parts.minute}`
+            };
+        }
+
+        function dayLabel(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            return `${DAY_NAMES[d.getDay()]} ${d.getDate()} de ${MONTH_NAMES[d.getMonth()]}`;
+        }
+
+        function dayShortLabel(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            return `${DAY_SHORT[d.getDay()]} ${d.getDate()}/${(d.getMonth() + 1).toString().padStart(2, '0')}`;
+        }
+
+        function findCourtLabel(courts, number, courtLabelFromMatch) {
+            if (courtLabelFromMatch && String(courtLabelFromMatch).trim()) return courtLabelFromMatch;
+            if (number == null) return '';
+            if (Array.isArray(courts)) {
+                const found = courts.find(c => c.number === number);
+                if (found && found.name && String(found.name).trim()) return `Cancha ${found.name}`;
+            }
+            return `Cancha ${number}`;
+        }
+
+        function matchEndMs(m) {
+            if (!m.scheduled_time) return null;
+            const dur = state.calendar?.scheduling_config?.match_duration_minutes ?? 90;
+            return new Date(m.scheduled_time).getTime() + dur * 60000;
+        }
+
+        function isPast(m) {
+            const end = matchEndMs(m);
+            return end != null && end < Date.now();
+        }
+
+        function isMine(m) {
+            if (!state.myTeamIds.size) return false;
+            return (m.team1 && state.myTeamIds.has(m.team1.id)) || (m.team2 && state.myTeamIds.has(m.team2.id));
+        }
+
+        function matchMatchesSearch(m, query) {
+            if (!query) return true;
+            const q = query.toLowerCase();
+            const names = [
+                m.team1?.player_a, m.team1?.player_b,
+                m.team2?.player_a, m.team2?.player_b
+            ].filter(Boolean);
+            return names.some(n => n.toLowerCase().includes(q));
+        }
+
+        function applyFilters(matches) {
+            return matches.filter(m => {
+                if (state.filterCategory && String(m.category_id) !== String(state.filterCategory)) return false;
+                if (state.filterCourt && String(m.court_number) !== String(state.filterCourt)) return false;
+                if (!matchMatchesSearch(m, state.search)) return false;
+                return true;
+            });
+        }
+
+        function renderError(title, msg) {
+            document.getElementById('main').innerHTML = `
+                <div class="state">
+                    <h2>${escapeHtml(title)}</h2>
+                    <p>${escapeHtml(msg)}</p>
+                </div>`;
+        }
+
+        function renderTeam(team, isWinner) {
+            if (!team) {
+                return `<div class="match-team"><div class="player empty">Por definir</div></div>`;
+            }
+            const seedTag = team.seed ? `<span class="seed">#${team.seed}</span>` : '';
+            const pa = team.player_a ? highlight(team.player_a, state.search) : '<span class="empty">Pareja sin jugador A</span>';
+            const pb = team.player_b ? highlight(team.player_b, state.search) : '<span class="empty">Pareja sin jugador B</span>';
+            const cls = isWinner ? 'match-team winner' : 'match-team';
+            return `<div class="${cls}">
+                <div class="player">${seedTag}${pa}</div>
+                <div class="player">${pb}</div>
+            </div>`;
+        }
+
+        function renderScore(m) {
+            if (m.is_bye) return `<div class="match-score pending">BYE</div>`;
+            if (m.status === 'completed' && (m.score_team1 != null || m.score_team2 != null)) {
+                let sets = '';
+                if (Array.isArray(m.set_scores) && m.set_scores.length > 0) {
+                    sets = m.set_scores.map(s => `${s.team1 ?? '-'}-${s.team2 ?? '-'}`).join(' · ');
+                }
+                return `<div class="match-score">${m.score_team1 ?? '-'} – ${m.score_team2 ?? '-'}<span class="score-line">${escapeHtml(sets)}</span></div>`;
+            }
+            if (m.status === 'in_progress') return `<div class="match-score pending" style="color: var(--warning);">EN JUEGO</div>`;
+            return `<div class="match-score pending">Pendiente</div>`;
+        }
+
+        function renderMatch(m, courts, opts = {}) {
+            const localParts = m.scheduled_time ? toLocalParts(m.scheduled_time) : null;
+            const courtLabel = findCourtLabel(courts, m.court_number, m.court_label);
+            const dayMini = opts.showDay && localParts ? `<span class="day-mini">${escapeHtml(dayShortLabel(localParts.date))}</span>` : '';
+            const time = localParts ? localParts.time : 'Por programar';
+            const isWinner1 = m.winner_team === 1;
+            const isWinner2 = m.winner_team === 2;
+            const mine = isMine(m);
+            return `<div class="match-card${mine ? ' mine' : ''}" data-category="${m.category_id}" data-court="${m.court_number ?? ''}">
+                <div>
+                    <div class="match-time">${dayMini}${time}<span class="court">${escapeHtml(courtLabel)}</span></div>
+                </div>
+                <div>
+                    <div class="match-tag">${escapeHtml(m.category_name || '')} · ${escapeHtml(m.round_name || '')}</div>
+                    ${renderTeam(m.team1, isWinner1)}
+                </div>
+                <div>
+                    <div class="match-tag" style="visibility: hidden;">.</div>
+                    ${renderTeam(m.team2, isWinner2)}
+                </div>
+                ${renderScore(m)}
+            </div>`;
+        }
+
+        function groupByDay(matches) {
+            const groups = new Map();
+            const noDate = [];
+            for (const m of matches) {
+                if (!m.scheduled_time) { noDate.push(m); continue; }
+                const { date } = toLocalParts(m.scheduled_time);
+                if (!groups.has(date)) groups.set(date, []);
+                groups.get(date).push(m);
+            }
+            return { groups, noDate };
+        }
+
+        function sortMatchesAsc(arr) {
+            return arr.slice().sort((a, b) => {
+                const ta = a.scheduled_time ? new Date(a.scheduled_time).getTime() : Infinity;
+                const tb = b.scheduled_time ? new Date(b.scheduled_time).getTime() : Infinity;
+                if (ta !== tb) return ta - tb;
+                return (a.court_number ?? 999) - (b.court_number ?? 999);
+            });
+        }
+
+        function renderDayBlocks(matches, courts, descending = false) {
+            const { groups, noDate } = groupByDay(matches);
+            const dateKeys = [...groups.keys()].sort();
+            if (descending) dateKeys.reverse();
+            const blocks = dateKeys.map(date => {
+                let items = sortMatchesAsc(groups.get(date));
+                if (descending) items = items.reverse();
+                const cards = items.map(m => renderMatch(m, courts)).join('');
+                return `<div class="day-block">
+                    <div class="day-header" data-date="${escapeHtml(date)}">${dayLabel(date)}</div>
+                    <div class="match-list">${cards}</div>
+                </div>`;
+            }).join('');
+            const noDateBlock = noDate.length > 0 && !descending ? `<div class="day-block">
+                <div class="day-header">Por programar</div>
+                <div class="match-list">${noDate.map(m => renderMatch(m, courts)).join('')}</div>
+            </div>` : '';
+            return blocks + noDateBlock;
+        }
+
+        function renderMyBlock() {
+            if (!state.myTeamIds.size) return '';
+            const courts = state.calendar.scheduling_config?.courts || [];
+            const mine = (state.calendar.matches || []).filter(isMine);
+            const filtered = applyFilters(mine);
+            if (filtered.length === 0) {
+                return `<div class="my-block">
+                    <div class="panel-title"><span class="badge">TU</span> Mis partidos</div>
+                    <div class="empty-state">No hay partidos que coincidan con la búsqueda/filtro actual.</div>
+                </div>`;
+            }
+            const upcoming = sortMatchesAsc(filtered.filter(m => !isPast(m)));
+            const past = sortMatchesAsc(filtered.filter(isPast)).reverse();
+            const upcomingHtml = upcoming.length > 0
+                ? `<div class="sub-section-title">Próximos <span class="count">${upcoming.length}</span></div>
+                   <div class="match-list">${upcoming.map(m => renderMatch(m, courts, { showDay: true })).join('')}</div>`
+                : `<div class="sub-section-title">Próximos <span class="count">0</span></div>
+                   <div class="empty-state">No tienes más partidos por jugar.</div>`;
+            const pastHtml = past.length > 0
+                ? `<div class="sub-section-title">Ya jugados <span class="count">${past.length}</span></div>
+                   <div class="match-list past-section">${past.map(m => renderMatch(m, courts, { showDay: true })).join('')}</div>`
+                : '';
+            return `<div class="my-block">
+                <div class="panel-title"><span class="badge">TU</span> Mis partidos</div>
+                <div class="panel-subtitle">Solo los partidos donde participas.</div>
+                ${upcomingHtml}
+                ${pastHtml}
+            </div>`;
+        }
+
+        function renderAllCalendar() {
+            const courts = state.calendar.scheduling_config?.courts || [];
+            const filtered = applyFilters(state.calendar.matches || []);
+            if (filtered.length === 0) {
+                return `<div class="empty-state">No hay partidos que coincidan con la búsqueda y filtros.</div>`;
+            }
+            const upcoming = filtered.filter(m => !isPast(m));
+            const past = filtered.filter(isPast);
+            const upcomingHtml = upcoming.length > 0
+                ? `<div class="sub-section-title">Próximos <span class="count">${upcoming.length}</span></div>
+                   ${renderDayBlocks(upcoming, courts, false)}`
+                : '';
+            const pastHtml = past.length > 0
+                ? `<div class="sub-section-title">Ya jugados <span class="count">${past.length}</span></div>
+                   <div class="past-section">${renderDayBlocks(past, courts, true)}</div>`
+                : '';
+            return upcomingHtml + pastHtml;
+        }
+
+        function renderDayJump() {
+            const days = state.calendar?.scheduling_config?.tournament_days || [];
+            if (days.length < 2) return '';
+            const todayLocal = (() => {
+                const d = new Date();
+                const fmt = new Intl.DateTimeFormat('en-CA', { timeZone: tournamentTZ(), year: 'numeric', month: '2-digit', day: '2-digit' });
+                const parts = Object.fromEntries(fmt.formatToParts(d).map(p => [p.type, p.value]));
+                return `${parts.year}-${parts.month}-${parts.day}`;
+            })();
+            const buttons = days.map(d => {
+                const date = new Date(d + 'T00:00:00');
+                const isToday = d === todayLocal;
+                const isPastDay = d < todayLocal;
+                return `<button data-day-jump="${escapeHtml(d)}" class="${isToday ? 'today' : ''}${isPastDay ? ' past' : ''}">
+                    <span class="dj-day">${DAY_SHORT[date.getDay()]}</span>
+                    <span class="dj-date">${date.getDate()}</span>
+                </button>`;
+            }).join('');
+            return `<div class="day-jump-wrap"><div class="day-jump" id="day-jump">${buttons}</div></div>`;
+        }
+
+        function scrollToDay(dateStr) {
+            const blocks = document.querySelectorAll('#calendar-slot .day-block');
+            for (const b of blocks) {
+                const header = b.querySelector('.day-header');
+                if (!header) continue;
+                if (header.dataset.date === dateStr) {
+                    const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 60;
+                    const tabsH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tabs-h')) || 50;
+                    const dayJumpEl = document.querySelector('.day-jump-wrap');
+                    const dayJumpH = dayJumpEl ? dayJumpEl.offsetHeight : 0;
+                    const offset = navH + tabsH + dayJumpH + 8;
+                    const top = b.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                    return;
+                }
+            }
+        }
+
+        function renderFiltersHtml() {
+            const cats = state.calendar.brackets || [];
+            const courts = (state.calendar.scheduling_config?.courts || []).filter(c => c.is_active !== false);
+            const catChips = cats.map(b => `<button class="filter-chip${String(state.filterCategory) === String(b.category_id) ? ' active' : ''}" data-filter="category" data-value="${b.category_id}">${escapeHtml(b.category_name)}</button>`).join('');
+            const courtChips = courts.map(c => `<button class="filter-chip${String(state.filterCourt) === String(c.number) ? ' active' : ''}" data-filter="court" data-value="${c.number}">Cancha ${escapeHtml(c.name || c.number)}</button>`).join('');
+            return `<div class="filters" data-filter-row="category">
+                <button class="filter-chip${state.filterCategory === '' ? ' active' : ''}" data-filter="category" data-value="">Todas las categorías</button>
+                ${catChips}
+            </div>
+            <div class="filters" data-filter-row="court">
+                <button class="filter-chip${state.filterCourt === '' ? ' active' : ''}" data-filter="court" data-value="">Todas las canchas</button>
+                ${courtChips}
+            </div>`;
+        }
+
+        function initials(name) {
+            if (!name) return '?';
+            const parts = String(name).trim().split(/\s+/);
+            const a = parts[0]?.[0] || '';
+            const b = parts[1]?.[0] || '';
+            return (a + b).toUpperCase() || '?';
+        }
+
+        function isSafePhotoUrl(url) {
+            if (!url || typeof url !== 'string') return false;
+            try {
+                const u = new URL(url);
+                return u.protocol === 'https:';
+            } catch { return false; }
+        }
+
+        function renderAvatar(player) {
+            if (!player || !player.name) {
+                return `<span class="avatar" aria-hidden="true">?</span>`;
+            }
+            const linkedClass = player.linked ? ' linked' : '';
+            const initialsStr = initials(player.name);
+            if (isSafePhotoUrl(player.photo_url)) {
+                return `<span class="avatar has-photo${linkedClass}" data-initials="${escapeHtml(initialsStr)}" aria-label="${escapeHtml(player.name)}"><img src="${escapeHtml(player.photo_url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-avatar-img></span>`;
+            }
+            return `<span class="avatar${linkedClass}" aria-label="${escapeHtml(player.name)}">${escapeHtml(initialsStr)}</span>`;
+        }
+
+        function renderPairRow(team) {
+            const a = team.player_a || {};
+            const b = team.player_b || {};
+            return `<div class="pair-row">
+                <div class="pair-avatars">
+                    ${renderAvatar(a)}
+                    ${renderAvatar(b)}
+                </div>
+                <div class="pair-names">
+                    <div class="player-name">${escapeHtml(a.name || 'Por definir')}</div>
+                    <div class="player-name">${escapeHtml(b.name || 'Por definir')}</div>
+                </div>
+            </div>`;
+        }
+
+        function renderCategoryCard(cat) {
+            const count = cat.registered_count ?? 0;
+            const cap = cat.max_teams ? ` / ${cat.max_teams}` : '';
+            const isExpanded = state.expandedCategories.has(cat.id);
+            const teams = state.teamsByCategory?.get(cat.id) || null;
+            const teamsHtml = !teams
+                ? `<div class="cat-teams-empty">Cargando parejas…</div>`
+                : teams.length === 0
+                    ? `<div class="cat-teams-empty">Aún no hay parejas inscritas.</div>`
+                    : teams.map(renderPairRow).join('');
+            const chevron = '<svg class="cat-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+            return `<div class="cat-card${isExpanded ? ' expanded' : ''}" data-category-id="${cat.id}">
+                <button class="cat-header" type="button" data-cat-toggle="${cat.id}" aria-expanded="${isExpanded}">
+                    <div class="cat-header-text">
+                        <div class="cat-name">${escapeHtml(cat.name)}</div>
+                        <div class="cat-meta"><strong>${count}</strong>${cap} parejas inscritas</div>
+                    </div>
+                    ${chevron}
+                </button>
+                <div class="cat-teams">${teamsHtml}</div>
+            </div>`;
+        }
+
+        function renderCategoriesPanel() {
+            const cats = state.tournament.categories || [];
+            if (cats.length === 0) {
+                return `<div class="empty-state">Aún no se han definido categorías para este torneo.</div>`;
+            }
+            return `<div class="cat-grid">${cats.map(renderCategoryCard).join('')}</div>`;
+        }
+
+        async function loadTournamentTeams(code) {
+            try {
+                const res = await fetch(`${API_URL}/public/tournaments/by-share-code/${code}/teams`);
+                if (!res.ok) return null;
+                const data = await res.json();
+                const map = new Map();
+                for (const c of (data?.categories || [])) {
+                    map.set(c.id, c.teams || []);
+                }
+                state.teamsByCategory = map;
+                const panel = document.getElementById('panel-categories');
+                if (panel) {
+                    const container = panel.querySelector('.cat-grid');
+                    if (container) container.innerHTML = (state.tournament.categories || []).map(renderCategoryCard).join('');
+                }
+            } catch (err) { console.warn('teams load failed', err); }
+        }
+
+        function tzShortLabel(tz) {
+            try {
+                const fmt = new Intl.DateTimeFormat('es-MX', { timeZone: tz, timeZoneName: 'short' });
+                const part = fmt.formatToParts(new Date()).find(p => p.type === 'timeZoneName');
+                return part ? part.value : tz;
+            } catch { return tz; }
+        }
+
+        function visitorTZ() {
+            try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch { return ''; }
+        }
+
+        function tzMatchesVisitor(tz) {
+            const v = visitorTZ();
+            if (!v || !tz) return true;
+            if (v === tz) return true;
+            try {
+                const sample = new Date();
+                const a = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: '2-digit', hour12: false }).format(sample);
+                const b = new Intl.DateTimeFormat('en-US', { timeZone: v, hour: '2-digit', hour12: false }).format(sample);
+                return a === b;
+            } catch { return tz === v; }
+        }
+
+        function renderHero() {
+            const t = state.tournament;
+            const flyerHtml = t.flyer_url
+                ? `<img src="${escapeHtml(t.flyer_url)}" alt="${escapeHtml(t.name)}" onerror="this.parentElement.innerHTML='<div class=&quot;hero-flyer-fallback&quot;>🎾</div>'">`
+                : `<div class="hero-flyer-fallback">🎾</div>`;
+            const organizer = t.organizer || {};
+            const orgPill = organizer.name ? `<div class="organizer-pill">
+                ${organizer.logo_url ? `<img src="${escapeHtml(organizer.logo_url)}" alt="">` : ''}
+                Organiza ${escapeHtml(organizer.name)}
+            </div>` : '';
+            const matchCount = (state.calendar.matches || []).filter(m => !m.is_bye).length;
+            const tz = tournamentTZ();
+            const showTzNote = !tzMatchesVisitor(tz);
+            const tzNote = showTzNote
+                ? `<div class="tz-note" title="${escapeHtml(tz)}">Horarios en ${escapeHtml(tzShortLabel(tz))} (zona del organizador)</div>`
+                : '';
+            return `<section class="hero">
+                <div class="container">
+                    <div class="hero-grid">
+                        <div class="hero-flyer">${flyerHtml}</div>
+                        <div class="hero-info">
+                            ${orgPill}
+                            <h1>${escapeHtml(t.name || 'Torneo')}</h1>
+                            <div class="hero-meta">
+                                <div>${ICON_CAL}<span>${escapeHtml(formatDateRange(t.start_date, t.end_date))}</span></div>
+                                ${t.location ? `<div>${ICON_PIN}<span>${escapeHtml(t.location)}</span></div>` : ''}
+                                <div>${ICON_USERS}<span>${matchCount} partidos · ${(t.categories || []).length} categorías</span></div>
+                            </div>
+                            ${tzNote}
+                            ${t.description ? `<div class="hero-description">${escapeHtml(t.description)}</div>` : ''}
+                        </div>
+                    </div>
+                </div>
+            </section>`;
+        }
+
+        function renderShell() {
+            document.getElementById('main').innerHTML = `
+                ${renderHero()}
+                <div class="tabs">
+                    <div class="container">
+                        <div class="tabs-inner" id="tabs">
+                            <button class="tab-btn active" data-tab="calendar">Calendario</button>
+                            <button class="tab-btn" data-tab="categories">Categorías</button>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel" id="panel-calendar">
+                    <div class="container">
+                        <div id="login-cta-slot">${renderLoginCTA()}</div>
+                        <div id="link-banner-slot">${renderLinkBanner()}</div>
+                        <div class="search-row">
+                            <input id="search" class="search-input" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Buscar jugador por nombre…" value="${escapeHtml(state.search)}">
+                            <button id="search-clear" class="search-clear" type="button">Limpiar</button>
+                        </div>
+                        <div id="filters">${renderFiltersHtml()}</div>
+                        <div id="day-jump-slot">${renderDayJump()}</div>
+                        <div id="my-block-slot">${renderMyBlock()}</div>
+                        <div id="calendar-slot">${renderAllCalendar()}</div>
+                    </div>
+                </section>
+                <section class="panel" id="panel-categories" style="display: none;">
+                    <div class="container">
+                        <h2 class="panel-title">Categorías</h2>
+                        ${renderCategoriesPanel()}
+                    </div>
+                </section>`;
+            attachEvents();
+            attachLinkBannerEvents();
+            renderNavRight();
+            measureStickyOffsets();
+            window.addEventListener('resize', measureStickyOffsets, { passive: true });
+            document.title = `${state.tournament.name || 'Torneo'} — CourtBit`;
+        }
+
+        function refreshDynamic() {
+            document.getElementById('filters').innerHTML = renderFiltersHtml();
+            document.getElementById('my-block-slot').innerHTML = renderMyBlock();
+            document.getElementById('calendar-slot').innerHTML = renderAllCalendar();
+            const ctaSlot = document.getElementById('login-cta-slot');
+            if (ctaSlot) ctaSlot.innerHTML = renderLoginCTA();
+            refreshLinkBanner();
+        }
+
+        function measureStickyOffsets() {
+            const nav = document.querySelector('nav');
+            const tabs = document.querySelector('.tabs');
+            if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+            if (tabs) document.documentElement.style.setProperty('--tabs-h', tabs.offsetHeight + 'px');
+        }
+
+        function attachEvents() {
+            const searchInput = document.getElementById('search');
+            const clearBtn = document.getElementById('search-clear');
+            let debounce;
+            searchInput.addEventListener('input', () => {
+                clearTimeout(debounce);
+                debounce = setTimeout(() => {
+                    state.search = searchInput.value.trim();
+                    refreshDynamic();
+                }, 150);
+            });
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                state.search = '';
+                refreshDynamic();
+            });
+            document.getElementById('filters').addEventListener('click', e => {
+                const chip = e.target.closest('.filter-chip');
+                if (!chip) return;
+                const filter = chip.dataset.filter;
+                const value = chip.dataset.value;
+                if (filter === 'category') state.filterCategory = value;
+                if (filter === 'court') state.filterCourt = value;
+                refreshDynamic();
+            });
+            document.addEventListener('click', e => {
+                const dj = e.target.closest('[data-day-jump]');
+                if (!dj) return;
+                scrollToDay(dj.dataset.dayJump);
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const target = btn.dataset.tab;
+                    state.tab = target;
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+                    document.getElementById('panel-calendar').style.display = target === 'calendar' ? '' : 'none';
+                    document.getElementById('panel-categories').style.display = target === 'categories' ? '' : 'none';
+                });
+            });
+            document.getElementById('panel-categories').addEventListener('click', e => {
+                const btn = e.target.closest('[data-cat-toggle]');
+                if (!btn) return;
+                const id = parseInt(btn.dataset.catToggle, 10);
+                if (state.expandedCategories.has(id)) state.expandedCategories.delete(id);
+                else state.expandedCategories.add(id);
+                const card = btn.closest('.cat-card');
+                if (card) {
+                    card.classList.toggle('expanded');
+                    btn.setAttribute('aria-expanded', card.classList.contains('expanded') ? 'true' : 'false');
+                }
+            });
+        }
+
+        async function loadMyContext(tournamentId) {
+            const token = localStorage.getItem(TOKEN_KEY);
+            if (!token) return;
+            try {
+                const res = await fetch(`${API_URL}/tournaments/${tournamentId}/my-context`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem(TOKEN_KEY);
+                    return;
+                }
+                if (!res.ok) return;
+                const data = await res.json();
+                const ids = (data?.categories || []).map(c => c.team_id).filter(Boolean);
+                state.myTeamIds = new Set(ids);
+            } catch (err) {
+                console.warn('my-context failed', err);
+            }
+        }
+
+        async function loadTournament(code) {
+            try {
+                const [infoRes, calRes] = await Promise.all([
+                    fetch(`${API_URL}/public/tournaments/by-share-code/${code}`),
+                    fetch(`${API_URL}/public/tournaments/by-share-code/${code}/calendar`)
+                ]);
+                if (infoRes.status === 404 || calRes.status === 404) {
+                    return renderError('Torneo no encontrado', 'El enlace puede ser inválido o el torneo ya no está disponible.');
+                }
+                if (!infoRes.ok || !calRes.ok) {
+                    return renderError('Error de servidor', 'No pudimos cargar el torneo. Intenta de nuevo en unos minutos.');
+                }
+                state.tournament = await infoRes.json();
+                state.calendar = await calRes.json();
+                await loadMyContext(state.calendar.tournament_id);
+                state.pendingLinks = await loadPendingLinks(state.calendar.tournament_id);
+                renderShell();
+                loadTournamentTeams(code);
+            } catch (err) {
+                console.error(err);
+                renderError('Error de red', 'No pudimos conectar con el servidor.');
+            }
+        }
+
+        wireAuthModal();
+
+        document.addEventListener('error', e => {
+            const img = e.target;
+            if (!img || !(img instanceof HTMLImageElement) || !img.hasAttribute('data-avatar-img')) return;
+            const parent = img.parentElement;
+            if (!parent) return;
+            const initialsAttr = parent.getAttribute('data-initials') || '?';
+            parent.classList.remove('has-photo');
+            parent.textContent = initialsAttr;
+        }, true);
+
+        const code = extractShareCode();
+        if (!code || code.length !== 8) {
+            renderError('Falta el código del torneo', 'Abre el enlace que te compartió el organizador. Debe verse así: courtbit.com.mx/torneo/{código}');
+        } else {
+            loadSession();
+            loadTournament(code);
+        }
+    </script>
+</body>
+</html>
