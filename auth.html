@@ -339,9 +339,20 @@
     <script>
         const API_URL = 'https://courtbit-api-production.up.railway.app/api';
 
+        // Safe redirect target: only same-origin paths starting with "/"
+        function safeRedirectTarget() {
+            const params = new URLSearchParams(window.location.search);
+            const raw = params.get('redirect') || '';
+            if (raw && raw.startsWith('/') && !raw.startsWith('//')) {
+                return raw;
+            }
+            return 'dashboard.html';
+        }
+        const REDIRECT_TARGET = safeRedirectTarget();
+
         // Check if already logged in
         if (localStorage.getItem('courtbit_token')) {
-            window.location.href = 'dashboard.html';
+            window.location.href = REDIRECT_TARGET;
         }
 
         function showError(message) {
@@ -406,7 +417,7 @@
                 localStorage.setItem('courtbit_token', data.token);
                 localStorage.setItem('courtbit_user', JSON.stringify(data.user));
 
-                window.location.href = 'dashboard.html';
+                window.location.href = REDIRECT_TARGET;
             } catch (err) {
                 setLoading(btn, false);
                 showError('Error de conexión. Intenta de nuevo.');
@@ -459,7 +470,7 @@
                 localStorage.setItem('courtbit_token', data.token);
                 localStorage.setItem('courtbit_user', JSON.stringify(data.user));
 
-                window.location.href = 'dashboard.html';
+                window.location.href = REDIRECT_TARGET;
             } catch (err) {
                 setLoading(btn, false);
                 showError('Error de conexión. Intenta de nuevo.');
