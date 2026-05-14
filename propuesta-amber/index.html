@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courtbit × Amber — Alianza para gestión de torneos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=swap">
+<style>
+  :root {
+    --lime: #B8F02B;
+    --lime-soft: #e8faa0;
+    --lime-bg: #f4fdd6;
+    --lime-deep: #6dbf00;
+    --navy: #0f1d4d;
+    --navy-light: #1a2e6b;
+    --navy-950: #060a26;
+    --blue: #2e59fb;
+    --blue-soft: #eef2ff;
+    --white: #ffffff;
+    --bg: #fafbfc;
+    --bg-warm: #f5f6f8;
+    --text: #1a1f36;
+    --text-secondary: #5a6178;
+    --text-muted: #8b92a8;
+    --border: #e4e7ec;
+    --border-light: #f0f1f4;
+    --shadow-sm: 0 1px 3px rgba(15,29,77,0.06);
+    --shadow-md: 0 4px 12px rgba(15,29,77,0.08);
+    --shadow-lg: 0 12px 32px rgba(15,29,77,0.1);
+    --radius: 16px;
+    --radius-lg: 24px;
+    --radius-full: 100px;
+    --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  .topbar {
+    background: var(--navy-950);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.78rem;
+    padding: 10px 16px;
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .topbar b { color: var(--lime); font-weight: 700; }
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-light);
+    padding: 14px 0;
+  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  .logo {
+    font-weight: 800; font-size: 1.05rem; letter-spacing: 0.16em;
+    color: var(--navy); text-transform: uppercase;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-dot {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: var(--lime);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: var(--navy); font-weight: 800;
+    letter-spacing: 0;
+  }
+  .nav-tag {
+    font-size: 0.75rem; font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 110px 0 90px;
+    background: linear-gradient(165deg, #f0fde4 0%, var(--white) 45%, var(--blue-soft) 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      radial-gradient(circle at 18% 80%, rgba(184,240,43,0.10) 0%, transparent 50%),
+      radial-gradient(circle at 82% 20%, rgba(46,89,251,0.05) 0%, transparent 50%);
+  }
+  .hero .container { position: relative; z-index: 2; max-width: 900px; text-align: center; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--white); border: 1px solid var(--border);
+    padding: 8px 18px; border-radius: var(--radius-full);
+    font-size: 0.82rem; color: var(--text-secondary);
+    font-weight: 600; margin-bottom: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .hero-badge .dot {
+    width: 8px; height: 8px; background: var(--lime);
+    border-radius: 50%; box-shadow: 0 0 10px rgba(184,240,43,0.6);
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.4rem); font-weight: 800;
+    line-height: 1.05; letter-spacing: -0.035em;
+    color: var(--navy); margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--lime-deep) 0%, #4a9e00 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1.18rem; color: var(--text-secondary);
+    max-width: 640px; margin: 0 auto 40px; line-height: 1.65;
+  }
+  .hero-meta {
+    display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  }
+  .hero-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.82rem; font-weight: 600; color: var(--navy);
+    padding: 8px 16px; background: var(--white);
+    border: 1px solid var(--border); border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+  }
+  .hero-pill svg { width: 14px; height: 14px; color: var(--lime-deep); }
+
+  /* SECTION BASE */
+  section { padding: 96px 0; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--lime-deep);
+    margin-bottom: 14px;
+  }
+  .section-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
+  .section-head h2 {
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem); font-weight: 800;
+    color: var(--navy); letter-spacing: -0.025em; line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .section-head p {
+    font-size: 1.08rem; color: var(--text-secondary); line-height: 1.6;
+  }
+
+  /* PILARES */
+  .pilares { background: var(--bg); border-top: 1px solid var(--border-light); }
+  .pilares-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .pilar-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 32px 28px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pilar-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .pilar-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--lime-bg);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .pilar-icon svg { width: 24px; height: 24px; color: var(--lime-deep); }
+  .pilar-card h3 {
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 8px;
+  }
+  .pilar-card p {
+    font-size: 0.94rem; color: var(--text-secondary); line-height: 1.55;
+  }
+
+  /* FLOWS */
+  .flow-section { background: var(--white); }
+  .flow-section.dark { background: var(--navy); color: var(--white); }
+  .flow-section.dark .section-head h2 { color: var(--white); }
+  .flow-section.dark .section-head p { color: rgba(255,255,255,0.75); }
+  .flow-section.dark .eyebrow { color: var(--lime); }
+
+  .flow-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  .step {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    position: relative;
+    display: flex; gap: 18px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .step:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .step-num {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--navy); color: var(--lime);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.05rem;
+  }
+  .step-body h4 {
+    font-size: 1.08rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 6px;
+  }
+  .step-body p {
+    font-size: 0.93rem; color: var(--text-secondary); line-height: 1.55;
+  }
+  .step-body .meta {
+    margin-top: 10px;
+    font-size: 0.78rem; font-weight: 600; color: var(--lime-deep);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+
+  /* Dark variant */
+  .flow-section.dark .step {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .flow-section.dark .step:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(184,240,43,0.3);
+  }
+  .flow-section.dark .step-num {
+    background: var(--lime); color: var(--navy);
+  }
+  .flow-section.dark .step-body h4 { color: var(--white); }
+  .flow-section.dark .step-body p { color: rgba(255,255,255,0.75); }
+  .flow-section.dark .step-body .meta { color: var(--lime); }
+
+  /* COMPARATIVO */
+  .alianza { background: var(--bg); }
+  .alianza-grid {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px;
+    align-items: stretch;
+  }
+  .alianza-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 36px 32px;
+  }
+  .alianza-card.amber {
+    border: 2px solid var(--navy);
+  }
+  .alianza-card.courtbit {
+    background: var(--navy); color: var(--white);
+    border: 2px solid var(--navy);
+  }
+  .alianza-tag {
+    display: inline-block;
+    font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 5px 12px; border-radius: var(--radius-full);
+    margin-bottom: 16px;
+  }
+  .alianza-card.amber .alianza-tag {
+    background: var(--lime-bg); color: var(--lime-deep);
+  }
+  .alianza-card.courtbit .alianza-tag {
+    background: rgba(184,240,43,0.18); color: var(--lime);
+  }
+  .alianza-card h3 {
+    font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+  .alianza-card.amber h3 { color: var(--navy); }
+  .alianza-card.courtbit h3 { color: var(--white); }
+  .alianza-list { list-style: none; }
+  .alianza-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.96rem; line-height: 1.5;
+  }
+  .alianza-card.courtbit .alianza-list li {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.92);
+  }
+  .alianza-list li:last-child { border-bottom: none; }
+  .alianza-list li svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; }
+  .alianza-card.amber .alianza-list li svg { color: var(--lime-deep); }
+  .alianza-card.courtbit .alianza-list li svg { color: var(--lime); }
+  .alianza-divider {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; font-weight: 800; color: var(--text-muted);
+    padding: 0 4px;
+  }
+
+  /* TIMELINE */
+  .timeline-section { background: var(--white); border-top: 1px solid var(--border-light); }
+  .timeline {
+    max-width: 880px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr; gap: 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 23px; top: 20px; bottom: 20px;
+    width: 2px; background: var(--border);
+  }
+  .timeline-row {
+    display: grid; grid-template-columns: 48px 1fr;
+    gap: 24px; padding: 16px 0;
+    position: relative;
+  }
+  .timeline-marker {
+    width: 48px; height: 48px;
+    background: var(--white);
+    border: 2px solid var(--navy);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 0.85rem;
+    color: var(--navy);
+    z-index: 1; position: relative;
+  }
+  .timeline-row.highlight .timeline-marker {
+    background: var(--lime); border-color: var(--lime);
+  }
+  .timeline-body {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px 22px;
+  }
+  .timeline-body h4 {
+    font-size: 1rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .timeline-body p {
+    font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5;
+  }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 100px 0;
+    position: relative; overflow: hidden;
+  }
+  .cta-final::before {
+    content: ''; position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(184,240,43,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-final .container {
+    position: relative; z-index: 2;
+    max-width: 760px; text-align: center;
+  }
+  .cta-final h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800;
+    letter-spacing: -0.025em; line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .cta-final h2 em {
+    font-style: normal; color: var(--lime);
+  }
+  .cta-final p {
+    font-size: 1.1rem; color: rgba(255,255,255,0.8);
+    margin-bottom: 36px; line-height: 1.6;
+  }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 28px; border-radius: var(--radius-full);
+    font-weight: 700; font-size: 0.98rem;
+    text-decoration: none; transition: all 0.18s;
+    border: 2px solid transparent; cursor: pointer;
+  }
+  .btn-lime {
+    background: var(--lime); color: var(--navy);
+    box-shadow: 0 12px 32px -8px rgba(184,240,43,0.5);
+  }
+  .btn-lime:hover {
+    background: #c7f548; transform: translateY(-2px);
+    box-shadow: 0 18px 36px -8px rgba(184,240,43,0.65);
+  }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .btn-outline:hover {
+    border-color: var(--white); background: rgba(255,255,255,0.06);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-950); color: rgba(255,255,255,0.5);
+    padding: 32px 0; text-align: center; font-size: 0.85rem;
+  }
+  footer b { color: var(--lime); font-weight: 700; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    section { padding: 70px 0; }
+    .pilares-grid { grid-template-columns: 1fr; }
+    .flow-grid { grid-template-columns: 1fr; }
+    .alianza-grid { grid-template-columns: 1fr; }
+    .alianza-divider { display: none; }
+    .hero { padding: 72px 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  Propuesta de alianza estratégica · <b>Courtbit × Amber</b>
+</div>
+
+<nav>
+  <div class="container">
+    <div class="logo">
+      <span class="logo-dot">C</span>
+      Courtbit
+    </div>
+    <div class="nav-tag">Propuesta para Amber</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top: 90px;">
+  <div class="container">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Alianza estratégica · Gestión de torneos
+    </div>
+    <h1>El torneo de Amber, <em>operado sobre Courtbit.</em></h1>
+    <p class="hero-sub">
+      Una plataforma diseñada para que el club no se preocupe por inscripciones, brackets, pagos ni
+      comunicación con jugadores. Amber pone la sede y la comunidad; Courtbit pone la tecnología
+      y la experiencia digital.
+    </p>
+    <div class="hero-meta">
+      <span class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Cero costos fijos
+      </span>
+      <span class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Apps nativas iOS + Android
+      </span>
+      <span class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Pagos directos a Stripe del club
+      </span>
+      <span class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Soporte operativo el día del evento
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="pilares">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Por qué Courtbit</div>
+      <h2>Tres pilares que cambian cómo se opera un torneo</h2>
+      <p>Pensado desde el primer día para que el organizador tenga visibilidad total y el jugador, una experiencia premium.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-card">
+        <div class="pilar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+        </div>
+        <h3>Dashboard completo</h3>
+        <p>Inscripciones, brackets, categorías, calendarios y resultados — todo en un solo lugar, en vivo.</p>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"></rect><path d="M12 18h.01"></path></svg>
+        </div>
+        <h3>App para jugadores</h3>
+        <p>iOS y Android. Cada jugador se inscribe, paga, ve su bracket y recibe notificaciones desde su teléfono.</p>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </div>
+        <h3>Pagos al club</h3>
+        <p>Cada inscripción se cobra vía Stripe directo a la cuenta de Amber. Sin intermediarios, sin retención de fondos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLUJO ORGANIZADOR -->
+<section class="flow-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Flujo del organizador</div>
+      <h2>Lo que Amber hace en el dashboard</h2>
+      <p>Seis pasos para tener el torneo armado y publicado. La mayoría se configura una sola vez por torneo.</p>
+    </div>
+    <div class="flow-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Crear el torneo</h4>
+          <p>Nombre, fechas, sede, descripción y banner. Quedará visible en la app y en el sitio público de Amber.</p>
+          <div class="meta">~5 minutos</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Definir categorías y cupos</h4>
+          <p>Cuántas categorías, niveles, género, precio de inscripción, número máximo de equipos por categoría.</p>
+          <div class="meta">Configuración inicial</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Abrir inscripciones</h4>
+          <p>Con un botón el torneo queda en línea. Los jugadores empiezan a inscribirse y pagar desde la app o el link público.</p>
+          <div class="meta">Tracking en vivo</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Generar brackets</h4>
+          <p>Eliminación directa, doble eliminación, round robin o formato mixto. Courtbit arma el cuadro automáticamente.</p>
+          <div class="meta">Automatizado</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Programar partidos</h4>
+          <p>Asignación de canchas y horarios con calendario visual estilo Playtomic. Los jugadores reciben push con su horario.</p>
+          <div class="meta">Drag &amp; drop</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Capturar resultados</h4>
+          <p>El staff de Amber (o el propio jugador, si se habilita) ingresa marcadores. El bracket avanza solo y se publica en vivo.</p>
+          <div class="meta">Tiempo real</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLUJO JUGADOR -->
+<section class="flow-section dark">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Flujo del jugador</div>
+      <h2>Lo que vive el jugador en su teléfono</h2>
+      <p>Una sola app — gratuita — para inscribirse, pagar, jugar y seguir su torneo. Cero papel, cero WhatsApp masivos.</p>
+    </div>
+    <div class="flow-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Descubre el torneo</h4>
+          <p>Encuentra el torneo de Amber en la app, en el sitio público o por link directo compartido en redes.</p>
+          <div class="meta">App + Web</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Se inscribe con su pareja</h4>
+          <p>Elige categoría, invita a su compañero/a por correo o teléfono. La pareja queda registrada en segundos.</p>
+          <div class="meta">Self-service</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Paga con tarjeta</h4>
+          <p>Stripe procesa el pago. El dinero entra directo a la cuenta de Amber. Recibo automático al jugador.</p>
+          <div class="meta">Stripe seguro</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Ve su bracket en vivo</h4>
+          <p>Cuando se publica el cuadro, recibe notificación. Ve a qué rival enfrenta, en qué cancha y a qué hora.</p>
+          <div class="meta">Push notifications</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Sigue resultados al instante</h4>
+          <p>Cada partido capturado actualiza el bracket. El jugador puede ver el torneo completo, no solo el suyo.</p>
+          <div class="meta">Live updates</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Acumula puntos en su ranking</h4>
+          <p>El torneo de Amber suma a su ranking personal en Courtbit. Más razones para volver al próximo evento.</p>
+          <div class="meta">Retención</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALIANZA -->
+<section class="alianza">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Modelo de alianza</div>
+      <h2>Quién aporta qué</h2>
+      <p>Una alianza simple: cada parte hace lo que mejor sabe hacer.</p>
+    </div>
+    <div class="alianza-grid">
+      <div class="alianza-card amber">
+        <span class="alianza-tag">Amber</span>
+        <h3>El club</h3>
+        <ul class="alianza-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Sede, canchas y operación física del torneo
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Marca, convocatoria y comunidad de jugadores
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Staff en sitio para capturar resultados y coordinar partidos
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Cuenta Stripe del club — recibe directo el 100% de las inscripciones
+          </li>
+        </ul>
+      </div>
+      <div class="alianza-divider">×</div>
+      <div class="alianza-card courtbit">
+        <span class="alianza-tag">Courtbit</span>
+        <h3>La plataforma</h3>
+        <ul class="alianza-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Dashboard de gestión, brackets, calendario y resultados
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Apps iOS y Android para jugadores, gratuitas
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Procesamiento de pagos, recibos y soporte al jugador
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Acompañamiento operativo antes y durante el torneo
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Cómo arrancamos</div>
+      <h2>De la firma al primer saque</h2>
+      <p>Un proceso lineal y predecible. Amber decide las fechas; Courtbit se adapta.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-row">
+        <div class="timeline-marker">D-0</div>
+        <div class="timeline-body">
+          <h4>Onboarding del club</h4>
+          <p>Damos acceso al dashboard de Amber y conectamos Stripe a la cuenta bancaria del club.</p>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-marker">D-3</div>
+        <div class="timeline-body">
+          <h4>Configuración del torneo</h4>
+          <p>Categorías, precios, cupos y formato. Courtbit acompaña al staff de Amber en la primera configuración.</p>
+        </div>
+      </div>
+      <div class="timeline-row highlight">
+        <div class="timeline-marker">D-5</div>
+        <div class="timeline-body">
+          <h4>Apertura de inscripciones</h4>
+          <p>El torneo se publica en la app y en el sitio público. Empieza la convocatoria.</p>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-marker">D-1</div>
+        <div class="timeline-body">
+          <h4>Generación de brackets</h4>
+          <p>Cierre de inscripciones, sorteo y publicación de cuadros. Jugadores reciben notificación con su horario.</p>
+        </div>
+      </div>
+      <div class="timeline-row highlight">
+        <div class="timeline-marker">D</div>
+        <div class="timeline-body">
+          <h4>Día del torneo</h4>
+          <p>Captura de resultados en vivo. Soporte de Courtbit en remoto durante el evento. Bracket público actualizado al instante.</p>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-marker">D+1</div>
+        <div class="timeline-body">
+          <h4>Cierre y reporte</h4>
+          <p>Resumen del torneo, métricas de participación y depósito final de inscripciones reflejado en Stripe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Listos para hacerlo juntos, <em>Amber.</em></h2>
+    <p>El torneo se siente premium desde el primer click. Y el club se queda con la relación, los datos y los ingresos.</p>
+    <div class="cta-buttons">
+      <a href="https://courtbit.com.mx" class="btn btn-lime" target="_blank" rel="noopener">
+        Ver courtbit.com.mx
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © Courtbit · Propuesta confidencial preparada para <b>Amber</b>
+</footer>
+
+</body>
+</html>
