@@ -1,279 +1,833 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descarga CourtBit | App de Pádel</title>
-    <meta name="description" content="Descarga CourtBit, la app para jugadores y organizadores de pádel. Disponible en App Store y Google Play.">
-    <meta property="og:title" content="Descarga CourtBit">
-    <meta property="og:description" content="La app para vivir el pádel: ligas, torneos, ranking y resultados. Disponible en iOS y Android.">
-    <meta property="og:image" content="https://courtbit.com.mx/Assets/Logo-CB-icono.png">
-    <meta property="og:url" content="https://courtbit.com.mx/apps/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="apple-itunes-app" content="app-id=6757516543">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://courtbit.com.mx/apps/">
-    <link rel="icon" type="image/png" href="../Assets/Logo-CB-icono.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap">
-    <style>
-        :root {
-            --green-primary: #00D26A;
-            --green-dark: #00A855;
-            --bg-white: #FFFFFF;
-            --bg-gray-50: #F9FAFB;
-            --text-dark: #1F2937;
-            --text-gray: #4B5563;
-            --text-light: #6B7280;
-            --border-light: #E5E7EB;
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            --font-display: 'Outfit', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descarga CourtBit — La app del pádel</title>
+  <meta name="description" content="Descarga CourtBit, la app para vivir el pádel: ligas, torneos, ranking por puntos y resultados en tiempo real. Disponible gratis en iOS y Android.">
+  <meta name="keywords" content="app padel, descargar courtbit, ranking padel mexico, torneos padel app, ligas padel app">
+  <link rel="canonical" href="https://courtbit.com.mx/apps/">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: var(--font-display);
-            background: linear-gradient(135deg, var(--bg-gray-50) 0%, #ECFDF5 100%);
-            color: var(--text-dark);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://courtbit.com.mx/apps/">
+  <meta property="og:title" content="Descarga CourtBit — La app del pádel">
+  <meta property="og:description" content="Ligas, torneos, ranking por puntos y resultados al instante. Gratis en iOS y Android.">
+  <meta property="og:image" content="https://courtbit.com.mx/Assets/Logo-CB-icono.png">
+  <meta property="og:site_name" content="CourtBit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Descarga CourtBit — La app del pádel">
+  <meta name="twitter:description" content="Ligas, torneos, ranking por puntos y resultados al instante. Gratis en iOS y Android.">
+  <meta name="twitter:image" content="https://courtbit.com.mx/Assets/Logo-CB-icono.png">
+  <meta name="apple-itunes-app" content="app-id=6757516543">
+  <meta name="robots" content="index, follow">
 
-        nav {
-            background: var(--bg-white);
-            border-bottom: 1px solid var(--border-light);
-            padding: 20px 0;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--text-dark);
-        }
-        .logo span { color: var(--green-primary); }
-        .back-link {
-            color: var(--green-primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .back-link:hover { text-decoration: underline; }
+  <link rel="icon" href="../Assets/courtbit-logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../Assets/Logo-CB-icono.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,800&family=JetBrains+Mono:wght@500;700&display=swap">
 
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 24px;
-        }
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "CourtBit",
+    "operatingSystem": "iOS, Android",
+    "applicationCategory": "SportsApplication",
+    "url": "https://courtbit.com.mx/apps/",
+    "image": "https://courtbit.com.mx/Assets/Logo-CB-icono.png",
+    "description": "App de pádel para ver ligas, torneos, ranking y resultados en tiempo real.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MXN" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "ratingCount": "12" }
+  }
+  </script>
 
-        .container {
-            max-width: 720px;
-            width: 100%;
-            text-align: center;
-        }
+  <style>
+    :root {
+      --blue:       #2e59fb;
+      --blue-deep:  #1a45e0;
+      --blue-soft:  #5a7afc;
+      --blue-mist:  #eaf0ff;
+      --navy:       #0f1d4d;
+      --navy-950:   #060a26;
+      --lime:       #B8F02B;
+      --lime-soft:  #e9fbb8;
+      --lime-deep:  #9fd121;
+      --paper:      #ffffff;
+      --bg:         #fbfbfd;
+      --bg-tint:    #f4f6ff;
+      --text:       #0f1d4d;
+      --text-soft:  #3a4262;
+      --text-muted: #6b7191;
+      --text-faint: #9aa0bb;
+      --border:     #e6e8ef;
+      --hairline:   rgba(15, 29, 77, 0.08);
+    }
 
-        .app-icon {
-            width: 96px;
-            height: 96px;
-            border-radius: 22px;
-            box-shadow: var(--shadow-lg);
-            margin: 0 auto 24px;
-            display: block;
-        }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--paper);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        h1 {
-            font-size: clamp(2rem, 5vw, 2.75rem);
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
+    /* Top bar */
+    .e-topbar {
+      background: var(--navy-950);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      padding: 8px 16px;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+    .e-topbar b { color: var(--lime); font-weight: 700; }
 
-        .subtitle {
-            font-size: 1.125rem;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-            max-width: 520px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    /* Nav */
+    .e-nav { background: var(--blue); position: sticky; top: 0; z-index: 50; }
+    .e-nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .e-logo { display: flex; align-items: center; gap: 10px; }
+    .e-logo img { height: 90px; width: auto; display: block; }
+    .e-nav-links { display: flex; gap: 28px; align-items: center; }
+    .e-nav-links a {
+      font-size: 0.9375rem; color: rgba(255,255,255,0.92); font-weight: 600;
+      transition: color 150ms;
+    }
+    .e-nav-links a:hover { color: var(--lime); }
+    .e-nav-cta {
+      background: var(--lime); color: var(--navy);
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      transition: all 180ms; border: none;
+      font-size: 0.875rem; font-weight: 700;
+      padding: 10px 18px; border-radius: 999px;
+      white-space: nowrap;
+    }
+    .e-nav-cta:hover { background: #c7f548; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(184, 240, 43, 0.4); }
 
-        .redirect-notice {
-            background: var(--bg-white);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-bottom: 32px;
-            font-size: 0.95rem;
-            color: var(--text-gray);
-            display: none;
-        }
-        .redirect-notice.visible { display: block; }
-        .redirect-notice strong { color: var(--green-dark); }
+    /* Hero (blue) */
+    .e-hero {
+      background: var(--blue);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 96px;
+    }
+    .e-hero::before {
+      content: ''; position: absolute;
+      top: -40px; left: -10%;
+      width: 70%; height: 140%;
+      background: rgba(255,255,255,0.05);
+      transform: skewX(-12deg);
+      pointer-events: none;
+    }
+    .e-hero::after {
+      content: ''; position: absolute;
+      top: 30%; left: -5%;
+      width: 45%; height: 90%;
+      background: rgba(255,255,255,0.06);
+      transform: skewX(-12deg);
+      pointer-events: none;
+    }
+    .e-hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 56px;
+      align-items: center;
+    }
+    .e-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(184, 240, 43, 0.18);
+      color: var(--lime);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border: 1px solid rgba(184, 240, 43, 0.35);
+      margin-bottom: 20px;
+    }
+    .e-eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 999px;
+      background: var(--lime);
+      box-shadow: 0 0 0 3px rgba(184, 240, 43, 0.25);
+    }
+    .e-hero h1 {
+      font-size: clamp(2.5rem, 5.6vw, 4.25rem);
+      font-weight: 800;
+      letter-spacing: -0.038em;
+      line-height: 1.04;
+      margin: 0 0 22px;
+      color: var(--paper);
+    }
+    .e-hero h1 em {
+      font-style: italic;
+      color: var(--lime);
+      font-weight: 800;
+    }
+    .e-hero .lead {
+      font-size: 1.18rem;
+      color: rgba(255,255,255,0.86);
+      margin: 0 0 32px;
+      max-width: 520px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
 
-        .badges {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 48px;
-        }
-        .badge-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-        .badge-link:hover { transform: translateY(-2px); }
-        .badge-link img { display: block; }
-        .badge-link.apple img { height: 56px; }
-        .badge-link.google img { height: 84px; }
+    .redirect-notice {
+      background: rgba(184, 240, 43, 0.12);
+      border: 1px solid rgba(184, 240, 43, 0.30);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 26px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.92);
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+    .redirect-notice.visible { display: flex; }
+    .redirect-notice strong { color: var(--lime); font-weight: 700; }
+    .redirect-spinner {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(184, 240, 43, 0.25);
+      border-top-color: var(--lime);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-        .qr-section {
-            display: none;
-        }
-        .qr-section.visible { display: block; }
-        .qr-section h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 24px;
-        }
-        .qr-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-        .qr-card {
-            background: var(--bg-white);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: var(--shadow-md);
-        }
-        .qr-card img {
-            width: 100%;
-            max-width: 160px;
-            height: auto;
-            margin: 0 auto 12px;
-            display: block;
-        }
-        .qr-card .platform {
-            font-weight: 600;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
+    /* Badge row */
+    .badges {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .badge-link {
+      display: inline-flex;
+      align-items: center;
+      transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 200ms;
+      border-radius: 12px;
+    }
+    .badge-link:hover { transform: translateY(-2px); }
+    .badge-link img { display: block; }
+    .badge-link.apple img { height: 54px; }
+    .badge-link.google img { height: 78px; margin: -10px 0; }
 
-        @media (max-width: 480px) {
-            .qr-grid { grid-template-columns: 1fr; }
-        }
+    .e-trust-strip {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.78);
+    }
+    .e-trust-strip .item { display: inline-flex; align-items: center; gap: 8px; }
+    .e-trust-strip .item svg { width: 16px; height: 16px; color: var(--lime); flex-shrink: 0; }
+    .e-trust-strip b { color: var(--lime); font-weight: 700; }
 
-        footer {
-            text-align: center;
-            padding: 24px;
-            color: var(--text-light);
-            font-size: 0.875rem;
-        }
-        footer a { color: var(--green-primary); text-decoration: none; }
-    </style>
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
+    /* Phone showcase (right side) */
+    .e-showcase {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      max-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .e-phone {
+      position: relative;
+      width: 240px;
+      aspect-ratio: 9 / 19;
+      background: var(--navy);
+      border-radius: 36px;
+      padding: 12px;
+      box-shadow:
+        0 32px 60px -16px rgba(15, 29, 77, 0.55),
+        0 0 0 1.5px rgba(255,255,255,0.10) inset;
+      transform: rotate(-4deg);
+      z-index: 2;
+    }
+    .e-phone::before {
+      content: '';
+      position: absolute;
+      top: 18px; left: 50%;
+      transform: translateX(-50%);
+      width: 90px; height: 22px;
+      background: var(--navy-950);
+      border-radius: 0 0 14px 14px;
+      z-index: 3;
+    }
+    .e-phone-screen {
+      width: 100%; height: 100%;
+      background: linear-gradient(180deg, var(--blue-mist) 0%, #fff 65%);
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 56px;
+    }
+    .e-phone-icon {
+      width: 88px; height: 88px;
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: 0 8px 20px rgba(15,29,77,0.18);
+      padding: 8px;
+      margin-bottom: 14px;
+    }
+    .e-phone-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .e-phone-title {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .e-phone-sub {
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .e-phone-rows {
+      width: 88%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .e-phone-row {
+      background: var(--paper);
+      border-radius: 10px;
+      padding: 8px 10px;
+      box-shadow: 0 1px 0 var(--hairline), 0 2px 6px -2px rgba(15,29,77,0.08);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.62rem;
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+    .e-phone-row .dotw { width: 6px; height: 6px; border-radius: 999px; background: var(--lime); flex-shrink: 0; }
+    .e-phone-row.b1 .dotw { background: var(--blue); }
+    .e-phone-row .pull { margin-left: auto; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); font-weight: 700; }
+
+    /* Floating chip cards */
+    .e-float {
+      position: absolute;
+      background: var(--paper);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 14px;
+      box-shadow: 0 24px 48px -16px rgba(15, 29, 77, 0.4);
+      animation: e-float-anim 4s ease-in-out infinite;
+      z-index: 3;
+    }
+    .e-float .label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .e-float .value {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--navy);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .e-float .value .accent { color: var(--blue); }
+    .e-float.left {
+      left: -10px;
+      top: 18%;
+      transform: rotate(-4deg);
+    }
+    .e-float.right {
+      right: -16px;
+      bottom: 22%;
+      transform: rotate(4deg);
+      animation-delay: -2s;
+    }
+    @keyframes e-float-anim {
+      0%, 100% { transform: var(--rot, rotate(-4deg)) translateY(0); }
+      50%      { transform: var(--rot, rotate(-4deg)) translateY(-6px); }
+    }
+    .e-float.left  { --rot: rotate(-4deg); }
+    .e-float.right { --rot: rotate(4deg); }
+
+    /* Features section */
+    .e-features {
+      padding: 96px 0;
+      background: var(--bg);
+    }
+    .e-section-header { text-align: center; margin-bottom: 56px; }
+    .e-section-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: var(--blue-mist); color: var(--blue-deep);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border: 1px solid rgba(46, 89, 251, 0.18);
+      margin-bottom: 16px;
+    }
+    .e-section-eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 999px;
+      background: var(--blue);
+      box-shadow: 0 0 0 3px rgba(46,89,251,0.18);
+    }
+    .e-section-title {
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin: 0 0 12px;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .e-section-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .e-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .e-feature {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 200ms, box-shadow 200ms;
+    }
+    .e-feature:hover {
+      transform: translateY(-3px);
+      border-color: var(--blue-soft);
+      box-shadow: 0 12px 32px -12px rgba(15, 29, 77, 0.15);
+    }
+    .e-feature-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--blue-mist);
+      color: var(--blue);
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .e-feature-icon svg { width: 22px; height: 22px; }
+    .e-feature h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+    }
+    .e-feature p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* QR section */
+    .e-qr-section {
+      padding: 80px 0 96px;
+      background: var(--paper);
+      display: none;
+    }
+    .e-qr-section.visible { display: block; }
+    .e-qr-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 280px));
+      gap: 24px;
+      max-width: 600px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+    .e-qr-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      transition: transform 200ms, box-shadow 200ms, border-color 200ms;
+    }
+    .e-qr-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px -16px rgba(15, 29, 77, 0.18);
+      border-color: var(--blue-soft);
+    }
+    .e-qr-card img {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      margin: 0 auto 14px;
+      display: block;
+      border-radius: 10px;
+    }
+    .e-qr-platform {
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .e-qr-platform-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      padding: 56px 0 24px;
+      border-top: 1px solid var(--border);
+      background: var(--paper);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+    .footer-col h4 {
+      font-size: 0.6875rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 14px;
+    }
+    .footer-col .footer-link {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .footer-col .footer-link:hover { color: var(--blue); }
+    .footer-brand {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+    }
+    .footer-brand span { color: var(--blue); }
+    .footer-tagline {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 10px 0 18px;
+      max-width: 280px;
+      line-height: 1.55;
+    }
+    .footer-apps { display: flex; gap: 10px; flex-wrap: wrap; }
+    .footer-app {
+      background: var(--navy);
+      color: var(--paper);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .footer-app:hover { background: #1a2c6e; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-legal { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-legal .footer-link { font-size: 0.8125rem; color: var(--text-muted); }
+    .footer-legal .footer-link:hover { color: var(--blue); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .e-hero { padding: 56px 0 64px; }
+      .e-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .e-showcase { max-width: 320px; margin: 0 auto; max-height: 420px; }
+      .e-phone { width: 200px; }
+      .e-float.left { left: -4px; top: 12%; }
+      .e-float.right { right: -4px; bottom: 14%; }
+      .e-nav-links { display: none; }
+      .e-feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+      .footer-grid .footer-col:first-child { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+    }
+    @media (max-width: 600px) {
+      .e-features { padding: 64px 0; }
+      .e-feature-grid { grid-template-columns: 1fr; }
+      .e-qr-section { padding: 56px 0 72px; }
+      .e-qr-grid { grid-template-columns: 1fr; gap: 16px; max-width: 320px; }
+      footer { padding: 40px 0 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .e-logo img { height: 64px; }
+      .e-nav-inner { padding: 12px 16px; }
+    }
+  </style>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
+
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="logo">Court<span>bit</span></a>
-            <a href="/" class="back-link">← Inicio</a>
+  <div class="e-topbar">
+    <span><b>Disponible</b> · CourtBit en iOS y Android · <b>Gratis</b></span>
+  </div>
+
+  <nav class="e-nav" aria-label="Principal">
+    <div class="e-nav-inner">
+      <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
+        <img src="../Assets/courtbit-logo.svg" alt="CourtBit">
+      </a>
+      <div class="e-nav-links">
+        <a href="/clubes/">Para clubes</a>
+        <a href="/academias/">Para academias</a>
+        <a href="/competencias/">Para organizadores</a>
+        <a href="/pricing/">Precios</a>
+      </div>
+      <a href="/" class="e-nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        Volver al sitio
+      </a>
+    </div>
+  </nav>
+
+  <header class="e-hero">
+    <div class="container">
+      <div class="e-hero-grid">
+        <div>
+          <div class="e-eyebrow">
+            <span class="dot"></span>
+            App de jugadores
+          </div>
+          <h1>Vive el pádel <em>en tu bolsillo.</em></h1>
+          <p class="lead">Ligas, torneos, ranking por puntos y resultados al instante. Todo lo que pasa en tu club, en una app.</p>
+
+          <div id="redirectNotice" class="redirect-notice" role="status" aria-live="polite">
+            <div class="redirect-spinner" aria-hidden="true"></div>
+            <div><strong>Abriendo la tienda…</strong> Si no se abre, toca el botón de tu plataforma.</div>
+          </div>
+
+          <div class="badges">
+            <a id="appStoreBtn" class="badge-link apple" href="https://apps.apple.com/mx/app/courtbit/id6757516543" rel="noopener" aria-label="Descargar en App Store">
+              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store" loading="eager">
+            </a>
+            <a id="googlePlayBtn" class="badge-link google" href="https://play.google.com/store/apps/details?id=com.incodap.courtbit" rel="noopener" aria-label="Disponible en Google Play">
+              <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play" loading="eager">
+            </a>
+          </div>
+
+          <div class="e-trust-strip">
+            <span class="item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <b>5.0</b> estrellas
+            </span>
+            <span class="item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Sin anuncios
+            </span>
+            <span class="item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
+              <b>Gratis</b> para jugadores
+            </span>
+          </div>
         </div>
-    </nav>
 
-    <main>
-        <div class="container">
-            <img src="../Assets/Logo-CB-icono.png" alt="CourtBit" class="app-icon">
-            <h1>Descarga CourtBit</h1>
-            <p class="subtitle">La app para vivir el pádel: ligas, torneos, ranking y resultados al instante.</p>
+        <div class="e-showcase" aria-hidden="true">
+          <div class="e-float left">
+            <div class="label">Tu ranking</div>
+            <div class="value"><span class="accent">#12</span> · 1,840 pts</div>
+          </div>
 
-            <div id="redirectNotice" class="redirect-notice">
-                <strong>Abriendo la tienda...</strong> Si no se abre automáticamente, toca el botón de tu plataforma.
+          <div class="e-phone">
+            <div class="e-phone-screen">
+              <div class="e-phone-icon">
+                <img src="../Assets/Logo-CB-icono.png" alt="">
+              </div>
+              <div class="e-phone-title">CourtBit</div>
+              <div class="e-phone-sub">Mis partidos</div>
+              <div class="e-phone-rows">
+                <div class="e-phone-row b1"><span class="dotw"></span>Final · Cat. 4ª<span class="pull">18:00</span></div>
+                <div class="e-phone-row"><span class="dotw"></span>Semi · Cat. 5ª<span class="pull">16:30</span></div>
+                <div class="e-phone-row"><span class="dotw"></span>Liga miércoles<span class="pull">20:00</span></div>
+                <div class="e-phone-row b1"><span class="dotw"></span>Americano<span class="pull">SAB</span></div>
+              </div>
             </div>
+          </div>
 
-            <div class="badges">
-                <a id="appStoreBtn" class="badge-link apple" href="https://apps.apple.com/mx/app/courtbit/id6757516543" rel="noopener">
-                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store" loading="lazy">
-                </a>
-                <a id="googlePlayBtn" class="badge-link google" href="https://play.google.com/store/apps/details?id=com.incodap.courtbit" rel="noopener">
-                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play" loading="lazy">
-                </a>
-            </div>
-
-            <div id="qrSection" class="qr-section">
-                <h2>Escanea con tu teléfono</h2>
-                <div class="qr-grid">
-                    <div class="qr-card">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fapps.apple.com%2Fmx%2Fapp%2Fcourtbit%2Fid6757516543" alt="QR App Store" loading="lazy">
-                        <div class="platform">iPhone / iPad</div>
-                    </div>
-                    <div class="qr-card">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.incodap.courtbit" alt="QR Google Play" loading="lazy">
-                        <div class="platform">Android</div>
-                    </div>
-                </div>
-            </div>
+          <div class="e-float right">
+            <div class="label">Próximo</div>
+            <div class="value">Hoy · <span class="accent">18:00</span></div>
+          </div>
         </div>
-    </main>
+      </div>
+    </div>
+  </header>
 
-    <footer>
-        <a href="/">courtbit.com.mx</a>
-    </footer>
+  <section class="e-features">
+    <div class="container">
+      <div class="e-section-header">
+        <div class="e-section-eyebrow"><span class="dot"></span>Todo en un lugar</div>
+        <h2 class="e-section-title">Lo que pasa en tu club, en tiempo real.</h2>
+        <p class="e-section-lead">Sigue tus torneos, revisa tu ranking y entérate de cada resultado sin abrir el chat del grupo.</p>
+      </div>
 
-    <script>
-        (function () {
-            var APP_STORE = 'https://apps.apple.com/mx/app/courtbit/id6757516543';
-            var GOOGLE_PLAY = 'https://play.google.com/store/apps/details?id=com.incodap.courtbit';
+      <div class="e-feature-grid">
+        <div class="e-feature">
+          <div class="e-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Ranking por puntos</h3>
+          <p>Sube de posición con cada victoria. Compite por temporada y categoría.</p>
+        </div>
 
-            var ua = navigator.userAgent || '';
-            var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-            var isAndroid = /android/i.test(ua);
+        <div class="e-feature">
+          <div class="e-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3>Torneos en vivo</h3>
+          <p>Cuadros, brackets y resultados al instante. Sin refrescar grupos de WhatsApp.</p>
+        </div>
 
-            var params = new URLSearchParams(window.location.search);
-            var utm = params.toString();
-            function withUtm(url) {
-                if (!utm) return url;
-                var sep = url.indexOf('?') === -1 ? '?' : '&';
-                return url + sep + utm;
-            }
+        <div class="e-feature">
+          <div class="e-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Tus partidos</h3>
+          <p>Hora, cancha y pareja. Ya nunca llegas tarde a la final.</p>
+        </div>
 
-            document.getElementById('appStoreBtn').href = withUtm(APP_STORE);
-            document.getElementById('googlePlayBtn').href = withUtm(GOOGLE_PLAY);
+        <div class="e-feature">
+          <div class="e-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <h3>Notificaciones</h3>
+          <p>Te avisamos cuando empieza tu partido o cambian el horario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            if (isIOS || isAndroid) {
-                document.getElementById('redirectNotice').classList.add('visible');
-                var target = isIOS ? withUtm(APP_STORE) : withUtm(GOOGLE_PLAY);
-                setTimeout(function () { window.location.href = target; }, 1200);
-            } else {
-                document.getElementById('qrSection').classList.add('visible');
-            }
-        })();
-    </script>
+  <section id="qrSection" class="e-qr-section" aria-label="Descargar escaneando QR">
+    <div class="container">
+      <div class="e-section-header">
+        <div class="e-section-eyebrow"><span class="dot"></span>Para escritorio</div>
+        <h2 class="e-section-title">Escanea con tu teléfono.</h2>
+        <p class="e-section-lead">¿Estás en la computadora? Apunta la cámara y descarga la app en segundos.</p>
+      </div>
+      <div class="e-qr-grid">
+        <div class="e-qr-card">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fapps.apple.com%2Fmx%2Fapp%2Fcourtbit%2Fid6757516543" alt="QR App Store" loading="lazy">
+          <div class="e-qr-platform">iPhone / iPad</div>
+          <div class="e-qr-platform-sub">App Store</div>
+        </div>
+        <div class="e-qr-card">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.incodap.courtbit" alt="QR Google Play" loading="lazy">
+          <div class="e-qr-platform">Android</div>
+          <div class="e-qr-platform-sub">Google Play</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">Court<span>Bit</span></div>
+          <p class="footer-tagline">Sistema de reservas, academias y competencias para clubes de padel en México.</p>
+          <div class="footer-apps">
+            <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="footer-app" target="_blank" rel="noopener">App Store ↗</a>
+            <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&amp;hl=es_MX" class="footer-app" target="_blank" rel="noopener">Google Play ↗</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Producto</h4>
+          <a href="/clubes/" class="footer-link">Para clubes</a>
+          <a href="/academias/" class="footer-link">Para academias</a>
+          <a href="/competencias/" class="footer-link">Para organizadores</a>
+          <a href="/pricing/" class="footer-link">Precios</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Herramientas</h4>
+          <a href="/calculadora-torneo/" class="footer-link">Calculadora de torneo</a>
+          <a href="/calculadora-liga/" class="footer-link">Calculadora de liga</a>
+          <a href="/generador-cuadro-torneo-padel/" class="footer-link">Generador de cuadros</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Guías</h4>
+          <a href="/como-organizar-torneo-padel/" class="footer-link">Cómo organizar un torneo</a>
+          <a href="/mejores-practicas-torneo-padel/" class="footer-link">Mejores prácticas</a>
+          <a href="/liga-americana-padel/" class="footer-link">Liga americana</a>
+          <a href="/liga-padel-americana-individual/" class="footer-link">Liga americana individual</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 CourtBit · Todos los derechos reservados</span>
+        <div class="footer-legal">
+          <a href="/legal/" class="footer-link">Legal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var APP_STORE = 'https://apps.apple.com/mx/app/courtbit/id6757516543';
+      var GOOGLE_PLAY = 'https://play.google.com/store/apps/details?id=com.incodap.courtbit';
+
+      var ua = navigator.userAgent || '';
+      var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      var isAndroid = /android/i.test(ua);
+
+      var params = new URLSearchParams(window.location.search);
+      var utm = params.toString();
+      function withUtm(url) {
+        if (!utm) return url;
+        var sep = url.indexOf('?') === -1 ? '?' : '&';
+        return url + sep + utm;
+      }
+
+      document.getElementById('appStoreBtn').href = withUtm(APP_STORE);
+      document.getElementById('googlePlayBtn').href = withUtm(GOOGLE_PLAY);
+
+      if (isIOS || isAndroid) {
+        document.getElementById('redirectNotice').classList.add('visible');
+        var target = isIOS ? withUtm(APP_STORE) : withUtm(GOOGLE_PLAY);
+        setTimeout(function () { window.location.href = target; }, 1200);
+      } else {
+        document.getElementById('qrSection').classList.add('visible');
+      }
+    })();
+  </script>
 </body>
 </html>
