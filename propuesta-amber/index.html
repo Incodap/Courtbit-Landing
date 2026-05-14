@@ -9,23 +9,31 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=swap">
 <style>
   :root {
-    --lime: #B8F02B;
-    --lime-soft: #e8faa0;
-    --lime-bg: #f4fdd6;
-    --lime-deep: #6dbf00;
-    --navy: #0f1d4d;
-    --navy-light: #1a2e6b;
-    --navy-950: #060a26;
+    /* Variant E "Playtomic-grade Bold" — synced with courtbit.com.mx */
     --blue: #2e59fb;
-    --blue-soft: #eef2ff;
+    --blue-deep: #1a45e0;
+    --blue-soft: #5a7afc;
+    --blue-mist: #eaf0ff;
+    --navy: #0f1d4d;
+    --navy-light: #1a2c6e;
+    --navy-950: #060a26;
+    --lime: #B8F02B;
+    --lime-soft: #e9fbb8;
+    --lime-deep: #9fd121;
+    --lime-bg: #f4fdd6;
+    --paper: #ffffff;
     --white: #ffffff;
-    --bg: #fafbfc;
-    --bg-warm: #f5f6f8;
-    --text: #1a1f36;
-    --text-secondary: #5a6178;
-    --text-muted: #8b92a8;
-    --border: #e4e7ec;
+    --bg: #fbfbfd;
+    --bg-tint: #f4f6ff;
+    --bg-warm: var(--bg-tint);
+    --text: #0f1d4d;
+    --text-soft: #3a4262;
+    --text-secondary: var(--text-soft);
+    --text-muted: #6b7191;
+    --text-faint: #9aa0bb;
+    --border: #e6e8ef;
     --border-light: #f0f1f4;
+    --hairline: rgba(15, 29, 77, 0.08);
     --shadow-sm: 0 1px 3px rgba(15,29,77,0.06);
     --shadow-md: 0 4px 12px rgba(15,29,77,0.08);
     --shadow-lg: 0 12px 32px rgba(15,29,77,0.1);
@@ -34,6 +42,17 @@
     --radius-full: 100px;
     --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
+
+  /* Variant E italic-keyword pattern — blue on light, lime on dark */
+  h1 em, h2 em, h3 em {
+    font-style: italic;
+    color: var(--blue);
+    font-weight: 800;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+  .hero h1 em,
+  .flow-section.dark h2 em,
+  .cta-final h2 em { color: var(--lime); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
@@ -45,104 +64,151 @@
   }
   .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 
-  /* NAV */
+  /* TOPBAR */
   .topbar {
     background: var(--navy-950);
     color: rgba(255,255,255,0.7);
-    font-size: 0.78rem;
-    padding: 10px 16px;
+    font-size: 0.75rem;
+    padding: 8px 16px;
     text-align: center;
     letter-spacing: 0.04em;
   }
   .topbar b { color: var(--lime); font-weight: 700; }
+
+  /* NAV (Variant E — saturated blue, sticky) */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-light);
-    padding: 14px 0;
+    background: var(--blue);
+    border-bottom: none;
+    padding: 0;
   }
-  nav .container { display: flex; justify-content: space-between; align-items: center; }
-  .logo {
-    display: flex; align-items: center;
+  nav .container {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 14px; padding-bottom: 14px;
   }
+  .logo { display: flex; align-items: center; text-decoration: none; }
   .logo img {
-    height: 44px; width: auto; display: block;
+    height: 64px; width: auto; display: block;
   }
   .nav-tag {
-    font-size: 0.75rem; font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: 0.08em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.78rem; font-weight: 600;
+    color: rgba(255,255,255,0.88);
+    padding: 7px 14px; border-radius: var(--radius-full);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .nav-tag::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--lime); border-radius: 50%;
+    box-shadow: 0 0 8px rgba(184,240,43,0.6);
   }
 
-  /* HERO */
+  /* HERO (Variant E — saturated blue, white text, lime italic accents) */
   .hero {
-    padding: 110px 0 90px;
-    background: linear-gradient(165deg, #f0fde4 0%, var(--white) 45%, var(--blue-soft) 100%);
+    padding: 80px 0 96px;
+    background: var(--blue);
+    color: var(--white);
     position: relative; overflow: hidden;
   }
   .hero::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
-    background-image:
-      radial-gradient(circle at 18% 80%, rgba(184,240,43,0.10) 0%, transparent 50%),
-      radial-gradient(circle at 82% 20%, rgba(46,89,251,0.05) 0%, transparent 50%);
+    content: ''; position: absolute;
+    top: -40px; left: -10%;
+    width: 70%; height: 140%;
+    background: rgba(255,255,255,0.05);
+    transform: skewX(-12deg);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute;
+    top: 30%; left: -5%;
+    width: 45%; height: 90%;
+    background: rgba(255,255,255,0.06);
+    transform: skewX(-12deg);
+    pointer-events: none;
   }
   .hero .container { position: relative; z-index: 2; max-width: 900px; text-align: center; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 10px;
-    background: var(--white); border: 1px solid var(--border);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
     padding: 8px 18px; border-radius: var(--radius-full);
-    font-size: 0.82rem; color: var(--text-secondary);
+    font-size: 0.82rem; color: rgba(255,255,255,0.85);
     font-weight: 600; margin-bottom: 28px;
-    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
   .hero-badge .dot {
     width: 8px; height: 8px; background: var(--lime);
-    border-radius: 50%; box-shadow: 0 0 10px rgba(184,240,43,0.6);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(184,240,43,0.6);
+    animation: pulse-dot 2s ease-in-out infinite;
   }
+  @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
   .hero h1 {
-    font-size: clamp(2.6rem, 6vw, 4.4rem); font-weight: 800;
-    line-height: 1.05; letter-spacing: -0.035em;
-    color: var(--navy); margin-bottom: 24px;
-  }
-  .hero h1 em {
-    font-style: normal;
-    background: linear-gradient(135deg, var(--lime-deep) 0%, #4a9e00 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: clamp(2.6rem, 5.8vw, 4.5rem); font-weight: 800;
+    line-height: 1.04; letter-spacing: -0.035em;
+    color: var(--white); margin-bottom: 24px;
   }
   .hero-sub {
-    font-size: 1.18rem; color: var(--text-secondary);
-    max-width: 640px; margin: 0 auto 40px; line-height: 1.65;
+    font-size: 1.2rem; color: rgba(255,255,255,0.82);
+    max-width: 640px; margin: 0 auto 36px;
+    line-height: 1.55; font-weight: 500;
   }
   .hero-meta {
     display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 8px;
   }
   .hero-pill {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.82rem; font-weight: 600; color: var(--navy);
-    padding: 8px 16px; background: var(--white);
-    border: 1px solid var(--border); border-radius: var(--radius-full);
-    box-shadow: var(--shadow-sm);
+    font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.88);
+    padding: 7px 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
-  .hero-pill svg { width: 14px; height: 14px; color: var(--lime-deep); }
+  .hero-pill svg { width: 14px; height: 14px; color: var(--lime); }
 
   /* SECTION BASE */
   section { padding: 96px 0; }
   .eyebrow {
-    display: inline-block;
-    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--lime-deep);
-    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: var(--radius-full);
+    background: var(--blue-mist); color: var(--blue-deep);
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: 1px solid rgba(46, 89, 251, 0.18);
+    margin-bottom: 16px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 3px rgba(46, 89, 251, 0.18);
+    flex-shrink: 0;
+  }
+  .flow-section.dark .eyebrow {
+    background: rgba(184,240,43,0.12);
+    color: var(--lime);
+    border-color: rgba(184,240,43,0.22);
+  }
+  .flow-section.dark .eyebrow::before {
+    background: var(--lime);
+    box-shadow: 0 0 0 3px rgba(184,240,43,0.18);
   }
   .section-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
   .section-head h2 {
-    font-size: clamp(1.9rem, 3.6vw, 2.6rem); font-weight: 800;
-    color: var(--navy); letter-spacing: -0.025em; line-height: 1.15;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+    color: var(--navy); letter-spacing: -0.032em; line-height: 1.08;
     margin-bottom: 14px;
   }
   .section-head p {
-    font-size: 1.08rem; color: var(--text-secondary); line-height: 1.6;
+    font-size: 1.06rem; color: var(--text-muted); line-height: 1.55;
   }
 
   /* PILARES */
@@ -151,18 +217,34 @@
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
   }
   .pilar-card {
-    background: var(--white); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 32px 28px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 32px 28px;
+    transition: all 0.25s;
+    box-shadow: var(--shadow-sm);
   }
-  .pilar-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .pilar-card:hover {
+    border-color: rgba(46, 89, 251, 0.4);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
   .pilar-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: var(--lime-bg);
+    width: 48px; height: 48px; border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 18px;
+    color: var(--navy);
   }
-  .pilar-icon svg { width: 24px; height: 24px; color: var(--lime-deep); }
+  .pilar-icon svg { width: 22px; height: 22px; }
+  .pilar-icon.icon-dash {
+    background: linear-gradient(135deg, var(--lime) 0%, var(--lime-deep) 100%);
+  }
+  .pilar-icon.icon-app {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+    color: var(--white);
+  }
+  .pilar-icon.icon-pay {
+    background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+    color: var(--lime);
+  }
   .pilar-card h3 {
     font-size: 1.15rem; font-weight: 700;
     color: var(--navy); margin-bottom: 8px;
@@ -182,12 +264,13 @@
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
   }
   .step {
-    background: var(--white); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 0;
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 0;
     position: relative;
     display: flex; flex-direction: column;
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.25s;
+    box-shadow: var(--shadow-sm);
   }
   .step-mock {
     width: 100%; height: 220px;
@@ -200,7 +283,11 @@
     display: flex; gap: 18px;
     padding: 24px;
   }
-  .step:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .step:hover {
+    border-color: rgba(46, 89, 251, 0.4);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
   .step-num {
     width: 40px; height: 40px; flex-shrink: 0;
     background: var(--navy); color: var(--lime);
@@ -232,7 +319,8 @@
   }
   .flow-section.dark .step:hover {
     background: rgba(255,255,255,0.06);
-    border-color: rgba(184,240,43,0.3);
+    border-color: rgba(184,240,43,0.35);
+    transform: translateY(-3px);
   }
   .flow-section.dark .step-num {
     background: var(--lime); color: var(--navy);
@@ -634,12 +722,19 @@
     border-radius: var(--radius-lg); padding: 36px 32px;
   }
   .alianza-card.amber {
-    border: 2px solid var(--navy);
+    border: 1.5px solid var(--border);
+    background: linear-gradient(180deg, #fafde8 0%, var(--white) 100%);
   }
   .alianza-card.courtbit {
     background: var(--navy); color: var(--white);
-    border: 2px solid var(--navy);
+    border: 1.5px solid var(--navy);
+    position: relative; overflow: hidden;
   }
+  .alianza-card.courtbit::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 70% 50% at 80% 0%, rgba(46,89,251,0.22), transparent);
+  }
+  .alianza-card.courtbit > * { position: relative; z-index: 1; }
   .alianza-tag {
     display: inline-block;
     font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em;
@@ -724,17 +819,16 @@
 
   /* CTA FINAL */
   .cta-final {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    background: var(--navy);
     color: var(--white);
-    padding: 100px 0;
+    padding: 96px 0;
     position: relative; overflow: hidden;
   }
   .cta-final::before {
-    content: ''; position: absolute;
-    top: -100px; right: -100px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(184,240,43,0.18) 0%, transparent 70%);
-    pointer-events: none;
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 60% at 30% 100%, rgba(184,240,43,0.14), transparent),
+      radial-gradient(ellipse 50% 50% at 80% 0%, rgba(46,89,251,0.18), transparent);
   }
   .cta-final .container {
     position: relative; z-index: 2;
@@ -850,27 +944,27 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Por qué Courtbit</div>
-      <h2>Tres pilares que cambian cómo se opera un torneo</h2>
+      <h2>Tres pilares que <em>cambian</em> cómo se opera un torneo</h2>
       <p>Pensado desde el primer día para que el organizador tenga visibilidad total y el jugador, una experiencia premium.</p>
     </div>
     <div class="pilares-grid">
       <div class="pilar-card">
-        <div class="pilar-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+        <div class="pilar-icon icon-dash">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         </div>
         <h3>Dashboard completo</h3>
         <p>Inscripciones, brackets, categorías, calendarios y resultados — todo en un solo lugar, en vivo.</p>
       </div>
       <div class="pilar-card">
-        <div class="pilar-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"></rect><path d="M12 18h.01"></path></svg>
+        <div class="pilar-icon icon-app">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg>
         </div>
         <h3>App para jugadores</h3>
         <p>iOS y Android. Cada jugador se inscribe, paga, ve su bracket y recibe notificaciones desde su teléfono.</p>
       </div>
       <div class="pilar-card">
-        <div class="pilar-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <div class="pilar-icon icon-pay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         <h3>Pagos al club</h3>
         <p>Cada inscripción se cobra vía Stripe directo a la cuenta de Amber. Sin intermediarios, sin retención de fondos.</p>
@@ -884,7 +978,7 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Flujo del organizador</div>
-      <h2>Lo que Amber hace en el dashboard</h2>
+      <h2>Lo que <em>Amber</em> hace en el dashboard</h2>
       <p>Seis pasos para tener el torneo armado y publicado. La mayoría se configura una sola vez por torneo.</p>
     </div>
     <div class="flow-grid">
@@ -1046,7 +1140,7 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Flujo del jugador</div>
-      <h2>Lo que vive el jugador en su teléfono</h2>
+      <h2>Lo que vive el <em>jugador</em> en su teléfono</h2>
       <p>Una sola app — gratuita — para inscribirse, pagar, jugar y seguir su torneo. Cero papel, cero WhatsApp masivos.</p>
     </div>
     <div class="flow-grid">
@@ -1246,7 +1340,7 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Modelo de alianza</div>
-      <h2>Quién aporta qué</h2>
+      <h2>Quién aporta <em>qué</em></h2>
       <p>Una alianza simple: cada parte hace lo que mejor sabe hacer.</p>
     </div>
     <div class="alianza-grid">
@@ -1304,7 +1398,7 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Cómo arrancamos</div>
-      <h2>De la firma al primer saque</h2>
+      <h2>De la firma al <em>primer saque</em></h2>
       <p>Un proceso lineal y predecible. Amber decide las fechas; Courtbit se adapta.</p>
     </div>
     <div class="timeline">
