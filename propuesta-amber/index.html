@@ -189,10 +189,22 @@
   }
   .step {
     background: var(--white); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 28px;
+    border-radius: var(--radius); padding: 0;
     position: relative;
-    display: flex; gap: 18px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .step-mock {
+    width: 100%; height: 178px;
+    background: linear-gradient(135deg, #f4fdd6 0%, #eef2ff 100%);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    padding: 18px; position: relative; overflow: hidden;
+  }
+  .step-content {
+    display: flex; gap: 18px;
+    padding: 24px;
   }
   .step:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
   .step-num {
@@ -220,6 +232,10 @@
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.1);
   }
+  .flow-section.dark .step-mock {
+    background: linear-gradient(135deg, #1a2e6b 0%, #060a26 100%);
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
   .flow-section.dark .step:hover {
     background: rgba(255,255,255,0.06);
     border-color: rgba(184,240,43,0.3);
@@ -230,6 +246,388 @@
   .flow-section.dark .step-body h4 { color: var(--white); }
   .flow-section.dark .step-body p { color: rgba(255,255,255,0.75); }
   .flow-section.dark .step-body .meta { color: var(--lime); }
+
+  /* ─── STEP MOCKUPS ─── */
+  /* 1. Crear torneo */
+  .m-card-tournament {
+    width: 240px; background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(15,29,77,0.14);
+    overflow: hidden; transform: rotate(-1.5deg);
+  }
+  .m-banner {
+    height: 56px;
+    background: linear-gradient(135deg, var(--lime) 0%, var(--lime-deep) 100%);
+    padding: 8px 10px;
+  }
+  .m-banner-badge {
+    display: inline-block;
+    font-size: 0.54rem; font-weight: 800; letter-spacing: 0.14em;
+    background: var(--navy); color: var(--lime);
+    padding: 3px 8px; border-radius: 100px;
+  }
+  .m-card-body { padding: 10px 14px 12px; }
+  .m-card-title {
+    font-weight: 800; font-size: 0.92rem; color: var(--navy);
+    letter-spacing: -0.015em;
+  }
+  .m-card-meta {
+    font-size: 0.65rem; color: var(--text-muted);
+    margin-top: 3px; font-weight: 600;
+  }
+
+  /* 2. Categorías */
+  .m-categories {
+    display: flex; flex-direction: column; gap: 5px;
+    width: 220px;
+  }
+  .m-cat {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--white); border-radius: 8px;
+    padding: 7px 12px;
+    box-shadow: 0 2px 6px rgba(15,29,77,0.08);
+    font-size: 0.72rem;
+  }
+  .m-cat b { color: var(--navy); font-weight: 700; }
+  .m-cat-pill {
+    color: var(--lime-deep); font-weight: 800;
+    background: var(--lime-bg);
+    padding: 2px 8px; border-radius: 100px;
+    font-size: 0.6rem;
+  }
+
+  /* 3. Progreso */
+  .m-progress {
+    width: 250px; background: var(--white);
+    border-radius: 10px; padding: 14px 16px;
+    box-shadow: 0 8px 24px rgba(15,29,77,0.14);
+  }
+  .m-progress-row {
+    display: flex; align-items: baseline; gap: 8px;
+    margin-bottom: 10px;
+  }
+  .m-progress-big {
+    font-size: 1.6rem; font-weight: 800; color: var(--navy);
+    letter-spacing: -0.03em; line-height: 1;
+  }
+  .m-progress-big span {
+    font-size: 0.85rem; color: var(--text-muted); font-weight: 700;
+  }
+  .m-progress-label {
+    font-size: 0.62rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+  }
+  .m-progress-bar {
+    height: 8px; background: var(--bg-warm);
+    border-radius: 100px; overflow: hidden;
+  }
+  .m-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--lime) 0%, var(--lime-deep) 100%);
+    border-radius: 100px;
+  }
+  .m-progress-footer {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 10px;
+    font-size: 0.6rem; color: var(--lime-deep); font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .m-progress-footer .m-dot {
+    width: 6px; height: 6px; background: var(--lime-deep);
+    border-radius: 50%;
+  }
+
+  /* 4. Bracket */
+  .m-bracket { display: flex; gap: 12px; align-items: center; }
+  .m-bracket-col {
+    display: flex; flex-direction: column;
+    gap: 10px; justify-content: center;
+  }
+  .m-match {
+    background: var(--white); border-radius: 6px;
+    padding: 3px;
+    box-shadow: 0 4px 10px rgba(15,29,77,0.1);
+    width: 80px;
+  }
+  .m-team {
+    font-size: 0.55rem; font-weight: 700;
+    padding: 4px 6px; border-radius: 3px;
+    color: var(--text-secondary);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .m-team.m-winner {
+    background: var(--lime-bg);
+    color: var(--lime-deep);
+  }
+  .m-trophy {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    background: var(--white); border-radius: 8px;
+    padding: 10px 12px;
+    box-shadow: 0 4px 12px rgba(15,29,77,0.12);
+  }
+  .m-trophy svg { color: var(--lime-deep); }
+  .m-trophy-label {
+    font-size: 0.54rem; font-weight: 800; color: var(--navy);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* 5. Calendario */
+  .m-calendar {
+    background: var(--white); padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(15,29,77,0.14);
+    width: 270px;
+  }
+  .m-cal-row {
+    display: grid; grid-template-columns: 28px repeat(4, 1fr);
+    gap: 4px;
+  }
+  .m-cal-row + .m-cal-row { margin-top: 4px; }
+  .m-cal-header > div {
+    font-size: 0.54rem; font-weight: 800;
+    color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.08em; text-align: center;
+    padding-bottom: 4px;
+  }
+  .m-cal-header {
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 4px;
+  }
+  .m-cal-time {
+    font-size: 0.54rem; font-weight: 700; color: var(--text-muted);
+    text-align: right; align-self: center;
+  }
+  .m-cal-cell {
+    height: 18px; background: var(--bg-warm);
+    border-radius: 3px;
+  }
+  .m-cal-cell.m-cal-fill {
+    background: linear-gradient(135deg, var(--lime) 0%, var(--lime-deep) 100%);
+  }
+
+  /* 6. Resultado */
+  .m-result {
+    width: 240px; background: var(--white);
+    border-radius: 10px; padding: 14px 16px;
+    box-shadow: 0 8px 24px rgba(15,29,77,0.14);
+  }
+  .m-result-row {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.76rem;
+  }
+  .m-team-name { font-weight: 700; color: var(--navy); }
+  .m-score {
+    display: flex; gap: 10px;
+    font-weight: 800; color: var(--text-muted);
+    font-feature-settings: "tnum" 1;
+  }
+  .m-score.m-score-win { color: var(--navy); }
+  .m-result-divider {
+    height: 1px; background: var(--border-light);
+    margin: 7px 0;
+  }
+  .m-result-status {
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 10px;
+    font-size: 0.58rem; font-weight: 800; color: var(--lime-deep);
+    background: var(--lime-bg);
+    padding: 4px 9px; border-radius: 100px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .m-result-status svg { width: 10px; height: 10px; }
+
+  /* PHONE FRAME (jugador) */
+  .m-phone {
+    width: 124px; height: 230px;
+    background: #060a26;
+    border-radius: 22px;
+    padding: 10px 6px 6px;
+    box-shadow: 0 20px 44px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .m-phone::before {
+    content: ''; position: absolute;
+    top: 8px; left: 50%; transform: translateX(-50%);
+    width: 38px; height: 4px;
+    background: #1a2e6b; border-radius: 100px;
+  }
+  .m-phone-screen {
+    width: 100%; height: 100%;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 14px 8px 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .m-phone-title {
+    font-size: 0.58rem; font-weight: 800; color: var(--navy);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px; padding: 0 4px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .m-phone-title svg { width: 8px; height: 8px; color: var(--text-muted); }
+  .m-phone-list {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+
+  /* Phone 1: Feed */
+  .m-feed-card {
+    background: var(--white); border: 1px solid var(--border-light);
+    border-radius: 6px; overflow: hidden;
+  }
+  .m-feed-card.m-faded { opacity: 0.55; }
+  .m-feed-banner {
+    height: 26px;
+    background: linear-gradient(135deg, var(--lime) 0%, var(--lime-deep) 100%);
+  }
+  .m-feed-banner.m-feed-banner-blue {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+  }
+  .m-feed-body { padding: 5px 7px 7px; }
+  .m-feed-title { font-size: 0.54rem; font-weight: 800; color: var(--navy); }
+  .m-feed-sub {
+    font-size: 0.48rem; color: var(--text-muted);
+    margin-top: 2px; font-weight: 600;
+  }
+
+  /* Phone 2: Form */
+  .m-form-field {
+    background: var(--bg-warm); border-radius: 5px;
+    padding: 5px 8px;
+  }
+  .m-form-label {
+    font-size: 0.42rem; font-weight: 800; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .m-form-value {
+    font-size: 0.54rem; font-weight: 700; color: var(--navy);
+    margin-top: 1px;
+  }
+  .m-form-btn {
+    background: var(--navy); color: var(--lime);
+    padding: 7px; border-radius: 5px;
+    text-align: center;
+    font-size: 0.55rem; font-weight: 800;
+    margin-top: 4px;
+  }
+
+  /* Phone 3: Payment */
+  .m-pay-amount { text-align: center; margin: 2px 0 8px; }
+  .m-pay-label {
+    font-size: 0.46rem; color: var(--text-muted); font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .m-pay-value {
+    font-size: 1.15rem; font-weight: 800; color: var(--navy);
+    letter-spacing: -0.02em; margin-top: 2px;
+  }
+  .m-pay-card {
+    background: var(--bg-warm); border-radius: 5px;
+    padding: 6px 8px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .m-pay-card-num { font-size: 0.54rem; font-weight: 700; color: var(--navy); }
+  .m-pay-card-brand {
+    background: var(--navy); color: var(--white);
+    font-size: 0.42rem; font-weight: 800;
+    padding: 2px 5px; border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  .m-pay-btn {
+    background: var(--lime); color: var(--navy);
+    padding: 7px; border-radius: 5px;
+    text-align: center;
+    font-size: 0.58rem; font-weight: 800;
+    margin-top: 6px;
+  }
+
+  /* Phone 4: Bracket móvil */
+  .m-mbracket {
+    display: flex; gap: 4px;
+    padding: 2px 0;
+  }
+  .m-mbracket-col {
+    display: flex; flex-direction: column; gap: 4px;
+    flex: 1; justify-content: center;
+  }
+  .m-mmatch {
+    background: var(--bg-warm); border-radius: 4px;
+    padding: 3px;
+    display: flex; flex-direction: column; gap: 1px;
+  }
+  .m-mteam {
+    font-size: 0.42rem; font-weight: 700;
+    color: var(--text-secondary);
+    padding: 2px 4px; border-radius: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .m-mteam.m-winner {
+    background: var(--lime-bg); color: var(--lime-deep);
+  }
+  .m-mteam.m-you {
+    background: var(--navy); color: var(--lime);
+  }
+
+  /* Phone 5: Live */
+  .m-live-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #ff3b30; color: var(--white);
+    font-size: 0.42rem; font-weight: 800;
+    padding: 2px 6px; border-radius: 100px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .m-live-badge::before {
+    content: ''; width: 4px; height: 4px;
+    background: var(--white); border-radius: 50%;
+    animation: m-pulse 1.4s infinite;
+  }
+  @keyframes m-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .m-live-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 5px 6px;
+    font-size: 0.55rem;
+  }
+  .m-live-team { font-weight: 700; color: var(--navy); }
+  .m-live-score {
+    font-weight: 800; color: var(--navy);
+    font-feature-settings: "tnum" 1;
+    letter-spacing: 0.1em;
+  }
+  .m-live-row.m-live-winner {
+    background: var(--lime-bg);
+    border-radius: 4px;
+  }
+  .m-live-row.m-live-winner .m-live-team,
+  .m-live-row.m-live-winner .m-live-score {
+    color: var(--lime-deep);
+  }
+
+  /* Phone 6: Ranking */
+  .m-rank-row {
+    display: grid; grid-template-columns: 14px 1fr 28px;
+    align-items: center;
+    padding: 4px 4px;
+    font-size: 0.48rem;
+    border-bottom: 1px solid var(--border-light);
+    gap: 5px;
+  }
+  .m-rank-row:last-child { border-bottom: none; }
+  .m-rank-pos { font-weight: 800; color: var(--text-muted); }
+  .m-rank-name { font-weight: 700; color: var(--navy); }
+  .m-rank-pts {
+    font-weight: 800; color: var(--lime-deep);
+    text-align: right;
+  }
+  .m-rank-row.m-rank-you {
+    background: var(--lime-bg); border-radius: 5px;
+    border-bottom: none;
+    padding: 4px 6px; margin: 2px 0;
+  }
+  .m-rank-row.m-rank-you .m-rank-pos { color: var(--lime-deep); }
 
   /* COMPARATIVO */
   .alianza { background: var(--bg); }
@@ -498,51 +896,152 @@
     </div>
     <div class="flow-grid">
       <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h4>Crear el torneo</h4>
-          <p>Nombre, fechas, sede, descripción y banner. Quedará visible en la app y en el sitio público de Amber.</p>
-          <div class="meta">~5 minutos</div>
+        <div class="step-mock">
+          <div class="m-card-tournament">
+            <div class="m-banner"><div class="m-banner-badge">PADEL · 2026</div></div>
+            <div class="m-card-body">
+              <div class="m-card-title">Amber Open</div>
+              <div class="m-card-meta">15–17 Nov · Club Amber</div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Crear el torneo</h4>
+            <p>Nombre, fechas, sede, descripción y banner. Quedará visible en la app y en el sitio público de Amber.</p>
+            <div class="meta">~5 minutos</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h4>Definir categorías y cupos</h4>
-          <p>Cuántas categorías, niveles, género, precio de inscripción, número máximo de equipos por categoría.</p>
-          <div class="meta">Configuración inicial</div>
+        <div class="step-mock">
+          <div class="m-categories">
+            <div class="m-cat"><b>1ra Fuerza</b><span class="m-cat-pill">16/16</span></div>
+            <div class="m-cat"><b>2da Fuerza</b><span class="m-cat-pill">12/16</span></div>
+            <div class="m-cat"><b>3ra Fuerza</b><span class="m-cat-pill">8/16</span></div>
+            <div class="m-cat"><b>Femenil A</b><span class="m-cat-pill">6/12</span></div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Definir categorías y cupos</h4>
+            <p>Cuántas categorías, niveles, género, precio de inscripción, número máximo de equipos por categoría.</p>
+            <div class="meta">Configuración inicial</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h4>Abrir inscripciones</h4>
-          <p>Con un botón el torneo queda en línea. Los jugadores empiezan a inscribirse y pagar desde la app o el link público.</p>
-          <div class="meta">Tracking en vivo</div>
+        <div class="step-mock">
+          <div class="m-progress">
+            <div class="m-progress-row">
+              <div class="m-progress-big">42<span>/60</span></div>
+              <div class="m-progress-label">equipos inscritos</div>
+            </div>
+            <div class="m-progress-bar"><div class="m-progress-fill" style="width: 70%"></div></div>
+            <div class="m-progress-footer"><span class="m-dot"></span>Inscripciones abiertas</div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Abrir inscripciones</h4>
+            <p>Con un botón el torneo queda en línea. Los jugadores empiezan a inscribirse y pagar desde la app o el link público.</p>
+            <div class="meta">Tracking en vivo</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h4>Generar brackets</h4>
-          <p>Eliminación directa, doble eliminación, round robin o formato mixto. Courtbit arma el cuadro automáticamente.</p>
-          <div class="meta">Automatizado</div>
+        <div class="step-mock">
+          <div class="m-bracket">
+            <div class="m-bracket-col">
+              <div class="m-match"><div class="m-team m-winner">Pérez / López</div><div class="m-team">Sosa / Rico</div></div>
+              <div class="m-match"><div class="m-team">García / Ríos</div><div class="m-team m-winner">Vega / Ortiz</div></div>
+            </div>
+            <div class="m-bracket-col">
+              <div class="m-match"><div class="m-team m-winner">Pérez / López</div><div class="m-team">Vega / Ortiz</div></div>
+            </div>
+            <div class="m-bracket-col">
+              <div class="m-trophy">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                <div class="m-trophy-label">Final</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Generar brackets</h4>
+            <p>Eliminación directa, doble eliminación, round robin o formato mixto. Courtbit arma el cuadro automáticamente.</p>
+            <div class="meta">Automatizado</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-body">
-          <h4>Programar partidos</h4>
-          <p>Asignación de canchas y horarios con calendario visual estilo Playtomic. Los jugadores reciben push con su horario.</p>
-          <div class="meta">Drag &amp; drop</div>
+        <div class="step-mock">
+          <div class="m-calendar">
+            <div class="m-cal-row m-cal-header">
+              <div></div><div>C1</div><div>C2</div><div>C3</div><div>C4</div>
+            </div>
+            <div class="m-cal-row">
+              <div class="m-cal-time">9:00</div>
+              <div class="m-cal-cell m-cal-fill"></div>
+              <div class="m-cal-cell m-cal-fill"></div>
+              <div class="m-cal-cell"></div>
+              <div class="m-cal-cell m-cal-fill"></div>
+            </div>
+            <div class="m-cal-row">
+              <div class="m-cal-time">10:30</div>
+              <div class="m-cal-cell m-cal-fill"></div>
+              <div class="m-cal-cell"></div>
+              <div class="m-cal-cell m-cal-fill"></div>
+              <div class="m-cal-cell m-cal-fill"></div>
+            </div>
+            <div class="m-cal-row">
+              <div class="m-cal-time">12:00</div>
+              <div class="m-cal-cell m-cal-fill"></div>
+              <div class="m-cal-cell m-cal-fill"></div>
+              <div class="m-cal-cell m-cal-fill"></div>
+              <div class="m-cal-cell"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Programar partidos</h4>
+            <p>Asignación de canchas y horarios con calendario visual estilo Playtomic. Los jugadores reciben push con su horario.</p>
+            <div class="meta">Drag &amp; drop</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">6</div>
-        <div class="step-body">
-          <h4>Capturar resultados</h4>
-          <p>El staff de Amber (o el propio jugador, si se habilita) ingresa marcadores. El bracket avanza solo y se publica en vivo.</p>
-          <div class="meta">Tiempo real</div>
+        <div class="step-mock">
+          <div class="m-result">
+            <div class="m-result-row">
+              <div class="m-team-name">Pérez / López</div>
+              <div class="m-score m-score-win">6 6</div>
+            </div>
+            <div class="m-result-divider"></div>
+            <div class="m-result-row">
+              <div class="m-team-name">Sosa / Rico</div>
+              <div class="m-score">4 2</div>
+            </div>
+            <div class="m-result-status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Final · Cancha 1
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Capturar resultados</h4>
+            <p>El staff de Amber (o el propio jugador, si se habilita) ingresa marcadores. El bracket avanza solo y se publica en vivo.</p>
+            <div class="meta">Tiempo real</div>
+          </div>
         </div>
       </div>
     </div>
@@ -559,51 +1058,190 @@
     </div>
     <div class="flow-grid">
       <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h4>Descubre el torneo</h4>
-          <p>Encuentra el torneo de Amber en la app, en el sitio público o por link directo compartido en redes.</p>
-          <div class="meta">App + Web</div>
+        <div class="step-mock">
+          <div class="m-phone">
+            <div class="m-phone-screen">
+              <div class="m-phone-title">
+                <span>Explorar</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="7"/></svg>
+              </div>
+              <div class="m-phone-list">
+                <div class="m-feed-card">
+                  <div class="m-feed-banner"></div>
+                  <div class="m-feed-body">
+                    <div class="m-feed-title">Amber Open</div>
+                    <div class="m-feed-sub">15–17 Nov · Inscripciones abiertas</div>
+                  </div>
+                </div>
+                <div class="m-feed-card m-faded">
+                  <div class="m-feed-banner m-feed-banner-blue"></div>
+                  <div class="m-feed-body">
+                    <div class="m-feed-title">Otro torneo</div>
+                    <div class="m-feed-sub">22 Nov</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Descubre el torneo</h4>
+            <p>Encuentra el torneo de Amber en la app, en el sitio público o por link directo compartido en redes.</p>
+            <div class="meta">App + Web</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h4>Se inscribe con su pareja</h4>
-          <p>Elige categoría, invita a su compañero/a por correo o teléfono. La pareja queda registrada en segundos.</p>
-          <div class="meta">Self-service</div>
+        <div class="step-mock">
+          <div class="m-phone">
+            <div class="m-phone-screen">
+              <div class="m-phone-title"><span>Inscripción</span></div>
+              <div class="m-phone-list">
+                <div class="m-form-field">
+                  <div class="m-form-label">Categoría</div>
+                  <div class="m-form-value">2da Fuerza</div>
+                </div>
+                <div class="m-form-field">
+                  <div class="m-form-label">Tú</div>
+                  <div class="m-form-value">Christian U.</div>
+                </div>
+                <div class="m-form-field">
+                  <div class="m-form-label">Pareja</div>
+                  <div class="m-form-value">Saúl Urías</div>
+                </div>
+                <div class="m-form-btn">Continuar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Se inscribe con su pareja</h4>
+            <p>Elige categoría, invita a su compañero/a por correo o teléfono. La pareja queda registrada en segundos.</p>
+            <div class="meta">Self-service</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h4>Paga con tarjeta</h4>
-          <p>Stripe procesa el pago. El dinero entra directo a la cuenta de Amber. Recibo automático al jugador.</p>
-          <div class="meta">Stripe seguro</div>
+        <div class="step-mock">
+          <div class="m-phone">
+            <div class="m-phone-screen">
+              <div class="m-phone-title"><span>Pago seguro</span></div>
+              <div class="m-pay-amount">
+                <div class="m-pay-label">Total a pagar</div>
+                <div class="m-pay-value">$1,200 MXN</div>
+              </div>
+              <div class="m-phone-list">
+                <div class="m-pay-card">
+                  <div class="m-pay-card-num">•••• 4242</div>
+                  <div class="m-pay-card-brand">VISA</div>
+                </div>
+                <div class="m-pay-btn">Pagar inscripción</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Paga con tarjeta</h4>
+            <p>Stripe procesa el pago. El dinero entra directo a la cuenta de Amber. Recibo automático al jugador.</p>
+            <div class="meta">Stripe seguro</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h4>Ve su bracket en vivo</h4>
-          <p>Cuando se publica el cuadro, recibe notificación. Ve a qué rival enfrenta, en qué cancha y a qué hora.</p>
-          <div class="meta">Push notifications</div>
+        <div class="step-mock">
+          <div class="m-phone">
+            <div class="m-phone-screen">
+              <div class="m-phone-title"><span>Mi bracket</span></div>
+              <div class="m-mbracket">
+                <div class="m-mbracket-col">
+                  <div class="m-mmatch"><div class="m-mteam m-you">Tú / Saúl</div><div class="m-mteam">Sosa / R.</div></div>
+                  <div class="m-mmatch"><div class="m-mteam">García</div><div class="m-mteam">Vega / O.</div></div>
+                  <div class="m-mmatch"><div class="m-mteam">Mtz / R.</div><div class="m-mteam">Ríos / B.</div></div>
+                  <div class="m-mmatch"><div class="m-mteam">Cruz</div><div class="m-mteam">Lara / G.</div></div>
+                </div>
+                <div class="m-mbracket-col">
+                  <div class="m-mmatch"><div class="m-mteam m-you">Tú / Saúl</div><div class="m-mteam">?</div></div>
+                  <div class="m-mmatch"><div class="m-mteam">?</div><div class="m-mteam">?</div></div>
+                </div>
+                <div class="m-mbracket-col">
+                  <div class="m-mmatch"><div class="m-mteam">?</div><div class="m-mteam">?</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Ve su bracket en vivo</h4>
+            <p>Cuando se publica el cuadro, recibe notificación. Ve a qué rival enfrenta, en qué cancha y a qué hora.</p>
+            <div class="meta">Push notifications</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-body">
-          <h4>Sigue resultados al instante</h4>
-          <p>Cada partido capturado actualiza el bracket. El jugador puede ver el torneo completo, no solo el suyo.</p>
-          <div class="meta">Live updates</div>
+        <div class="step-mock">
+          <div class="m-phone">
+            <div class="m-phone-screen">
+              <div class="m-live-badge">EN VIVO</div>
+              <div class="m-phone-list">
+                <div class="m-live-row m-live-winner">
+                  <div class="m-live-team">Pérez / L.</div>
+                  <div class="m-live-score">6 4</div>
+                </div>
+                <div class="m-live-row">
+                  <div class="m-live-team">Sosa / R.</div>
+                  <div class="m-live-score">4 3</div>
+                </div>
+                <div class="m-live-row" style="margin-top: 6px; border-top: 1px dashed var(--border); padding-top: 8px;">
+                  <div class="m-live-team">García</div>
+                  <div class="m-live-score">2 –</div>
+                </div>
+                <div class="m-live-row">
+                  <div class="m-live-team">Vega / O.</div>
+                  <div class="m-live-score">5 –</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Sigue resultados al instante</h4>
+            <p>Cada partido capturado actualiza el bracket. El jugador puede ver el torneo completo, no solo el suyo.</p>
+            <div class="meta">Live updates</div>
+          </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">6</div>
-        <div class="step-body">
-          <h4>Acumula puntos en su ranking</h4>
-          <p>El torneo de Amber suma a su ranking personal en Courtbit. Más razones para volver al próximo evento.</p>
-          <div class="meta">Retención</div>
+        <div class="step-mock">
+          <div class="m-phone">
+            <div class="m-phone-screen">
+              <div class="m-phone-title"><span>Ranking</span></div>
+              <div class="m-phone-list" style="gap: 0;">
+                <div class="m-rank-row"><div class="m-rank-pos">1</div><div class="m-rank-name">Pérez M.</div><div class="m-rank-pts">2,840</div></div>
+                <div class="m-rank-row"><div class="m-rank-pos">2</div><div class="m-rank-name">López J.</div><div class="m-rank-pts">2,710</div></div>
+                <div class="m-rank-row"><div class="m-rank-pos">3</div><div class="m-rank-name">Vega R.</div><div class="m-rank-pts">2,520</div></div>
+                <div class="m-rank-row m-rank-you"><div class="m-rank-pos">4</div><div class="m-rank-name">Tú</div><div class="m-rank-pts">+180</div></div>
+                <div class="m-rank-row"><div class="m-rank-pos">5</div><div class="m-rank-name">Ortiz F.</div><div class="m-rank-pts">2,210</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Acumula puntos en su ranking</h4>
+            <p>El torneo de Amber suma a su ranking personal en Courtbit. Más razones para volver al próximo evento.</p>
+            <div class="meta">Retención</div>
+          </div>
         </div>
       </div>
     </div>
