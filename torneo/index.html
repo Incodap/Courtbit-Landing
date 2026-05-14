@@ -394,40 +394,47 @@
             font-size: 0.9rem;
         }
 
+        /* Native-style segmented control (iOS) */
         .tabs {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: saturate(180%) blur(12px);
-            -webkit-backdrop-filter: saturate(180%) blur(12px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border-soft);
             position: sticky;
             top: var(--nav-h, 67px);
             z-index: 50;
+            padding: 10px 0;
         }
         .tabs-inner {
             display: flex;
-            gap: 4px;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
+            background: rgba(15, 29, 77, 0.06);
+            border-radius: 10px;
+            padding: 3px;
+            gap: 2px;
+            max-width: 420px;
+            margin: 0 auto;
         }
-        .tabs-inner::-webkit-scrollbar { display: none; }
         .tab-btn {
-            flex-shrink: 0;
-            padding: 16px 6px;
-            margin-right: 24px;
-            min-height: 48px;
+            flex: 1;
+            padding: 8px 14px;
+            min-height: 34px;
             background: transparent;
             border: none;
-            font-size: 0.95rem;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
             font-weight: 600;
-            color: var(--text-muted);
+            color: var(--text-soft);
             cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: color 200ms, border-bottom-color 200ms;
+            transition: background 220ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms, transform 120ms;
+            -webkit-tap-highlight-color: transparent;
         }
-        .tab-btn:hover { color: var(--text); }
-        .tab-btn.active { color: var(--blue-deep); border-bottom-color: var(--blue); }
-        .tab-btn:active { color: var(--blue); }
+        .tab-btn.active {
+            background: var(--paper);
+            color: var(--navy);
+            box-shadow: 0 1px 3px rgba(15, 29, 77, 0.10), 0 0 0 0.5px rgba(15, 29, 77, 0.04);
+        }
+        .tab-btn:active { transform: scale(0.97); }
 
         section.panel { padding: 32px 0 64px; }
         .panel-title {
@@ -445,70 +452,119 @@
             margin-bottom: 20px;
         }
 
-        /* Search */
+        /* Native search bar (iOS-style with internal clear) */
         .search-row {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 20px;
+            gap: 10px;
+            align-items: stretch;
+            margin-bottom: 14px;
+        }
+        .search-wrap {
+            flex: 1;
+            position: relative;
+            min-width: 0;
         }
         .search-input {
-            flex: 1;
-            min-width: 240px;
-            min-height: 44px;
-            padding: 12px 16px 12px 42px;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            background: var(--paper);
+            width: 100%;
+            min-height: 40px;
+            padding: 10px 40px 10px 38px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(15, 29, 77, 0.06);
             font-size: 1rem;
             color: var(--text);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236b7191' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7191' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: 14px center;
-            transition: border-color 150ms;
+            background-position: 12px center;
+            transition: background 150ms, box-shadow 150ms;
             -webkit-appearance: none;
             appearance: none;
         }
+        .search-input::-webkit-search-decoration,
+        .search-input::-webkit-search-cancel-button { display: none; -webkit-appearance: none; }
         .search-input:focus {
             outline: none;
-            border-color: var(--blue);
-            box-shadow: 0 0 0 4px rgba(46, 89, 251, 0.12);
-        }
-        .search-clear {
             background: var(--paper);
-            border: 1px solid var(--border);
-            padding: 10px 16px;
-            min-height: 44px;
-            border-radius: 999px;
+            box-shadow: 0 0 0 2px var(--blue);
+        }
+        .search-input::placeholder { color: var(--text-muted); }
+        .search-clear {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            color: var(--paper);
+            border: none;
             font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-soft);
+            font-weight: 700;
             cursor: pointer;
-            transition: transform 120ms, border-color 150ms;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            padding: 0;
+            transition: transform 120ms, background 150ms;
         }
-        .search-clear:active { transform: scale(0.96); border-color: var(--text-muted); }
+        .search-wrap.has-value .search-clear { display: flex; }
+        .search-clear:active { transform: translateY(-50%) scale(0.9); background: var(--text-soft); }
 
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
+        /* Filters trigger button (opens bottom sheet) */
+        .filter-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 0 14px;
+            min-height: 40px;
+            border-radius: 10px;
+            background: rgba(15, 29, 77, 0.06);
+            color: var(--navy);
+            border: none;
+            font-family: inherit;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 150ms, transform 120ms;
+            white-space: nowrap;
+            position: relative;
         }
+        .filter-btn:active { transform: scale(0.97); background: rgba(15, 29, 77, 0.1); }
+        .filter-btn svg { width: 16px; height: 16px; }
+        .filter-btn .filter-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            border-radius: 999px;
+            background: var(--blue);
+            color: var(--paper);
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-left: 2px;
+        }
+        .filter-btn.active { background: rgba(46, 89, 251, 0.12); color: var(--blue-deep); }
+
+        /* Legacy filters (used inside the bottom sheet) */
+        .filters { display: flex; flex-wrap: wrap; gap: 8px; }
         .filter-chip {
             background: var(--paper);
             border: 1px solid var(--border);
-            padding: 9px 16px;
+            padding: 9px 14px;
             min-height: 38px;
             border-radius: 999px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-soft);
             cursor: pointer;
             transition: background 150ms, border-color 150ms, transform 120ms;
             white-space: nowrap;
         }
-        .filter-chip:hover { border-color: var(--text-muted); }
         .filter-chip:active { transform: scale(0.96); }
         .filter-chip.active { background: var(--navy); color: var(--paper); border-color: var(--navy); }
 
@@ -554,15 +610,21 @@
         .past-section { opacity: 0.85; }
         .past-section .match-card { background: var(--bg-tint); }
 
-        .day-block { margin-bottom: 32px; }
+        .day-block { margin-bottom: 28px; }
         .day-header {
-            font-size: 1.05rem;
+            font-size: 0.78rem;
             font-weight: 700;
-            color: var(--text);
-            margin-bottom: 14px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--border-soft);
-            text-transform: capitalize;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            padding: 8px 0 6px;
+            position: sticky;
+            top: calc(var(--nav-h, 67px) + var(--tabs-h, 50px) + var(--day-jump-h, 60px));
+            z-index: 30;
+            background: rgba(251, 251, 253, 0.88);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
         }
 
         .match-list { display: flex; flex-direction: column; gap: 8px; }
@@ -1127,12 +1189,14 @@
         footer a { color: var(--blue-deep); text-decoration: none; font-weight: 600; }
         footer a:hover { text-decoration: underline; }
 
-        /* Day quick-jump */
+        /* Day quick-jump — native horizontal picker */
         .day-jump-wrap {
             position: sticky;
             top: calc(var(--nav-h, 67px) + var(--tabs-h, 50px));
             z-index: 40;
-            background: var(--bg);
+            background: rgba(251, 251, 253, 0.88);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
             margin: 0 -24px 16px;
             padding: 10px 24px;
             border-bottom: 1px solid var(--border-soft);
@@ -1145,46 +1209,55 @@
         }
         .day-jump {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             overflow-x: auto;
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x proximity;
+            scroll-padding-left: 4px;
         }
         .day-jump::-webkit-scrollbar { display: none; }
         .day-jump button {
             flex-shrink: 0;
             scroll-snap-align: start;
-            padding: 8px 14px;
-            min-height: 42px;
-            background: var(--paper);
-            border: 1px solid var(--border);
+            padding: 6px 4px;
+            min-width: 56px;
+            min-height: 60px;
+            background: transparent;
+            border: none;
             border-radius: 12px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            justify-content: center;
+            gap: 4px;
             line-height: 1;
-            transition: transform 120ms, border-color 150ms, background 150ms;
+            transition: background 150ms, transform 120ms;
+            font-family: inherit;
         }
         .day-jump button .dj-day {
-            font-size: 0.65rem;
-            font-weight: 700;
+            font-size: 0.66rem;
+            font-weight: 600;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             color: var(--text-muted);
         }
         .day-jump button .dj-date {
-            font-size: 0.95rem;
-            font-weight: 800;
+            font-size: 1.15rem;
+            font-weight: 600;
             color: var(--text);
-            font-family: var(--font-mono);
+            font-feature-settings: 'tnum';
         }
-        .day-jump button:active { transform: scale(0.94); }
-        .day-jump button.today { border-color: var(--blue); }
-        .day-jump button.today .dj-date { color: var(--blue-deep); }
-        .day-jump button.past { opacity: 0.5; }
+        .day-jump button:active { transform: scale(0.93); }
+        .day-jump button.today {
+            background: var(--navy);
+        }
+        .day-jump button.today .dj-day { color: rgba(255, 255, 255, 0.7); }
+        .day-jump button.today .dj-date { color: var(--paper); }
+        .day-jump button.past { opacity: 0.45; }
+        .day-jump button.past .dj-day,
+        .day-jump button.past .dj-date { color: var(--text-muted); }
 
         /* Skeleton loader */
         .skeleton-list { display: flex; flex-direction: column; gap: 8px; }
@@ -1207,6 +1280,142 @@
         @keyframes shimmer {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
+        }
+
+        /* Filter bottom sheet (mobile-first, centered on desktop) */
+        .sheet-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 29, 77, 0.45);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 200;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms;
+        }
+        .sheet-backdrop.open { opacity: 1; pointer-events: auto; }
+        .sheet {
+            background: var(--paper);
+            width: 100%;
+            max-width: 520px;
+            border-radius: 22px 22px 0 0;
+            padding: 8px 0 0;
+            max-height: 86vh;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -20px 60px -10px rgba(15, 29, 77, 0.25);
+        }
+        .sheet-backdrop.open .sheet { transform: translateY(0); }
+        .sheet-handle {
+            width: 40px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 999px;
+            margin: 8px auto 12px;
+            flex-shrink: 0;
+        }
+        .sheet-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px 14px;
+            border-bottom: 1px solid var(--border-soft);
+            flex-shrink: 0;
+        }
+        .sheet-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+        .sheet-reset {
+            background: none;
+            border: none;
+            color: var(--blue-deep);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 6px 8px;
+            border-radius: 6px;
+            transition: background 150ms;
+        }
+        .sheet-reset:active { background: var(--blue-mist); }
+        .sheet-reset:disabled { color: var(--text-muted); cursor: not-allowed; }
+        .sheet-body {
+            overflow-y: auto;
+            padding: 16px 20px 8px;
+            -webkit-overflow-scrolling: touch;
+            flex: 1;
+        }
+        .sheet-section { margin-bottom: 20px; }
+        .sheet-section:last-child { margin-bottom: 4px; }
+        .sheet-section-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .sheet-footer {
+            padding: 12px 20px;
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            border-top: 1px solid var(--border-soft);
+            background: var(--paper);
+            flex-shrink: 0;
+        }
+        .sheet-apply {
+            width: 100%;
+            min-height: 48px;
+            padding: 13px 18px;
+            background: var(--navy);
+            color: var(--paper);
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 150ms, transform 120ms;
+        }
+        .sheet-apply:active { transform: scale(0.98); background: var(--navy-950); }
+        body.sheet-open { overflow: hidden; }
+
+        @media (min-width: 600px) {
+            .sheet-backdrop { align-items: center; padding: 20px; }
+            .sheet { border-radius: 18px; max-height: 80vh; }
+            .sheet-handle { display: none; }
+            .sheet-header { padding-top: 18px; }
+        }
+
+        /* Remove hover effects on touch-only devices */
+        @media (hover: none) {
+            .filter-chip:hover { border-color: var(--border); }
+            .tab-btn:hover { color: var(--text-soft); }
+            .cat-header:hover { background: transparent; }
+            .match-card:hover { border-color: var(--border); }
+            .day-jump button:hover { background: transparent; }
+        }
+
+        /* Use dvh on supported browsers (avoids jump when URL bar collapses) */
+        @supports (height: 100dvh) {
+            body { min-height: 100dvh; }
+        }
+
+        /* Native-style scroll collapse: nav gets a hairline shadow once user scrolls */
+        nav { transition: padding 220ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms; }
+        body.scrolled nav {
+            padding-top: max(8px, env(safe-area-inset-top));
+            padding-bottom: 8px;
+            box-shadow: 0 1px 0 var(--border-soft);
+            border-bottom-color: transparent;
         }
 
         @media (max-width: 720px) {
@@ -1242,16 +1451,17 @@
             .hero-description { margin-top: 10px; font-size: 0.82rem; }
             .tz-note { margin-top: 6px; font-size: 0.7rem; }
 
-            section.panel { padding: 16px 0 48px; }
-            .tabs { top: var(--nav-h, 60px); }
-            .day-jump-wrap { margin: 0 -16px 12px; padding: 10px 16px; }
-            .panel-title { font-size: 1.1rem; }
+            section.panel { padding: 14px 0 48px; }
+            .tabs { top: var(--nav-h, 60px); padding: 8px 0; }
+            .tabs-inner { max-width: none; }
+            .day-jump-wrap { margin: 0 -16px 14px; padding: 8px 16px; }
+            .panel-title { font-size: 1.05rem; }
 
-            .search-row { gap: 8px; margin-bottom: 14px; }
-            .search-input { min-width: 0; padding: 10px 14px 10px 38px; font-size: 1rem; background-position: 12px center; }
-            .search-clear { padding: 10px 14px; }
+            .search-row { gap: 8px; margin-bottom: 12px; }
+            .search-input { min-width: 0; padding: 10px 38px 10px 36px; font-size: 1rem; background-position: 11px center; }
+            .filter-btn { padding: 0 12px; font-size: 0.88rem; }
 
-            .filter-chip { padding: 8px 14px; min-height: 36px; font-size: 0.82rem; }
+            .filter-chip { padding: 8px 14px; min-height: 36px; font-size: 0.85rem; }
 
             .my-block { padding: 16px 14px 22px; margin: 0 -16px 24px; border-radius: 0; border-left: none; border-right: none; }
             .my-block .panel-title { font-size: 1rem; }
@@ -1344,8 +1554,11 @@
                 font-size: 0.65rem;
                 letter-spacing: 0.06em;
             }
-            .day-header { font-size: 0.95rem; margin-bottom: 12px; }
+            .day-header { font-size: 0.72rem; margin-bottom: 8px; padding: 8px 0 6px; }
             .day-block { margin-bottom: 24px; }
+            .match-card { box-shadow: 0 1px 2px rgba(15, 29, 77, 0.04); }
+            .match-card:active { transform: scale(0.99); transition: transform 80ms; }
+            .match-card.mine { background: linear-gradient(180deg, #f7faff, #fff); }
 
             footer { padding: 20px 0; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
         }
@@ -2309,18 +2522,31 @@
             }
         }
 
+        function activeFilterCount() {
+            let n = 0;
+            if (state.filterCategory !== '') n++;
+            if (state.filterCourt !== '') n++;
+            return n;
+        }
+
         function renderFiltersHtml() {
-            const cats = state.calendar.brackets || [];
-            const courts = (state.calendar.scheduling_config?.courts || []).filter(c => c.is_active !== false);
+            const cats = state.calendar?.brackets || [];
+            const courts = (state.calendar?.scheduling_config?.courts || []).filter(c => c.is_active !== false);
             const catChips = cats.map(b => `<button class="filter-chip${String(state.filterCategory) === String(b.category_id) ? ' active' : ''}" data-filter="category" data-value="${b.category_id}">${escapeHtml(b.category_name)}</button>`).join('');
             const courtChips = courts.map(c => `<button class="filter-chip${String(state.filterCourt) === String(c.number) ? ' active' : ''}" data-filter="court" data-value="${c.number}">Cancha ${escapeHtml(c.name || c.number)}</button>`).join('');
-            return `<div class="filters" data-filter-row="category">
-                <button class="filter-chip${state.filterCategory === '' ? ' active' : ''}" data-filter="category" data-value="">Todas las categorías</button>
-                ${catChips}
+            return `<div class="sheet-section">
+                <div class="sheet-section-title">Categoría</div>
+                <div class="filters" data-filter-row="category">
+                    <button class="filter-chip${state.filterCategory === '' ? ' active' : ''}" data-filter="category" data-value="">Todas</button>
+                    ${catChips}
+                </div>
             </div>
-            <div class="filters" data-filter-row="court">
-                <button class="filter-chip${state.filterCourt === '' ? ' active' : ''}" data-filter="court" data-value="">Todas las canchas</button>
-                ${courtChips}
+            <div class="sheet-section">
+                <div class="sheet-section-title">Cancha</div>
+                <div class="filters" data-filter-row="court">
+                    <button class="filter-chip${state.filterCourt === '' ? ' active' : ''}" data-filter="court" data-value="">Todas</button>
+                    ${courtChips}
+                </div>
             </div>`;
         }
 
@@ -2492,15 +2718,33 @@
                         <div id="login-cta-slot">${renderLoginCTA()}</div>
                         <div id="link-banner-slot">${renderLinkBanner()}</div>
                         <div class="search-row">
-                            <input id="search" class="search-input" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Buscar jugador por nombre…" value="${escapeHtml(state.search)}">
-                            <button id="search-clear" class="search-clear" type="button">Limpiar</button>
+                            <div class="search-wrap${state.search ? ' has-value' : ''}" id="search-wrap">
+                                <input id="search" class="search-input" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Buscar jugador…" value="${escapeHtml(state.search)}">
+                                <button id="search-clear" class="search-clear" type="button" aria-label="Limpiar búsqueda">×</button>
+                            </div>
+                            <button id="filter-btn" class="filter-btn${activeFilterCount() ? ' active' : ''}" type="button" aria-label="Abrir filtros">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+                                Filtros${activeFilterCount() ? `<span class="filter-count">${activeFilterCount()}</span>` : ''}
+                            </button>
                         </div>
-                        <div id="filters">${renderFiltersHtml()}</div>
                         <div id="day-jump-slot">${renderDayJump()}</div>
                         <div id="my-block-slot">${renderMyBlock()}</div>
                         <div id="calendar-slot">${renderAllCalendar()}</div>
                     </div>
                 </section>
+                <div id="filter-sheet" class="sheet-backdrop" role="dialog" aria-modal="true" aria-labelledby="filter-sheet-title" hidden>
+                    <div class="sheet">
+                        <div class="sheet-handle" aria-hidden="true"></div>
+                        <div class="sheet-header">
+                            <div class="sheet-title" id="filter-sheet-title">Filtros</div>
+                            <button type="button" class="sheet-reset" id="filter-reset">Limpiar</button>
+                        </div>
+                        <div class="sheet-body" id="filter-sheet-body">${renderFiltersHtml()}</div>
+                        <div class="sheet-footer">
+                            <button type="button" class="sheet-apply" id="filter-apply">Ver partidos</button>
+                        </div>
+                    </div>
+                </div>
                 <section class="panel" id="panel-categories" style="display: none;">
                     <div class="container">
                         <h2 class="panel-title">Categorías</h2>
@@ -2512,11 +2756,46 @@
             renderNavRight();
             measureStickyOffsets();
             window.addEventListener('resize', measureStickyOffsets, { passive: true });
+            attachScrollCollapse();
+            scrollDayJumpToToday();
             document.title = `${state.tournament.name || 'Torneo'} — CourtBit`;
         }
 
+        function attachScrollCollapse() {
+            let ticking = false;
+            const onScroll = () => {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(() => {
+                    document.body.classList.toggle('scrolled', window.scrollY > 8);
+                    ticking = false;
+                });
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        }
+
+        function scrollDayJumpToToday() {
+            const wrap = document.querySelector('.day-jump');
+            if (!wrap) return;
+            const today = wrap.querySelector('button.today');
+            if (!today) return;
+            const offset = today.offsetLeft - 8;
+            wrap.scrollTo({ left: offset, behavior: 'auto' });
+        }
+
+        function refreshFilterBtn() {
+            const btn = document.getElementById('filter-btn');
+            if (!btn) return;
+            const n = activeFilterCount();
+            btn.classList.toggle('active', n > 0);
+            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>Filtros${n ? `<span class="filter-count">${n}</span>` : ''}`;
+        }
+
         function refreshDynamic() {
-            document.getElementById('filters').innerHTML = renderFiltersHtml();
+            const sheetBody = document.getElementById('filter-sheet-body');
+            if (sheetBody) sheetBody.innerHTML = renderFiltersHtml();
+            refreshFilterBtn();
             document.getElementById('my-block-slot').innerHTML = renderMyBlock();
             document.getElementById('calendar-slot').innerHTML = renderAllCalendar();
             const ctaSlot = document.getElementById('login-cta-slot');
@@ -2527,15 +2806,40 @@
         function measureStickyOffsets() {
             const nav = document.querySelector('nav');
             const tabs = document.querySelector('.tabs');
+            const dayJump = document.querySelector('.day-jump-wrap');
             if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
             if (tabs) document.documentElement.style.setProperty('--tabs-h', tabs.offsetHeight + 'px');
+            if (dayJump) document.documentElement.style.setProperty('--day-jump-h', dayJump.offsetHeight + 'px');
+            else document.documentElement.style.setProperty('--day-jump-h', '0px');
+        }
+
+        function openFilterSheet() {
+            const sheet = document.getElementById('filter-sheet');
+            if (!sheet) return;
+            document.getElementById('filter-sheet-body').innerHTML = renderFiltersHtml();
+            sheet.hidden = false;
+            requestAnimationFrame(() => sheet.classList.add('open'));
+            document.body.classList.add('sheet-open');
+        }
+        function closeFilterSheet() {
+            const sheet = document.getElementById('filter-sheet');
+            if (!sheet) return;
+            sheet.classList.remove('open');
+            document.body.classList.remove('sheet-open');
+            setTimeout(() => { sheet.hidden = true; }, 280);
         }
 
         function attachEvents() {
             const searchInput = document.getElementById('search');
+            const searchWrap = document.getElementById('search-wrap');
             const clearBtn = document.getElementById('search-clear');
             let debounce;
+            const updateSearchVisual = () => {
+                if (searchInput.value) searchWrap.classList.add('has-value');
+                else searchWrap.classList.remove('has-value');
+            };
             searchInput.addEventListener('input', () => {
+                updateSearchVisual();
                 clearTimeout(debounce);
                 debounce = setTimeout(() => {
                     state.search = searchInput.value.trim();
@@ -2545,9 +2849,24 @@
             clearBtn.addEventListener('click', () => {
                 searchInput.value = '';
                 state.search = '';
+                updateSearchVisual();
+                searchInput.focus();
                 refreshDynamic();
             });
-            document.getElementById('filters').addEventListener('click', e => {
+
+            const filterBtn = document.getElementById('filter-btn');
+            const filterSheet = document.getElementById('filter-sheet');
+            const filterApply = document.getElementById('filter-apply');
+            const filterReset = document.getElementById('filter-reset');
+            filterBtn.addEventListener('click', openFilterSheet);
+            filterApply.addEventListener('click', closeFilterSheet);
+            filterReset.addEventListener('click', () => {
+                state.filterCategory = '';
+                state.filterCourt = '';
+                refreshDynamic();
+            });
+            filterSheet.addEventListener('click', e => {
+                if (e.target === filterSheet) closeFilterSheet();
                 const chip = e.target.closest('.filter-chip');
                 if (!chip) return;
                 const filter = chip.dataset.filter;
@@ -2556,6 +2875,10 @@
                 if (filter === 'court') state.filterCourt = value;
                 refreshDynamic();
             });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && filterSheet && !filterSheet.hidden) closeFilterSheet();
+            });
+
             document.addEventListener('click', e => {
                 const dj = e.target.closest('[data-day-jump]');
                 if (!dj) return;
