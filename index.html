@@ -1455,7 +1455,7 @@
       .e-topbar { font-size: 0.6875rem; padding: 8px 12px; }
       .e-topbar span { line-height: 1.4; }
       .e-nav-inner { padding: 12px 16px; gap: 12px; }
-      .e-logo img { height: 30px; }
+      .e-logo img { height: 56px; }
       .e-nav-cta { padding: 9px 14px; font-size: 0.8125rem; }
       .e-nav-cta svg { display: none; }
       .e-hero { padding: 40px 0 56px; }
@@ -1464,24 +1464,13 @@
       .e-cta { gap: 8px; margin-bottom: 20px; }
       .e-cta .e-btn { width: 100%; max-width: 320px; padding: 14px 22px; font-size: 0.9375rem; }
       .e-trust-strip { gap: 14px; font-size: 0.8125rem; }
-      .e-hero-photo { display: none; }
-      .e-hero-grid > div:last-child { position: static !important; }
-      .e-float-card {
-        position: static;
-        transform: none;
-        animation: none;
-        width: 100%;
-        max-width: none;
-        margin-top: 24px;
-        padding: 20px 22px;
-        border-radius: 16px;
-        box-shadow: 0 12px 28px -12px rgba(15, 29, 77, 0.25);
-      }
+      .e-hero-grid > div:last-child { display: none; }
       .e-section-title { font-size: clamp(1.625rem, 5.5vw, 2.25rem); }
       .e-section-desc { font-size: 1rem; padding: 0 8px; }
       .e-compare-section, .e-steps-section, .e-audiences, .e-testimonials, .e-showcase, .e-final {
-        padding: 64px 0;
+        padding: 44px 0;
       }
+      .e-test-grid .e-test-card:nth-child(n+4) { display: none; }
       .e-showcase-visual { min-height: 280px; }
       .e-showcase-visual .ph-floating.delay-1 { width: 110px; right: -10px; bottom: -24px; }
       .e-showcase-visual .pm-phone.ph-floating { width: 130px; left: -8px; top: 14px; }
@@ -1508,7 +1497,7 @@
       .e-topbar b { display: inline; }
       .e-nav-inner { padding: 10px 14px; gap: 8px; }
       .e-logo { font-size: 0.9375rem; }
-      .e-logo img { height: 28px; }
+      .e-logo img { height: 48px; }
       .e-nav-cta { padding: 8px 13px; font-size: 0.75rem; }
       .e-hero { padding: 32px 0 56px; }
       .e-hero h1 { font-size: clamp(1.75rem, 9vw, 2.25rem); margin-bottom: 14px; }
@@ -1519,42 +1508,57 @@
         gap: 8px;
         margin-top: 8px;
       }
-      .e-float-card { padding: 18px 20px; margin-top: 20px; }
-      .e-float-card .price { font-size: 1.625rem; }
-
       .container { padding: 0 18px; }
       .e-section-header { margin-bottom: 32px; }
 
       /* Comparison table — stack as cards on phones */
-      .e-compare-table { overflow-x: auto; }
+      .e-compare-table {
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: visible;
+      }
+      .e-compare-row.head { display: none; }
       .e-compare-row {
-        grid-template-columns: 1.4fr 1fr 1fr;
-        font-size: 0.75rem;
-        padding: 11px 12px;
-        gap: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 14px 16px;
+        background: var(--paper);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        margin-bottom: 10px;
       }
-      .e-compare-row .feature { font-weight: 700; }
-      .e-compare-row.head { font-size: 0.625rem; }
+      .e-compare-row:last-child { margin-bottom: 0; }
+      .e-compare-row .feature {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 2px;
+      }
+      .e-compare-row .competitor {
+        font-size: 0.875rem;
+      }
+      .e-compare-row .competitor::before {
+        content: "Tradicional · ";
+        font-weight: 500;
+        opacity: 0.85;
+      }
+      .e-compare-row .courtbit-col {
+        font-size: 0.9375rem;
+        font-weight: 700;
+      }
+      .e-compare-row .courtbit-col::before {
+        content: "CourtBit · ";
+        color: var(--blue-deep);
+        font-weight: 700;
+        margin-right: 2px;
+      }
 
-      /* Dashboard mockup: scrollable horizontally so all 5 canchas remain visible */
-      .e-showcase-visual { min-height: 0; }
-      .dm-mockup { overflow: hidden; }
-      .dm-grid {
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-      }
-      .dm-mockup .dm-grid {
-        grid-template-columns: 40px repeat(5, minmax(72px, 1fr));
-        min-width: 100%;
-      }
-      .dm-cell { font-size: 9.5px; padding: 4px 5px; }
-      .dm-filters { gap: 6px; padding: 8px 12px; flex-wrap: nowrap; overflow-x: auto; }
-      .dm-people { padding: 7px 12px; }
-      .dm-people .person { font-size: 10px; }
+      /* Showcase 1 (dashboard mockup) — too dense to read on phones; hide visual entirely */
+      .e-showcase-grid:not(.reverse) .e-showcase-visual { display: none; }
 
-      /* Phone mockup over dashboard: hide on tiny screens (occupies too much real estate) */
-      .e-showcase-visual .ph-floating.delay-1 { display: none; }
+      /* Phone mockup over photo in showcase 2: hide on tiny screens (occupies too much real estate) */
       .e-showcase-visual .pm-phone.ph-floating { display: none; }
 
       /* Audience cards */
