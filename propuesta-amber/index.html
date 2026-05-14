@@ -64,16 +64,10 @@
   }
   nav .container { display: flex; justify-content: space-between; align-items: center; }
   .logo {
-    font-weight: 800; font-size: 1.05rem; letter-spacing: 0.16em;
-    color: var(--navy); text-transform: uppercase;
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center;
   }
-  .logo-dot {
-    width: 28px; height: 28px; border-radius: 8px;
-    background: var(--lime);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 1rem; color: var(--navy); font-weight: 800;
-    letter-spacing: 0;
+  .logo img {
+    height: 44px; width: auto; display: block;
   }
   .nav-tag {
     font-size: 0.75rem; font-weight: 600;
@@ -810,10 +804,9 @@
 
 <nav>
   <div class="container">
-    <div class="logo">
-      <span class="logo-dot">C</span>
-      Courtbit
-    </div>
+    <a href="https://courtbit.com.mx" class="logo" aria-label="Courtbit">
+      <img src="/Assets/courtbit-logo.svg" alt="Courtbit">
+    </a>
     <div class="nav-tag">Propuesta para Amber</div>
   </div>
 </nav>
