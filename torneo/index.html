@@ -617,14 +617,27 @@
             color: var(--text-muted);
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin-bottom: 8px;
-            padding: 8px 0 6px;
+            margin-bottom: 10px;
+            padding: 10px 0 8px;
             position: sticky;
             top: calc(var(--nav-h, 67px) + var(--tabs-h, 50px) + var(--day-jump-h, 60px));
             z-index: 30;
             background: rgba(251, 251, 253, 0.88);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+        .day-header::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -10px;
+            height: 10px;
+            pointer-events: none;
+            background: linear-gradient(to bottom, var(--bg), rgba(251, 251, 253, 0));
+        }
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+            .day-header { background: var(--bg); }
         }
 
         .match-list { display: flex; flex-direction: column; gap: 8px; }
@@ -681,8 +694,10 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
         }
-        .match-team .player.empty { color: var(--text-faint); font-style: italic; font-weight: 400; }
+        .match-team .player.empty { color: var(--text-faint); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: normal; }
         .match-team .player mark { background: var(--lime-soft); color: var(--text); padding: 0 2px; border-radius: 3px; }
         .match-team.winner .player { color: var(--success); }
         .match-team .seed {
@@ -854,6 +869,8 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
         }
         .pair-names .player-name + .player-name { margin-top: 2px; }
 
@@ -1201,6 +1218,9 @@
             padding: 10px 24px;
             border-bottom: 1px solid var(--border-soft);
         }
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+            .day-jump-wrap { background: var(--bg); }
+        }
         @supports (padding: max(0px)) {
             .day-jump-wrap {
                 padding-left: max(24px, env(safe-area-inset-left));
@@ -1314,12 +1334,15 @@
         .sheet-backdrop.open .sheet { transform: translateY(0); }
         .sheet-handle {
             width: 40px;
-            height: 4px;
+            height: 5px;
             background: var(--border);
             border-radius: 999px;
             margin: 8px auto 12px;
             flex-shrink: 0;
+            cursor: grab;
+            touch-action: none;
         }
+        .sheet-handle:active { cursor: grabbing; background: var(--text-muted); }
         .sheet-header {
             display: flex;
             align-items: center;
@@ -1554,7 +1577,22 @@
                 font-size: 0.65rem;
                 letter-spacing: 0.06em;
             }
-            .day-header { font-size: 0.72rem; margin-bottom: 8px; padding: 8px 0 6px; }
+            .day-header {
+                font-size: 0.72rem;
+                margin: 0 -16px 8px;
+                padding: 10px 16px 8px;
+                background: var(--bg);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                box-shadow: 0 6px 8px -6px rgba(15, 29, 77, 0.10);
+            }
+            .day-header::after { display: none; }
+            .day-jump-wrap {
+                background: var(--bg);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                box-shadow: 0 6px 8px -6px rgba(15, 29, 77, 0.08);
+            }
             .day-block { margin-bottom: 24px; }
             .match-card { box-shadow: 0 1px 2px rgba(15, 29, 77, 0.04); }
             .match-card:active { transform: scale(0.99); transition: transform 80ms; }
@@ -2820,6 +2858,7 @@
             sheet.hidden = false;
             requestAnimationFrame(() => sheet.classList.add('open'));
             document.body.classList.add('sheet-open');
+            attachSheetSwipe(sheet);
         }
         function closeFilterSheet() {
             const sheet = document.getElementById('filter-sheet');
@@ -2827,6 +2866,82 @@
             sheet.classList.remove('open');
             document.body.classList.remove('sheet-open');
             setTimeout(() => { sheet.hidden = true; }, 280);
+        }
+
+        function attachSheetSwipe(backdrop) {
+            const panel = backdrop.querySelector('.sheet');
+            const body = backdrop.querySelector('.sheet-body');
+            if (!panel || panel.dataset.swipeAttached === '1') return;
+            panel.dataset.swipeAttached = '1';
+
+            let startY = 0;
+            let lastY = 0;
+            let lastT = 0;
+            let velocity = 0;
+            let dragging = false;
+            let dragFromBody = false;
+
+            const onStart = (e) => {
+                if (e.touches.length !== 1) return;
+                const t = e.touches[0];
+                const target = e.target;
+                dragFromBody = !!(body && body.contains(target));
+                if (dragFromBody && body.scrollTop > 0) return;
+                dragging = true;
+                startY = lastY = t.clientY;
+                lastT = e.timeStamp;
+                velocity = 0;
+                panel.style.transition = 'none';
+                backdrop.style.transition = 'none';
+            };
+
+            const onMove = (e) => {
+                if (!dragging) return;
+                const t = e.touches[0];
+                const dy = t.clientY - startY;
+                if (dragFromBody && dy <= 0) {
+                    dragging = false;
+                    panel.style.transition = '';
+                    backdrop.style.transition = '';
+                    panel.style.transform = '';
+                    backdrop.style.background = '';
+                    return;
+                }
+                if (dy < 0) return;
+                e.preventDefault();
+                panel.style.transform = `translateY(${dy}px)`;
+                const h = panel.offsetHeight || 1;
+                const fade = Math.max(0, 0.45 * (1 - Math.min(dy / h, 1)));
+                backdrop.style.background = `rgba(15, 29, 77, ${fade})`;
+                const now = e.timeStamp;
+                const dt = now - lastT;
+                if (dt > 0) velocity = (t.clientY - lastY) / dt;
+                lastY = t.clientY;
+                lastT = now;
+            };
+
+            const settle = () => {
+                if (!dragging) return;
+                dragging = false;
+                panel.style.transition = '';
+                backdrop.style.transition = '';
+                const dy = lastY - startY;
+                const h = panel.offsetHeight || 1;
+                const shouldClose = dy > h * 0.25 || velocity > 0.6;
+                if (shouldClose) {
+                    panel.style.transform = '';
+                    backdrop.style.background = '';
+                    closeFilterSheet();
+                } else {
+                    panel.style.transform = '';
+                    backdrop.style.background = '';
+                }
+            };
+
+            panel.addEventListener('touchstart', onStart, { passive: true });
+            panel.addEventListener('touchmove', onMove, { passive: false });
+            panel.addEventListener('touchend', settle);
+            panel.addEventListener('touchcancel', settle);
         }
 
         function attachEvents() {
