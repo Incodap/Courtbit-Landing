@@ -1578,6 +1578,12 @@
                 letter-spacing: 0.06em;
             }
             .day-header {
+                /* Static on mobile — sticky behavior caused the day-header to
+                 * visually overlap the first match of the new day during scroll
+                 * transitions. The sticky day-jump-wrap above already gives
+                 * users a persistent "current day" reference. */
+                position: static;
+                top: auto;
                 font-size: 0.72rem;
                 margin: 0 -16px 8px;
                 padding: 10px 16px 8px;
@@ -2839,6 +2845,9 @@
             const ctaSlot = document.getElementById('login-cta-slot');
             if (ctaSlot) ctaSlot.innerHTML = renderLoginCTA();
             refreshLinkBanner();
+            // The day-jump wrapper may appear/disappear as the filtered set
+            // changes; remeasure so the sticky day-header offsets stay in sync.
+            measureStickyOffsets();
         }
 
         function measureStickyOffsets() {
