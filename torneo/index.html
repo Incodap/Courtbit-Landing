@@ -378,7 +378,34 @@
             margin-top: 16px;
             color: var(--text-soft);
             font-size: 0.95rem;
-            white-space: pre-wrap;
+        }
+        .hero-description > :first-child { margin-top: 0; }
+        .hero-description > :last-child { margin-bottom: 0; }
+        .hero-description p { margin: 0 0 8px; }
+        .hero-description ul,
+        .hero-description ol { margin: 0 0 8px; padding-left: 1.25em; }
+        .hero-description li { margin-bottom: 2px; }
+        .hero-description h1,
+        .hero-description h2,
+        .hero-description h3,
+        .hero-description h4,
+        .hero-description h5,
+        .hero-description h6 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 12px 0 6px;
+            color: var(--text);
+        }
+        .hero-description blockquote {
+            margin: 0 0 8px;
+            padding-left: 12px;
+            border-left: 3px solid var(--border);
+            color: var(--text-muted);
+        }
+        .hero-description a {
+            color: var(--blue);
+            text-decoration: underline;
+            word-break: break-word;
         }
         .tz-note {
             margin-top: 10px;
@@ -619,25 +646,7 @@
             text-transform: uppercase;
             margin-bottom: 10px;
             padding: 10px 0 8px;
-            position: sticky;
-            top: calc(var(--nav-h, 67px) + var(--tabs-h, 50px) + var(--day-jump-h, 60px));
-            z-index: 30;
-            background: rgba(251, 251, 253, 0.88);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-        }
-        .day-header::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -10px;
-            height: 10px;
-            pointer-events: none;
-            background: linear-gradient(to bottom, var(--bg), rgba(251, 251, 253, 0));
-        }
-        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-            .day-header { background: var(--bg); }
+            background: var(--bg);
         }
 
         .match-list { display: flex; flex-direction: column; gap: 8px; }
@@ -1578,21 +1587,11 @@
                 letter-spacing: 0.06em;
             }
             .day-header {
-                /* Static on mobile — sticky behavior caused the day-header to
-                 * visually overlap the first match of the new day during scroll
-                 * transitions. The sticky day-jump-wrap above already gives
-                 * users a persistent "current day" reference. */
-                position: static;
-                top: auto;
                 font-size: 0.72rem;
                 margin: 0 -16px 8px;
                 padding: 10px 16px 8px;
-                background: var(--bg);
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
                 box-shadow: 0 6px 8px -6px rgba(15, 29, 77, 0.10);
             }
-            .day-header::after { display: none; }
             .day-jump-wrap {
                 background: var(--bg);
                 backdrop-filter: none;
@@ -1614,6 +1613,146 @@
             .match-card > div:nth-child(1) .match-time { font-size: 0.88rem; }
             .match-card .match-team .player { font-size: 0.85rem; }
             .match-card .match-score { right: 12px; top: 10px; font-size: 0.85rem; }
+        }
+
+        /* App download promo modal */
+        .app-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 29, 77, 0.45);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 210;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms;
+        }
+        .app-modal-backdrop.open { opacity: 1; pointer-events: auto; }
+        .app-modal-sheet {
+            position: relative;
+            background: var(--paper);
+            width: 100%;
+            max-width: 440px;
+            border-radius: 24px 24px 0 0;
+            padding: 8px 24px 24px;
+            padding-bottom: max(24px, env(safe-area-inset-bottom));
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -20px 60px -10px rgba(15, 29, 77, 0.25);
+        }
+        .app-modal-backdrop.open .app-modal-sheet { transform: translateY(0); }
+        .app-modal-handle {
+            width: 44px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 999px;
+            margin: 8px auto 4px;
+        }
+        .app-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--bg-tint);
+            color: var(--text-muted);
+            border-radius: 999px;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .app-modal-icon {
+            width: 108px;
+            height: 76px;
+            margin: 16px auto;
+            border-radius: 18px;
+            background: #fff;
+            border: 1px solid var(--border-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+        .app-modal-icon img { width: 78%; height: 78%; object-fit: contain; }
+        .app-modal-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: var(--blue-mist);
+            padding: 5px 12px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+        .app-modal-eyebrow .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: currentColor;
+        }
+        .app-modal-sheet h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .app-modal-sub {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            max-width: 340px;
+            margin: 0 auto 18px;
+        }
+        .app-modal-trust {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 16px;
+            margin-bottom: 20px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .app-modal-trust .item { display: inline-flex; align-items: center; gap: 5px; }
+        .app-modal-trust svg { width: 15px; height: 15px; color: var(--blue); }
+        .app-modal-trust b { color: var(--text); font-weight: 700; }
+        .app-modal-badges {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .app-modal-badges a { display: inline-flex; }
+        .app-modal-badges .apple img { height: 48px; width: auto; display: block; }
+        .app-modal-badges .google img { height: 56px; width: auto; display: block; }
+        .app-modal-dismiss {
+            display: block;
+            margin: 16px auto 0;
+            border: none;
+            background: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 6px 12px;
+        }
+        @media (min-width: 600px) {
+            .app-modal-backdrop { align-items: center; padding: 20px; }
+            .app-modal-sheet { border-radius: 24px; max-height: 92vh; overflow-y: auto; }
+            .app-modal-handle { display: none; }
         }
     </style>
 </head>
@@ -1773,6 +1912,24 @@
             </form>
 
             <div class="auth-foot">Tus datos personales están protegidos por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.</div>
+        </div>
+    </div>
+
+    <div id="app-modal" class="app-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="app-modal-title" hidden>
+        <div class="app-modal-sheet">
+            <div class="app-modal-handle" aria-hidden="true"></div>
+            <button type="button" class="app-modal-close" id="app-modal-close" aria-label="Cerrar">×</button>
+            <div class="app-modal-icon"><img src="../Assets/Logo-CB-icono.png" alt="CourtBit"></div>
+            <div class="app-modal-eyebrow"><span class="dot" aria-hidden="true"></span>App de jugadores</div>
+            <h2 class="app-modal-title" id="app-modal-title">Vive el torneo desde tu celular</h2>
+            <p class="app-modal-sub">Recibe tus horarios, resultados al instante y tu ranking por puntos. Descarga CourtBit, gratis para jugadores.</p>
+            <div class="app-modal-trust">
+                <span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><b>5.0</b> estrellas</span>
+                <span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sin anuncios</span>
+                <span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg><b>Gratis</b></span>
+            </div>
+            <div class="app-modal-badges" id="app-modal-badges"></div>
+            <button type="button" class="app-modal-dismiss" id="app-modal-dismiss">Ahora no</button>
         </div>
     </div>
 
@@ -2279,6 +2436,49 @@
             return String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
         }
 
+        // Allowlist mirrors Courtbit-Dashboard/src/lib/sanitize.ts. DOMParser builds
+        // an inert document — scripts don't run and resources (img/onerror) don't load —
+        // so the only attack surface is leftover attributes, which we strip below.
+        const RICH_TEXT_TAGS = new Set([
+            'p','br','strong','em','b','i','u','s',
+            'ul','ol','li','blockquote',
+            'h1','h2','h3','h4','h5','h6',
+            'a','span','div'
+        ]);
+        const RICH_TEXT_DROP = new Set(['script','style','template','iframe','object','embed','noscript']);
+        const RICH_TEXT_HREF = /^(https?:|mailto:|tel:)/i;
+
+        function sanitizeRichText(html) {
+            if (!html) return '';
+            const doc = new DOMParser().parseFromString(String(html), 'text/html');
+            const clean = node => {
+                for (const child of [...node.childNodes]) {
+                    if (child.nodeType === Node.TEXT_NODE) continue;
+                    if (child.nodeType !== Node.ELEMENT_NODE) { child.remove(); continue; }
+                    const tag = child.tagName.toLowerCase();
+                    if (RICH_TEXT_DROP.has(tag)) { child.remove(); continue; }
+                    if (!RICH_TEXT_TAGS.has(tag)) {
+                        clean(child);
+                        while (child.firstChild) node.insertBefore(child.firstChild, child);
+                        child.remove();
+                        continue;
+                    }
+                    for (const attr of [...child.attributes]) {
+                        const name = attr.name.toLowerCase();
+                        const keepHref = tag === 'a' && name === 'href' && RICH_TEXT_HREF.test(attr.value.trim());
+                        if (!keepHref) child.removeAttribute(attr.name);
+                    }
+                    if (tag === 'a' && child.hasAttribute('href')) {
+                        child.setAttribute('target', '_blank');
+                        child.setAttribute('rel', 'noopener noreferrer nofollow');
+                    }
+                    clean(child);
+                }
+            };
+            clean(doc.body);
+            return doc.body.innerHTML;
+        }
+
         function highlight(text, query) {
             if (!query || !text) return escapeHtml(text);
             const safe = escapeHtml(text);
@@ -2739,7 +2939,7 @@
                                 <div>${ICON_USERS}<span>${matchCount} partidos · ${(t.categories || []).length} categorías</span></div>
                             </div>
                             ${tzNote}
-                            ${t.description ? `<div class="hero-description">${escapeHtml(t.description)}</div>` : ''}
+                            ${(() => { const d = sanitizeRichText(t.description); return d ? `<div class="hero-description">${d}</div>` : ''; })()}
                         </div>
                     </div>
                 </div>
@@ -2845,19 +3045,13 @@
             const ctaSlot = document.getElementById('login-cta-slot');
             if (ctaSlot) ctaSlot.innerHTML = renderLoginCTA();
             refreshLinkBanner();
-            // The day-jump wrapper may appear/disappear as the filtered set
-            // changes; remeasure so the sticky day-header offsets stay in sync.
-            measureStickyOffsets();
         }
 
         function measureStickyOffsets() {
             const nav = document.querySelector('nav');
             const tabs = document.querySelector('.tabs');
-            const dayJump = document.querySelector('.day-jump-wrap');
             if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
             if (tabs) document.documentElement.style.setProperty('--tabs-h', tabs.offsetHeight + 'px');
-            if (dayJump) document.documentElement.style.setProperty('--day-jump-h', dayJump.offsetHeight + 'px');
-            else document.documentElement.style.setProperty('--day-jump-h', '0px');
         }
 
         function openFilterSheet() {
@@ -3069,13 +3263,88 @@
                 state.pendingLinks = await loadPendingLinks(state.calendar.tournament_id);
                 renderShell();
                 loadTournamentTeams(code);
+                setTimeout(maybeShowAppPromo, 1600);
             } catch (err) {
                 console.error(err);
                 renderError('Error de red', 'No pudimos conectar con el servidor.');
             }
         }
 
+        const APP_STORE_URL = 'https://apps.apple.com/mx/app/courtbit/id6757516543';
+        const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.incodap.courtbit&referrer=utm_source%3Dtorneo_modal';
+        const APP_PROMO_KEY = 'courtbit_app_promo_until';
+        const APP_PROMO_SNOOZE_DAYS = 1;
+        const APP_PROMO_CONVERT_DAYS = 45;
+
+        function detectPlatform() {
+            const ua = navigator.userAgent || navigator.vendor || '';
+            if (/android/i.test(ua)) return 'android';
+            if (/iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) return 'ios';
+            return 'other';
+        }
+
+        function appStoreBadge() {
+            return `<a class="apple" href="${APP_STORE_URL}" target="_blank" rel="noopener" aria-label="Descargar en App Store"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Descargar en App Store"></a>`;
+        }
+        function playStoreBadge() {
+            return `<a class="google" href="${PLAY_STORE_URL}" target="_blank" rel="noopener" aria-label="Disponible en Google Play"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Disponible en Google Play"></a>`;
+        }
+
+        function appPromoSnoozed() {
+            try {
+                const until = parseInt(localStorage.getItem(APP_PROMO_KEY) || '', 10);
+                return Number.isFinite(until) && Date.now() < until;
+            } catch { return false; }
+        }
+        function snoozeAppPromo(days) {
+            try { localStorage.setItem(APP_PROMO_KEY, String(Date.now() + days * 86400000)); } catch {}
+        }
+
+        let appPromoShown = false;
+        function maybeShowAppPromo() {
+            if (appPromoShown || appPromoSnoozed()) return;
+            if (document.body.classList.contains('modal-open')) return;
+            const platform = detectPlatform();
+            const badges = document.getElementById('app-modal-badges');
+            if (!badges) return;
+            badges.innerHTML = platform === 'ios' ? appStoreBadge()
+                : platform === 'android' ? playStoreBadge()
+                : appStoreBadge() + playStoreBadge();
+            openAppModal();
+        }
+
+        function openAppModal() {
+            const modal = document.getElementById('app-modal');
+            if (!modal) return;
+            appPromoShown = true;
+            modal.hidden = false;
+            requestAnimationFrame(() => modal.classList.add('open'));
+            document.body.classList.add('modal-open');
+        }
+        function closeAppModal(days = APP_PROMO_SNOOZE_DAYS) {
+            const modal = document.getElementById('app-modal');
+            if (!modal) return;
+            modal.classList.remove('open');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => { modal.hidden = true; }, 280);
+            snoozeAppPromo(days);
+        }
+        function wireAppModal() {
+            const modal = document.getElementById('app-modal');
+            if (!modal) return;
+            modal.addEventListener('click', e => { if (e.target === modal) closeAppModal(); });
+            document.getElementById('app-modal-close').addEventListener('click', () => closeAppModal());
+            document.getElementById('app-modal-dismiss').addEventListener('click', () => closeAppModal());
+            document.getElementById('app-modal-badges').addEventListener('click', e => {
+                if (e.target.closest('a')) closeAppModal(APP_PROMO_CONVERT_DAYS);
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && !modal.hidden) closeAppModal();
+            });
+        }
+
         wireAuthModal();
+        wireAppModal();
 
         document.addEventListener('error', e => {
             const img = e.target;
