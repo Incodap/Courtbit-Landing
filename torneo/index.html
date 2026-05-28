@@ -115,13 +115,11 @@
             }
         }
         .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
+            display: inline-flex;
+            align-items: center;
             text-decoration: none;
-            color: var(--navy);
         }
-        .logo span { color: var(--blue); }
+        .logo img { height: 34px; width: auto; display: block; }
         .back-link {
             color: var(--blue-deep);
             text-decoration: none;
@@ -334,6 +332,7 @@
             align-items: start;
         }
         .hero-flyer {
+            position: relative;
             aspect-ratio: 1 / 1;
             background: var(--bg-tint);
             border-radius: 18px;
@@ -345,6 +344,31 @@
         }
         .hero-flyer img { width: 100%; height: 100%; object-fit: cover; }
         .hero-flyer-fallback { font-size: 4rem; color: var(--text-faint); }
+        .hero-flyer.clickable { cursor: zoom-in; }
+        .flyer-zoom {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 999px;
+            background: rgba(15, 29, 77, 0.55);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 180ms;
+            pointer-events: none;
+        }
+        .flyer-zoom svg { width: 17px; height: 17px; }
+        .hero-flyer.clickable:hover .flyer-zoom { opacity: 1; }
+        @media (hover: none) {
+            .hero-flyer.clickable .flyer-zoom { opacity: 1; }
+        }
         .hero-info h1 {
             font-size: 2.3rem;
             font-weight: 800;
@@ -1464,7 +1488,7 @@
             }
             nav { padding: 10px 0; padding-top: max(10px, env(safe-area-inset-top)); }
             .nav-container { min-height: 40px; }
-            .logo { font-size: 1.25rem; }
+            .logo img { height: 30px; }
             .login-btn { padding: 8px 14px; font-size: 0.8rem; }
             .back-link { display: none; }
             .user-chip { padding: 4px 4px 4px 10px; font-size: 0.8rem; }
@@ -1754,12 +1778,58 @@
             .app-modal-sheet { border-radius: 24px; max-height: 92vh; overflow-y: auto; }
             .app-modal-handle { display: none; }
         }
+
+        /* Fullscreen flyer lightbox */
+        .flyer-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            background: rgba(6, 10, 38, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms;
+            cursor: zoom-out;
+        }
+        .flyer-lightbox.open { opacity: 1; pointer-events: auto; }
+        .flyer-lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.5);
+            transform: scale(0.96);
+            transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .flyer-lightbox.open img { transform: scale(1); }
+        .flyer-lightbox-close {
+            position: absolute;
+            top: max(14px, env(safe-area-inset-top));
+            right: max(14px, env(safe-area-inset-right));
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+            color: #fff;
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <a href="/" class="logo">court<span>bit</span></a>
+            <a href="/" class="logo" aria-label="CourtBit — Inicio"><img src="../Assets/courtbit-logo.svg" alt="CourtBit"></a>
             <div class="nav-right" id="nav-right">
                 <a href="/" class="back-link">← Inicio</a>
             </div>
@@ -1931,6 +2001,11 @@
             <div class="app-modal-badges" id="app-modal-badges"></div>
             <button type="button" class="app-modal-dismiss" id="app-modal-dismiss">Ahora no</button>
         </div>
+    </div>
+
+    <div id="flyer-lightbox" class="flyer-lightbox" role="dialog" aria-modal="true" aria-label="Flyer del torneo" hidden>
+        <button type="button" class="flyer-lightbox-close" id="flyer-lightbox-close" aria-label="Cerrar">×</button>
+        <img id="flyer-lightbox-img" src="" alt="">
     </div>
 
     <script>
@@ -2913,7 +2988,7 @@
         function renderHero() {
             const t = state.tournament;
             const flyerHtml = t.flyer_url
-                ? `<img src="${escapeHtml(t.flyer_url)}" alt="${escapeHtml(t.name)}" onerror="this.parentElement.innerHTML='<div class=&quot;hero-flyer-fallback&quot;>🎾</div>'">`
+                ? `<img src="${escapeHtml(t.flyer_url)}" alt="${escapeHtml(t.name)}" onerror="var c=this.closest('.hero-flyer'); if(c){c.classList.remove('clickable'); c.removeAttribute('role'); c.removeAttribute('tabindex');} this.parentElement.innerHTML='<div class=&quot;hero-flyer-fallback&quot;>🎾</div>'"><button type="button" class="flyer-zoom" aria-label="Ver flyer en pantalla completa" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></button>`
                 : `<div class="hero-flyer-fallback">🎾</div>`;
             const organizer = t.organizer || {};
             const orgPill = organizer.name ? `<div class="organizer-pill">
@@ -2929,7 +3004,7 @@
             return `<section class="hero">
                 <div class="container">
                     <div class="hero-grid">
-                        <div class="hero-flyer">${flyerHtml}</div>
+                        <div class="hero-flyer${t.flyer_url ? ' clickable' : ''}"${t.flyer_url ? ' role="button" tabindex="0" aria-label="Ver flyer en pantalla completa"' : ''}>${flyerHtml}</div>
                         <div class="hero-info">
                             ${orgPill}
                             <h1>${escapeHtml(t.name || 'Torneo')}</h1>
@@ -3343,8 +3418,48 @@
             });
         }
 
+        function openFlyer(src, alt) {
+            const lb = document.getElementById('flyer-lightbox');
+            const img = document.getElementById('flyer-lightbox-img');
+            if (!lb || !img || !src) return;
+            img.src = src;
+            img.alt = alt || '';
+            lb.hidden = false;
+            requestAnimationFrame(() => lb.classList.add('open'));
+            document.body.classList.add('modal-open');
+        }
+        function closeFlyer() {
+            const lb = document.getElementById('flyer-lightbox');
+            if (!lb || lb.hidden) return;
+            lb.classList.remove('open');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => { lb.hidden = true; document.getElementById('flyer-lightbox-img').src = ''; }, 240);
+        }
+        function wireFlyer() {
+            const lb = document.getElementById('flyer-lightbox');
+            if (!lb) return;
+            lb.addEventListener('click', closeFlyer);
+            const openFromEl = el => {
+                const img = el.querySelector('img');
+                const src = img && (img.currentSrc || img.src);
+                if (src) openFlyer(src, img.alt);
+            };
+            document.addEventListener('click', e => {
+                const flyerEl = e.target.closest('.hero-flyer.clickable');
+                if (flyerEl) openFromEl(flyerEl);
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && !lb.hidden) { closeFlyer(); return; }
+                if ((e.key === 'Enter' || e.key === ' ') && lb.hidden) {
+                    const flyerEl = document.activeElement?.closest?.('.hero-flyer.clickable');
+                    if (flyerEl) { e.preventDefault(); openFromEl(flyerEl); }
+                }
+            });
+        }
+
         wireAuthModal();
         wireAppModal();
+        wireFlyer();
 
         document.addEventListener('error', e => {
             const img = e.target;
