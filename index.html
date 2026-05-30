@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Software de reservas para clubes de padel — gratis ($0/mes) | CourtBit</title>
-  <meta name="description" content="El software para tu club de padel — calendario, app de jugadores y pagos directos a Stripe. $0 al mes para siempre. Sin renta, sin contratos.">
-  <meta name="keywords" content="software club padel, sistema reservas padel, app reservas padel, gestion canchas padel, pagos stripe padel, ranking por puntos padel, courtbit">
+  <title>CourtBit — Software para clubes y organizadores de padel | Reservas, academias y torneos</title>
+  <meta name="description" content="La plataforma de padel en México. Reservas y academias $0/mes para tu club. Planes para organizadores de torneos y ligas. Pagos directos a Stripe.">
+  <meta name="keywords" content="software club padel, sistema reservas padel, software academia padel, software torneo padel, software liga padel, app reservas padel, plataforma padel mexico, pagos stripe padel, courtbit">
 
   <link rel="canonical" href="https://courtbit.com.mx/">
   <link rel="alternate" hreflang="es" href="https://courtbit.com.mx/">
@@ -18,16 +18,16 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
   <meta property="og:url" content="https://courtbit.com.mx/">
-  <meta property="og:title" content="Software de reservas para clubes de padel — $0 al mes para siempre | CourtBit">
-  <meta property="og:description" content="Calendario, app de jugadores y pagos directos a Stripe. Sin renta mensual, sin contratos. CourtBit cobra 4% al jugador, nunca al club.">
+  <meta property="og:title" content="CourtBit — Reservas, academias y torneos en una sola plataforma de padel">
+  <meta property="og:description" content="$0/mes para clubes y academias. Planes para organizadores de torneos y ligas. Pagos directos a Stripe del club, sin comisión propia de CourtBit. En efectivo y transferencia, cero fees.">
   <meta property="og:image" content="https://courtbit.com.mx/Assets/marketing/hero/hero-clubes.png">
   <meta property="og:site_name" content="CourtBit">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://courtbit.com.mx/">
-  <meta name="twitter:title" content="Software de reservas para clubes de padel — $0 al mes | CourtBit">
-  <meta name="twitter:description" content="Calendario, app de jugadores y pagos directos a Stripe. Sin renta, sin contratos. 4% al jugador, nunca al club.">
+  <meta name="twitter:title" content="CourtBit — Plataforma de padel para clubes y organizadores">
+  <meta name="twitter:description" content="Reservas y academias $0/mes. Torneos y ligas con 4 planes desde $0. Pagos directos a Stripe.">
   <meta name="twitter:image" content="https://courtbit.com.mx/Assets/marketing/hero/hero-clubes.png">
 
   <!-- Favicons -->
@@ -41,21 +41,23 @@
   <link rel="preconnect" href="https://qhtykipawsulyejtvvkm.supabase.co" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,800&family=JetBrains+Mono:wght@500;700&display=swap">
 
-  <!-- JSON-LD: SoftwareApplication, single $0 offer (Reservas) -->
+  <!-- JSON-LD: SoftwareApplication, plataforma con 3 productos (Reservas, Academias, Competencias) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "CourtBit Reservas",
+    "name": "CourtBit",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web, iOS, Android",
     "url": "https://courtbit.com.mx/",
     "image": "https://courtbit.com.mx/Assets/marketing/hero/hero-clubes.png",
-    "description": "Software de reservas para clubes de padel. $0 al mes para siempre. Calendario, app de jugadores y pagos directos a Stripe.",
+    "description": "Plataforma de padel para clubes y organizadores. Reservas y academias $0/mes. Torneos y ligas con planes desde $0/mes. Pagos directos a Stripe.",
     "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "MXN"
+      "@type": "AggregateOffer",
+      "priceCurrency": "MXN",
+      "lowPrice": "0",
+      "highPrice": "1499",
+      "offerCount": "6"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -92,7 +94,7 @@
 
     /* Reset */
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       margin: 0;
       font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -101,6 +103,7 @@
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
@@ -472,6 +475,563 @@
       color: #c25555;
       font-weight: 700;
     }
+
+    /* ─── Pricing Why (gratis vs pago) ─── */
+    .e-pricing-why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .e-pricing-why-card {
+      background: var(--bg-tint);
+      border: 1px solid rgba(46, 89, 251, 0.12);
+      border-radius: 22px;
+      padding: 32px;
+      transition: transform 220ms;
+    }
+    .e-pricing-why-card:hover { transform: translateY(-3px); }
+    .e-pricing-why-card.dark {
+      background: var(--navy);
+      color: var(--paper);
+      border-color: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .e-pricing-why-card.dark::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 60%; height: 130%;
+      background: var(--blue);
+      opacity: 0.22;
+      transform: skewX(-15deg);
+      pointer-events: none;
+    }
+    .e-pricing-why-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 2;
+    }
+    .e-pricing-why-badge-lime {
+      background: var(--lime);
+      color: var(--navy);
+    }
+    .e-pricing-why-card h3 {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.022em;
+      margin: 0 0 12px;
+      color: var(--navy);
+      position: relative;
+      z-index: 2;
+    }
+    .e-pricing-why-card.dark h3 { color: var(--paper); }
+    .e-pricing-why-card p {
+      margin: 0 0 14px;
+      color: var(--text-soft);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      position: relative;
+      z-index: 2;
+    }
+    .e-pricing-why-card p:last-child { margin-bottom: 0; }
+    .e-pricing-why-card.dark p {
+      color: rgba(255,255,255,0.88);
+    }
+    .e-pricing-why-card b { color: var(--navy); }
+    .e-pricing-why-card.dark b { color: var(--lime); }
+
+    /* ─── Compact secondary mocks (Academia + Bracket) ─── */
+    .e-mock-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "academia grupos"
+        "bracket  bracket";
+      gap: 22px;
+      max-width: 1080px;
+      margin: 48px auto 0;
+    }
+    .e-mock-tile.is-academia { grid-area: academia; }
+    .e-mock-tile.is-grupos   { grid-area: grupos; }
+    .e-mock-tile.is-bracket  { grid-area: bracket; }
+    .e-mock-tile {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 18px 36px -16px rgba(15, 29, 77, 0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .e-mock-tile-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .e-mock-tile-head .label {
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue-deep);
+    }
+    .e-mock-tile-head a {
+      font-size: 0.8125rem;
+      color: var(--blue);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .e-mock-tile-head a:hover { color: var(--blue-deep); }
+    .e-mock-tile h4 {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: -0.018em;
+      margin: 0;
+      color: var(--navy);
+    }
+    .e-mock-tile p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Academia mock (asistencia) */
+    .am-mock {
+      background: #f9fafc;
+      border: 1px solid #eef0f6;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-family: 'DM Sans', system-ui, sans-serif;
+    }
+    .am-mock-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #d8dde9;
+      margin-bottom: 8px;
+    }
+    .am-mock-head .name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0f1d4d;
+    }
+    .am-mock-head .meta {
+      font-size: 10px;
+      color: #6b7191;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .am-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+      font-size: 11.5px;
+    }
+    .am-row .av {
+      width: 18px; height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2e59fb, #1a45e0);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8.5px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .am-row .av.alt { background: linear-gradient(135deg, #de8f6c, #b86a4a); }
+    .am-row .av.alt2 { background: linear-gradient(135deg, #4d7244, #355230); }
+    .am-row .nm {
+      flex: 1;
+      color: #3a4262;
+      font-weight: 500;
+    }
+    .am-row .status {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+    .am-row .status.ok { background: #e9fbb8; color: #4d6a16; }
+    .am-row .status.no { background: #fee2e2; color: #b91c1c; }
+    .am-row .status.pend { background: #f4f6fb; color: #6b7191; }
+    .am-mock-foot {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 8px;
+      margin-top: 6px;
+      border-top: 1px dashed #d8dde9;
+      font-size: 10.5px;
+      color: #6b7191;
+      font-weight: 600;
+    }
+    .am-mock-foot b { color: #4d6a16; font-weight: 800; }
+
+    /* Grupos mock (fase de grupos) — mimics CourtBit's real group-stage UI */
+    .gr-mock {
+      background: #ffffff;
+      border: 1px solid #eef0f6;
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: 'DM Sans', system-ui, sans-serif;
+    }
+    .gr-mock-header {
+      background: linear-gradient(180deg, #1a2c6e 0%, #0f1d4d 100%);
+      color: #ffffff;
+      padding: 11px 14px;
+    }
+    .gr-mock-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 7px;
+    }
+    .gr-mock-header .name {
+      font-size: 13px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.01em;
+    }
+    .gr-mock-header .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      background: rgba(184, 240, 43, 0.18);
+      color: #d9f088;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .gr-mock-header .count {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.65);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .gr-progress {
+      height: 3px;
+      background: rgba(255,255,255,0.14);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .gr-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #B8F02B 0%, #9fd121 100%);
+      border-radius: 999px;
+    }
+    .gr-mock-body { padding: 12px 12px 10px; }
+    .gr-leaders {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 9px;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .gr-leaders .label {
+      color: #b45309;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .gr-leaders .label::before {
+      content: '★';
+      font-size: 11px;
+      color: #f59e0b;
+    }
+    .gr-leaders .note {
+      color: #9aa0bb;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 10px;
+    }
+    .gr-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 8px;
+      border-radius: 7px;
+      font-size: 11.5px;
+    }
+    .gr-row + .gr-row { margin-top: 3px; }
+    .gr-row.qualifier {
+      background: linear-gradient(90deg, #ecfdf5 0%, rgba(236,253,245,0.35) 100%);
+    }
+    .gr-row.eliminated { opacity: 0.55; }
+    .gr-rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      border-radius: 999px;
+      font-size: 10.5px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .gr-rank.r1 {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(16, 185, 129, 0.35);
+    }
+    .gr-rank.r2 {
+      background: linear-gradient(135deg, #14b88a 0%, #047857 100%);
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(16, 185, 129, 0.25);
+    }
+    .gr-rank.r3 {
+      background: #f4f6fb;
+      color: #9aa0bb;
+      border: 1px solid #e6e8ef;
+    }
+    .gr-team-name {
+      flex: 1;
+      color: #3a4262;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gr-row.qualifier .gr-team-name { color: #064e3b; font-weight: 700; }
+    .gr-pts {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 11px;
+      font-weight: 800;
+      color: #6b7191;
+      flex-shrink: 0;
+    }
+    .gr-row.qualifier .gr-pts { color: #047857; }
+    .gr-row.eliminated .gr-pts { color: #9aa0bb; }
+
+    /* Bracket mock (cuadro final) — mimics CourtBit's real bracket UI */
+    .br-mock {
+      background: #f9fafc;
+      border: 1px solid #eef0f6;
+      border-radius: 12px;
+      padding: 18px;
+      font-family: 'DM Sans', system-ui, sans-serif;
+    }
+    .br-mock-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #d8dde9;
+      margin-bottom: 14px;
+    }
+    .br-mock-head .name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f1d4d;
+    }
+    .br-mock-head .meta {
+      font-size: 10px;
+      color: #b91c1c;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .br-mock-head .meta::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 999px;
+      background: #b91c1c;
+      box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.18);
+      animation: br-pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes br-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+    .br-rounds {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .br-round-head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .br-round-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 14px;
+      background: #f4f6fb;
+      border: 1px solid #e6e8ef;
+      border-radius: 999px;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #6b7191;
+    }
+    .br-round-pill .ic { font-size: 11px; line-height: 1; }
+    .br-round-pill.active {
+      background: linear-gradient(135deg, #e0f2dc 0%, #d9f088 100%);
+      border-color: #b8d965;
+      color: #355230;
+    }
+    .br-round-pill.final {
+      background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+      border-color: #f59e0b;
+      color: #78350f;
+    }
+    .br-round-count {
+      font-size: 9.5px;
+      font-weight: 600;
+      color: #9aa0bb;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .br-tree {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .br-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      gap: 10px;
+    }
+    .br-col.semis { justify-content: space-around; }
+    .br-col.fin   { justify-content: center; }
+    .br-card {
+      background: #ffffff;
+      border: 1px solid #e6e8ef;
+      border-radius: 8px;
+      padding: 7px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      position: relative;
+    }
+    .br-card.active {
+      border-color: #b8d965;
+      box-shadow: 0 0 0 2px rgba(184, 217, 101, 0.2);
+    }
+    .br-card.fin {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border-color: #f59e0b;
+      padding-top: 18px;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.18);
+    }
+    .br-card-tag {
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      box-shadow: 0 3px 8px rgba(234, 88, 12, 0.35);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .br-team-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      font-size: 10.5px;
+      color: #3a4262;
+      font-weight: 600;
+      padding: 3px 0;
+    }
+    .br-team-row + .br-team-row { border-top: 1px solid #f0f2f7; }
+    .br-card.fin .br-team-row + .br-team-row { border-top-color: rgba(245, 158, 11, 0.25); }
+    .br-team-row.winner {
+      color: #0f1d4d;
+      font-weight: 800;
+    }
+    .br-team-row.placeholder {
+      color: #9aa0bb;
+      font-style: italic;
+      font-weight: 500;
+    }
+    .br-team-row.bye {
+      color: #c8cee0;
+      font-style: italic;
+      font-weight: 500;
+    }
+    .br-team-row .pts {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      font-weight: 800;
+      color: #9aa0bb;
+      flex-shrink: 0;
+      min-width: 30px;
+      text-align: right;
+      letter-spacing: 0.04em;
+    }
+    .br-team-row.winner .pts { color: #2e59fb; }
+    .br-card-time {
+      font-size: 9px;
+      color: #9aa0bb;
+      font-weight: 700;
+      padding-top: 4px;
+      margin-top: 2px;
+      border-top: 1px dashed #f0f2f7;
+      letter-spacing: 0.02em;
+    }
+    .br-card-time.scheduled { color: #2e59fb; }
+    .br-card-time.done { color: #4d6a16; }
+    .br-card.fin .br-card-time {
+      color: #92400e;
+      border-top-color: rgba(245, 158, 11, 0.3);
+    }
+    .br-mock-foot {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 12px;
+      margin-top: 14px;
+      border-top: 1px dashed #d8dde9;
+      font-size: 10.5px;
+      color: #6b7191;
+      font-weight: 600;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .br-mock-foot b { color: #2e59fb; font-weight: 800; }
 
     /* ─── 3 Steps (saturated blue + lime numbered circles) ─── */
     .e-steps-section {
@@ -1436,6 +1996,52 @@
       .e-showcase-visual { min-height: 360px; }
       .e-showcase-visual .ph-floating.delay-1 { width: 140px; right: 0; bottom: -30px; }
       .e-showcase-visual .ph-floating.delay-2 { width: 130px; left: 0; top: 16px; }
+      .e-pricing-why-grid { grid-template-columns: 1fr; gap: 16px; }
+      .e-mock-pair {
+        grid-template-columns: 1fr;
+        grid-template-areas: "academia" "grupos" "bracket";
+        gap: 16px;
+        max-width: 520px;
+      }
+      .br-mock { padding: 14px; }
+      /* Bracket stacks vertically on tablet/mobile — rounds become sections */
+      .br-rounds { display: none; }
+      .br-tree {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      .br-col {
+        position: relative;
+        padding-top: 32px;
+        gap: 8px;
+      }
+      .br-col::before {
+        content: 'Cuartos · 4 partidos cerrados';
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        background: #f4f6fb;
+        border: 1px solid #e6e8ef;
+        color: #6b7191;
+        border-radius: 999px;
+      }
+      .br-col.semis::before {
+        content: '✓ Semis · 2 partidos programados';
+        background: linear-gradient(135deg, #e0f2dc, #d9f088);
+        border-color: #b8d965;
+        color: #355230;
+      }
+      .br-col.fin::before {
+        content: 'Final · Por jugar';
+        background: linear-gradient(135deg, #fef3c7, #fbbf24);
+        border-color: #f59e0b;
+        color: #78350f;
+      }
       .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
       .footer-grid .footer-col:first-child { grid-column: 1 / -1; margin-bottom: 4px; }
       .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
@@ -1467,9 +2073,13 @@
       .e-hero-grid > div:last-child { display: none; }
       .e-section-title { font-size: clamp(1.625rem, 5.5vw, 2.25rem); }
       .e-section-desc { font-size: 1rem; padding: 0 8px; }
-      .e-compare-section, .e-steps-section, .e-audiences, .e-testimonials, .e-showcase, .e-final {
+      .e-compare-section, .e-steps-section, .e-audiences, .e-pricing-why, .e-testimonials, .e-showcase, .e-final {
         padding: 44px 0;
       }
+      .e-pricing-why-card { padding: 24px; }
+      .e-pricing-why-card h3 { font-size: 1.25rem; }
+      .e-mock-tile { padding: 20px; }
+      .e-mock-tile h4 { font-size: 1rem; }
       .e-test-grid .e-test-card:nth-child(n+4) { display: none; }
       .e-showcase-visual { min-height: 280px; }
       .e-showcase-visual .ph-floating.delay-1 { width: 110px; right: -10px; bottom: -24px; }
@@ -1610,7 +2220,7 @@
 
   <!-- 1. Top status bar -->
   <div class="e-topbar">
-    <span><b>Nuevo</b> · CourtBit Reservas ya disponible en México · <b>$0 al mes</b> para tu club</span>
+    <span><b>Nuevo</b> · CourtBit ya opera tu club, tus clases y tus torneos · <b>$0/mes</b> al club</span>
   </div>
 
   <!-- 2. Nav -->
@@ -1638,19 +2248,14 @@
       <div class="e-hero-grid">
         <div>
           <h1>
-            Tu sistema de reservas, <em>$0 al mes</em> para siempre.
+            Centraliza tu club de pádel. <em>Recupera tu tiempo</em>.
           </h1>
           <p class="lead">
-            El software para tu club — calendario, app de jugadores y pagos directos a tu Stripe. Sin renta mensual, sin contratos. Tú cobras al jugador, nosotros nunca al club.
+            Reservas, academias y torneos en una sola plataforma. <b style="color:var(--lime);">$0/mes</b> al club.
           </p>
           <div class="e-cta">
             <a href="https://reservas.courtbit.com.mx/" class="e-btn e-btn-lime">Empezar gratis →</a>
-            <a href="#contacto" class="e-btn e-btn-outline">Hablar con ventas</a>
-          </div>
-          <div class="e-trust-strip">
-            <span><b>30+</b> clubes activos</span>
-            <span><b>0</b> contratos anuales</span>
-            <span><b>4%</b> al jugador, no al club</span>
+            <a href="/pricing/" class="e-btn e-btn-outline">Ver planes</a>
           </div>
         </div>
 
@@ -1664,64 +2269,46 @@
                  decoding="async">
           </div>
           <div class="e-float-card">
-            <div class="label">Tu costo mensual</div>
+            <div class="label">Tu club</div>
             <div class="price">$0 <small>/mes para siempre</small></div>
-            <div class="meta">Solo cobramos <b>4%</b> al jugador en pagos por la app.</div>
+            <div class="meta">Tu club no paga nada. El jugador paga <b>4%</b> solo si usa tarjeta.</div>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- 4. (Press strip intentionally omitted — no real partner logos available.) -->
-
-  <!-- 5. COMPARISON -->
-  <section class="e-compare-section">
+  <!-- 4. AUDIENCES (moved up — 3 productos al frente) -->
+  <section class="e-audiences" id="audiences" style="padding-top: 72px; padding-bottom: 72px;">
     <div class="container">
-      <div class="e-section-header">
-        <span class="e-eyebrow"><span class="dot"></span> Por qué CourtBit</span>
-        <h2 class="e-section-title">Compara y <em>decide</em>.</h2>
-        <p class="e-section-desc">
-          La diferencia con plataformas tradicionales no es solo el precio — es a quién le cobran y cómo se distribuye el dinero.
-        </p>
+      <div class="e-section-header" style="text-align:center; max-width:720px; margin: 0 auto 40px;">
+        <span class="e-eyebrow"><span class="dot"></span> Una plataforma · Tres productos</span>
+        <h2 class="e-section-title">Para tu club, tu academia y tu <em>torneo</em>.</h2>
+        <p class="e-section-desc">Tres productos. Una cuenta. Eliges por dónde empiezas.</p>
       </div>
-
-      <div class="e-compare-table">
-        <div class="e-compare-row head">
-          <span></span>
-          <span>Plataformas tradicionales</span>
-          <span class="courtbit-col">CourtBit</span>
-        </div>
-        <div class="e-compare-row">
-          <span class="feature">Costo mensual al club</span>
-          <span class="competitor">$1,500 – $4,000 mxn</span>
-          <span class="courtbit-col"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span> $0 para siempre</span>
-        </div>
-        <div class="e-compare-row">
-          <span class="feature">Comisión por reserva</span>
-          <span class="competitor">5–10% del total</span>
-          <span class="courtbit-col"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span> 0% al club</span>
-        </div>
-        <div class="e-compare-row">
-          <span class="feature">Pagos directos a tu cuenta</span>
-          <span class="competitor"><span class="x">✗</span> Pasan por la plataforma</span>
-          <span class="courtbit-col"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span> Stripe directo</span>
-        </div>
-        <div class="e-compare-row">
-          <span class="feature">App nativa para jugadores</span>
-          <span class="competitor">Marca de la plataforma</span>
-          <span class="courtbit-col"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span> iOS y Android</span>
-        </div>
-        <div class="e-compare-row">
-          <span class="feature">Contrato anual</span>
-          <span class="competitor">Sí, normalmente</span>
-          <span class="courtbit-col"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span> Sin compromisos</span>
-        </div>
-        <div class="e-compare-row">
-          <span class="feature">Setup</span>
-          <span class="competitor">1–4 semanas</span>
-          <span class="courtbit-col"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span> 10 minutos</span>
-        </div>
+      <div class="e-audience-grid">
+        <a href="/clubes/" class="e-aud-card featured">
+          <span class="ribbon">Para clubes</span>
+          <div class="label">Reservas</div>
+          <h3>Calendario <em>multi-cancha</em></h3>
+          <div class="price">$0 <small>/mes para siempre</small></div>
+          <p>Multi-cancha, pagos directos a tu cuenta y app para jugadores.</p>
+          <span class="arrow">Conocer Reservas →</span>
+        </a>
+        <a href="/academias/" class="e-aud-card secondary">
+          <div class="label">Para entrenadores</div>
+          <h3>Academias</h3>
+          <div class="price">$0 <small>/mes para siempre</small></div>
+          <p>Inscripciones, asistencia y cobros recurrentes en automático.</p>
+          <span class="arrow">Conocer Academias →</span>
+        </a>
+        <a href="/competencias/" class="e-aud-card secondary">
+          <div class="label">Para organizadores</div>
+          <h3>Competencias</h3>
+          <div class="price">Desde $0 <small>· 4 planes</small></div>
+          <p>Torneos, ligas y ranking de circuito con Live Control en cancha.</p>
+          <span class="arrow">Ver planes →</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1731,25 +2318,53 @@
     <div class="container">
       <div class="e-section-header">
         <span class="e-eyebrow"><span class="dot"></span> Cómo funciona</span>
-        <h2 class="e-section-title">Tu primera reserva en <em>10 minutos</em>.</h2>
-        <p class="e-section-desc">Tres pasos. Cero llamadas con ventas.</p>
+        <h2 class="e-section-title">En <em>10 minutos</em>, tu primer cobro.</h2>
+        <p class="e-section-desc">Tres pasos. Sin llamadas con ventas.</p>
       </div>
       <div class="e-steps">
         <div class="e-step">
           <span class="num">1</span>
-          <h3>Crea tu club</h3>
-          <p>Sube canchas, horarios y precios. Define qué tipo de reservas aceptas: 1 hora, 90 min, abiertas o fijas.</p>
+          <h3>Crea tu cuenta</h3>
+          <p>Activas los productos que necesitas. Los demás esperan.</p>
         </div>
         <div class="e-step">
           <span class="num">2</span>
           <h3>Conecta Stripe</h3>
-          <p>El dinero llega directo a la cuenta del club. CourtBit nunca toca tus pagos. Solo Stripe te cobra su fee estándar.</p>
+          <p>El dinero llega directo a tu cuenta. CourtBit no lo toca.</p>
         </div>
         <div class="e-step">
           <span class="num">3</span>
-          <h3>Comparte el link</h3>
-          <p>Tus jugadores reservan desde la app o desde tu link público. Recibes pagos al instante y el calendario se actualiza solo.</p>
+          <h3>Comparte tu link</h3>
+          <p>Tus jugadores reservan e inscriben desde la app. Tú cobras al instante.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6.5 PRICING MODEL — gratis vs pago -->
+  <section class="e-pricing-why" style="padding: 96px 0; background: var(--paper);">
+    <div class="container">
+      <div class="e-section-header">
+        <span class="e-eyebrow"><span class="dot"></span> Nuestro modelo</span>
+        <h2 class="e-section-title">¿Por qué gratis para clubes y <em>de pago</em> para organizadores?</h2>
+        <p class="e-section-desc">No es un truco. Le cobramos a quien usa la plataforma como base de su operación. No a quien ya tiene su negocio funcionando.</p>
+      </div>
+
+      <div class="e-pricing-why-grid">
+        <div class="e-pricing-why-card">
+          <div class="e-pricing-why-badge e-pricing-why-badge-lime">$0/mes para siempre</div>
+          <h3>Clubes y academias</h3>
+          <p><b>No le cobramos al club.</b> El jugador paga 4% solo si usa tarjeta. Efectivo y transferencia: cero.</p>
+        </div>
+        <div class="e-pricing-why-card dark">
+          <div class="e-pricing-why-badge e-pricing-why-badge-lime">4 planes · Desde $0/mes</div>
+          <h3>Organizadores de torneos y ligas</h3>
+          <p>Un torneo es <b>operación intensa</b>. Por eso tenemos 4 planes: empiezas <b>gratis</b> y creces con tu evento.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 36px;">
+        <a href="/pricing/" class="e-btn e-btn-blue">Ver todos los planes →</a>
       </div>
     </div>
   </section>
@@ -1759,16 +2374,15 @@
     <div class="container">
       <div class="e-showcase-grid">
         <div class="e-showcase-text">
-          <span class="e-eyebrow"><span class="dot"></span> Para el club</span>
+          <span class="e-eyebrow"><span class="dot"></span> Reservas · Para el club</span>
           <h2>Tu calendario, <em>tus reglas</em>.</h2>
           <p style="color:var(--text-soft); font-size:1.0625rem; margin:0 0 18px;">
-            Dashboard pensado para operación diaria — abre, cierra, ajusta horarios, edita precios por hora, gestiona jugadores y reportes en un solo lugar.
+            Tu operación diaria, en una pantalla. <b>$0/mes para siempre.</b>
           </p>
           <ul>
-            <li><span class="bullet">›</span> Calendario multi-cancha con drag-and-drop</li>
-            <li><span class="bullet">›</span> Precios por hora, día y temporada</li>
-            <li><span class="bullet">›</span> Reservas abiertas, fijas y bloqueos en un click</li>
-            <li><span class="bullet">›</span> Reportes de ocupación y revenue diario</li>
+            <li><span class="bullet">›</span> Multi-cancha con drag-and-drop</li>
+            <li><span class="bullet">›</span> Reservas abiertas, fijas o bloqueos en un click</li>
+            <li><span class="bullet">›</span> Reportes de ocupación al día</li>
           </ul>
           <a href="/clubes/" class="e-btn e-btn-blue">Ver demo del dashboard →</a>
         </div>
@@ -1873,6 +2487,183 @@
                loading="lazy">
         </div>
       </div>
+
+      <!-- Compact mocks — Academia + Grupos + Bracket (la misma cuenta gestiona todo) -->
+      <div class="e-mock-pair-intro" style="text-align: center; max-width: 720px; margin: 64px auto 4px;">
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0; font-weight: 600; letter-spacing: 0.02em;">Y desde la misma cuenta también gestionas:</p>
+      </div>
+      <div class="e-mock-pair">
+
+        <!-- TILE 1: Academia -->
+        <div class="e-mock-tile is-academia">
+          <div class="e-mock-tile-head">
+            <span class="label">Para tu academia</span>
+            <a href="/academias/">Conocer Academias →</a>
+          </div>
+          <h4>Asistencia, inscripciones y cobros.</h4>
+          <div class="am-mock" role="img" aria-label="Asistencia de clase · CourtBit Academias">
+            <div class="am-mock-head">
+              <span class="name">Clínica Sábado · Cancha 2</span>
+              <span class="meta">10 alumnos</span>
+            </div>
+            <div class="am-row">
+              <span class="av">SM</span>
+              <span class="nm">Sofía M.</span>
+              <span class="status ok">Presente</span>
+            </div>
+            <div class="am-row">
+              <span class="av alt">DR</span>
+              <span class="nm">Daniel R.</span>
+              <span class="status ok">Presente</span>
+            </div>
+            <div class="am-row">
+              <span class="av alt2">MG</span>
+              <span class="nm">Mateo G.</span>
+              <span class="status no">Falta</span>
+            </div>
+            <div class="am-row">
+              <span class="av">LP</span>
+              <span class="nm">Lucía P.</span>
+              <span class="status ok">Presente</span>
+            </div>
+            <div class="am-row">
+              <span class="av alt2">NC</span>
+              <span class="nm">Nicolás C.</span>
+              <span class="status pend">Pendiente</span>
+            </div>
+            <div class="am-mock-foot">
+              <span>8 presentes · 1 falta · 1 pendiente</span>
+              <span><b>$1,600 cobrado</b></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TILE 2: Fase de grupos -->
+        <div class="e-mock-tile is-grupos">
+          <div class="e-mock-tile-head">
+            <span class="label">Para tu torneo · Fase de grupos</span>
+            <a href="/competencias/">Ver Competencias →</a>
+          </div>
+          <h4>Grupos inteligentes. Calendario eficiente.</h4>
+          <p>Los grupos se arman solos respetando los horarios de cada jugador. Tú defines el formato.</p>
+          <div class="gr-mock" role="img" aria-label="Fase de grupos · Grupo D · ranking en vivo con los líderes que clasifican">
+            <header class="gr-mock-header">
+              <div class="gr-mock-header-top">
+                <span class="name"><span class="badge">D</span>Grupo D</span>
+                <span class="count">5/6 partidos</span>
+              </div>
+              <div class="gr-progress"><div class="gr-progress-bar" style="width: 83%;"></div></div>
+            </header>
+            <div class="gr-mock-body">
+              <div class="gr-leaders">
+                <span class="label">Líderes</span>
+                <span class="note">Clasifican al cuadro final</span>
+              </div>
+              <div class="gr-row qualifier">
+                <span class="gr-rank r1">1</span>
+                <span class="gr-team-name">Coello / Tapia</span>
+                <span class="gr-pts">+8</span>
+              </div>
+              <div class="gr-row qualifier">
+                <span class="gr-rank r2">2</span>
+                <span class="gr-team-name">Galán / Chingotto</span>
+                <span class="gr-pts">+3</span>
+              </div>
+              <div class="gr-row eliminated">
+                <span class="gr-rank r3">3</span>
+                <span class="gr-team-name">Bergamini / Lima</span>
+                <span class="gr-pts">−5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TILE 3: Bracket (full width) -->
+        <div class="e-mock-tile is-bracket">
+          <div class="e-mock-tile-head">
+            <span class="label">Para tu torneo · Cuadro de eliminación</span>
+            <a href="/competencias/">Ver Competencias →</a>
+          </div>
+          <h4>Brackets automáticos con Live Control en cancha.</h4>
+          <div class="br-mock" role="img" aria-label="Bracket de eliminación · Cuartos, semis y final con Live Control">
+            <div class="br-mock-head">
+              <span class="name">Lagartos Open · Cuadro final</span>
+              <span class="meta">En vivo</span>
+            </div>
+
+            <div class="br-rounds">
+              <div class="br-round-head">
+                <span class="br-round-pill"><span class="ic">⚔</span>Cuartos</span>
+                <span class="br-round-count">4 partidos · cerrados</span>
+              </div>
+              <div class="br-round-head">
+                <span class="br-round-pill active"><span class="ic">✓</span>Semis</span>
+                <span class="br-round-count">2 partidos · programados</span>
+              </div>
+              <div class="br-round-head">
+                <span class="br-round-pill final"><span class="ic">🏆</span>Final</span>
+                <span class="br-round-count">Por jugar</span>
+              </div>
+            </div>
+
+            <div class="br-tree">
+              <!-- Cuartos -->
+              <div class="br-col">
+                <div class="br-card">
+                  <div class="br-team-row winner">Coello / Tapia<span class="pts">6&nbsp;&nbsp;6</span></div>
+                  <div class="br-team-row">Augsburger / Sanyo<span class="pts">3&nbsp;&nbsp;4</span></div>
+                  <div class="br-card-time done">✓ jue 28 may · 19:00</div>
+                </div>
+                <div class="br-card">
+                  <div class="br-team-row winner">Galán / Chingotto<span class="pts">7&nbsp;&nbsp;6</span></div>
+                  <div class="br-team-row">Bergamini / De Pascual<span class="pts">5&nbsp;&nbsp;2</span></div>
+                  <div class="br-card-time done">✓ jue 28 may · 19:00</div>
+                </div>
+                <div class="br-card">
+                  <div class="br-team-row winner">Stupa / Di Nenno<span class="pts">6&nbsp;&nbsp;7</span></div>
+                  <div class="br-team-row">Momo / Tello<span class="pts">4&nbsp;&nbsp;5</span></div>
+                  <div class="br-card-time done">✓ jue 28 may · 20:30</div>
+                </div>
+                <div class="br-card">
+                  <div class="br-team-row winner">Lebrón / Lima<span class="pts">6&nbsp;&nbsp;6</span></div>
+                  <div class="br-team-row">Yanguas / Garrido<span class="pts">2&nbsp;&nbsp;3</span></div>
+                  <div class="br-card-time done">✓ jue 28 may · 20:30</div>
+                </div>
+              </div>
+
+              <!-- Semis -->
+              <div class="br-col semis">
+                <div class="br-card active">
+                  <div class="br-team-row">Coello / Tapia<span class="pts">—</span></div>
+                  <div class="br-team-row">Galán / Chingotto<span class="pts">—</span></div>
+                  <div class="br-card-time scheduled">vie 29 may · 19:00</div>
+                </div>
+                <div class="br-card active">
+                  <div class="br-team-row">Stupa / Di Nenno<span class="pts">—</span></div>
+                  <div class="br-team-row">Lebrón / Lima<span class="pts">—</span></div>
+                  <div class="br-card-time scheduled">vie 29 may · 20:30</div>
+                </div>
+              </div>
+
+              <!-- Final -->
+              <div class="br-col fin">
+                <div class="br-card fin">
+                  <span class="br-card-tag"><span class="ic">🏆</span>Final</span>
+                  <div class="br-team-row placeholder">Por definir<span class="pts">—</span></div>
+                  <div class="br-team-row placeholder">Por definir<span class="pts">—</span></div>
+                  <div class="br-card-time">sáb 30 may · 20:30</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="br-mock-foot">
+              <span>Formato configurable a tu evento</span>
+              <span><b>Live Control</b> · captura desde cualquier celular</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -1881,16 +2672,14 @@
     <div class="container">
       <div class="e-showcase-grid reverse">
         <div class="e-showcase-text">
-          <span class="e-eyebrow"><span class="dot"></span> Para el jugador</span>
+          <span class="e-eyebrow"><span class="dot"></span> Una app · Para el jugador</span>
           <h2>La app que tus jugadores <em>sí</em> usan.</h2>
           <p style="color:var(--text-soft); font-size:1.0625rem; margin:0 0 18px;">
-            Reservas y pagos para tus jugadores desde su teléfono. CourtBit es el marketplace donde encuentran tu club, reservan y pagan — el club no paga comisión por reserva ni renta mensual. CourtBit cobra 4% al jugador solo cuando paga por la app.
+            Reservas, clases e inscripciones desde su teléfono. <b>Sin renta ni comisión al club.</b>
           </p>
           <ul>
-            <li><span class="bullet">›</span> Reservar, pagar y cancelar en menos de 30 segundos</li>
-            <li><span class="bullet">›</span> Notificaciones push y recordatorios automáticos</li>
-            <li><span class="bullet">›</span> Historial de partidos y ranking por puntos (en torneos y ligas)</li>
-            <li><span class="bullet">›</span> App nativa real — descarga directa desde App Store y Google Play</li>
+            <li><span class="bullet">›</span> Reservar, inscribirse y pagar en menos de 30 segundos</li>
+            <li><span class="bullet">›</span> App nativa — App Store y Google Play</li>
           </ul>
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
             <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" target="_blank" rel="noopener" class="e-btn e-btn-navy">App Store ↗</a>
@@ -1950,41 +2739,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9. AUDIENCES -->
-  <section class="e-audiences" id="audiences">
-    <div class="container">
-      <div class="e-section-header" style="text-align:left; max-width:680px;">
-        <span class="e-eyebrow"><span class="dot"></span> Una plataforma · Tres productos</span>
-        <h2 class="e-section-title">Tres productos. <em>Una</em> plataforma.</h2>
-        <p class="e-section-desc" style="margin-left:0;">Combina los productos que tu negocio necesita. Los precios y la profundidad cambian; la app y la cuenta no.</p>
-      </div>
-      <div class="e-audience-grid">
-        <a href="/clubes/" class="e-aud-card featured" id="clubes">
-          <span class="ribbon">Nuevo</span>
-          <div class="label">Para clubes</div>
-          <h3>Sistema de reservas <em>$0/mes</em></h3>
-          <div class="price">$0 <small>/mes para siempre</small></div>
-          <p>Calendario de canchas, app para jugadores, pagos directos a Stripe. Solo cobramos 4% al jugador en pagos por la app.</p>
-          <span class="arrow">Crear cuenta de club →</span>
-        </a>
-        <a href="/academias/" class="e-aud-card secondary" id="academias">
-          <div class="label">Para entrenadores</div>
-          <h3>Academias</h3>
-          <div class="price">$0 <small>/mes para siempre</small></div>
-          <p>Inscripciones, cobros recurrentes, asistencia y comunicación con padres. Solo 4% al alumno en pagos por la app.</p>
-          <span class="arrow">Conocer Academias →</span>
-        </a>
-        <a href="/competencias/" class="e-aud-card secondary" id="competencias">
-          <div class="label">Para organizadores</div>
-          <h3>Competencias</h3>
-          <div class="price">Desde $0 <small>· 4 planes</small></div>
-          <p>Torneos, ligas y ranking de circuito por puntos. Brackets automáticos y Live Control en cancha. Empieza gratis y crece según tu volumen.</p>
-          <span class="arrow">Ver planes y precios →</span>
-        </a>
       </div>
     </div>
   </section>
@@ -2114,11 +2868,11 @@
   <!-- 12. FINAL CTA -->
   <section class="e-final" id="contacto">
     <div class="e-final-inner">
-      <h2>Empieza hoy. Tu primera <em>reserva</em> en 10 minutos.</h2>
-      <p>Sin tarjeta. Sin contratos. Sin costo de plataforma — para siempre.</p>
+      <h2>Empieza hoy. En <em>10 minutos</em>, tu primer cobro.</h2>
+      <p>Una cuenta, tres productos. Sin tarjeta, sin contratos, sin costos ocultos.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
         <a href="https://reservas.courtbit.com.mx/" class="e-btn e-btn-lime">Crear cuenta gratis →</a>
-        <a href="/pricing/" class="e-btn e-btn-outline">Ver precios</a>
+        <a href="/pricing/" class="e-btn e-btn-outline">Ver planes</a>
       </div>
     </div>
   </section>
