@@ -95,15 +95,9 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo {
-            font-family: 'DM Sans', system-ui, sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            text-decoration: none;
-            color: var(--navy);
-        }
-        .logo span { color: var(--blue); }
+        .logo { display: inline-flex; align-items: center; text-decoration: none; }
+        .logo img { height: 64px; width: auto; display: block; }
+        @media (max-width: 480px) { .logo img { height: 48px; } }
         .back-link {
             color: var(--blue-deep);
             text-decoration: none;
@@ -1119,7 +1113,9 @@
 <body>
     <nav>
         <div class="nav-container">
-            <a href="/" class="logo">Court<span>Bit</span></a>
+            <a href="/" class="logo" aria-label="CourtBit — Inicio">
+                <img src="/Assets/courtbit-logo.svg" alt="CourtBit">
+            </a>
             <a href="/" class="back-link">&larr; Volver al inicio</a>
         </div>
     </nav>
@@ -1151,7 +1147,7 @@
                             <li><span class="check"></span> Setup en 10 minutos</li>
                         </ul>
                         <div class="b-cta-row">
-                            <a href="https://reservas.courtbit.com.mx/" class="p-btn p-btn-lime">Empezar gratis →</a>
+                            <a href="/empezar/" class="p-btn p-btn-lime">Empezar gratis →</a>
                             <a href="/clubes/" class="p-btn p-btn-ghost">Ver detalles</a>
                         </div>
                     </article>
@@ -1168,7 +1164,7 @@
                             <li><span class="check"></span> Reportes de ingresos y operación</li>
                         </ul>
                         <div class="b-cta-row">
-                            <a href="https://dashboard.courtbit.com.mx/" class="p-btn p-btn-lime">Empezar gratis →</a>
+                            <a href="/empezar/" class="p-btn p-btn-lime">Empezar gratis →</a>
                             <a href="/academias/" class="p-btn p-btn-ghost">Ver detalles</a>
                         </div>
                     </article>
@@ -1233,7 +1229,7 @@
                         <div class="pricing-ideal">
                             <strong>Ideal para:</strong> Organizadores ocasionales (1-2 torneos/mes)
                         </div>
-                        <a href="/#contact" class="pricing-cta primary">Empezar Gratis</a>
+                        <a href="/empezar/" class="pricing-cta primary">Empezar Gratis</a>
                     </div>
 
                     <!-- Express Plan -->
@@ -1258,7 +1254,7 @@
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Ligas simples
+                                Ligas Individuales
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1272,7 +1268,7 @@
                         <div class="pricing-ideal">
                             <strong>Ideal para:</strong> Clubes pequeños (2-3 torneos/mes)
                         </div>
-                        <a href="/#contact" class="pricing-cta secondary">Probar 30 Días Gratis</a>
+                        <a href="/empezar/" class="pricing-cta secondary">Probar 30 Días Gratis</a>
                     </div>
 
                     <!-- Professional Plan (Highlighted) -->
@@ -1316,7 +1312,7 @@
                         <div class="pricing-ideal">
                             <strong>Ideal para:</strong> Clubes medianos (4+ torneos/mes)
                         </div>
-                        <a href="/#contact" class="pricing-cta primary">Agendar Demo</a>
+                        <a href="/empezar/" class="pricing-cta primary">Agendar Demo</a>
                     </div>
 
                     <!-- Enterprise Plan -->
@@ -1363,111 +1359,9 @@
                         <div class="pricing-ideal">
                             <strong>Ideal para:</strong> Circuitos regionales y operadores grandes
                         </div>
-                        <a href="/#contact" class="pricing-cta secondary">Contactar Ahora</a>
+                        <a href="/empezar/" class="pricing-cta secondary">Contactar Ahora</a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="comparison">
-            <div class="container">
-                <div class="comparison-header reveal">
-                    <span class="p-eyebrow"><span class="dot"></span> Detalle</span>
-                    <h3>Comparativa de Planes</h3>
-                </div>
-                <div class="comparison-wrapper reveal">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Free</th>
-                                <th>Express</th>
-                                <th class="highlighted-col">Profesional</th>
-                                <th>Enterprise</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="price-row">
-                                <td>Precio mensual</td>
-                                <td>$0</td>
-                                <td>$99</td>
-                                <td class="highlighted-col">$499</td>
-                                <td>$1,499</td>
-                            </tr>
-                            <tr>
-                                <td>Categorías</td>
-                                <td>1</td>
-                                <td>3</td>
-                                <td class="highlighted-col">5</td>
-                                <td>&infin;</td>
-                            </tr>
-                            <tr>
-                                <td>Parejas por torneo</td>
-                                <td>32</td>
-                                <td>64</td>
-                                <td class="highlighted-col">150</td>
-                                <td>&infin;</td>
-                            </tr>
-                            <tr>
-                                <td>Ligas</td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td>Simple</td>
-                                <td class="highlighted-col">Ilimitadas</td>
-                                <td>Ilimitadas</td>
-                            </tr>
-                            <tr>
-                                <td>Ranking de circuito</td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Reportes</td>
-                                <td>Básicos</td>
-                                <td>Intermedios</td>
-                                <td class="highlighted-col">Avanzados</td>
-                                <td>Analytics</td>
-                            </tr>
-                            <tr>
-                                <td>Jornadas automáticas</td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td class="highlighted-col"><span class="check">&#10003;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>API pública</td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td class="highlighted-col"><span class="dash">&mdash;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>White-label</td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td class="highlighted-col"><span class="dash">&mdash;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Partidos en vivo (TV)</td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td><span class="dash">&mdash;</span></td>
-                                <td class="highlighted-col"><span class="dash">&mdash;</span></td>
-                                <td><span class="check">&#10003;</span></td>
-                            </tr>
-                            <tr>
-                                <td>Soporte</td>
-                                <td>Email</td>
-                                <td>Email + WhatsApp</td>
-                                <td class="highlighted-col">WhatsApp prioritario</td>
-                                <td>WhatsApp prioritario</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p class="comparison-foot-link reveal"><a href="/competencias/">Ver más sobre Competencias →</a></p>
             </div>
         </section>
 
@@ -1476,7 +1370,7 @@
                 <div class="custom-cta-card reveal">
                     <h3>¿Necesitas algo diferente?</h3>
                     <p>Si ningún plan se ajusta a tu operación, platiquemos. Diseñamos un paquete a la medida de tus necesidades.</p>
-                    <a href="/#contact" class="custom-cta-btn">Contáctanos</a>
+                    <a href="/empezar/" class="custom-cta-btn">Contáctanos</a>
                 </div>
             </div>
         </section>
