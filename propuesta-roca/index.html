@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Propuesta · Plataforma de Flotilla y Despacho — Roca Concretos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Expanded:wght@600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   ROCA CONCRETOS — Propuesta de plataforma
+   Paleta extraída del logo:
+     índigo  #2B2C99   acero #5D8BCA   negro #0B0B12   gris #808080
+   Acento de seguridad (uso mínimo): ámbar #E8A33D
+   ========================================================= */
+:root{
+  --indigo:#2B2C99;
+  --indigo-700:#232389;
+  --indigo-900:#16163f;
+  --steel:#5D8BCA;
+  --steel-200:#aac3e6;
+  --ink:#0B0B12;
+  --gray:#808080;
+  --amber:#E8A33D;
+  --concrete:#ECEBE8;
+  --concrete-2:#F6F5F2;
+  --paper:#FBFAF8;
+  --line:rgba(11,11,18,.12);
+  --line-strong:rgba(11,11,18,.28);
+  --shadow:0 28px 60px -28px rgba(22,22,63,.45);
+  --maxw:1180px;
+  --r:14px;
+  --serif: 'Archivo Expanded','Archivo',sans-serif;
+  --sans: 'Archivo',-apple-system,Segoe UI,sans-serif;
+  --mono: 'Space Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* grain overlay */
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem}
+
+/* ============ NAV ============ */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(251,250,248,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+nav .brand{display:flex;align-items:center;gap:12px}
+nav .brand img{height:30px;width:auto}
+nav .brand .x{font-family:var(--mono);font-size:.8rem;color:var(--gray)}
+nav .links{display:flex;gap:30px;align-items:center}
+nav .links a{font-size:.86rem;font-weight:500;color:#3a3a44;transition:color .2s}
+nav .links a:hover{color:var(--indigo)}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:13px 22px;border-radius:100px;border:1.5px solid var(--ink);
+  background:var(--ink);color:#fff;font-weight:700;cursor:pointer;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s,box-shadow .25s;
+}
+.btn:hover{transform:translateY(-2px);background:var(--indigo);border-color:var(--indigo);box-shadow:0 12px 30px -12px rgba(43,44,153,.7)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.btn.light{background:#fff;color:var(--ink);border-color:#fff}
+.btn.light:hover{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+@media(max-width:860px){nav .links{display:none}}
+
+/* ============ HERO ============ */
+header.hero{
+  position:relative;overflow:hidden;
+  background:radial-gradient(120% 130% at 80% -10%,#3a3bbf 0%,var(--indigo) 38%,var(--indigo-900) 100%);
+  color:#fff;
+  padding:96px 0 110px;
+}
+.facets{position:absolute;inset:0;z-index:0;opacity:.5}
+.facets svg{position:absolute;width:640px;height:640px}
+.facets .f1{top:-150px;right:-120px;animation:float1 16s ease-in-out infinite}
+.facets .f2{bottom:-220px;left:-160px;width:520px;height:520px;opacity:.6;animation:float2 20s ease-in-out infinite}
+@keyframes float1{50%{transform:translateY(26px) rotate(4deg)}}
+@keyframes float2{50%{transform:translateY(-30px) rotate(-5deg)}}
+header.hero .wrap{position:relative;z-index:2}
+.hero-kicker{display:inline-flex;align-items:center;gap:12px;color:var(--steel-200);margin-bottom:30px;opacity:0}
+.hero-kicker .dot{width:7px;height:7px;background:var(--amber);border-radius:50%;box-shadow:0 0 0 4px rgba(232,163,61,.2)}
+h1.hero-title{
+  font-family:var(--serif);font-weight:800;line-height:1.02;letter-spacing:-.02em;
+  font-size:clamp(2.5rem,6.4vw,5rem);max-width:16ch;margin-bottom:26px;
+}
+h1.hero-title em{font-style:normal;color:var(--steel-200)}
+.hero-sub{font-size:clamp(1.05rem,1.7vw,1.32rem);max-width:50ch;color:#d7dcf3;margin-bottom:40px;opacity:0}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0}
+.hero-stats{
+  display:flex;gap:0;margin-top:64px;border-top:1px solid rgba(255,255,255,.18);
+  flex-wrap:wrap;
+}
+.hero-stats .st{padding:24px 38px 0 0;margin-right:38px;border-right:1px solid rgba(255,255,255,.14)}
+.hero-stats .st:last-child{border-right:none}
+.hero-stats .st b{font-family:var(--serif);font-weight:700;font-size:2rem;display:block;line-height:1}
+.hero-stats .st span{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-200)}
+.reveal-up{animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============ SECTION SHELL ============ */
+section{padding:104px 0;position:relative}
+.eyebrow{display:flex;align-items:center;gap:14px;color:var(--indigo);margin-bottom:22px}
+.eyebrow .bar{width:34px;height:2px;background:var(--indigo)}
+h2{font-family:var(--serif);font-weight:700;letter-spacing:-.02em;line-height:1.05;
+  font-size:clamp(1.9rem,3.6vw,2.9rem);max-width:20ch;margin-bottom:20px}
+.lead{font-size:1.12rem;color:#43434e;max-width:60ch}
+
+/* reveal-on-scroll */
+.ros{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.ros.in{opacity:1;transform:none}
+
+/* ============ RETO ============ */
+.reto{background:var(--concrete-2)}
+.reto-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.reto-list{margin-top:34px;display:flex;flex-direction:column;gap:2px}
+.reto-list .row{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;
+  padding:20px 0;border-top:1px solid var(--line)}
+.reto-list .row:last-child{border-bottom:1px solid var(--line)}
+.reto-list .n{font-family:var(--mono);color:var(--steel);font-size:.8rem;padding-top:3px}
+.reto-list .row b{font-family:var(--serif);font-weight:600;font-size:1.05rem}
+.reto-list .row p{color:#54545e;font-size:.96rem;margin-top:3px}
+.reto-media{position:relative}
+.reto-media img{border-radius:var(--r);box-shadow:var(--shadow);filter:grayscale(.15) contrast(1.05)}
+.reto-media .tag{position:absolute;bottom:-18px;left:-18px;background:var(--ink);color:#fff;
+  padding:16px 22px;border-radius:12px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;box-shadow:var(--shadow)}
+.reto-media .tag b{color:var(--amber)}
+@media(max-width:860px){.reto-grid{grid-template-columns:1fr;gap:48px}}
+
+/* ============ FLOW ============ */
+.flow{background:var(--ink);color:#fff}
+.flow h2{color:#fff}
+.flow .lead{color:#b9b9c4}
+.flow-track{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:60px}
+.flow-step{border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:24px 18px;position:relative;
+  background:linear-gradient(180deg,rgba(93,139,202,.08),transparent)}
+.flow-step .ic{width:40px;height:40px;color:var(--steel-200);margin-bottom:16px}
+.flow-step .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;color:var(--steel);display:block;margin-bottom:8px}
+.flow-step b{font-family:var(--serif);font-weight:600;font-size:1.02rem;display:block;margin-bottom:6px}
+.flow-step p{font-size:.86rem;color:#a9a9b8;line-height:1.45}
+.flow-step .arrow{position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--steel);z-index:2;background:var(--ink);border-radius:50%}
+.flow-step:last-child .arrow{display:none}
+@media(max-width:980px){.flow-track{grid-template-columns:repeat(2,1fr)}.flow-step .arrow{display:none}}
+
+/* ============ MÓDULOS ============ */
+.modules{background:var(--paper)}
+.mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:58px}
+.mod{border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;background:#fff;position:relative;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s;overflow:hidden}
+.mod::after{content:"";position:absolute;left:0;top:0;height:100%;width:3px;background:var(--indigo);
+  transform:scaleY(0);transform-origin:top;transition:transform .35s}
+.mod:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.mod:hover::after{transform:scaleY(1)}
+.mod .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.mod .ic{width:30px;height:30px;color:var(--indigo)}
+.mod .id{font-family:var(--mono);font-size:.72rem;color:var(--gray);letter-spacing:.12em}
+.mod h3{font-family:var(--serif);font-weight:600;font-size:1.12rem;margin-bottom:9px;line-height:1.2}
+.mod p{font-size:.93rem;color:#54545e}
+.mod.soon{background:linear-gradient(180deg,#fff,#f3f3fb)}
+.mod .badge{position:absolute;top:18px;right:18px;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;
+  background:rgba(43,44,153,.1);color:var(--indigo);padding:4px 9px;border-radius:100px}
+@media(max-width:980px){.mod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.mod-grid{grid-template-columns:1fr}}
+
+/* ============ ROADMAP ============ */
+.roadmap{background:linear-gradient(180deg,var(--concrete-2),var(--concrete))}
+.phases{margin-top:60px;display:flex;flex-direction:column;gap:0}
+.phase{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:38px 0;border-top:1px solid var(--line-strong);position:relative}
+.phase:last-child{border-bottom:1px solid var(--line-strong)}
+.phase .meta .ph{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:var(--indigo);margin-bottom:10px}
+.phase .meta h3{font-family:var(--serif);font-weight:700;font-size:1.5rem;line-height:1.05;margin-bottom:12px}
+.phase .meta .dur{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.72rem;
+  background:#fff;border:1px solid var(--line);padding:7px 13px;border-radius:100px;color:#43434e}
+.phase .body p{color:#43434e;margin-bottom:18px;max-width:62ch}
+.phase .chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+  background:#fff;border:1px solid var(--line);color:#3a3a44;padding:6px 12px;border-radius:8px}
+.phase.start{background:linear-gradient(90deg,rgba(232,163,61,.1),transparent 60%)}
+.phase.start .meta .ph{color:var(--amber)}
+.phase .star{position:absolute;top:30px;right:0;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;
+  color:var(--amber);border:1px solid var(--amber);padding:5px 11px;border-radius:100px}
+@media(max-width:780px){.phase{grid-template-columns:1fr;gap:18px}.phase .star{position:static;display:inline-block;margin-top:10px}}
+
+/* ============ INVERSIÓN ============ */
+.invest{background:var(--ink);color:#fff}
+.invest h2{color:#fff}.invest .lead{color:#b9b9c4}
+.inv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:58px}
+.inv{border:1px solid rgba(255,255,255,.16);border-radius:var(--r);padding:28px 24px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),transparent);transition:transform .3s,border-color .3s}
+.inv:hover{transform:translateY(-6px);border-color:var(--steel)}
+.inv .ph{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--steel);margin-bottom:14px}
+.inv h3{font-family:var(--serif);font-weight:600;font-size:1.16rem;margin-bottom:18px;min-height:2.6em}
+.inv .price{font-family:var(--serif);font-weight:800;font-size:2rem;letter-spacing:-.02em;line-height:1}
+.inv .price small{font-family:var(--mono);font-weight:400;font-size:.66rem;color:#9a9aab;display:block;margin-top:8px;letter-spacing:.08em}
+.inv.feat{background:linear-gradient(180deg,var(--indigo),var(--indigo-700));border-color:var(--steel)}
+.inv .from{font-family:var(--mono);font-size:.64rem;color:#9a9aab;letter-spacing:.1em}
+.inv-summary{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin-top:34px;align-items:stretch}
+.total-card{border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:34px;
+  background:linear-gradient(120deg,rgba(93,139,202,.14),transparent)}
+.total-card .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--steel-200)}
+.total-card .big{font-family:var(--serif);font-weight:800;font-size:clamp(2.4rem,5vw,3.4rem);letter-spacing:-.02em;margin:10px 0 4px}
+.total-card .note{font-size:.86rem;color:#a9a9b8;max-width:46ch}
+.monthly{border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:34px;display:flex;flex-direction:column;justify-content:center}
+.monthly .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--steel-200)}
+.monthly .m{font-family:var(--serif);font-weight:800;font-size:2.2rem;margin:8px 0}
+.monthly p{font-size:.86rem;color:#a9a9b8}
+.includes{margin-top:50px;border-top:1px solid rgba(255,255,255,.16);padding-top:34px;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.includes .inc{display:flex;gap:11px;align-items:flex-start}
+.includes .inc svg{color:var(--steel-200);flex-shrink:0;margin-top:2px}
+.includes .inc span{font-size:.85rem;color:#cfcfd8}
+.disclaimer{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:#7a7a8a;margin-top:40px;line-height:1.7}
+/* payment steps */
+.paysteps{display:flex;flex-direction:column;gap:16px;margin-top:12px;width:100%}
+.paystep{display:flex;align-items:baseline;gap:16px}
+.paystep b{font-family:var(--serif);font-weight:800;font-size:1.5rem;color:var(--steel-200);min-width:2.6em;line-height:1}
+.paystep span{font-size:.94rem;color:#cfcfd8}
+/* hosting table */
+.hosting{margin-top:44px;border:1px solid rgba(255,255,255,.16);border-radius:var(--r);overflow:hidden}
+.hosting-head{padding:26px 30px;border-bottom:1px solid rgba(255,255,255,.12);background:linear-gradient(120deg,rgba(93,139,202,.12),transparent)}
+.hosting-head .lbl{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--steel-200);display:block;margin-bottom:9px}
+.hosting-head p{font-size:.9rem;color:#a9a9b8;max-width:74ch}
+.hrow{display:grid;grid-template-columns:1.7fr .8fr .9fr;gap:20px;align-items:center;padding:20px 30px;border-bottom:1px solid rgba(255,255,255,.08)}
+.hrow:last-child{border-bottom:none}
+.hname{font-family:var(--serif);font-weight:600;font-size:1.04rem;color:#fff}
+.hname span{display:block;font-family:var(--sans);font-weight:400;font-size:.82rem;color:#9a9aab;margin-top:3px}
+.hplan{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--steel-200);text-transform:uppercase}
+.hprice{font-family:var(--serif);font-weight:700;font-size:1.18rem;color:#fff;text-align:right}
+.hprice small{display:block;font-family:var(--mono);font-weight:400;font-size:.66rem;color:#9a9aab;margin-top:5px;letter-spacing:.03em}
+.hrow.total{background:rgba(43,44,153,.4)}
+.hrow.total .hprice{color:var(--amber)}
+@media(max-width:980px){.inv-grid{grid-template-columns:repeat(2,1fr)}.includes{grid-template-columns:repeat(2,1fr)}.inv-summary{grid-template-columns:1fr}}
+@media(max-width:680px){.hrow{grid-template-columns:1fr auto;padding:18px 22px}.hplan{display:none}.hosting-head{padding:22px}}
+@media(max-width:560px){.inv-grid{grid-template-columns:1fr}}
+
+/* ============ POR QUÉ ============ */
+.why{background:var(--paper)}
+.why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.why-points{display:flex;flex-direction:column;gap:26px;margin-top:10px}
+.why-points .p{display:grid;grid-template-columns:auto 1fr;gap:18px}
+.why-points .p .ic{width:42px;height:42px;border-radius:11px;background:rgba(43,44,153,.08);
+  display:flex;align-items:center;justify-content:center;color:var(--indigo)}
+.why-points .p b{font-family:var(--serif);font-weight:600;font-size:1.06rem}
+.why-points .p span{color:#54545e;font-size:.95rem;display:block;margin-top:3px}
+.stack{margin-top:30px;display:flex;flex-wrap:wrap;gap:9px}
+.stack .t{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;border:1px solid var(--line);
+  padding:8px 13px;border-radius:8px;color:#3a3a44;background:#fff}
+.why-media{position:relative}
+.why-media img{border-radius:var(--r);box-shadow:var(--shadow);filter:grayscale(.1) contrast(1.04)}
+.why-media .float{position:absolute;top:-22px;right:-14px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+.why-media .float .mono{color:var(--gray);margin-bottom:6px}
+.why-media .float b{font-family:var(--serif);font-weight:700;font-size:1.6rem;color:var(--indigo)}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr;gap:48px}}
+
+/* ============ MÓDULO GPS (add-on) ============ */
+.gps{background:linear-gradient(180deg,var(--concrete),var(--concrete-2));border-top:1px solid var(--line)}
+.gps .eyebrow{color:var(--amber)}
+.gps .eyebrow .bar{background:var(--amber)}
+.gps-main{display:grid;grid-template-columns:.82fr 1.18fr;gap:48px;align-items:stretch;margin-top:54px}
+.gps-features{display:flex;flex-direction:column}
+.gps-feat{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:17px 0;border-top:1px solid var(--line);align-items:flex-start}
+.gps-feat:last-child{border-bottom:1px solid var(--line)}
+.gps-feat .fi{width:38px;height:38px;border-radius:10px;background:rgba(43,44,153,.08);display:flex;align-items:center;justify-content:center;color:var(--indigo);flex-shrink:0}
+.gps-feat b{font-family:var(--serif);font-weight:600;font-size:1.02rem;display:block;margin-bottom:2px}
+.gps-feat span{color:#54545e;font-size:.9rem;line-height:1.45}
+/* live map panel */
+.gps-map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line-strong);box-shadow:var(--shadow);background:#0c0c1a;display:flex;flex-direction:column;min-height:400px}
+.gps-map-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.1);font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8aa0}
+.gps-map-bar .live{display:flex;align-items:center;gap:7px;color:var(--amber)}
+.gps-map-bar .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--amber);animation:gpulse 1.5s ease-in-out infinite}
+@keyframes gpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+@keyframes tpring{0%,100%{opacity:.22}50%{opacity:0}}
+.tp{animation:tpring 2.4s ease-in-out infinite}
+.gps-canvas{flex:1;position:relative;background:radial-gradient(ellipse at 32% 42%,#181840 0%,#0a0a18 82%)}
+.gps-canvas svg{width:100%;height:100%;display:block}
+.gps-map-foot{display:flex;gap:22px;padding:12px 18px;border-top:1px solid rgba(255,255,255,.1);font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8aa0}
+.gps-map-foot b{color:#e7e7f2;font-family:var(--serif);font-weight:700;font-size:.95rem;margin-right:5px}
+.gps-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
+.gps-opt{border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;background:#fff;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
+.gps-opt:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.gps-opt .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:11px}
+.gps-opt h3{font-family:var(--serif);font-weight:700;font-size:1.34rem;margin-bottom:3px;display:flex;align-items:center;flex-wrap:wrap}
+.gps-opt .kind{font-size:.84rem;color:#54545e;font-style:italic;margin-bottom:16px}
+.gps-opt .pl{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:12px 0;border-top:1px dashed var(--line)}
+.gps-opt .pl .c{font-size:.86rem;color:#3a3a44}
+.gps-opt .pl .c small{display:block;color:var(--gray);font-size:.74rem;margin-top:2px}
+.gps-opt .pl .a{font-family:var(--mono);font-weight:700;font-size:.9rem;text-align:right;white-space:nowrap;color:var(--ink)}
+.gps-opt .pl .a small{display:block;font-weight:400;font-size:.66rem;color:var(--gray);font-family:var(--sans);font-style:italic;margin-top:2px}
+.gps-opt.rec{border-color:var(--indigo);background:linear-gradient(180deg,#fff,#f4f4fb)}
+.rec-tag{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;background:var(--indigo);color:#fff;padding:4px 9px;border-radius:100px;margin-left:9px;text-transform:uppercase}
+.gps-note{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--gray);margin-top:30px;line-height:1.75}
+@media(max-width:900px){.gps-main{grid-template-columns:1fr}.gps-opts{grid-template-columns:1fr}}
+
+/* ============ CTA / FOOTER ============ */
+.cta{background:radial-gradient(120% 130% at 20% 0%,#3a3bbf,var(--indigo) 40%,var(--indigo-900));
+  color:#fff;text-align:center;overflow:hidden;position:relative}
+.cta .facets{opacity:.4}
+.cta .wrap{position:relative;z-index:2}
+.cta h2{color:#fff;margin:0 auto 20px;max-width:18ch;font-size:clamp(2rem,4.4vw,3.4rem)}
+.cta p{color:#d7dcf3;max-width:48ch;margin:0 auto 36px;font-size:1.1rem}
+.cta .hero-cta{justify-content:center}
+footer{background:var(--ink);color:#cfcfd8;padding:64px 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+footer img.logo{height:34px;margin-bottom:18px}
+footer .desc{font-size:.9rem;color:#9a9aab;max-width:34ch}
+footer h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--steel-200);margin-bottom:16px;text-transform:uppercase}
+footer .ci{font-size:.92rem;margin-bottom:9px;color:#cfcfd8}
+footer .ci a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:48px;padding-top:24px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.68rem;color:#7a7a8a;letter-spacing:.08em}
+@media(max-width:780px){.foot-grid{grid-template-columns:1fr;gap:32px}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <img src="assets/logo-roca-concretos.png" alt="Roca Concretos" />
+    </div>
+    <div class="links">
+      <a href="#reto">El reto</a>
+      <a href="#modulos">Módulos</a>
+      <a href="#etapas">Etapas</a>
+      <a href="#inversion">Inversión</a>
+      <a href="#gps">GPS</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="facets">
+    <svg class="f1" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <path d="M40 60 L100 30 L100 70 L40 100 Z" fill="#5D8BCA"/>
+        <path d="M100 30 L160 60 L160 100 L100 70 Z" fill="#3a3bbf"/>
+        <path d="M40 100 L100 70 L100 110 L40 140 Z" fill="#2B2C99"/>
+        <path d="M100 70 L160 100 L160 140 L100 110 Z" fill="#aac3e6"/>
+        <path d="M40 140 L100 110 L100 150 L40 180 Z" fill="#5D8BCA"/>
+        <path d="M100 110 L160 140 L160 180 L100 150 Z" fill="#232389"/>
+      </g>
+    </svg>
+    <svg class="f2" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <path d="M40 60 L100 30 L100 70 L40 100 Z" fill="#3a3bbf"/>
+        <path d="M100 30 L160 60 L160 100 L100 70 Z" fill="#5D8BCA"/>
+        <path d="M40 100 L100 70 L100 110 L40 140 Z" fill="#aac3e6"/>
+        <path d="M100 70 L160 100 L160 140 L100 110 Z" fill="#2B2C99"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-kicker mono reveal-up d1"><span class="dot"></span> Propuesta técnica y comercial · Guaymas, Sonora</div>
+    <h1 class="hero-title reveal-up d2">El control total de tu flotilla de concreto, en <em>una sola plataforma.</em></h1>
+    <p class="hero-sub reveal-up d3">Agenda, despacho, ventas, mantenimiento y rentabilidad de cada trompo —
+      diseñado a la medida de la operación de <strong>Roca Concretos</strong>.</p>
+    <div class="hero-cta reveal-up d4">
+      <a href="#modulos" class="btn light">Ver la plataforma</a>
+      <a href="#inversion" class="btn ghost" style="color:#fff;border-color:rgba(255,255,255,.5)">Ver inversión</a>
+    </div>
+    <div class="hero-stats reveal-up d4">
+      <div class="st"><b>10</b><span>Módulos</span></div>
+      <div class="st"><b>3</b><span>Meses de desarrollo</span></div>
+      <div class="st"><b>4</b><span>Etapas</span></div>
+      <div class="st"><b>Excel</b><span>+ Dashboards en vivo</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ EL RETO ============ -->
+<section class="reto" id="reto">
+  <div class="wrap reto-grid">
+    <div class="ros">
+      <div class="eyebrow mono"><span class="bar"></span> El reto</div>
+      <h2>De la libreta y el WhatsApp a una operación medible.</h2>
+      <p class="lead">Hoy, coordinar una planta de concreto vive entre llamadas, libretas y hojas de cálculo
+        dispersas. Saber qué trompo está libre, qué se vendió, cuánto cuesta mantener cada unidad o qué chofer
+        rinde más toma horas —o simplemente no se sabe.</p>
+      <div class="reto-list">
+        <div class="row"><span class="n">01</span><div><b>Agenda invisible</b><p>No hay una vista clara de qué unidad está agendada, a qué hora y con qué chofer.</p></div></div>
+        <div class="row"><span class="n">02</span><div><b>Costos sin rastro</b><p>Reparaciones, mantenimiento y combustible no se cruzan contra lo que cada unidad genera.</p></div></div>
+        <div class="row"><span class="n">03</span><div><b>Reportes manuales</b><p>Armar el resumen diario o semanal exige rehacer todo a mano en Excel.</p></div></div>
+      </div>
+    </div>
+    <div class="reto-media ros">
+      <img src="assets/home-worker.jpg" alt="Operación en obra" />
+      <div class="tag">Objetivo: <b>cada trompo, cada servicio, cada peso</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLUJO / SOLUCIÓN ============ -->
+<section class="flow" id="solucion">
+  <div class="wrap">
+    <div class="ros">
+      <div class="eyebrow mono" style="color:var(--steel-200)"><span class="bar" style="background:var(--steel)"></span> La solución</div>
+      <h2>Una base sólida que conecta toda la operación.</h2>
+      <p class="lead">Desde que se agenda un servicio hasta que se mide cuánto dejó cada unidad,
+        todo fluye en un mismo sistema. Sin doble captura, sin información perdida.</p>
+    </div>
+    <div class="flow-track ros">
+      <div class="flow-step"><div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <span class="k">01 · Agenda</span><b>Se agenda</b><p>Trompo + chofer asignados a una hora del día.</p>
+        <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="flow-step"><div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <span class="k">02 · Venta</span><b>Se vende</b><p>Cliente, tipo de concreto, volumen y precio.</p>
+        <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="flow-step"><div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17h2l1-2h8l1 2h2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M3 13V7a2 2 0 0 1 2-2h7l4 4h2a2 2 0 0 1 2 2v2"/></svg></div>
+        <span class="k">03 · Entrega</span><b>Se entrega</b><p>El servicio se ejecuta y se marca como completado.</p>
+        <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="flow-step"><div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14.7 6.3a4 4 0 0 0-5.6 0L4 11.4a2 2 0 0 0 0 2.8l5.8 5.8a2 2 0 0 0 2.8 0l5.1-5.1a4 4 0 0 0 0-5.6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <span class="k">04 · Costos</span><b>Se registra</b><p>Combustible, mantenimiento y reparaciones de la unidad.</p>
+        <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="flow-step"><div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+        <span class="k">05 · Medición</span><b>Se mide</b><p>Rentabilidad por unidad, chofer y periodo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULOS ============ -->
+<section class="modules" id="modulos">
+  <div class="wrap">
+    <div class="ros">
+      <div class="eyebrow mono"><span class="bar"></span> Alcance funcional</div>
+      <h2>Diez módulos. Una plataforma completa a la medida del concreto.</h2>
+      <p class="lead">Todos forman parte del producto final —no de un MVP recortado—. Se construyen por etapas
+        a lo largo de los tres meses, y al cierre Roca tiene la plataforma entera en producción.</p>
+    </div>
+    <div class="mod-grid">
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h2M14 14h2M8 17h2"/></svg>
+        <span class="id">M01</span></div>
+        <h3>Agenda y despacho de trompos</h3>
+        <p>Calendario por hora del día: qué unidad está agendada, en qué horario y con qué chofer asignado.</p></div>
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
+        <span class="id">M02</span></div>
+        <h3>Órdenes de servicio / ventas</h3>
+        <p>Cada servicio guarda cliente, tipo de concreto, volumen (m³), costo, chofer y unidad. Estatus en vivo.</p></div>
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L2 7l10 5 10-5z"/><path d="M2 12l10 5 10-5M2 17l10 5 10-5"/></svg>
+        <span class="id">M03</span></div>
+        <h3>Catálogo de concretos</h3>
+        <p>Clases, resistencias (f'c), revenimiento y precio por m³. La base de cada venta, siempre consistente.</p></div>
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span class="id">M04</span></div>
+        <h3>Clientes</h3>
+        <p>Alta y directorio de clientes con su historial de compras, obras y volumen entregado.</p></div>
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17h2l1-2h8l1 2h2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M3 13V7a2 2 0 0 1 2-2h7l4 4h2a2 2 0 0 1 2 2v2"/></svg>
+        <span class="id">M05</span></div>
+        <h3>Flotilla y ficha técnica</h3>
+        <p>Motor, tipo de aceite, llantas, modelo, capacidad… toda la unidad documentada para mantenimiento.</p></div>
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14.7 6.3a4 4 0 0 0-5.6 0L4 11.4a2 2 0 0 0 0 2.8l5.8 5.8a2 2 0 0 0 2.8 0l5.1-5.1a4 4 0 0 0 0-5.6z"/><path d="M9 9l6 6"/></svg>
+        <span class="id">M06</span></div>
+        <h3>Mantenimiento y reparaciones</h3>
+        <p>Bitácora por unidad: qué se hizo, refacciones, costo y fecha. El historial completo de cada trompo.</p></div>
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 22V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14"/><path d="M13 11h3a2 2 0 0 1 2 2v6a1.5 1.5 0 0 0 3 0v-8l-3-3"/><path d="M3 12h10"/></svg>
+        <span class="id">M07</span></div>
+        <h3>Tracking de combustible</h3>
+        <p>Consumo y costo de combustible por unidad. Rendimiento real por m³ entregado.</p></div>
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span class="id">M08</span></div>
+        <h3>Rentabilidad por unidad</h3>
+        <p>Ingresos vs. costos (combustible + mantenimiento). Qué trompo deja dinero y cuál lo consume.</p></div>
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="13" y="7" width="3" height="10"/></svg>
+        <span class="id">M09</span></div>
+        <h3>Dashboards y reportes</h3>
+        <p>Resumen diario y semanal, trompo top en ventas, chofer más eficiente. Exportación a Excel.</p></div>
+
+      <div class="mod ros"><div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <span class="id">M10</span></div>
+        <h3>Usuarios, roles y permisos</h3>
+        <p>Acceso por perfil: dirección, despacho, mantenimiento y administración. Cada quien ve lo suyo.</p></div>
+
+      <div class="mod ros" style="background:linear-gradient(135deg,var(--indigo),var(--indigo-700));border:none;color:#fff">
+        <div class="top">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#aac3e6" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+        <span class="id" style="color:#aac3e6">M+</span></div>
+        <h3 style="color:#fff">Crece contigo</h3>
+        <p style="color:#cdd6f3">La plataforma se construye para sumar módulos nuevos sin rehacer lo anterior. Lo que Roca necesite mañana, cabe aquí.</p></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ETAPAS ============ -->
+<section class="roadmap" id="etapas">
+  <div class="wrap">
+    <div class="ros">
+      <div class="eyebrow mono"><span class="bar"></span> Estructura del desarrollo</div>
+      <h2>Cuatro etapas, un producto completo en tres meses.</h2>
+      <p class="lead">No es un MVP que se queda corto: al cierre de los tres meses, Roca tiene la plataforma
+        completa en producción. Cada etapa entrega algo usable y construye sobre la anterior. El descubrimiento
+        y el diseño van incluidos dentro de la Etapa 1 —no se cobran por separado—.</p>
+    </div>
+    <div class="phases">
+
+      <div class="phase ros">
+        <div class="meta"><div class="ph">ETAPA 1</div><h3>Cimientos y catálogos</h3>
+          <span class="dur">◷ Semanas 1–3</span></div>
+        <div class="body">
+          <p>Levantamiento de procesos, modelo de datos y diseño UX/UI (incluidos), arquitectura e
+            infraestructura, autenticación y control de accesos por rol. Quedan listos el catálogo de concretos,
+            el alta de clientes y la flotilla con su ficha técnica completa.</p>
+          <div class="chips"><span class="chip">Diseño UX/UI incluido</span><span class="chip">Infraestructura</span><span class="chip">M10 Roles</span><span class="chip">M03 Catálogo</span><span class="chip">M04 Clientes</span><span class="chip">M05 Flotilla</span></div>
+        </div>
+      </div>
+
+      <div class="phase ros">
+        <div class="meta"><div class="ph">ETAPA 2</div><h3>Operación diaria</h3>
+          <span class="dur">◷ Semanas 4–7</span></div>
+        <div class="body">
+          <p>El corazón del día a día: agenda y despacho por hora, órdenes de servicio/venta con cliente, tipo
+            de concreto, volumen y costo, asignación de unidad y chofer, y estatus en vivo. Aquí Roca ya opera
+            sobre la plataforma.</p>
+          <div class="chips"><span class="chip">M01 Agenda y despacho</span><span class="chip">M02 Órdenes / ventas</span><span class="chip">Asignación unidad + chofer</span></div>
+        </div>
+      </div>
+
+      <div class="phase ros">
+        <div class="meta"><div class="ph">ETAPA 3</div><h3>Costos y mantenimiento</h3>
+          <span class="dur">◷ Semanas 8–10</span></div>
+        <div class="body">
+          <p>Visibilidad total del dinero por unidad: bitácora de mantenimiento y reparaciones, tracking de
+            combustible y rentabilidad por trompo (ingresos vs. costos).</p>
+          <div class="chips"><span class="chip">M06 Mantenimiento</span><span class="chip">M07 Combustible</span><span class="chip">M08 Rentabilidad</span></div>
+        </div>
+      </div>
+
+      <div class="phase ros">
+        <div class="meta"><div class="ph">ETAPA 4</div><h3>Inteligencia y puesta en marcha</h3>
+          <span class="dur">◷ Semanas 11–13</span></div>
+        <div class="body">
+          <p>Dashboards diario y semanal, trompo top en ventas y chofer más eficiente, exportación a Excel,
+            capacitación al equipo y salida a producción. Cierre con la plataforma completa funcionando.</p>
+          <div class="chips"><span class="chip">M09 Dashboards + Excel</span><span class="chip">Capacitación</span><span class="chip">Go-live</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVERSIÓN ============ -->
+<!-- ==========================================================
+     NOTA PARA CHRISTIAN:
+     - Precio del proyecto: $85,000 MXN + IVA (bloque .big)
+     - Hosting: costos REALES de proveedores (Supabase Pro $25 USD, Railway $5–20 USD)
+       a tipo de cambio ~$17.5 MXN/USD (jun 2026). Dominio ya es de Roca.
+     ========================================================== -->
+<section class="invest" id="inversion">
+  <div class="wrap">
+    <div class="ros">
+      <div class="eyebrow mono" style="color:var(--steel-200)"><span class="bar" style="background:var(--steel)"></span> Inversión</div>
+      <h2>Un proyecto completo, un precio claro.</h2>
+      <p class="lead">Todo el desarrollo —las cuatro etapas, los diez módulos y la puesta en producción— en un
+        solo proyecto de tres meses. El descubrimiento y el diseño van incluidos, sin línea aparte.</p>
+    </div>
+
+    <div class="inv-summary ros">
+      <div class="total-card">
+        <div class="lbl">Desarrollo completo · 4 etapas · 3 meses</div>
+        <div class="big">$85,000<span style="font-size:.34em;color:var(--steel-200);font-family:var(--mono);letter-spacing:.06em"> &nbsp;MXN + IVA</span></div>
+        <p class="note">Precio cerrado por la plataforma completa en producción: descubrimiento, diseño UX/UI,
+          los 10 módulos, capacitación y puesta en marcha. El alcance se afina la primera semana sin cambiar
+          el monto.</p>
+      </div>
+      <div class="monthly">
+        <div class="lbl">Esquema de pago sugerido</div>
+        <div class="paysteps">
+          <div class="paystep"><b>40%</b><span>Al inicio del proyecto (arranque y diseño)</span></div>
+          <div class="paystep"><b>30%</b><span>Al cerrar la Etapa 2 (operación diaria en vivo)</span></div>
+          <div class="paystep"><b>30%</b><span>Contra entrega final en producción</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOSTING REAL -->
+    <div class="hosting ros">
+      <div class="hosting-head">
+        <span class="lbl">Hosting e infraestructura · costos reales mensuales</span>
+        <p>Son costos directos de los proveedores —los paga Roca a su nombre, sin intermediación ni margen
+          añadido—. En una operación de bajo a medio volumen se mantienen cerca de la base; solo escalan si
+          crece el uso. Tipo de cambio referencial ≈ $17.5 MXN/USD.</p>
+      </div>
+      <div class="hrow">
+        <div class="hname">Supabase <span>Base de datos PostgreSQL, autenticación y archivos</span></div>
+        <div class="hplan">Plan Pro</div>
+        <div class="hprice">$25 USD<small>≈ $440 MXN / mes</small></div>
+      </div>
+      <div class="hrow">
+        <div class="hname">Railway <span>Servidor del API (backend)</span></div>
+        <div class="hplan">Hobby → Pro</div>
+        <div class="hprice">$5&ndash;20 USD<small>≈ $90&ndash;350 MXN / mes</small></div>
+      </div>
+      <div class="hrow">
+        <div class="hname">Dominio <span>Ya adquirido por Roca Concretos</span></div>
+        <div class="hplan">Propiedad de Roca</div>
+        <div class="hprice">$0<small>sin costo adicional</small></div>
+      </div>
+      <div class="hrow total">
+        <div class="hname">Total infraestructura <span>Operación de bajo–medio volumen</span></div>
+        <div class="hplan"></div>
+        <div class="hprice">≈ $30&ndash;45 USD<small>≈ $525&ndash;790 MXN / mes</small></div>
+      </div>
+    </div>
+
+    <div class="includes">
+      <div class="inc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Descubrimiento y diseño UX/UI — incluidos, sin costo aparte</span></div>
+      <div class="inc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Los 10 módulos y la puesta en producción</span></div>
+      <div class="inc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Capacitación al equipo de Roca</span></div>
+      <div class="inc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Seguridad y control de accesos por rol</span></div>
+      <div class="inc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Garantía post-lanzamiento incluida</span></div>
+    </div>
+
+    <p class="disclaimer">// Precio cerrado del proyecto: $85,000 MXN, no incluye IVA. El alcance se afina la
+      primera semana sin cambiar el monto. Los costos de hosting son de los proveedores (Supabase y Railway) y
+      se facturan directo a Roca; no llevan margen. El dominio ya es propiedad de Roca. Soporte y mejoras
+      posteriores a la garantía, bajo demanda.</p>
+  </div>
+</section>
+
+<!-- ============ EL ENFOQUE ============ -->
+<section class="why">
+  <div class="wrap why-grid">
+    <div class="ros">
+      <div class="eyebrow mono"><span class="bar"></span> El enfoque</div>
+      <h2>Construido alrededor del concreto, no al revés.</h2>
+      <p class="lead">No es un software genérico al que tengas que adaptar tu operación. Se diseña sobre el
+        flujo real de Roca —trompos, choferes, servicios y costos— con tecnología moderna, robusta y segura.</p>
+      <div class="why-points">
+        <div class="p"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
+          <div><b>Hecho a la medida</b><span>Cada módulo se modela sobre cómo opera Roca de verdad, no sobre una plantilla.</span></div></div>
+        <div class="p"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div><b>Tecnología sólida y segura</b><span>Stack moderno y probado, con control de accesos por rol y respaldos automáticos.</span></div></div>
+        <div class="p"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><b>Listo para crecer</b><span>Arquitectura pensada para sumar módulos a futuro —nuevos reportes, GPS o una app para choferes— sin rehacer lo anterior.</span></div></div>
+      </div>
+      <div class="stack">
+        <span class="t">Kotlin · Ktor</span><span class="t">PostgreSQL</span><span class="t">Dashboard web</span>
+        <span class="t">Exportación Excel</span><span class="t">Infra en la nube</span><span class="t">API segura · JWT</span>
+      </div>
+    </div>
+    <div class="why-media ros">
+      <img src="assets/vaciado-de-concreto.jpg" alt="Vaciado de concreto" />
+      <div class="float"><div class="mono">Tiempo de entrega</div><b>3 meses</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULO GPS (ADD-ON) ============ -->
+<!-- ==========================================================
+     NOTA PARA CHRISTIAN: módulo OPCIONAL, se cotiza aparte.
+     Cifras de hardware/suscripción tomadas del análisis interno
+     DOC-2026.05.12 (Samsara / Geotab / Teltonika).
+     El desarrollo de la integración NO está incluido en los $85k.
+     ========================================================== -->
+<section class="gps" id="gps">
+  <div class="wrap">
+    <div class="ros">
+      <div class="eyebrow mono"><span class="bar"></span> Módulo adicional · se cotiza aparte</div>
+      <h2>¿Y si vieras cada trompo en el mapa, en tiempo real?</h2>
+      <p class="lead">El tracking GPS en vivo es un módulo opcional que vive <em>dentro</em> de la misma
+        plataforma —no otra app suelta—. Ubicación de cada unidad, ETA a la obra, geocercas en planta y obra,
+        y alertas, todo conectado a la agenda y al despacho. Se desarrolla y cotiza como un módulo nuevo,
+        aparte del proyecto base.</p>
+    </div>
+
+    <div class="gps-main ros">
+      <div class="gps-features">
+        <div class="gps-feat"><span class="fi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Ubicación en vivo</b><span>Cada trompo en el mapa, con actualización de segundos.</span></div></div>
+        <div class="gps-feat"><span class="fi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></span>
+          <div><b>Geocercas planta y obra</b><span>Detección automática de entrada y salida en cada zona.</span></div></div>
+        <div class="gps-feat"><span class="fi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <div><b>ETA automática a la obra</b><span>Tiempo estimado de llegada calculado en tiempo real.</span></div></div>
+        <div class="gps-feat"><span class="fi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10.3 3.3a2 2 0 0 1 3.4 0l8 14A2 2 0 0 1 20 20H4a2 2 0 0 1-1.7-2.7z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+          <div><b>Alertas inteligentes</b><span>Retrasos, salidas de ruta o paradas no programadas.</span></div></div>
+        <div class="gps-feat"><span class="fi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 9 9"/><path d="M3 12a9 9 0 0 0 9 9 9 9 0 0 0 9-9"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+          <div><b>Integrado al despacho</b><span>El mapa y la agenda son el mismo sistema, no dos pantallas.</span></div></div>
+        <div class="gps-feat"><span class="fi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2l-.4-2.6h-4l-.4 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12"/></svg></span>
+          <div><b>Sensor de rotación de trompo</b><span>Opcional: lectura de giro y descarga por unidad.</span></div></div>
+      </div>
+
+      <div class="gps-map">
+        <div class="gps-map-bar">
+          <span>Mapa operativo · vista en vivo</span>
+          <span class="live">En vivo</span>
+        </div>
+        <div class="gps-canvas">
+          <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="gpsGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+                <path d="M32 0 L0 0 0 32" fill="none" stroke="#1f1f44" stroke-width="0.6"/>
+              </pattern>
+              <filter id="gpsGlow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <rect width="600" height="400" fill="url(#gpsGrid)"/>
+
+            <!-- roads -->
+            <g stroke="#26264e" fill="none" stroke-width="1.4">
+              <path d="M20,250 Q200,190 480,90"/>
+              <path d="M20,250 Q240,260 520,250"/>
+              <path d="M20,250 Q240,330 470,350"/>
+              <path d="M480,90 Q500,220 470,350"/>
+              <path d="M200,150 Q210,260 230,360"/>
+            </g>
+
+            <!-- active routes -->
+            <path id="ga" d="M120,250 Q280,175 480,90" stroke="#5D8BCA" stroke-width="2" fill="none" stroke-dasharray="5 6" opacity="0.55"/>
+            <path id="gb" d="M120,250 Q300,255 520,250" stroke="#5D8BCA" stroke-width="2" fill="none" stroke-dasharray="5 6" opacity="0.55"/>
+            <path id="gc" d="M120,250 Q300,330 470,350" stroke="#5D8BCA" stroke-width="2" fill="none" stroke-dasharray="5 6" opacity="0.45"/>
+
+            <!-- highlighted segments -->
+            <g filter="url(#gpsGlow)" fill="none" stroke="#aac3e6" stroke-width="2.4" opacity="0.9">
+              <path d="M120,250 Q200,210 300,180"/>
+              <path d="M120,250 Q230,253 360,251"/>
+            </g>
+
+            <!-- obras -->
+            <g transform="translate(480,90)">
+              <circle r="12" fill="none" stroke="#5D8BCA" stroke-width="1.5"/><circle r="4" fill="#5D8BCA"/>
+              <text x="0" y="-20" text-anchor="middle" fill="#dfe6f7" font-family="Archivo, sans-serif" font-size="13" font-style="italic">Obra A</text>
+              <text x="0" y="26" text-anchor="middle" fill="#6f8fc0" font-family="Space Mono, monospace" font-size="8" letter-spacing="1.4">ETA · 12 MIN</text>
+            </g>
+            <g transform="translate(520,250)">
+              <circle r="12" fill="none" stroke="#5D8BCA" stroke-width="1.5"/><circle r="4" fill="#5D8BCA"/>
+              <text x="0" y="-20" text-anchor="middle" fill="#dfe6f7" font-family="Archivo, sans-serif" font-size="13" font-style="italic">Obra B</text>
+              <text x="0" y="26" text-anchor="middle" fill="#6f8fc0" font-family="Space Mono, monospace" font-size="8" letter-spacing="1.4">ETA · 24 MIN</text>
+            </g>
+            <g transform="translate(470,350)">
+              <circle r="12" fill="none" stroke="#5D8BCA" stroke-width="1.5"/><circle r="4" fill="#5D8BCA"/>
+              <text x="0" y="-20" text-anchor="middle" fill="#dfe6f7" font-family="Archivo, sans-serif" font-size="13" font-style="italic">Obra C</text>
+              <text x="0" y="26" text-anchor="middle" fill="#6f8fc0" font-family="Space Mono, monospace" font-size="8" letter-spacing="1.4">ETA · 31 MIN</text>
+            </g>
+
+            <!-- planta -->
+            <g transform="translate(120,250)">
+              <circle r="34" fill="#E8A33D" opacity="0.07"/><circle r="22" fill="#E8A33D" opacity="0.13"/>
+              <circle class="tp" r="14" fill="#E8A33D" opacity="0.22"/>
+              <rect x="-12" y="-12" width="24" height="24" fill="#E8A33D"/>
+              <rect x="-7" y="-7" width="14" height="14" fill="#0a0a18"/>
+              <rect x="-2.5" y="-2.5" width="5" height="5" fill="#E8A33D"/>
+              <text x="0" y="46" text-anchor="middle" fill="#f0e9da" font-family="Space Mono, monospace" font-size="9" letter-spacing="2.4" font-weight="700">PLANTA</text>
+            </g>
+
+            <!-- trucks -->
+            <g>
+              <circle class="tp" r="12" fill="#5D8BCA" opacity="0.2"/><circle r="7.5" fill="#aac3e6"/><circle r="3" fill="#0a0a18"/>
+              <rect x="13" y="-24" width="58" height="18" fill="#0a0a18" stroke="#5D8BCA" stroke-opacity="0.6" stroke-width="0.5" rx="2"/>
+              <text x="42" y="-11" text-anchor="middle" fill="#dfe6f7" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" letter-spacing="0.4">CN-03</text>
+              <animateMotion dur="26s" repeatCount="indefinite" begin="-3s" rotate="0"><mpath href="#ga"/></animateMotion>
+            </g>
+            <g>
+              <circle class="tp" r="12" fill="#5D8BCA" opacity="0.2"/><circle r="7.5" fill="#aac3e6"/><circle r="3" fill="#0a0a18"/>
+              <rect x="13" y="-24" width="58" height="18" fill="#0a0a18" stroke="#5D8BCA" stroke-opacity="0.6" stroke-width="0.5" rx="2"/>
+              <text x="42" y="-11" text-anchor="middle" fill="#dfe6f7" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" letter-spacing="0.4">CN-07</text>
+              <animateMotion dur="32s" repeatCount="indefinite" begin="-16s" rotate="0"><mpath href="#gb"/></animateMotion>
+            </g>
+            <g>
+              <circle class="tp" r="12" fill="#5D8BCA" opacity="0.2"/><circle r="7.5" fill="#aac3e6"/><circle r="3" fill="#0a0a18"/>
+              <rect x="13" y="-24" width="58" height="18" fill="#0a0a18" stroke="#5D8BCA" stroke-opacity="0.6" stroke-width="0.5" rx="2"/>
+              <text x="42" y="-11" text-anchor="middle" fill="#dfe6f7" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" letter-spacing="0.4">CN-09</text>
+              <animateMotion dur="38s" repeatCount="indefinite" begin="-7s" rotate="0"><mpath href="#gc"/></animateMotion>
+            </g>
+
+            <!-- compass -->
+            <g transform="translate(40,360)" font-family="Space Mono, monospace" font-size="9" fill="#5a5a78">
+              <circle r="13" fill="none" stroke="#3a3a5e" stroke-width="0.6"/>
+              <line x1="0" y1="-13" x2="0" y2="13" stroke="#3a3a5e" stroke-width="0.5"/>
+              <line x1="-13" y1="0" x2="13" y2="0" stroke="#3a3a5e" stroke-width="0.5"/>
+              <text x="0" y="-17" text-anchor="middle" fill="#E8A33D" font-weight="700">N</text>
+            </g>
+          </svg>
+        </div>
+        <div class="gps-map-foot">
+          <span><b>3</b> en ruta</span>
+          <span><b>1</b> en obra</span>
+          <span><b>14</b> min ETA prom.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTEGRATION OPTIONS -->
+    <div class="gps-opts ros">
+      <div class="gps-opt">
+        <div class="tag">Opción A · SaaS llave en mano</div>
+        <h3>Samsara</h3>
+        <div class="kind">Hardware único + suscripción mensual por unidad. Dashboard, app de chofer y SLA incluidos.</div>
+        <div class="pl"><div class="c">Gateway VG34<small>GPS, instalación, SIM incluida</small></div><div class="a">$3,600<small>único / unidad</small></div></div>
+        <div class="pl"><div class="c">Licencia telemática<small>plataforma por vehículo</small></div><div class="a">$630<small>MXN / mes</small></div></div>
+        <div class="pl"><div class="c">Sensor de trompo<small>opcional · AG26</small></div><div class="a">$1,800 + $180<small>único + mensual</small></div></div>
+      </div>
+
+      <div class="gps-opt rec">
+        <div class="tag">Opción B · SaaS</div>
+        <h3>Geotab <span class="rec-tag">Mejor costo</span></h3>
+        <div class="kind">El equilibrio entre costo y robustez. Hardware más económico y mensualidad más baja por unidad.</div>
+        <div class="pl"><div class="c">Dispositivo GO9<small>GPS, instalación, SIM incluida</small></div><div class="a">$2,700<small>único / unidad</small></div></div>
+        <div class="pl"><div class="c">Suscripción ProPlus<small>plataforma por vehículo</small></div><div class="a">$405<small>MXN / mes</small></div></div>
+        <div class="pl"><div class="c">Sensor de trompo<small>opcional · expander IOX</small></div><div class="a">$1,440<small>único, sin mensual</small></div></div>
+      </div>
+
+      <div class="gps-opt">
+        <div class="tag">Opción C · A la medida</div>
+        <h3>Teltonika</h3>
+        <div class="kind">Máximo control sobre infraestructura propia. Sin SLA externo: la operación corre por cuenta de Roca.</div>
+        <div class="pl"><div class="c">Tracker FMB920<small>GPS, instalación OBD-II</small></div><div class="a">$2,250<small>único / unidad</small></div></div>
+        <div class="pl"><div class="c">SIM M2M con datos<small>conectividad por camión</small></div><div class="a">$135<small>MXN / mes</small></div></div>
+        <div class="pl"><div class="c">Infraestructura cloud<small>costo fijo de flota</small></div><div class="a">$6,570<small>MXN / mes flota</small></div></div>
+      </div>
+    </div>
+
+    <p class="gps-note">// Las cifras de hardware y suscripción son de cada proveedor (referencias de mercado,
+      MXN), no del desarrollo. El desarrollo de la integración dentro de la plataforma se cotiza aparte como
+      módulo nuevo, una vez elegido el proveedor. Las tarifas SaaS son negociables por volumen y plazo
+      (contratos típicos de 3–5 años). Detalle completo en el análisis interno DOC-2026.05.12.</p>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="contacto">
+  <div class="facets">
+    <svg class="f2" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 60 L100 30 L100 70 L40 100 Z" fill="#5D8BCA"/>
+      <path d="M100 30 L160 60 L160 100 L100 70 Z" fill="#aac3e6"/>
+      <path d="M40 100 L100 70 L100 110 L40 140 Z" fill="#3a3bbf"/>
+      <path d="M100 70 L160 100 L160 140 L100 110 Z" fill="#2B2C99"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow mono" style="color:var(--steel-200);justify-content:center"><span class="bar" style="background:var(--steel)"></span> Siguiente paso</div>
+    <h2>Construyamos el control de Roca sobre una base sólida.</h2>
+    <p>Agendemos una llamada de 30 minutos: te mostramos cómo quedaría para tu operación y afinamos el alcance
+      del proyecto.</p>
+    <div class="hero-cta">
+      <a href="mailto:info@rocaconcretos.com?subject=Plataforma%20de%20flotilla%20Roca%20Concretos" class="btn light">Escríbenos</a>
+      <a href="tel:+526222240695" class="btn ghost" style="color:#fff;border-color:rgba(255,255,255,.5)">+52 (622) 224-0695</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <img class="logo" src="assets/logo-roca-concretos-claro.png" alt="Roca Concretos" />
+      <p class="desc">Propuesta de plataforma de gestión de flotilla y despacho de concreto, preparada para
+        Roca Concretos — Materiales para la construcción.</p>
+    </div>
+    <div>
+      <h4>Roca Concretos</h4>
+      <p class="ci"><a href="tel:+526222240695">+52 (622) 224-0695</a></p>
+      <p class="ci"><a href="mailto:info@rocaconcretos.com">info@rocaconcretos.com</a></p>
+      <p class="ci">Carretera Internacional Km. Norte 1982 S/N,<br>Col. Petrolera, 85456, Guaymas, Sonora</p>
+    </div>
+    <div>
+      <h4>Documento</h4>
+      <p class="ci">Propuesta confidencial</p>
+      <p class="ci">Cotización válida por 30 días</p>
+      <p class="ci">Junio 2026</p>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 · Propuesta confidencial para Roca Concretos</span>
+    <span>Cotización válida por 30 días — sujeta a ajuste de alcance</span>
+  </div>
+</footer>
+
+<script>
+/* Scroll reveal */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.ros').forEach((el,i)=>{
+  // slight stagger for grids
+  const sib = el.parentElement.children;
+  el.style.transitionDelay = (Math.min(i,6)*0.04)+'s';
+  io.observe(el);
+});
+/* Nav shadow on scroll */
+const navEl=document.querySelector('nav');
+addEventListener('scroll',()=>{ navEl.style.boxShadow = scrollY>20 ? '0 10px 30px -20px rgba(11,11,18,.4)' : 'none'; });
+</script>
+</body>
+</html>
