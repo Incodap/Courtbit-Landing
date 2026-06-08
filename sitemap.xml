@@ -83,4 +83,10 @@
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
+  <url>
+    <loc>https://courtbit.com.mx/ads/</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
