@@ -304,7 +304,11 @@
     section{padding:64px 0}
     .grid-3,.steps,.pricing,.mockups{grid-template-columns:1fr;gap:22px}
     .pcard.pop{transform:none}
-    .mockups{gap:44px}
+    /* Mobile: 1 columna, teléfonos que llenan el ancho (responsivos) y escalan en pantallas chicas */
+    .mockups{gap:34px;justify-items:center}
+    .mock{width:100%}
+    .mock .phone{width:min(300px,82vw)}
+    .mock .cap{max-width:min(320px,86vw)}
     .aud-split{grid-template-columns:1fr}
   }
   @media (max-width:480px){
@@ -420,25 +424,25 @@
 
         <!-- Mockup 1: Feed "Para ti" (screenshot real) -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/feed-foryou.jpg" alt="Banner patrocinado en el feed Para ti de CourtBit" loading="lazy"><span class="adhl" style="top:18%;height:12.5%"></span></div></div>
+          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/feed-foryou.jpg" alt="Banner patrocinado en el feed Para ti de CourtBit" loading="lazy"><span class="adhl" style="top:21%;height:13.2%"></span></div></div>
           <div class="cap"><b>Feed «Para ti»</b><span class="d">Image-first, marcado «Patrocinado», entre los torneos y ligas que el jugador explora.</span></div>
         </div>
 
         <!-- Mockup 2: Feed de reservas (screenshot real) -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/reservas.jpg" alt="Banner patrocinado en el feed de reservas de CourtBit" loading="lazy"><span class="adhl" style="top:15.5%;height:12%"></span></div></div>
+          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/reservas.jpg" alt="Banner patrocinado en el feed de reservas de CourtBit" loading="lazy"><span class="adhl" style="top:22.4%;height:12%"></span></div></div>
           <div class="cap"><b>Feed de reservas</b><span class="d">Arriba de las canchas, justo cuando el jugador está por reservar.</span></div>
         </div>
 
         <!-- Mockup 3: Detalle de torneo (screenshot real) -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/detalle-torneo.jpg" alt="Banner patrocinado en el detalle de torneo de CourtBit" loading="lazy"><span class="adhl" style="top:39%;height:12%"></span></div></div>
+          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/detalle-torneo.jpg" alt="Banner patrocinado en el detalle de torneo de CourtBit" loading="lazy"><span class="adhl" style="top:44.2%;height:12.4%"></span></div></div>
           <div class="cap"><b>Detalle de torneo</b><span class="d">Dentro del torneo, junto al flyer y la info que el jugador revisa.</span></div>
         </div>
 
         <!-- Mockup 4: Detalle de liga (screenshot real) -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/detalle-liga.jpg" alt="Banner patrocinado en el detalle de liga de CourtBit" loading="lazy"><span class="adhl" style="top:9.5%;height:12%"></span></div></div>
+          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/detalle-liga.jpg" alt="Banner patrocinado en el detalle de liga de CourtBit" loading="lazy"><span class="adhl" style="top:12.7%;height:12.5%"></span></div></div>
           <div class="cap"><b>Detalle de liga</b><span class="d">En el detalle de la liga, arriba de la info y el calendario de jornadas.</span></div>
         </div>
 
