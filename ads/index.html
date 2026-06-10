@@ -187,10 +187,12 @@
   .vcard p{font-size:.95rem;color:var(--text-muted)}
 
   /* MOCKUP SHOWCASE */
-  .mockups{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:54px;align-items:start}
+  .mockups{display:grid;grid-template-columns:repeat(2,auto);justify-content:center;gap:52px 64px;margin-top:54px;align-items:start}
   .mock{display:flex;flex-direction:column;align-items:center;gap:18px}
   .mock .phone{width:230px}
   .mock .phone .scr{height:440px}
+  .mock .phone .scr.scrshot{height:auto;display:block;background:#fff}
+  .ssimg{width:100%;height:auto;display:block}
   .mock .cap{text-align:center;max-width:260px}
   .mock .cap b{color:var(--navy);display:block;font-size:1.075rem;font-weight:800;margin-bottom:5px}
   .mock .cap span.d{font-size:.92rem;color:var(--text-muted);display:block}
@@ -413,75 +415,28 @@
       </div>
       <div class="mockups">
 
-        <!-- Mockup 1: Feed "Para ti" -->
+        <!-- Mockup 1: Feed "Para ti" (screenshot real) -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr">
-            <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i>&nbsp;100%</span></div>
-            <div class="appbar"><div class="title">Para ti</div><div class="sub">Torneos, ligas y reservas · Hermosillo</div></div>
-            <div class="scrbody">
-              <div class="seclbl">Cerca de ti</div>
-              <div class="fcard">
-                <div class="fhero" style="background:linear-gradient(120deg,#2e59fb,#5a7a9c)"><span class="fbadge">🏆 Torneo</span></div>
-                <div class="fbody"><div class="forg"><div class="lg" style="background:#2e59fb">CB</div><span>Club Balvanera</span></div><div class="ft"></div><div class="fm"></div></div>
-              </div>
-              <div class="adbanner">
-                <div class="creative" style="background:linear-gradient(120deg,#0f1d4d,#1a2c6e)"><div class="bn">PADEL PRO SHOP</div><div class="bt">Palas y accesorios · 12% off</div></div>
-                <span class="adtag">Patrocinado</span>
-              </div>
-              <div class="addots"><i class="on"></i><i></i><i></i></div>
-              <div class="fcard">
-                <div class="fhero" style="background:linear-gradient(120deg,#9fd121,#5a7a9c)"><span class="fbadge">🎾 Liga</span></div>
-                <div class="fbody"><div class="forg"><div class="lg" style="background:#9fd121">LH</div><span>Liga Hermosillo</span></div><div class="ft"></div><div class="fm"></div></div>
-              </div>
-            </div>
-          </div></div>
-          <div class="cap"><b>Banner en el feed "Para ti"</b><span class="d">Image-first, marcado "Patrocinado", entre los torneos y ligas que el jugador explora.</span><span class="price-tag">Desde Bronce · $2,500/mes</span></div>
+          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/feed-foryou.jpg" alt="Banner patrocinado en el feed Para ti de CourtBit" loading="lazy"></div></div>
+          <div class="cap"><b>Feed «Para ti»</b><span class="d">Image-first, marcado «Patrocinado», entre los torneos y ligas que el jugador explora.</span><span class="price-tag">Desde Bronce · $2,500/mes</span></div>
         </div>
 
-        <!-- Mockup 2: Feed de reservas -->
+        <!-- Mockup 2: Feed de reservas (screenshot real) -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr">
-            <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i>&nbsp;100%</span></div>
-            <div class="appbar"><div class="title">Reservas</div><div class="sub">Canchas cerca de ti · Hermosillo</div></div>
-            <div class="scrbody">
-              <div class="adbanner">
-                <div class="creative" style="background:linear-gradient(120deg,#1f7a4d,#2bb673)"><div class="bn">FISIOSPORT</div><div class="bt">Recupérate más rápido · 15% socios</div></div>
-                <span class="adtag">Patrocinado</span>
-              </div>
-              <div class="addots"><i class="on"></i><i></i><i></i></div>
-              <div class="fcard">
-                <div class="fhero" style="background:linear-gradient(120deg,#2e59fb,#0f1d4d)"><span class="fbadge">📍 1.2 km</span></div>
-                <div class="fbody"><div class="forg"><div class="lg" style="background:#2e59fb">RC</div><span>Racket Club</span></div><div class="ft"></div><div class="fprice">desde $220 / hora</div></div>
-              </div>
-              <div class="fcard">
-                <div class="fhero" style="background:linear-gradient(120deg,#9fd121,#1f7a4d)"><span class="fbadge">📍 2.4 km</span></div>
-                <div class="fbody"><div class="forg"><div class="lg" style="background:#9fd121">PP</div><span>Padel Point</span></div><div class="ft"></div><div class="fprice">desde $180 / hora</div></div>
-              </div>
-            </div>
-          </div></div>
-          <div class="cap"><b>Banner en el feed de reservas</b><span class="d">Arriba de las canchas, justo cuando el jugador está por reservar.</span><span class="price-tag">Plata · $7,500/mes</span></div>
+          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/reservas.jpg" alt="Banner patrocinado en el feed de reservas de CourtBit" loading="lazy"></div></div>
+          <div class="cap"><b>Feed de reservas</b><span class="d">Arriba de las canchas, justo cuando el jugador está por reservar.</span><span class="price-tag">Plata · $7,500/mes</span></div>
         </div>
 
-        <!-- Mockup 3: Detalle de liga -->
+        <!-- Mockup 3: Detalle de torneo (screenshot real) -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr">
-            <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i>&nbsp;100%</span></div>
-            <div class="appbar"><div class="title">Liga Hermosillo</div><div class="sub">3ª Fuerza · Temporada 2026</div></div>
-            <div style="padding:9px 14px 0">
-              <div class="adbanner">
-                <div class="creative" style="background:linear-gradient(120deg,#0f1d4d,#2e59fb)"><div class="bn">RACKET LAB</div><div class="bt">Encordado profesional en 24 h</div></div>
-                <span class="adtag">Patrocinado</span>
-              </div>
-              <div class="addots"><i class="on"></i><i></i><i></i></div>
-            </div>
-            <div class="segtabs"><span>Categorías</span><span class="on">Posiciones</span><span>Calendario</span></div>
-            <div class="scrbody" style="padding-top:9px">
-              <div class="lrow"><span class="rank">1</span><div class="lg" style="background:#9fd121">JL</div><div class="tx"><div class="b1"></div><div class="b2"></div></div><span class="pts">1,240</span></div>
-              <div class="lrow"><span class="rank">2</span><div class="lg" style="background:#5a7a9c">MR</div><div class="tx"><div class="b1"></div><div class="b2"></div></div><span class="pts">1,180</span></div>
-              <div class="lrow"><span class="rank">3</span><div class="lg" style="background:#2e59fb">AC</div><div class="tx"><div class="b1"></div><div class="b2"></div></div><span class="pts">1,090</span></div>
-            </div>
-          </div></div>
-          <div class="cap"><b>Banner en el detalle de liga</b><span class="d">Arriba de la tabla y el calendario que el jugador revisa cada jornada.</span><span class="price-tag">Oro · $15,000/mes</span></div>
+          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/detalle-torneo.jpg" alt="Banner patrocinado en el detalle de torneo de CourtBit" loading="lazy"></div></div>
+          <div class="cap"><b>Detalle de torneo</b><span class="d">Dentro del torneo, junto al flyer y la info que el jugador revisa.</span><span class="price-tag">Oro · $15,000/mes</span></div>
+        </div>
+
+        <!-- Mockup 4: Detalle de liga (screenshot real) -->
+        <div class="mock reveal">
+          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/detalle-liga.jpg" alt="Banner patrocinado en el detalle de liga de CourtBit" loading="lazy"></div></div>
+          <div class="cap"><b>Detalle de liga</b><span class="d">En el detalle de la liga, arriba de la info y el calendario de jornadas.</span><span class="price-tag">Oro · $15,000/mes</span></div>
         </div>
 
       </div>
