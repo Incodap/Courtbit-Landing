@@ -143,6 +143,31 @@
   .adcard .cta{background:var(--navy);color:#fff;font-size:10px;font-weight:700;text-align:center;padding:7px;border-radius:9px}
   .adcard .ally{display:flex;align-items:center;gap:5px;font-size:8.5px;color:var(--lime-deep);font-weight:800;margin-top:8px}
   .adcard .ally::before{content:"✦";color:var(--lime-deep)}
+  /* Banner TOA real — image-first 4:1 + pill "Patrocinado" + dots de carousel */
+  .adbanner{position:relative;border-radius:13px;overflow:hidden;margin:2px 0 6px;box-shadow:0 6px 16px rgba(15,29,77,.16)}
+  .adbanner .creative{aspect-ratio:4/1;display:flex;flex-direction:column;justify-content:center;padding:0 13px;color:#fff}
+  .adbanner .creative .bn{font-size:12.5px;font-weight:800;letter-spacing:.2px;line-height:1.05}
+  .adbanner .creative .bt{font-size:8.5px;font-weight:600;opacity:.92;margin-top:3px}
+  .adbanner .adtag{position:absolute;top:7px;right:7px;font-size:7px;font-weight:800;letter-spacing:.4px;color:#fff;background:rgba(0,0,0,.5);padding:3px 6px;border-radius:20px;text-transform:uppercase}
+  .addots{display:flex;justify-content:center;gap:4px;margin:0 0 9px}
+  .addots i{width:5px;height:5px;border-radius:50%;background:#d2d4dd}
+  .addots i.on{width:6px;height:6px;background:var(--lime-deep)}
+  /* Card de feed (evento / club) con hero */
+  .fcard{background:#fff;border-radius:13px;overflow:hidden;margin-bottom:9px;border:1px solid #eef0f5}
+  .fcard .fhero{height:60px;display:flex;align-items:flex-end;padding:7px 9px}
+  .fcard .fbadge{font-size:7px;font-weight:800;color:#fff;background:rgba(0,0,0,.42);padding:2px 6px;border-radius:6px;text-transform:uppercase;letter-spacing:.3px}
+  .fcard .fbody{padding:8px 10px}
+  .fcard .forg{display:flex;align-items:center;gap:6px;margin-bottom:7px}
+  .fcard .forg .lg{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#fff;flex:0 0 auto}
+  .fcard .forg span{font-size:9px;font-weight:700;color:var(--navy)}
+  .fcard .ft{height:8px;width:78%;background:#d9dbe3;border-radius:4px;margin-bottom:5px}
+  .fcard .fm{height:6px;width:50%;background:#e7e8ee;border-radius:4px}
+  .fcard .fprice{font-size:10px;font-weight:800;color:var(--lime-deep);margin-top:5px}
+  /* Tabs segmentadas (detalle de liga) */
+  .segtabs{display:flex;background:#fff;border-bottom:1px solid #eceef3;flex:0 0 auto}
+  .segtabs span{flex:1;text-align:center;font-size:9px;font-weight:700;color:#9aa0bb;padding:8px 0;position:relative}
+  .segtabs span.on{color:var(--navy)}
+  .segtabs span.on::after{content:"";position:absolute;left:28%;right:28%;bottom:0;height:2px;background:var(--lime-deep);border-radius:2px}
   .thero{background:linear-gradient(135deg,var(--blue),var(--blue-deep));padding:16px 14px 14px;color:#fff;flex:0 0 auto}
   .thero .tn{font-size:15px;font-weight:800;line-height:1.15}
   .thero .td{font-size:9.5px;opacity:.9;margin-top:3px}
@@ -388,69 +413,75 @@
       </div>
       <div class="mockups">
 
-        <!-- Mockup 1 -->
+        <!-- Mockup 1: Feed "Para ti" -->
         <div class="mock reveal">
           <div class="phone"><div class="scr">
             <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i>&nbsp;100%</span></div>
-            <div class="appbar"><div class="title">Explorar</div><div class="sub">Clubes y tiendas · Hermosillo</div></div>
-            <div class="searchpill">🔍 Buscar club, torneo o tienda</div>
+            <div class="appbar"><div class="title">Para ti</div><div class="sub">Torneos, ligas y reservas · Hermosillo</div></div>
             <div class="scrbody">
               <div class="seclbl">Cerca de ti</div>
-              <div class="lrow"><div class="lg" style="background:#5a7a9c">PC</div><div class="tx"><div class="b1"></div><div class="b2"></div></div><span class="chev">›</span></div>
-              <div class="adcard">
-                <span class="adtag">Patrocinado</span>
-                <div class="top"><div class="lg" style="background:var(--navy)">PP</div><div><div class="nm">Padel Pro Shop</div><div class="ds">Palas y accesorios · 12% off</div></div></div>
-                <div class="cta">Ver tienda</div>
-                <div class="ally">Aliado CourtBit</div>
+              <div class="fcard">
+                <div class="fhero" style="background:linear-gradient(120deg,#2e59fb,#5a7a9c)"><span class="fbadge">🏆 Torneo</span></div>
+                <div class="fbody"><div class="forg"><div class="lg" style="background:#2e59fb">CB</div><span>Club Balvanera</span></div><div class="ft"></div><div class="fm"></div></div>
               </div>
-              <div class="lrow"><div class="lg" style="background:#2e59fb">RC</div><div class="tx"><div class="b1"></div><div class="b2"></div></div><span class="chev">›</span></div>
+              <div class="adbanner">
+                <div class="creative" style="background:linear-gradient(120deg,#0f1d4d,#1a2c6e)"><div class="bn">PADEL PRO SHOP</div><div class="bt">Palas y accesorios · 12% off</div></div>
+                <span class="adtag">Patrocinado</span>
+              </div>
+              <div class="addots"><i class="on"></i><i></i><i></i></div>
+              <div class="fcard">
+                <div class="fhero" style="background:linear-gradient(120deg,#9fd121,#5a7a9c)"><span class="fbadge">🎾 Liga</span></div>
+                <div class="fbody"><div class="forg"><div class="lg" style="background:#9fd121">LH</div><span>Liga Hermosillo</span></div><div class="ft"></div><div class="fm"></div></div>
+              </div>
             </div>
           </div></div>
-          <div class="cap"><b>Native card en For You y Explore</b><span class="d">Tarjeta integrada en el feed, marcada "Patrocinado", segmentada por ciudad.</span><span class="price-tag">Desde Bronce · $2,500/mes</span></div>
+          <div class="cap"><b>Banner en el feed "Para ti"</b><span class="d">Image-first, marcado "Patrocinado", entre los torneos y ligas que el jugador explora.</span><span class="price-tag">Desde Bronce · $2,500/mes</span></div>
         </div>
 
-        <!-- Mockup 2: Brackets / detalle de torneo -->
+        <!-- Mockup 2: Feed de reservas -->
         <div class="mock reveal">
           <div class="phone"><div class="scr">
             <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i>&nbsp;100%</span></div>
-            <div class="thero"><div class="tn">Copa Primavera 2026</div><div class="td">Cuadro final · Categoría 3ª</div></div>
-            <div class="bracket">
-              <div class="brow"><div class="bteam"><div class="bb"></div></div><div class="bsc">6</div></div>
-              <div class="brow"><div class="bteam"><div class="bb" style="width:48%"></div></div><div class="bsc">3</div></div>
-            </div>
-            <div style="padding:0 14px">
-              <div class="adcard">
+            <div class="appbar"><div class="title">Reservas</div><div class="sub">Canchas cerca de ti · Hermosillo</div></div>
+            <div class="scrbody">
+              <div class="adbanner">
+                <div class="creative" style="background:linear-gradient(120deg,#1f7a4d,#2bb673)"><div class="bn">FISIOSPORT</div><div class="bt">Recupérate más rápido · 15% socios</div></div>
                 <span class="adtag">Patrocinado</span>
-                <div class="top"><div class="lg" style="background:#2e59fb">RC</div><div><div class="nm">Racket Club</div><div class="ds">Reserva tu cancha · 2x1 entre semana</div></div></div>
-                <div class="cta">Reservar ahora</div>
+              </div>
+              <div class="addots"><i class="on"></i><i></i><i></i></div>
+              <div class="fcard">
+                <div class="fhero" style="background:linear-gradient(120deg,#2e59fb,#0f1d4d)"><span class="fbadge">📍 1.2 km</span></div>
+                <div class="fbody"><div class="forg"><div class="lg" style="background:#2e59fb">RC</div><span>Racket Club</span></div><div class="ft"></div><div class="fprice">desde $220 / hora</div></div>
+              </div>
+              <div class="fcard">
+                <div class="fhero" style="background:linear-gradient(120deg,#9fd121,#1f7a4d)"><span class="fbadge">📍 2.4 km</span></div>
+                <div class="fbody"><div class="forg"><div class="lg" style="background:#9fd121">PP</div><span>Padel Point</span></div><div class="ft"></div><div class="fprice">desde $180 / hora</div></div>
               </div>
             </div>
-            <div class="bracket" style="padding-top:0">
-              <div class="brow"><div class="bteam"><div class="bb" style="width:55%"></div></div><div class="bsc">—</div></div>
-              <div class="brow"><div class="bteam"><div class="bb" style="width:40%"></div></div><div class="bsc">—</div></div>
-            </div>
           </div></div>
-          <div class="cap"><b>Native ad en brackets y torneos</b><span class="d">Tu marca dentro del cuadro y el detalle del torneo — donde la atención es máxima.</span><span class="price-tag">Oro · $15,000/mes</span></div>
+          <div class="cap"><b>Banner en el feed de reservas</b><span class="d">Arriba de las canchas, justo cuando el jugador está por reservar.</span><span class="price-tag">Plata · $7,500/mes</span></div>
         </div>
 
         <!-- Mockup 3: Detalle de liga -->
         <div class="mock reveal">
           <div class="phone"><div class="scr">
             <div class="statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i>&nbsp;100%</span></div>
-            <div class="appbar"><div class="title">Liga</div><div class="sub">Liga Hermosillo · 3ª Fuerza</div></div>
-            <div class="scrbody">
-              <div class="seclbl">Tabla de posiciones</div>
+            <div class="appbar"><div class="title">Liga Hermosillo</div><div class="sub">3ª Fuerza · Temporada 2026</div></div>
+            <div style="padding:9px 14px 0">
+              <div class="adbanner">
+                <div class="creative" style="background:linear-gradient(120deg,#0f1d4d,#2e59fb)"><div class="bn">RACKET LAB</div><div class="bt">Encordado profesional en 24 h</div></div>
+                <span class="adtag">Patrocinado</span>
+              </div>
+              <div class="addots"><i class="on"></i><i></i><i></i></div>
+            </div>
+            <div class="segtabs"><span>Categorías</span><span class="on">Posiciones</span><span>Calendario</span></div>
+            <div class="scrbody" style="padding-top:9px">
               <div class="lrow"><span class="rank">1</span><div class="lg" style="background:#9fd121">JL</div><div class="tx"><div class="b1"></div><div class="b2"></div></div><span class="pts">1,240</span></div>
               <div class="lrow"><span class="rank">2</span><div class="lg" style="background:#5a7a9c">MR</div><div class="tx"><div class="b1"></div><div class="b2"></div></div><span class="pts">1,180</span></div>
-              <div class="adcard">
-                <span class="adtag">Patrocinado</span>
-                <div class="top"><div class="lg" style="background:var(--navy)">PP</div><div><div class="nm">Padel Pro Shop</div><div class="ds">Sube de nivel con la pala correcta</div></div></div>
-                <div class="cta">Ver tienda</div>
-              </div>
               <div class="lrow"><span class="rank">3</span><div class="lg" style="background:#2e59fb">AC</div><div class="tx"><div class="b1"></div><div class="b2"></div></div><span class="pts">1,090</span></div>
             </div>
           </div></div>
-          <div class="cap"><b>Native card en detalle de liga</b><span class="d">En el detalle de la liga, junto a la tabla y los partidos que el jugador revisa.</span><span class="price-tag">Plata · $7,500/mes</span></div>
+          <div class="cap"><b>Banner en el detalle de liga</b><span class="d">Arriba de la tabla y el calendario que el jugador revisa cada jornada.</span><span class="price-tag">Oro · $15,000/mes</span></div>
         </div>
 
       </div>
