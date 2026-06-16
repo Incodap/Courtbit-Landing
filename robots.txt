@@ -1,4 +1,58 @@
+# CourtBit — https://courtbit.com.mx
+# Curated LLM summary: https://courtbit.com.mx/llms.txt
+
+# Default: allow everything to all crawlers
 User-agent: *
+Allow: /
+
+# Search & AI answer-engine crawlers (explicit allow so intent survives
+# any future Disallow added to the wildcard group above).
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://courtbit.com.mx/sitemap.xml

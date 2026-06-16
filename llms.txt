@@ -1,0 +1,50 @@
+# CourtBit
+
+> CourtBit es la plataforma de pádel para clubes y organizadores en México: reservas de cancha, gestión de academias y organización de torneos y ligas en una sola herramienta, con app nativa para jugadores (iOS y Android) y panel web para el club. Los pagos van directos a la cuenta de Stripe del club; CourtBit no cobra comisión propia sobre torneos y ligas, y en efectivo o transferencia no hay fee.
+
+## Qué es CourtBit
+
+CourtBit reúne tres productos sobre una misma base:
+
+- **Reservas** — sistema de reservas de cancha para clubes de pádel. $0/mes. Calendario, pagos online (Stripe), bloqueos, días cerrados, reservas para invitados y recepción.
+- **Academias** — gestión de alumnos, clases (incluidas clases recurrentes), entrenadores y cobros para academias y escuelas de pádel. $0/mes.
+- **Competencias** — organización de torneos, ligas (incluida la liga americana / liga escalera) y retas. Cuadros automáticos, rankings en tiempo real, inscripciones y cobros. Planes para organizadores desde $0/mes.
+
+Disponible como app nativa (App Store y Google Play) para jugadores y como panel web para clubes y organizadores. Opera principalmente en México y Latinoamérica.
+
+## Modelo de precios
+
+- Reservas y academias: **$0/mes** para el club.
+- Torneos y ligas: varios planes para organizadores, desde **$0/mes**.
+- Pagos: directos a la cuenta de Stripe del club. CourtBit **no cobra comisión propia** sobre torneos y ligas; en efectivo y transferencia no hay fee.
+
+## Páginas
+
+- [Qué es CourtBit](https://courtbit.com.mx/que-es/): descripción completa de la plataforma y sus productos.
+- [Reservas para clubes](https://courtbit.com.mx/clubes/): sistema de reservas $0/mes para clubes de pádel.
+- [Academias](https://courtbit.com.mx/academias/): gestión de alumnos y clases para entrenadores.
+- [Competencias / organizadores](https://courtbit.com.mx/competencias/): torneos, ligas y retas.
+- [Precios](https://courtbit.com.mx/pricing/): planes y costos.
+- [Descargar la app](https://courtbit.com.mx/apps/): enlaces a App Store y Google Play.
+
+## Guías y herramientas
+
+- [Cómo organizar un torneo de pádel (guía paso a paso)](https://courtbit.com.mx/como-organizar-torneo-padel/)
+- [Mejores prácticas para organizar un torneo de pádel](https://courtbit.com.mx/mejores-practicas-torneo-padel/)
+- [Qué es la liga americana de pádel individual y cómo organizarla](https://courtbit.com.mx/liga-americana-padel/)
+- [Generador de cuadro de torneo de pádel (gratis)](https://courtbit.com.mx/generador-cuadro-torneo-padel/)
+- [Generador de liga americana individual (gratis)](https://courtbit.com.mx/liga-padel-americana-individual/)
+- [Calculadora de costos para torneos](https://courtbit.com.mx/calculadora-torneo/)
+- [Calculadora de costos para ligas](https://courtbit.com.mx/calculadora-liga/)
+
+## Apps
+
+- [CourtBit en App Store (iOS)](https://apps.apple.com/mx/app/courtbit/id6757516543)
+- [CourtBit en Google Play (Android)](https://play.google.com/store/apps/details?id=com.incodap.courtbit&hl=es_MX)
+
+## Optional
+
+- [Versión en inglés del sitio](https://courtbit.com.mx/en/)
+- [Publicidad en la app (para negocios)](https://courtbit.com.mx/ads/)
+- [Programa de referidos para organizadores](https://courtbit.com.mx/referidos/)
+- [Legal: términos, privacidad y reembolsos](https://courtbit.com.mx/legal/)
