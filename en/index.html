@@ -884,6 +884,8 @@
             btn.disabled=true;btn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="30 70" style="animation:spin 1s linear infinite"/></svg> Sending...';
             const fd=new FormData(form);
             const data={nombre:fd.get('nombre'),email:fd.get('email'),telefono:fd.get('telefono'),club:fd.get('club')||'Not specified',interes:fd.get('interes')||'Not specified',fecha:new Date().toISOString(),fuente:'Landing Page EN'};
+            // Parallel flow: persist the lead in CourtBit (fire-and-forget, does not affect Formspree).
+            fetch('https://courtbit-api-production.up.railway.app/api/public/contact-messages',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,body:JSON.stringify({name:fd.get('nombre'),email:fd.get('email'),phone:fd.get('telefono'),club:fd.get('club')||'',interests:fd.get('interes')||'',source:'Landing Page EN',fecha:data.fecha})}).catch(()=>{});
             try{const r=await fetch('https://formspree.io/f/meezozgv',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});if(!r.ok)throw new Error();}
             catch(err){const ls=JSON.parse(localStorage.getItem('courtbit_leads')||'[]');ls.push(data);localStorage.setItem('courtbit_leads',JSON.stringify(ls));}
             formC.style.display='none';successC.style.display='block';

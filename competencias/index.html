@@ -1727,6 +1727,8 @@
             const fd=new FormData(form);
             const intereses=Array.from(form.querySelectorAll('input[name="interes"]:checked')).map(i=>i.value).join(', ');
             const data={nombre:fd.get('nombre'),email:fd.get('email'),telefono:fd.get('telefono'),club:fd.get('club')||'No especificado',interes:intereses||'No especificado',fecha:new Date().toISOString(),fuente:'Landing Page ES'};
+            // Flujo paralelo: persistir el lead en CourtBit (fire-and-forget, no afecta a Formspree).
+            fetch('https://courtbit-api-production.up.railway.app/api/public/contact-messages',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,body:JSON.stringify({name:fd.get('nombre'),email:fd.get('email'),phone:fd.get('telefono'),club:fd.get('club')||'',interests:intereses,source:'Landing Page ES',fecha:data.fecha})}).catch(()=>{});
             try{const r=await fetch('https://formspree.io/f/meezozgv',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});if(!r.ok)throw new Error();}
             catch(err){const ls=JSON.parse(localStorage.getItem('courtbit_leads')||'[]');ls.push(data);localStorage.setItem('courtbit_leads',JSON.stringify(ls));}
             formC.style.display='none';successC.style.display='block';
