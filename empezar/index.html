@@ -706,6 +706,24 @@
           fuente: 'Landing Empezar ES'
         };
 
+        // Flujo paralelo: además del correo por Formspree, persistimos el lead en CourtBit.
+        // Fire-and-forget — si la API falla no afecta el envío ni la UI.
+        fetch('https://courtbit-api-production.up.railway.app/api/public/contact-messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          keepalive: true,
+          body: JSON.stringify({
+            name: nombre,
+            email: fd.get('email'),
+            phone: fd.get('telefono'),
+            club: fd.get('club') || '',
+            interests: intereses,
+            note: fd.get('nota') || '',
+            source: 'Landing Empezar ES',
+            fecha: data.fecha
+          })
+        }).catch(() => {});
+
         try {
           const r = await fetch('https://formspree.io/f/meezozgv', {
             method: 'POST',
