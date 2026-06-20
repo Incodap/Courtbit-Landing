@@ -256,6 +256,35 @@
     .hero h1{font-size:clamp(2rem,8vw,2.6rem)}
   }
 
+  /* ---------- LIGHTBOX / AMPLIAR IMAGEN ---------- */
+  .frame img, .phone__screen img{cursor:zoom-in}
+  .frame, .phone__screen{position:relative}
+  .frame::after, .phone__screen::after{
+    content:"⤢";position:absolute;right:11px;z-index:4;
+    width:30px;height:30px;border-radius:9px;background:rgba(28,36,23,.55);
+    color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;
+    pointer-events:none;opacity:.92;
+  }
+  .frame::after{top:46px}
+  .phone__screen::after{bottom:11px}
+  .lightbox{
+    position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+    padding:24px;background:rgba(12,14,9,.93);backdrop-filter:blur(6px);overflow:auto;
+  }
+  .lightbox.open{display:flex}
+  .lightbox.scroll{align-items:flex-start}
+  .lightbox__img{
+    max-width:96vw;max-height:92vh;object-fit:contain;border-radius:10px;
+    box-shadow:0 24px 70px rgba(0,0,0,.55);cursor:zoom-in;
+  }
+  .lightbox__img.zoomed{max-width:none;max-height:none;width:auto;cursor:zoom-out}
+  .lightbox__close{
+    position:fixed;top:16px;right:18px;z-index:210;width:46px;height:46px;border-radius:50%;
+    border:0;cursor:pointer;background:rgba(255,255,255,.16);color:#fff;font-size:26px;line-height:1;
+    display:grid;place-items:center;backdrop-filter:blur(4px);transition:background .15s ease;
+  }
+  .lightbox__close:hover{background:rgba(255,255,255,.3)}
+
   /* ---------- IMPRESIÓN / PDF ---------- */
   @media print{
     @page{size:A4 landscape;margin:9mm}
@@ -263,6 +292,8 @@
     *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
     .wrap{max-width:none;padding:0}
     nav{position:static;border:none}
+    .frame::after,.phone__screen::after{display:none}
+    .lightbox{display:none!important}
 
     section,.feature{padding:10px 0!important;border-top:none}
     .hero{padding:0}
@@ -617,6 +648,53 @@
     <div>© 2026 Courtbit · La plataforma para ejecutar tus propios torneos de pádel.</div>
   </div>
 </footer>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Imagen ampliada">
+  <button class="lightbox__close" type="button" aria-label="Cerrar">&times;</button>
+  <img class="lightbox__img" src="" alt="" />
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('lightbox');
+  var lbImg = lb.querySelector('.lightbox__img');
+  var closeBtn = lb.querySelector('.lightbox__close');
+
+  function open(src, alt){
+    lbImg.classList.remove('zoomed');
+    lb.classList.remove('scroll');
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(function(){ if(!lb.classList.contains('open')) lbImg.src=''; }, 50);
+  }
+
+  document.querySelectorAll('.frame img, .phone__screen img').forEach(function(img){
+    img.addEventListener('click', function(){ open(img.currentSrc || img.src, img.alt); });
+  });
+
+  // toggle zoom (fit <-> tamaño real) al hacer click en la imagen ampliada
+  lbImg.addEventListener('click', function(e){
+    e.stopPropagation();
+    var z = lbImg.classList.toggle('zoomed');
+    lb.classList.toggle('scroll', z);
+    if(!z) lb.scrollTo(0,0);
+  });
+  closeBtn.addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && lb.classList.contains('open')) close();
+  });
+})();
+</script>
 
 </body>
 </html>
