@@ -165,9 +165,11 @@
   .mock .phone .scr{height:440px}
   .mock .phone .scr.scrshot{position:relative;height:auto;display:block;background:#fff}
   .ssimg{width:100%;height:auto;display:block}
-  /* Indicador que señala el banner dentro de cada captura */
-  .adhl{position:absolute;left:3%;right:3%;border:2.5px solid var(--lime);border-radius:11px;box-shadow:0 0 0 3px rgba(184,240,43,.22),0 0 16px rgba(184,240,43,.55);pointer-events:none;z-index:2}
-  .adhl::before{content:"Tu patrocinador";position:absolute;top:-11px;left:7px;font-size:8px;font-weight:800;letter-spacing:.3px;color:var(--navy);background:var(--lime);padding:2px 7px;border-radius:7px;white-space:nowrap;box-shadow:0 2px 6px rgba(15,29,77,.28)}
+  /* Indicador tipo llaves [ ] por fuera del teléfono, señalando el banner del patrocinador */
+  .phone-wrap{position:relative;display:inline-block}
+  .adbrace{position:absolute;width:16px;pointer-events:none;z-index:3}
+  .adbrace.l{left:-22px;border:3px solid var(--blue);border-right:none;border-radius:9px 0 0 9px}
+  .adbrace.r{right:-22px;border:3px solid var(--blue);border-left:none;border-radius:0 9px 9px 0}
   /* Placeholder para screenshots que faltan */
   .ssph{aspect-ratio:9/19.5;background:repeating-linear-gradient(135deg,#eef1f8,#eef1f8 12px,#e6eaf5 12px,#e6eaf5 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text-faint);text-align:center;padding:20px}
   .ssph svg{width:34px;height:34px;opacity:.6}
@@ -397,31 +399,31 @@
 
         <!-- 1 · Detalle del evento -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-detalle-torneo.jpg" alt="Patrocinador dentro del detalle de torneo en CourtBit" loading="lazy"><span class="adhl" style="top:44.2%;height:11.8%"></span></div></div>
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-detalle-torneo.jpg" alt="Patrocinador dentro del detalle de torneo en CourtBit" loading="lazy"></div></div><span class="adbrace l" style="top:43.5%;height:13.5%"></span><span class="adbrace r" style="top:43.5%;height:13.5%"></span></div>
           <div class="cap"><b>Detalle del evento</b><span class="d">Lo primero que abre el jugador: junto al flyer, antes y durante el torneo.</span></div>
         </div>
 
         <!-- 2 · Registro -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-registro-torneo.jpg" alt="Patrocinador dentro del registro a torneo en CourtBit" loading="lazy"><span class="adhl" style="top:12.2%;height:12%"></span></div></div>
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-registro-torneo.jpg" alt="Patrocinador dentro del registro a torneo en CourtBit" loading="lazy"></div></div><span class="adbrace l" style="top:12%;height:14%"></span><span class="adbrace r" style="top:12%;height:14%"></span></div>
           <div class="cap"><b>Registro</b><span class="d">Mientras el jugador se inscribe y elige su categoría — toda su atención puesta ahí.</span></div>
         </div>
 
         <!-- 3 · Cuadro / eliminatoria -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-cuadro-eliminatoria.jpg" alt="Patrocinador dentro del cuadro de eliminatoria en CourtBit" loading="lazy"><span class="adhl" style="top:17.9%;height:12.2%"></span></div></div>
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-cuadro-eliminatoria.jpg" alt="Patrocinador dentro del cuadro de eliminatoria en CourtBit" loading="lazy"></div></div><span class="adbrace l" style="top:17.5%;height:14%"></span><span class="adbrace r" style="top:17.5%;height:14%"></span></div>
           <div class="cap"><b>Cuadro · eliminatoria</b><span class="d">La pantalla que más se abre: cada jugador sigue su llave hasta la final.</span></div>
         </div>
 
         <!-- 4 · Cuadro / grupos -->
         <div class="mock reveal">
-          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-cuadro-grupos.jpg" alt="Patrocinador dentro de los grupos y la tabla en CourtBit" loading="lazy"><span class="adhl" style="top:17.9%;height:12.2%"></span></div></div>
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-cuadro-grupos.jpg" alt="Patrocinador dentro de los grupos y la tabla en CourtBit" loading="lazy"></div></div><span class="adbrace l" style="top:17.5%;height:14%"></span><span class="adbrace r" style="top:17.5%;height:14%"></span></div>
           <div class="cap"><b>Grupos y tabla</b><span class="d">El mismo espacio acompaña los grupos, la tabla y la posición de cada equipo.</span></div>
         </div>
 
         <!-- 5 · Captura de marcador -->
         <div class="mock reveal" style="grid-column:1 / -1;justify-self:center">
-          <div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-marcador.jpg" alt="Patrocinador dentro de la captura de marcador en CourtBit" loading="lazy"><span class="adhl" style="top:23.5%;height:11.9%"></span></div></div>
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../Assets/marketing/ads/ad-marcador.jpg" alt="Patrocinador dentro de la captura de marcador en CourtBit" loading="lazy"></div></div><span class="adbrace l" style="top:23%;height:14%"></span><span class="adbrace r" style="top:23%;height:14%"></span></div>
           <div class="cap"><b>Captura de marcador</b><span class="d">Justo cuando suben el resultado de su partido, jornada tras jornada.</span></div>
         </div>
 
