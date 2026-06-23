@@ -85,8 +85,8 @@
 
   /* NAV */
   nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--hairline)}
-  nav .container{display:flex;align-items:center;justify-content:space-between;height:66px}
-  nav .logo img{height:44px}
+  nav .container{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+  nav .logo img{height:88px;width:auto;display:block}
   .nav-center{display:flex;align-items:center;gap:26px}
   .nav-center a{font-size:.925rem;font-weight:600;color:var(--text-soft)}
   .nav-center a:hover{color:var(--blue)}
@@ -273,9 +273,10 @@
     .grid-4{grid-template-columns:1fr 1fr}
   }
   @media (max-width:860px){
-    .nav-center{display:none;position:absolute;top:66px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--border);box-shadow:var(--shadow-lg)}
+    .nav-center{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--border);box-shadow:var(--shadow-lg)}
     .nav-center.show{display:flex}
     .mobile-toggle{display:block}
+    nav .logo img{height:56px}
     .nav-login{display:none}
     section{padding:64px 0}
     .grid-3,.steps,.pricing,.mockups{grid-template-columns:1fr;gap:22px}
@@ -289,7 +290,7 @@
   }
   @media (max-width:480px){
     .grid-4{grid-template-columns:1fr}
-    .hero-trust{gap:18px}
+    nav .logo img{height:48px}
   }
 </style>
 </head>
@@ -358,12 +359,12 @@
       <div class="center" style="margin:0 auto;max-width:760px">
         <span class="eyebrow lime">Por qué te conviene</span>
         <h2 class="sec-title" style="margin:0 auto">El patrocinio que ya tienes, ahora también digital.</h2>
-        <p class="sec-sub">La lona se queda en la cancha. Aquí tu patrocinador viaja en el teléfono de cada jugador de tu torneo o liga — y le das una visibilidad que la lona no puede.</p>
+        <p class="sec-sub">Suma a tus patrocinadores una vitrina digital: su marca acompaña a cada jugador de tu torneo o liga en el teléfono, justo donde revisa su cuadro, su horario y sus resultados.</p>
       </div>
       <div class="grid-4">
         <div class="vcard reveal"><div class="ico">💰</div><h3>Suma a tus patrocinadores</h3><p>Dales presencia digital dentro de tu evento. Durante el lanzamiento, activarlo no tiene costo para ti como organizador.</p></div>
         <div class="vcard reveal"><div class="ico">👀</div><h3>Audiencia cautiva</h3><p>Quien juega tu evento entra una y otra vez a ver su cuadro, su horario y sus resultados. Tu patrocinador aparece justo ahí.</p></div>
-        <div class="vcard reveal"><div class="ico">📲</div><h3>Más que una lona</h3><p>El patrocinio digital se puede tocar, lleva a su sitio o WhatsApp, y es medible. Le das a tu patrocinador algo que la lona no.</p></div>
+        <div class="vcard reveal"><div class="ico">📲</div><h3>Patrocinio que se toca</h3><p>El patrocinio digital lleva a su sitio o WhatsApp con un toque, y mides cuántos lo vieron: una ventaja extra que sumas a la presencia de tus patrocinadores.</p></div>
         <div class="vcard reveal"><div class="ico">🎯</div><h3>Solo tu evento</h3><p>Los anuncios aparecen únicamente en las pantallas de tu torneo o liga. Tú eliges qué marcas y en qué paquete.</p></div>
       </div>
     </div>
