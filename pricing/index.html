@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Precios — CourtBit. Planes para tu club de padel.</title>
-    <meta name="description" content="Planes para clubes y academias. CourtBit cobra 4% al pagador, nunca al club ni al instructor. Competencias en 4 planes desde $0/mes.">
+    <meta name="description" content="Reservas y academias: 4% al pagador, nunca al club ni al instructor. Competencias en un solo plan de $1,499 MXN/mes + IVA con todas las funcionalidades.">
     <meta property="og:title" content="Precios — CourtBit. Planes para tu club de padel.">
-    <meta property="og:description" content="Planes para clubes y academias. 4% al pagador. Competencias en 4 planes desde $0/mes.">
+    <meta property="og:description" content="4% al pagador en reservas y academias. Competencias en un solo plan de $1,499/mes + IVA, todo incluido.">
     <meta property="og:image" content="https://courtbit.com.mx/Assets/courtbit-logo.svg">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://courtbit.com.mx/pricing/">
@@ -311,9 +311,12 @@
             margin-bottom: 6px;
         }
         .b-breakdown .b-number small {
+            display: block;
             font-size: 1rem;
             font-weight: 500;
-            color: rgba(255,255,255,0.7);
+            letter-spacing: 0;
+            color: rgba(255,255,255,0.72);
+            margin-top: 4px;
         }
         .b-breakdown ul {
             list-style: none;
@@ -1105,6 +1108,24 @@
         @media (max-width: 380px) {
             .footer-grid { grid-template-columns: 1fr; gap: 24px; }
         }
+
+        /* ═══════════════════════════════════════════════════════ */
+        /* Single Competencias plan — price display + 2-col bullets */
+        /* ═══════════════════════════════════════════════════════ */
+        .b-breakdown .b-iva {
+            font-size: 0.9375rem;
+            color: rgba(255,255,255,0.82);
+            margin: 0 0 4px;
+        }
+        .b-breakdown .b-iva b { color: var(--lime); font-weight: 700; }
+
+        @media (min-width: 640px) {
+            .b-hero-card .b-bullets.b-bullets-2col {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px 24px;
+            }
+        }
     </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -1122,14 +1143,14 @@
 
     <main>
         <!-- ════════════════════════════════════════════════════ -->
-        <!-- Variant B — Hero card $0 + 2 minor cards            -->
+        <!-- Variant B — Reservas + Academias (sin cambios)       -->
         <!-- ════════════════════════════════════════════════════ -->
         <section class="b-pricing-hero">
             <div class="container">
                 <div class="b-pricing-hero-header reveal">
                     <span class="p-eyebrow"><span class="dot"></span> Precios</span>
                     <h1>Precios claros.<br><em>Sin sorpresas.</em></h1>
-                    <p class="b-pricing-desc">Reservas y Academias tienen planes a la medida de tu club. CourtBit cobra 4% al pagador (jugador o alumno) solo cuando paga por la app, nunca al club ni al instructor. Competencias tiene 4 planes según tu volumen de torneos.</p>
+                    <p class="b-pricing-desc">Reservas y Academias tienen planes a la medida de tu club. CourtBit cobra 4% al pagador (jugador o alumno) solo cuando paga por la app, nunca al club ni al instructor. Competencias es un módulo opcional con un solo plan que incluye todo.</p>
                 </div>
 
                 <!-- ═══ SECTION 1: PLANES PARA CLUBES Y ACADEMIAS ═══ -->
@@ -1180,195 +1201,56 @@
         </section>
 
         <!-- ════════════════════════════════════════════════════ -->
-        <!-- SECTION 2: ¿Organizas torneos? — Competencias gated  -->
+        <!-- SECTION 2: ¿Organizas torneos? — Competencias, plan único -->
         <!-- ════════════════════════════════════════════════════ -->
         <section class="tier-table-intro">
             <div class="container reveal">
                 <span class="p-eyebrow"><span class="dot"></span> Opcional · Solo para organizadores</span>
                 <h2>¿Organizas <em>torneos</em>?</h2>
-                <p>Si solo gestionas reservas o tu academia, las dos secciones de arriba ya cubren tu negocio. Competencias es un módulo opcional para clubes y operadores que necesitan brackets automáticos, calendario de jornadas, ranking por puntos y Live Control en cancha. Tiene 4 planes según tu volumen.</p>
+                <p>Si solo gestionas reservas o tu academia, las dos secciones de arriba ya cubren tu negocio. Competencias es un módulo opcional para clubes y operadores que necesitan brackets automáticos, calendario de jornadas, ranking por puntos y Live Control en cancha. Un solo plan, con todo incluido.</p>
             </div>
         </section>
 
-        <!-- EXISTING TIER TABLE — preserved verbatim from previous design -->
+        <!-- SINGLE COMPETENCIAS PLAN — reemplaza la tabla de 4 planes -->
         <section class="pricing">
             <div class="container">
-                <div class="pricing-grid">
-                    <!-- Free Plan -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-icon" style="background: linear-gradient(135deg, #F0FDF4, #BBF7D0);">
-                            🎾
+                <div class="b-stack reveal">
+                    <article class="b-hero-card">
+                        <div>
+                            <span class="ribbon">★ Un solo plan</span>
+                            <h2>Todo para tus <em>torneos</em></h2>
+                            <p class="b-tagline">Sin niveles ni límites: todas las funcionalidades de Competencias en una sola mensualidad.</p>
+                            <ul class="b-bullets b-bullets-2col">
+                                <li><span class="check"></span> Torneos y categorías ilimitados</li>
+                                <li><span class="check"></span> Brackets automáticos</li>
+                                <li><span class="check"></span> Calendario de jornadas automático</li>
+                                <li><span class="check"></span> Ligas: americana, escalera e individual</li>
+                                <li><span class="check"></span> Retas: americano y rey de la cancha</li>
+                                <li><span class="check"></span> Ranking por puntos y de circuito</li>
+                                <li><span class="check"></span> Resultados en vivo</li>
+                                <li><span class="check"></span> Pantalla de partidos en vivo (TV)</li>
+                                <li><span class="check"></span> Múltiples sedes</li>
+                                <li><span class="check"></span> Reportes financieros y analíticos</li>
+                                <li><span class="check"></span> APIs públicas + White-label</li>
+                                <li><span class="check"></span> Soporte prioritario por WhatsApp</li>
+                            </ul>
+                            <div class="b-ctas">
+                                <a href="/empezar/" class="p-btn p-btn-lime">Empezar ahora →</a>
+                                <a href="/competencias/" class="p-btn p-btn-ghost">Ver Competencias</a>
+                            </div>
                         </div>
-                        <div class="pricing-plan-name">Free</div>
-                        <div class="pricing-plan-focus">Para empezar sin costo</div>
-                        <div class="pricing-free-label">Gratis</div>
-                        <div class="pricing-price-note">Sin tarjeta requerida</div>
-                        <div class="pricing-divider"></div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Pasarela de pagos integrada
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                1 categoría, hasta 32 parejas
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Resultados en vivo
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Ranking automático por puntos
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Soporte por email
-                            </li>
-                        </ul>
-                        <div class="pricing-ideal">
-                            <strong>Ideal para:</strong> Organizadores ocasionales (1-2 torneos/mes)
-                        </div>
-                        <a href="/empezar/" class="pricing-cta primary">Empezar Gratis</a>
-                    </div>
 
-                    <!-- Express Plan -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-icon" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">
-                            ⚡
+                        <div class="b-breakdown">
+                            <h4>Mensualidad</h4>
+                            <div class="b-number">$1,499<small>MXN / mes</small></div>
+                            <p class="b-iva"><b>+ IVA</b> · sin permanencia</p>
+                            <ul>
+                                <li><b>Todas las funcionalidades</b> de Competencias</li>
+                                <li><b>Sin límites</b> de categorías, torneos ni sedes</li>
+                                <li>Cancela cuando quieras</li>
+                            </ul>
                         </div>
-                        <div class="pricing-plan-name">Express</div>
-                        <div class="pricing-plan-focus">Clubes en crecimiento</div>
-                        <div class="pricing-price">
-                            <span class="currency">$</span>
-                            <span class="amount">99</span>
-                            <span class="period">MXN/mes</span>
-                        </div>
-                        <div class="pricing-price-note">+ IVA</div>
-                        <div class="pricing-divider"></div>
-                        <div class="pricing-includes">Todo de Free, más:</div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Hasta 3 categorías, 64 parejas
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Ligas Individuales
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Reportes intermedios
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Soporte por WhatsApp + email
-                            </li>
-                        </ul>
-                        <div class="pricing-ideal">
-                            <strong>Ideal para:</strong> Clubes pequeños (2-3 torneos/mes)
-                        </div>
-                        <a href="/empezar/" class="pricing-cta secondary">Probar 30 Días Gratis</a>
-                    </div>
-
-                    <!-- Professional Plan (Highlighted) -->
-                    <div class="pricing-card highlighted reveal">
-                        <span class="pricing-badge">Recomendado</span>
-                        <div class="pricing-icon" style="background: linear-gradient(135deg, var(--blue), var(--blue-deep)); color: white;">
-                            🏆
-                        </div>
-                        <div class="pricing-plan-name">Profesional</div>
-                        <div class="pricing-plan-focus">Operación completa</div>
-                        <div class="pricing-price">
-                            <span class="currency">$</span>
-                            <span class="amount">499</span>
-                            <span class="period">MXN/mes</span>
-                        </div>
-                        <div class="pricing-price-note">+ IVA</div>
-                        <div class="pricing-divider"></div>
-                        <div class="pricing-includes">Todo de Express, más:</div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Hasta 5 categorías, 150 parejas
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Ligas ilimitadas con jornadas automáticas
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Ranking de circuito
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Reportes financieros avanzados
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Soporte por WhatsApp prioritario
-                            </li>
-                        </ul>
-                        <div class="pricing-ideal">
-                            <strong>Ideal para:</strong> Clubes medianos (4+ torneos/mes)
-                        </div>
-                        <a href="/empezar/" class="pricing-cta primary">Agendar Demo</a>
-                    </div>
-
-                    <!-- Enterprise Plan -->
-                    <div class="pricing-card reveal">
-                        <div class="pricing-icon" style="background: linear-gradient(135deg, #E0E7FF, #C7D2FE);">
-                            🚀
-                        </div>
-                        <div class="pricing-plan-name">Enterprise</div>
-                        <div class="pricing-plan-focus">Circuitos y operadores grandes</div>
-                        <div class="pricing-price">
-                            <span class="currency">$</span>
-                            <span class="amount">1,499</span>
-                            <span class="period">MXN/mes</span>
-                        </div>
-                        <div class="pricing-price-note">+ IVA</div>
-                        <div class="pricing-divider"></div>
-                        <div class="pricing-includes">Todo de Profesional, más:</div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Categorías y torneos ilimitados
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Ligas (americana/escalera)
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Retas (americano/rey de la cancha)
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Múltiples sedes
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                APIs públicas + White-label
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Reportes analíticos
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Soporte por WhatsApp prioritario
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Pantalla de partidos en vivo (TV)
-                            </li>
-                        </ul>
-                        <div class="pricing-ideal">
-                            <strong>Ideal para:</strong> Circuitos regionales y operadores grandes
-                        </div>
-                        <a href="/empezar/" class="pricing-cta secondary">Contactar Ahora</a>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
