@@ -254,7 +254,56 @@
       box-shadow: 0 16px 40px -18px rgba(15, 29, 77, 0.25);
     }
     figure.shot video { background: var(--navy-950); }
+    figure.shot img { cursor: zoom-in; transition: box-shadow 200ms, transform 200ms; }
+    figure.shot img:hover { box-shadow: 0 20px 48px -16px rgba(15, 29, 77, 0.38); }
+    figure.shot img:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
     figure.shot figcaption { font-size: 0.84rem; color: var(--text-muted); margin-top: 8px; }
+
+    /* Lightbox — ampliar capturas al hacer clic */
+    .lb {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(6, 10, 38, 0.88);
+      backdrop-filter: blur(4px);
+      cursor: zoom-out;
+    }
+    .lb.open { display: flex; animation: lb-fade 160ms ease-out; }
+    @keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+    .lb img {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+      cursor: default;
+    }
+    .lb-close {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 160ms;
+    }
+    .lb-close:hover { background: rgba(255, 255, 255, 0.28); }
+    .lb-close:focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      figure.shot img, .lb.open, .lb-close { transition: none; animation: none; }
+    }
     .shot-badge {
       display: inline-flex;
       align-items: center;
@@ -594,6 +643,57 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox para ampliar capturas -->
+  <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Captura ampliada">
+    <button type="button" class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button>
+    <img id="lbImg" src="" alt="">
+  </div>
+
+  <script>
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lbImg');
+      var lbClose = document.getElementById('lbClose');
+      var lastFocus = null;
+
+      function open(img) {
+        lastFocus = img;
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+      function close() {
+        lb.classList.remove('open');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      }
+
+      // Toda captura dentro de figure.shot es ampliable (el video se queda inline).
+      document.querySelectorAll('figure.shot img').forEach(function (img) {
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'Ampliar: ' + (img.alt || 'captura'));
+        img.addEventListener('click', function () { open(img); });
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+        });
+      });
+
+      lb.addEventListener('click', function (e) {
+        // Solo el fondo oscuro cierra; clic sobre la imagen la deja abierta
+        // para verla (cursor:default lo señala). Botón y Escape también cierran.
+        if (e.target === lb) close();
+      });
+      lbClose.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lb.classList.contains('open')) close();
+      });
+    })();
+  </script>
 
 </body>
 </html>
