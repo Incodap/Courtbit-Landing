@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía de Academia: paquetes, mensualidades y comisiones — CourtBit</title>
+  <meta name="description" content="Guía paso a paso para clubes: cómo vender un paquete o mensualidad a un alumno, inscribirlo a clases para que se descuente solo y cómo se calcula la comisión del profesor.">
+  <link rel="canonical" href="https://courtbit.com.mx/guia-academia/">
+  <link rel="alternate" hreflang="es" href="https://courtbit.com.mx/guia-academia/">
+  <link rel="alternate" hreflang="x-default" href="https://courtbit.com.mx/guia-academia/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <!-- OG / Twitter -->
+  <meta property="og:url" content="https://courtbit.com.mx/guia-academia/">
+  <meta property="og:title" content="Guía de Academia: paquetes, mensualidades y comisiones">
+  <meta property="og:description" content="Cómo vender paquetes, inscribir alumnos a clases y dejar que la comisión del profesor se calcule sola.">
+  <meta property="og:image" content="https://courtbit.com.mx/Assets/guias/detalle-profesor.jpg">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../Assets/courtbit-logo.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=swap">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Guía de Academia: paquetes, mensualidades y comisiones",
+    "description": "Guía operativa para clubes: vender paquetes, inscribir alumnos a clases y cómo se calcula la comisión del profesor.",
+    "inLanguage": "es",
+    "url": "https://courtbit.com.mx/guia-academia/",
+    "publisher": { "@type": "Organization", "name": "CourtBit", "url": "https://courtbit.com.mx" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue: #2e59fb;
+      --blue-deep: #1a45e0;
+      --blue-mist: #eaf0ff;
+      --navy: #0f1d4d;
+      --navy-950: #060a26;
+      --lime: #B8F02B;
+      --lime-soft: #e9fbb8;
+      --paper: #ffffff;
+      --bg: #fbfbfd;
+      --text: #0f1d4d;
+      --text-soft: #3a4262;
+      --text-muted: #6b7191;
+      --text-faint: #9aa0bb;
+      --border: #e6e8ef;
+      --amber-bg: #fff8e6;
+      --amber-line: #f0dfae;
+      --amber-ink: #6e5410;
+      --chip-bg: #f3e8ff;
+      --chip-ink: #7c3aed;
+      --chip-line: #ddc4f8;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--paper);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .e-statusbar {
+      background: var(--navy-950);
+      color: var(--paper);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.825rem;
+      font-weight: 500;
+    }
+    .e-nav { background: var(--blue); color: var(--paper); padding: 18px 0; position: sticky; top: 0; z-index: 50; }
+    .e-nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .e-logo { display: flex; align-items: center; }
+    .e-logo img { height: 90px; width: auto; display: block; }
+    .e-nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+    .e-nav-links a { color: var(--paper); font-weight: 600; font-size: 0.95rem; opacity: 0.9; transition: opacity 200ms; }
+    .e-nav-links a:hover { opacity: 1; }
+    .e-nav-links a.is-active { color: var(--lime); opacity: 1; }
+    .p-btn-lime {
+      display: inline-block;
+      background: var(--lime); color: var(--navy);
+      border: 2px solid var(--lime);
+      padding: 13px 24px; border-radius: 999px;
+      font-weight: 700; font-size: 0.95rem;
+      box-shadow: 0 12px 32px -8px rgba(184, 240, 43, 0.4);
+      transition: all 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .p-btn-lime:hover { background: #c7f548; transform: translateY(-2px); box-shadow: 0 18px 36px -8px rgba(184, 240, 43, 0.55); }
+    @media (max-width: 768px) {
+      .e-nav-links { display: none; }
+      .e-logo img { height: 72px; }
+    }
+
+    /* Hero compacto */
+    .g-hero {
+      background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy) 100%);
+      color: var(--paper);
+      padding: 56px 0 60px;
+    }
+    .g-hero-inner { max-width: 820px; }
+    .p-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      margin-bottom: 20px;
+    }
+    .p-eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 999px;
+      background: var(--lime);
+      box-shadow: 0 0 0 3px rgba(184, 240, 43, 0.25);
+    }
+    .g-hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+      font-weight: 800;
+      letter-spacing: -0.032em;
+      line-height: 1.06;
+      margin: 0 0 16px;
+      text-wrap: balance;
+    }
+    .g-hero h1 em { font-style: italic; color: var(--lime); }
+    .g-hero .lead {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.08rem;
+      font-weight: 500;
+      margin: 0;
+      max-width: 58ch;
+      line-height: 1.55;
+    }
+
+    /* Contenido */
+    .g-wrap { max-width: 800px; margin: 0 auto; padding: 8px 24px 88px; }
+    .g-wrap h2 {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: -0.028em;
+      line-height: 1.1;
+      margin: 64px 0 6px;
+      color: var(--navy);
+    }
+    .g-wrap h2 em { font-style: italic; color: var(--blue); }
+    .h2-sub { color: var(--text-muted); font-size: 1rem; margin: 0 0 22px; max-width: 62ch; }
+
+    ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+    ol.steps > li {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 24px 22px 78px;
+      position: relative;
+    }
+    ol.steps > li::before {
+      content: attr(data-n);
+      position: absolute;
+      left: 22px;
+      top: 21px;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    ol.steps b { font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+    ol.steps p { margin: 5px 0 0; color: var(--text-soft); font-size: 0.95rem; line-height: 1.6; }
+
+    .ui {
+      font-weight: 700;
+      background: var(--blue-mist);
+      color: var(--blue-deep);
+      border-radius: 6px;
+      padding: 1px 7px;
+      white-space: nowrap;
+      font-size: 0.9em;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      vertical-align: 1px;
+    }
+    .chip.filled { background: var(--chip-bg); color: var(--chip-ink); border: 1px solid var(--chip-line); }
+    .chip.outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-muted); }
+
+    figure.shot { margin: 16px 0 0; }
+    figure.shot img {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 16px 40px -18px rgba(15, 29, 77, 0.25);
+    }
+    figure.shot figcaption { font-size: 0.84rem; color: var(--text-muted); margin-top: 8px; }
+
+    .note {
+      background: var(--amber-bg);
+      border: 1px solid var(--amber-line);
+      color: var(--amber-ink);
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 0.93rem;
+      margin-top: 16px;
+      line-height: 1.55;
+    }
+    .note b { font-weight: 700; }
+
+    .tablewrap { overflow-x: auto; margin-top: 18px; }
+    .tcard { background: var(--paper); border: 1px solid var(--border); border-radius: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.94rem; }
+    th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    td { color: var(--text-soft); }
+    td b { color: var(--navy); }
+    td.num { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 700; color: var(--navy); }
+    tr:last-child td { border-bottom: none; }
+
+    .faq { display: grid; gap: 12px; margin-top: 18px; }
+    .faq .q {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 20px;
+    }
+    .faq .q b { display: block; font-weight: 700; color: var(--navy); margin-bottom: 3px; letter-spacing: -0.01em; }
+    .faq .q span { color: var(--text-soft); font-size: 0.93rem; line-height: 1.6; }
+
+    /* CTA final */
+    .g-cta {
+      margin-top: 72px;
+      background: var(--blue-mist);
+      border: 1px solid rgba(46, 89, 251, 0.18);
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .g-cta b { color: var(--navy); font-size: 1.05rem; letter-spacing: -0.01em; }
+    .g-cta p { margin: 4px 0 0; color: var(--text-soft); font-size: 0.92rem; }
+
+    /* Footer */
+    .e-footer { background: var(--navy-950); color: var(--text-faint); padding: 56px 0 24px; font-size: 0.875rem; }
+    .e-footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+    .e-footer-col h4 {
+      font-size: 0.6875rem; font-weight: 800; color: var(--paper);
+      letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 14px;
+    }
+    .e-footer-col .e-fl { display: block; margin-bottom: 8px; font-size: 0.875rem; color: var(--text-faint); transition: color 0.2s; }
+    .e-footer-col .e-fl:hover { color: var(--lime); }
+    .e-footer-brand { color: var(--paper); font-weight: 800; font-size: 1.25rem; letter-spacing: 0.04em; }
+    .e-footer-brand span { color: var(--lime); }
+    .e-footer-tagline { font-size: 0.875rem; color: var(--text-faint); margin: 10px 0 18px; max-width: 280px; line-height: 1.55; }
+    .e-footer-apps { display: flex; gap: 10px; flex-wrap: wrap; }
+    .e-footer-app {
+      background: var(--lime); color: var(--navy);
+      padding: 7px 14px; border-radius: 999px;
+      font-weight: 700; font-size: 0.8125rem;
+    }
+    .e-footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    }
+    @media (max-width: 900px) { .e-footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) {
+      .e-footer-grid { grid-template-columns: 1fr; }
+      ol.steps > li { padding: 18px 18px 18px 66px; }
+      ol.steps > li::before { left: 16px; top: 17px; width: 34px; height: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="e-statusbar">Guías CourtBit · Manuales de operación para tu club</div>
+
+  <nav class="e-nav">
+    <div class="container e-nav-inner">
+      <a href="/" class="e-logo" aria-label="CourtBit"><img src="../Assets/courtbit-logo.svg" alt="CourtBit"></a>
+      <ul class="e-nav-links">
+        <li><a href="/clubes/">Para clubes</a></li>
+        <li><a href="/academias/">Para academias</a></li>
+        <li><a href="/competencias/">Para organizadores</a></li>
+        <li><a href="/guias/" class="is-active">Guías</a></li>
+        <li><a href="/pricing/">Precios</a></li>
+      </ul>
+      <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
+    </div>
+  </nav>
+
+  <header class="g-hero">
+    <div class="container">
+      <div class="g-hero-inner">
+        <a href="/guias/" class="p-eyebrow"><span class="dot"></span> Guías CourtBit · Academia</a>
+        <h1>Paquetes y clases: <em>asígnalos y déjalos descontar solos</em></h1>
+        <p class="lead">Para recepción y administración: vender un paquete o mensualidad a un alumno, inscribirlo a sus clases para que el paquete se consuma, y cómo se calcula la comisión del profesor en cada caso.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="g-wrap">
+
+    <h2>1. Asignar un <em>paquete</em> al alumno</h2>
+    <p class="h2-sub">El alumno paga en el club (efectivo, transferencia o terminal). En el dashboard solo se registra ese cobro y el paquete queda activo a su nombre al momento.</p>
+    <ol class="steps">
+      <li data-n="1">
+        <b>Abre "Venta de paquetes" en el menú lateral.</b>
+        <p>La página te lleva en orden: <span class="ui">Paquete</span>, <span class="ui">Alumno</span> y <span class="ui">Cobro</span>. Si el paquete que necesitas no existe, créalo con <span class="ui">+ Nuevo paquete</span>: por <b>sesiones</b> (descuenta una por asistencia) o <b>mensualidad</b> (asiste ilimitado y vence el último día del mes calendario).</p>
+        <figure class="shot">
+          <img src="../Assets/guias/venta-paquetes-mensualidad.jpg" alt="Página Venta de paquetes con el diálogo Nuevo paquete de tipo Mensualidad" loading="lazy">
+          <figcaption>Venta de paquetes: pasos Paquete, Alumno y Cobro. Al frente, la creación de una mensualidad.</figcaption>
+        </figure>
+      </li>
+      <li data-n="2">
+        <b>Elige el paquete y busca al alumno.</b>
+        <p>Con <span class="ui">Buscar cliente</span> lo encuentras por nombre, email o teléfono. Si nunca ha venido, captúralo ahí mismo con nombre y teléfono: queda guardado como cliente del club y aparecerá en todas las búsquedas.</p>
+      </li>
+      <li data-n="3">
+        <b>Registra el cobro con su método.</b>
+        <p>Selecciona cómo pagó (efectivo, transferencia, tarjeta) y confirma con <span class="ui">Asignar</span>. El precio viene del paquete y se puede ajustar en esa venta.</p>
+      </li>
+    </ol>
+    <div class="note"><b>Si el alumno ya tiene un paquete vigente</b>, la página lo avisa antes de confirmar. Revisa con él antes de cobrar de nuevo: casi siempre es un intento de doble cobro.</div>
+
+    <h2>2. Inscribir al alumno <em>a la clase</em></h2>
+    <p class="h2-sub">Al inscribirlo, el sistema usa su paquete vigente en automático: descuenta la sesión (o registra la asistencia de la mensualidad) y con eso se genera la comisión del profesor.</p>
+    <ol class="steps">
+      <li data-n="1">
+        <b>Crea la clase desde el calendario.</b>
+        <p>Pinta el horario en la cancha y en <span class="ui">Tipo de evento</span> elige <span class="ui">Clase</span>. Asigna nombre y entrenador. Abajo del todo está la <span class="ui">Comisión del profesor</span> de esta clase — la vemos en la sección 3.</p>
+        <figure class="shot">
+          <img src="../Assets/guias/crear-clase-comision.jpg" alt="Diálogo Nueva reserva de tipo Clase con la sección Comisión del profesor" loading="lazy">
+          <figcaption>Nueva clase: fecha, cancha, entrenador y, al final, el modelo de comisión que aplicará solo a esta clase.</figcaption>
+        </figure>
+      </li>
+      <li data-n="2">
+        <b>Agrega al alumno en la sección Alumnos.</b>
+        <p>Búscalo por nombre o teléfono — también aparecen los alumnos capturados a mano en recepción. Si tiene paquete vigente, el resultado ya lo muestra con su etiqueta <span class="chip filled">Mensualidad</span>. Si no aparece, agrégalo como invitado con su nombre.</p>
+        <figure class="shot">
+          <img src="../Assets/guias/buscar-alumno-paquete.jpg" alt="Buscador de alumnos mostrando un alumno con etiqueta Mensualidad" loading="lazy">
+          <figcaption>El buscador indica desde antes de inscribirlo que el alumno tiene una mensualidad vigente.</figcaption>
+        </figure>
+      </li>
+      <li data-n="3">
+        <b>Verifica la etiqueta junto al alumno agregado.</b>
+        <p>El selector morado <span class="chip filled">Mensualidad</span> junto a su nombre indica el paquete que va a usar esta clase — se selecciona solo, no hay que tocarlo. Si en la lista de inscritos lo ves con contorno <span class="chip outline">Mensualidad · sin usar</span>, esa inscripción no tomó el paquete: quítalo de la clase y vuelve a agregarlo.</p>
+        <figure class="shot">
+          <img src="../Assets/guias/alumno-agregado-mensualidad.jpg" alt="Alumno agregado con su mensualidad seleccionada y cuota fija por alumno" loading="lazy">
+          <figcaption>El alumno quedó inscrito con su mensualidad seleccionada; abajo, la cuota fija por alumno para el profesor.</figcaption>
+        </figure>
+      </li>
+    </ol>
+
+    <h2>3. Cómo se paga la <em>comisión del profesor</em></h2>
+    <p class="h2-sub">El modelo se elige al crear la clase, en <span class="ui">Comisión del profesor</span>: por defecto <span class="ui">Usar configuración del coach</span> (su % o cuota habitual), o un ajuste solo para esa clase — <span class="ui">% personalizado</span>, <span class="ui">Cuota fija por alumno</span> o <span class="ui">Monto fijo por clase</span>. A partir de ahí la comisión se calcula sola según cómo pagó cada alumno.</p>
+    <div class="tablewrap tcard">
+      <table>
+        <thead>
+          <tr>
+            <th>Situación</th>
+            <th>Qué gana el profesor</th>
+            <th>Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alumno <b>con paquete</b> en una clase con cuota por alumno</td>
+            <td>La cuota fija por cada alumno con paquete</td>
+            <td class="num">Cuota $250 → gana $250 por ese alumno</td>
+          </tr>
+          <tr>
+            <td>Alumno <b>sin paquete</b> que paga la sesión en recepción</td>
+            <td>Su comisión normal sobre ese cobro</td>
+            <td class="num">50/50 y cobro de $300 → $150 y $150</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">En el reporte, una clase pagada solo con mensualidades muestra <b>"—" en la columna Bruto</b>: es normal. El dinero de la mensualidad ya quedó registrado cuando se vendió el paquete; aquí solo se ve la ganancia del profesor. Por lo mismo, en las tarjetas de arriba "Paga entrenador" indica cuánto viene de mensualidades y "Queda club" se refiere solo a los cobros hechos en clases.</div>
+    <figure class="shot">
+      <img src="../Assets/guias/detalle-profesor.jpg" alt="Detalle del entrenador con cobros del rango, método de pago e historial de comisiones por clase" loading="lazy">
+      <figcaption>Detalle del entrenador (toca su fila en <span class="ui">Entrenadores</span>): cobros del rango, cómo entró el dinero y el historial clase por clase.</figcaption>
+    </figure>
+
+    <h2>4. Dudas <em>frecuentes</em></h2>
+    <div class="faq">
+      <div class="q">
+        <b>Inscribí al alumno y aparece "sin usar".</b>
+        <span>Esa inscripción no tomó el paquete (suele pasar si el paquete se asignó después de inscribirlo). Quítalo de la clase y vuelve a agregarlo: el paquete se aplica en automático.</span>
+      </div>
+      <div class="q">
+        <b>¿Cuándo vence la mensualidad?</b>
+        <span>El último día del mes calendario en curso, sin importar el día en que se vendió. Un paquete por sesiones dura hasta agotar sus sesiones.</span>
+      </div>
+      <div class="q">
+        <b>¿Quitar a un alumno de la clase devuelve su pago?</b>
+        <span>No. Ninguna cancelación genera devolución automática; si corresponde devolver, se hace por fuera y se registra manualmente.</span>
+      </div>
+      <div class="q">
+        <b>¿Puedo inscribir más alumnos que el cupo de la clase?</b>
+        <span>Sí. Desde el dashboard el cupo crece solo al inscribir; el límite solo aplica cuando los jugadores se anotan por su cuenta desde la app.</span>
+      </div>
+    </div>
+
+    <div class="g-cta">
+      <div>
+        <b>¿Dudas con tu operación?</b>
+        <p>Escríbenos y te ayudamos a configurar paquetes y comisiones para tu club.</p>
+      </div>
+      <a href="/empezar/" class="p-btn-lime">Hablar con CourtBit</a>
+    </div>
+
+  </main>
+
+  <footer class="e-footer">
+    <div class="container">
+      <div class="e-footer-grid">
+        <div class="e-footer-col">
+          <div class="e-footer-brand">Court<span>Bit</span></div>
+          <p class="e-footer-tagline">Sistema de reservas, academias y competencias para clubes de padel en México.</p>
+          <div class="e-footer-apps">
+            <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="e-footer-app" target="_blank" rel="noopener">App Store ↗</a>
+            <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&amp;hl=es_MX" class="e-footer-app" target="_blank" rel="noopener">Google Play ↗</a>
+          </div>
+        </div>
+
+        <div class="e-footer-col">
+          <h4>Producto</h4>
+          <a href="/clubes/" class="e-fl">Para clubes</a>
+          <a href="/academias/" class="e-fl">Para academias</a>
+          <a href="/competencias/" class="e-fl">Para organizadores</a>
+          <a href="/pricing/" class="e-fl">Precios</a>
+        </div>
+
+        <div class="e-footer-col">
+          <h4>Herramientas</h4>
+          <a href="/calculadora-torneo/" class="e-fl">Calculadora de torneo</a>
+          <a href="/calculadora-liga/" class="e-fl">Calculadora de liga</a>
+          <a href="/generador-cuadro-torneo-padel/" class="e-fl">Generador de cuadros</a>
+        </div>
+
+        <div class="e-footer-col">
+          <h4>Guías</h4>
+          <a href="/guias/" class="e-fl">Todas las guías</a>
+          <a href="/guia-academia/" class="e-fl">Academia: paquetes y comisiones</a>
+          <a href="/como-organizar-torneo-padel/" class="e-fl">Cómo organizar un torneo</a>
+          <a href="/mejores-practicas-torneo-padel/" class="e-fl">Mejores prácticas</a>
+        </div>
+      </div>
+
+      <div class="e-footer-bottom">
+        <span class="e-footer-copy">&copy; 2026 CourtBit · Todos los derechos reservados</span>
+        <div class="e-footer-legal">
+          <a href="/legal/" class="e-fl">Legal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

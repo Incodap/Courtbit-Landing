@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guías CourtBit — manuales de operación para tu club de padel</title>
+  <meta name="description" content="Guías paso a paso para clubes y organizadores: operar academia (paquetes, mensualidades, comisiones), organizar torneos y ligas de padel.">
+  <link rel="canonical" href="https://courtbit.com.mx/guias/">
+  <link rel="alternate" hreflang="es" href="https://courtbit.com.mx/guias/">
+  <link rel="alternate" hreflang="x-default" href="https://courtbit.com.mx/guias/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <!-- OG / Twitter -->
+  <meta property="og:url" content="https://courtbit.com.mx/guias/">
+  <meta property="og:title" content="Guías CourtBit — manuales para tu club de padel">
+  <meta property="og:description" content="Guías paso a paso para operar tu club con CourtBit: academia, torneos y ligas.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="../Assets/courtbit-logo.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=swap">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Guías CourtBit",
+    "description": "Guías paso a paso para clubes y organizadores de padel.",
+    "inLanguage": "es",
+    "url": "https://courtbit.com.mx/guias/"
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue: #2e59fb;
+      --blue-deep: #1a45e0;
+      --blue-mist: #eaf0ff;
+      --navy: #0f1d4d;
+      --navy-950: #060a26;
+      --lime: #B8F02B;
+      --paper: #ffffff;
+      --bg: #fbfbfd;
+      --text: #0f1d4d;
+      --text-soft: #3a4262;
+      --text-muted: #6b7191;
+      --text-faint: #9aa0bb;
+      --border: #e6e8ef;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--paper);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .e-statusbar {
+      background: var(--navy-950);
+      color: var(--paper);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.825rem;
+      font-weight: 500;
+    }
+    .e-nav { background: var(--blue); color: var(--paper); padding: 18px 0; position: sticky; top: 0; z-index: 50; }
+    .e-nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .e-logo { display: flex; align-items: center; }
+    .e-logo img { height: 90px; width: auto; display: block; }
+    .e-nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+    .e-nav-links a { color: var(--paper); font-weight: 600; font-size: 0.95rem; opacity: 0.9; transition: opacity 200ms; }
+    .e-nav-links a:hover { opacity: 1; }
+    .e-nav-links a.is-active { color: var(--lime); opacity: 1; }
+    .p-btn-lime {
+      display: inline-block;
+      background: var(--lime); color: var(--navy);
+      border: 2px solid var(--lime);
+      padding: 13px 24px; border-radius: 999px;
+      font-weight: 700; font-size: 0.95rem;
+      box-shadow: 0 12px 32px -8px rgba(184, 240, 43, 0.4);
+      transition: all 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .p-btn-lime:hover { background: #c7f548; transform: translateY(-2px); box-shadow: 0 18px 36px -8px rgba(184, 240, 43, 0.55); }
+    @media (max-width: 768px) {
+      .e-nav-links { display: none; }
+      .e-logo img { height: 72px; }
+    }
+
+    .g-hero {
+      background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy) 100%);
+      color: var(--paper);
+      padding: 56px 0 60px;
+    }
+    .p-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      margin-bottom: 20px;
+    }
+    .p-eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 999px;
+      background: var(--lime);
+      box-shadow: 0 0 0 3px rgba(184, 240, 43, 0.25);
+    }
+    .g-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      font-weight: 800;
+      letter-spacing: -0.032em;
+      line-height: 1.05;
+      margin: 0 0 16px;
+      text-wrap: balance;
+    }
+    .g-hero h1 em { font-style: italic; color: var(--lime); }
+    .g-hero .lead {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 0;
+      max-width: 56ch;
+      line-height: 1.55;
+    }
+
+    .g-section { padding: 56px 0 8px; }
+    .g-section:last-of-type { padding-bottom: 80px; }
+    .g-section h2 {
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: -0.028em;
+      margin: 0 0 4px;
+      color: var(--navy);
+    }
+    .g-section h2 em { font-style: italic; color: var(--blue); }
+    .g-section .sub { color: var(--text-muted); font-size: 0.98rem; margin: 0 0 24px; max-width: 62ch; }
+
+    .g-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .g-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .g-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px -16px rgba(15, 29, 77, 0.22);
+      border-color: rgba(46, 89, 251, 0.3);
+    }
+    .g-card .thumb {
+      aspect-ratio: 16 / 8.5;
+      background: var(--blue-mist);
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .g-card .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .g-card .body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+    .g-card .tag {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--blue-deep);
+      background: var(--blue-mist);
+      border-radius: 999px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+    .g-card h3 {
+      font-size: 1.12rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+    .g-card p { margin: 0 0 14px; color: var(--text-soft); font-size: 0.9rem; line-height: 1.55; flex: 1; }
+    .g-card .go { color: var(--blue-deep); font-weight: 700; font-size: 0.9rem; }
+    .g-card:hover .go { text-decoration: underline; }
+
+    /* Footer */
+    .e-footer { background: var(--navy-950); color: var(--text-faint); padding: 56px 0 24px; font-size: 0.875rem; }
+    .e-footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+    .e-footer-col h4 {
+      font-size: 0.6875rem; font-weight: 800; color: var(--paper);
+      letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 14px;
+    }
+    .e-footer-col .e-fl { display: block; margin-bottom: 8px; font-size: 0.875rem; color: var(--text-faint); transition: color 0.2s; }
+    .e-footer-col .e-fl:hover { color: var(--lime); }
+    .e-footer-brand { color: var(--paper); font-weight: 800; font-size: 1.25rem; letter-spacing: 0.04em; }
+    .e-footer-brand span { color: var(--lime); }
+    .e-footer-tagline { font-size: 0.875rem; color: var(--text-faint); margin: 10px 0 18px; max-width: 280px; line-height: 1.55; }
+    .e-footer-apps { display: flex; gap: 10px; flex-wrap: wrap; }
+    .e-footer-app {
+      background: var(--lime); color: var(--navy);
+      padding: 7px 14px; border-radius: 999px;
+      font-weight: 700; font-size: 0.8125rem;
+    }
+    .e-footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    }
+    @media (max-width: 900px) { .e-footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .e-footer-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="e-statusbar">Guías CourtBit · Manuales de operación para tu club</div>
+
+  <nav class="e-nav">
+    <div class="container e-nav-inner">
+      <a href="/" class="e-logo" aria-label="CourtBit"><img src="../Assets/courtbit-logo.svg" alt="CourtBit"></a>
+      <ul class="e-nav-links">
+        <li><a href="/clubes/">Para clubes</a></li>
+        <li><a href="/academias/">Para academias</a></li>
+        <li><a href="/competencias/">Para organizadores</a></li>
+        <li><a href="/guias/" class="is-active">Guías</a></li>
+        <li><a href="/pricing/">Precios</a></li>
+      </ul>
+      <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
+    </div>
+  </nav>
+
+  <header class="g-hero">
+    <div class="container">
+      <span class="p-eyebrow"><span class="dot"></span> Guías CourtBit</span>
+      <h1>Manuales para operar tu club <em>sin fricción</em></h1>
+      <p class="lead">Paso a paso, con capturas reales del dashboard: cómo operar tu academia y cómo organizar torneos y ligas con CourtBit.</p>
+    </div>
+  </header>
+
+  <section class="g-section">
+    <div class="container">
+      <h2>Operación del <em>club</em></h2>
+      <p class="sub">Para recepción y administración: los flujos del día a día en el dashboard.</p>
+      <div class="g-grid">
+        <a href="/guia-academia/" class="g-card">
+          <div class="thumb"><img src="../Assets/guias/detalle-profesor.jpg" alt="Detalle del entrenador en el dashboard de CourtBit" loading="lazy"></div>
+          <div class="body">
+            <span class="tag">Academia</span>
+            <h3>Paquetes, mensualidades y comisiones del profesor</h3>
+            <p>Vender un paquete o mensualidad, inscribir alumnos a clases para que se descuente solo, y cómo se calcula la comisión de cada profesor.</p>
+            <span class="go">Leer la guía →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="g-section">
+    <div class="container">
+      <h2>Torneos y <em>ligas</em></h2>
+      <p class="sub">Para organizadores: formatos, buenas prácticas y herramientas de competencia.</p>
+      <div class="g-grid">
+        <a href="/como-organizar-torneo-padel/" class="g-card">
+          <div class="body">
+            <span class="tag">Torneos</span>
+            <h3>Cómo organizar un torneo de padel</h3>
+            <p>De la convocatoria a la premiación: categorías, inscripciones, cuadros y calendario sin dolores de cabeza.</p>
+            <span class="go">Leer la guía →</span>
+          </div>
+        </a>
+        <a href="/mejores-practicas-torneo-padel/" class="g-card">
+          <div class="body">
+            <span class="tag">Torneos</span>
+            <h3>Mejores prácticas para tu torneo</h3>
+            <p>Lo que separa un torneo que fluye de uno caótico: tiempos, canchas, comunicación con jugadores.</p>
+            <span class="go">Leer la guía →</span>
+          </div>
+        </a>
+        <a href="/liga-americana-padel/" class="g-card">
+          <div class="body">
+            <span class="tag">Ligas</span>
+            <h3>Liga americana de padel</h3>
+            <p>Qué es el formato americano por parejas, cómo se puntúa y cómo armarla en tu club.</p>
+            <span class="go">Leer la guía →</span>
+          </div>
+        </a>
+        <a href="/liga-padel-americana-individual/" class="g-card">
+          <div class="body">
+            <span class="tag">Ligas</span>
+            <h3>Liga americana individual</h3>
+            <p>La variante individual del formato americano: rotación de parejas y ranking por jugador.</p>
+            <span class="go">Leer la guía →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="e-footer">
+    <div class="container">
+      <div class="e-footer-grid">
+        <div class="e-footer-col">
+          <div class="e-footer-brand">Court<span>Bit</span></div>
+          <p class="e-footer-tagline">Sistema de reservas, academias y competencias para clubes de padel en México.</p>
+          <div class="e-footer-apps">
+            <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="e-footer-app" target="_blank" rel="noopener">App Store ↗</a>
+            <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&amp;hl=es_MX" class="e-footer-app" target="_blank" rel="noopener">Google Play ↗</a>
+          </div>
+        </div>
+
+        <div class="e-footer-col">
+          <h4>Producto</h4>
+          <a href="/clubes/" class="e-fl">Para clubes</a>
+          <a href="/academias/" class="e-fl">Para academias</a>
+          <a href="/competencias/" class="e-fl">Para organizadores</a>
+          <a href="/pricing/" class="e-fl">Precios</a>
+        </div>
+
+        <div class="e-footer-col">
+          <h4>Herramientas</h4>
+          <a href="/calculadora-torneo/" class="e-fl">Calculadora de torneo</a>
+          <a href="/calculadora-liga/" class="e-fl">Calculadora de liga</a>
+          <a href="/generador-cuadro-torneo-padel/" class="e-fl">Generador de cuadros</a>
+        </div>
+
+        <div class="e-footer-col">
+          <h4>Guías</h4>
+          <a href="/guias/" class="e-fl">Todas las guías</a>
+          <a href="/guia-academia/" class="e-fl">Academia: paquetes y comisiones</a>
+          <a href="/como-organizar-torneo-padel/" class="e-fl">Cómo organizar un torneo</a>
+          <a href="/mejores-practicas-torneo-padel/" class="e-fl">Mejores prácticas</a>
+        </div>
+      </div>
+
+      <div class="e-footer-bottom">
+        <span class="e-footer-copy">&copy; 2026 CourtBit · Todos los derechos reservados</span>
+        <div class="e-footer-legal">
+          <a href="/legal/" class="e-fl">Legal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
