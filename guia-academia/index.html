@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Guía de Academia: paquetes, mensualidades y comisiones — CourtBit</title>
-  <meta name="description" content="Guía paso a paso para clubes: cómo vender un paquete o mensualidad a un alumno, inscribirlo a clases para que se descuente solo y cómo se calcula la comisión del profesor.">
+  <meta name="description" content="Guía paso a paso para clubes: vender un paquete o mensualidad, inscribir alumnos a clases para que se descuente solo, y comisionar al profesor por asistencia (cuota fija por alumno).">
   <link rel="canonical" href="https://courtbit.com.mx/guia-academia/">
   <link rel="alternate" hreflang="es" href="https://courtbit.com.mx/guia-academia/">
   <link rel="alternate" hreflang="x-default" href="https://courtbit.com.mx/guia-academia/">
@@ -332,6 +332,45 @@
     }
     .note b { font-weight: 700; }
 
+    /* Callout destacado — concepto clave (distinto del aviso ámbar) */
+    .highlight {
+      background: var(--blue-mist);
+      border: 1px solid rgba(46, 89, 251, 0.18);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin: 6px 0 18px;
+    }
+    .highlight h3 {
+      margin: 0 0 8px;
+      font-size: 1.06rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .highlight h3::before {
+      content: "";
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: var(--lime);
+      box-shadow: 0 0 0 3px rgba(184, 240, 43, 0.3);
+      flex: none;
+    }
+    .highlight p { margin: 0 0 10px; color: var(--text-soft); font-size: 0.95rem; line-height: 1.6; }
+    .highlight ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+      color: var(--text-soft);
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+    .highlight li b { color: var(--navy); }
+    .highlight > :last-child { margin-bottom: 0; }
+
     .tablewrap { overflow-x: auto; margin-top: 18px; -webkit-overflow-scrolling: touch; }
     .tcard { background: var(--paper); border: 1px solid var(--border); border-radius: 16px; }
     table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 0.94rem; }
@@ -538,8 +577,21 @@
       </li>
     </ol>
 
-    <h2>3. Cómo se paga la <em>comisión del profesor</em></h2>
+    <h2>3. Comisionar al profesor <em>por asistencia</em></h2>
     <p class="h2-sub">El modelo se elige al crear la clase, en <span class="ui">Comisión del profesor</span>: por defecto <span class="ui">Usar configuración del coach</span> (su % o cuota habitual), o un ajuste solo para esa clase — <span class="ui">% personalizado</span>, <span class="ui">Cuota fija por alumno</span> o <span class="ui">Monto fijo por clase</span>. A partir de ahí la comisión se calcula sola según cómo pagó cada alumno.</p>
+
+    <div class="highlight">
+      <h3>Cuota fija por alumno = pagar por asistencia</h3>
+      <p>Es el modelo estrella para academias: el profesor gana una <b>cuota fija por cada alumno con paquete</b> que registras en su clase. Lo defines al crear la clase, en <span class="ui">Comisión del profesor → Cuota fija por alumno</span>, y escribes el monto (por ejemplo, $150 por alumno).</p>
+      <ul>
+        <li><b>Registras quién asistió agregándolo a la clase con su paquete.</b> Ese es el momento en que se cuenta la cuota — cada alumno con paquete suma su monto.</li>
+        <li><b>El dinero sale del paquete que el alumno ya pagó</b>, no de un cobro nuevo. Por eso en el reporte esas clases muestran "—" en Bruto: solo se ve la ganancia del profesor.</li>
+        <li><b>Si alguien no vino, quítalo de la clase.</b> No se le paga al profesor por ese alumno y se le devuelve la sesión al paquete.</li>
+        <li><b>Un alumno sin paquete que paga en recepción no genera esta cuota</b> — su cobro se reparte con la comisión normal del profesor (ver abajo).</li>
+      </ul>
+    </div>
+
+    <p class="h2-sub" style="margin-top: 24px;">Resumen de los dos caminos según cómo pagó cada alumno:</p>
     <div class="tablewrap tcard">
       <table>
         <thead>
@@ -574,6 +626,10 @@
       <div class="q">
         <b>Inscribí al alumno y aparece "sin usar".</b>
         <span>Esa inscripción no tomó el paquete (suele pasar si el paquete se asignó después de inscribirlo). Quítalo de la clase y vuelve a agregarlo: el paquete se aplica en automático.</span>
+      </div>
+      <div class="q">
+        <b>¿La cuota se cuenta al marcar asistencia o al inscribir?</b>
+        <span>Al inscribir al alumno con su paquete — ese es el momento en que la clase "consume" la sesión y suma la cuota del profesor. Marcar presente o ausente después no cambia el monto. En la práctica: agrega a la clase solo a quien asistió, y si inscribiste a alguien que no vino, quítalo.</span>
       </div>
       <div class="q">
         <b>¿Cuándo vence la mensualidad?</b>
