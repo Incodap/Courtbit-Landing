@@ -220,7 +220,22 @@
       display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     }
     @media (max-width: 900px) { .e-footer-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 520px) { .e-footer-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .e-statusbar { font-size: 0.72rem; padding: 7px 14px; line-height: 1.4; }
+      .e-nav { padding: 10px 0; }
+      .e-nav-inner { gap: 12px; }
+      .p-btn-lime { padding: 11px 18px; font-size: 0.88rem; }
+      .g-hero { padding: 38px 0 42px; }
+      .g-hero .lead { font-size: 0.98rem; }
+      .g-section { padding: 40px 0 4px; }
+      .g-section:last-of-type { padding-bottom: 56px; }
+    }
+    @media (max-width: 520px) {
+      .container { padding: 0 16px; }
+      .g-grid { grid-template-columns: 1fr; }
+      .g-card .body { padding: 16px 18px 18px; }
+      .e-footer-grid { grid-template-columns: 1fr; gap: 26px; }
+    }
   </style>
 </head>
 <body>

@@ -194,6 +194,43 @@
       font-size: 0.9em;
     }
 
+    /* Comparativo mensualidad vs. por sesiones */
+    .pkg-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 0 0 22px;
+    }
+    .pc-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 20px;
+    }
+    .pc-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .pc-dot { width: 8px; height: 8px; border-radius: 999px; flex: none; }
+    .pc-dot.lime { background: var(--lime); box-shadow: 0 0 0 3px rgba(184, 240, 43, 0.3); }
+    .pc-dot.blue { background: var(--blue); box-shadow: 0 0 0 3px rgba(46, 89, 251, 0.18); }
+    .pc-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      display: grid;
+      gap: 7px;
+    }
+    .pc-card li b { color: var(--navy); }
+
     .chip {
       display: inline-flex;
       align-items: center;
@@ -226,9 +263,9 @@
     }
     .note b { font-weight: 700; }
 
-    .tablewrap { overflow-x: auto; margin-top: 18px; }
+    .tablewrap { overflow-x: auto; margin-top: 18px; -webkit-overflow-scrolling: touch; }
     .tcard { background: var(--paper); border: 1px solid var(--border); border-radius: 16px; }
-    table { border-collapse: collapse; width: 100%; font-size: 0.94rem; }
+    table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 0.94rem; }
     th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
     th {
       font-size: 0.7rem;
@@ -292,10 +329,30 @@
       display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     }
     @media (max-width: 900px) { .e-footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) {
+      .e-statusbar { font-size: 0.72rem; padding: 7px 14px; line-height: 1.4; }
+      .e-nav { padding: 10px 0; }
+      .e-nav-inner { gap: 12px; }
+      .p-btn-lime { padding: 11px 18px; font-size: 0.88rem; }
+      .g-hero { padding: 38px 0 42px; }
+      .g-hero .lead { font-size: 0.98rem; }
+      .g-wrap h2 { margin-top: 48px; }
+      .pkg-compare { grid-template-columns: 1fr; }
+      .g-cta { padding: 22px 20px; }
+      .g-cta .p-btn-lime { width: 100%; text-align: center; }
+      figure.shot figcaption { font-size: 0.8rem; }
+    }
     @media (max-width: 520px) {
-      .e-footer-grid { grid-template-columns: 1fr; }
-      ol.steps > li { padding: 18px 18px 18px 66px; }
-      ol.steps > li::before { left: 16px; top: 17px; width: 34px; height: 34px; }
+      .container { padding: 0 16px; }
+      .g-wrap { padding-left: 16px; padding-right: 16px; }
+      .e-footer-grid { grid-template-columns: 1fr; gap: 26px; }
+      ol.steps > li { padding: 16px 16px 16px 60px; border-radius: 14px; }
+      ol.steps > li::before { left: 14px; top: 15px; width: 32px; height: 32px; font-size: 0.9rem; }
+      ol.steps p { font-size: 0.92rem; }
+      .pc-card { padding: 16px 16px; }
+      .note { padding: 12px 14px; font-size: 0.9rem; }
+      .faq .q { padding: 14px 16px; }
+      figure.shot img { border-radius: 10px; }
     }
   </style>
 </head>
@@ -330,11 +387,31 @@
   <main class="g-wrap">
 
     <h2>1. Asignar un <em>paquete</em> al alumno</h2>
-    <p class="h2-sub">El alumno paga en el club (efectivo, transferencia o terminal). En el dashboard solo se registra ese cobro y el paquete queda activo a su nombre al momento.</p>
+    <p class="h2-sub">El alumno paga en el club (efectivo, transferencia o terminal). En el dashboard solo se registra ese cobro y el paquete queda activo a su nombre al momento. Antes de vender, conviene tener clara la diferencia entre los dos tipos:</p>
+
+    <div class="pkg-compare">
+      <div class="pc-card">
+        <h3><span class="pc-dot lime"></span>Mensualidad</h3>
+        <ul>
+          <li>Asistencia <b>ilimitada</b> a clases mientras esté vigente; no se descuentan sesiones.</li>
+          <li>Cubre el <b>mes calendario en curso</b>: vence el último día del mes sin importar el día en que se venda — no son 30 días.</li>
+          <li>Si se vende ya avanzado el mes, puedes ajustar el precio en esa venta (el campo es editable).</li>
+        </ul>
+      </div>
+      <div class="pc-card">
+        <h3><span class="pc-dot blue"></span>Por sesiones</h3>
+        <ul>
+          <li>Paquete de N clases: se <b>descuenta una sesión</b> por cada asistencia.</li>
+          <li>Dura hasta <b>agotar sus sesiones</b> (o hasta la vigencia del paquete, si la tiene).</li>
+          <li>Ideal para alumnos ocasionales o paquetes tipo "10 clases — 60 días".</li>
+        </ul>
+      </div>
+    </div>
+
     <ol class="steps">
       <li data-n="1">
         <b>Abre "Venta de paquetes" en el menú lateral.</b>
-        <p>La página te lleva en orden: <span class="ui">Paquete</span>, <span class="ui">Alumno</span> y <span class="ui">Cobro</span>. Si el paquete que necesitas no existe, créalo con <span class="ui">+ Nuevo paquete</span>: por <b>sesiones</b> (descuenta una por asistencia) o <b>mensualidad</b> (asiste ilimitado y vence el último día del mes calendario).</p>
+        <p>La página te lleva en orden: <span class="ui">Paquete</span>, <span class="ui">Alumno</span> y <span class="ui">Cobro</span>. Si el paquete que necesitas no existe, créalo con <span class="ui">+ Nuevo paquete</span> eligiendo su tipo (mensualidad o por sesiones, como arriba).</p>
         <figure class="shot">
           <img src="../Assets/guias/venta-paquetes-mensualidad.jpg" alt="Página Venta de paquetes con el diálogo Nuevo paquete de tipo Mensualidad" loading="lazy">
           <figcaption>Venta de paquetes: pasos Paquete, Alumno y Cobro. Al frente, la creación de una mensualidad.</figcaption>
