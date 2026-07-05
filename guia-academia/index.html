@@ -244,12 +244,32 @@
     .chip.outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-muted); }
 
     figure.shot { margin: 16px 0 0; }
-    figure.shot img {
+    figure.shot img,
+    figure.shot video {
+      display: block;
+      width: 100%;
+      height: auto;
       border: 1px solid var(--border);
       border-radius: 14px;
       box-shadow: 0 16px 40px -18px rgba(15, 29, 77, 0.25);
     }
+    figure.shot video { background: var(--navy-950); }
     figure.shot figcaption { font-size: 0.84rem; color: var(--text-muted); margin-top: 8px; }
+    .shot-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue-deep);
+      background: var(--blue-mist);
+      border-radius: 999px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+    .shot-badge svg { width: 11px; height: 11px; }
 
     .note {
       background: var(--amber-bg);
@@ -413,8 +433,17 @@
         <b>Abre "Venta de paquetes" en el menú lateral.</b>
         <p>La página te lleva en orden: <span class="ui">Paquete</span>, <span class="ui">Alumno</span> y <span class="ui">Cobro</span>. Si el paquete que necesitas no existe, créalo con <span class="ui">+ Nuevo paquete</span> eligiendo su tipo (mensualidad o por sesiones, como arriba).</p>
         <figure class="shot">
-          <img src="../Assets/guias/venta-paquetes-mensualidad.jpg" alt="Página Venta de paquetes con el diálogo Nuevo paquete de tipo Mensualidad" loading="lazy">
-          <figcaption>Venta de paquetes: pasos Paquete, Alumno y Cobro. Al frente, la creación de una mensualidad.</figcaption>
+          <span class="shot-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Video</span>
+          <video
+            src="../Assets/guias/asignar-paquete.mp4"
+            poster="../Assets/guias/venta-paquetes-mensualidad.jpg"
+            controls
+            playsinline
+            preload="metadata">
+            Tu navegador no puede reproducir el video.
+            <a href="../Assets/guias/asignar-paquete.mp4">Descárgalo aquí</a>.
+          </video>
+          <figcaption>Recorrido completo: crear el paquete, buscar al alumno y registrar el cobro.</figcaption>
         </figure>
       </li>
       <li data-n="2">
