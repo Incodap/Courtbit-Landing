@@ -521,6 +521,15 @@
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        // Salvaguarda: revela de inmediato lo que ya está en pantalla al cargar,
+        // por si el observer no dispara para el contenido visible above-the-fold.
+        function revealInView() {
+            document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.95) el.classList.add('visible');
+            });
+        }
+        window.addEventListener('load', revealInView);
+        setTimeout(revealInView, 250);
 
         /* ── EMPRESA TOGGLE ── */
         const esEmpresa = document.getElementById('esEmpresa');
