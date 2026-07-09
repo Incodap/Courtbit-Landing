@@ -484,9 +484,9 @@
             <!-- SUCCESS -->
             <div class="success-card" id="successCard">
                 <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
-                <h2>¡Casi listo!</h2>
-                <p>Se abrió WhatsApp con tu solicitud lista para enviar. Solo dale enviar y nuestro equipo te contactará con el contrato y los siguientes pasos. Si no se abrió, usa el botón de abajo.</p>
-                <a href="#" class="btn-primary" id="waFallback" target="_blank">Abrir WhatsApp</a>
+                <h2 id="successTitle">¡Solicitud enviada!</h2>
+                <p id="successText">Recibimos tus datos. Nuestro equipo revisará tu información y te contactará por correo con el contrato y los siguientes pasos.</p>
+                <a href="#" class="btn-primary" id="waFallback" target="_blank" style="display:none">Enviar por WhatsApp</a>
             </div>
         </div>
     </section>
@@ -581,11 +581,24 @@
             return L.join('\n');
         }
 
-        function showSuccess(waUrl) {
+        function showResult(ok, waUrl) {
             document.getElementById('formCard').style.display = 'none';
             const s = document.getElementById('successCard');
+            const title = document.getElementById('successTitle');
+            const text = document.getElementById('successText');
+            const wa = document.getElementById('waFallback');
+            if (ok) {
+                title.textContent = '¡Solicitud enviada!';
+                text.textContent = 'Recibimos tus datos. Nuestro equipo revisará tu información y te contactará por correo con el contrato y los siguientes pasos.';
+                wa.style.display = 'none';
+            } else {
+                // El correo falló: ofrecemos WhatsApp como rescate para no perder la solicitud
+                title.textContent = 'Casi listo';
+                text.textContent = 'No pudimos enviar tu solicitud por correo en este momento. Por favor mándanosla por WhatsApp con el siguiente botón y la procesamos igual.';
+                wa.href = waUrl;
+                wa.style.display = 'inline-flex';
+            }
             s.classList.add('show');
-            document.getElementById('waFallback').href = waUrl;
             s.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
@@ -616,30 +629,29 @@
                 fecha: new Date().toISOString()
             };
 
-            // Envío por correo vía Formspree (mismo servicio que /empezar/)
-            if (FORMSPREE_ENDPOINT) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Enviando…';
-                try {
-                    const r = await fetch(FORMSPREE_ENDPOINT, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-                    if (!r.ok) throw new Error();
-                } catch (err) {
-                    // Respaldo local si el correo falla, para no perder la solicitud
-                    const ls = JSON.parse(localStorage.getItem('courtbit_colaboradores') || '[]');
-                    ls.push(data);
-                    localStorage.setItem('courtbit_colaboradores', JSON.stringify(ls));
-                }
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Enviar solicitud';
+            // Envío por CORREO vía Formspree (mismo servicio que /empezar/)
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando…';
+            let ok = false;
+            try {
+                const r = await fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                ok = r.ok;
+            } catch (err) { ok = false; }
+            if (!ok) {
+                // Si el correo falla, guardamos respaldo local para no perder la solicitud
+                const ls = JSON.parse(localStorage.getItem('courtbit_colaboradores') || '[]');
+                ls.push(data);
+                localStorage.setItem('courtbit_colaboradores', JSON.stringify(ls));
             }
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar solicitud';
 
-            // WhatsApp (respaldo, siempre se abre)
-            window.open(waUrl, '_blank');
-            showSuccess(waUrl);
+            // Correo como canal principal; WhatsApp solo se ofrece si el correo falló
+            showResult(ok, waUrl);
         });
     </script>
 </body>
