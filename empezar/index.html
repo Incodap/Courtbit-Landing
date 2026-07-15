@@ -754,10 +754,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           localStorage.setItem('courtbit_leads', JSON.stringify(ls));
         }
 
-        // Conversion de TikTok Ads. El guard evita romper la pantalla de exito
-        // si un bloqueador impide que cargue el pixel.
+        // Conversion de TikTok Ads. 'Lead' es el nombre vigente del evento
+        // (TikTok renombro SubmitForm -> Lead en mayo 2025); en Events Manager
+        // aparece como "Submit form". El guard evita romper la pantalla de
+        // exito si un bloqueador impide que cargue el pixel.
         if (window.ttq) {
-          ttq.track('SubmitForm', { content_name: 'Landing Empezar ES' });
+          ttq.track('Lead', { content_name: 'Landing Empezar ES' });
         }
 
         if (nombre) {
