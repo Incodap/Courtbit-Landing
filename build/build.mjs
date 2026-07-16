@@ -93,6 +93,7 @@ function renderNav(page, locale) {
     navClubes: strings.navClubes,
     navAcademias: strings.navAcademias,
     navCompetencias: strings.navCompetencias,
+    navTorneos: strings.navTorneos,
     navPricing: strings.navPricing,
     navDashboard: strings.navDashboard,
     navCta: strings.navCta,
@@ -125,6 +126,7 @@ function renderFooter(page, locale) {
     navClubes: strings.navClubes,
     navAcademias: strings.navAcademias,
     navCompetencias: strings.navCompetencias,
+    navTorneos: strings.navTorneos,
     navPricing: strings.navPricing,
   });
 }
