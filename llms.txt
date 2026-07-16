@@ -42,9 +42,19 @@ Disponible como app nativa (App Store y Google Play) para jugadores y como panel
 - [CourtBit en App Store (iOS)](https://apps.apple.com/mx/app/courtbit/id6757516543)
 - [CourtBit en Google Play (Android)](https://play.google.com/store/apps/details?id=com.incodap.courtbit&hl=es_MX)
 
+## English
+
+CourtBit's core pages are also available in English at the same paths under `/en/`:
+
+- [Home](https://courtbit.com.mx/en/)
+- [Bookings for clubs](https://courtbit.com.mx/en/clubes/)
+- [Academies](https://courtbit.com.mx/en/academias/)
+- [Competitions / organizers](https://courtbit.com.mx/en/competencias/)
+- [Pricing](https://courtbit.com.mx/en/pricing/)
+- [Legal: terms, privacy and refunds](https://courtbit.com.mx/en/legal/) (English translation for convenience; the Spanish version is the legally binding original)
+
 ## Optional
 
-- [Versión en inglés del sitio](https://courtbit.com.mx/en/)
 - [Publicidad en la app (para negocios)](https://courtbit.com.mx/ads/)
 - [Programa de referidos para organizadores](https://courtbit.com.mx/referidos/)
 - [Legal: términos, privacidad y reembolsos](https://courtbit.com.mx/legal/)

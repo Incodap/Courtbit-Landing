@@ -1,0 +1,21 @@
+<nav class="e-nav" aria-label="{{navAriaLabel}}">
+  <div class="e-nav-inner">
+    <a href="{{prefix}}/" class="e-logo" aria-label="{{logoAria}}">
+      <img src="/Assets/courtbit-logo.svg" alt="CourtBit">
+    </a>
+    <div class="e-nav-links">
+      <a href="{{prefix}}/clubes/" class="{{activeClubes}}">{{navClubes}}</a>
+      <a href="{{prefix}}/academias/" class="{{activeAcademias}}">{{navAcademias}}</a>
+      <a href="{{prefix}}/competencias/" class="{{activeCompetencias}}">{{navCompetencias}}</a>
+      <a href="{{prefix}}/pricing/" class="{{activePricing}}">{{navPricing}}</a>
+    </div>
+    <div class="e-nav-secondary">
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">{{navDashboard}}</a>
+      <a href="{{localeSwitchHref}}" class="e-nav-lang">{{localeSwitchLabel}}</a>
+    </div>
+    <a href="{{prefix}}/empezar/" class="e-nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      {{navCta}}
+    </a>
+  </div>
+</nav>

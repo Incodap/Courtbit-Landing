@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CourtBit Academia — gestión de alumnos y clases para entrenadores</title>
-  <meta name="description" content="Software de academia de padel: lista de alumnos, agenda de clases, pagos directos. Planes para tu academia; CourtBit solo cobra 4% al alumno.">
-  <link rel="canonical" href="https://courtbit.com.mx/academias/">
+  <title>CourtBit Academia — student and class management for coaches</title>
+  <meta name="description" content="Padel academy software: student roster, class scheduling, direct payments. Plans for your academy; CourtBit only charges 4% to the student.">
+  <link rel="canonical" href="https://courtbit.com.mx/en/academias/">
   <link rel="alternate" hreflang="es" href="https://courtbit.com.mx/academias/">
   <link rel="alternate" hreflang="en" href="https://courtbit.com.mx/en/academias/">
   <link rel="alternate" hreflang="x-default" href="https://courtbit.com.mx/academias/">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
   <!-- OG / Twitter -->
-  <meta property="og:url" content="https://courtbit.com.mx/academias/">
-  <meta property="og:title" content="CourtBit Academia — para tu academia de padel">
-  <meta property="og:description" content="Lista de alumnos, agenda de clases, cobros directos. CourtBit solo cobra 4% al alumno, nunca al instructor.">
+  <meta property="og:url" content="https://courtbit.com.mx/en/academias/">
+  <meta property="og:title" content="CourtBit Academia — for your padel academy">
+  <meta property="og:description" content="Student roster, class scheduling, direct payments. CourtBit only charges 4% to the student, never the coach.">
   <meta property="og:image" content="https://courtbit.com.mx/Assets/marketing/og/og-academias.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -33,271 +33,11 @@
     "name": "CourtBit Academia",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web, iOS, Android",
-    "url": "https://courtbit.com.mx/academias/"
+    "url": "https://courtbit.com.mx/en/academias/"
   }
   </script>
 
-  <style>
-    /* ─────────────────────────────────────────────────────────
-       Shared chrome: brand palette, reset, topbar, nav, footer.
-       Single source of truth — generated pages no longer hand-copy
-       this per page. Extracted from index.html (2026-07), the most
-       current/complete version at the time. Any page's own <style>
-       block may still define page-specific rules after this; do not
-       delete unrelated CSS from a page just because it duplicates
-       something here — leaving it is harmless, removing it without
-       checking every usage isn't.
-       ───────────────────────────────────────────────────────── */
-    :root {
-      --blue:       #2e59fb;
-      --blue-deep:  #1a45e0;
-      --blue-soft:  #5a7afc;
-      --blue-mist:  #eaf0ff;
-      --navy:       #0f1d4d;
-      --navy-950:   #060a26;
-      --lime:       #B8F02B;
-      --lime-soft:  #e9fbb8;
-      --lime-deep:  #9fd121;
-      --paper:      #ffffff;
-      --bg:         #fbfbfd;
-      --bg-tint:    #f4f6ff;
-      --text:       #0f1d4d;
-      --text-soft:  #3a4262;
-      --text-muted: #6b7191;
-      --text-faint: #9aa0bb;
-      --border:     #e6e8ef;
-      --hairline:   rgba(15, 29, 77, 0.08);
-    }
-
-    /* Reset */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body {
-      margin: 0;
-      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--paper);
-      color: var(--text);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { font-family: inherit; }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ─── Top thin status bar ─── */
-    .e-topbar {
-      background: var(--navy-950);
-      color: rgba(255,255,255,0.7);
-      font-size: 0.75rem;
-      padding: 8px 16px;
-      text-align: center;
-      letter-spacing: 0.04em;
-      text-wrap: balance;
-    }
-    .e-topbar b { color: var(--lime); font-weight: 700; }
-
-    /* ─── Nav over saturated blue ─── */
-    .e-nav {
-      background: var(--blue);
-      position: sticky; top: 0; z-index: 50;
-    }
-    .e-nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 16px 24px;
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    }
-    .e-logo {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      letter-spacing: 0.16em;
-      color: var(--paper);
-      text-transform: uppercase;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .e-logo img { height: 90px; width: auto; display: block; }
-    .e-nav-links {
-      display: flex; gap: 28px;
-      align-items: center;
-    }
-    .e-nav-links a {
-      font-size: 0.9375rem;
-      color: rgba(255,255,255,0.92);
-      font-weight: 600;
-      transition: color 150ms;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .e-nav-links a:hover { color: var(--lime); }
-    .e-nav-links a.is-active { color: var(--lime); }
-    .e-nav-cta {
-      background: var(--lime);
-      color: var(--navy);
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: 8px;
-      transition: all 180ms;
-      cursor: pointer;
-      border: none;
-      font-size: 0.875rem;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 999px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .e-nav-cta:hover {
-      background: #c7f548;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(184, 240, 43, 0.4);
-    }
-    .e-nav-cta svg { width: 14px; height: 14px; }
-
-    /* Secondary nav actions (dashboard login, locale switch) that sit
-       to the left of the primary CTA. Not present on the original
-       homepage nav, added when unifying competencias' dashboard-login
-       link and the locale switcher into the one canonical nav. */
-    .e-nav-secondary {
-      display: flex; align-items: center; gap: 18px;
-    }
-    .e-nav-secondary a {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.85);
-      font-weight: 600;
-      transition: color 150ms;
-    }
-    .e-nav-secondary a:hover { color: var(--paper); }
-    .e-nav-lang {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.85);
-      border: 1px solid rgba(255,255,255,0.35);
-      border-radius: 999px;
-      padding: 4px 10px;
-      transition: all 150ms;
-    }
-    .e-nav-lang:hover { color: var(--paper); border-color: var(--paper); }
-
-    /* ─── Footer ─── */
-    footer {
-      padding: 56px 0 24px;
-      border-top: 1px solid var(--border);
-      background: var(--paper);
-    }
-    footer .container { display: block; }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 32px;
-    }
-    .footer-col h4 {
-      font-size: 0.6875rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin: 0 0 14px;
-    }
-    .footer-col .footer-link {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-col .footer-link:hover { color: var(--blue); }
-    .footer-brand {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: 0.04em;
-    }
-    .footer-brand span { color: var(--blue); }
-    .footer-tagline {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin: 10px 0 18px;
-      max-width: 280px;
-      line-height: 1.55;
-    }
-    .footer-apps { display: flex; gap: 10px; flex-wrap: wrap; }
-    .footer-app {
-      background: var(--navy);
-      color: var(--paper);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .footer-app:hover { background: #1a2c6e; }
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 22px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-    .footer-legal { display: flex; gap: 16px; flex-wrap: wrap; }
-    .footer-legal .footer-link {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-legal .footer-link:hover { color: var(--blue); }
-    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
-
-    /* ─── Mobile (chrome-only rules extracted from index.html's
-       tangled @media blocks — page-specific siblings stay in each
-       page's own <style> block) ─── */
-    @media (max-width: 900px) {
-      .e-nav-links { display: none; }
-      .e-nav-secondary { display: none; }
-      .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
-      .footer-grid .footer-col:first-child { grid-column: 1 / -1; margin-bottom: 4px; }
-      .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
-      .footer-legal { justify-content: center; }
-    }
-    @media (max-width: 600px) {
-      footer { padding: 40px 0 20px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-      .footer-grid .footer-col:first-child { grid-column: 1 / -1; }
-    }
-    @media (max-width: 380px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-    }
-    @media (max-width: 768px) {
-      .e-topbar { font-size: 0.6875rem; padding: 8px 12px; }
-      .e-topbar span { line-height: 1.4; }
-      .e-nav-inner { padding: 12px 16px; gap: 12px; }
-      .e-logo img { height: 96px; }
-      .e-nav-cta { padding: 9px 14px; font-size: 0.8125rem; }
-      .e-nav-cta svg { display: none; }
-    }
-    @media (max-width: 480px) {
-      .e-topbar { font-size: 0.625rem; padding: 7px 14px; }
-      .e-topbar b { display: inline; }
-      .e-nav-inner { padding: 10px 14px; gap: 8px; }
-      .e-logo { font-size: 0.9375rem; }
-      .e-logo img { height: 80px; }
-      .e-nav-cta { padding: 8px 13px; font-size: 0.75rem; }
-    }
-    </style>
+  <!-- SHARED_CHROME_CSS -->
   <style>
     :root {
       --blue: #2e59fb;
@@ -640,76 +380,56 @@
 <body>
 
   <!-- Status bar -->
-  <div class="e-statusbar">Nuevo · CourtBit Academia ya disponible en México · Academia para entrenadores de padel</div>
+  <div class="e-statusbar">New · CourtBit Academia now available in Mexico · Academy management for padel coaches</div>
 
-  <nav class="e-nav" aria-label="Principal">
-  <div class="e-nav-inner">
-    <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
-      <img src="/Assets/courtbit-logo.svg" alt="CourtBit">
-    </a>
-    <div class="e-nav-links">
-      <a href="/clubes/" class="">Para clubes</a>
-      <a href="/academias/" class="is-active">Para academias</a>
-      <a href="/competencias/" class="">Para organizadores</a>
-      <a href="/pricing/" class="">Precios</a>
-    </div>
-    <div class="e-nav-secondary">
-      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">Dashboard</a>
-      <a href="/en/academias/" class="e-nav-lang">EN</a>
-    </div>
-    <a href="/empezar/" class="e-nav-cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      Empezar gratis
-    </a>
-  </div>
-</nav>
-
+  <!-- NAV -->
+  <!-- /NAV -->
 
   <!-- 1. Hero -->
   <section class="e-hero">
     <div class="container">
       <div class="e-hero-grid">
         <div>
-          <span class="p-eyebrow"><span class="dot"></span> Para entrenadores</span>
-          <h1>Tu academia de padel, <em>en una sola app</em>.</h1>
-          <p class="lead">Gestiona alumnos, agenda clases y cobra colegiaturas desde una sola app. CourtBit cobra <strong>4% al alumno</strong> cuando paga por la app — al instructor nunca.</p>
+          <span class="p-eyebrow"><span class="dot"></span> For coaches</span>
+          <h1>Your padel academy, <em>in one app</em>.</h1>
+          <p class="lead">Manage students, schedule classes, and collect tuition from a single app. CourtBit charges <strong>4% to the student</strong> when they pay through the app — never the coach.</p>
           <div class="e-hero-actions">
-            <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
-            <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">Ver precios</a>
+            <a href="/empezar/" class="p-btn-lime">Start for free</a>
+            <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">See pricing</a>
           </div>
         </div>
         <div style="position: relative;">
-          <div class="e-hero-photo"><img src="/Assets/marketing/product/socio-foto.png" alt="Alumno de padel listo para clase"></div>
+          <div class="e-hero-photo"><img src="/Assets/marketing/product/socio-foto.png" alt="Padel student ready for class"></div>
           <div class="e-float-card">
-            <strong>4% al alumno, nunca al instructor</strong>
-            <small>Solo en pagos con tarjeta por la app</small>
+            <strong>4% to the student, never the coach</strong>
+            <small>Only on card payments through the app</small>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. Feature trio: Alumnos · Agenda · Pagos -->
+  <!-- 2. Feature trio: Students · Schedule · Payments -->
   <section class="e-features">
     <div class="container">
-      <span class="p-eyebrow"><span class="dot"></span> Cómo funciona</span>
-      <h2>Lo que necesita una academia. <em>Nada</em> más.</h2>
-      <p style="color: var(--text-soft); max-width: 620px; margin: 0;">Tu lista de alumnos, tu agenda de clases y tus cobros — todo en un solo lugar. Sin doble captura, sin colegiaturas perdidas.</p>
+      <span class="p-eyebrow"><span class="dot"></span> How it works</span>
+      <h2>Everything an academy needs. <em>Nothing</em> more.</h2>
+      <p style="color: var(--text-soft); max-width: 620px; margin: 0;">Your student roster, your class schedule, and your payments — all in one place. No double entry, no missed tuition.</p>
       <div class="e-feature-grid">
         <article class="e-feature">
           <div class="icon">A</div>
-          <h3>Lista de alumnos</h3>
-          <p>Perfiles con nivel, asistencia, historial de clases y notas. Tus alumnos centralizados, donde tu equipo los encuentra al instante.</p>
+          <h3>Student roster</h3>
+          <p>Profiles with level, attendance, class history, and notes. Your students centralized, where your team finds them instantly.</p>
         </article>
         <article class="e-feature">
           <div class="icon">B</div>
-          <h3>Agenda de clases</h3>
-          <p>Clases privadas y grupales con cupo, recordatorios automáticos por la app y reposiciones cuando un alumno cancela.</p>
+          <h3>Class schedule</h3>
+          <p>Private and group classes with capacity limits, automatic reminders through the app, and makeup classes when a student cancels.</p>
         </article>
         <article class="e-feature">
           <div class="icon">C</div>
-          <h3>Pagos directos</h3>
-          <p>Colegiaturas mensuales, paquetes de clases y pagos sueltos. CourtBit cobra solo 4% al alumno — al instructor, nunca.</p>
+          <h3>Direct payments</h3>
+          <p>Monthly tuition, class packages, and one-off payments. CourtBit charges only 4% to the student — never the coach.</p>
         </article>
       </div>
     </div>
@@ -718,16 +438,16 @@
   <!-- 3. Pricing summary -->
   <section class="e-steps">
     <div class="container">
-      <span class="p-eyebrow" style="background: rgba(255,255,255,0.18); color: var(--paper); border-color: rgba(255,255,255,0.3);"><span class="dot" style="background: var(--lime); box-shadow: 0 0 0 3px rgba(184,240,43,0.3);"></span> Precios</span>
-      <h2>Solo pagas <em>cuando cobras</em>.</h2>
-      <p class="lead">CourtBit cobra 4% al alumno solo cuando paga su clase por la app — al instructor nunca. Planes a la medida de tu academia, sin permanencia ni sorpresas.</p>
+      <span class="p-eyebrow" style="background: rgba(255,255,255,0.18); color: var(--paper); border-color: rgba(255,255,255,0.3);"><span class="dot" style="background: var(--lime); box-shadow: 0 0 0 3px rgba(184,240,43,0.3);"></span> Pricing</span>
+      <h2>You only pay <em>when you get paid</em>.</h2>
+      <p class="lead">CourtBit charges 4% to the student only when they pay for their class through the app — never the coach. Plans built for your academy, no contracts, no surprises.</p>
       <ul class="e-pricing-bullets">
-        <li><strong>Planes</strong><span>A la medida de tu academia. Sin permanencia: cancela cuando quieras.</span></li>
-        <li><strong>4%</strong><span>Solo al alumno cuando paga por la app. Tarifa fija, sin escalones.</span></li>
-        <li><strong>Stripe</strong><span>Cobros directos a tu cuenta. CourtBit no toca tu dinero.</span></li>
+        <li><strong>Plans</strong><span>Built for your academy. No contracts: cancel anytime.</span></li>
+        <li><strong>4%</strong><span>Only to the student when they pay through the app. Flat rate, no tiers.</span></li>
+        <li><strong>Stripe</strong><span>Direct payouts to your account. CourtBit never touches your money.</span></li>
       </ul>
       <div style="margin-top: 36px;">
-        <a href="/pricing/" class="p-btn-lime">Ver detalles de precios</a>
+        <a href="/pricing/" class="p-btn-lime">See pricing details</a>
       </div>
     </div>
   </section>
@@ -736,23 +456,23 @@
   <section class="e-testimonial">
     <div class="container">
       <div class="header-wrap">
-        <span class="p-eyebrow"><span class="dot"></span> Testimonio</span>
-        <h2>Academias que ya enseñan con <em>CourtBit</em>.</h2>
+        <span class="p-eyebrow"><span class="dot"></span> Testimonial</span>
+        <h2>Academies already teaching with <em>CourtBit</em>.</h2>
       </div>
       <article class="e-test-card">
         <header class="e-test-head">
-          <a href="https://www.instagram.com/padelfactorygdl/" target="_blank" rel="noopener" class="e-test-avatar" aria-label="PADEL FACTORY GDL en Instagram">
+          <a href="https://www.instagram.com/padelfactorygdl/" target="_blank" rel="noopener" class="e-test-avatar" aria-label="PADEL FACTORY GDL on Instagram">
             <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/dc68e9ba-edb3-449b-92ef-2d081021965e?v=1777882466949"
                  alt="PADEL FACTORY GDL" loading="lazy"
                  onerror="this.style.display='none'">
           </a>
           <div>
             <strong>PADEL FACTORY GDL</strong>
-            <small>Academia · Guadalajara</small>
+            <small>Academy · Guadalajara</small>
           </div>
         </header>
-        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <blockquote>"Manejamos cientos de alumnos entre clínicas, clases grupales y privadas. CourtBit nos lleva la agenda, cobra a los alumnos y reparte las comisiones de cada instructor. El control que antes nos llevaba el día ahora se hace solo."</blockquote>
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"We manage hundreds of students across clinics, group classes, and private lessons. CourtBit runs our schedule, charges the students, and splits the commissions for each coach. The tracking that used to take us all day now happens on its own."</blockquote>
       </article>
     </div>
   </section>
@@ -760,62 +480,17 @@
   <!-- 5. Final CTA -->
   <section class="e-final-cta">
     <div class="container">
-      <h2>Empieza hoy. Tu próxima <em>clase</em> agendada en minutos.</h2>
-      <p>Sin permanencia. Cancela cuando quieras. CourtBit solo cobra 4% al alumno.</p>
+      <h2>Start today. Your next <em>class</em> scheduled in minutes.</h2>
+      <p>No contracts. Cancel anytime. CourtBit only charges 4% to the student.</p>
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-        <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
-        <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">Ver precios</a>
+        <a href="/empezar/" class="p-btn-lime">Start for free</a>
+        <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">See pricing</a>
       </div>
     </div>
   </section>
 
-  <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-brand">Court<span>Bit</span></div>
-        <p class="footer-tagline">Sistema de reservas, academias y competencias para clubes de padel en México.</p>
-        <div class="footer-apps">
-          <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="footer-app" target="_blank" rel="noopener">App Store ↗</a>
-          <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&amp;hl=es_MX" class="footer-app" target="_blank" rel="noopener">Google Play ↗</a>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>Producto</h4>
-        <a href="/clubes/" class="footer-link">Para clubes</a>
-        <a href="/academias/" class="footer-link">Para academias</a>
-        <a href="/competencias/" class="footer-link">Para organizadores</a>
-        <a href="/pricing/" class="footer-link">Precios</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Herramientas</h4>
-        <a href="/calculadora-torneo/" class="footer-link">Calculadora de torneo</a>
-        <a href="/calculadora-liga/" class="footer-link">Calculadora de liga</a>
-        <a href="/generador-cuadro-torneo-padel/" class="footer-link">Generador de cuadros</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Guías</h4>
-        <a href="/guias/" class="footer-link">Todas las guías</a>
-        <a href="/guia-academia/" class="footer-link">Academia: paquetes y comisiones</a>
-        <a href="/como-organizar-torneo-padel/" class="footer-link">Cómo organizar un torneo</a>
-        <a href="/mejores-practicas-torneo-padel/" class="footer-link">Mejores prácticas</a>
-        <a href="/liga-americana-padel/" class="footer-link">Liga americana</a>
-        <a href="/liga-padel-americana-individual/" class="footer-link">Liga americana individual</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 CourtBit · Todos los derechos reservados</span>
-      <div class="footer-legal">
-        <a href="/legal/" class="footer-link">Legal</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
+  <!-- FOOTER -->
+  <!-- /FOOTER -->
 
 </body>
 </html>

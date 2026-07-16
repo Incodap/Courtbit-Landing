@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CourtBit Reservas para clubes de padel — calendario, app y pagos</title>
-  <meta name="description" content="Software de reservas para clubes de padel. Calendario, app de jugadores, pagos directos a Stripe. Planes para tu club; CourtBit solo cobra 4% al jugador.">
-  <link rel="canonical" href="https://courtbit.com.mx/clubes/">
+  <title>CourtBit Reservas for padel clubs — calendar, app and payments</title>
+  <meta name="description" content="Booking software for padel clubs. Calendar, player app, payments direct to Stripe. Plans for your club; CourtBit only charges 4% to the player.">
+  <link rel="canonical" href="https://courtbit.com.mx/en/clubes/">
   <link rel="alternate" hreflang="es" href="https://courtbit.com.mx/clubes/">
   <link rel="alternate" hreflang="en" href="https://courtbit.com.mx/en/clubes/">
   <link rel="alternate" hreflang="x-default" href="https://courtbit.com.mx/clubes/">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
   <!-- OG / Twitter -->
-  <meta property="og:url" content="https://courtbit.com.mx/clubes/">
-  <meta property="og:title" content="CourtBit Reservas — para tu club de padel">
-  <meta property="og:description" content="Calendario, app de jugadores, pagos directos a Stripe. CourtBit solo cobra 4% al jugador, nunca al club.">
+  <meta property="og:url" content="https://courtbit.com.mx/en/clubes/">
+  <meta property="og:title" content="CourtBit Reservas — for your padel club">
+  <meta property="og:description" content="Calendar, player app, payments direct to Stripe. CourtBit only charges 4% to the player, never the club.">
   <meta property="og:image" content="https://courtbit.com.mx/Assets/marketing/og/og-clubes.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -33,271 +33,11 @@
     "name": "CourtBit Reservas",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web, iOS, Android",
-    "url": "https://courtbit.com.mx/clubes/"
+    "url": "https://courtbit.com.mx/en/clubes/"
   }
   </script>
 
-  <style>
-    /* ─────────────────────────────────────────────────────────
-       Shared chrome: brand palette, reset, topbar, nav, footer.
-       Single source of truth — generated pages no longer hand-copy
-       this per page. Extracted from index.html (2026-07), the most
-       current/complete version at the time. Any page's own <style>
-       block may still define page-specific rules after this; do not
-       delete unrelated CSS from a page just because it duplicates
-       something here — leaving it is harmless, removing it without
-       checking every usage isn't.
-       ───────────────────────────────────────────────────────── */
-    :root {
-      --blue:       #2e59fb;
-      --blue-deep:  #1a45e0;
-      --blue-soft:  #5a7afc;
-      --blue-mist:  #eaf0ff;
-      --navy:       #0f1d4d;
-      --navy-950:   #060a26;
-      --lime:       #B8F02B;
-      --lime-soft:  #e9fbb8;
-      --lime-deep:  #9fd121;
-      --paper:      #ffffff;
-      --bg:         #fbfbfd;
-      --bg-tint:    #f4f6ff;
-      --text:       #0f1d4d;
-      --text-soft:  #3a4262;
-      --text-muted: #6b7191;
-      --text-faint: #9aa0bb;
-      --border:     #e6e8ef;
-      --hairline:   rgba(15, 29, 77, 0.08);
-    }
-
-    /* Reset */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body {
-      margin: 0;
-      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--paper);
-      color: var(--text);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { font-family: inherit; }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ─── Top thin status bar ─── */
-    .e-topbar {
-      background: var(--navy-950);
-      color: rgba(255,255,255,0.7);
-      font-size: 0.75rem;
-      padding: 8px 16px;
-      text-align: center;
-      letter-spacing: 0.04em;
-      text-wrap: balance;
-    }
-    .e-topbar b { color: var(--lime); font-weight: 700; }
-
-    /* ─── Nav over saturated blue ─── */
-    .e-nav {
-      background: var(--blue);
-      position: sticky; top: 0; z-index: 50;
-    }
-    .e-nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 16px 24px;
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    }
-    .e-logo {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      letter-spacing: 0.16em;
-      color: var(--paper);
-      text-transform: uppercase;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .e-logo img { height: 90px; width: auto; display: block; }
-    .e-nav-links {
-      display: flex; gap: 28px;
-      align-items: center;
-    }
-    .e-nav-links a {
-      font-size: 0.9375rem;
-      color: rgba(255,255,255,0.92);
-      font-weight: 600;
-      transition: color 150ms;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .e-nav-links a:hover { color: var(--lime); }
-    .e-nav-links a.is-active { color: var(--lime); }
-    .e-nav-cta {
-      background: var(--lime);
-      color: var(--navy);
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: 8px;
-      transition: all 180ms;
-      cursor: pointer;
-      border: none;
-      font-size: 0.875rem;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 999px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .e-nav-cta:hover {
-      background: #c7f548;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(184, 240, 43, 0.4);
-    }
-    .e-nav-cta svg { width: 14px; height: 14px; }
-
-    /* Secondary nav actions (dashboard login, locale switch) that sit
-       to the left of the primary CTA. Not present on the original
-       homepage nav, added when unifying competencias' dashboard-login
-       link and the locale switcher into the one canonical nav. */
-    .e-nav-secondary {
-      display: flex; align-items: center; gap: 18px;
-    }
-    .e-nav-secondary a {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.85);
-      font-weight: 600;
-      transition: color 150ms;
-    }
-    .e-nav-secondary a:hover { color: var(--paper); }
-    .e-nav-lang {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.85);
-      border: 1px solid rgba(255,255,255,0.35);
-      border-radius: 999px;
-      padding: 4px 10px;
-      transition: all 150ms;
-    }
-    .e-nav-lang:hover { color: var(--paper); border-color: var(--paper); }
-
-    /* ─── Footer ─── */
-    footer {
-      padding: 56px 0 24px;
-      border-top: 1px solid var(--border);
-      background: var(--paper);
-    }
-    footer .container { display: block; }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 32px;
-    }
-    .footer-col h4 {
-      font-size: 0.6875rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin: 0 0 14px;
-    }
-    .footer-col .footer-link {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-col .footer-link:hover { color: var(--blue); }
-    .footer-brand {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: 0.04em;
-    }
-    .footer-brand span { color: var(--blue); }
-    .footer-tagline {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin: 10px 0 18px;
-      max-width: 280px;
-      line-height: 1.55;
-    }
-    .footer-apps { display: flex; gap: 10px; flex-wrap: wrap; }
-    .footer-app {
-      background: var(--navy);
-      color: var(--paper);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .footer-app:hover { background: #1a2c6e; }
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 22px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-    .footer-legal { display: flex; gap: 16px; flex-wrap: wrap; }
-    .footer-legal .footer-link {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-legal .footer-link:hover { color: var(--blue); }
-    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
-
-    /* ─── Mobile (chrome-only rules extracted from index.html's
-       tangled @media blocks — page-specific siblings stay in each
-       page's own <style> block) ─── */
-    @media (max-width: 900px) {
-      .e-nav-links { display: none; }
-      .e-nav-secondary { display: none; }
-      .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
-      .footer-grid .footer-col:first-child { grid-column: 1 / -1; margin-bottom: 4px; }
-      .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
-      .footer-legal { justify-content: center; }
-    }
-    @media (max-width: 600px) {
-      footer { padding: 40px 0 20px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-      .footer-grid .footer-col:first-child { grid-column: 1 / -1; }
-    }
-    @media (max-width: 380px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-    }
-    @media (max-width: 768px) {
-      .e-topbar { font-size: 0.6875rem; padding: 8px 12px; }
-      .e-topbar span { line-height: 1.4; }
-      .e-nav-inner { padding: 12px 16px; gap: 12px; }
-      .e-logo img { height: 96px; }
-      .e-nav-cta { padding: 9px 14px; font-size: 0.8125rem; }
-      .e-nav-cta svg { display: none; }
-    }
-    @media (max-width: 480px) {
-      .e-topbar { font-size: 0.625rem; padding: 7px 14px; }
-      .e-topbar b { display: inline; }
-      .e-nav-inner { padding: 10px 14px; gap: 8px; }
-      .e-logo { font-size: 0.9375rem; }
-      .e-logo img { height: 80px; }
-      .e-nav-cta { padding: 8px 13px; font-size: 0.75rem; }
-    }
-    </style>
+  <!-- SHARED_CHROME_CSS -->
   <style>
     :root {
       --blue: #2e59fb;
@@ -635,76 +375,56 @@
 <body>
 
   <!-- Status bar -->
-  <div class="e-statusbar">Nuevo · CourtBit Reservas ya disponible en México · Reservas para tu club de padel</div>
+  <div class="e-statusbar">New · CourtBit Reservas now available in Mexico · Booking for your padel club</div>
 
-  <nav class="e-nav" aria-label="Principal">
-  <div class="e-nav-inner">
-    <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
-      <img src="/Assets/courtbit-logo.svg" alt="CourtBit">
-    </a>
-    <div class="e-nav-links">
-      <a href="/clubes/" class="is-active">Para clubes</a>
-      <a href="/academias/" class="">Para academias</a>
-      <a href="/competencias/" class="">Para organizadores</a>
-      <a href="/pricing/" class="">Precios</a>
-    </div>
-    <div class="e-nav-secondary">
-      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">Dashboard</a>
-      <a href="/en/clubes/" class="e-nav-lang">EN</a>
-    </div>
-    <a href="/empezar/" class="e-nav-cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      Empezar gratis
-    </a>
-  </div>
-</nav>
-
+  <!-- NAV -->
+  <!-- /NAV -->
 
   <!-- 1. Hero -->
   <section class="e-hero">
     <div class="container">
       <div class="e-hero-grid">
         <div>
-          <span class="p-eyebrow"><span class="dot"></span> Reservas para clubes</span>
-          <h1>Tu sistema de reservas, <em>listo en 10 minutos</em>.</h1>
-          <p class="lead">Calendario por cancha, app de jugadores y pagos directos a tu Stripe. Sin permanencia: cancelas cuando quieras. CourtBit cobra <strong>4% al jugador</strong>, nunca al club.</p>
+          <span class="p-eyebrow"><span class="dot"></span> Bookings for clubs</span>
+          <h1>Your booking system, <em>ready in 10 minutes</em>.</h1>
+          <p class="lead">Court-by-court calendar, a player app, and payments direct to your Stripe account. No contracts: cancel anytime. CourtBit charges <strong>4% to the player</strong>, never the club.</p>
           <div class="e-hero-actions">
-            <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
-            <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">Ver precios</a>
+            <a href="/empezar/" class="p-btn-lime">Start for free</a>
+            <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">See pricing</a>
           </div>
         </div>
         <div style="position: relative;">
-          <div class="e-hero-photo"><img src="/Assets/marketing/hero/hero-clubes.png" alt="Cancha de padel iluminada al atardecer"></div>
+          <div class="e-hero-photo"><img src="/Assets/marketing/hero/hero-clubes.png" alt="Padel court lit up at sunset"></div>
           <div class="e-float-card">
-            <strong>4% al jugador, nunca al club</strong>
-            <small>Solo en pagos con tarjeta por la app</small>
+            <strong>4% to the player, never the club</strong>
+            <small>Only on card payments through the app</small>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. Feature trio: Calendario · App jugadores · Pagos Stripe -->
+  <!-- 2. Feature trio: Calendar · Player app · Stripe payments -->
   <section class="e-features">
     <div class="container">
-      <span class="p-eyebrow"><span class="dot"></span> Cómo funciona</span>
-      <h2>Tres herramientas. <em>Una</em> plataforma.</h2>
-      <p style="color: var(--text-soft); max-width: 620px; margin: 0;">Lo esencial para operar tu club: agendar canchas, atender a tus jugadores desde su celular y cobrar en Stripe sin intermediarios.</p>
+      <span class="p-eyebrow"><span class="dot"></span> How it works</span>
+      <h2>Three tools. <em>One</em> platform.</h2>
+      <p style="color: var(--text-soft); max-width: 620px; margin: 0;">Everything you need to run your club: schedule courts, reach your players from their phone, and get paid through Stripe with no middlemen.</p>
       <div class="e-feature-grid">
         <article class="e-feature">
           <div class="icon">A</div>
-          <h3>Calendario por cancha</h3>
-          <p>Vista diaria, semanal o por cancha. Bloqueos por mantenimiento, pre-reservas, lista de espera y reportes — todo desde un panel.</p>
+          <h3>Court-by-court calendar</h3>
+          <p>Daily, weekly, or per-court view. Maintenance blocks, pre-bookings, waitlists, and reports — all from one dashboard.</p>
         </article>
         <article class="e-feature">
           <div class="icon">B</div>
-          <h3>App nativa para jugadores</h3>
-          <p>iOS y Android. Tus jugadores reservan en 3 toques, ven sus partidos, pagan desde la app y reciben recordatorios automáticos.</p>
+          <h3>Native app for players</h3>
+          <p>iOS and Android. Your players book in 3 taps, see their matches, pay from the app, and get automatic reminders.</p>
         </article>
         <article class="e-feature">
           <div class="icon">C</div>
-          <h3>Pagos directos a tu Stripe</h3>
-          <p>El dinero llega a tu cuenta Stripe sin intermediarios. CourtBit cobra solo 4% al jugador cuando paga por la app — al club, nunca.</p>
+          <h3>Payments direct to your Stripe</h3>
+          <p>The money lands in your Stripe account with no middlemen. CourtBit charges only 4% to the player when they pay through the app — never the club.</p>
         </article>
       </div>
     </div>
@@ -714,23 +434,23 @@
   <section class="e-steps">
     <div class="container">
       <span class="p-eyebrow" style="background: rgba(255,255,255,0.18); color: var(--paper); border-color: rgba(255,255,255,0.3);"><span class="dot" style="background: var(--lime); box-shadow: 0 0 0 3px rgba(184,240,43,0.3);"></span> Setup</span>
-      <h2>Tu primera reserva en <em>10 minutos</em>.</h2>
-      <p class="lead">Sin demos, sin onboarding pagado. Te conectas, conectas Stripe y compartes el link.</p>
+      <h2>Your first booking in <em>10 minutes</em>.</h2>
+      <p class="lead">No demos, no paid onboarding. Sign up, connect Stripe, and share the link.</p>
       <div class="e-steps-grid">
         <div class="e-step">
           <span class="step-num">1</span>
-          <h3>Crea tu club</h3>
-          <p>Datos básicos, canchas, horarios y reglas de cobro. 5 minutos.</p>
+          <h3>Create your club</h3>
+          <p>Basic info, courts, hours, and pricing rules. 5 minutes.</p>
         </div>
         <div class="e-step">
           <span class="step-num">2</span>
-          <h3>Conecta Stripe</h3>
-          <p>Tu cuenta, tu dinero. CourtBit nunca toca tus pagos. 3 minutos.</p>
+          <h3>Connect Stripe</h3>
+          <p>Your account, your money. CourtBit never touches your payments. 3 minutes.</p>
         </div>
         <div class="e-step">
           <span class="step-num">3</span>
-          <h3>Comparte el link</h3>
-          <p>Listo. Primera reserva el mismo día. Sin instalaciones ni capacitación.</p>
+          <h3>Share the link</h3>
+          <p>Done. First booking the same day. No installs, no training.</p>
         </div>
       </div>
     </div>
@@ -740,8 +460,8 @@
   <section class="e-testimonial">
     <div class="container">
       <div class="header-wrap">
-        <span class="p-eyebrow"><span class="dot"></span> Testimonio</span>
-        <h2>Clubes que ya reservan con <em>CourtBit</em>.</h2>
+        <span class="p-eyebrow"><span class="dot"></span> Testimonial</span>
+        <h2>Clubs already booking with <em>CourtBit</em>.</h2>
       </div>
       <article class="e-test-card">
         <header class="e-test-head">
@@ -752,11 +472,11 @@
           </div>
           <div>
             <strong>LIGA MUNICIPAL DE PÁDEL GUAYMAS</strong>
-            <small>Liga · Cliente verificado</small>
+            <small>League · Verified customer</small>
           </div>
         </header>
-        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <blockquote>"Cobramos directo a Stripe sin intermediarios. Los jugadores reservan solos desde la app — el calendario casi se opera solo."</blockquote>
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"We get paid directly through Stripe with no middlemen. Players book on their own from the app — the calendar practically runs itself."</blockquote>
       </article>
     </div>
   </section>
@@ -764,62 +484,17 @@
   <!-- 5. Final CTA -->
   <section class="e-final-cta">
     <div class="container">
-      <h2>Empieza hoy. Tu primera <em>reserva</em> en 10 minutos.</h2>
-      <p>Sin permanencia. Cancela cuando quieras. CourtBit solo cobra 4% al jugador.</p>
+      <h2>Start today. Your first <em>booking</em> in 10 minutes.</h2>
+      <p>No contracts. Cancel anytime. CourtBit only charges 4% to the player.</p>
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-        <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
-        <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">Ver precios</a>
+        <a href="/empezar/" class="p-btn-lime">Start for free</a>
+        <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">See pricing</a>
       </div>
     </div>
   </section>
 
-  <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-brand">Court<span>Bit</span></div>
-        <p class="footer-tagline">Sistema de reservas, academias y competencias para clubes de padel en México.</p>
-        <div class="footer-apps">
-          <a href="https://apps.apple.com/mx/app/courtbit/id6757516543" class="footer-app" target="_blank" rel="noopener">App Store ↗</a>
-          <a href="https://play.google.com/store/apps/details?id=com.incodap.courtbit&amp;hl=es_MX" class="footer-app" target="_blank" rel="noopener">Google Play ↗</a>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>Producto</h4>
-        <a href="/clubes/" class="footer-link">Para clubes</a>
-        <a href="/academias/" class="footer-link">Para academias</a>
-        <a href="/competencias/" class="footer-link">Para organizadores</a>
-        <a href="/pricing/" class="footer-link">Precios</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Herramientas</h4>
-        <a href="/calculadora-torneo/" class="footer-link">Calculadora de torneo</a>
-        <a href="/calculadora-liga/" class="footer-link">Calculadora de liga</a>
-        <a href="/generador-cuadro-torneo-padel/" class="footer-link">Generador de cuadros</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Guías</h4>
-        <a href="/guias/" class="footer-link">Todas las guías</a>
-        <a href="/guia-academia/" class="footer-link">Academia: paquetes y comisiones</a>
-        <a href="/como-organizar-torneo-padel/" class="footer-link">Cómo organizar un torneo</a>
-        <a href="/mejores-practicas-torneo-padel/" class="footer-link">Mejores prácticas</a>
-        <a href="/liga-americana-padel/" class="footer-link">Liga americana</a>
-        <a href="/liga-padel-americana-individual/" class="footer-link">Liga americana individual</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 CourtBit · Todos los derechos reservados</span>
-      <div class="footer-legal">
-        <a href="/legal/" class="footer-link">Legal</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
+  <!-- FOOTER -->
+  <!-- /FOOTER -->
 
 </body>
 </html>
