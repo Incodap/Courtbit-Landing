@@ -125,14 +125,14 @@
     <style>
         :root {
             --lime: #B8F02B; --lime-hover: #a5d827; --lime-soft: #e8faa0; --lime-bg: #f4fdd6;
-            --navy: #0f1d4d; --navy-light: #1a2e6b;
-            --blue: #2e59fb; --blue-soft: #eef2ff;
+            --navy: #10302a; --navy-light: #1a2e6b;
+            --blue: #15803d; --blue-soft: #eef2ff;
             --white: #ffffff; --bg: #fafbfc; --bg-warm: #f5f6f8;
             --text: #1a1f36; --text-secondary: #5a6178; --text-muted: #8b92a8;
             --border: #e4e7ec; --border-light: #f0f1f4;
-            --shadow-sm: 0 1px 3px rgba(15,29,77,0.06);
-            --shadow-md: 0 4px 12px rgba(15,29,77,0.08);
-            --shadow-lg: 0 12px 32px rgba(15,29,77,0.1);
+            --shadow-sm: 0 1px 3px rgba(16,48,42,0.06);
+            --shadow-md: 0 4px 12px rgba(16,48,42,0.08);
+            --shadow-lg: 0 12px 32px rgba(16,48,42,0.1);
             --radius: 16px; --radius-lg: 24px; --radius-full: 100px;
             --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         }
@@ -177,7 +177,7 @@
         .control-group { display: flex; flex-direction: column; gap: 6px; }
         .control-label { font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; }
         .control-input { padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 0.9375rem; color: var(--text); background: var(--white); outline: none; transition: border-color 0.2s; width: 100%; }
-        .control-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(15,29,77,0.08); }
+        .control-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(16,48,42,0.08); }
         .btn-generate { padding: 10px 24px; background: var(--navy); color: var(--white); border: none; border-radius: var(--radius-full); font-family: var(--font); font-weight: 700; font-size: 0.875rem; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
         .btn-generate:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
@@ -210,7 +210,7 @@
         .bk-round-matches { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 8px; }
         .bk-gap { flex-shrink: 0; width: 40px; }
         .bk-match { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-sm); }
-        .bk-match.bk-final { border-color: var(--navy); box-shadow: 0 2px 12px rgba(15,29,77,0.12); }
+        .bk-match.bk-final { border-color: var(--navy); box-shadow: 0 2px 12px rgba(16,48,42,0.12); }
         .bk-team-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; font-size: 0.75rem; border-bottom: 1px solid var(--border-light); }
         .bk-team-row:last-child { border-bottom: none; }
         .bk-team-seed { font-weight: 800; color: var(--navy); min-width: 18px; text-align: center; font-size: 0.6875rem; }
@@ -241,7 +241,7 @@
 
         /* CTA */
         .cta-section { padding: 80px 0; text-align: center; background: var(--navy); color: var(--white); position: relative; overflow: hidden; }
-        .cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 60% at 30% 100%, rgba(184,240,43,0.12), transparent), radial-gradient(ellipse 50% 50% at 80% 0%, rgba(46,89,251,0.1), transparent); }
+        .cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 60% at 30% 100%, rgba(184,240,43,0.12), transparent), radial-gradient(ellipse 50% 50% at 80% 0%, rgba(21,128,61,0.1), transparent); }
         .cta-section .container { position: relative; z-index: 2; }
         .cta-section h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 14px; color: var(--white); }
         .cta-section p { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; }

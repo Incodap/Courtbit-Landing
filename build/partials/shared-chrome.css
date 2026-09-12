@@ -9,24 +9,27 @@
        checking every usage isn't.
        ───────────────────────────────────────────────────────── */
     :root {
-      --blue:       #2e59fb;
-      --blue-deep:  #1a45e0;
-      --blue-soft:  #5a7afc;
-      --blue-mist:  #eaf0ff;
-      --navy:       #0f1d4d;
-      --navy-950:   #060a26;
+      /* DEUDA: estos tokens ya no son azules, son el verde de marca.
+         Se conservan los nombres --blue* para no romper ~20 páginas sueltas;
+         renombrar a --brand* en un paso aparte. */
+      --blue:       #15803d;
+      --blue-deep:  #116230;
+      --blue-soft:  #46a35f;
+      --blue-mist:  #e6f5eb;
+      --navy:       #10302a;
+      --navy-950:   #061512;
       --lime:       #B8F02B;
       --lime-soft:  #e9fbb8;
       --lime-deep:  #9fd121;
       --paper:      #ffffff;
-      --bg:         #fbfbfd;
-      --bg-tint:    #f4f6ff;
-      --text:       #0f1d4d;
-      --text-soft:  #3a4262;
-      --text-muted: #6b7191;
-      --text-faint: #9aa0bb;
-      --border:     #e6e8ef;
-      --hairline:   rgba(15, 29, 77, 0.08);
+      --bg:         #fbfdfc;
+      --bg-tint:    #f1f8f3;
+      --text:       #10302a;
+      --text-soft:  #3c4a45;
+      --text-muted: #687872;
+      --text-faint: #9aaaa4;
+      --border:     #e4eae7;
+      --hairline:   rgba(16,48,42, 0.08);
     }
 
     /* Reset */

@@ -44,24 +44,24 @@
 
   <style>
     :root {
-      --blue:       #2e59fb;
-      --blue-deep:  #1a45e0;
-      --blue-soft:  #5a7afc;
-      --blue-mist:  #eaf0ff;
-      --navy:       #0f1d4d;
-      --navy-950:   #060a26;
+      --blue:       #15803d;
+      --blue-deep:  #116230;
+      --blue-soft:  #46a35f;
+      --blue-mist:  #e6f5eb;
+      --navy:       #10302a;
+      --navy-950:   #061512;
       --lime:       #B8F02B;
       --lime-soft:  #e9fbb8;
       --lime-deep:  #9fd121;
       --paper:      #ffffff;
-      --bg:         #fbfbfd;
-      --bg-tint:    #f4f6ff;
-      --text:       #0f1d4d;
-      --text-soft:  #3a4262;
-      --text-muted: #6b7191;
-      --text-faint: #9aa0bb;
-      --border:     #e6e8ef;
-      --hairline:   rgba(15, 29, 77, 0.08);
+      --bg:         #fbfdfc;
+      --bg-tint:    #f1f8f3;
+      --text:       #10302a;
+      --text-soft:  #3c4a45;
+      --text-muted: #687872;
+      --text-faint: #9aaaa4;
+      --border:     #e4eae7;
+      --hairline:   rgba(16,48,42, 0.08);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -256,7 +256,7 @@
       border-radius: 36px;
       padding: 12px;
       box-shadow:
-        0 32px 60px -16px rgba(15, 29, 77, 0.55),
+        0 32px 60px -16px rgba(16,48,42, 0.55),
         0 0 0 1.5px rgba(255,255,255,0.10) inset;
       transform: rotate(-4deg);
       z-index: 2;
@@ -286,7 +286,7 @@
       width: 88px; height: 88px;
       border-radius: 22px;
       background: var(--paper);
-      box-shadow: 0 8px 20px rgba(15,29,77,0.18);
+      box-shadow: 0 8px 20px rgba(16,48,42,0.18);
       padding: 8px;
       margin-bottom: 14px;
     }
@@ -316,7 +316,7 @@
       background: var(--paper);
       border-radius: 10px;
       padding: 8px 10px;
-      box-shadow: 0 1px 0 var(--hairline), 0 2px 6px -2px rgba(15,29,77,0.08);
+      box-shadow: 0 1px 0 var(--hairline), 0 2px 6px -2px rgba(16,48,42,0.08);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -335,7 +335,7 @@
       color: var(--text);
       padding: 12px 16px;
       border-radius: 14px;
-      box-shadow: 0 24px 48px -16px rgba(15, 29, 77, 0.4);
+      box-shadow: 0 24px 48px -16px rgba(16,48,42, 0.4);
       animation: e-float-anim 4s ease-in-out infinite;
       z-index: 3;
     }
@@ -385,13 +385,13 @@
       background: var(--blue-mist); color: var(--blue-deep);
       font-size: 0.75rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
-      border: 1px solid rgba(46, 89, 251, 0.18);
+      border: 1px solid rgba(21,128,61, 0.18);
       margin-bottom: 16px;
     }
     .e-section-eyebrow .dot {
       width: 6px; height: 6px; border-radius: 999px;
       background: var(--blue);
-      box-shadow: 0 0 0 3px rgba(46,89,251,0.18);
+      box-shadow: 0 0 0 3px rgba(21,128,61,0.18);
     }
     .e-section-title {
       font-size: clamp(1.85rem, 4vw, 2.75rem);
@@ -422,7 +422,7 @@
     .e-feature:hover {
       transform: translateY(-3px);
       border-color: var(--blue-soft);
-      box-shadow: 0 12px 32px -12px rgba(15, 29, 77, 0.15);
+      box-shadow: 0 12px 32px -12px rgba(16,48,42, 0.15);
     }
     .e-feature-icon {
       width: 44px; height: 44px;
@@ -472,7 +472,7 @@
     }
     .e-qr-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 16px 36px -16px rgba(15, 29, 77, 0.18);
+      box-shadow: 0 16px 36px -16px rgba(16,48,42, 0.18);
       border-color: var(--blue-soft);
     }
     .e-qr-card img {

@@ -12,12 +12,12 @@
 <style>
 /* ─────────── Brand palette (courtbit-front · Variant E) ─────────── */
 :root{
-  --blue:#2e59fb; --blue-deep:#1a45e0; --blue-soft:#5a7afc; --blue-mist:#eaf0ff;
-  --navy:#0f1d4d; --navy-950:#060a26;
+  --blue:#15803d; --blue-deep:#116230; --blue-soft:#46a35f; --blue-mist:#e6f5eb;
+  --navy:#10302a; --navy-950:#061512;
   --lime:#B8F02B; --lime-soft:#e9fbb8; --lime-deep:#9fd121;
-  --paper:#fff; --bg:#fbfbfd; --bg-tint:#f4f6ff;
-  --text:#0f1d4d; --text-soft:#3a4262; --text-muted:#6b7191; --text-faint:#9aa0bb;
-  --border:#e6e8ef; --hairline:rgba(15,29,77,.08);
+  --paper:#fff; --bg:#fbfdfc; --bg-tint:#f1f8f3;
+  --text:#10302a; --text-soft:#3c4a45; --text-muted:#687872; --text-faint:#9aaaa4;
+  --border:#e4eae7; --hairline:rgba(16,48,42,.08);
   --ctrl-h:64px;
 }
 *,*::before,*::after{box-sizing:border-box;}
@@ -61,9 +61,9 @@ em{font-style:italic;font-weight:800;color:var(--blue);}
 .eyebrow{
   display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;
   background:var(--blue-mist);color:var(--blue-deep);font-size:.72rem;font-weight:800;
-  letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(46,89,251,.18);margin-bottom:22px;
+  letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(21,128,61,.18);margin-bottom:22px;
 }
-.eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--blue);box-shadow:0 0 0 3px rgba(46,89,251,.18);}
+.eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--blue);box-shadow:0 0 0 3px rgba(21,128,61,.18);}
 .bg-blue .eyebrow,.bg-navy .eyebrow{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.25);}
 .bg-blue .eyebrow .dot,.bg-navy .eyebrow .dot{background:var(--lime);box-shadow:0 0 0 3px rgba(184,240,43,.25);}
 .s-title{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800;letter-spacing:-.034em;line-height:1.04;margin:0 0 16px;color:var(--navy);}
@@ -177,7 +177,7 @@ em{font-style:italic;font-weight:800;color:var(--blue);}
 .flow-note .big{font-size:1.5rem;}
 
 /* model cards */
-.model-card{background:var(--paper);border:1px solid rgba(46,89,251,.12);border-radius:24px;padding:30px;}
+.model-card{background:var(--paper);border:1px solid rgba(21,128,61,.12);border-radius:24px;padding:30px;}
 .model-card .badge{display:inline-block;font-size:.74rem;font-weight:800;letter-spacing:.04em;padding:6px 13px;border-radius:999px;margin-bottom:14px;}
 .badge-lime{background:var(--lime-soft);color:#5a7400;}
 .badge-blue{background:var(--blue-mist);color:var(--blue-deep);}
@@ -304,7 +304,7 @@ body.capacitacion .notes{display:block;}
 /* format cards (competencias) */
 .fmt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 .fmt{background:var(--paper);border:1px solid var(--border);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px;transition:transform .18s;}
-.fmt:hover{transform:translateY(-3px);box-shadow:0 18px 36px -18px rgba(15,29,77,.18);}
+.fmt:hover{transform:translateY(-3px);box-shadow:0 18px 36px -18px rgba(16,48,42,.18);}
 .fmt .fn{display:flex;align-items:center;gap:9px;}
 .fmt .fnum{width:26px;height:26px;border-radius:8px;background:var(--blue-mist);color:var(--blue-deep);font-weight:800;font-size:.82rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .fmt h4{margin:0;font-size:1.02rem;font-weight:800;color:var(--navy);letter-spacing:-.01em;}
