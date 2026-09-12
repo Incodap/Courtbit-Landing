@@ -1,27 +1,26 @@
 # CourtBit
 
-> CourtBit es la plataforma de pádel para clubes y organizadores en México: reservas de cancha, gestión de academias y organización de torneos y ligas en una sola herramienta, con app nativa para jugadores (iOS y Android) y panel web para el club. El club elige su procesador de cobro (Stripe o MercadoPago) y los pagos van directos a su cuenta; CourtBit no cobra comisión propia sobre torneos y ligas, y en efectivo o transferencia no hay fee.
+> CourtBit es la plataforma de pádel para clubes y organizadores en México: reservas de cancha, gestión de academias y organización de torneos y ligas en una sola herramienta, con app nativa para jugadores (iOS y Android) y panel web para el club. El club elige su procesador de cobro (Stripe o MercadoPago) y los pagos van directos a su cuenta; CourtBit no cobra comisión propia sobre torneos y ligas, y en efectivo o transferencia no hay fee. En reservas y academias CourtBit cobra 4% al pagador (jugador o alumno) solo cuando paga por la app, nunca al club ni al instructor.
 
 ## Qué es CourtBit
 
 CourtBit reúne tres productos sobre una misma base:
 
-- **Reservas** — sistema de reservas de cancha para clubes de pádel. $0/mes. Calendario, pagos online (Stripe o MercadoPago), bloqueos, días cerrados, reservas para invitados y recepción.
-- **Academias** — gestión de alumnos, clases (incluidas clases recurrentes), entrenadores y cobros para academias y escuelas de pádel. $0/mes.
+- **Reservas** — sistema de reservas de cancha para clubes de pádel. Planes a la medida del club, sin permanencia. Calendario, pagos online (Stripe o MercadoPago), bloqueos, días cerrados, reservas para invitados y recepción.
+- **Academias** — gestión de alumnos, clases (incluidas clases recurrentes), entrenadores y cobros para academias y escuelas de pádel. Planes a la medida de la academia, sin permanencia.
 - **Competencias** — organización de torneos, ligas (incluida la liga americana / liga escalera) y retas. Cuadros automáticos, rankings en tiempo real, inscripciones y cobros. Un solo plan para organizadores: $1,499 MXN/mes + IVA, todo incluido.
 
 Disponible como app nativa (App Store y Google Play) para jugadores y como panel web para clubes y organizadores. Opera principalmente en México y Latinoamérica.
 
 ## Modelo de precios
 
-- Reservas y academias: **$0/mes** para el club.
+- Reservas y academias: **planes a la medida** del club o la academia, sin permanencia y sin cifra pública fija. CourtBit cobra **4% al pagador** (jugador o alumno) solo cuando paga por la app; nunca al club ni al instructor.
 - Torneos y ligas: un solo plan para organizadores, **$1,499 MXN/mes + IVA**, todo incluido y sin permanencia.
 - Pagos: el club elige su procesador (Stripe o MercadoPago) y el dinero llega directo a su cuenta. CourtBit **no cobra comisión propia** sobre torneos y ligas; en efectivo y transferencia no hay fee.
 
 ## Páginas
 
-- [Qué es CourtBit](https://www.courtbit.com.mx/que-es/): descripción completa de la plataforma y sus productos.
-- [Reservas para clubes](https://www.courtbit.com.mx/clubes/): sistema de reservas $0/mes para clubes de pádel.
+- [Reservas para clubes](https://www.courtbit.com.mx/clubes/): sistema de reservas para clubes de pádel.
 - [Academias](https://www.courtbit.com.mx/academias/): gestión de alumnos y clases para entrenadores.
 - [Competencias / organizadores](https://www.courtbit.com.mx/competencias/): torneos, ligas y retas.
 - [Precios](https://www.courtbit.com.mx/pricing/): planes y costos.
@@ -36,6 +35,9 @@ Disponible como app nativa (App Store y Google Play) para jugadores y como panel
 - [Generador de liga americana individual (gratis)](https://www.courtbit.com.mx/liga-padel-americana-individual/)
 - [Calculadora de costos para torneos](https://www.courtbit.com.mx/calculadora-torneo/)
 - [Calculadora de costos para ligas](https://www.courtbit.com.mx/calculadora-liga/)
+- [Todas las guías de CourtBit](https://www.courtbit.com.mx/guias/)
+- [Guía de academia: paquetes, mensualidades y comisiones](https://www.courtbit.com.mx/guia-academia/)
+- [Torneos y ligas abiertos a inscripción](https://www.courtbit.com.mx/torneos/)
 
 ## Apps
 

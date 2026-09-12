@@ -19,6 +19,13 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!-- LCP: el hero es el elemento mas grande del viewport; se precarga
+       la variante webp que el navegador va a elegir de todas formas. -->
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="/Assets/marketing/product/socio-foto-448.webp 448w, /Assets/marketing/product/socio-foto-896.webp 896w"
+        imagesizes="(max-width: 900px) 100vw, 448px"
+        fetchpriority="high">
+
   <link rel="icon" href="/Assets/courtbit-logo.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -399,7 +406,16 @@
           </div>
         </div>
         <div style="position: relative;">
-          <div class="e-hero-photo"><img src="/Assets/marketing/product/socio-foto.png" alt="Padel student ready for class"></div>
+          <div class="e-hero-photo"><picture>
+            <source type="image/webp"
+                    srcset="/Assets/marketing/product/socio-foto-448.webp 448w,
+                    /Assets/marketing/product/socio-foto-896.webp 896w"
+                    sizes="(max-width: 900px) 100vw, 448px">
+            <img src="/Assets/marketing/product/socio-foto.jpg"
+                 alt="Padel student ready for class"
+                 width="1122" height="1402"
+                 decoding="async" fetchpriority="high">
+          </picture></div>
           <div class="e-float-card">
             <strong>4% to the student, never the coach</strong>
             <small>Only on card payments through the app</small>

@@ -111,6 +111,7 @@ function renderFooter(page, locale) {
     prefix,
     footerTagline: strings.footerTagline,
     footerProductHeading: strings.footerProductHeading,
+    footerApps: strings.footerApps,
     footerToolsHeading: strings.footerToolsHeading,
     footerGuidesHeading: strings.footerGuidesHeading,
     footerDirectoryTournaments: strings.footerDirectoryTournaments,

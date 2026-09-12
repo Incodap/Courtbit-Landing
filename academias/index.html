@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CourtBit Academia — gestión de alumnos y clases para entrenadores</title>
-  <meta name="description" content="Software de academia de padel: lista de alumnos, agenda de clases, pagos directos. Planes para tu academia; CourtBit solo cobra 4% al alumno.">
+  <title>CourtBit Academia — alumnos y clases para entrenadores</title>
+  <meta name="description" content="Software de academia de pádel: lista de alumnos, agenda de clases y pagos directos. Planes para tu academia; CourtBit solo cobra 4% al alumno.">
   <link rel="canonical" href="https://www.courtbit.com.mx/academias/">
   <link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/academias/">
   <link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/academias/">
@@ -18,6 +18,13 @@
   <meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-academias.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+
+  <!-- LCP: el hero es el elemento mas grande del viewport; se precarga
+       la variante webp que el navegador va a elegir de todas formas. -->
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="/Assets/marketing/product/socio-foto-448.webp 448w, /Assets/marketing/product/socio-foto-896.webp 896w"
+        imagesizes="(max-width: 900px) 100vw, 448px"
+        fetchpriority="high">
 
   <link rel="icon" href="/Assets/courtbit-logo.svg" type="image/svg+xml">
 
@@ -84,6 +91,10 @@
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
+    /* <picture> es solo un contenedor de <source>: no debe generar caja propia,
+       o los .ph-floating absolutos y los wrappers con aspect-ratio heredan una
+       linea de texto vacia y el layout se desplaza. */
+    picture { display: contents; }
     button { font-family: inherit; }
 
     .container {
@@ -700,7 +711,16 @@
           </div>
         </div>
         <div style="position: relative;">
-          <div class="e-hero-photo"><img src="/Assets/marketing/product/socio-foto.png" alt="Alumno de padel listo para clase"></div>
+          <div class="e-hero-photo"><picture>
+            <source type="image/webp"
+                    srcset="/Assets/marketing/product/socio-foto-448.webp 448w,
+                    /Assets/marketing/product/socio-foto-896.webp 896w"
+                    sizes="(max-width: 900px) 100vw, 448px">
+            <img src="/Assets/marketing/product/socio-foto.jpg"
+                 alt="Alumno de padel listo para clase"
+                 width="1122" height="1402"
+                 decoding="async" fetchpriority="high">
+          </picture></div>
           <div class="e-float-card">
             <strong>4% al alumno, nunca al instructor</strong>
             <small>Solo en pagos con tarjeta por la app</small>
@@ -809,6 +829,7 @@
         <a href="/competencias/" class="footer-link">Para organizadores</a>
         <a href="/torneos/" class="footer-link">Torneos</a>
         <a href="/pricing/" class="footer-link">Precios</a>
+        <a href="/apps/" class="footer-link">Descargar la app</a>
         <!-- Directorio público (app.courtbit.com.mx). Va en el footer de todas
              las páginas a propósito: es un subdominio nuevo sin autoridad
              propia, y estos enlaces son lo que lo respalda desde el dominio

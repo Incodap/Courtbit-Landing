@@ -44,6 +44,10 @@
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
+    /* <picture> es solo un contenedor de <source>: no debe generar caja propia,
+       o los .ph-floating absolutos y los wrappers con aspect-ratio heredan una
+       linea de texto vacia y el layout se desplaza. */
+    picture { display: contents; }
     button { font-family: inherit; }
 
     .container {
