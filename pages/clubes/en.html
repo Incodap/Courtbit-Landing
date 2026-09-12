@@ -50,23 +50,23 @@
   <!-- SHARED_CHROME_CSS -->
   <style>
     :root {
-      --blue: #2e59fb;
-      --blue-deep: #1a45e0;
-      --blue-soft: #5a7afc;
-      --blue-mist: #eaf0ff;
-      --navy: #0f1d4d;
-      --navy-950: #060a26;
+      --blue: #15803d;
+      --blue-deep: #116230;
+      --blue-soft: #46a35f;
+      --blue-mist: #e6f5eb;
+      --navy: #10302a;
+      --navy-950: #061512;
       --lime: #B8F02B;
       --lime-soft: #e9fbb8;
       --lime-deep: #9fd121;
       --paper: #ffffff;
-      --bg: #fbfbfd;
-      --bg-tint: #f4f6ff;
-      --text: #0f1d4d;
-      --text-soft: #3a4262;
-      --text-muted: #6b7191;
-      --text-faint: #9aa0bb;
-      --border: #e6e8ef;
+      --bg: #fbfdfc;
+      --bg-tint: #f1f8f3;
+      --text: #10302a;
+      --text-soft: #3c4a45;
+      --text-muted: #687872;
+      --text-faint: #9aaaa4;
+      --border: #e4eae7;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -98,13 +98,13 @@
       background: var(--blue-mist); color: var(--blue-deep);
       font-size: 0.75rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
-      border: 1px solid rgba(46, 89, 251, 0.18);
+      border: 1px solid rgba(21,128,61, 0.18);
       margin-bottom: 20px;
     }
     .p-eyebrow .dot {
       width: 6px; height: 6px; border-radius: 999px;
       background: var(--blue);
-      box-shadow: 0 0 0 3px rgba(46, 89, 251, 0.18);
+      box-shadow: 0 0 0 3px rgba(21,128,61, 0.18);
     }
 
     .p-btn-lime {
@@ -113,7 +113,7 @@
       border: 2px solid var(--lime);
       padding: 13px 24px; border-radius: 999px;
       font-weight: 700; font-size: 0.95rem;
-      box-shadow: 0 12px 32px -8px rgba(184, 240, 43, 0.4);
+      box-shadow: 0 12px 32px -8px rgba(21,128,61,0.28);
       transition: all 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .p-btn-lime:hover { background: #c7f548; transform: translateY(-2px); box-shadow: 0 18px 36px -8px rgba(184, 240, 43, 0.55); }
@@ -136,17 +136,18 @@
     }
 
     /* Nav */
-    .e-nav { background: var(--blue); color: var(--paper); padding: 18px 0; position: sticky; top: 0; z-index: 50; }
+    .e-nav { background: var(--paper);
+      border-bottom: 1px solid var(--border); padding: 18px 0; position: sticky; top: 0; z-index: 50; }
     .e-nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .e-logo { display: flex; align-items: center; }
     .e-logo img { height: 90px; width: auto; display: block; }
-    @media (max-width: 768px) { .e-logo img { height: 96px; } }
-    @media (max-width: 480px) { .e-logo img { height: 80px; } }
+    @media (max-width: 768px) { .e-logo img { height: 52px; } }
+    @media (max-width: 480px) { .e-logo img { height: 46px; } }
     .e-nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
-    .e-nav-links a { color: var(--paper); font-weight: 600; font-size: 0.95rem; opacity: 0.9; transition: opacity 200ms; }
+    .e-nav-links a { color: var(--text-soft); font-weight: 600; font-size: 0.95rem;  transition: opacity 200ms; }
     .e-nav-links a:hover { opacity: 1; }
-    .e-nav-links a.is-active { color: var(--lime); opacity: 1; }
-    @media (max-width: 860px) { .e-nav-links { display: none; } }
+    .e-nav-links a.is-active { color: var(--blue); opacity: 1; }
+    @media (max-width: 860px) { }
 
     /* Hero */
     .e-hero { background: var(--blue); color: var(--paper); padding: 80px 0 96px; position: relative; overflow: hidden; }
@@ -173,14 +174,14 @@
       aspect-ratio: 4/5; max-height: 560px;
       border-radius: 0 0 240px 240px / 0 0 200px 200px;
       overflow: hidden;
-      box-shadow: 0 32px 60px -20px rgba(15, 29, 77, 0.5);
+      box-shadow: 0 32px 60px -20px rgba(16,48,42, 0.5);
     }
     .e-hero-photo img { width: 100%; height: 100%; object-fit: cover; }
     .e-float-card {
       position: absolute; bottom: -32px; right: -12px;
       background: var(--paper); color: var(--text);
       border-radius: 22px; padding: 18px 22px;
-      box-shadow: 0 24px 48px -12px rgba(15, 29, 77, 0.4);
+      box-shadow: 0 24px 48px -12px rgba(16,48,42, 0.4);
       max-width: 260px;
       font-size: 0.9rem;
     }
@@ -205,7 +206,7 @@
       padding: 32px;
       transition: transform 200ms, box-shadow 200ms;
     }
-    .e-feature:hover { transform: translateY(-4px); box-shadow: 0 16px 36px -12px rgba(15, 29, 77, 0.18); }
+    .e-feature:hover { transform: translateY(-4px); box-shadow: 0 16px 36px -12px rgba(16,48,42, 0.18); }
     .e-feature .icon {
       width: 48px; height: 48px; border-radius: 14px;
       background: var(--blue-mist); color: var(--blue-deep);
@@ -247,7 +248,7 @@
       background: var(--blue); color: var(--paper);
       border-radius: 22px; padding: 40px;
       max-width: 720px; margin: 0 auto;
-      box-shadow: 0 24px 48px -16px rgba(15, 29, 77, 0.35);
+      box-shadow: 0 24px 48px -16px rgba(16,48,42, 0.35);
     }
     .e-test-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
     .e-test-avatar {
@@ -377,18 +378,80 @@
         align-items: center;
       }
     }
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  
+    /* Burger: sólo existe en móvil. En escritorio el nav es horizontal. */
+    .e-nav-burger {
+      display: inline-flex; flex: none; width: 42px; height: 42px; padding: 0;
+      background: none; border: 1px solid var(--border); border-radius: 12px;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    .e-nav-burger span { display: block; width: 17px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 180ms, opacity 180ms; }
+    .e-nav.is-open .e-nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
+    .e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .e-nav-inner { position: relative; }
+    .e-nav-sep, .e-only-mobile { display: none; }
+    @media (prefers-reduced-motion: reduce) { .e-nav-burger span { transition: none; } }
+  
+    /* El burger existe sólo en móvil. Se oculta con min-width para que no
+       dependa del orden en el archivo: una regla sin media query gana por
+       posición a una dentro de @media. */
+    @media (min-width: 901px) { .e-nav-burger { display: none; } }
+  
+    /* ══ Menú móvil · bloque único y autoritativo ═══════════════════════════
+       Cada página del sitio trae su propia copia del CSS del nav, así que un
+       parche por página se convierte en whack-a-mole. Este bloque va SIEMPRE
+       al final del <style> y usa `nav.e-nav` para ganar por especificidad,
+       no por orden. Si se toca el menú móvil, se toca aquí. ═══════════════ */
+    nav.e-nav .e-nav-inner { position: relative; }
+    nav.e-nav .e-nav-burger {
+      display: inline-flex; flex: none; width: 44px; height: 44px; padding: 0;
+      background: none; border: 1px solid var(--border); border-radius: 12px;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    nav.e-nav .e-nav-burger span { display: block; width: 18px; height: 2px; background: var(--navy); border-radius: 2px; opacity: 1; transition: transform 180ms, opacity 180ms; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (min-width: 901px) {
+      nav.e-nav .e-nav-burger { display: none; }
+      nav.e-nav .e-nav-sep, nav.e-nav .e-only-mobile { display: none; }
+    }
+    @media (max-width: 900px) {
+      nav.e-nav:not(.is-open) .e-nav-links { display: none; }
+      nav.e-nav .e-nav-links {
+        display: flex; position: absolute; left: 0; right: 0; top: 100%;
+        flex-direction: column; gap: 0; align-items: stretch; margin: 0;
+        background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        box-shadow: 0 14px 30px rgba(16,48,42,.10); padding: 4px 16px 10px;
+        max-height: calc(100vh - 110px); overflow-y: auto; overflow-x: visible;
+        -webkit-mask-image: none; mask-image: none;
+      }
+      nav.e-nav .e-nav-links a { font-size: 1rem; min-height: 48px; display: flex; align-items: center; width: 100%; border-bottom: 1px solid var(--hairline); opacity: 1; }
+      nav.e-nav .e-nav-links a:last-child { border-bottom: 0; }
+      nav.e-nav .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 6px 0; }
+      nav.e-nav .e-only-mobile { display: flex; }
+      nav.e-nav .e-nav-secondary { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Skip to content</a>
 
   <!-- Status bar -->
   <div class="e-statusbar">New · CourtBit Reservas now available in Mexico · Booking for your padel club</div>
 
   <!-- NAV -->
   <!-- /NAV -->
+
+<main id="contenido">
 
   <!-- 1. Hero -->
   <section class="e-hero">
@@ -512,7 +575,9 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  </main>
+
+<!-- FOOTER -->
   <!-- /FOOTER -->
 
 </body>

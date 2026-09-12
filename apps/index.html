@@ -44,24 +44,24 @@
 
   <style>
     :root {
-      --blue:       #2e59fb;
-      --blue-deep:  #1a45e0;
-      --blue-soft:  #5a7afc;
-      --blue-mist:  #eaf0ff;
-      --navy:       #0f1d4d;
-      --navy-950:   #060a26;
+      --blue:       #15803d;
+      --blue-deep:  #116230;
+      --blue-soft:  #46a35f;
+      --blue-mist:  #e6f5eb;
+      --navy:       #10302a;
+      --navy-950:   #061512;
       --lime:       #B8F02B;
       --lime-soft:  #e9fbb8;
       --lime-deep:  #9fd121;
       --paper:      #ffffff;
-      --bg:         #fbfbfd;
-      --bg-tint:    #f4f6ff;
-      --text:       #0f1d4d;
-      --text-soft:  #3a4262;
-      --text-muted: #6b7191;
-      --text-faint: #9aa0bb;
-      --border:     #e6e8ef;
-      --hairline:   rgba(15, 29, 77, 0.08);
+      --bg:         #fbfdfc;
+      --bg-tint:    #f1f8f3;
+      --text:       #10302a;
+      --text-soft:  #3c4a45;
+      --text-muted: #687872;
+      --text-faint: #9aaaa4;
+      --border:     #e4eae7;
+      --hairline:   rgba(16,48,42, 0.08);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -93,7 +93,8 @@
     .e-topbar b { color: var(--lime); font-weight: 700; }
 
     /* Nav */
-    .e-nav { background: var(--blue); position: sticky; top: 0; z-index: 50; }
+    .e-nav { background: var(--paper);
+      border-bottom: 1px solid var(--border) position: sticky; top: 0; z-index: 50; }
     .e-nav-inner {
       max-width: 1200px; margin: 0 auto; padding: 16px 24px;
       display: flex; align-items: center; justify-content: space-between; gap: 24px;
@@ -102,19 +103,19 @@
     .e-logo img { height: 90px; width: auto; display: block; }
     .e-nav-links { display: flex; gap: 28px; align-items: center; }
     .e-nav-links a {
-      font-size: 0.9375rem; color: rgba(255,255,255,0.92); font-weight: 600;
+      font-size: 0.9375rem; color: var(--text-soft); font-weight: 600;
       transition: color 150ms;
     }
-    .e-nav-links a:hover { color: var(--lime); }
+    .e-nav-links a:hover { color: var(--blue); }
     .e-nav-cta {
-      background: var(--lime); color: var(--navy);
+      background: var(--blue); color: var(--paper);
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       transition: all 180ms; border: none;
       font-size: 0.875rem; font-weight: 700;
       padding: 10px 18px; border-radius: 999px;
       white-space: nowrap;
     }
-    .e-nav-cta:hover { background: #c7f548; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(184, 240, 43, 0.4); }
+    .e-nav-cta:hover { background: var(--blue-deep); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(21,128,61,0.28); }
 
     /* Hero (blue) */
     .e-hero {
@@ -256,7 +257,7 @@
       border-radius: 36px;
       padding: 12px;
       box-shadow:
-        0 32px 60px -16px rgba(15, 29, 77, 0.55),
+        0 32px 60px -16px rgba(16,48,42, 0.55),
         0 0 0 1.5px rgba(255,255,255,0.10) inset;
       transform: rotate(-4deg);
       z-index: 2;
@@ -286,7 +287,7 @@
       width: 88px; height: 88px;
       border-radius: 22px;
       background: var(--paper);
-      box-shadow: 0 8px 20px rgba(15,29,77,0.18);
+      box-shadow: 0 8px 20px rgba(16,48,42,0.18);
       padding: 8px;
       margin-bottom: 14px;
     }
@@ -316,7 +317,7 @@
       background: var(--paper);
       border-radius: 10px;
       padding: 8px 10px;
-      box-shadow: 0 1px 0 var(--hairline), 0 2px 6px -2px rgba(15,29,77,0.08);
+      box-shadow: 0 1px 0 var(--hairline), 0 2px 6px -2px rgba(16,48,42,0.08);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -335,7 +336,7 @@
       color: var(--text);
       padding: 12px 16px;
       border-radius: 14px;
-      box-shadow: 0 24px 48px -16px rgba(15, 29, 77, 0.4);
+      box-shadow: 0 24px 48px -16px rgba(16,48,42, 0.4);
       animation: e-float-anim 4s ease-in-out infinite;
       z-index: 3;
     }
@@ -385,13 +386,13 @@
       background: var(--blue-mist); color: var(--blue-deep);
       font-size: 0.75rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
-      border: 1px solid rgba(46, 89, 251, 0.18);
+      border: 1px solid rgba(21,128,61, 0.18);
       margin-bottom: 16px;
     }
     .e-section-eyebrow .dot {
       width: 6px; height: 6px; border-radius: 999px;
       background: var(--blue);
-      box-shadow: 0 0 0 3px rgba(46,89,251,0.18);
+      box-shadow: 0 0 0 3px rgba(21,128,61,0.18);
     }
     .e-section-title {
       font-size: clamp(1.85rem, 4vw, 2.75rem);
@@ -422,7 +423,7 @@
     .e-feature:hover {
       transform: translateY(-3px);
       border-color: var(--blue-soft);
-      box-shadow: 0 12px 32px -12px rgba(15, 29, 77, 0.15);
+      box-shadow: 0 12px 32px -12px rgba(16,48,42, 0.15);
     }
     .e-feature-icon {
       width: 44px; height: 44px;
@@ -472,7 +473,7 @@
     }
     .e-qr-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 16px 36px -16px rgba(15, 29, 77, 0.18);
+      box-shadow: 0 16px 36px -16px rgba(16,48,42, 0.18);
       border-color: var(--blue-soft);
     }
     .e-qr-card img {
@@ -508,7 +509,7 @@
       gap: 40px;
       margin-bottom: 32px;
     }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 0.6875rem;
       font-weight: 800;
       color: var(--navy);
@@ -571,7 +572,6 @@
       .e-phone { width: 200px; }
       .e-float.left { left: -8px; top: 46%; }
       .e-float.right { right: -8px; bottom: 10%; }
-      .e-nav-links { display: none; }
       .e-feature-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
       .footer-grid .footer-col:first-child { grid-column: 1 / -1; }
@@ -587,6 +587,65 @@
       .e-logo img { height: 64px; }
       .e-nav-inner { padding: 12px 16px; }
     }
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  
+    /* Burger: sólo existe en móvil. En escritorio el nav es horizontal. */
+    .e-nav-burger {
+      display: inline-flex; flex: none; width: 42px; height: 42px; padding: 0;
+      background: none; border: 1px solid var(--border); border-radius: 12px;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    .e-nav-burger span { display: block; width: 17px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 180ms, opacity 180ms; }
+    .e-nav.is-open .e-nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
+    .e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .e-nav-inner { position: relative; }
+    .e-nav-sep, .e-only-mobile { display: none; }
+    @media (prefers-reduced-motion: reduce) { .e-nav-burger span { transition: none; } }
+  
+    /* El burger existe sólo en móvil. Se oculta con min-width para que no
+       dependa del orden en el archivo: una regla sin media query gana por
+       posición a una dentro de @media. */
+    @media (min-width: 901px) { .e-nav-burger { display: none; } }
+  
+    /* ══ Menú móvil · bloque único y autoritativo ═══════════════════════════
+       Cada página del sitio trae su propia copia del CSS del nav, así que un
+       parche por página se convierte en whack-a-mole. Este bloque va SIEMPRE
+       al final del <style> y usa `nav.e-nav` para ganar por especificidad,
+       no por orden. Si se toca el menú móvil, se toca aquí. ═══════════════ */
+    nav.e-nav .e-nav-inner { position: relative; }
+    nav.e-nav .e-nav-burger {
+      display: inline-flex; flex: none; width: 44px; height: 44px; padding: 0;
+      background: none; border: 1px solid var(--border); border-radius: 12px;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    nav.e-nav .e-nav-burger span { display: block; width: 18px; height: 2px; background: var(--navy); border-radius: 2px; opacity: 1; transition: transform 180ms, opacity 180ms; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (min-width: 901px) {
+      nav.e-nav .e-nav-burger { display: none; }
+      nav.e-nav .e-nav-sep, nav.e-nav .e-only-mobile { display: none; }
+    }
+    @media (max-width: 900px) {
+      nav.e-nav:not(.is-open) .e-nav-links { display: none; }
+      nav.e-nav .e-nav-links {
+        display: flex; position: absolute; left: 0; right: 0; top: 100%;
+        flex-direction: column; gap: 0; align-items: stretch; margin: 0;
+        background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        box-shadow: 0 14px 30px rgba(16,48,42,.10); padding: 4px 16px 10px;
+        max-height: calc(100vh - 110px); overflow-y: auto; overflow-x: visible;
+        -webkit-mask-image: none; mask-image: none;
+      }
+      nav.e-nav .e-nav-links a { font-size: 1rem; min-height: 48px; display: flex; align-items: center; width: 100%; border-bottom: 1px solid var(--hairline); opacity: 1; }
+      nav.e-nav .e-nav-links a:last-child { border-bottom: 0; }
+      nav.e-nav .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 6px 0; }
+      nav.e-nav .e-only-mobile { display: flex; }
+      nav.e-nav .e-nav-secondary { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
   </style>
 
   <!-- Google Analytics (GA4) -->
@@ -595,27 +654,64 @@
 </head>
 
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div class="e-topbar">
     <span><b>Disponible</b> · CourtBit en iOS y Android · <b>Gratis</b></span>
   </div>
 
   <nav class="e-nav" aria-label="Principal">
-    <div class="e-nav-inner">
-      <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
-        <img src="../Assets/courtbit-logo.svg" alt="CourtBit">
-      </a>
-      <div class="e-nav-links">
-        <a href="/clubes/">Para clubes</a>
-        <a href="/academias/">Para academias</a>
-        <a href="/competencias/">Para organizadores</a>
-        <a href="/pricing/">Precios</a>
-      </div>
-      <a href="/" class="e-nav-cta">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-        Volver al sitio
-      </a>
+  <div class="e-nav-inner">
+    <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
+      <img src="/Assets/courtbit-logo.svg" alt="CourtBit" width="286" height="150" fetchpriority="high">
+    </a>
+    <div class="e-nav-links" id="e-nav-menu">
+      <a href="/competencias/" class="">Competencias</a>
+      <a href="/clubes/" class="">Reservas</a>
+      <a href="/academias/" class="">Academia</a>
+      <a href="/torneos/">Torneos</a>
+      <a href="/guias/">Guías</a>
+      <a href="/pricing/" class="">Precios</a>
+      <span class="e-nav-sep" aria-hidden="true"></span>
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login e-only-mobile">Dashboard</a>
+      <a href="/en/" class="e-nav-lang e-only-mobile">EN</a>
     </div>
-  </nav>
+    <div class="e-nav-secondary">
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">Dashboard</a>
+      <a href="/en/" class="e-nav-lang">EN</a>
+    </div>
+    <a href="/empezar/" class="e-nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Empezar gratis
+    </a>
+    <button type="button" class="e-nav-burger" aria-expanded="false" aria-controls="e-nav-menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+(function () {
+  var nav = document.currentScript.previousElementSibling;
+  var btn = nav.querySelector('.e-nav-burger');
+  var menu = nav.querySelector('#e-nav-menu');
+  if (!btn || !menu) return;
+  function set(abierto) {
+    btn.setAttribute('aria-expanded', String(abierto));
+    nav.classList.toggle('is-open', abierto);
+  }
+  btn.addEventListener('click', function () {
+    set(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    if (btn.getAttribute('aria-expanded') === 'true' && !nav.contains(e.target)) set(false);
+  });
+  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') set(false); });
+})();
+</script>
+
+<main id="contenido">
 
   <header class="e-hero">
     <div class="container">
@@ -755,7 +851,9 @@
     </div>
   </section>
 
-  <footer>
+  </main>
+
+<footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
@@ -768,22 +866,22 @@
         </div>
 
         <div class="footer-col">
-          <h4>Producto</h4>
-          <a href="/clubes/" class="footer-link">Para clubes</a>
-          <a href="/academias/" class="footer-link">Para academias</a>
-          <a href="/competencias/" class="footer-link">Para organizadores</a>
+          <h3>Producto</h3>
+          <a href="/competencias/" class="footer-link">Competencias</a>
+      <a href="/clubes/" class="footer-link">Reservas</a>
+          <a href="/academias/" class="footer-link">Academia</a>
           <a href="/pricing/" class="footer-link">Precios</a>
         </div>
 
         <div class="footer-col">
-          <h4>Herramientas</h4>
+          <h3>Herramientas</h3>
           <a href="/calculadora-torneo/" class="footer-link">Calculadora de torneo</a>
           <a href="/calculadora-liga/" class="footer-link">Calculadora de liga</a>
           <a href="/generador-cuadro-torneo-padel/" class="footer-link">Generador de cuadros</a>
         </div>
 
         <div class="footer-col">
-          <h4>Guías</h4>
+          <h3>Guías</h3>
           <a href="/como-organizar-torneo-padel/" class="footer-link">Cómo organizar un torneo</a>
           <a href="/mejores-practicas-torneo-padel/" class="footer-link">Mejores prácticas</a>
           <a href="/liga-americana-padel/" class="footer-link">Liga americana</a>

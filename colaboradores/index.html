@@ -33,14 +33,14 @@
 
     <style>
         :root {
-            --blue: #2e59fb; --blue-deep: #1a45e0; --blue-soft: #5a7afc; --blue-mist: #eaf0ff;
-            --navy: #0f1d4d; --navy-950: #060a26;
+            --blue: #15803d; --blue-deep: #116230; --blue-soft: #46a35f; --blue-mist: #e6f5eb;
+            --navy: #10302a; --navy-950: #061512;
             --lime: #B8F02B; --lime-soft: #e9fbb8; --lime-deep: #9fd121;
-            --paper: #ffffff; --bg: #fbfbfd; --bg-tint: #f4f6ff;
-            --text: #0f1d4d; --text-soft: #3a4262; --text-muted: #6b7191; --text-faint: #9aa0bb;
-            --border: #e6e8ef; --hairline: rgba(15,29,77,0.08);
-            --shadow-md: 0 12px 32px -12px rgba(15,29,77,0.18);
-            --shadow-lg: 0 32px 60px -24px rgba(15,29,77,0.35);
+            --paper: #ffffff; --bg: #fbfdfc; --bg-tint: #f1f8f3;
+            --text: #10302a; --text-soft: #3c4a45; --text-muted: #687872; --text-faint: #9aaaa4;
+            --border: #e4eae7; --hairline: rgba(16,48,42,0.08);
+            --shadow-md: 0 12px 32px -12px rgba(16,48,42,0.18);
+            --shadow-lg: 0 32px 60px -24px rgba(16,48,42,0.35);
             --font: 'DM Sans', system-ui, -apple-system, sans-serif;
             --mono: 'JetBrains Mono', ui-monospace, monospace;
         }
@@ -68,9 +68,9 @@
         /* EYEBROW */
         .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 15px; border-radius: 999px; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
         .eyebrow.on-blue { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
-        .eyebrow.on-light { background: var(--blue-mist); color: var(--blue-deep); border: 1px solid rgba(46,89,251,0.18); }
+        .eyebrow.on-light { background: var(--blue-mist); color: var(--blue-deep); border: 1px solid rgba(21,128,61,0.18); }
         .eyebrow .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--lime); box-shadow: 0 0 0 3px rgba(184,240,43,0.3); }
-        .eyebrow.on-light .dot { background: var(--blue); box-shadow: 0 0 0 3px rgba(46,89,251,0.18); }
+        .eyebrow.on-light .dot { background: var(--blue); box-shadow: 0 0 0 3px rgba(21,128,61,0.18); }
 
         /* NAV */
         .nav { background: var(--blue); position: sticky; top: 0; z-index: 50; }
@@ -80,7 +80,7 @@
         .nav-tag .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--lime); box-shadow: 0 0 8px rgba(184,240,43,0.7); animation: pulse-dot 2s ease-in-out infinite; }
         @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
         .nav-cta { background: var(--lime); color: var(--navy); display: inline-flex; align-items: center; gap: 8px; font-size: .875rem; font-weight: 700; padding: 10px 18px; border-radius: 999px; transition: all 180ms; }
-        .nav-cta:hover { background: #c7f548; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(184,240,43,0.4); }
+        .nav-cta:hover { background: #c7f548; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(21,128,61,0.28); }
         .nav-cta svg { width: 14px; height: 14px; }
 
         /* HERO */
@@ -134,7 +134,7 @@
 
         /* EXCLUSIVITY BAND */
         .exclusive { background: var(--navy-950); color: var(--paper); position: relative; overflow: hidden; padding: 96px 0; }
-        .exclusive::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(80% 60% at 15% 10%, rgba(46,89,251,0.28), transparent 55%), radial-gradient(60% 50% at 95% 100%, rgba(184,240,43,0.1), transparent 55%); }
+        .exclusive::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(80% 60% at 15% 10%, rgba(21,128,61,0.28), transparent 55%), radial-gradient(60% 50% at 95% 100%, rgba(184,240,43,0.1), transparent 55%); }
         .exclusive-inner { position: relative; max-width: 780px; margin: 0 auto; text-align: center; }
         .exclusive h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; margin: 18px 0 20px; }
         .exclusive h2 em { font-style: italic; color: var(--lime); }
@@ -161,7 +161,7 @@
         .flabel { display: block; margin-bottom: 6px; font-size: .8125rem; font-weight: 600; color: var(--text); }
         .flabel .opt { color: var(--text-faint); font-weight: 500; }
         .finput { width: 100%; padding: 13px 16px; background: var(--paper); border: 1.5px solid var(--border); border-radius: 13px; color: var(--text); font-family: var(--font); font-size: .9375rem; transition: all .2s; }
-        .finput:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(46,89,251,0.12); }
+        .finput:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(21,128,61,0.12); }
         .finput::placeholder { color: var(--text-faint); }
         select.finput { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7191' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
         .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -224,12 +224,16 @@
             .hero-cta { flex-direction: column; align-items: stretch; }
             .hero-cta .btn { width: 100%; }
         }
-    </style>
+    
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <!-- NAV -->
     <nav class="nav">
@@ -242,6 +246,8 @@
             </a>
         </div>
     </nav>
+
+<main id="contenido">
 
     <!-- HERO -->
     <header class="hero">
@@ -498,7 +504,9 @@
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    </main>
+
+<footer>
         <div class="container">
             <div class="footer-brand">Court<span>Bit</span></div>
             <div class="footer-right">

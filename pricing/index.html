@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Precios — CourtBit. Planes para tu club de padel.</title>
-    <meta name="description" content="Reservas y academias: 4% al pagador, nunca al club ni al instructor. Competencias en un solo plan de $1,499 MXN/mes + IVA con todas las funcionalidades.">
+    <meta name="description" content="Free para probar CourtBit y Enterprise por $1,499 MXN/mes + IVA con acceso total: torneos, ligas, retas y reservas sin límites. La comisión la paga el jugador, nunca el club.">
     <meta property="og:title" content="Precios — CourtBit. Planes para tu club de padel.">
-    <meta property="og:description" content="4% al pagador en reservas y academias. Competencias en un solo plan de $1,499/mes + IVA, todo incluido.">
+    <meta property="og:description" content="Free para probar y Enterprise por $1,499/mes + IVA con acceso total a todo CourtBit. La comisión la paga el jugador, nunca el club.">
     <meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-pricing.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -17,7 +17,7 @@
     <meta property="og:site_name" content="CourtBit">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Precios — CourtBit. Planes para tu club de padel.">
-    <meta name="twitter:description" content="4% al pagador en reservas y academias. Competencias en un solo plan, todo incluido.">
+    <meta name="twitter:description" content="Free para probar y Enterprise con acceso total a todo CourtBit. La comisión la paga el jugador, nunca el club.">
     <meta name="twitter:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-pricing.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.courtbit.com.mx/pricing/">
@@ -45,24 +45,27 @@
        checking every usage isn't.
        ───────────────────────────────────────────────────────── */
     :root {
-      --blue:       #2e59fb;
-      --blue-deep:  #1a45e0;
-      --blue-soft:  #5a7afc;
-      --blue-mist:  #eaf0ff;
-      --navy:       #0f1d4d;
-      --navy-950:   #060a26;
+      /* DEUDA: estos tokens ya no son azules, son el verde de marca.
+         Se conservan los nombres --blue* para no romper ~20 páginas sueltas;
+         renombrar a --brand* en un paso aparte. */
+      --blue:       #15803d;
+      --blue-deep:  #116230;
+      --blue-soft:  #46a35f;
+      --blue-mist:  #e6f5eb;
+      --navy:       #10302a;
+      --navy-950:   #061512;
       --lime:       #B8F02B;
       --lime-soft:  #e9fbb8;
       --lime-deep:  #9fd121;
       --paper:      #ffffff;
-      --bg:         #fbfbfd;
-      --bg-tint:    #f4f6ff;
-      --text:       #0f1d4d;
-      --text-soft:  #3a4262;
-      --text-muted: #6b7191;
-      --text-faint: #9aa0bb;
-      --border:     #e6e8ef;
-      --hairline:   rgba(15, 29, 77, 0.08);
+      --bg:         #fbfdfc;
+      --bg-tint:    #f1f8f3;
+      --text:       #10302a;
+      --text-soft:  #3c4a45;
+      --text-muted: #687872;
+      --text-faint: #9aaaa4;
+      --border:     #e4eae7;
+      --hairline:   rgba(16,48,42, 0.08);
     }
 
     /* Reset */
@@ -104,9 +107,10 @@
     }
     .e-topbar b { color: var(--lime); font-weight: 700; }
 
-    /* ─── Nav over saturated blue ─── */
+    /* ─── Nav clara: una sola banda a sangre en todo el sitio, y es el CTA final ─── */
     .e-nav {
-      background: var(--blue);
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
       position: sticky; top: 0; z-index: 50;
     }
     .e-nav-inner {
@@ -119,7 +123,7 @@
       font-weight: 800;
       font-size: 1.1rem;
       letter-spacing: 0.16em;
-      color: var(--paper);
+      color: var(--navy);
       text-transform: uppercase;
       display: flex; align-items: center; gap: 10px;
     }
@@ -131,7 +135,7 @@
     }
     .e-nav-links a {
       font-size: 0.9375rem;
-      color: rgba(255,255,255,0.92);
+      color: var(--text-soft);
       font-weight: 600;
       white-space: nowrap;
       transition: color 150ms;
@@ -139,11 +143,11 @@
       align-items: center;
       gap: 5px;
     }
-    .e-nav-links a:hover { color: var(--lime); }
-    .e-nav-links a.is-active { color: var(--lime); }
+    .e-nav-links a:hover { color: var(--blue); }
+    .e-nav-links a.is-active { color: var(--blue); }
     .e-nav-cta {
-      background: var(--lime);
-      color: var(--navy);
+      background: var(--blue);
+      color: var(--paper);
       display: inline-flex; align-items: center; justify-content: center;
       gap: 8px;
       transition: all 180ms;
@@ -157,9 +161,9 @@
       flex-shrink: 0;
     }
     .e-nav-cta:hover {
-      background: #c7f548;
+      background: var(--blue-deep);
       transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(184, 240, 43, 0.4);
+      box-shadow: 0 8px 20px rgba(21,128,61,0.28);
     }
     .e-nav-cta svg { width: 14px; height: 14px; }
 
@@ -172,22 +176,22 @@
     }
     .e-nav-secondary a {
       font-size: 0.875rem;
-      color: rgba(255,255,255,0.85);
+      color: var(--text-muted);
       font-weight: 600;
       transition: color 150ms;
     }
-    .e-nav-secondary a:hover { color: var(--paper); }
+    .e-nav-secondary a:hover { color: var(--navy); }
     .e-nav-lang {
       font-size: 0.8125rem;
       font-weight: 700;
       letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.85);
-      border: 1px solid rgba(255,255,255,0.35);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
       border-radius: 999px;
       padding: 4px 10px;
       transition: all 150ms;
     }
-    .e-nav-lang:hover { color: var(--paper); border-color: var(--paper); }
+    .e-nav-lang:hover { color: var(--navy); border-color: var(--navy); }
 
     /* ─── Footer ─── */
     footer {
@@ -202,7 +206,7 @@
       gap: 40px;
       margin-bottom: 32px;
     }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 0.6875rem;
       font-weight: 800;
       color: var(--navy);
@@ -285,8 +289,34 @@
       .e-nav-links a { font-size: 0.8125rem; }
     }
     @media (max-width: 900px) {
-      .e-nav-links { display: none; }
-      .e-nav-secondary { display: none; }
+      /* La nav NO desaparece en móvil: pasa a una tira deslizable bajo el
+         logo. Un prospecto que aún no quiere dejar datos necesita poder
+         evaluar producto y precios sin quedar atrapado en el scroll. */
+      .e-nav-inner { flex-wrap: wrap; row-gap: 0; }
+      .e-logo { order: 1; }
+      .e-nav-cta { order: 2; }
+      .e-nav-links { order: 3; }
+      .e-nav-secondary { order: 4; }
+      /* Menú burger. El strip deslizable obligaba a descubrir que se
+         desliza y dejaba el header en 132 px; el panel es más corto y
+         muestra todas las opciones de una. */
+      .e-nav-burger { display: inline-flex; }
+      .e-nav .e-nav-secondary { display: none; }
+      .e-nav:not(.is-open) .e-nav-links { display: none; }
+      .e-nav .e-nav-links {
+        display: flex; position: absolute; left: 0; right: 0; top: 100%;
+        flex-direction: column; gap: 0; align-items: stretch;
+        background: var(--paper); border-bottom: 1px solid var(--border);
+        box-shadow: 0 14px 30px rgba(16,48,42,.10); padding: 6px 16px 12px;
+      }
+      .e-nav.is-open .e-nav-links { display: flex; }
+      .e-nav .e-nav-links a {
+        font-size: 1rem; min-height: 48px; display: flex; align-items: center;
+        border-bottom: 1px solid var(--hairline); width: 100%;
+      }
+      .e-nav .e-nav-links a:last-child { border-bottom: 0; }
+      .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 8px 0; }
+      .e-only-mobile { display: flex !important; }
       .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
       .footer-grid .footer-col:first-child { grid-column: 1 / -1; margin-bottom: 4px; }
       .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
@@ -304,7 +334,7 @@
       .e-topbar { font-size: 0.6875rem; padding: 8px 12px; }
       .e-topbar span { line-height: 1.4; }
       .e-nav-inner { padding: 12px 16px; gap: 12px; }
-      .e-logo img { height: 96px; }
+      .e-logo img { height: 52px; }
       .e-nav-cta { padding: 9px 14px; font-size: 0.8125rem; }
       .e-nav-cta svg { display: none; }
     }
@@ -313,34 +343,77 @@
       .e-topbar b { display: inline; }
       .e-nav-inner { padding: 10px 14px; gap: 8px; }
       .e-logo { font-size: 0.9375rem; }
-      .e-logo img { height: 80px; }
+      .e-logo img { height: 46px; }
       .e-nav-cta { padding: 8px 13px; font-size: 0.75rem; }
     }
+
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+
+    /* ══ Menú móvil · bloque único y autoritativo ═══════════════════════════
+       Cada página del sitio trae su propia copia del CSS del nav, así que un
+       parche por página se convierte en whack-a-mole. Este bloque va SIEMPRE
+       al final del <style> y usa `nav.e-nav` para ganar por especificidad,
+       no por orden. Si se toca el menú móvil, se toca aquí. ═══════════════ */
+    nav.e-nav .e-nav-inner { position: relative; }
+    nav.e-nav .e-nav-burger {
+      display: inline-flex; flex: none; width: 44px; height: 44px; padding: 0;
+      background: none; border: 1px solid var(--border); border-radius: 12px;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    nav.e-nav .e-nav-burger span { display: block; width: 18px; height: 2px; background: var(--navy); border-radius: 2px; opacity: 1; transition: transform 180ms, opacity 180ms; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (min-width: 901px) {
+      nav.e-nav .e-nav-burger { display: none; }
+      nav.e-nav .e-nav-sep, nav.e-nav .e-only-mobile { display: none; }
+    }
+    @media (max-width: 900px) {
+      nav.e-nav:not(.is-open) .e-nav-links { display: none; }
+      nav.e-nav .e-nav-links {
+        display: flex; position: absolute; left: 0; right: 0; top: 100%;
+        flex-direction: column; gap: 0; align-items: stretch; margin: 0;
+        background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        box-shadow: 0 14px 30px rgba(16,48,42,.10); padding: 4px 16px 10px;
+        max-height: calc(100vh - 110px); overflow-y: auto; overflow-x: visible;
+        -webkit-mask-image: none; mask-image: none;
+      }
+      nav.e-nav .e-nav-links a { font-size: 1rem; min-height: 48px; display: flex; align-items: center; width: 100%; border-bottom: 1px solid var(--hairline); opacity: 1; }
+      nav.e-nav .e-nav-links a:last-child { border-bottom: 0; }
+      nav.e-nav .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 6px 0; }
+      nav.e-nav .e-only-mobile { display: flex; }
+      nav.e-nav .e-nav-secondary { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
     </style>
     <style>
         /* ══════════════════════════════════════════════════════ */
         /* Variant E palette (canonical, shared with home + competencias) */
         /* ══════════════════════════════════════════════════════ */
         :root {
-            --blue: #2e59fb;
-            --blue-deep: #1a45e0;
-            --blue-soft: #5a7afc;
-            --blue-mist: #eaf0ff;
-            --navy: #0f1d4d;
-            --navy-950: #060a26;
+            /* DEUDA: estos tokens ya no son azules, son el verde de marca.
+         Se conservan los nombres --blue* para no romper ~20 páginas sueltas;
+         renombrar a --brand* en un paso aparte. */
+      --blue: #15803d;
+            --blue-deep: #116230;
+            --blue-soft: #46a35f;
+            --blue-mist: #e6f5eb;
+            --navy: #10302a;
+            --navy-950: #061512;
             --lime: #B8F02B;
             --lime-soft: #e9fbb8;
             --lime-deep: #9fd121;
             --paper: #ffffff;
-            --bg: #fbfbfd;
-            --bg-tint: #f4f6ff;
-            --text: #0f1d4d;
-            --text-soft: #3a4262;
-            --text-muted: #6b7191;
-            --text-faint: #9aa0bb;
-            --border: #e6e8ef;
+            --bg: #fbfdfc;
+            --bg-tint: #f1f8f3;
+            --text: #10302a;
+            --text-soft: #3c4a45;
+            --text-muted: #687872;
+            --text-faint: #9aaaa4;
+            --border: #e4eae7;
             --border-soft: #eef0f6;
-            --hairline: rgba(15, 29, 77, 0.08);
+            --hairline: rgba(16,48,42, 0.08);
 
             /* Legacy aliases (kept so existing tier-table CSS keeps working) */
             --green-primary: var(--blue);
@@ -355,9 +428,9 @@
             --text-light: var(--text-muted);
             --border-light: var(--border);
             --border-gray: #d1d5db;
-            --shadow-sm: 0 1px 2px 0 rgba(15, 29, 77, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(15, 29, 77, 0.10);
-            --shadow-lg: 0 10px 15px -3px rgba(15, 29, 77, 0.10);
+            --shadow-sm: 0 1px 2px 0 rgba(16,48,42, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(16,48,42, 0.10);
+            --shadow-lg: 0 10px 15px -3px rgba(16,48,42, 0.10);
             --font-display: 'DM Sans', system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -418,13 +491,13 @@
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            border: 1px solid rgba(46, 89, 251, 0.18);
+            border: 1px solid rgba(21,128,61, 0.18);
             margin-bottom: 16px;
         }
         .p-eyebrow .dot {
             width: 6px; height: 6px; border-radius: 999px;
             background: var(--blue);
-            box-shadow: 0 0 0 3px rgba(46, 89, 251, 0.18);
+            box-shadow: 0 0 0 3px rgba(21,128,61, 0.18);
         }
 
         /* Buttons */
@@ -449,7 +522,7 @@
             background: var(--lime);
             color: var(--navy);
             border-color: var(--lime);
-            box-shadow: 0 12px 32px -8px rgba(184, 240, 43, 0.4);
+            box-shadow: 0 12px 32px -8px rgba(21,128,61,0.28);
         }
         .p-btn-lime:hover { background: #c7f548; transform: translateY(-2px); box-shadow: 0 18px 36px -8px rgba(184, 240, 43, 0.55); }
         .p-btn-ghost {
@@ -503,7 +576,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 24px 48px -16px rgba(46, 89, 251, 0.4);
+            box-shadow: 0 24px 48px -16px rgba(21,128,61, 0.4);
         }
         .b-hero-card::before {
             content: '';
@@ -653,7 +726,7 @@
         }
         .b-minor-card:hover {
             border-color: var(--blue);
-            box-shadow: 0 16px 36px -12px rgba(46, 89, 251, 0.18);
+            box-shadow: 0 16px 36px -12px rgba(21,128,61, 0.18);
             transform: translateY(-2px);
         }
         .b-minor-card .label {
@@ -709,7 +782,7 @@
             padding: 44px 40px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 24px 48px -16px rgba(46, 89, 251, 0.4);
+            box-shadow: 0 24px 48px -16px rgba(21,128,61, 0.4);
             display: flex;
             flex-direction: column;
         }
@@ -816,7 +889,7 @@
             max-width: 760px;
             text-align: center;
             padding: 24px 32px;
-            background: var(--bg-tint, #f4f6ff);
+            background: var(--bg-tint, #f1f8f3);
             border: 1.5px dashed var(--border, #d6dbe8);
             border-radius: 18px;
         }
@@ -837,7 +910,7 @@
         }
         .b-divider span {
             font-size: 0.9375rem;
-            color: var(--text-muted, #6b7191);
+            color: var(--text-muted, #687872);
         }
 
         /* Variant B mobile */
@@ -932,7 +1005,7 @@
         .pricing-card:hover {
             transform: translateY(-6px);
             border-color: var(--blue);
-            box-shadow: 0 20px 40px -12px rgba(46, 89, 251, 0.18);
+            box-shadow: 0 20px 40px -12px rgba(21,128,61, 0.18);
         }
 
         .pricing-card.highlighted {
@@ -942,7 +1015,7 @@
 
         .pricing-card.highlighted:hover {
             transform: scale(1.02) translateY(-6px);
-            box-shadow: 0 20px 40px -12px rgba(46, 89, 251, 0.28);
+            box-shadow: 0 20px 40px -12px rgba(21,128,61, 0.28);
         }
 
         .pricing-badge {
@@ -1100,7 +1173,7 @@
             background: var(--lime);
             color: var(--navy);
             border-color: var(--lime);
-            box-shadow: 0 12px 32px -8px rgba(184, 240, 43, 0.4);
+            box-shadow: 0 12px 32px -8px rgba(21,128,61,0.28);
         }
 
         .pricing-cta.primary:hover {
@@ -1225,7 +1298,7 @@
             color: var(--navy);
         }
         .comparison-table tbody td.highlighted-col {
-            background: rgba(46, 89, 251, 0.04);
+            background: rgba(21,128,61, 0.04);
         }
         .comparison-table tbody tr:last-child td {
             border-bottom: none;
@@ -1234,7 +1307,7 @@
             background: var(--bg);
         }
         .comparison-table tbody tr:hover td.highlighted-col {
-            background: rgba(46, 89, 251, 0.08);
+            background: rgba(21,128,61, 0.08);
         }
         .comparison-table .check {
             color: var(--blue);
@@ -1310,7 +1383,7 @@
         .custom-cta-btn:hover {
             background: var(--navy-950);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(15, 29, 77, 0.20);
+            box-shadow: 0 10px 20px rgba(16,48,42, 0.20);
         }
         @media (max-width: 768px) {
             .custom-cta {
@@ -1334,7 +1407,7 @@
             gap: 40px;
             margin-bottom: 32px;
         }
-        .footer-col h4 {
+        .footer-col h3 {
             font-size: 0.6875rem;
             font-weight: 800;
             color: var(--navy);
@@ -1428,24 +1501,88 @@
                 gap: 10px 24px;
             }
         }
-    </style>
+        /* ═══ PRICING V2 · comparativa Free vs Enterprise (espejo del Dashboard) ═══ */
+    .pv2 { padding: 88px 0; background: var(--paper, #fff); }
+    .pv2-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+    .pv2-head h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.035em; margin: 16px 0 12px; }
+    .pv2-head > p { color: var(--text-soft, #3c4a45); font-size: 1.0625rem; line-height: 1.55; margin: 0 auto; max-width: 56ch; }
+    .pv2-toggle { display: inline-flex; gap: 4px; margin-top: 26px; background: var(--bg-tint, #f1f8f3); border: 1px solid var(--border, #e4eae7); border-radius: 999px; padding: 4px; }
+    .pv2-toggle button { font: inherit; font-size: 0.875rem; font-weight: 700; color: var(--text-muted, #687872); background: none; border: 0; border-radius: 999px; padding: 9px 18px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+    .pv2-toggle button.is-on { background: var(--navy, #10302a); color: #fff; }
+    .pv2-save { font-size: 0.6875rem; font-weight: 700; background: var(--lime-soft, #e9fbb8); color: #3f5406; border-radius: 999px; padding: 3px 8px; }
+    .pv2-toggle button.is-on .pv2-save { background: rgba(255,255,255,.16); color: #d7f78a; }
+
+    .pv2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+    .pv2-plan { position: relative; border: 1px solid var(--border, #e4eae7); border-radius: 22px; background: var(--paper, #fff); padding: 28px; display: flex; flex-direction: column; gap: 20px; }
+    .pv2-plan--reco { border-color: var(--blue, #15803d); box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 14px 38px rgba(21,128,61,.12); }
+    .pv2-badge { position: absolute; top: -12px; left: 24px; background: var(--blue, #15803d); color: #fff; font-size: 0.6875rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 5px 13px; }
+    .pv2-plan header { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; flex-wrap: wrap; }
+    .pv2-plan h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; margin: 0; }
+    .pv2-plan header p { margin: 4px 0 0; font-size: 0.875rem; color: var(--text-muted, #687872); }
+    .pv2-price { text-align: right; }
+    .pv2-price b { display: block; font-size: clamp(1.75rem, 3.4vw, 2.5rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+    .pv2-price b small { font-size: 0.875rem; font-weight: 600; color: var(--text-muted, #687872); letter-spacing: 0; margin-left: 3px; }
+    .pv2-price > span { display: block; margin-top: 7px; font-size: 0.75rem; color: var(--text-muted, #687872); max-width: 30ch; margin-left: auto; line-height: 1.4; }
+    .pv2-cta { display: block; text-align: center; border-radius: 999px; padding: 14px 20px; font-weight: 800; font-size: 0.9375rem; }
+    .pv2-cta-main { background: var(--blue, #15803d); color: #fff; }
+    .pv2-cta-ghost { border: 1px solid var(--border, #e4eae7); color: var(--navy, #10302a); }
+    .pv2-rows { margin: 0; padding: 0; display: flex; flex-direction: column; }
+    .pv2-row { display: grid; grid-template-columns: 118px 1fr; gap: 14px; padding: 14px 0; border-top: 1px solid var(--border, #e4eae7); align-items: start; }
+    .pv2-row:first-child { border-top: 0; padding-top: 0; }
+    .pv2-row > b { font-size: 0.8125rem; font-weight: 700; color: var(--navy, #10302a); line-height: 1.35; }
+    .pv2-row ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .pv2-row li { font-size: 0.8125rem; line-height: 1.45; color: var(--text-soft, #3c4a45); padding-left: 20px; position: relative; }
+    .pv2-row li::before { content: '✓'; position: absolute; left: 0; top: -1px; color: #2f8f4e; font-weight: 800; }
+    .pv2-row li.off { color: var(--text-faint, #9aaaa4); }
+    .pv2-row li.off::before { content: '🔒'; font-size: 0.6875rem; top: 1px; }
+    .pv2-iva { font-size: 0.75rem; color: var(--text-muted, #687872); text-align: center; margin: 18px 0 0; }
+
+    .pv2-why { margin-top: 56px; }
+    .pv2-why h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 20px; }
+    .pv2-why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .pv2-why-card { border: 1px solid var(--border, #e4eae7); border-radius: 18px; padding: 22px; background: var(--paper, #fff); }
+    .pv2-why-card h4 { font-size: 1.0625rem; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .pv2-why-card p { margin: 0; font-size: 0.875rem; line-height: 1.55; color: var(--text-soft, #3c4a45); }
+
+    .pv2-all { margin-top: 48px; border-top: 1px solid var(--border, #e4eae7); padding-top: 32px; }
+    .pv2-all h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.022em; margin: 0 0 16px; }
+    .pv2-all ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px 26px; }
+    .pv2-all li { font-size: 0.875rem; color: var(--text-soft, #3c4a45); padding-left: 22px; position: relative; line-height: 1.5; }
+    .pv2-all li::before { content: '✓'; position: absolute; left: 0; color: #2f8f4e; font-weight: 800; }
+
+    @media (max-width: 860px) {
+      .pv2-grid { grid-template-columns: 1fr; }
+      .pv2 { padding: 64px 0; }
+      .pv2-price { text-align: left; }
+      .pv2-price > span { margin-left: 0; }
+    }
+
+  
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
     <nav class="e-nav" aria-label="Principal">
   <div class="e-nav-inner">
     <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
-      <img src="/Assets/courtbit-logo.svg" alt="CourtBit">
+      <img src="/Assets/courtbit-logo.svg" alt="CourtBit" width="286" height="150" fetchpriority="high">
     </a>
-    <div class="e-nav-links">
-      <a href="/clubes/" class="">Para clubes</a>
-      <a href="/academias/" class="">Para academias</a>
-      <a href="/competencias/" class="">Para organizadores</a>
+    <div class="e-nav-links" id="e-nav-menu">
+      <a href="/competencias/" class="">Competencias</a>
+      <a href="/clubes/" class="">Reservas</a>
+      <a href="/academias/" class="">Academia</a>
       <a href="/torneos/">Torneos</a>
       <a href="/guias/">Guías</a>
       <a href="/pricing/" class="is-active">Precios</a>
+      <span class="e-nav-sep" aria-hidden="true"></span>
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login e-only-mobile">Dashboard</a>
+      <a href="/en/pricing/" class="e-nav-lang e-only-mobile">EN</a>
     </div>
     <div class="e-nav-secondary">
       <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">Dashboard</a>
@@ -1455,11 +1592,36 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       Empezar gratis
     </a>
+    <button type="button" class="e-nav-burger" aria-expanded="false" aria-controls="e-nav-menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<script>
+(function () {
+  var nav = document.currentScript.previousElementSibling;
+  var btn = nav.querySelector('.e-nav-burger');
+  var menu = nav.querySelector('#e-nav-menu');
+  if (!btn || !menu) return;
+  function set(abierto) {
+    btn.setAttribute('aria-expanded', String(abierto));
+    nav.classList.toggle('is-open', abierto);
+  }
+  btn.addEventListener('click', function () {
+    set(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    if (btn.getAttribute('aria-expanded') === 'true' && !nav.contains(e.target)) set(false);
+  });
+  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') set(false); });
+})();
+</script>
 
 
-    <main>
+    <main id="contenido">
         <!-- ════════════════════════════════════════════════════ -->
         <!-- Variant B — Reservas + Academias (sin cambios)       -->
         <!-- ════════════════════════════════════════════════════ -->
@@ -1468,7 +1630,7 @@
                 <div class="b-pricing-hero-header reveal">
                     <span class="p-eyebrow"><span class="dot"></span> Precios</span>
                     <h1>Precios claros.<br><em>Sin sorpresas.</em></h1>
-                    <p class="b-pricing-desc">Reservas y Academias tienen planes a la medida de tu club. CourtBit cobra 4% al pagador (jugador o alumno) solo cuando paga por la app, nunca al club ni al instructor. Competencias es un módulo opcional con un solo plan que incluye todo.</p>
+                    <p class="b-pricing-desc">Reservas y Academias tienen planes a la medida de tu club. La comisión la paga el jugador o alumno solo cuando paga por la app, nunca el club ni el instructor: 7% en Free y 5% en Enterprise. En efectivo y transferencia, cero.</p>
                 </div>
 
                 <!-- ═══ SECTION 1: PLANES PARA CLUBES Y ACADEMIAS ═══ -->
@@ -1478,7 +1640,7 @@
                         <span class="ribbon">★ Para clubes</span>
                         <h2>Reservas</h2>
                         <div class="b-price-display">Planes <small>para tu club</small></div>
-                        <p class="b-fee-note">Solo <b>4% al jugador</b> cuando paga reservas por la app. Sin permanencia, cancelas cuando quieras.</p>
+                        <p class="b-fee-note">La comisión la paga el jugador cuando reserva por la app: <b>7% en Free y 5% en Enterprise</b>. Sin permanencia, cancelas cuando quieras.</p>
                         <ul class="b-bullets">
                             <li><span class="check"></span> Calendario multi-cancha · multi-sede</li>
                             <li><span class="check"></span> App nativa para jugadores (iOS + Android)</li>
@@ -1495,7 +1657,7 @@
                         <span class="ribbon">★ Para entrenadores</span>
                         <h2>Academias</h2>
                         <div class="b-price-display">Planes <small>para tu academia</small></div>
-                        <p class="b-fee-note">Solo <b>4% al alumno</b> cuando paga colegiatura por la app. Sin permanencia, cancelas cuando quieras.</p>
+                        <p class="b-fee-note">La comisión la paga el alumno cuando paga colegiatura por la app: <b>7% en Free y 5% en Enterprise</b>. Sin permanencia, cancelas cuando quieras.</p>
                         <ul class="b-bullets">
                             <li><span class="check"></span> Inscripciones online y cobros recurrentes</li>
                             <li><span class="check"></span> Asistencia y comunicación con padres</li>
@@ -1521,57 +1683,59 @@
         <!-- ════════════════════════════════════════════════════ -->
         <!-- SECTION 2: ¿Organizas torneos? — Competencias, plan único -->
         <!-- ════════════════════════════════════════════════════ -->
-        <section class="tier-table-intro">
-            <div class="container reveal">
-                <span class="p-eyebrow"><span class="dot"></span> Opcional · Solo para organizadores</span>
-                <h2>¿Organizas <em>torneos</em>?</h2>
-                <p>Si solo gestionas reservas o tu academia, las dos secciones de arriba ya cubren tu negocio. Competencias es un módulo opcional para clubes y operadores que necesitan brackets automáticos, calendario de jornadas, ranking por puntos y Live Control en cancha. Un solo plan, con todo incluido.</p>
-            </div>
-        </section>
-
-        <!-- SINGLE COMPETENCIAS PLAN — reemplaza la tabla de 4 planes -->
-        <section class="pricing">
+        <section class="pv2" id="planes">
             <div class="container">
-                <div class="b-stack reveal">
-                    <article class="b-hero-card">
-                        <div>
-                            <span class="ribbon">★ Un solo plan</span>
-                            <h2>Todo para tus <em>torneos</em></h2>
-                            <p class="b-tagline">Sin niveles ni límites: todas las funcionalidades de Competencias en una sola mensualidad.</p>
-                            <ul class="b-bullets b-bullets-2col">
-                                <li><span class="check"></span> Torneos y categorías ilimitados</li>
-                                <li><span class="check"></span> Brackets automáticos</li>
-                                <li><span class="check"></span> Calendario de jornadas automático</li>
-                                <li><span class="check"></span> Ligas: americana, escalera e individual</li>
-                                <li><span class="check"></span> Retas: americano y rey de la cancha</li>
-                                <li><span class="check"></span> Ranking por puntos y de circuito</li>
-                                <li><span class="check"></span> Resultados en vivo</li>
-                                <li><span class="check"></span> Pantalla de partidos en vivo (TV)</li>
-                                <li><span class="check"></span> Múltiples sedes</li>
-                                <li><span class="check"></span> Reportes financieros y analíticos</li>
-                                <li><span class="check"></span> APIs públicas + White-label</li>
-                                <li><span class="check"></span> Soporte prioritario por WhatsApp</li>
-                            </ul>
-                            <div class="b-ctas">
-                                <a href="/empezar/" class="p-btn p-btn-lime">Empezar ahora →</a>
-                                <a href="/competencias/" class="p-btn p-btn-ghost">Ver Competencias</a>
-                            </div>
-                        </div>
-
-                        <div class="b-breakdown">
-                            <h4>Mensualidad</h4>
-                            <div class="b-number">$1,499<small>MXN / mes</small></div>
-                            <p class="b-iva"><b>+ IVA</b> · sin permanencia</p>
-                            <ul>
-                                <li><b>Todas las funcionalidades</b> de Competencias</li>
-                                <li><b>Sin límites</b> de categorías, torneos ni sedes</li>
-                                <li>Cancela cuando quieras</li>
-                            </ul>
-                        </div>
+                <div class="pv2-head">
+                    <span class="p-eyebrow"><span class="dot"></span> Un plan · Acceso total</span>
+                    <h2>Compara los planes</h2>
+                    <p>Free es para probar CourtBit. Enterprise es para operar tu club: torneos, ligas, retas y reservas sin límites.</p>
+                    <div class="pv2-toggle" role="group" aria-label="Periodo de facturación">
+                        <button type="button" id="pv2-mensual" class="is-on" aria-pressed="true">Mensual</button>
+                        <button type="button" id="pv2-anual" aria-pressed="false">Anual <span class="pv2-save">2 meses gratis</span></button>
+                    </div>
+                </div>
+                <div class="pv2-grid">
+                    <article class="pv2-plan">
+                        <header>
+                            <div><h3>Free</h3><p>Para probar CourtBit</p></div>
+                            <div class="pv2-price"><b>Gratis</b><span>7% de comisión al jugador en pagos por la app</span></div>
+                        </header>
+                        <a href="/empezar/" class="pv2-cta pv2-cta-ghost">Crear cuenta gratis</a>
+                        <div class="pv2-rows"><div class="pv2-row"><b>Torneos</b><ul><li>Solo 1 torneo de prueba, con 1 categoría y hasta 12 parejas</li><li class="off">Al usarlo, crear más torneos requiere Enterprise</li></ul></div><div class="pv2-row"><b>Ligas</b><ul><li class="off">Bloqueadas: ligas americanas y escalera solo en Enterprise</li></ul></div><div class="pv2-row"><b>Retas</b><ul><li>Rey de la cancha y americano, con inscripción y pago en línea</li></ul></div><div class="pv2-row"><b>Reservas</b><ul><li>Calendario de canchas, enlace público de reserva y cobros</li></ul></div><div class="pv2-row"><b>Jugadores y pagos</b><ul><li>Inscripciones y pagos en línea (obligatorios para publicar)</li><li class="off">Códigos de descuento</li></ul></div><div class="pv2-row"><b>Equipo</b><ul><li>Solo tú (1 miembro)</li></ul></div><div class="pv2-row"><b>Soporte</b><ul><li>Por chat bot</li><li class="off">Soporte con expertos por WhatsApp: solo en Enterprise</li></ul></div><div class="pv2-row"><b>Herramientas premium</b><ul><li class="off">Ranking, autorellenado, Excel y PDFs con marca: solo en Enterprise</li></ul></div></div>
+                    </article>
+                    <article class="pv2-plan pv2-plan--reco">
+                        <span class="pv2-badge">Recomendado</span>
+                        <header>
+                            <div><h3>Enterprise</h3><p>Acceso total a todo CourtBit</p></div>
+                            <div class="pv2-price"><b><span data-plan="mensual">$1,499<small>/mes</small></span><span data-plan="anual" hidden>$14,990<small>/año</small></span></b><span>5% de comisión al jugador en pagos por la app</span></div>
+                        </header>
+                        <a href="/empezar/" class="pv2-cta pv2-cta-main">Empezar ahora →</a>
+                        <div class="pv2-rows"><div class="pv2-row"><b>Torneos</b><ul><li>Todos los torneos que organices, con categorías y parejas sin tope</li></ul></div><div class="pv2-row"><b>Ligas</b><ul><li>Ligas americanas y escalera, todas las que necesites</li></ul></div><div class="pv2-row"><b>Retas</b><ul><li>Rey de la cancha y americano, con inscripción y pago en línea</li></ul></div><div class="pv2-row"><b>Reservas</b><ul><li>Calendario de canchas, enlace público de reserva y cobros</li></ul></div><div class="pv2-row"><b>Jugadores y pagos</b><ul><li>Inscripciones con o sin cobro en línea; publicas cuando quieras</li><li>Códigos de descuento</li></ul></div><div class="pv2-row"><b>Equipo</b><ul><li>Todo tu equipo, sin límite de miembros</li></ul></div><div class="pv2-row"><b>Soporte</b><ul><li>Con expertos por WhatsApp: sin bots, ni chats complicados</li></ul></div><div class="pv2-row"><b>Herramientas premium</b><ul><li>Ranking de circuito, autorellenado del calendario, reportes Excel, PDFs y TV con tu marca</li></ul></div></div>
                     </article>
                 </div>
+                <p class="pv2-iva"><b>+ IVA</b> · sin permanencia, cancelas cuando quieras</p>
+                <div class="pv2-why"><h3>¿Por qué Enterprise?</h3><div class="pv2-why-grid"><div class="pv2-why-card"><h4>Opera sin topes</h4><p>Todos los torneos y ligas que tu club necesite, con las categorías y parejas que se inscriban. Sin sorpresas a media temporada.</p></div><div class="pv2-why-card"><h4>La comisión más baja</h4><p>5% al jugador en cada pago por la app, la tarifa más baja de CourtBit. Y publicas sin exigir cobro en línea.</p></div><div class="pv2-why-card"><h4>Hablas con expertos</h4><p>Soporte por WhatsApp con gente que conoce tu operación. Sin bots ni tickets.</p></div><div class="pv2-why-card"><h4>Tu marca en todo</h4><p>Rol, cuadros y resultados en PDF y pantalla de TV con tu identidad, ranking de circuito y equipo sin límite.</p></div></div></div>
+                <div class="pv2-all"><h3>Todo lo que incluye Enterprise</h3><ul><li>Torneos y categorías ilimitados</li><li>Brackets automáticos</li><li>Calendario de jornadas automático</li><li>Ligas: americana, escalera e individual</li><li>Retas: americano y rey de la cancha</li><li>Ranking por puntos y de circuito</li><li>Resultados en vivo</li><li>Pantalla de partidos en vivo (TV)</li><li>Múltiples sedes</li><li>Reportes financieros y analíticos</li><li>APIs públicas + White-label</li><li>Soporte con expertos por WhatsApp</li></ul></div>
             </div>
         </section>
+
+        <script>
+        (function () {
+          var m = document.getElementById('pv2-mensual'), a = document.getElementById('pv2-anual');
+          if (!m || !a) return;
+          function set(periodo) {
+            document.querySelectorAll('[data-plan]').forEach(function (el) {
+              el.hidden = el.getAttribute('data-plan') !== periodo;
+            });
+            m.classList.toggle('is-on', periodo === 'mensual');
+            a.classList.toggle('is-on', periodo === 'anual');
+            m.setAttribute('aria-pressed', String(periodo === 'mensual'));
+            a.setAttribute('aria-pressed', String(periodo === 'anual'));
+          }
+          m.addEventListener('click', function () { set('mensual'); });
+          a.addEventListener('click', function () { set('anual'); });
+        })();
+        </script>
 
         <section class="custom-cta">
             <div class="container">
@@ -1597,10 +1761,10 @@
       </div>
 
       <div class="footer-col">
-        <h4>Producto</h4>
-        <a href="/clubes/" class="footer-link">Para clubes</a>
-        <a href="/academias/" class="footer-link">Para academias</a>
-        <a href="/competencias/" class="footer-link">Para organizadores</a>
+        <h3>Producto</h3>
+        <a href="/competencias/" class="footer-link">Competencias</a>
+        <a href="/clubes/" class="footer-link">Reservas</a>
+        <a href="/academias/" class="footer-link">Academia</a>
         <a href="/torneos/" class="footer-link">Torneos</a>
         <a href="/pricing/" class="footer-link">Precios</a>
         <a href="/apps/" class="footer-link">Descargar la app</a>
@@ -1614,14 +1778,14 @@
       </div>
 
       <div class="footer-col">
-        <h4>Herramientas</h4>
+        <h3>Herramientas</h3>
         <a href="/calculadora-torneo/" class="footer-link">Calculadora de torneo</a>
         <a href="/calculadora-liga/" class="footer-link">Calculadora de liga</a>
         <a href="/generador-cuadro-torneo-padel/" class="footer-link">Generador de cuadros</a>
       </div>
 
       <div class="footer-col">
-        <h4>Guías</h4>
+        <h3>Guías</h3>
         <a href="/guias/" class="footer-link">Todas las guías</a>
         <a href="/guia-academia/" class="footer-link">Academia: paquetes y comisiones</a>
         <a href="/como-organizar-torneo-padel/" class="footer-link">Cómo organizar un torneo</a>

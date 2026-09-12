@@ -45,7 +45,7 @@
         :root {
             --lime: #B8F02B;
             --lime-hover: #a5d827;
-            --navy: #0f1d4d;
+            --navy: #10302a;
             --navy-light: #1a2e6b;
             --navy-softer: #243572;
             --white: #ffffff;
@@ -55,8 +55,8 @@
             --text-muted: #8b92a8;
             --border: #e4e7ec;
             --border-light: #f0f1f4;
-            --shadow-sm: 0 1px 3px rgba(15,29,77,0.06);
-            --shadow-md: 0 4px 12px rgba(15,29,77,0.08);
+            --shadow-sm: 0 1px 3px rgba(16,48,42,0.06);
+            --shadow-md: 0 4px 12px rgba(16,48,42,0.08);
             --radius: 12px;
             --radius-sm: 8px;
             --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -410,7 +410,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 16px rgba(15,29,77,0.2);
+            box-shadow: 0 4px 16px rgba(16,48,42,0.2);
             opacity: 0;
             pointer-events: none;
             transition: all 0.25s;
@@ -495,12 +495,16 @@
             .doc-body a { color: #000; text-decoration: underline; }
             .doc-body a::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #555; }
         }
-    </style>
+    
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Skip to content</a>
 
     <!-- Nav: self-contained, minimal document-hub chrome — not templated -->
     <nav class="legal-nav">
@@ -571,7 +575,7 @@
         </aside>
 
         <!-- CONTENT -->
-        <main class="legal-content">
+        <main id="contenido" class="legal-content">
 
             <!-- ═══════════════════════════════════════════════════ -->
             <!-- DOC 1: TERMS AND CONDITIONS — PLAYERS              -->

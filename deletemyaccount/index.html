@@ -237,12 +237,16 @@
             color: var(--text-gray);
             font-size: 0.875rem;
         }
-    </style>
+    
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
     <nav>
         <div class="nav-container">
             <a href="/" class="logo">Court<span>Bit</span></a>
@@ -250,7 +254,7 @@
         </div>
     </nav>
 
-    <main class="content">
+    <main id="contenido" class="content">
         <div class="container">
             <h1>Eliminar mi cuenta</h1>
             <p class="subtitle">Elimina tu cuenta y datos personales de CourtBit de forma permanente.</p>

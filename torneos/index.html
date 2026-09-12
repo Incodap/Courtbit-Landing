@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Torneos y Ligas de Padel con Cuota Fija | CourtBit</title>
-<meta name="description" content="Organiza torneos, ligas y retas por una cuota fija de $1,499 al mes: inscripciones, pagos con tu Stripe o MercadoPago y app para tus jugadores." />
+<meta name="description" content="Organiza torneos, ligas y retas por una cuota fija mensual: inscripciones, pagos con tu Stripe o MercadoPago y app para tus jugadores." />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejecuta tus propios torneos, ligas y retas — con una cuota fija" />
-<meta property="og:description" content="Todo lo que necesitas para gestionar tus torneos, ligas y retas: inscripciones, pagos, grupos, fases finales y calendario. Desde $1,499/mes." />
+<meta property="og:description" content="Todo lo que necesitas para gestionar tus torneos, ligas y retas: inscripciones, pagos, grupos, fases finales y calendario. Con una cuota fija mensual." />
 <link rel="canonical" href="https://www.courtbit.com.mx/torneos/">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
@@ -19,12 +19,12 @@
 <style>
   /* ───────── Brand palette (locked — Variant E "Playtomic-grade Bold") ───────── */
   :root{
-    --blue:#2e59fb; --blue-deep:#1a45e0; --blue-soft:#5a7afc; --blue-mist:#eaf0ff;
-    --navy:#0f1d4d; --navy-950:#060a26;
+    --blue:#15803d; --blue-deep:#116230; --blue-soft:#46a35f; --blue-mist:#e6f5eb;
+    --navy:#10302a; --navy-950:#061512;
     --lime:#B8F02B; --lime-soft:#e9fbb8; --lime-deep:#9fd121; --lime-ink:#4d6a16;
-    --paper:#ffffff; --bg:#fbfbfd; --bg-tint:#f4f6ff;
-    --text:#0f1d4d; --text-soft:#3a4262; --text-muted:#6b7191; --text-faint:#9aa0bb;
-    --border:#e6e8ef; --hairline:rgba(15,29,77,0.08);
+    --paper:#ffffff; --bg:#fbfdfc; --bg-tint:#f1f8f3;
+    --text:#10302a; --text-soft:#3c4a45; --text-muted:#687872; --text-faint:#9aaaa4;
+    --border:#e4eae7; --hairline:rgba(16,48,42,0.08);
   }
   *,*::before,*::after{box-sizing:border-box}
   html{scroll-behavior:smooth;overflow-x:hidden}
@@ -43,15 +43,16 @@
   .e-topbar b{color:var(--lime);font-weight:700}
 
   /* ───────── Nav ───────── */
-  .e-nav{background:var(--blue);position:sticky;top:0;z-index:50}
+  .e-nav{background:var(--paper);
+      border-bottom: 1px solid var(--border)position:sticky;top:0;z-index:50}
   .e-nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
   .e-logo{display:flex;align-items:center;gap:10px}
   .e-logo img{height:84px;width:auto;display:block}
   .e-nav-links{display:flex;gap:28px;align-items:center}
-  .e-nav-links a{font-size:.9375rem;color:rgba(255,255,255,.92);font-weight:600;transition:color 150ms}
-  .e-nav-links a:hover{color:var(--lime)}
-  .e-nav-cta{background:var(--lime);color:var(--navy);display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all 180ms;cursor:pointer;border:none;font-size:.875rem;font-weight:700;padding:10px 18px;border-radius:999px;white-space:nowrap;flex-shrink:0}
-  .e-nav-cta:hover{background:#c7f548;transform:translateY(-1px);box-shadow:0 8px 20px rgba(184,240,43,.4)}
+  .e-nav-links a{font-size:.9375rem;color:var(--text-soft);font-weight:600;transition:color 150ms}
+  .e-nav-links a:hover{color:var(--blue)}
+  .e-nav-cta{background:var(--blue);color:var(--paper);display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all 180ms;cursor:pointer;border:none;font-size:.875rem;font-weight:700;padding:10px 18px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+  .e-nav-cta:hover{background:var(--blue-deep);transform:translateY(-1px);box-shadow:0 8px 20px rgba(184,240,43,.4)}
   .e-nav-cta svg{width:14px;height:14px}
 
   /* ───────── Buttons ───────── */
@@ -61,7 +62,7 @@
   .e-btn-outline{background:transparent;color:var(--paper);border-color:rgba(255,255,255,.4)}
   .e-btn-outline:hover{border-color:var(--paper);background:rgba(255,255,255,.08)}
   .e-btn-blue{background:var(--blue);color:var(--paper);border-color:var(--blue)}
-  .e-btn-blue:hover{background:var(--blue-deep);transform:translateY(-1px);box-shadow:0 8px 20px rgba(46,89,251,.35)}
+  .e-btn-blue:hover{background:var(--blue-deep);transform:translateY(-1px);box-shadow:0 8px 20px rgba(21,128,61,.35)}
 
   /* ───────── HERO ───────── */
   .e-hero{background:var(--blue);color:var(--paper);position:relative;overflow:hidden;padding:80px 0 96px}
@@ -90,7 +91,7 @@
   .t-pane .note{font-size:.84rem;color:var(--text-muted);margin-top:16px;display:flex;align-items:flex-start;gap:8px;line-height:1.35}
   .t-pane.win .note{color:var(--lime-ink);font-weight:600}
   .t-pane .note svg{flex:0 0 auto;margin-top:2px}
-  .t-vs__badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:999px;background:#fff;border:1px solid var(--border);display:grid;place-items:center;font-weight:800;font-size:.82rem;color:var(--navy);z-index:2;box-shadow:0 10px 24px -8px rgba(15,29,77,.4)}
+  .t-vs__badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:999px;background:#fff;border:1px solid var(--border);display:grid;place-items:center;font-weight:800;font-size:.82rem;color:var(--navy);z-index:2;box-shadow:0 10px 24px -8px rgba(16,48,42,.4)}
   .t-vs__save{margin-top:10px;text-align:center;font-size:.84rem;color:var(--text-muted);padding:14px 12px 6px;border-top:1px dashed var(--border);line-height:1.45}
   .t-vs__save b{color:var(--lime-ink)}
 
@@ -101,8 +102,8 @@
   .t-strip b{font-weight:800;color:var(--blue-deep)}
 
   /* ───────── Section header ───────── */
-  .e-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--blue-mist);color:var(--blue-deep);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(46,89,251,.18)}
-  .e-eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--blue);box-shadow:0 0 0 3px rgba(46,89,251,.18)}
+  .e-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--blue-mist);color:var(--blue-deep);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(21,128,61,.18)}
+  .e-eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--blue);box-shadow:0 0 0 3px rgba(21,128,61,.18)}
   .e-section-header{margin-bottom:48px}
   .e-section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.032em;line-height:1.05;margin:16px 0 14px;color:var(--navy)}
   .e-section-title em{font-style:italic;color:var(--blue);font-weight:800}
@@ -111,9 +112,9 @@
   /* ───────── Overview cards ───────── */
   .t-section{padding:96px 0}
   .t-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .t-card{background:var(--paper);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:0 18px 36px -20px rgba(15,29,77,.18);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
-  .t-card:hover{transform:translateY(-4px);border-color:rgba(46,89,251,.28);box-shadow:0 24px 48px -18px rgba(15,29,77,.26)}
-  .t-ic{width:46px;height:46px;border-radius:13px;background:var(--blue-mist);color:var(--blue-deep);display:grid;place-items:center;margin-bottom:18px;border:1px solid rgba(46,89,251,.14)}
+  .t-card{background:var(--paper);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:0 18px 36px -20px rgba(16,48,42,.18);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+  .t-card:hover{transform:translateY(-4px);border-color:rgba(21,128,61,.28);box-shadow:0 24px 48px -18px rgba(16,48,42,.26)}
+  .t-ic{width:46px;height:46px;border-radius:13px;background:var(--blue-mist);color:var(--blue-deep);display:grid;place-items:center;margin-bottom:18px;border:1px solid rgba(21,128,61,.14)}
   .t-ic svg{width:24px;height:24px}
   .t-card h3{font-size:1.18rem;font-weight:800;letter-spacing:-.018em;margin:0 0 8px;color:var(--navy)}
   .t-card p{font-size:.95rem;color:var(--text-muted);margin:0;line-height:1.55}
@@ -135,11 +136,11 @@
   .tick{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;margin-top:1px}
   .tick svg{width:13px;height:13px}
   .t-pills{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px}
-  .t-pill{background:var(--blue-mist);color:var(--blue-deep);font-weight:700;font-size:.85rem;padding:7px 14px;border-radius:999px;border:1px solid rgba(46,89,251,.16)}
+  .t-pill{background:var(--blue-mist);color:var(--blue-deep);font-weight:700;font-size:.85rem;padding:7px 14px;border-radius:999px;border:1px solid rgba(21,128,61,.16)}
 
   /* frames + phones */
   .e-showcase-visual{position:relative}
-  .t-frame{border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--paper);box-shadow:0 24px 48px -16px rgba(15,29,77,.28);margin:0}
+  .t-frame{border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--paper);box-shadow:0 24px 48px -16px rgba(16,48,42,.28);margin:0}
   .t-frame__bar{height:38px;display:flex;align-items:center;gap:7px;padding:0 16px;background:#f4f6fb;border-bottom:1px solid var(--border)}
   .t-frame__bar i{width:11px;height:11px;border-radius:50%;background:#cdd3e2;display:block}
   .t-frame img{display:block;width:100%;height:auto}
@@ -150,7 +151,7 @@
   .t-frame--narrow{max-width:560px;margin-inline:auto}
   .t-stack{display:grid;gap:26px}
 
-  .t-phone{width:100%;max-width:266px;margin:0 auto;background:#0a1238;border-radius:38px;padding:8px;box-shadow:0 24px 48px -14px rgba(15,29,77,.45)}
+  .t-phone{width:100%;max-width:266px;margin:0 auto;background:#0a1238;border-radius:38px;padding:8px;box-shadow:0 24px 48px -14px rgba(16,48,42,.45)}
   .t-phone__screen{border-radius:30px;overflow:hidden;background:#fff;position:relative}
   .t-phone__screen img{display:block;width:100%;height:auto}
 
@@ -199,7 +200,7 @@
   /* ───────── Footer ───────── */
   footer{padding:56px 0 24px;border-top:1px solid var(--border);background:var(--paper)}
   .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
-  .footer-col h4{font-size:.6875rem;font-weight:800;color:var(--navy);letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px}
+  .footer-col h3{font-size:.6875rem;font-weight:800;color:var(--navy);letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px}
   .footer-col .footer-link{display:block;margin-bottom:8px;font-size:.875rem;color:var(--text-muted);transition:color .2s}
   .footer-col .footer-link:hover{color:var(--blue)}
   .footer-brand{font-size:1.25rem;font-weight:800;color:var(--navy);letter-spacing:.04em}
@@ -234,7 +235,6 @@
     .t-dual .t-float-phone .t-phone{max-width:200px;border-radius:34px;padding:7px}
     .t-dual .t-float-phone .t-phone__screen{border-radius:27px}
     .t-phones{grid-template-columns:repeat(2,1fr)}
-    .e-nav-links{display:none}
     .footer-grid{grid-template-columns:1fr 1fr 1fr;gap:32px}
     .footer-grid .footer-col:first-child{grid-column:1 / -1;margin-bottom:4px}
     .footer-bottom{flex-direction:column;align-items:center;text-align:center;gap:12px}
@@ -287,32 +287,132 @@
     .t-frame--narrow{max-width:90mm}
     a[href]{color:inherit;text-decoration:none}
   }
-</style>
+
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  
+    /* Burger: sólo existe en móvil. En escritorio el nav es horizontal. */
+    .e-nav-burger {
+      display: inline-flex; flex: none; width: 42px; height: 42px; padding: 0;
+      background: none; border: 1px solid var(--border); border-radius: 12px;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    .e-nav-burger span { display: block; width: 17px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 180ms, opacity 180ms; }
+    .e-nav.is-open .e-nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
+    .e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .e-nav-inner { position: relative; }
+    .e-nav-sep, .e-only-mobile { display: none; }
+    @media (prefers-reduced-motion: reduce) { .e-nav-burger span { transition: none; } }
+  
+    /* El burger existe sólo en móvil. Se oculta con min-width para que no
+       dependa del orden en el archivo: una regla sin media query gana por
+       posición a una dentro de @media. */
+    @media (min-width: 901px) { .e-nav-burger { display: none; } }
+  
+    /* ══ Menú móvil · bloque único y autoritativo ═══════════════════════════
+       Cada página del sitio trae su propia copia del CSS del nav, así que un
+       parche por página se convierte en whack-a-mole. Este bloque va SIEMPRE
+       al final del <style> y usa `nav.e-nav` para ganar por especificidad,
+       no por orden. Si se toca el menú móvil, se toca aquí. ═══════════════ */
+    nav.e-nav .e-nav-inner { position: relative; }
+    nav.e-nav .e-nav-burger {
+      display: inline-flex; flex: none; width: 44px; height: 44px; padding: 0;
+      background: none; border: 1px solid var(--border); border-radius: 12px;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    nav.e-nav .e-nav-burger span { display: block; width: 18px; height: 2px; background: var(--navy); border-radius: 2px; opacity: 1; transition: transform 180ms, opacity 180ms; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (min-width: 901px) {
+      nav.e-nav .e-nav-burger { display: none; }
+      nav.e-nav .e-nav-sep, nav.e-nav .e-only-mobile { display: none; }
+    }
+    @media (max-width: 900px) {
+      nav.e-nav:not(.is-open) .e-nav-links { display: none; }
+      nav.e-nav .e-nav-links {
+        display: flex; position: absolute; left: 0; right: 0; top: 100%;
+        flex-direction: column; gap: 0; align-items: stretch; margin: 0;
+        background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        box-shadow: 0 14px 30px rgba(16,48,42,.10); padding: 4px 16px 10px;
+        max-height: calc(100vh - 110px); overflow-y: auto; overflow-x: visible;
+        -webkit-mask-image: none; mask-image: none;
+      }
+      nav.e-nav .e-nav-links a { font-size: 1rem; min-height: 48px; display: flex; align-items: center; width: 100%; border-bottom: 1px solid var(--hairline); opacity: 1; }
+      nav.e-nav .e-nav-links a:last-child { border-bottom: 0; }
+      nav.e-nav .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 6px 0; }
+      nav.e-nav .e-only-mobile { display: flex; }
+      nav.e-nav .e-nav-secondary { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
+  </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <!-- ===================== TOPBAR ===================== -->
 <div class="e-topbar">
-  <span><b>Cuota fija</b> · Torneos, ligas y retas ilimitados desde <b>$1,499/mes</b> — tú tienes el control</span>
+  <span><b>Cuota fija</b> · Torneos, ligas y retas ilimitados — tú tienes el control</span>
 </div>
 
 <!-- ===================== NAV ===================== -->
 <nav class="e-nav" aria-label="Principal">
   <div class="e-nav-inner">
-    <a href="/" class="e-logo" aria-label="Courtbit — Inicio">
-      <img src="/Assets/courtbit-logo.svg" alt="Courtbit">
+    <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
+      <img src="/Assets/courtbit-logo.svg" alt="CourtBit" width="286" height="150" fetchpriority="high">
     </a>
-    <div class="e-nav-links">
-      <a href="/clubes/">Para clubes</a>
-      <a href="/academias/">Para academias</a>
-      <a href="/competencias/">Para organizadores</a>
-      <a href="/pricing/">Precios</a>
+    <div class="e-nav-links" id="e-nav-menu">
+      <a href="/competencias/" class="">Competencias</a>
+      <a href="/clubes/" class="">Reservas</a>
+      <a href="/academias/" class="">Academia</a>
+      <a href="/torneos/">Torneos</a>
+      <a href="/guias/">Guías</a>
+      <a href="/pricing/" class="">Precios</a>
+      <span class="e-nav-sep" aria-hidden="true"></span>
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login e-only-mobile">Dashboard</a>
+      <a href="/en/" class="e-nav-lang e-only-mobile">EN</a>
     </div>
+    <div class="e-nav-secondary">
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">Dashboard</a>
+      <a href="/en/" class="e-nav-lang">EN</a>
+    </div>
+    <a href="/empezar/" class="e-nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Empezar gratis
+    </a>
+    <button type="button" class="e-nav-burger" aria-expanded="false" aria-controls="e-nav-menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<script>
+(function () {
+  var nav = document.currentScript.previousElementSibling;
+  var btn = nav.querySelector('.e-nav-burger');
+  var menu = nav.querySelector('#e-nav-menu');
+  if (!btn || !menu) return;
+  function set(abierto) {
+    btn.setAttribute('aria-expanded', String(abierto));
+    nav.classList.toggle('is-open', abierto);
+  }
+  btn.addEventListener('click', function () {
+    set(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    if (btn.getAttribute('aria-expanded') === 'true' && !nav.contains(e.target)) set(false);
+  });
+  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') set(false); });
+})();
+</script>
+
+<main id="contenido">
 
 <!-- ===================== HERO ===================== -->
 <header class="e-hero">
@@ -338,7 +438,7 @@
         <div class="t-vs__grid" style="grid-template-columns:1fr">
           <div class="t-pane win">
             <div class="tag">Con Courtbit</div>
-            <div class="price"><span class="pre">Cuota fija</span>$1,499<small>MXN / mes · torneos, ligas y retas ilimitados</small></div>
+            <div class="price"><span class="pre">Cuota fija</span>Un plan<small>torneos, ligas y retas ilimitados</small></div>
             <div class="note">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
               Mismo costo, organices los que organices
@@ -624,11 +724,13 @@
 <section class="e-final" id="contacto">
   <div class="e-final-inner">
     <h2>Tu club, tus torneos, <em>tu dinero</em>.</h2>
-    <p>Deja de pagar por evento. Con Courtbit organizas torneos ilimitados con una cuota fija de $1,499/mes — y todo el control se queda contigo.</p>
+    <p>Deja de pagar por evento. Con Courtbit organizas torneos ilimitados con una cuota fija mensual — y todo el control se queda contigo.</p>
   </div>
 </section>
 
 <!-- ===================== FOOTER ===================== -->
+</main>
+
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -641,20 +743,20 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Producto</h4>
-        <a href="/clubes/" class="footer-link">Para clubes</a>
-        <a href="/academias/" class="footer-link">Para academias</a>
-        <a href="/competencias/" class="footer-link">Para organizadores</a>
+        <h3>Producto</h3>
+        <a href="/competencias/" class="footer-link">Competencias</a>
+      <a href="/clubes/" class="footer-link">Reservas</a>
+        <a href="/academias/" class="footer-link">Academia</a>
         <a href="/pricing/" class="footer-link">Precios</a>
       </div>
       <div class="footer-col">
-        <h4>Herramientas</h4>
+        <h3>Herramientas</h3>
         <a href="/calculadora-torneo/" class="footer-link">Calculadora de torneo</a>
         <a href="/calculadora-liga/" class="footer-link">Calculadora de liga</a>
         <a href="/generador-cuadro-torneo-padel/" class="footer-link">Generador de cuadros</a>
       </div>
       <div class="footer-col">
-        <h4>Guías</h4>
+        <h3>Guías</h3>
         <a href="/como-organizar-torneo-padel/" class="footer-link">Cómo organizar un torneo</a>
         <a href="/mejores-practicas-torneo-padel/" class="footer-link">Mejores prácticas</a>
         <a href="/liga-americana-padel/" class="footer-link">Liga americana</a>

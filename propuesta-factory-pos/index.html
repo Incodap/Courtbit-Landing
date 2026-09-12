@@ -21,12 +21,12 @@
 <style>
 :root{
   /* Marca — courtbit.com.mx */
-  --blue:#2e59fb; --blue-deep:#1a45e0; --blue-mist:#eaf0ff;
-  --navy:#0f1d4d; --navy-950:#060a26;
+  --blue:#15803d; --blue-deep:#116230; --blue-mist:#e6f5eb;
+  --navy:#10302a; --navy-950:#061512;
   --lime:#B8F02B; --lime-soft:#e9fbb8;
-  --paper:#fff; --bg:#fbfbfd; --bg-tint:#f4f6ff;
-  --tx:#0f1d4d; --tx-soft:#3a4262; --tx-mut:#6b7191; --tx-faint:#9aa0bb;
-  --line:#e6e8ef;
+  --paper:#fff; --bg:#fbfdfc; --bg-tint:#f1f8f3;
+  --tx:#10302a; --tx-soft:#3c4a45; --tx-mut:#687872; --tx-faint:#9aaaa4;
+  --line:#e4eae7;
   /* Producto — CourtBit-Dashboard (reservations/dashboard/utils.ts) */
   --brand:#B5D85A; --deep:#3a5f0f; --soft:#EEF8D4;
   --ink:#111111; --ink2:#6B7066; --ink3:#8a8a8a;
@@ -78,8 +78,8 @@ html{scroll-behavior:smooth}
 .sec{padding:60px 0}
 .sec.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .sechead{margin-bottom:30px}
-.sechead .eb{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--blue-mist);color:var(--blue-deep);font-size:.6875rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;border:1px solid rgba(46,89,251,.18);margin-bottom:14px}
-.sechead .eb .dt{width:6px;height:6px;border-radius:999px;background:var(--blue);box-shadow:0 0 0 3px rgba(46,89,251,.18)}
+.sechead .eb{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--blue-mist);color:var(--blue-deep);font-size:.6875rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;border:1px solid rgba(21,128,61,.18);margin-bottom:14px}
+.sechead .eb .dt{width:6px;height:6px;border-radius:999px;background:var(--blue);box-shadow:0 0 0 3px rgba(21,128,61,.18)}
 .sechead h2{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:800;letter-spacing:-.032em;line-height:1.08;margin:0 0 10px;color:var(--navy);text-wrap:balance}
 .sechead h2 em{font-style:italic;color:var(--blue)}
 .sechead p{color:var(--tx-mut);font-size:1.02rem;max-width:62ch;margin:0}
@@ -89,7 +89,7 @@ html{scroll-behavior:smooth}
 
 .cards3{display:grid;gap:16px}
 @media(min-width:760px){.cards3{grid-template-columns:repeat(3,1fr)}}
-.kcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 18px 44px -30px rgba(15,29,77,.28)}
+.kcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 18px 44px -30px rgba(16,48,42,.28)}
 .kcard .n{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;background:var(--lime);color:var(--navy);font-weight:800;font-size:.875rem;margin-bottom:12px}
 .kcard h3{font-size:1.02rem;font-weight:800;letter-spacing:-.02em;margin:0 0 7px;color:var(--navy)}
 .kcard p{margin:0;font-size:.9rem;color:var(--tx-mut);line-height:1.5}
@@ -108,7 +108,7 @@ html{scroll-behavior:smooth}
 .fg li.f2::before{background:var(--line)}
 
 /* inversión */
-.price{background:var(--navy);color:#fff;border-radius:22px;padding:36px 32px;position:relative;overflow:hidden;box-shadow:0 30px 70px -34px rgba(15,29,77,.6)}
+.price{background:var(--navy);color:#fff;border-radius:22px;padding:36px 32px;position:relative;overflow:hidden;box-shadow:0 30px 70px -34px rgba(16,48,42,.6)}
 .price::before{content:'';position:absolute;top:-40%;right:-8%;width:56%;height:180%;background:var(--blue);opacity:.3;transform:skewX(-15deg)}
 .price::after{content:'';position:absolute;bottom:-60%;left:-6%;width:40%;height:150%;background:var(--lime);opacity:.14;transform:skewX(-15deg)}
 .price .in{position:relative;z-index:2;display:grid;gap:24px;align-items:center}
@@ -128,7 +128,7 @@ html{scroll-behavior:smooth}
 .tl .st h4{margin:6px 0 5px;font-size:.9375rem;font-weight:800;letter-spacing:-.018em;color:var(--navy)}
 .tl .st p{margin:0;font-size:.82rem;color:var(--tx-mut);line-height:1.45}
 
-.note{background:var(--bg-tint);border:1px solid rgba(46,89,251,.13);border-radius:16px;padding:18px 22px;margin-top:22px;font-size:.9rem;color:var(--tx-soft)}
+.note{background:var(--bg-tint);border:1px solid rgba(21,128,61,.13);border-radius:16px;padding:18px 22px;margin-top:22px;font-size:.9rem;color:var(--tx-soft)}
 .note b{color:var(--navy)}
 .note ul{margin:8px 0 0;padding-left:1.15em}
 .note li{margin:.2em 0}
@@ -143,7 +143,7 @@ html{scroll-behavior:smooth}
 .outtbl td{padding:11px 16px;border-bottom:1px solid var(--line);color:var(--tx-soft)}
 .outtbl td:first-child{color:var(--navy);font-weight:600}
 .outtbl tr:last-child td{border-bottom:0}
-.tw{overflow-x:auto;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 44px -32px rgba(15,29,77,.3)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 44px -32px rgba(16,48,42,.3)}
 .chip{display:inline-block;font-size:.5625rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
 .chip.inc{background:var(--lime);color:var(--navy)}
 .chip.next{background:var(--bg-tint);color:var(--tx-mut);border:1px solid var(--line)}
@@ -154,7 +154,7 @@ html{scroll-behavior:smooth}
    ═══════════════════════════════════════════════ */
 .app{font-family:var(--ui);color:var(--ink);background:var(--bg1)}
 .appframe{max-width:1400px;margin:0 auto;padding:22px 24px 60px}
-.browser{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--sf);box-shadow:0 30px 70px -38px rgba(15,29,77,.42)}
+.browser{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--sf);box-shadow:0 30px 70px -38px rgba(16,48,42,.42)}
 .bbar{display:flex;align-items:center;gap:10px;padding:9px 13px;background:#fff;border-bottom:1px solid var(--line);font-family:var(--sans)}
 .bbar .dots{display:flex;gap:5px}
 .bbar .dots i{width:9px;height:9px;border-radius:999px;background:var(--line)}
@@ -446,9 +446,13 @@ body.has-mobar{padding-bottom:76px}
   .pcard{min-height:112px}
   .top nav button{padding:9px 15px}
 }
-</style>
+
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 <svg style="display:none" aria-hidden="true">
 <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
 <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M10.5 8v8M14 8v8M17 8v8"/></symbol>
@@ -756,7 +760,7 @@ body.has-mobar{padding-bottom:76px}
         <div class="sbfoot"><span class="av">MG</span><div style="min-width:0"><div style="font-weight:700;color:var(--ink);font-size:11.5px">María G.</div><div style="font-size:10px;color:var(--ink3)">Cajero · Caja 1</div></div></div>
       </aside>
 
-      <main style="min-width:0">
+      <main id="contenido" style="min-width:0">
         <!-- ── Punto de venta ── -->
         <section class="pane on" id="p-venta">
           <div class="phead">

@@ -38,16 +38,16 @@
 
 <style>
   :root{
-    --blue:#2e59fb;--blue-deep:#1a45e0;--blue-soft:#5a7afc;--blue-mist:#eaf0ff;
-    --navy:#0f1d4d;--navy-light:#1a2c6e;
+    --blue:#15803d;--blue-deep:#116230;--blue-soft:#46a35f;--blue-mist:#e6f5eb;
+    --navy:#10302a;--navy-light:#1a2c6e;
     --lime:#B8F02B;--lime-soft:#e9fbb8;--lime-deep:#9fd121;--lime-bg:#f4fdd6;
-    --paper:#fff;--bg:#fbfbfd;--bg-tint:#f4f6ff;
-    --text:#0f1d4d;--text-soft:#3a4262;--text-muted:#6b7191;--text-faint:#9aa0bb;
-    --border:#e6e8ef;--hairline:rgba(15,29,77,.08);
-    --shadow-sm:0 1px 3px rgba(15,29,77,.06);
-    --shadow-md:0 4px 12px rgba(15,29,77,.08);
-    --shadow-lg:0 12px 32px rgba(15,29,77,.1);
-    --shadow-xl:0 24px 60px rgba(15,29,77,.14);
+    --paper:#fff;--bg:#fbfdfc;--bg-tint:#f1f8f3;
+    --text:#10302a;--text-soft:#3c4a45;--text-muted:#687872;--text-faint:#9aaaa4;
+    --border:#e4eae7;--hairline:rgba(16,48,42,.08);
+    --shadow-sm:0 1px 3px rgba(16,48,42,.06);
+    --shadow-md:0 4px 12px rgba(16,48,42,.08);
+    --shadow-lg:0 12px 32px rgba(16,48,42,.1);
+    --shadow-xl:0 24px 60px rgba(16,48,42,.14);
     --radius:16px;--radius-lg:24px;--radius-full:100px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -69,8 +69,8 @@
   /* BUTTONS */
   .btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:.975rem;font-weight:700;padding:14px 26px;border-radius:var(--radius-full);border:none;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,background .2s ease;white-space:nowrap}
   .btn svg{width:18px;height:18px}
-  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 6px 18px rgba(46,89,251,.32)}
-  .btn-primary:hover{background:var(--blue-deep);transform:translateY(-2px);box-shadow:0 10px 26px rgba(46,89,251,.4)}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 6px 18px rgba(21,128,61,.32)}
+  .btn-primary:hover{background:var(--blue-deep);transform:translateY(-2px);box-shadow:0 10px 26px rgba(21,128,61,.4)}
   .btn-lime{background:var(--lime);color:var(--navy);box-shadow:0 6px 18px rgba(184,240,43,.4)}
   .btn-lime:hover{background:var(--lime-deep);transform:translateY(-2px)}
   .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--border)}
@@ -96,7 +96,7 @@
   .nav-login{display:inline-flex;align-items:center;gap:7px;font-size:.9rem;font-weight:600;color:var(--text-soft)}
   .nav-login svg{width:16px;height:16px}
   .nav-login:hover{color:var(--blue)}
-  .nav-cta{background:var(--blue);color:#fff !important;padding:10px 20px;border-radius:var(--radius-full);font-size:.9rem;font-weight:700;box-shadow:0 4px 14px rgba(46,89,251,.3)}
+  .nav-cta{background:var(--blue);color:#fff !important;padding:10px 20px;border-radius:var(--radius-full);font-size:.9rem;font-weight:700;box-shadow:0 4px 14px rgba(21,128,61,.3)}
   .nav-cta:hover{background:var(--blue-deep)}
   .mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--navy)}
   .mobile-toggle svg{width:24px;height:24px}
@@ -124,14 +124,14 @@
   .statusbar .dots i{width:4px;height:4px;border-radius:50%;background:var(--navy);display:block}
   .scrbody{padding:9px 14px;overflow:hidden;flex:1}
   /* Banner de patrocinador (image-first 4:1 + pill "Patrocinado") */
-  .adbanner{position:relative;border-radius:13px;overflow:hidden;margin:2px 0 9px;box-shadow:0 6px 16px rgba(15,29,77,.16)}
+  .adbanner{position:relative;border-radius:13px;overflow:hidden;margin:2px 0 9px;box-shadow:0 6px 16px rgba(16,48,42,.16)}
   .adbanner .creative{aspect-ratio:4/1;display:flex;flex-direction:column;justify-content:center;padding:0 13px;color:#fff}
   .adbanner .creative .bn{font-size:12.5px;font-weight:800;letter-spacing:.2px;line-height:1.05}
   .adbanner .creative .bt{font-size:8.5px;font-weight:600;opacity:.92;margin-top:3px}
   .adbanner .adtag{position:absolute;top:7px;right:7px;font-size:7px;font-weight:800;letter-spacing:.4px;color:#fff;background:rgba(0,0,0,.5);padding:3px 6px;border-radius:20px;text-transform:uppercase}
   /* Tabs segmentadas (detalle de evento) */
   .segtabs{display:flex;background:#fff;border-bottom:1px solid #eceef3;flex:0 0 auto}
-  .segtabs span{flex:1;text-align:center;font-size:9px;font-weight:700;color:#9aa0bb;padding:8px 0;position:relative}
+  .segtabs span{flex:1;text-align:center;font-size:9px;font-weight:700;color:#9aaaa4;padding:8px 0;position:relative}
   .segtabs span.on{color:var(--navy)}
   .segtabs span.on::after{content:"";position:absolute;left:24%;right:24%;bottom:0;height:2px;background:var(--lime-deep);border-radius:2px}
   .thero{background:linear-gradient(135deg,var(--blue),var(--blue-deep));padding:16px 14px 14px;color:#fff;flex:0 0 auto}
@@ -300,6 +300,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <!-- TOPBAR -->
   <div class="topbar">
@@ -326,6 +327,8 @@
     </div>
   </nav>
 
+<main id="contenido">
+
   <!-- HERO -->
   <header class="hero">
     <div class="container">
@@ -341,7 +344,7 @@
           <div class="thero"><div class="tn">Copa Verano 2026</div><div class="td">Categoría 4ta · 24 parejas · Club Padel Pro</div></div>
           <div class="scrbody">
             <div class="adbanner">
-              <div class="creative" style="background:linear-gradient(120deg,#0f1d4d,#2e59fb)"><div class="bn">Padel Pro Shop</div><div class="bt">Palas y accesorios · 12% off a jugadores del torneo</div></div>
+              <div class="creative" style="background:linear-gradient(120deg,#10302a,#15803d)"><div class="bn">Padel Pro Shop</div><div class="bt">Palas y accesorios · 12% off a jugadores del torneo</div></div>
               <span class="adtag">Patrocinado</span>
             </div>
             <div class="bracket" style="padding:2px 0 0">
@@ -512,7 +515,9 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  </main>
+
+<footer>
     <div class="container">
       <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px" class="cf-grid">
         <div>
@@ -525,9 +530,9 @@
         </div>
         <div>
           <h4 style="font-size:.6875rem;font-weight:800;color:var(--navy);letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px">Producto</h4>
-          <a href="/clubes/" class="footer-link" style="display:block;margin-bottom:8px;font-size:.875rem">Para clubes</a>
-          <a href="/academias/" class="footer-link" style="display:block;margin-bottom:8px;font-size:.875rem">Para academias</a>
-          <a href="/competencias/" class="footer-link" style="display:block;margin-bottom:8px;font-size:.875rem">Para organizadores</a>
+          <a href="/competencias/" class="footer-link" style="display:block;margin-bottom:8px;font-size:.875rem">Competencias</a>
+      <a href="/clubes/" class="footer-link" style="display:block;margin-bottom:8px;font-size:.875rem">Reservas</a>
+          <a href="/academias/" class="footer-link" style="display:block;margin-bottom:8px;font-size:.875rem">Academia</a>
           <a href="/pricing/" class="footer-link" style="display:block;margin-bottom:8px;font-size:.875rem">Precios</a>
         </div>
         <div>
@@ -553,7 +558,10 @@
       @media (max-width:900px){footer .cf-grid{grid-template-columns:1fr 1fr 1fr !important;gap:32px !important}footer .cf-grid>div:first-child{grid-column:1 / -1}}
       @media (max-width:600px){footer .cf-grid{grid-template-columns:1fr 1fr !important;gap:28px !important}footer .cf-grid>div:first-child{grid-column:1 / -1}}
       @media (max-width:380px){footer .cf-grid{grid-template-columns:1fr !important;gap:24px !important}}
-    </style>
+    
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
   </footer>
 
   <!-- WHATSAPP FLOAT -->

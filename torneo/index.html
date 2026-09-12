@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0f1d4d">
+    <meta name="theme-color" content="#10302a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:8080 https://courtbit-api-production.up.railway.app https://courtbit-develop-production.up.railway.app; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
@@ -24,28 +24,28 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=JetBrains+Mono:wght@500;700&display=swap">
     <style>
         :root {
-            --blue: #2e59fb;
-            --blue-deep: #1a45e0;
-            --blue-soft: #5a7afc;
-            --blue-mist: #eaf0ff;
-            --navy: #0f1d4d;
-            --navy-950: #060a26;
+            --blue: #15803d;
+            --blue-deep: #116230;
+            --blue-soft: #46a35f;
+            --blue-mist: #e6f5eb;
+            --navy: #10302a;
+            --navy-950: #061512;
             --lime: #B8F02B;
             --lime-soft: #e9fbb8;
             --paper: #ffffff;
-            --bg: #fbfbfd;
-            --bg-tint: #f4f6ff;
-            --text: #0f1d4d;
-            --text-soft: #3a4262;
-            --text-muted: #6b7191;
-            --text-faint: #9aa0bb;
-            --border: #e6e8ef;
+            --bg: #fbfdfc;
+            --bg-tint: #f1f8f3;
+            --text: #10302a;
+            --text-soft: #3c4a45;
+            --text-muted: #687872;
+            --text-faint: #9aaaa4;
+            --border: #e4eae7;
             --border-soft: #eef0f6;
             --success: #16a34a;
             --warning: #d97706;
-            --shadow-sm: 0 1px 2px 0 rgba(15, 29, 77, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(15, 29, 77, 0.10);
-            --shadow-lg: 0 10px 15px -3px rgba(15, 29, 77, 0.10);
+            --shadow-sm: 0 1px 2px 0 rgba(16,48,42, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(16,48,42, 0.10);
+            --shadow-lg: 0 10px 15px -3px rgba(16,48,42, 0.10);
             --font-display: 'DM Sans', system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -356,7 +356,7 @@
             height: 34px;
             border: none;
             border-radius: 999px;
-            background: rgba(15, 29, 77, 0.55);
+            background: rgba(16,48,42, 0.55);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             color: #fff;
@@ -461,7 +461,7 @@
         }
         .tabs-inner {
             display: flex;
-            background: rgba(15, 29, 77, 0.06);
+            background: rgba(16,48,42, 0.06);
             border-radius: 10px;
             padding: 3px;
             gap: 2px;
@@ -486,7 +486,7 @@
         .tab-btn.active {
             background: var(--paper);
             color: var(--navy);
-            box-shadow: 0 1px 3px rgba(15, 29, 77, 0.10), 0 0 0 0.5px rgba(15, 29, 77, 0.04);
+            box-shadow: 0 1px 3px rgba(16,48,42, 0.10), 0 0 0 0.5px rgba(16,48,42, 0.04);
         }
         .tab-btn:active { transform: scale(0.97); }
 
@@ -524,7 +524,7 @@
             padding: 10px 40px 10px 38px;
             border: none;
             border-radius: 10px;
-            background: rgba(15, 29, 77, 0.06);
+            background: rgba(16,48,42, 0.06);
             font-size: 1rem;
             color: var(--text);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7191' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
@@ -575,7 +575,7 @@
             padding: 0 14px;
             min-height: 40px;
             border-radius: 10px;
-            background: rgba(15, 29, 77, 0.06);
+            background: rgba(16,48,42, 0.06);
             color: var(--navy);
             border: none;
             font-family: inherit;
@@ -586,7 +586,7 @@
             white-space: nowrap;
             position: relative;
         }
-        .filter-btn:active { transform: scale(0.97); background: rgba(15, 29, 77, 0.1); }
+        .filter-btn:active { transform: scale(0.97); background: rgba(16,48,42, 0.1); }
         .filter-btn svg { width: 16px; height: 16px; }
         .filter-btn .filter-count {
             display: inline-flex;
@@ -602,7 +602,7 @@
             font-weight: 700;
             margin-left: 2px;
         }
-        .filter-btn.active { background: rgba(46, 89, 251, 0.12); color: var(--blue-deep); }
+        .filter-btn.active { background: rgba(21,128,61, 0.12); color: var(--blue-deep); }
 
         /* Legacy filters (used inside the bottom sheet) */
         .filters { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -625,7 +625,7 @@
         /* Mis partidos block */
         .my-block {
             background: linear-gradient(135deg, var(--blue-mist), #f8faff);
-            border: 1px solid rgba(46, 89, 251, 0.18);
+            border: 1px solid rgba(21,128,61, 0.18);
             border-radius: 18px;
             padding: 24px 24px 32px;
             margin-bottom: 32px;
@@ -690,7 +690,7 @@
         }
         .match-card:hover { border-color: var(--blue-soft); }
         .match-card:active { transform: scale(0.997); }
-        .match-card.mine { border-color: var(--blue); border-width: 2px; background: #f7faff; }
+        .match-card.mine { border-color: var(--blue); border-width: 2px; background: #f4faf6; }
         .match-time {
             font-weight: 700;
             font-size: 1rem;
@@ -914,7 +914,7 @@
         .auth-backdrop {
             position: fixed;
             inset: 0;
-            background: rgba(15, 29, 77, 0.45);
+            background: rgba(16,48,42, 0.45);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             z-index: 200;
@@ -939,7 +939,7 @@
             overflow-y: auto;
             transform: translateY(100%);
             transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 -20px 60px -10px rgba(15, 29, 77, 0.25);
+            box-shadow: 0 -20px 60px -10px rgba(16,48,42, 0.25);
         }
         .auth-backdrop.open .auth-sheet { transform: translateY(0); }
         .auth-handle {
@@ -1032,7 +1032,7 @@
         .auth-input:focus {
             outline: none;
             border-color: var(--blue);
-            box-shadow: 0 0 0 4px rgba(46, 89, 251, 0.12);
+            box-shadow: 0 0 0 4px rgba(21,128,61, 0.12);
         }
         .auth-error {
             background: #fee2e2;
@@ -1104,7 +1104,7 @@
         .phone-prefix:focus {
             outline: none;
             border-color: var(--blue);
-            box-shadow: 0 0 0 4px rgba(46, 89, 251, 0.12);
+            box-shadow: 0 0 0 4px rgba(21,128,61, 0.12);
         }
         .phone-input { flex: 1; min-width: 0; }
 
@@ -1140,7 +1140,7 @@
             border-color: var(--navy);
         }
         .gender-chip input:focus-visible + span {
-            box-shadow: 0 0 0 4px rgba(46, 89, 251, 0.18);
+            box-shadow: 0 0 0 4px rgba(21,128,61, 0.18);
         }
         .gender-chip:active span { transform: scale(0.97); }
 
@@ -1330,7 +1330,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(46, 89, 251, 0.05) 50%, transparent);
+            background: linear-gradient(90deg, transparent, rgba(21,128,61, 0.05) 50%, transparent);
             animation: shimmer 1.4s linear infinite;
         }
         @keyframes shimmer {
@@ -1342,7 +1342,7 @@
         .sheet-backdrop {
             position: fixed;
             inset: 0;
-            background: rgba(15, 29, 77, 0.45);
+            background: rgba(16,48,42, 0.45);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             z-index: 200;
@@ -1365,7 +1365,7 @@
             flex-direction: column;
             transform: translateY(100%);
             transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 -20px 60px -10px rgba(15, 29, 77, 0.25);
+            box-shadow: 0 -20px 60px -10px rgba(16,48,42, 0.25);
         }
         .sheet-backdrop.open .sheet { transform: translateY(0); }
         .sheet-handle {
@@ -1617,18 +1617,18 @@
                 font-size: 0.72rem;
                 margin: 0 -16px 8px;
                 padding: 10px 16px 8px;
-                box-shadow: 0 6px 8px -6px rgba(15, 29, 77, 0.10);
+                box-shadow: 0 6px 8px -6px rgba(16,48,42, 0.10);
             }
             .day-jump-wrap {
                 background: var(--bg);
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
-                box-shadow: 0 6px 8px -6px rgba(15, 29, 77, 0.08);
+                box-shadow: 0 6px 8px -6px rgba(16,48,42, 0.08);
             }
             .day-block { margin-bottom: 24px; }
-            .match-card { box-shadow: 0 1px 2px rgba(15, 29, 77, 0.04); }
+            .match-card { box-shadow: 0 1px 2px rgba(16,48,42, 0.04); }
             .match-card:active { transform: scale(0.99); transition: transform 80ms; }
-            .match-card.mine { background: linear-gradient(180deg, #f7faff, #fff); }
+            .match-card.mine { background: linear-gradient(180deg, #f4faf6, #fff); }
 
             footer { padding: 20px 0; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
         }
@@ -1646,7 +1646,7 @@
         .app-modal-backdrop {
             position: fixed;
             inset: 0;
-            background: rgba(15, 29, 77, 0.45);
+            background: rgba(16,48,42, 0.45);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             z-index: 210;
@@ -1669,7 +1669,7 @@
             text-align: center;
             transform: translateY(100%);
             transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 -20px 60px -10px rgba(15, 29, 77, 0.25);
+            box-shadow: 0 -20px 60px -10px rgba(16,48,42, 0.25);
         }
         .app-modal-backdrop.open .app-modal-sheet { transform: translateY(0); }
         .app-modal-handle {
@@ -1819,7 +1819,7 @@
             height: 40px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 999px;
-            background: rgba(15, 29, 77, 0.6);
+            background: rgba(16,48,42, 0.6);
             color: #fff;
             font-size: 1.6rem;
             line-height: 1;
@@ -1828,12 +1828,16 @@
             align-items: center;
             justify-content: center;
         }
-    </style>
+    
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
     <nav>
         <div class="nav-container">
             <a href="/" class="logo" aria-label="CourtBit — Inicio"><img src="../Assets/courtbit-logo.svg" alt="CourtBit"></a>
@@ -3203,7 +3207,7 @@
                 panel.style.transform = `translateY(${dy}px)`;
                 const h = panel.offsetHeight || 1;
                 const fade = Math.max(0, 0.45 * (1 - Math.min(dy / h, 1)));
-                backdrop.style.background = `rgba(15, 29, 77, ${fade})`;
+                backdrop.style.background = `rgba(16,48,42, ${fade})`;
                 const now = e.timeStamp;
                 const dt = now - lastT;
                 if (dt > 0) velocity = (t.clientY - lastY) / dt;

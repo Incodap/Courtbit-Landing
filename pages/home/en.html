@@ -17,7 +17,7 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.courtbit.com.mx/en/">
   <meta property="og:title" content="CourtBit — Bookings, Academies, and Tournaments in One Padel Platform">
-  <meta property="og:description" content="Bookings, academies, and tournaments for your club. Plans for clubs and organizers. Payments go straight to your club's Stripe or MercadoPago account; CourtBit charges the payer 4%, never the club. Cash and bank transfer: zero fees.">
+  <meta property="og:description" content="Competitions, Bookings, and Academy for your club. Plans for clubs and organizers. Payments go straight to your club's Stripe or MercadoPago account; the player pays the commission, never the club. Cash and bank transfer: zero fees.">
   <meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-home.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -28,7 +28,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://www.courtbit.com.mx/en/">
   <meta name="twitter:title" content="CourtBit — Padel Platform for Clubs and Organizers">
-  <meta name="twitter:description" content="Bookings, academies, and tournaments in one platform. Plans for clubs and organizers. Get paid with Stripe or MercadoPago; 4% charged to the payer.">
+  <meta name="twitter:description" content="Competitions, Bookings, and Academy in one platform. Plans for clubs and organizers. Get paid with Stripe or MercadoPago; the player pays the commission, never the club.">
   <meta name="twitter:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-home.jpg">
 
   <!-- Favicons -->
@@ -165,7 +165,7 @@
       background: var(--lime);
       color: var(--navy);
       border-color: var(--lime);
-      box-shadow: 0 12px 32px -8px rgba(184, 240, 43, 0.4);
+      box-shadow: 0 12px 32px -8px rgba(21,128,61,0.28);
     }
     .e-btn-lime:hover {
       background: #c7f548;
@@ -189,7 +189,7 @@
     .e-btn-blue:hover {
       background: var(--blue-deep);
       transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(46, 89, 251, 0.35);
+      box-shadow: 0 8px 20px rgba(21,128,61, 0.35);
     }
     .e-btn-navy {
       background: var(--navy);
@@ -218,9 +218,9 @@
       border-radius: 0 0 240px 240px / 0 0 200px 200px;
       overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(15,29,77,0.45) 0%, transparent 60%),
+        linear-gradient(135deg, rgba(16,48,42,0.45) 0%, transparent 60%),
         linear-gradient(45deg, var(--blue-deep) 0%, var(--blue) 50%, var(--blue-soft) 100%);
-      box-shadow: 0 32px 60px -20px rgba(15, 29, 77, 0.5);
+      box-shadow: 0 32px 60px -20px rgba(16,48,42, 0.5);
     }
     .e-hero-photo img {
       position: absolute; inset: 0;
@@ -333,6 +333,8 @@
       0%, 100% { transform: translateY(0); }
       50%      { transform: translateY(-10px); }
     }
+    .v2-eco.is-idle *, .v2-eco.is-idle { animation-play-state: paused !important; }
+
     @media (prefers-reduced-motion: reduce) {
       .e-chip, .e-ring { animation: none !important; }
     }
@@ -345,7 +347,7 @@
       color: var(--text);
       padding: 18px 22px;
       border-radius: 18px;
-      box-shadow: 0 24px 48px -16px rgba(15, 29, 77, 0.4);
+      box-shadow: 0 24px 48px -16px rgba(16,48,42, 0.4);
       width: 280px;
       transform: rotate(-2deg);
       animation: e-float 4s ease-in-out infinite;
@@ -400,13 +402,13 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      border: 1px solid rgba(46, 89, 251, 0.18);
+      border: 1px solid rgba(21,128,61, 0.18);
       margin-bottom: 16px;
     }
     .e-eyebrow .dot {
       width: 6px; height: 6px; border-radius: 999px;
       background: var(--blue);
-      box-shadow: 0 0 0 3px rgba(46,89,251,0.18);
+      box-shadow: 0 0 0 3px rgba(21,128,61,0.18);
     }
     .e-section-title {
       font-family: 'DM Sans', system-ui, sans-serif;
@@ -434,7 +436,7 @@
       border: 1px solid var(--border);
       border-radius: 22px;
       overflow: hidden;
-      box-shadow: 0 24px 60px -24px rgba(15, 29, 77, 0.18);
+      box-shadow: 0 24px 60px -24px rgba(16,48,42, 0.18);
     }
     .e-compare-row {
       display: grid;
@@ -487,82 +489,6 @@
       font-weight: 700;
     }
 
-    /* ─── Pricing Why (gratis vs pago) ─── */
-    .e-pricing-why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      max-width: 920px;
-      margin: 0 auto;
-    }
-    .e-pricing-why-card {
-      background: var(--bg-tint);
-      border: 1px solid rgba(46, 89, 251, 0.12);
-      border-radius: 22px;
-      padding: 32px;
-      transition: transform 220ms;
-    }
-    .e-pricing-why-card:hover { transform: translateY(-3px); }
-    .e-pricing-why-card.dark {
-      background: var(--navy);
-      color: var(--paper);
-      border-color: transparent;
-      position: relative;
-      overflow: hidden;
-    }
-    .e-pricing-why-card.dark::before {
-      content: '';
-      position: absolute;
-      top: -30%; right: -10%;
-      width: 60%; height: 130%;
-      background: var(--blue);
-      opacity: 0.22;
-      transform: skewX(-15deg);
-      pointer-events: none;
-    }
-    .e-pricing-why-badge {
-      display: inline-flex;
-      align-items: center;
-      font-size: 0.6875rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 2;
-    }
-    .e-pricing-why-badge-lime {
-      background: var(--lime);
-      color: var(--navy);
-    }
-    .e-pricing-why-card h3 {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.022em;
-      margin: 0 0 12px;
-      color: var(--navy);
-      position: relative;
-      z-index: 2;
-    }
-    .e-pricing-why-card.dark h3 { color: var(--paper); }
-    .e-pricing-why-card p {
-      margin: 0 0 14px;
-      color: var(--text-soft);
-      font-size: 0.9375rem;
-      line-height: 1.6;
-      position: relative;
-      z-index: 2;
-    }
-    .e-pricing-why-card p:last-child { margin-bottom: 0; }
-    .e-pricing-why-card.dark p {
-      color: rgba(255,255,255,0.88);
-    }
-    .e-pricing-why-card b { color: var(--navy); }
-    .e-pricing-why-card.dark b { color: var(--lime); }
-
     /* ─── Compact secondary mocks (Academia + Bracket) ─── */
     .e-mock-pair {
       display: grid;
@@ -582,7 +508,7 @@
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 24px;
-      box-shadow: 0 18px 36px -16px rgba(15, 29, 77, 0.18);
+      box-shadow: 0 18px 36px -16px rgba(16,48,42, 0.18);
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -609,7 +535,7 @@
       white-space: nowrap;
     }
     .e-mock-tile-head a:hover { color: var(--blue-deep); }
-    .e-mock-tile h4 {
+    .e-mock-tile h3 {
       font-family: 'DM Sans', system-ui, sans-serif;
       font-size: 1.125rem;
       font-weight: 800;
@@ -643,11 +569,11 @@
     .am-mock-head .name {
       font-size: 12px;
       font-weight: 700;
-      color: #0f1d4d;
+      color: #10302a;
     }
     .am-mock-head .meta {
       font-size: 10px;
-      color: #6b7191;
+      color: #687872;
       font-family: 'JetBrains Mono', ui-monospace, monospace;
     }
     .am-row {
@@ -660,7 +586,7 @@
     .am-row .av {
       width: 18px; height: 18px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #2e59fb, #1a45e0);
+      background: linear-gradient(135deg, #15803d, #116230);
       color: #fff;
       display: inline-flex;
       align-items: center;
@@ -673,7 +599,7 @@
     .am-row .av.alt2 { background: linear-gradient(135deg, #4d7244, #355230); }
     .am-row .nm {
       flex: 1;
-      color: #3a4262;
+      color: #3c4a45;
       font-weight: 500;
     }
     .am-row .status {
@@ -686,7 +612,7 @@
     }
     .am-row .status.ok { background: #e9fbb8; color: #4d6a16; }
     .am-row .status.no { background: #fee2e2; color: #b91c1c; }
-    .am-row .status.pend { background: #f4f6fb; color: #6b7191; }
+    .am-row .status.pend { background: #f4f6fb; color: #687872; }
     .am-mock-foot {
       display: flex;
       justify-content: space-between;
@@ -694,7 +620,7 @@
       margin-top: 6px;
       border-top: 1px dashed #d8dde9;
       font-size: 10.5px;
-      color: #6b7191;
+      color: #687872;
       font-weight: 600;
     }
     .am-mock-foot b { color: #4d6a16; font-weight: 800; }
@@ -708,7 +634,7 @@
       font-family: 'DM Sans', system-ui, sans-serif;
     }
     .gr-mock-header {
-      background: linear-gradient(180deg, #1a2c6e 0%, #0f1d4d 100%);
+      background: linear-gradient(180deg, #1a2c6e 0%, #10302a 100%);
       color: #ffffff;
       padding: 11px 14px;
     }
@@ -777,7 +703,7 @@
       color: #f59e0b;
     }
     .gr-leaders .note {
-      color: #9aa0bb;
+      color: #9aaaa4;
       font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
@@ -818,12 +744,12 @@
     }
     .gr-rank.r3 {
       background: #f4f6fb;
-      color: #9aa0bb;
-      border: 1px solid #e6e8ef;
+      color: #9aaaa4;
+      border: 1px solid #e4eae7;
     }
     .gr-team-name {
       flex: 1;
-      color: #3a4262;
+      color: #3c4a45;
       font-weight: 600;
       white-space: nowrap;
       overflow: hidden;
@@ -834,11 +760,11 @@
       font-family: 'JetBrains Mono', ui-monospace, monospace;
       font-size: 11px;
       font-weight: 800;
-      color: #6b7191;
+      color: #687872;
       flex-shrink: 0;
     }
     .gr-row.qualifier .gr-pts { color: #047857; }
-    .gr-row.eliminated .gr-pts { color: #9aa0bb; }
+    .gr-row.eliminated .gr-pts { color: #9aaaa4; }
 
     /* Bracket mock (cuadro final) — mimics CourtBit's real bracket UI */
     .br-mock {
@@ -859,7 +785,7 @@
     .br-mock-head .name {
       font-size: 13px;
       font-weight: 800;
-      color: #0f1d4d;
+      color: #10302a;
     }
     .br-mock-head .meta {
       font-size: 10px;
@@ -901,12 +827,12 @@
       gap: 5px;
       padding: 5px 14px;
       background: #f4f6fb;
-      border: 1px solid #e6e8ef;
+      border: 1px solid #e4eae7;
       border-radius: 999px;
       font-size: 10.5px;
       font-weight: 800;
       letter-spacing: 0.04em;
-      color: #6b7191;
+      color: #687872;
     }
     .br-round-pill .ic { font-size: 11px; line-height: 1; }
     .br-round-pill.active {
@@ -922,7 +848,7 @@
     .br-round-count {
       font-size: 9.5px;
       font-weight: 600;
-      color: #9aa0bb;
+      color: #9aaaa4;
       font-family: 'JetBrains Mono', ui-monospace, monospace;
     }
     .br-tree {
@@ -941,7 +867,7 @@
     .br-col.fin   { justify-content: center; }
     .br-card {
       background: #ffffff;
-      border: 1px solid #e6e8ef;
+      border: 1px solid #e4eae7;
       border-radius: 8px;
       padding: 7px 10px;
       display: flex;
@@ -984,18 +910,18 @@
       align-items: center;
       gap: 6px;
       font-size: 10.5px;
-      color: #3a4262;
+      color: #3c4a45;
       font-weight: 600;
       padding: 3px 0;
     }
     .br-team-row + .br-team-row { border-top: 1px solid #f0f2f7; }
     .br-card.fin .br-team-row + .br-team-row { border-top-color: rgba(245, 158, 11, 0.25); }
     .br-team-row.winner {
-      color: #0f1d4d;
+      color: #10302a;
       font-weight: 800;
     }
     .br-team-row.placeholder {
-      color: #9aa0bb;
+      color: #9aaaa4;
       font-style: italic;
       font-weight: 500;
     }
@@ -1008,23 +934,23 @@
       font-family: 'JetBrains Mono', ui-monospace, monospace;
       font-size: 10px;
       font-weight: 800;
-      color: #9aa0bb;
+      color: #9aaaa4;
       flex-shrink: 0;
       min-width: 30px;
       text-align: right;
       letter-spacing: 0.04em;
     }
-    .br-team-row.winner .pts { color: #2e59fb; }
+    .br-team-row.winner .pts { color: #15803d; }
     .br-card-time {
       font-size: 9px;
-      color: #9aa0bb;
+      color: #9aaaa4;
       font-weight: 700;
       padding-top: 4px;
       margin-top: 2px;
       border-top: 1px dashed #f0f2f7;
       letter-spacing: 0.02em;
     }
-    .br-card-time.scheduled { color: #2e59fb; }
+    .br-card-time.scheduled { color: #15803d; }
     .br-card-time.done { color: #4d6a16; }
     .br-card.fin .br-card-time {
       color: #92400e;
@@ -1037,12 +963,12 @@
       margin-top: 14px;
       border-top: 1px dashed #d8dde9;
       font-size: 10.5px;
-      color: #6b7191;
+      color: #687872;
       font-weight: 600;
       flex-wrap: wrap;
       gap: 8px;
     }
-    .br-mock-foot b { color: #2e59fb; font-weight: 800; }
+    .br-mock-foot b { color: #15803d; font-weight: 800; }
 
     /* ─── 3 Steps (saturated blue + lime numbered circles) ─── */
     .e-steps-section {
@@ -1087,7 +1013,7 @@
     }
     .e-step:hover {
       transform: translateY(-4px);
-      box-shadow: 0 24px 48px -12px rgba(15,29,77,0.35);
+      box-shadow: 0 24px 48px -12px rgba(16,48,42,0.35);
     }
     .e-step .num {
       width: 44px; height: 44px;
@@ -1149,7 +1075,7 @@
     }
     .e-proc-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 24px 48px -18px rgba(15, 29, 77, 0.28);
+      box-shadow: 0 24px 48px -18px rgba(16,48,42, 0.28);
     }
     .e-proc-head {
       display: flex;
@@ -1169,10 +1095,9 @@
       justify-content: center;
       background: var(--proc);
       color: #fff;
-      font-weight: 800;
-      font-size: 0.9375rem;
-      letter-spacing: -0.02em;
     }
+    .e-proc-mark svg { display: block; width: 26px; height: 26px; }
+    .e-proc-mark--mp svg { width: 30px; height: 30px; }
     .e-proc-name {
       margin: 0;
       display: flex;
@@ -1289,7 +1214,7 @@
       position: relative;
       width: 100%;
       border-radius: 18px;
-      box-shadow: 0 24px 48px -12px rgba(15, 29, 77, 0.28);
+      box-shadow: 0 24px 48px -12px rgba(16,48,42, 0.28);
       display: block;
     }
 
@@ -1300,10 +1225,10 @@
     .dm-mockup {
       background: #ffffff;
       border-radius: 14px;
-      border: 1px solid #e6e8ef;
+      border: 1px solid #e4eae7;
       overflow: hidden;
       font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
-      color: #0f1d4d;
+      color: #10302a;
       font-size: 12px;
       line-height: 1.35;
     }
@@ -1314,16 +1239,16 @@
       padding: 14px 18px 12px;
       border-bottom: 1px solid #eef0f6;
     }
-    .dm-mockup-header h4 {
+    .dm-mockup-header .dm-mockup-header-title {
       font-size: 15px;
       font-weight: 700;
       letter-spacing: -0.012em;
       margin: 0;
-      color: #0f1d4d;
+      color: #10302a;
     }
     .dm-mockup-header .meta {
       font-size: 11px;
-      color: #6b7191;
+      color: #687872;
       margin-top: 1px;
     }
     .dm-add-btn {
@@ -1357,15 +1282,15 @@
       background: transparent;
       font-size: 11px;
       font-weight: 600;
-      color: #6b7191;
+      color: #687872;
       border-radius: 999px;
       cursor: pointer;
       font-family: inherit;
     }
     .dm-tabs button.active {
       background: #ffffff;
-      color: #0f1d4d;
-      box-shadow: 0 1px 3px rgba(15, 29, 77, 0.08);
+      color: #10302a;
+      box-shadow: 0 1px 3px rgba(16,48,42, 0.08);
     }
     .dm-tabs button.hoy { color: #4d7244; }
     .dm-date-nav {
@@ -1383,7 +1308,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #6b7191;
+      color: #687872;
       cursor: pointer;
     }
     .dm-search {
@@ -1393,7 +1318,7 @@
       background: #f4f6fb;
       border-radius: 8px;
       font-size: 11px;
-      color: #9aa0bb;
+      color: #9aaaa4;
     }
     .dm-people {
       display: flex;
@@ -1418,7 +1343,7 @@
       align-items: center;
       gap: 5px;
       font-size: 11px;
-      color: #3a4262;
+      color: #3c4a45;
       font-weight: 500;
     }
     .dm-avatar {
@@ -1432,7 +1357,7 @@
       color: #ffffff;
     }
     .dm-avatar.c1 { background: #de8f6c; }
-    .dm-avatar.c2 { background: #2e59fb; }
+    .dm-avatar.c2 { background: #15803d; }
     .dm-avatar.c3 { background: #4d7244; }
 
     .dm-grid {
@@ -1451,7 +1376,7 @@
       background: #f9fafc;
       font-size: 10px;
       font-weight: 700;
-      color: #6b7191;
+      color: #687872;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       padding: 8px 7px;
@@ -1461,7 +1386,7 @@
     .dm-cell.time {
       background: #f9fafc;
       font-size: 10px;
-      color: #6b7191;
+      color: #687872;
       font-weight: 600;
       font-family: 'JetBrains Mono', ui-monospace, monospace;
       display: flex;
@@ -1510,9 +1435,9 @@
     }
     .dm-slot.clase {
       background: #c1d5e8;
-      color: #1a45e0;
+      color: #116230;
     }
-    .dm-slot.clase .dm-when { color: #2e59fb; }
+    .dm-slot.clase .dm-when { color: #15803d; }
     .dm-slot.clinica {
       background: #d8d4f0;
       color: #4c1d95;
@@ -1534,7 +1459,7 @@
     }
     .e-showcase-visual .ph-floating {
       position: absolute;
-      box-shadow: 0 24px 48px -12px rgba(15, 29, 77, 0.28);
+      box-shadow: 0 24px 48px -12px rgba(16,48,42, 0.28);
       border-radius: 24px;
       overflow: hidden;
       animation: e-float 5s ease-in-out infinite;
@@ -1560,7 +1485,7 @@
       object-fit: cover;
       object-position: center 30%;
       border-radius: 18px;
-      box-shadow: 0 24px 48px -12px rgba(15, 29, 77, 0.28);
+      box-shadow: 0 24px 48px -12px rgba(16,48,42, 0.28);
       display: block;
     }
 
@@ -1574,20 +1499,20 @@
       background: #0a1238;
       border-radius: 32px;
       padding: 6px;
-      box-shadow: 0 24px 48px -12px rgba(15, 29, 77, 0.4);
+      box-shadow: 0 24px 48px -12px rgba(16,48,42, 0.4);
       overflow: hidden;
       animation: e-float 5s ease-in-out infinite;
     }
     .pm-phone-screen {
       width: 100%;
       height: 100%;
-      background: #fbfbfd;
+      background: #fbfdfc;
       border-radius: 26px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       font-family: 'DM Sans', system-ui, sans-serif;
-      color: #0f1d4d;
+      color: #10302a;
     }
     .pm-statusbar {
       display: flex;
@@ -1597,7 +1522,7 @@
       font-size: 9px;
       font-weight: 700;
       color: #0a1238;
-      background: #fbfbfd;
+      background: #fbfdfc;
     }
     .pm-statusbar .icons {
       letter-spacing: 1px;
@@ -1618,9 +1543,9 @@
       align-items: center;
       justify-content: center;
       font-size: 10px;
-      color: #6b7191;
+      color: #687872;
     }
-    .pm-header h5 {
+    .pm-header .pm-header-title {
       flex: 1;
       text-align: center;
       font-size: 11px;
@@ -1640,13 +1565,13 @@
       padding: 6px 0 6px;
       font-size: 9px;
       font-weight: 700;
-      color: #9aa0bb;
+      color: #9aaaa4;
       cursor: pointer;
       font-family: inherit;
       position: relative;
     }
     .pm-tabs button.active {
-      color: #0f1d4d;
+      color: #10302a;
     }
     .pm-tabs button.active::after {
       content: '';
@@ -1678,7 +1603,7 @@
       margin-bottom: 1px;
     }
     .pm-card .pm-court {
-      color: #6b7191;
+      color: #687872;
       font-size: 7.5px;
       margin-bottom: 4px;
     }
@@ -1690,7 +1615,7 @@
       background: #f4f6fb;
       border-radius: 5px;
       font-size: 7.5px;
-      color: #3a4262;
+      color: #3c4a45;
       font-family: 'JetBrains Mono', ui-monospace, monospace;
     }
     .pm-card .pm-meta .icon {
@@ -1704,7 +1629,7 @@
       justify-content: space-between;
       margin-top: 4px;
       font-size: 7.5px;
-      color: #6b7191;
+      color: #687872;
     }
     .pm-card .pm-total b {
       color: #0a1238;
@@ -1713,7 +1638,7 @@
     .pm-section-label {
       font-size: 8px;
       font-weight: 700;
-      color: #6b7191;
+      color: #687872;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       padding: 2px 0;
@@ -1733,7 +1658,7 @@
       gap: 2px;
       font-size: 6.5px;
       font-weight: 600;
-      color: #9aa0bb;
+      color: #9aaaa4;
     }
     .pm-tabbar .tab.active { color: #0a1238; }
     .pm-tabbar .tab .ic {
@@ -1784,9 +1709,9 @@
     .e-aud-card.secondary {
       background: var(--bg-tint);
       color: var(--navy);
-      border: 1px solid rgba(46, 89, 251, 0.12);
+      border: 1px solid rgba(21,128,61, 0.12);
     }
-    .e-aud-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -12px rgba(15,29,77,0.18); }
+    .e-aud-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -12px rgba(16,48,42,0.18); }
     .e-aud-card .ribbon {
       position: absolute;
       top: 22px; right: 22px;
@@ -1881,7 +1806,7 @@
     }
     .e-test-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 24px 48px -12px rgba(46, 89, 251, 0.45);
+      box-shadow: 0 24px 48px -12px rgba(21,128,61, 0.45);
     }
     .e-test-head {
       display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
@@ -1899,7 +1824,7 @@
       padding: 0;
       overflow: hidden;
       width: 56px; height: 56px;
-      box-shadow: inset 0 0 0 1px rgba(15, 29, 77, 0.06);
+      box-shadow: inset 0 0 0 1px rgba(16,48,42, 0.06);
       flex-shrink: 0;
     }
     .e-test-avatar.has-logo img {
@@ -2047,7 +1972,7 @@
       gap: 40px;
       margin-bottom: 32px;
     }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 0.6875rem;
       font-weight: 800;
       color: var(--navy);
@@ -2128,7 +2053,6 @@
       .e-test-card,
       .e-test-card:nth-child(4),
       .e-test-card:nth-child(5) { grid-column: auto; }
-      .e-nav-links { display: none; }
       .e-compare-row { grid-template-columns: 1.5fr 1fr 1fr; padding: 14px 16px; font-size: 0.875rem; }
       .e-showcase-grid,
       .e-showcase-grid.reverse { grid-template-columns: 1fr; gap: 32px; }
@@ -2167,8 +2091,8 @@
         text-transform: uppercase;
         padding: 4px 12px;
         background: #f4f6fb;
-        border: 1px solid #e6e8ef;
-        color: #6b7191;
+        border: 1px solid #e4eae7;
+        color: #687872;
         border-radius: 999px;
       }
       .br-col.semis::before {
@@ -2202,7 +2126,7 @@
       .e-topbar { font-size: 0.6875rem; padding: 8px 12px; }
       .e-topbar span { line-height: 1.4; }
       .e-nav-inner { padding: 12px 16px; gap: 12px; }
-      .e-logo img { height: 96px; }
+      .e-logo img { height: 52px; }
       .e-nav-cta { padding: 9px 14px; font-size: 0.8125rem; }
       .e-nav-cta svg { display: none; }
       .e-hero { padding: 40px 0 56px; }
@@ -2221,7 +2145,7 @@
       .e-proc-card { padding: 22px; }
       .e-pricing-why-card h3 { font-size: 1.25rem; }
       .e-mock-tile { padding: 20px; }
-      .e-mock-tile h4 { font-size: 1rem; }
+      .e-mock-tile h3 { font-size: 1rem; }
       .e-test-grid .e-test-card:nth-child(n+4) { display: none; }
       .e-showcase-visual { min-height: 280px; }
       .e-showcase-visual .ph-floating.delay-1 { width: 110px; right: -10px; bottom: -24px; }
@@ -2249,7 +2173,7 @@
       .e-topbar b { display: inline; }
       .e-nav-inner { padding: 10px 14px; gap: 8px; }
       .e-logo { font-size: 0.9375rem; }
-      .e-logo img { height: 80px; }
+      .e-logo img { height: 46px; }
       .e-nav-cta { padding: 8px 13px; font-size: 0.75rem; }
       .e-hero { padding: 32px 0 56px; }
       .e-hero h1 { font-size: clamp(1.75rem, 9vw, 2.25rem); margin-bottom: 14px; }
@@ -2356,12 +2280,342 @@
         align-items: center;
       }
     }
+      /* ═══════════════════════ LANDING V2 · confianza y calma ═══════════════════════ */
+
+    .e-hero { background: var(--paper); color: var(--text); border-bottom: 1px solid var(--border); }
+    .e-hero::before, .e-hero::after { display: none; }
+    .e-hero h1 { color: var(--navy); }
+    .e-hero h1 em { color: var(--blue); }
+    .e-hero p.lead { color: var(--text-soft); }
+    .e-hero p.lead b { color: var(--navy) !important; }
+    .e-hero .e-btn-lime { background: var(--blue); color: var(--paper); }
+    .e-hero .e-btn-lime:hover { background: var(--blue-deep); }
+    .e-hero .e-btn-outline { border-color: var(--border); color: var(--navy); background: var(--paper); }
+    .e-hero .e-btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    .e-steps-section { background: var(--bg); color: var(--text); }
+    .e-steps-section::before { display: none; }
+    .e-steps-section .e-section-title { color: var(--navy); }
+    .e-steps-section .e-section-title em { color: var(--blue); }
+    .e-steps-section .e-section-desc { color: var(--text-soft); }
+    .e-steps-section .e-eyebrow { background: var(--blue-mist); color: var(--blue-deep); border-color: transparent; }
+    .e-steps-section .e-eyebrow .dot { background: var(--blue); box-shadow: 0 0 0 3px rgba(21,128,61,0.18); }
+    .e-step { border: 1px solid var(--border); }
+    .e-step:hover { box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 10px 28px rgba(16,48,42,.07); }
+    .e-step .num { background: var(--blue-mist); color: var(--blue-deep); }
+
+    /* S4 · chips de alcance del hero */
+    .v2-scope { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+    .v2-scope span {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); border: 1px solid var(--border); border-radius: 999px; padding: 6px 13px;
+    }
+
+    /* S-nuevo · franja de números */
+    .v2-stats { background: var(--paper); border-bottom: 1px solid var(--border); }
+    .v2-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .v2-stat { padding: 30px 24px; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px; }
+    .v2-stat:last-child { border-right: 0; }
+    .v2-stat b { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: clamp(1.5rem, 3vw, 2.125rem); font-weight: 700; letter-spacing: -0.035em; color: var(--navy); line-height: 1; }
+    .v2-stat span { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.4; max-width: 22ch; }
+    .v2-stats-note { padding: 0 24px 22px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.625rem; letter-spacing: 0.06em; color: var(--text-faint); }
+
+    /* Fila de logos de clientes */
+    .v2-logos { background: var(--bg); border-bottom: 1px solid var(--border); padding: 34px 0 38px; }
+    .v2-logos-title { text-align: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .v2-logos-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 30px; }
+    .v2-logos-row img { height: 42px; width: auto; max-width: 120px; object-fit: contain; opacity: 0.62; filter: grayscale(1); transition: opacity 180ms, filter 180ms; }
+    .v2-logos-row img:hover { opacity: 1; filter: none; }
+
+    /* Sección de cobertura + mapa */
+    .v2-cov { padding: 96px 0; background: var(--paper); border-top: 1px solid var(--border); }
+    .v2-cov-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 52px; align-items: center; margin-bottom: 48px; }
+    .v2-cov-copy h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.06; color: var(--navy); margin: 16px 0 0; }
+    .v2-cov-copy h2 em { font-style: italic; color: var(--blue); }
+    .v2-cov-copy > p { color: var(--text-soft); margin: 16px 0 0; font-size: 1.0625rem; line-height: 1.55; max-width: 42ch; }
+    .v2-cov-nums { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+    .v2-cov-nums div { display: flex; flex-direction: column; }
+    .v2-cov-nums b { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--navy); }
+    .v2-cov-nums span { font-size: 0.75rem; color: var(--text-muted); }
+    .v2-map { width: 100%; height: auto; display: block; max-width: 100%; }
+    .v2-map .states path { fill: var(--bg-tint); stroke: var(--border); stroke-width: 1.2; stroke-linejoin: round; }
+    .v2-map .states path.on { fill: var(--blue-mist); stroke: var(--blue); stroke-width: 1.4; }
+    .v2-map .pins circle { fill: var(--blue); stroke: var(--paper); stroke-width: 2.5; }
+    .v2-cov-bar { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+    .v2-cov-bar h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.022em; color: var(--navy); margin: 0; }
+    .v2-cov-bar span { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; color: var(--text-muted); letter-spacing: 0.06em; }
+    .v2-cov-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(178px, 1fr)); gap: 12px; }
+    .v2-club { display: flex; align-items: center; gap: 11px; border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; background: var(--paper); transition: border-color 160ms, box-shadow 160ms; }
+    .v2-club:hover { border-color: var(--blue); box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 8px 22px rgba(16,48,42,.07); }
+    .v2-club img { width: 34px; height: 34px; flex: none; border-radius: 9px; object-fit: contain; background: var(--bg-tint); }
+    .v2-club b { display: block; font-size: 0.75rem; font-weight: 700; color: var(--navy); line-height: 1.25; letter-spacing: -0.01em; }
+    .v2-club span { display: block; font-size: 0.6875rem; color: var(--text-muted); margin-top: 1px; }
+
+    @media (max-width: 900px) {
+      .v2-cov-grid { grid-template-columns: 1fr; gap: 32px; }
+      .v2-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .v2-stat:nth-child(2) { border-right: 0; }
+      .v2-stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 560px) {
+      .v2-float { position: static; margin-top: 14px; max-width: none; }
+      .v2-cov { padding: 64px 0; }
+      .v2-logos-row img { height: 32px; max-width: 92px; }
+      .v2-stat { padding: 22px 18px; }
+    }
+
+  
+    .v2-club span.v2-club-ini {
+      width: 34px; height: 34px; flex: none; border-radius: 9px;
+      display: grid; place-items: center;
+      font-size: 0.75rem; font-weight: 800; letter-spacing: -0.02em;
+      color: #fff; font-feature-settings: 'ss01';
+      background-image: linear-gradient(158deg, rgba(255,255,255,0.17), rgba(255,255,255,0) 62%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10), 0 1px 2px rgba(16,48,42,0.14);
+    }
+    .v2-club span.v2-ini-a { background-color: #10302a; }
+    .v2-club span.v2-ini-b { background-color: #164a3a; }
+    .v2-club span.v2-ini-c { background-color: #1d3a33; }
+    .v2-club span.v2-ini-d { background-color: #3a2140; }
+    .v2-club span.v2-ini-e { background-color: #2c3a34; }
+    .v2-club span.v2-ini-f { background-color: #10404b; }
+  
+    /* ═══ HERO · ecosistema CourtBit (Competencias + Reservas + Academia) ═══ */
+    .v2-eco {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-right: -46px;
+      perspective: 1100px;
+    }
+    .v2-eco-slot { animation: eco-in 720ms cubic-bezier(.22,1,.36,1) backwards; }
+    .v2-eco-slot--comp { grid-column: 1 / -1; padding-left: 9%; animation-delay: 260ms; }
+    .v2-eco-slot--res  { margin-top: -14px; animation-delay: 60ms; }
+    .v2-eco-slot--aca  { margin-top: -2px; animation-delay: 460ms; }
+    @keyframes eco-in { from { opacity: 0; transform: translateY(18px); } }
+
+    .eco-card {
+      position: relative;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 14px 34px rgba(16,48,42,.09);
+    }
+    .eco-card--comp { animation: eco-float-a 7.4s ease-in-out 1.1s infinite, eco-focus-comp 10s linear 1.1s infinite; }
+    .eco-card--res  { animation: eco-float-b 8.6s ease-in-out 1.1s infinite, eco-focus-res  10s linear 1.1s infinite; }
+    .eco-card--aca  { animation: eco-float-c 6.8s ease-in-out 1.1s infinite, eco-focus-aca  10s linear 1.1s infinite; }
+    @keyframes eco-float-a { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-4px) } }
+    @keyframes eco-float-b { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-2.5px) } }
+    @keyframes eco-float-c { 0%,100% { transform: translateY(-3px) } 50% { transform: translateY(0) } }
+
+    /* el foco viaja: Competencias → Reservas → Academia → reposo */
+    @keyframes eco-focus-comp {
+      0%,4%    { box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 14px 34px rgba(16,48,42,.09); border-color: var(--border); }
+      9%,28%   { box-shadow: 0 1px 2px rgba(21,128,61,.06), 0 18px 44px rgba(21,128,61,.20); border-color: #bfe3cb; }
+      34%,100% { box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 14px 34px rgba(16,48,42,.09); border-color: var(--border); }
+    }
+    @keyframes eco-focus-res {
+      0%,30%   { box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 14px 34px rgba(16,48,42,.09); border-color: var(--border); }
+      36%,56%  { box-shadow: 0 1px 2px rgba(21,128,61,.06), 0 18px 44px rgba(21,128,61,.20); border-color: #bfe3cb; }
+      62%,100% { box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 14px 34px rgba(16,48,42,.09); border-color: var(--border); }
+    }
+    @keyframes eco-focus-aca {
+      0%,58%   { box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 14px 34px rgba(16,48,42,.09); border-color: var(--border); }
+      64%,80%  { box-shadow: 0 1px 2px rgba(21,128,61,.06), 0 18px 44px rgba(21,128,61,.20); border-color: #bfe3cb; }
+      86%,100% { box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 14px 34px rgba(16,48,42,.09); border-color: var(--border); }
+    }
+
+    /* cabecera común */
+    .eco-head { display: flex; align-items: flex-start; gap: 9px; padding: 11px 12px; border-bottom: 1px solid var(--hairline); }
+    .eco-ico { width: 26px; height: 26px; flex: none; border-radius: 8px; display: grid; place-items: center; }
+    .eco-ico svg { width: 14px; height: 14px; }
+    .eco-ico--comp { background: var(--blue-mist); color: var(--blue-deep); }
+    .eco-ico--res  { background: #e3f4f2; color: #0f6b63; }
+    .eco-ico--aca  { background: #fdf0e3; color: #a75f12; }
+    .eco-head-tx { min-width: 0; flex: 1; }
+    .eco-card--res .eco-head-tx b { white-space: nowrap; }
+    .eco-head-tx b { display: block; font-size: .8125rem; font-weight: 800; color: var(--navy); letter-spacing: -.018em; line-height: 1.2; }
+    .eco-head-tx span { display: block; font-size: .5625rem; color: var(--text-muted); margin-top: 1px; line-height: 1.3; }
+    .eco-link { font-size: .5625rem; font-weight: 700; color: var(--blue); white-space: nowrap; padding-top: 2px; }
+
+    /* Competencias */
+    .eco-body { padding: 10px 12px 12px; }
+    .eco-torneo { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 9px; }
+    .eco-torneo b { display: block; font-size: .6875rem; font-weight: 800; color: var(--navy); letter-spacing: -.012em; }
+    .eco-torneo i { display: block; font-style: normal; font-size: .5625rem; color: var(--text-faint); margin-top: 1px; }
+    .eco-live { display: inline-flex; align-items: center; gap: 5px; font-size: .5rem; font-weight: 700; color: #2f7a45; background: #e9f6ee; border-radius: 999px; padding: 3px 8px; white-space: nowrap; }
+    .eco-live::before { content: ''; width: 4px; height: 4px; border-radius: 999px; background: #35a15c; }
+    .eco-bracket { display: grid; grid-template-columns: 1fr 34px 1fr; align-items: stretch; gap: 0; }
+    .eco-col { display: flex; flex-direction: column; gap: 7px; }
+    .eco-match { border: 1px solid var(--border); border-radius: 9px; overflow: hidden; }
+    .eco-team { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 4px 7px; font-size: .5625rem; color: var(--text-soft); line-height: 1.3; }
+    .eco-team + .eco-team { border-top: 1px solid var(--hairline); }
+    .eco-team.win { color: var(--navy); font-weight: 700; background: #f4faf6; }
+    .eco-sc { display: flex; gap: 5px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .5625rem; font-weight: 700; color: var(--text-faint); }
+    .eco-team.win .eco-sc { color: var(--blue-deep); }
+    .eco-sc b { font-weight: 700; }
+    .eco-sc .late { opacity: 0; animation: eco-appear 10s linear 1.1s infinite; }
+    @keyframes eco-appear { 0%,10% { opacity: 0 } 14%,30% { opacity: 1 } 36%,100% { opacity: 0 } }
+    .eco-wire { width: 34px; height: 100%; align-self: stretch; overflow: visible; }
+    .eco-wire path { fill: none; stroke: var(--border); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+    .eco-wire .lit { stroke: var(--blue); stroke-dasharray: 60; stroke-dashoffset: 60; animation: eco-draw 10s linear 1.1s infinite; }
+    @keyframes eco-draw { 0%,13% { stroke-dashoffset: 60 } 22%,30% { stroke-dashoffset: 0 } 34%,100% { stroke-dashoffset: 60 } }
+    .eco-next { position: relative; }
+    .eco-next .swap { display: block; }
+    .eco-next .a { animation: eco-out 10s linear 1.1s infinite; }
+    .eco-next .b { position: absolute; inset: 1px 7px; background: #f4faf6; opacity: 0; animation: eco-in2 10s linear 1.1s infinite; }
+    @keyframes eco-out { 0%,20% { opacity: 1 } 25%,30% { opacity: 0 } 36%,100% { opacity: 1 } }
+    @keyframes eco-in2 { 0%,20% { opacity: 0 } 25%,30% { opacity: 1 } 36%,100% { opacity: 0 } }
+    .eco-final { margin-top: 7px; border: 1px dashed var(--border); border-radius: 9px; padding: 6px 8px; font-size: .5rem; color: var(--text-faint); line-height: 1.4; }
+    .eco-final b { display: block; color: var(--text-soft); font-size: .5625rem; font-weight: 700; }
+    .eco-fase { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .4375rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 5px; }
+
+    /* Reservas */
+    .eco-grid { display: grid; grid-template-columns: 30px repeat(4, 1fr); font-size: .5rem; }
+    .eco-grid > div { border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 3px; min-height: 26px; }
+    .eco-grid > div:nth-child(5n) { border-right: 0; }
+    .eco-grid .th { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .4375rem; letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); background: var(--bg-tint); text-align: center; }
+    .eco-grid .hr { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .4375rem; color: var(--text-faint); display: grid; place-items: center; }
+    .eco-slot { border-radius: 5px; padding: 3px 4px; font-size: .4375rem; font-weight: 700; line-height: 1.25; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+    .eco-slot.free { background: #eef8f1; color: #3d7d55; font-weight: 600; }
+    .eco-slot.busy { background: var(--blue-mist); color: var(--blue-deep); }
+    .eco-slot small { display: block; font-weight: 500; opacity: .75; font-size: .4375rem; }
+    .eco-cell-swap { position: relative; }
+    .eco-cell-swap .a { animation: eco-out2 10s linear 1.1s infinite; }
+    .eco-cell-swap .b { position: absolute; inset: 3px; opacity: 0; animation: eco-in3 10s linear 1.1s infinite; }
+    @keyframes eco-out2 { 0%,42% { opacity: 1 } 46%,58% { opacity: 0 } 63%,100% { opacity: 1 } }
+    @keyframes eco-in3  { 0%,42% { opacity: 0 } 46%,58% { opacity: 1 } 63%,100% { opacity: 0 } }
+    .eco-toast {
+      position: absolute; right: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 6px;
+      background: var(--paper); border: 1px solid #cfe9d8; border-radius: 999px; padding: 5px 10px;
+      font-size: .5rem; font-weight: 700; color: #2f7a45; white-space: nowrap;
+      box-shadow: 0 6px 18px rgba(16,48,42,.12); opacity: 0;
+      animation: eco-toast 10s cubic-bezier(.22,1,.36,1) 1.1s infinite;
+    }
+    .eco-toast::before { content: '✓'; color: #35a15c; font-weight: 800; }
+    @keyframes eco-toast {
+      0%,45%   { opacity: 0; transform: translateY(6px) }
+      49%,56%  { opacity: 1; transform: translateY(0) }
+      61%,100% { opacity: 0; transform: translateY(6px) }
+    }
+
+    .eco-ai {
+      display: inline-flex; align-items: center; gap: 4px; flex: none;
+      font-size: .4375rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+      color: #5b3fd6; background: linear-gradient(118deg, #f0ebff, #e7f1ff);
+      border: 1px solid #ddd4ff; border-radius: 999px; padding: 3px 7px; white-space: nowrap;
+      animation: eco-ai-glow 10s ease-in-out 1.1s infinite;
+    }
+    .eco-ai svg { width: 8px; height: 8px; }
+    @keyframes eco-ai-glow {
+      0%,32%   { box-shadow: 0 0 0 0 rgba(91,63,214,0); }
+      40%,52%  { box-shadow: 0 0 0 3px rgba(91,63,214,.13); }
+      60%,100% { box-shadow: 0 0 0 0 rgba(91,63,214,0); }
+    }
+
+    /* Academia */
+    .eco-tabs { display: flex; gap: 4px; padding: 9px 12px 0; }
+    .eco-tabs span { font-size: .4375rem; font-weight: 700; border-radius: 999px; padding: 4px 8px; color: var(--text-muted); background: var(--bg-tint); white-space: nowrap; }
+    .eco-tabs span.on { background: var(--navy); color: #fff; }
+    .eco-clase { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--hairline); }
+    .eco-clase:first-of-type { border-top: 0; }
+    .eco-av { width: 24px; height: 24px; flex: none; border-radius: 7px; display: grid; place-items: center; font-size: .4375rem; font-weight: 800; color: #fff; background-image: linear-gradient(158deg, rgba(255,255,255,.18), rgba(255,255,255,0) 62%); }
+    .eco-clase-tx { flex: 1; min-width: 0; }
+    .eco-clase-tx b { display: block; font-size: .5625rem; font-weight: 700; color: var(--navy); line-height: 1.25; }
+    .eco-clase-tx span { display: block; font-size: .4375rem; color: var(--text-muted); margin-top: 1px; }
+    .eco-cupo { text-align: right; position: relative; white-space: nowrap; }
+    .eco-cupo b { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .625rem; font-weight: 700; color: var(--navy); letter-spacing: -.02em; }
+    .eco-cupo i { display: block; font-style: normal; font-size: .4375rem; color: var(--text-faint); }
+    .eco-cupo .a { animation: eco-out3 10s linear 1.1s infinite; }
+    .eco-cupo .b { position: absolute; top: 0; right: 0; padding-left: 6px; background: var(--paper); opacity: 0; animation: eco-in4 10s cubic-bezier(.22,1,.36,1) 1.1s infinite; }
+    @keyframes eco-out3 { 0%,65% { opacity: 1 } 69%,82% { opacity: 0 } 87%,100% { opacity: 1 } }
+    @keyframes eco-in4  { 0%,65% { opacity: 0; transform: translateY(4px) } 69%,82% { opacity: 1; transform: translateY(0) } 87%,100% { opacity: 0; transform: translateY(4px) } }
+
+    @media (max-width: 1080px) { .v2-eco { margin-right: 0 } .v2-eco-slot--comp { padding-left: 0 } }
+    @media (max-width: 768px) { .v2-eco { display: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .v2-eco-slot, .eco-card, .eco-sc .late, .eco-wire .lit,
+      .eco-next .a, .eco-next .b, .eco-cell-swap .a, .eco-cell-swap .b,
+      .eco-toast, .eco-cupo .a, .eco-cupo .b { animation: none !important; }
+      .eco-next .b, .eco-cell-swap .b, .eco-cupo .b, .eco-toast { opacity: 0 !important; }
+      .eco-sc .late { opacity: 1 !important; }
+      .eco-wire .lit { stroke-dashoffset: 0 !important; }
+    }
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  
+    @media (max-width: 640px) {
+      /* El listón estaba en position:absolute y a poco ancho se encimaba con
+         la etiqueta de la tarjeta. En móvil pasa a flujo normal. */
+      .e-aud-card .ribbon { position: static; align-self: flex-start; margin-bottom: 12px; top: auto; right: auto; }
+    }
+  
+    /* Burger: sólo existe en móvil. En escritorio el nav es horizontal. */
+    .e-nav-burger {
+      display: inline-flex; flex: none; width: 42px; height: 42px; padding: 0;
+      background: none; border: 1px solid var(--border); border-radius: 12px;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    .e-nav-burger span { display: block; width: 17px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 180ms, opacity 180ms; }
+    .e-nav.is-open .e-nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
+    .e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .e-nav-inner { position: relative; }
+    .e-nav-sep, .e-only-mobile { display: none; }
+    @media (prefers-reduced-motion: reduce) { .e-nav-burger span { transition: none; } }
+  
+    /* El burger existe sólo en móvil. Se oculta con min-width para que no
+       dependa del orden en el archivo: una regla sin media query gana por
+       posición a una dentro de @media. */
+    @media (min-width: 901px) { .e-nav-burger { display: none; } }
+  
+    /* ══ Menú móvil · bloque único y autoritativo ═══════════════════════════
+       Cada página del sitio trae su propia copia del CSS del nav, así que un
+       parche por página se convierte en whack-a-mole. Este bloque va SIEMPRE
+       al final del <style> y usa `nav.e-nav` para ganar por especificidad,
+       no por orden. Si se toca el menú móvil, se toca aquí. ═══════════════ */
+    nav.e-nav .e-nav-inner { position: relative; }
+    nav.e-nav .e-nav-burger {
+      display: inline-flex; flex: none; width: 44px; height: 44px; padding: 0;
+      background: none; border: 1px solid var(--border); border-radius: 12px;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    nav.e-nav .e-nav-burger span { display: block; width: 18px; height: 2px; background: var(--navy); border-radius: 2px; opacity: 1; transition: transform 180ms, opacity 180ms; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
+    nav.e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (min-width: 901px) {
+      nav.e-nav .e-nav-burger { display: none; }
+      nav.e-nav .e-nav-sep, nav.e-nav .e-only-mobile { display: none; }
+    }
+    @media (max-width: 900px) {
+      nav.e-nav:not(.is-open) .e-nav-links { display: none; }
+      nav.e-nav .e-nav-links {
+        display: flex; position: absolute; left: 0; right: 0; top: 100%;
+        flex-direction: column; gap: 0; align-items: stretch; margin: 0;
+        background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        box-shadow: 0 14px 30px rgba(16,48,42,.10); padding: 4px 16px 10px;
+        max-height: calc(100vh - 110px); overflow-y: auto; overflow-x: visible;
+        -webkit-mask-image: none; mask-image: none;
+      }
+      nav.e-nav .e-nav-links a { font-size: 1rem; min-height: 48px; display: flex; align-items: center; width: 100%; border-bottom: 1px solid var(--hairline); opacity: 1; }
+      nav.e-nav .e-nav-links a:last-child { border-bottom: 0; }
+      nav.e-nav .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 6px 0; }
+      nav.e-nav .e-only-mobile { display: flex; }
+      nav.e-nav .e-nav-secondary { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Skip to content</a>
 
   <!-- 1. Top status bar -->
   <div class="e-topbar">
@@ -2372,6 +2626,8 @@
   <!-- NAV -->
   <!-- /NAV -->
 
+<main id="contenido">
+
   <!-- 3. HERO -->
   <header class="e-hero">
     <div class="container">
@@ -2381,106 +2637,213 @@
             Run your padel club from one place. <em>Get your time back</em>.
           </h1>
           <p class="lead">
-            Bookings, academies, and tournaments in one platform. <b style="color:var(--lime);">Payments go straight to your account.</b>
+            Competitions, Bookings, and Academy in one platform. <b style="color:var(--lime);">Payments go straight to your account.</b>
           </p>
           <div class="e-cta">
             <a href="/empezar/" class="e-btn e-btn-lime">Start for free →</a>
-            <a href="/pricing/" class="e-btn e-btn-outline">See plans</a>
+            <a href="/apps/" class="e-btn e-btn-outline">I'm a player · get the app</a>
+          </div>
+          <div class="v2-scope" aria-label="What's included">
+            <span>Competitions</span><span>Bookings</span><span>Academy</span><span>CourtAI</span><span>Live Control</span>
           </div>
         </div>
 
-        <div style="position:relative;">
-          <div class="e-hero-photo" aria-label="Your club's operations on CourtBit, live">
-            <div class="e-court" aria-hidden="true">
-              <span class="e-court-glow"></span>
-              <svg class="e-court-lines" viewBox="0 0 300 380" fill="none" preserveAspectRatio="none">
-                <rect class="box" x="6" y="6" width="288" height="368" rx="10"/>
-                <line class="ln"  x1="6"   y1="82"  x2="294" y2="82"/>
-                <line class="ln"  x1="6"   y1="298" x2="294" y2="298"/>
-                <line class="ln"  x1="150" y1="82"  x2="150" y2="298"/>
-                <line class="net" x1="6"   y1="190" x2="294" y2="190"/>
-              </svg>
-            </div>
+        <div class="v2-eco" id="eco" role="img" aria-label="CourtBit in action: competitions, bookings, and academy">
 
-            <!-- Pago recibido → cuenta del club (Stripe o MercadoPago) -->
-            <div class="e-chip e-chip--pay">
-              <span class="e-chip-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-              </span>
-              <span class="e-chip-tx">
-                <span class="t">Payment received</span>
-                <span class="v">$480 <small>→ straight to your account</small></span>
-              </span>
-            </div>
-
-            <!-- Ocupación del día -->
-            <div class="e-ring" role="img" aria-label="87 percent occupancy today">
-              <span class="e-ring-dial"></span>
-              <span class="e-ring-val"><b>87%</b><span>occupancy</span></span>
-            </div>
-
-            <!-- Cancha reservada -->
-            <div class="e-chip e-chip--court">
-              <span class="e-chip-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg>
-              </span>
-              <span class="e-chip-tx">
-                <span class="t">Court 3 · booked</span>
-                <span class="v">18:00</span>
-              </span>
-            </div>
-
-            <!-- Liga del fin de semana -->
-            <div class="e-chip e-chip--league">
-              <span class="e-chip-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7a6 6 0 01-12 0z"/><path d="M6 5H3v2a3 3 0 003 3M18 5h3v2a3 3 0 01-3 3M9 21h6M12 15v6"/></svg>
-              </span>
-              <span class="e-chip-tx">
-                <span class="t">Saturday league</span>
-                <span class="v">12 <small>pairs</small></span>
-              </span>
-            </div>
+          <div class="v2-eco-slot v2-eco-slot--comp">
+            <article class="eco-card eco-card--comp">
+              <div class="eco-head">
+                <span class="eco-ico eco-ico--comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M6 4h12v5a6 6 0 0 1-12 0V4ZM6 6H4a2 2 0 0 0 0 4h2M18 6h2a2 2 0 0 1 0 4h-2"/></svg></span>
+                <span class="eco-head-tx"><b>Competitions</b><span>Tournaments and leagues, without the headaches.</span></span>
+                <span class="eco-link">View all →</span>
+              </div>
+              <div class="eco-body">
+                <div class="eco-torneo">
+                  <span><b>Lagartos League · 3rd Tier</b><i>Men's · 16 pairs</i></span>
+                  <span class="eco-live">Live</span>
+                </div>
+                <div class="eco-bracket">
+                  <div class="eco-col">
+                    <div class="eco-fase">Quarterfinals</div>
+                    <div class="eco-match">
+                      <div class="eco-team win">R. Torres / M. Ruiz <span class="eco-sc"><b>6</b><b class="late">6</b></span></div>
+                      <div class="eco-team">A. García / L. Méndez <span class="eco-sc"><b>4</b><b class="late">3</b></span></div>
+                    </div>
+                    <div class="eco-match">
+                      <div class="eco-team win">D. Soto / F. Ibarra <span class="eco-sc"><b>6</b><b class="late">7</b></span></div>
+                      <div class="eco-team">C. Peña / J. Morales <span class="eco-sc"><b>1</b><b class="late">5</b></span></div>
+                    </div>
+                  </div>
+                  <svg class="eco-wire" viewBox="0 0 34 100" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0 39.6 H17 V81.3 H0"/>
+                    <path class="lit" d="M0 39.6 H17 V29.6 H34"/>
+                  </svg>
+                  <div class="eco-col">
+                    <div class="eco-fase">Semifinal</div>
+                    <div class="eco-match">
+                      <div class="eco-team win eco-next">
+                        <span class="swap a">To be decided</span>
+                        <span class="swap b">R. Torres / M. Ruiz</span>
+                        <span class="eco-sc"><b>—</b></span>
+                      </div>
+                      <div class="eco-team">D. Soto / F. Ibarra <span class="eco-sc"><b>—</b></span></div>
+                    </div>
+                    <div class="eco-final"><b>Final · Sat Sep 27 · 7:00 PM</b>Center Court</div>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="e-float-card">
-            <div class="label">Your club</div>
-            <div class="price">4% <small>to the player, never the club</small></div>
-            <div class="meta">The money lands straight in your Stripe or MercadoPago. The player pays <b>4%</b> only if they use a card.</div>
+
+          <div class="v2-eco-slot v2-eco-slot--res">
+            <article class="eco-card eco-card--res">
+              <div class="eco-head">
+                <span class="eco-ico eco-ico--res"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg></span>
+                <span class="eco-head-tx"><b>Bookings</b><span>Today · 5 courts</span></span>
+                <span class="eco-ai"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"/></svg>Powered with AI</span>
+              </div>
+              <div class="eco-grid">
+                <div class="th"></div><div class="th">C1</div><div class="th">C2</div><div class="th">C3</div><div class="th">C4</div>
+                <div class="hr">17:00</div>
+                <div><span class="eco-slot busy">M. López<small>17:00 · 18:00</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot busy">C. Vega<small>17:00 · 18:00</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div class="hr">18:00</div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot busy">A. Salazar<small>18:00 · 19:00</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div class="hr">19:00</div>
+                <div><span class="eco-slot busy">D. Morales<small>19:00 · 20:00</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div class="hr">20:00</div>
+                <div><span class="eco-slot busy">KOC Training<small>20:00 · 21:30</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div class="eco-cell-swap">
+                  <span class="eco-slot free a">Available</span>
+                  <span class="eco-slot busy b">L. Peña<small>20:00 · 21:00</small></span>
+                </div>
+                <div><span class="eco-slot free">Available</span></div>
+              </div>
+              <span class="eco-toast">Booking confirmed</span>
+            </article>
+          </div>
+
+          <div class="v2-eco-slot v2-eco-slot--aca">
+            <article class="eco-card eco-card--aca">
+              <div class="eco-head">
+                <span class="eco-ico eco-ico--aca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <span class="eco-head-tx"><b>Academy</b><span>Classes, coaches, and students.</span></span>
+              </div>
+              <div class="eco-tabs"><span class="on">Upcoming classes</span><span>Coaches</span><span>Students</span></div>
+              <div style="padding-top:8px">
+                <div class="eco-clase">
+                  <span class="eco-av" style="background-color:#164a3a">CM</span>
+                  <span class="eco-clase-tx"><b>Beginners Class</b><span>With Carlos Méndez · 17:00 · Court 4</span></span>
+                  <span class="eco-cupo"><b>6 / 8</b><i>students</i></span>
+                </div>
+                <div class="eco-clase">
+                  <span class="eco-av" style="background-color:#1d3a33">AT</span>
+                  <span class="eco-clase-tx"><b>Intermediate Class</b><span>With Ana Torres · 18:30 · Court 2</span></span>
+                  <span class="eco-cupo">
+                    <span class="a"><b>5 / 8</b><i>students</i></span>
+                    <span class="b"><b>6 / 8</b><i>students</i></span>
+                  </span>
+                </div>
+                <div class="eco-clase">
+                  <span class="eco-av" style="background-color:#3a2140">RP</span>
+                  <span class="eco-clase-tx"><b>Advanced Training</b><span>With Rodrigo Peña · 20:00 · Court 1</span></span>
+                  <span class="eco-cupo"><b>7 / 8</b><i>students</i></span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
+
       </div>
     </div>
   </header>
+
+        <script>
+        (function () {
+          var eco = document.getElementById('eco');
+          if (!eco || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          var cards = eco.querySelectorAll('.eco-card'), raf = 0;
+          eco.addEventListener('pointermove', function (e) {
+            if (raf) return;
+            raf = requestAnimationFrame(function () {
+              raf = 0;
+              var r = eco.getBoundingClientRect();
+              var rx = (0.5 - (e.clientY - r.top) / r.height) * 2.6;
+              var ry = ((e.clientX - r.left) / r.width - 0.5) * 2.6;
+              eco.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+            });
+          });
+          eco.addEventListener('pointerleave', function () { eco.style.transform = ''; });
+          if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (es) {
+              eco.classList.toggle('is-idle', !es[0].isIntersecting);
+            }, { rootMargin: '120px' }).observe(eco);
+          }
+          eco.style.transition = 'transform 420ms cubic-bezier(.22,1,.36,1)';
+          if (cards.length) eco.style.transformStyle = 'preserve-3d';
+        })();
+        </script>
+
+  <!-- 3b. FRANJA DE NÚMEROS -->
+  <section class="v2-stats" aria-label="CourtBit in numbers">
+    <div class="container">
+      <div class="v2-stats-grid">
+        <div class="v2-stat"><b>65</b><span>clubs and organizers on CourtBit</span></div>
+        <div class="v2-stat"><b>4,801</b><span>matches managed across tournaments and leagues</span></div>
+        <div class="v2-stat"><b>8</b><span>Mexican states with clubs running on CourtBit</span></div>
+        <div class="v2-stat"><b>2,246</b><span>players registered in the app</span></div>
+      </div>
+      <div class="v2-stats-note">Figures as of September 2026</div>
+    </div>
+  </section>
+
+  <!-- 3c. LOGOS DE CLIENTES -->
+  <section class="v2-logos" aria-label="Clubs running on CourtBit">
+    <div class="container">
+      <div class="v2-logos-title">Clubs and organizers already running on CourtBit</div>
+      <div class="v2-logos-row"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/6b9eaa0e-7fe3-4766-918d-89f1ab2df3d5?v=1778697674092" alt="All Seasons Padel Club" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/3364a10d-5124-4b5a-8c4c-b520c83f3593?v=1784090810388" alt="ALTIUM Padel Sports Complex" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e5bdc7c8-ef69-4a55-b49f-c9227b9e3b6a?v=1779295213230" alt="Amber Pádel Club · Santa Anita" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/5b8a043a-3546-4d2f-8cb5-8f461bdd547e?v=1788543127976" alt="Distrito Padel Tulum" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e884f2a0-08da-4e4f-9c7c-f457bc83cb7c?v=1781044366757" alt="DÚO PÁDEL PARK" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/66a393fe-e0b1-4486-8270-4968cd1ffb76?v=1787884724216" alt="GA Padel" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e0240092-8a14-420d-9fb2-632f341f9314?v=1777882465675" alt="GM Padel" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/287d0530-0536-4d68-80f3-4b8f946cdcd2?v=1784860468477" alt="Impakto Pádel Club" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/cf84b9c9-a215-453f-8630-72d4e0c51b65?v=1777882466004" alt="LEVA" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/b32976bf-1ef7-449b-91d6-b7e236cce0ea?v=1777882417537" alt="One Padel Guaymas" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/dc68e9ba-edb3-449b-92ef-2d081021965e?v=1777882466949" alt="Padel Factory GDL" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/770b3dbf-5073-49d2-b4a1-64fbc34200c9?v=1777882542510" alt="Padel Guaymas" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/0af59a65-6936-496c-850e-e62a5806be17?v=1784327739948" alt="PUNTACO Padel Club" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/032a12c2-0529-42c9-8e67-9be9845efd91?v=1784829512461" alt="Select Pádel CUP" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/6a07f886-95b7-4f26-bd55-8a513cdc9575?v=1788071859014" alt="SEVEN PADEL CLUB" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/f9877a1e-10a8-4663-b3ca-1ea9fe33a4b2?v=1777882466313" alt="SIAMO" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/eda14f75-3dc1-4534-a060-d9721f471b6e?v=1785781828718" alt="Tennis Guaymas" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/9915543a-205f-4aea-ad63-5ad9767cfe7f?v=1777882417860" alt="TX8s" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/38837fcf-dbf8-4226-a134-4fc76fed8e05?v=1783617104872" alt="Viper Padel Club" loading="lazy" width="120" height="42"></div>
+    </div>
+  </section>
 
   <!-- 4. AUDIENCES (moved up — 3 productos al frente) -->
   <section class="e-audiences" id="audiences" style="padding-top: 72px; padding-bottom: 72px;">
     <div class="container">
       <div class="e-section-header" style="text-align:center; max-width:720px; margin: 0 auto 40px;">
         <span class="e-eyebrow"><span class="dot"></span> One platform · Three products</span>
-        <h2 class="e-section-title">For your club, your academy, and your <em>tournament</em>.</h2>
+        <h2 class="e-section-title">For your <em>tournament</em>, your club, and your academy.</h2>
         <p class="e-section-desc">Three products. One account. You choose where to start.</p>
       </div>
       <div class="e-audience-grid">
-        <a href="/clubes/" class="e-aud-card featured">
-          <span class="ribbon">For clubs</span>
-          <div class="label">Reservas</div>
-          <h3>Multi-court <em>calendar</em></h3>
+        <a href="/competencias/" class="e-aud-card featured">
+          <span class="ribbon">For organizers</span>
+          <div class="label">Competitions</div>
+          <h3>Tournaments, leagues, and <em>rankings</em></h3>
+          <div class="price">Plans <small>for your tournament</small></div>
+          <p>Your players send the times they can play and the schedule builds itself. Live Control to enter results straight from the court.</p>
+          <span class="arrow">Explore Competitions →</span>
+        </a>
+        <a href="/clubes/" class="e-aud-card secondary">
+          <div class="label">For clubs</div>
+          <h3>Bookings</h3>
           <div class="price">Plans <small>for your club</small></div>
-          <p>Multi-court scheduling, payments straight to your account, and an app for players.</p>
-          <span class="arrow">Explore Reservas →</span>
+          <p>Multi-court calendar, payouts straight to your account, and <b>CourtAI</b>, the agent that handles your players' bookings over WhatsApp.</p>
+          <span class="arrow">Explore Bookings →</span>
         </a>
         <a href="/academias/" class="e-aud-card secondary">
           <div class="label">For coaches</div>
-          <h3>Academias</h3>
+          <h3>Academy</h3>
           <div class="price">Plans <small>for your academy</small></div>
-          <p>Enrollments, attendance, and recurring billing — all automatic.</p>
-          <span class="arrow">Explore Academias →</span>
-        </a>
-        <a href="/competencias/" class="e-aud-card secondary">
-          <div class="label">For organizers</div>
-          <h3>Competencias</h3>
-          <div class="price">$1,499 <small>MXN / month</small></div>
-          <p>Tournaments, leagues, and circuit rankings with on-court Live Control.</p>
-          <span class="arrow">Explore Competencias →</span>
+          <p>Sign-ups, attendance, and recurring billing on autopilot.</p>
+          <span class="arrow">Explore Academy →</span>
         </a>
       </div>
     </div>
@@ -2492,7 +2855,7 @@
       <div class="e-section-header">
         <span class="e-eyebrow"><span class="dot"></span> How it works</span>
         <h2 class="e-section-title">Your first payment in <em>10 minutes</em>.</h2>
-        <p class="e-section-desc">Three steps. No sales calls.</p>
+        <p class="e-section-desc">Three steps. Or we set it up for you, free.</p>
       </div>
       <div class="e-steps">
         <div class="e-step">
@@ -2526,7 +2889,7 @@
       <div class="e-proc-grid">
         <article class="e-proc-card" style="--proc:#635BFF;">
           <header class="e-proc-head">
-            <span class="e-proc-mark" aria-hidden="true">S</span>
+            <span class="e-proc-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg></span>
             <div>
               <h3 class="e-proc-name">Stripe</h3>
               <p class="e-proc-sub">Stripe Connect · the global standard</p>
@@ -2541,7 +2904,7 @@
 
         <article class="e-proc-card" style="--proc:#009EE3;">
           <header class="e-proc-head">
-            <span class="e-proc-mark" aria-hidden="true">MP</span>
+            <span class="e-proc-mark e-proc-mark--mp" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M11.115 16.479a.93.927 0 0 1-.939-.886c-.002-.042-.006-.155-.103-.155-.04 0-.074.023-.113.059-.112.103-.254.206-.46.206a.816.814 0 0 1-.305-.066c-.535-.214-.542-.578-.521-.725.006-.038.007-.08-.02-.11l-.032-.03h-.034c-.027 0-.055.012-.093.039a.788.786 0 0 1-.454.16.7.699 0 0 1-.253-.05c-.708-.27-.65-.928-.617-1.126.005-.041-.005-.072-.03-.092l-.05-.04-.047.043a.728.726 0 0 1-.505.203.73.728 0 0 1-.732-.725c0-.4.328-.722.732-.722.364 0 .675.27.721.63l.026.195.11-.165c.01-.018.307-.46.852-.46.102 0 .21.016.316.05.434.13.508.52.519.68.008.094.075.1.09.1.037 0 .064-.024.083-.045a.746.744 0 0 1 .54-.225c.128 0 .263.03.402.09.69.293.379 1.158.374 1.167-.058.144-.061.207-.005.244l.027.013h.02c.03 0 .07-.014.134-.035.093-.032.235-.08.367-.08a.944.942 0 0 1 .94.93.936.934 0 0 1-.94.928zm7.302-4.171c-1.138-.98-3.768-3.24-4.481-3.77-.406-.302-.685-.462-.928-.533a1.559 1.554 0 0 0-.456-.07c-.182 0-.376.032-.58.095-.46.145-.918.505-1.362.854l-.023.018c-.414.324-.84.66-1.164.73a1.986 1.98 0 0 1-.43.049c-.362 0-.687-.104-.81-.258-.02-.025-.007-.066.04-.125l.008-.008 1-1.067c.783-.774 1.525-1.506 3.23-1.545h.085c1.062 0 2.12.469 2.24.524a7.03 7.03 0 0 0 3.056.724c1.076 0 2.188-.263 3.354-.795a9.135 9.11 0 0 0-.405-.317c-1.025.44-2.003.66-2.946.66-.962 0-1.925-.229-2.858-.68-.05-.022-1.22-.567-2.44-.57-.032 0-.065 0-.096.002-1.434.033-2.24.536-2.782.976-.528.013-.982.138-1.388.25-.361.1-.673.186-.979.185-.125 0-.35-.01-.37-.012-.35-.01-2.115-.437-3.518-.962-.143.1-.28.203-.415.31 1.466.593 3.25 1.053 3.812 1.089.157.01.323.027.491.027.372 0 .744-.103 1.104-.203.213-.059.446-.123.692-.17l-.196.194-1.017 1.087c-.08.08-.254.294-.14.557a.705.703 0 0 0 .268.292c.243.162.677.27 1.08.271.152 0 .297-.015.43-.044.427-.095.874-.448 1.349-.82.377-.296.913-.672 1.323-.782a1.494 1.49 0 0 1 .37-.05.611.61 0 0 1 .095.005c.27.034.533.125 1.003.472.835.62 4.531 3.815 4.566 3.846.002.002.238.203.22.537-.007.186-.11.352-.294.466a.902.9 0 0 1-.484.15.804.802 0 0 1-.428-.124c-.014-.01-1.28-1.157-1.746-1.543-.074-.06-.146-.115-.22-.115a.122.122 0 0 0-.096.045c-.073.09.01.212.105.294l1.48 1.47c.002 0 .184.17.204.395.012.244-.106.447-.35.606a.957.955 0 0 1-.526.171.766.764 0 0 1-.42-.127l-.214-.206a21.035 20.978 0 0 0-1.08-1.009c-.072-.058-.148-.112-.221-.112a.127.127 0 0 0-.094.038c-.033.037-.056.103.028.212a.698.696 0 0 0 .075.083l1.078 1.198c.01.01.222.26.024.511l-.038.048a1.18 1.178 0 0 1-.1.096c-.184.15-.43.164-.527.164a.8.798 0 0 1-.147-.012c-.106-.018-.178-.048-.212-.089l-.013-.013c-.06-.06-.602-.609-1.054-.98-.059-.05-.133-.11-.21-.11a.128.128 0 0 0-.096.042c-.09.096.044.24.1.293l.92 1.003a.204.204 0 0 1-.033.062c-.033.044-.144.155-.479.196a.91.907 0 0 1-.122.007c-.345 0-.712-.164-.902-.264a1.343 1.34 0 0 0 .13-.576 1.368 1.365 0 0 0-1.42-1.357c.024-.342-.025-.99-.697-1.274a1.455 1.452 0 0 0-.575-.125c-.146 0-.287.025-.42.075a1.153 1.15 0 0 0-.671-.564 1.52 1.515 0 0 0-.494-.085c-.28 0-.537.08-.767.242a1.168 1.165 0 0 0-.903-.43 1.173 1.17 0 0 0-.82.335c-.287-.217-1.425-.93-4.467-1.613a17.39 17.344 0 0 1-.692-.189 4.822 4.82 0 0 0-.077.494l.67.157c3.108.682 4.136 1.391 4.309 1.525a1.145 1.142 0 0 0-.09.442 1.16 1.158 0 0 0 1.378 1.132c.096.467.406.821.879 1.003a1.165 1.162 0 0 0 .415.08c.09 0 .179-.012.266-.034.086.22.282.493.722.668a1.233 1.23 0 0 0 .457.094c.122 0 .241-.022.355-.063a1.373 1.37 0 0 0 1.269.841c.37.002.726-.147.985-.41.221.121.688.341 1.163.341.06 0 .118-.002.175-.01.47-.059.689-.24.789-.382a.571.57 0 0 0 .048-.078c.11.032.234.058.373.058.255 0 .501-.086.75-.265.244-.174.418-.424.444-.637v-.01c.083.017.167.026.251.026.265 0 .527-.082.773-.242.48-.31.562-.715.554-.98a1.28 1.279 0 0 0 .978-.194 1.04 1.04 0 0 0 .502-.808 1.088 1.085 0 0 0-.16-.653c.804-.342 2.636-1.003 4.795-1.483a4.734 4.721 0 0 0-.067-.492 27.742 27.667 0 0 0-5.049 1.62zm5.123-.763c0 4.027-5.166 7.293-11.537 7.293-6.372 0-11.538-3.266-11.538-7.293 0-4.028 5.165-7.293 11.539-7.293 6.371 0 11.537 3.265 11.537 7.293zm.46.004c0-4.272-5.374-7.755-12-7.755S.002 7.277.002 11.55L0 12.004c0 4.533 4.695 8.203 11.999 8.203 7.347 0 12-3.67 12-8.204z"/></svg></span>
             <div>
               <h3 class="e-proc-name">MercadoPago <span class="e-proc-tag">New</span></h3>
               <p class="e-proc-sub">Connect your account in one click</p>
@@ -2556,34 +2919,6 @@
       </div>
 
       <p class="e-proc-note"><b>One processor active at a time</b>, switchable anytime from your dashboard. With Stripe the checkout is native inside the app; with MercadoPago a secure payment sheet opens without leaving CourtBit. Cash and bank transfer stay commission-free.</p>
-    </div>
-  </section>
-
-  <!-- 6.5 PRICING MODEL — gratis vs pago -->
-  <section class="e-pricing-why" style="padding: 96px 0; background: var(--paper);">
-    <div class="container">
-      <div class="e-section-header">
-        <span class="e-eyebrow"><span class="dot"></span> Our model</span>
-        <h2 class="e-section-title">You pay based on <em>how you operate</em>.</h2>
-        <p class="e-section-desc">Plans built around your club, your academy, or your tournament. The money from your charges lands straight in your Stripe or MercadoPago; CourtBit only charges the payer 4%, never the club.</p>
-      </div>
-
-      <div class="e-pricing-why-grid">
-        <div class="e-pricing-why-card">
-          <div class="e-pricing-why-badge e-pricing-why-badge-lime">Plans for your club</div>
-          <h3>Clubs and academies</h3>
-          <p>We <b>never charge the club a commission.</b> The player or student pays 4% only if they use a card. Cash and bank transfer: zero. Payments go straight to your Stripe or MercadoPago.</p>
-        </div>
-        <div class="e-pricing-why-card dark">
-          <div class="e-pricing-why-badge e-pricing-why-badge-lime">One plan · $1,499/month</div>
-          <h3>Tournament and league organizers</h3>
-          <p>Running a tournament is <b>intense, hands-on work</b>. That's why Competencias has one plan with <b>everything included</b>: $1,499 MXN/month + VAT, no tiers, no lock-in.</p>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 36px;">
-        <a href="/pricing/" class="e-btn e-btn-blue">See all plans →</a>
-      </div>
     </div>
   </section>
 
@@ -2610,7 +2945,7 @@
           <div class="dm-mockup ph-base" role="img" aria-label="CourtBit dashboard · daily multi-court calendar view">
             <header class="dm-mockup-header">
               <div>
-                <h4>Court bookings</h4>
+                <div class="dm-mockup-header-title">Court bookings</div>
                 <div class="meta">5 courts · Mexico City</div>
               </div>
               <button class="dm-add-btn" type="button">+ Booking</button>
@@ -2723,7 +3058,7 @@
             <span class="label">For your academy</span>
             <a href="/academias/">Explore Academias →</a>
           </div>
-          <h4>Attendance, enrollments, and payments.</h4>
+          <h3>Attendance, enrollments, and payments.</h3>
           <div class="am-mock" role="img" aria-label="Class attendance · CourtBit Academias">
             <div class="am-mock-head">
               <span class="name">Saturday Clinic · Court 2</span>
@@ -2767,7 +3102,7 @@
             <span class="label">For your tournament · Group stage</span>
             <a href="/torneos/">See Tournaments →</a>
           </div>
-          <h4>Smart groups. Efficient scheduling.</h4>
+          <h3>Smart groups. Efficient scheduling.</h3>
           <p>Groups build themselves while respecting each player's schedule. You set the format.</p>
           <div class="gr-mock" role="img" aria-label="Group stage · Group D · live standings with qualifying leaders">
             <header class="gr-mock-header">
@@ -2807,7 +3142,7 @@
             <span class="label">For your tournament · Knockout bracket</span>
             <a href="/torneos/">See Tournaments →</a>
           </div>
-          <h4>Automatic brackets with on-court Live Control.</h4>
+          <h3>Automatic brackets with on-court Live Control.</h3>
           <div class="br-mock" role="img" aria-label="Knockout bracket · Quarterfinals, semifinals, and final with Live Control">
             <div class="br-mock-head">
               <span class="name">Lagartos Open · Final bracket</span>
@@ -2931,7 +3266,7 @@
               </div>
               <div class="pm-header">
                 <span class="back">‹</span>
-                <h5>My Bookings</h5>
+                <div class="pm-header-title">My Bookings</div>
                 <span style="width:16px;"></span>
               </div>
               <div class="pm-tabs">
@@ -2988,7 +3323,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/9172bc43-112c-4737-b549-7296559e12a4"
                      alt="Liga Municipal Pádel Guaymas"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
@@ -3006,7 +3341,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/18794d39-05c1-4781-97c3-f0da3452179b"
                      alt="Club Deportivo Miramar"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
@@ -3024,7 +3359,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/b32976bf-1ef7-449b-91d6-b7e236cce0ea"
                      alt="One Padel Guaymas"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
@@ -3042,7 +3377,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e884f2a0-08da-4e4f-9c7c-f457bc83cb7c"
                      alt="DÚO PÁDEL PARK"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
@@ -3060,7 +3395,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e0240092-8a14-420d-9fb2-632f341f9314"
                      alt="GM Padel"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
@@ -3095,9 +3430,33 @@
   </section>
 
   <!-- 12. FINAL CTA -->
+  <!-- 12b. COBERTURA · mapa + los más activos -->
+  <section class="v2-cov" id="cobertura">
+    <div class="container">
+      <div class="v2-cov-grid">
+        <div class="v2-cov-copy">
+          <span class="e-eyebrow"><span class="dot"></span> Clubs and organizers</span>
+          <h2>CourtBit runs in <em>8 states</em> across Mexico.</h2>
+          <p>From Baja California Sur to Quintana Roo. Clubs, academies, and organizers running their bookings, classes, and tournaments from a single account.</p>
+          <div class="v2-cov-nums">
+            <div><b>65</b><span>clubs and organizers</span></div>
+            <div><b>8</b><span>states</span></div>
+            <div><b>14</b><span>towns and cities</span></div>
+          </div>
+        </div>
+        <div><svg class="v2-map" viewBox="0 0 1000 627" role="img" aria-label="Map of Mexico showing CourtBit's 25 active clubs and organizers"><g class="states"><path d="M554.1 281.6L539.2 296.2L536.5 307.8L517.1 323.2L508.5 325.2L508.4 340.8L523.6 353.3L536.7 345.7L540.1 348.9L533.2 375.6L518.0 367.9L515.8 362.2L506.6 355.5L496.6 362.3L489.7 376.0L496.9 388.0L495.1 393.2L480.9 403.2L466.7 401.8L461.6 397.7L468.0 393.3L463.3 387.8L467.6 384.8L467.8 379.3L480.4 371.1L482.8 362.9L476.5 358.4L471.1 367.7L464.1 368.3L468.4 357.5L464.0 352.7L458.9 354.3L457.0 364.6L455.5 358.0L461.1 348.0L458.8 346.7L452.7 349.2L453.6 358.4L451.0 359.3L451.7 354.6L447.3 360.0L442.8 359.4L444.0 351.9L449.7 347.3L448.9 334.7L453.1 321.0L459.6 314.2L457.5 298.8L472.1 285.5L499.4 286.2L498.4 271.9L493.6 263.3L501.2 261.2L513.1 262.0L528.0 271.2L528.7 275.7L540.1 274.4L545.8 281.8L554.1 281.6Z"><title>Zacatecas</title></path><path d="M974.2 387.4L974.3 405.9L969.5 417.0L959.7 423.6L953.0 423.5L951.4 429.9L948.5 427.8L935.0 438.9L917.0 444.5L914.9 450.7L896.4 422.9L893.7 424.9L884.1 420.5L885.0 405.2L900.7 395.9L933.1 390.5L955.7 382.7L974.2 387.4Z"><title>Yucatán</title></path><path d="M650.2 361.1L653.7 381.4L659.8 388.7L669.6 415.8L692.7 444.0L697.5 462.4L714.5 480.4L711.2 480.1L711.4 483.0L715.0 480.5L732.7 483.3L744.2 489.1L754.3 502.5L768.3 499.6L766.0 500.5L767.7 512.4L778.3 519.6L782.4 530.5L774.0 537.0L738.0 534.7L729.0 521.3L729.6 516.9L711.5 522.5L708.5 514.2L710.7 501.8L701.1 501.2L692.0 494.3L688.5 485.9L686.3 492.9L680.8 489.0L676.0 491.3L673.8 486.2L668.0 483.7L669.5 465.3L676.5 464.5L665.7 458.0L664.2 451.8L672.3 432.2L663.4 429.0L658.8 434.2L653.5 431.2L652.8 422.9L658.2 419.9L651.7 412.7L653.3 409.4L649.3 409.3L645.6 417.2L642.7 416.5L630.8 426.8L627.6 422.3L629.0 413.2L633.3 408.6L637.4 410.1L640.1 402.3L637.0 397.5L627.8 394.7L623.7 381.2L629.3 377.2L625.5 371.7L628.6 366.6L633.1 365.6L630.8 360.1L621.1 356.8L637.6 354.1L647.6 362.9L650.2 361.1ZM655.8 375.4L664.7 385.1L661.4 394.6L663.1 385.9L655.8 375.4Z"><title>Veracruz</title></path><path d="M625.1 457.1L622.3 454.2L643.7 446.9L658.0 459.3L640.3 468.5L625.1 457.1Z"><title>Tlaxcala</title></path><path d="M650.2 361.1L647.6 362.9L637.6 354.1L631.7 356.8L606.2 356.6L596.4 344.4L593.6 346.6L580.1 342.4L576.6 324.0L581.5 323.6L584.4 310.7L597.4 307.1L590.7 295.9L591.8 287.3L588.1 281.8L601.8 271.4L604.1 272.6L609.7 260.7L614.6 262.5L630.5 249.0L626.2 246.9L625.2 231.2L614.2 232.5L590.5 209.0L591.4 203.4L587.1 200.3L590.2 195.6L587.8 181.5L582.2 180.9L589.1 174.2L595.8 177.9L598.0 196.5L609.7 218.1L618.3 219.1L637.3 229.9L654.1 231.0L661.7 237.2L670.6 233.3L661.9 258.1L662.8 252.4L658.4 249.8L658.5 256.2L653.4 253.7L651.2 257.1L654.0 260.2L651.4 266.8L654.5 268.6L651.7 271.3L651.7 283.9L648.0 282.7L650.3 288.4L651.4 285.4L652.0 308.7L650.9 339.6L646.8 349.0L650.2 361.1Z"><title>Tamaulipas</title></path><path d="M818.5 485.3L836.0 509.3L846.1 510.5L846.4 505.4L849.9 505.2L865.5 511.9L865.2 533.2L851.8 533.5L852.1 529.4L844.7 526.2L840.1 512.9L833.3 511.3L809.3 529.8L802.6 524.7L799.9 518.1L801.8 512.1L793.4 508.6L785.6 526.3L780.3 529.9L778.3 519.6L767.7 512.4L766.0 500.5L789.1 492.8L799.2 494.7L797.3 493.0L818.5 485.3Z"><title>Tabasco</title></path><path class="on" d="M192.2 120.2L195.0 127.6L191.4 137.0L182.8 132.6L186.8 121.4L192.2 120.2ZM303.2 47.8L306.4 58.1L303.7 62.6L308.6 69.7L312.3 88.7L309.9 99.0L312.0 121.1L306.3 139.6L306.8 145.5L311.6 148.7L295.0 154.8L309.8 182.9L307.9 194.2L317.2 197.2L308.8 211.2L294.5 221.4L280.7 206.1L274.4 208.5L270.3 206.0L264.7 193.2L254.9 192.0L249.3 187.4L244.5 175.7L247.4 167.8L238.3 164.4L236.7 167.9L227.2 162.9L218.3 150.3L210.3 146.9L203.0 136.4L205.8 135.5L195.7 129.3L193.8 117.6L188.5 116.7L189.2 111.7L177.6 96.7L176.7 86.1L167.0 70.6L166.6 52.9L149.9 48.0L148.9 42.3L141.7 38.3L133.3 42.2L106.7 27.6L105.2 15.2L109.1 7.8L112.2 7.7L230.5 47.9L303.2 47.8Z"><title>Sonora</title></path><path class="on" d="M289.2 220.6L291.8 223.6L290.6 216.8L294.5 221.4L302.4 217.1L303.1 212.9L313.2 206.2L317.2 196.2L324.2 196.4L335.3 226.0L347.1 228.6L355.2 242.8L351.7 247.5L350.7 262.0L354.6 270.7L362.5 275.3L368.7 290.4L377.6 285.9L389.4 294.9L402.8 331.4L409.8 333.7L405.5 342.8L408.1 352.1L401.3 349.7L400.1 344.4L400.2 353.4L377.2 328.3L354.3 295.8L333.8 283.7L343.1 289.4L342.8 283.8L338.9 284.9L328.1 278.7L325.5 263.4L304.7 252.8L301.1 246.8L294.6 250.2L292.3 247.6L298.0 243.1L294.2 246.1L285.5 243.9L282.2 231.8L289.2 220.6Z"><title>Sinaloa</title></path><path class="on" d="M576.7 326.7L581.4 343.6L593.6 346.6L595.6 344.0L606.2 356.6L614.9 355.7L631.6 361.0L633.1 365.6L625.5 371.7L629.3 377.2L623.7 381.2L626.7 390.0L620.9 396.2L616.7 397.6L613.5 393.1L609.6 393.8L603.5 385.0L599.6 388.8L593.2 388.7L589.8 384.1L578.3 388.0L566.3 380.2L564.4 385.0L559.0 385.8L549.3 379.1L535.2 375.5L535.7 360.4L540.2 349.8L537.6 345.6L524.3 353.6L508.4 340.8L509.6 323.0L517.1 323.2L536.5 307.8L539.2 296.2L553.4 282.1L558.7 285.4L557.4 290.2L564.1 302.0L565.4 326.5L568.9 329.3L571.8 325.7L576.7 326.7Z"><title>San Luis Potosí</title></path><path class="on" d="M999.9 418.3L991.4 429.2L993.6 419.6L999.9 418.3ZM923.5 509.7L926.9 501.1L924.7 484.2L927.7 465.2L914.9 450.7L916.3 445.1L935.0 438.9L948.5 427.8L951.4 429.9L953.0 423.5L959.7 423.6L969.5 417.0L974.3 405.9L974.2 387.4L985.3 389.0L988.0 384.1L991.0 385.0L996.1 395.5L997.7 390.2L999.1 399.9L977.9 430.8L975.6 445.4L967.9 451.0L970.7 455.8L978.2 453.7L970.4 462.6L969.9 466.3L977.1 462.6L964.6 500.8L961.8 492.8L957.2 490.1L959.6 482.3L957.5 478.0L950.4 490.7L943.3 491.8L933.0 512.3L927.4 507.7L923.5 509.7Z"><title>Quintana Roo</title></path><path d="M610.7 394.1L609.1 398.1L600.3 400.7L595.8 415.1L586.0 419.6L582.1 434.2L575.6 436.6L564.2 422.1L563.7 407.6L574.8 406.8L580.5 397.3L588.6 396.4L588.4 384.0L594.2 388.9L603.5 385.0L610.7 394.1Z"><title>Querétaro</title></path><path d="M686.3 492.9L682.9 498.5L675.4 502.8L669.0 502.0L663.5 509.0L658.4 495.5L651.8 502.3L655.3 505.5L653.2 508.2L641.8 506.7L635.7 510.8L631.7 507.1L626.2 508.5L612.8 497.3L619.6 489.4L624.5 491.8L625.1 457.1L640.3 468.5L657.6 460.8L644.4 447.0L638.4 449.1L637.5 444.4L640.5 432.6L636.4 428.6L645.7 421.1L649.3 409.3L653.3 409.4L651.7 412.7L658.2 419.9L652.8 422.9L653.5 431.2L658.8 434.2L663.4 429.0L672.3 432.2L664.2 451.8L665.7 458.0L676.5 464.5L669.5 465.3L668.0 483.7L673.8 486.2L676.0 491.3L680.8 489.0L686.3 492.9Z"><title>Puebla</title></path><path d="M774.0 537.0L765.2 558.7L766.2 569.0L756.1 568.4L766.6 574.8L747.8 569.4L751.7 565.2L745.0 567.2L742.8 561.8L735.2 568.7L744.2 569.2L733.8 570.1L724.8 577.4L689.2 588.4L668.6 579.4L650.8 577.5L626.1 565.7L642.9 545.5L636.1 535.8L633.3 517.9L635.7 510.8L641.8 506.7L653.2 508.2L655.3 505.5L651.8 502.3L658.4 495.5L663.5 509.0L669.0 502.0L675.4 502.8L682.9 498.5L688.5 485.9L692.0 494.3L701.1 501.2L710.7 501.8L708.5 514.2L711.5 522.5L729.6 516.9L729.0 521.3L738.0 534.7L774.0 537.0Z"><title>Oaxaca</title></path><path d="M589.1 174.2L582.2 180.9L587.8 181.5L590.2 195.6L587.1 200.3L591.4 203.4L590.5 209.0L614.2 232.5L625.2 231.2L626.2 246.9L630.5 249.0L614.6 262.5L609.7 260.7L604.1 272.6L588.4 281.1L591.8 287.3L590.7 295.9L597.4 307.1L584.4 310.7L581.5 323.6L568.9 329.3L564.7 324.4L564.1 302.0L557.4 290.2L558.7 285.4L553.4 282.1L555.4 277.5L552.7 269.7L556.2 268.7L555.0 262.3L559.0 256.5L570.8 259.4L572.4 256.6L565.6 253.2L559.9 243.7L554.8 242.6L554.2 232.9L540.6 218.6L546.3 210.0L558.0 207.6L560.8 203.9L561.3 194.8L558.0 192.9L556.3 196.8L552.4 190.1L556.3 185.2L564.0 184.1L567.0 174.2L580.0 174.2L586.3 170.6L589.1 174.2Z"><title>Nuevo León</title></path><path class="on" d="M442.5 355.8L443.5 371.9L449.2 373.5L450.4 379.1L456.0 379.8L460.3 388.9L459.3 395.4L446.8 399.5L443.3 411.5L445.9 418.3L428.7 404.1L418.0 408.0L413.0 414.8L406.0 412.1L414.7 402.5L416.4 388.9L408.2 382.5L401.8 369.2L403.0 363.3L407.2 367.3L403.0 362.3L400.9 349.9L408.8 350.9L405.5 342.8L408.8 334.4L412.6 337.0L416.6 334.9L425.7 341.7L420.8 347.8L423.6 353.7L427.2 349.3L437.7 359.3L442.5 355.8Z"><title>Nayarit</title></path><path d="M616.3 470.7L621.9 475.1L626.4 472.2L622.9 481.5L623.8 492.7L619.6 489.4L612.9 495.7L597.2 487.5L605.2 471.0L616.3 470.7Z"><title>Morelos</title></path><path d="M569.0 428.5L577.5 442.2L571.7 448.2L573.8 458.2L567.9 470.6L555.5 481.0L560.0 497.1L548.5 490.7L532.5 491.1L524.8 487.3L520.6 489.2L520.8 498.4L511.7 502.1L511.2 510.7L474.2 498.6L463.5 487.2L465.2 477.5L476.9 472.3L479.5 474.6L489.4 466.0L494.0 465.8L498.1 459.5L493.0 456.7L492.2 442.9L482.6 440.1L485.8 433.5L490.8 435.7L501.6 428.0L511.6 426.0L517.3 426.7L520.0 432.2L533.8 427.7L536.9 431.1L536.0 437.8L548.0 436.4L548.6 440.2L563.8 441.5L569.5 436.8L569.0 428.5Z"><title>Michoacán</title></path><path d="M622.3 454.2L626.2 466.4L626.4 472.2L623.1 474.4L618.1 473.2L608.7 454.9L601.7 464.0L605.2 471.0L597.3 484.9L590.6 483.1L588.3 487.9L579.0 489.2L573.8 495.4L565.7 491.0L567.2 471.1L573.8 458.2L571.7 448.2L575.4 447.1L576.4 437.2L582.1 434.2L581.3 430.3L584.8 428.1L595.5 432.8L600.5 448.1L602.4 444.1L606.0 444.4L606.6 439.5L615.7 436.4L613.5 448.7L624.2 444.7L622.3 454.2Z"><title>México</title></path><path class="on" d="M492.7 380.5L511.0 381.3L520.5 373.5L518.0 367.9L531.5 375.1L528.0 392.9L513.1 411.9L517.9 417.9L515.1 426.0L501.6 428.0L490.8 435.7L483.8 435.0L483.3 441.2L492.2 442.9L493.0 456.7L498.0 457.5L494.0 465.8L489.4 466.0L479.5 474.6L476.9 472.3L470.0 474.6L470.2 461.9L466.2 453.9L458.9 459.2L433.8 466.5L423.8 462.0L407.5 440.1L400.4 424.6L412.3 420.9L418.0 408.0L428.7 404.1L445.9 418.3L443.3 411.5L446.8 399.5L459.8 394.3L456.0 379.8L450.4 379.1L449.2 373.5L443.1 370.7L447.8 356.1L452.4 355.1L451.4 359.9L454.9 356.9L452.7 349.2L461.1 348.0L455.5 358.0L457.7 365.0L458.9 354.3L467.6 355.0L464.1 368.3L471.1 367.7L476.5 358.4L482.8 362.9L480.4 371.1L467.8 379.3L467.6 384.8L463.3 387.8L468.0 393.3L461.6 397.7L466.7 401.8L480.9 403.2L495.1 393.2L496.9 388.0L492.7 380.5Z"><title>Jalisco</title></path><path d="M626.7 390.0L630.1 396.9L637.0 397.5L640.1 402.3L637.4 410.1L633.3 408.6L629.0 413.2L629.1 425.7L643.8 416.0L645.7 421.1L636.4 428.6L640.5 432.6L638.4 449.1L622.3 454.2L624.2 444.7L613.5 448.7L615.7 436.4L606.6 439.5L606.0 444.4L602.4 444.1L600.5 448.1L596.4 433.8L584.8 428.1L586.0 419.6L595.8 415.1L600.3 400.7L609.1 398.1L612.6 393.3L618.0 397.6L626.7 390.0Z"><title>Hidalgo</title></path><path d="M597.3 484.9L626.2 508.5L631.7 507.1L635.7 510.8L633.3 517.9L636.1 535.8L642.9 545.5L626.1 565.7L619.1 557.5L590.5 552.4L580.6 545.3L547.0 532.7L523.5 511.8L511.7 508.0L511.7 502.1L520.8 498.4L520.6 489.2L524.8 487.3L532.5 491.1L548.5 490.7L560.0 497.1L555.5 481.0L567.2 471.1L565.7 491.0L572.1 495.7L580.3 488.5L588.3 487.9L590.6 483.1L597.3 484.9Z"><title>Guerrero</title></path><path d="M587.3 386.5L588.6 396.4L580.5 397.3L574.8 406.8L562.8 409.5L569.7 435.9L563.8 441.5L548.6 440.2L548.0 436.4L536.0 437.8L536.9 431.1L533.8 427.7L526.1 432.1L518.4 431.5L515.1 426.0L517.7 417.2L513.0 412.4L528.0 392.9L531.1 375.3L549.3 379.1L559.0 385.8L564.4 385.0L566.3 380.2L578.3 388.0L587.3 386.5Z"><title>Guanajuato</title></path><path d="M458.2 206.0L464.4 209.2L470.1 218.3L473.1 239.5L468.4 247.0L471.9 251.0L467.3 253.3L468.1 257.2L475.6 269.5L481.6 273.0L488.6 274.6L489.0 269.1L493.6 265.3L498.4 271.9L500.2 283.7L488.7 287.8L471.4 285.7L457.8 298.4L459.6 314.2L453.1 321.0L448.9 334.7L449.7 347.3L437.7 359.3L427.2 349.3L422.8 352.6L420.8 347.8L425.8 343.3L422.4 337.9L416.6 334.9L412.6 337.0L407.2 330.9L402.8 331.4L387.0 290.7L377.6 285.9L368.7 290.4L362.5 275.3L354.6 270.7L350.7 262.0L351.7 247.5L356.8 240.4L366.5 245.7L372.1 240.6L375.7 224.0L381.5 219.2L382.9 205.8L386.3 202.8L405.8 215.1L416.4 212.6L427.9 217.6L441.8 207.0L440.6 203.4L458.2 206.0Z"><title>Durango</title></path><path d="M616.3 470.7L608.3 472.2L601.9 465.3L608.7 454.9L615.9 464.8L616.3 470.7Z"><title>Ciudad de México</title></path><path d="M470.0 474.6L462.0 483.7L442.4 469.1L431.8 466.9L458.9 459.2L466.2 453.9L470.2 461.9L470.0 474.6Z"><title>Colima</title></path><path d="M585.4 170.9L580.0 174.2L568.4 173.4L564.0 184.1L554.8 186.5L552.8 194.2L556.3 196.8L558.0 192.9L561.3 194.8L560.8 203.9L558.0 207.6L546.3 210.0L540.8 217.5L554.7 233.7L554.8 242.6L559.9 243.7L565.6 253.2L572.4 256.6L570.8 259.4L560.2 256.1L557.1 258.2L556.2 268.7L552.7 269.7L554.1 281.6L545.8 281.8L540.1 274.4L528.7 275.7L528.0 271.2L512.2 261.8L494.4 262.6L487.8 274.9L475.6 269.5L467.3 253.3L471.9 251.0L468.4 247.0L473.1 239.5L469.1 215.0L454.1 201.4L459.4 194.5L456.4 192.7L453.1 165.3L464.0 143.1L473.1 134.1L470.6 132.4L473.4 127.4L481.9 128.8L489.8 120.6L495.5 103.4L504.3 101.9L507.1 98.0L513.6 101.0L534.3 101.1L558.9 124.5L571.2 153.2L582.3 163.3L585.4 170.9Z"><title>Coahuila</title></path><path d="M473.4 127.4L471.9 136.1L461.1 147.7L456.9 160.7L454.0 160.3L456.0 164.2L453.1 165.3L453.0 172.3L456.4 192.7L459.4 194.5L453.8 198.5L458.2 206.0L440.6 203.4L441.8 207.0L427.9 217.6L416.4 212.6L405.8 215.1L386.3 202.8L382.9 205.8L381.5 219.2L375.7 224.0L372.1 240.6L366.5 245.7L357.5 240.4L354.2 242.2L347.1 228.6L335.3 226.0L324.2 196.4L307.9 194.2L309.8 182.9L295.0 154.8L311.6 148.7L306.8 145.5L306.3 139.6L312.0 121.1L309.9 99.0L312.3 88.7L308.6 69.7L303.7 62.6L306.4 58.1L303.2 47.8L321.0 47.7L321.0 32.2L377.4 33.3L384.3 43.2L425.6 74.2L437.1 105.2L473.4 127.4Z"><title>Chihuahua</title></path><path d="M766.2 569.0L767.5 551.4L774.6 536.0L785.6 526.3L793.4 508.6L801.8 512.1L799.9 518.1L802.6 524.7L809.3 529.8L827.0 517.4L827.7 513.1L839.4 512.2L844.7 526.2L853.5 531.7L851.7 534.9L874.0 551.7L876.2 558.9L884.0 563.7L882.5 574.3L841.9 573.9L826.5 602.0L831.4 608.7L826.1 627.2L766.2 569.0Z"><title>Chiapas</title></path><path class="on" d="M884.3 411.1L884.1 420.5L893.7 424.9L896.4 422.9L927.1 463.6L924.7 484.2L927.0 499.9L923.4 514.1L865.4 514.1L849.9 505.2L842.3 511.5L830.5 504.4L827.3 495.5L819.9 490.2L818.5 485.3L832.8 483.6L837.8 486.7L833.3 487.0L833.4 489.9L846.6 492.5L855.1 488.5L857.4 482.5L853.1 480.4L854.7 476.3L849.1 480.4L873.1 461.8L874.1 449.9L882.2 440.1L880.6 421.5L884.3 411.1Z"><title>Campeche</title></path><path class="on" d="M197.1 256.9L194.3 271.4L199.3 282.2L195.7 274.4L191.6 273.4L197.1 256.9ZM133.3 164.4L175.0 164.5L182.4 174.8L189.8 178.2L194.4 189.8L202.7 193.9L200.7 198.1L208.2 212.2L211.4 211.5L207.0 207.0L206.8 200.8L218.7 213.8L223.1 239.6L232.2 248.4L235.7 261.2L243.6 272.8L241.0 279.2L242.8 288.3L247.0 293.6L254.0 294.6L251.2 297.0L254.8 294.5L255.0 288.6L264.8 299.1L269.9 298.6L273.9 312.3L282.6 319.9L279.1 331.4L269.0 338.8L263.8 338.5L253.7 315.6L214.8 286.7L212.1 281.1L206.8 282.8L202.9 274.5L197.9 273.8L197.5 266.8L195.8 272.7L199.2 245.3L195.1 232.1L188.3 223.3L179.7 220.9L161.9 204.7L164.4 197.5L160.6 205.9L156.4 203.0L150.3 207.1L142.1 198.0L124.2 191.1L121.4 182.6L106.1 172.4L104.7 167.5L122.0 170.6L127.6 167.0L129.0 171.9L142.3 178.4L139.3 167.7L138.3 171.4L132.2 171.4L133.3 164.4Z"><title>Baja California Sur</title></path><path d="M152.0 109.2L157.1 112.4L157.9 117.5L163.9 118.3L165.9 128.7L153.9 118.4L152.0 109.2ZM99.6 149.7L99.1 161.8L95.0 160.0L99.6 149.7ZM112.2 7.7L105.3 14.6L105.5 26.5L112.7 31.0L109.8 53.6L115.2 61.5L116.9 87.2L125.6 101.3L131.4 102.6L149.5 118.5L153.0 132.0L155.9 129.9L158.4 135.1L162.8 134.5L166.3 145.3L174.5 148.2L176.9 166.9L175.0 164.5L135.0 164.4L135.8 145.0L107.9 115.8L84.3 101.9L81.0 84.1L73.2 77.5L73.1 66.9L64.4 60.7L63.2 50.7L52.9 39.6L51.3 33.6L53.9 34.5L55.5 30.3L47.7 25.1L41.9 14.9L39.3 6.5L115.3 0.0L112.2 7.7ZM3.3 121.7L2.8 132.3L0.1 123.1L3.3 121.7Z"><title>Baja California</title></path><path d="M492.7 380.5L489.7 376.0L496.6 362.3L507.6 355.3L515.8 362.2L520.5 373.5L511.9 380.6L492.7 380.5Z"><title>Aguascalientes</title></path></g><g class="pins"><circle cx="473.4" cy="412.9" r="7"><title>All Seasons Padel Club</title></circle><circle cx="470.9" cy="414.0" r="7"><title>ALTIUM PADEL SPORTS COMPLEX</title></circle><circle cx="470.2" cy="419.1" r="7"><title>Amber Pádel Club - Santa Anita</title></circle><circle cx="472.2" cy="413.2" r="7"><title>Amber Padel Club Zona Real</title></circle><circle cx="976.6" cy="431.4" r="7"><title>Distrito Padel Tulum</title></circle><circle cx="266.4" cy="179.4" r="7"><title>DÚO PÁDEL PARK</title></circle><circle cx="472.0" cy="413.2" r="7"><title>Europadelite</title></circle><circle cx="471.3" cy="415.1" r="7"><title>GA Padel</title></circle><circle cx="235.7" cy="165.8" r="7"><title>GM Padel</title></circle><circle cx="471.3" cy="419.0" r="7"><title>Impakto Pádel Club</title></circle><circle cx="472.5" cy="415.5" r="7"><title>LEVA</title></circle><circle cx="879.7" cy="445.2" r="7"><title>Mayacorptrips</title></circle><circle cx="235.6" cy="166.5" r="7"><title>Municipal Guaymas</title></circle><circle cx="235.0" cy="165.3" r="7"><title>One Padel Guaymas</title></circle><circle cx="471.3" cy="414.8" r="7"><title>PADEL FACTORY GDL</title></circle><circle cx="235.7" cy="165.8" r="7"><title>Padel Guaymas</title></circle><circle cx="470.8" cy="414.4" r="7"><title>Padel Pro Club</title></circle><circle cx="471.7" cy="418.6" r="7"><title>PUNTACO Padel Club</title></circle><circle cx="425.7" cy="386.8" r="7"><title>Select Pádel CUP</title></circle><circle cx="312.8" cy="246.7" r="7"><title>SEVEN PADEL CLUB</title></circle><circle cx="474.6" cy="416.0" r="7"><title>SIAMO</title></circle><circle cx="235.7" cy="165.8" r="7"><title>Tennis Guaymas</title></circle><circle cx="615.9" cy="379.4" r="7"><title>Torneos de Padel Metan</title></circle><circle cx="253.8" cy="297.2" r="7"><title>Viper Padel Club</title></circle><circle cx="235.7" cy="165.8" r="7"><title>TX8s</title></circle></g></svg></div>
+      </div>
+      <div class="v2-cov-bar">
+        <h3>The most active</h3>
+        <span>25 running today</span>
+      </div>
+      <div class="v2-cov-list"><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/6b9eaa0e-7fe3-4766-918d-89f1ab2df3d5?v=1778697674092" alt="" loading="lazy" width="34" height="34"><span><b>All Seasons Padel Club</b><span>Zapopan, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/3364a10d-5124-4b5a-8c4c-b520c83f3593?v=1784090810388" alt="" loading="lazy" width="34" height="34"><span><b>ALTIUM Padel Sports Complex</b><span>Zapopan, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e5bdc7c8-ef69-4a55-b49f-c9227b9e3b6a?v=1779295213230" alt="" loading="lazy" width="34" height="34"><span><b>Amber Pádel Club · Santa Anita</b><span>San Agustín, Jal.</span></span></div><div class="v2-club"><span class="v2-club-ini v2-ini-b" aria-hidden="true">AP</span><span><b>Amber Padel Club Zona Real</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/5b8a043a-3546-4d2f-8cb5-8f461bdd547e?v=1788543127976" alt="" loading="lazy" width="34" height="34"><span><b>Distrito Padel Tulum</b><span>Tulum, Q. Roo</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e884f2a0-08da-4e4f-9c7c-f457bc83cb7c?v=1781044366757" alt="" loading="lazy" width="34" height="34"><span><b>DÚO PÁDEL PARK</b><span>Cd. Obregón, Son.</span></span></div><div class="v2-club"><span class="v2-club-ini v2-ini-f" aria-hidden="true">EU</span><span><b>Europadelite</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/66a393fe-e0b1-4486-8270-4968cd1ffb76?v=1787884724216" alt="" loading="lazy" width="34" height="34"><span><b>GA Padel</b><span>Zapopan, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e0240092-8a14-420d-9fb2-632f341f9314?v=1777882465675" alt="" loading="lazy" width="34" height="34"><span><b>GM Padel</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/287d0530-0536-4d68-80f3-4b8f946cdcd2?v=1784860468477" alt="" loading="lazy" width="34" height="34"><span><b>Impakto Pádel Club</b><span>Los Gavilanes, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/cf84b9c9-a215-453f-8630-72d4e0c51b65?v=1777882466004" alt="" loading="lazy" width="34" height="34"><span><b>LEVA</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><span class="v2-club-ini v2-ini-c" aria-hidden="true">MA</span><span><b>Mayacorptrips</b><span>Campeche, Camp.</span></span></div><div class="v2-club"><span class="v2-club-ini v2-ini-a" aria-hidden="true">MG</span><span><b>Municipal Guaymas</b><span>Hermosillo, Son.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/b32976bf-1ef7-449b-91d6-b7e236cce0ea?v=1777882417537" alt="" loading="lazy" width="34" height="34"><span><b>One Padel Guaymas</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/dc68e9ba-edb3-449b-92ef-2d081021965e?v=1777882466949" alt="" loading="lazy" width="34" height="34"><span><b>Padel Factory GDL</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/770b3dbf-5073-49d2-b4a1-64fbc34200c9?v=1777882542510" alt="" loading="lazy" width="34" height="34"><span><b>Padel Guaymas</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><span class="v2-club-ini v2-ini-e" aria-hidden="true">PP</span><span><b>Padel Pro Club</b><span>Zapopan, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/0af59a65-6936-496c-850e-e62a5806be17?v=1784327739948" alt="" loading="lazy" width="34" height="34"><span><b>PUNTACO Padel Club</b><span>La Tijera, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/032a12c2-0529-42c9-8e67-9be9845efd91?v=1784829512461" alt="" loading="lazy" width="34" height="34"><span><b>Select Pádel CUP</b><span>Tepic, Nay.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/6a07f886-95b7-4f26-bd55-8a513cdc9575?v=1788071859014" alt="" loading="lazy" width="34" height="34"><span><b>SEVEN PADEL CLUB</b><span>Guasave, Sin.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/f9877a1e-10a8-4663-b3ca-1ea9fe33a4b2?v=1777882466313" alt="" loading="lazy" width="34" height="34"><span><b>SIAMO</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/eda14f75-3dc1-4534-a060-d9721f471b6e?v=1785781828718" alt="" loading="lazy" width="34" height="34"><span><b>Tennis Guaymas</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><span class="v2-club-ini v2-ini-d" aria-hidden="true">TP</span><span><b>Torneos de Padel Metan</b><span>Tamuín, S.L.P.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/9915543a-205f-4aea-ad63-5ad9767cfe7f?v=1777882417860" alt="" loading="lazy" width="34" height="34"><span><b>TX8s</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/38837fcf-dbf8-4226-a134-4fc76fed8e05?v=1783617104872" alt="" loading="lazy" width="34" height="34"><span><b>Viper Padel Club</b><span>La Paz, B.C.S.</span></span></div></div>
+    </div>
+  </section>
+
   <section class="e-final" id="contacto">
     <div class="e-final-inner">
-      <h2>Start today. Your first payment in <em>10 minutes</em>.</h2>
+      <h2>Start <em>free</em>. Grow when you need to.</h2>
       <p>One account, three products. No credit card, no contracts, no hidden fees.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
         <a href="/empezar/" class="e-btn e-btn-lime">Create free account →</a>
@@ -3107,7 +3466,9 @@
   </section>
 
   <!-- Footer -->
-  <!-- FOOTER -->
+  </main>
+
+<!-- FOOTER -->
   <!-- /FOOTER -->
 
 </body>
