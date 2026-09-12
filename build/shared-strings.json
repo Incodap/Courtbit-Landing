@@ -27,7 +27,8 @@
     "footerLegal": "Legal",
     "footerDirectoryTournaments": "Torneos por ciudad",
     "footerDirectoryClubs": "Clubes por ciudad",
-    "footerApps": "Descargar la app"
+    "footerApps": "Descargar la app",
+    "navMenuLabel": "Abrir menú"
   },
   "en": {
     "navAriaLabel": "Main",
@@ -57,6 +58,7 @@
     "footerLegal": "Legal",
     "footerDirectoryTournaments": "Tournaments by city",
     "footerDirectoryClubs": "Clubs by city",
-    "footerApps": "Download the app"
+    "footerApps": "Download the app",
+    "navMenuLabel": "Open menu"
   }
 }

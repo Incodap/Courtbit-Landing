@@ -88,6 +88,7 @@ function renderNav(page, locale) {
   const otherLocale = locale === 'es' ? 'en' : 'es';
   return fillTemplate(navTemplate, {
     navAriaLabel: strings.navAriaLabel,
+    navMenuLabel: strings.navMenuLabel,
     logoAria: strings.logoAria,
     prefix,
     navClubes: strings.navClubes,

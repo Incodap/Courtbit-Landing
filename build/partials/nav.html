@@ -3,13 +3,16 @@
     <a href="{{prefix}}/" class="e-logo" aria-label="{{logoAria}}">
       <img src="/Assets/courtbit-logo.svg" alt="CourtBit" width="286" height="150" fetchpriority="high">
     </a>
-    <div class="e-nav-links">
+    <div class="e-nav-links" id="e-nav-menu">
       <a href="{{prefix}}/competencias/" class="{{activeCompetencias}}">{{navCompetencias}}</a>
       <a href="{{prefix}}/clubes/" class="{{activeClubes}}">{{navClubes}}</a>
       <a href="{{prefix}}/academias/" class="{{activeAcademias}}">{{navAcademias}}</a>
       <a href="/torneos/">{{navTorneos}}</a>
       <a href="/guias/">{{navGuias}}</a>
       <a href="{{prefix}}/pricing/" class="{{activePricing}}">{{navPricing}}</a>
+      <span class="e-nav-sep" aria-hidden="true"></span>
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login e-only-mobile">{{navDashboard}}</a>
+      <a href="{{localeSwitchHref}}" class="e-nav-lang e-only-mobile">{{localeSwitchLabel}}</a>
     </div>
     <div class="e-nav-secondary">
       <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">{{navDashboard}}</a>
@@ -19,5 +22,30 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       {{navCta}}
     </a>
+    <button type="button" class="e-nav-burger" aria-expanded="false" aria-controls="e-nav-menu" aria-label="{{navMenuLabel}}">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<script>
+(function () {
+  var nav = document.currentScript.previousElementSibling;
+  var btn = nav.querySelector('.e-nav-burger');
+  var menu = nav.querySelector('#e-nav-menu');
+  if (!btn || !menu) return;
+  function set(abierto) {
+    btn.setAttribute('aria-expanded', String(abierto));
+    nav.classList.toggle('is-open', abierto);
+  }
+  btn.addEventListener('click', function () {
+    set(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    if (btn.getAttribute('aria-expanded') === 'true' && !nav.contains(e.target)) set(false);
+  });
+  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') set(false); });
+})();
+</script>
