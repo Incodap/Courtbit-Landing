@@ -17,7 +17,7 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.courtbit.com.mx/en/">
   <meta property="og:title" content="CourtBit — Bookings, Academies, and Tournaments in One Padel Platform">
-  <meta property="og:description" content="Bookings, academies, and tournaments for your club. Plans for clubs and organizers. Payments go straight to your club's Stripe or MercadoPago account; CourtBit charges the payer 4%, never the club. Cash and bank transfer: zero fees.">
+  <meta property="og:description" content="Competitions, Bookings, and Academy for your club. Plans for clubs and organizers. Payments go straight to your club's Stripe or MercadoPago account; the player pays the commission, never the club. Cash and bank transfer: zero fees.">
   <meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-home.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -28,7 +28,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://www.courtbit.com.mx/en/">
   <meta name="twitter:title" content="CourtBit — Padel Platform for Clubs and Organizers">
-  <meta name="twitter:description" content="Bookings, academies, and tournaments in one platform. Plans for clubs and organizers. Get paid with Stripe or MercadoPago; 4% charged to the payer.">
+  <meta name="twitter:description" content="Competitions, Bookings, and Academy in one platform. Plans for clubs and organizers. Get paid with Stripe or MercadoPago; the player pays the commission, never the club.">
   <meta name="twitter:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-home.jpg">
 
   <!-- Favicons -->
@@ -2356,6 +2356,129 @@
         align-items: center;
       }
     }
+      /* ═══════════════════════ LANDING V2 · confianza y calma ═══════════════════════ */
+    /* S1 · una sola familia de superficie: el azul a sangre queda solo en .e-final */
+    .e-nav { background: var(--paper); border-bottom: 1px solid var(--border); }
+    .e-nav-links a { color: var(--text-soft); }
+    .e-nav-links a:hover, .e-nav-links a.is-active { color: var(--blue); }
+    .e-nav-login { color: var(--text-muted) !important; }
+    .e-nav-lang { color: var(--text-muted) !important; border-color: var(--border) !important; }
+    .e-nav-cta { background: var(--blue); color: var(--paper); }
+    .e-nav-cta:hover { background: var(--blue-deep); }
+
+    .e-hero { background: var(--paper); color: var(--text); border-bottom: 1px solid var(--border); }
+    .e-hero::before, .e-hero::after { display: none; }
+    .e-hero h1 { color: var(--navy); }
+    .e-hero h1 em { color: var(--blue); }
+    .e-hero p.lead { color: var(--text-soft); }
+    .e-hero p.lead b { color: var(--navy) !important; }
+    .e-hero .e-btn-lime { background: var(--blue); color: var(--paper); }
+    .e-hero .e-btn-lime:hover { background: var(--blue-deep); }
+    .e-hero .e-btn-outline { border-color: var(--border); color: var(--navy); background: var(--paper); }
+    .e-hero .e-btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    .e-steps-section { background: var(--bg); color: var(--text); }
+    .e-steps-section::before { display: none; }
+    .e-steps-section .e-section-title { color: var(--navy); }
+    .e-steps-section .e-section-title em { color: var(--blue); }
+    .e-steps-section .e-section-desc { color: var(--text-soft); }
+    .e-steps-section .e-eyebrow { background: var(--blue-mist); color: var(--blue-deep); border-color: transparent; }
+    .e-steps-section .e-eyebrow .dot { background: var(--blue); box-shadow: 0 0 0 3px rgba(46,89,251,0.18); }
+    .e-step { border: 1px solid var(--border); }
+    .e-step:hover { box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 10px 28px rgba(15,29,77,.07); }
+    .e-step .num { background: var(--blue-mist); color: var(--blue-deep); }
+
+    /* S4 · chips de alcance del hero */
+    .v2-scope { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+    .v2-scope span {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); border: 1px solid var(--border); border-radius: 999px; padding: 6px 13px;
+    }
+
+    /* Mockup real del dashboard en el hero */
+    .v2-shot { position: relative; }
+    .v2-card {
+      background: var(--paper); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 18px 44px rgba(15,29,77,.10);
+    }
+    .v2-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+    .v2-card-head strong { display: block; font-size: 0.9375rem; font-weight: 800; color: var(--navy); letter-spacing: -0.015em; }
+    .v2-card-head em { display: block; font-style: normal; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.625rem; color: var(--text-faint); letter-spacing: 0.05em; margin-top: 2px; }
+    .v2-pill { background: var(--navy); color: var(--paper); font-size: 0.6875rem; font-weight: 700; border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
+    .v2-cal { display: grid; grid-template-columns: 46px repeat(4, 1fr); font-size: 0.625rem; }
+    .v2-cal > div { border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 6px 7px; min-height: 40px; }
+    .v2-cal > div:nth-child(5n) { border-right: 0; }
+    .v2-cal .th { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.5625rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); background: var(--bg-tint); }
+    .v2-cal .hr { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.5625rem; color: var(--text-faint); }
+    .v2-bk { border-radius: 7px; padding: 5px 7px; font-weight: 700; font-size: 0.625rem; line-height: 1.25; }
+    .v2-bk small { display: block; font-weight: 500; opacity: 0.72; font-size: 0.5625rem; }
+    .v2-bk.a { background: var(--blue-mist); color: var(--blue-deep); }
+    .v2-bk.b { background: var(--lime-soft); color: #3f5406; }
+    .v2-float {
+      position: absolute; right: -10px; bottom: -20px; display: flex; align-items: center; gap: 10px;
+      background: var(--paper); border: 1px solid var(--border); border-radius: 14px; padding: 11px 15px;
+      box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.12); max-width: 260px;
+    }
+    .v2-float-ic { width: 28px; height: 28px; flex: none; border-radius: 9px; background: var(--lime-soft); color: #3f5406; display: grid; place-items: center; font-weight: 800; font-size: 0.8125rem; }
+    .v2-float b { display: block; font-size: 0.8125rem; color: var(--navy); letter-spacing: -0.01em; }
+    .v2-float i { display: block; font-style: normal; font-size: 0.6875rem; color: var(--text-muted); }
+
+    /* S-nuevo · franja de números */
+    .v2-stats { background: var(--paper); border-bottom: 1px solid var(--border); }
+    .v2-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .v2-stat { padding: 30px 24px; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px; }
+    .v2-stat:last-child { border-right: 0; }
+    .v2-stat b { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: clamp(1.5rem, 3vw, 2.125rem); font-weight: 700; letter-spacing: -0.035em; color: var(--navy); line-height: 1; }
+    .v2-stat span { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.4; max-width: 22ch; }
+    .v2-stats-note { padding: 0 24px 22px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.625rem; letter-spacing: 0.06em; color: var(--text-faint); }
+
+    /* Fila de logos de clientes */
+    .v2-logos { background: var(--bg); border-bottom: 1px solid var(--border); padding: 34px 0 38px; }
+    .v2-logos-title { text-align: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .v2-logos-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 30px; }
+    .v2-logos-row img { height: 42px; width: auto; max-width: 120px; object-fit: contain; opacity: 0.62; filter: grayscale(1); transition: opacity 180ms, filter 180ms; }
+    .v2-logos-row img:hover { opacity: 1; filter: none; }
+
+    /* Sección de cobertura + mapa */
+    .v2-cov { padding: 96px 0; background: var(--paper); border-top: 1px solid var(--border); }
+    .v2-cov-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 52px; align-items: center; margin-bottom: 48px; }
+    .v2-cov-copy h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.06; color: var(--navy); margin: 16px 0 0; }
+    .v2-cov-copy h2 em { font-style: italic; color: var(--blue); }
+    .v2-cov-copy > p { color: var(--text-soft); margin: 16px 0 0; font-size: 1.0625rem; line-height: 1.55; max-width: 42ch; }
+    .v2-cov-nums { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+    .v2-cov-nums div { display: flex; flex-direction: column; }
+    .v2-cov-nums b { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--navy); }
+    .v2-cov-nums span { font-size: 0.75rem; color: var(--text-muted); }
+    .v2-map { width: 100%; height: auto; display: block; max-width: 100%; }
+    .v2-map .states path { fill: var(--bg-tint); stroke: var(--border); stroke-width: 1.2; stroke-linejoin: round; }
+    .v2-map .states path.on { fill: var(--blue-mist); stroke: var(--blue); stroke-width: 1.4; }
+    .v2-map .pins circle { fill: var(--blue); stroke: var(--paper); stroke-width: 2.5; }
+    .v2-cov-bar { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+    .v2-cov-bar h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.022em; color: var(--navy); margin: 0; }
+    .v2-cov-bar span { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6875rem; color: var(--text-muted); letter-spacing: 0.06em; }
+    .v2-cov-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(178px, 1fr)); gap: 12px; }
+    .v2-club { display: flex; align-items: center; gap: 11px; border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; background: var(--paper); transition: border-color 160ms, box-shadow 160ms; }
+    .v2-club:hover { border-color: var(--blue); box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 8px 22px rgba(15,29,77,.07); }
+    .v2-club img { width: 34px; height: 34px; flex: none; border-radius: 9px; object-fit: contain; background: var(--bg-tint); }
+    .v2-club b { display: block; font-size: 0.75rem; font-weight: 700; color: var(--navy); line-height: 1.25; letter-spacing: -0.01em; }
+    .v2-club span { display: block; font-size: 0.6875rem; color: var(--text-muted); margin-top: 1px; }
+
+    @media (max-width: 900px) {
+      .v2-cov-grid { grid-template-columns: 1fr; gap: 32px; }
+      .v2-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .v2-stat:nth-child(2) { border-right: 0; }
+      .v2-stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 560px) {
+      .v2-float { position: static; margin-top: 14px; max-width: none; }
+      .v2-cov { padding: 64px 0; }
+      .v2-logos-row img { height: 32px; max-width: 92px; }
+      .v2-stat { padding: 22px 18px; }
+    }
+
+  
+    .v2-club-ini { width: 34px; height: 34px; flex: none; border-radius: 9px; background: var(--blue-mist); color: var(--blue-deep); display: grid; place-items: center; font-size: 0.6875rem; font-weight: 800; letter-spacing: 0.02em; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -2381,106 +2504,107 @@
             Run your padel club from one place. <em>Get your time back</em>.
           </h1>
           <p class="lead">
-            Bookings, academies, and tournaments in one platform. <b style="color:var(--lime);">Payments go straight to your account.</b>
+            Competitions, Bookings, and Academy in one platform. <b style="color:var(--lime);">Payments go straight to your account.</b>
           </p>
           <div class="e-cta">
             <a href="/empezar/" class="e-btn e-btn-lime">Start for free →</a>
-            <a href="/pricing/" class="e-btn e-btn-outline">See plans</a>
+            <a href="/apps/" class="e-btn e-btn-outline">I'm a player · get the app</a>
+          </div>
+          <div class="v2-scope" aria-label="What's included">
+            <span>Competitions</span><span>Bookings</span><span>Academy</span><span>CourtAI</span><span>Live Control</span>
           </div>
         </div>
 
-        <div style="position:relative;">
-          <div class="e-hero-photo" aria-label="Your club's operations on CourtBit, live">
-            <div class="e-court" aria-hidden="true">
-              <span class="e-court-glow"></span>
-              <svg class="e-court-lines" viewBox="0 0 300 380" fill="none" preserveAspectRatio="none">
-                <rect class="box" x="6" y="6" width="288" height="368" rx="10"/>
-                <line class="ln"  x1="6"   y1="82"  x2="294" y2="82"/>
-                <line class="ln"  x1="6"   y1="298" x2="294" y2="298"/>
-                <line class="ln"  x1="150" y1="82"  x2="150" y2="298"/>
-                <line class="net" x1="6"   y1="190" x2="294" y2="190"/>
-              </svg>
+        <div class="v2-shot">
+          <div class="v2-card" aria-label="CourtBit booking calendar">
+            <div class="v2-card-head">
+              <div><strong>Court bookings</strong><em>5 courts · today</em></div>
+              <span class="v2-pill">+ Booking</span>
             </div>
-
-            <!-- Pago recibido → cuenta del club (Stripe o MercadoPago) -->
-            <div class="e-chip e-chip--pay">
-              <span class="e-chip-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-              </span>
-              <span class="e-chip-tx">
-                <span class="t">Payment received</span>
-                <span class="v">$480 <small>→ straight to your account</small></span>
-              </span>
-            </div>
-
-            <!-- Ocupación del día -->
-            <div class="e-ring" role="img" aria-label="87 percent occupancy today">
-              <span class="e-ring-dial"></span>
-              <span class="e-ring-val"><b>87%</b><span>occupancy</span></span>
-            </div>
-
-            <!-- Cancha reservada -->
-            <div class="e-chip e-chip--court">
-              <span class="e-chip-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg>
-              </span>
-              <span class="e-chip-tx">
-                <span class="t">Court 3 · booked</span>
-                <span class="v">18:00</span>
-              </span>
-            </div>
-
-            <!-- Liga del fin de semana -->
-            <div class="e-chip e-chip--league">
-              <span class="e-chip-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7a6 6 0 01-12 0z"/><path d="M6 5H3v2a3 3 0 003 3M18 5h3v2a3 3 0 01-3 3M9 21h6M12 15v6"/></svg>
-              </span>
-              <span class="e-chip-tx">
-                <span class="t">Saturday league</span>
-                <span class="v">12 <small>pairs</small></span>
-              </span>
+            <div class="v2-cal">
+              <div class="th"></div><div class="th">Court 1</div><div class="th">Court 2</div><div class="th">Court 3</div><div class="th">Court 4</div>
+              <div class="hr">09:00</div>
+              <div><span class="v2-bk a">M. Hinojosa<small>09:00 · 10:30</small></span></div>
+              <div></div>
+              <div><span class="v2-bk a">A. Salazar<small>09:00 · 10:30</small></span></div>
+              <div><span class="v2-bk b">F. Quiroz<small>09:00 · 10:00</small></span></div>
+              <div class="hr">10:00</div>
+              <div></div>
+              <div><span class="v2-bk b">Kids class<small>10:00 · 11:30</small></span></div>
+              <div></div>
+              <div><span class="v2-bk a">D. Vega<small>10:00 · 11:30</small></span></div>
+              <div class="hr">11:00</div>
+              <div><span class="v2-bk a">N. Pérez<small>11:00 · 12:00</small></span></div>
+              <div></div>
+              <div><span class="v2-bk a">L. Mata<small>11:00 · 12:30</small></span></div>
+              <div></div>
+              <div class="hr">12:00</div>
+              <div></div>
+              <div><span class="v2-bk b">Clinic<small>12:00 · 13:30</small></span></div>
+              <div></div>
+              <div><span class="v2-bk a">A. Galán<small>12:00 · 13:00</small></span></div>
             </div>
           </div>
-          <div class="e-float-card">
-            <div class="label">Your club</div>
-            <div class="price">4% <small>to the player, never the club</small></div>
-            <div class="meta">The money lands straight in your Stripe or MercadoPago. The player pays <b>4%</b> only if they use a card.</div>
+          <div class="v2-float">
+            <span class="v2-float-ic">✓</span>
+            <span><b>Payment received</b><i>straight to your account, never through CourtBit</i></span>
           </div>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- 3b. FRANJA DE NÚMEROS -->
+  <section class="v2-stats" aria-label="CourtBit in numbers">
+    <div class="container">
+      <div class="v2-stats-grid">
+        <div class="v2-stat"><b>65</b><span>clubs and organizers on CourtBit</span></div>
+        <div class="v2-stat"><b>4,801</b><span>matches managed across tournaments and leagues</span></div>
+        <div class="v2-stat"><b>8</b><span>Mexican states with clubs running on CourtBit</span></div>
+        <div class="v2-stat"><b>2,246</b><span>players registered in the app</span></div>
+      </div>
+      <div class="v2-stats-note">Figures as of September 2026</div>
+    </div>
+  </section>
+
+  <!-- 3c. LOGOS DE CLIENTES -->
+  <section class="v2-logos" aria-label="Clubs running on CourtBit">
+    <div class="container">
+      <div class="v2-logos-title">Clubs and organizers already running on CourtBit</div>
+      <div class="v2-logos-row"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/6b9eaa0e-7fe3-4766-918d-89f1ab2df3d5?v=1778697674092" alt="All Seasons Padel Club" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/3364a10d-5124-4b5a-8c4c-b520c83f3593?v=1784090810388" alt="ALTIUM Padel Sports Complex" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e5bdc7c8-ef69-4a55-b49f-c9227b9e3b6a?v=1779295213230" alt="Amber Pádel Club · Santa Anita" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/5b8a043a-3546-4d2f-8cb5-8f461bdd547e?v=1788543127976" alt="Distrito Padel Tulum" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e884f2a0-08da-4e4f-9c7c-f457bc83cb7c?v=1781044366757" alt="DÚO PÁDEL PARK" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/66a393fe-e0b1-4486-8270-4968cd1ffb76?v=1787884724216" alt="GA Padel" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e0240092-8a14-420d-9fb2-632f341f9314?v=1777882465675" alt="GM Padel" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/287d0530-0536-4d68-80f3-4b8f946cdcd2?v=1784860468477" alt="Impakto Pádel Club" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/cf84b9c9-a215-453f-8630-72d4e0c51b65?v=1777882466004" alt="LEVA" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/b32976bf-1ef7-449b-91d6-b7e236cce0ea?v=1777882417537" alt="One Padel Guaymas" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/dc68e9ba-edb3-449b-92ef-2d081021965e?v=1777882466949" alt="Padel Factory GDL" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/770b3dbf-5073-49d2-b4a1-64fbc34200c9?v=1777882542510" alt="Padel Guaymas" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/0af59a65-6936-496c-850e-e62a5806be17?v=1784327739948" alt="PUNTACO Padel Club" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/032a12c2-0529-42c9-8e67-9be9845efd91?v=1784829512461" alt="Select Pádel CUP" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/6a07f886-95b7-4f26-bd55-8a513cdc9575?v=1788071859014" alt="SEVEN PADEL CLUB" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/f9877a1e-10a8-4663-b3ca-1ea9fe33a4b2?v=1777882466313" alt="SIAMO" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/eda14f75-3dc1-4534-a060-d9721f471b6e?v=1785781828718" alt="Tennis Guaymas" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/9915543a-205f-4aea-ad63-5ad9767cfe7f?v=1777882417860" alt="TX8s" loading="lazy" width="120" height="42"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/38837fcf-dbf8-4226-a134-4fc76fed8e05?v=1783617104872" alt="Viper Padel Club" loading="lazy" width="120" height="42"></div>
+    </div>
+  </section>
+
   <!-- 4. AUDIENCES (moved up — 3 productos al frente) -->
   <section class="e-audiences" id="audiences" style="padding-top: 72px; padding-bottom: 72px;">
     <div class="container">
       <div class="e-section-header" style="text-align:center; max-width:720px; margin: 0 auto 40px;">
         <span class="e-eyebrow"><span class="dot"></span> One platform · Three products</span>
-        <h2 class="e-section-title">For your club, your academy, and your <em>tournament</em>.</h2>
+        <h2 class="e-section-title">For your <em>tournament</em>, your club, and your academy.</h2>
         <p class="e-section-desc">Three products. One account. You choose where to start.</p>
       </div>
       <div class="e-audience-grid">
-        <a href="/clubes/" class="e-aud-card featured">
-          <span class="ribbon">For clubs</span>
-          <div class="label">Reservas</div>
-          <h3>Multi-court <em>calendar</em></h3>
+        <a href="/competencias/" class="e-aud-card featured">
+          <span class="ribbon">For organizers</span>
+          <div class="label">Competitions</div>
+          <h3>Tournaments, leagues, and <em>rankings</em></h3>
+          <div class="price">Plans <small>for your tournament</small></div>
+          <p>Your players send the times they can play and the schedule builds itself. Live Control to enter results straight from the court.</p>
+          <span class="arrow">Explore Competitions →</span>
+        </a>
+        <a href="/clubes/" class="e-aud-card secondary">
+          <div class="label">For clubs</div>
+          <h3>Bookings</h3>
           <div class="price">Plans <small>for your club</small></div>
-          <p>Multi-court scheduling, payments straight to your account, and an app for players.</p>
-          <span class="arrow">Explore Reservas →</span>
+          <p>Multi-court calendar, payouts straight to your account, and <b>CourtAI</b>, the agent that handles your players' bookings over WhatsApp.</p>
+          <span class="arrow">Explore Bookings →</span>
         </a>
         <a href="/academias/" class="e-aud-card secondary">
           <div class="label">For coaches</div>
-          <h3>Academias</h3>
+          <h3>Academy</h3>
           <div class="price">Plans <small>for your academy</small></div>
-          <p>Enrollments, attendance, and recurring billing — all automatic.</p>
-          <span class="arrow">Explore Academias →</span>
-        </a>
-        <a href="/competencias/" class="e-aud-card secondary">
-          <div class="label">For organizers</div>
-          <h3>Competencias</h3>
-          <div class="price">$1,499 <small>MXN / month</small></div>
-          <p>Tournaments, leagues, and circuit rankings with on-court Live Control.</p>
-          <span class="arrow">Explore Competencias →</span>
+          <p>Sign-ups, attendance, and recurring billing on autopilot.</p>
+          <span class="arrow">Explore Academy →</span>
         </a>
       </div>
     </div>
@@ -2565,19 +2689,19 @@
       <div class="e-section-header">
         <span class="e-eyebrow"><span class="dot"></span> Our model</span>
         <h2 class="e-section-title">You pay based on <em>how you operate</em>.</h2>
-        <p class="e-section-desc">Plans built around your club, your academy, or your tournament. The money from your charges lands straight in your Stripe or MercadoPago; CourtBit only charges the payer 4%, never the club.</p>
+        <p class="e-section-desc">Plans built around your club, your academy, or your tournament. The money from your charges lands straight in your Stripe or MercadoPago; the player pays the commission, never the club.</p>
       </div>
 
       <div class="e-pricing-why-grid">
         <div class="e-pricing-why-card">
           <div class="e-pricing-why-badge e-pricing-why-badge-lime">Plans for your club</div>
           <h3>Clubs and academies</h3>
-          <p>We <b>never charge the club a commission.</b> The player or student pays 4% only if they use a card. Cash and bank transfer: zero. Payments go straight to your Stripe or MercadoPago.</p>
+          <p>We <b>never charge the club a commission.</b> The player or student pays a commission only when paying by card, and it drops on Enterprise. Cash and bank transfer: zero. Payments go straight to your Stripe or MercadoPago.</p>
         </div>
         <div class="e-pricing-why-card dark">
-          <div class="e-pricing-why-badge e-pricing-why-badge-lime">One plan · $1,499/month</div>
+          <div class="e-pricing-why-badge e-pricing-why-badge-lime">One plan · </div>
           <h3>Tournament and league organizers</h3>
-          <p>Running a tournament is <b>intense, hands-on work</b>. That's why Competencias has one plan with <b>everything included</b>: $1,499 MXN/month + VAT, no tiers, no lock-in.</p>
+          <p>Running a tournament is <b>intense, hands-on work</b>. That's why Competencias has one plan with <b>everything included</b>:  lock-in.</p>
         </div>
       </div>
 
@@ -3095,6 +3219,30 @@
   </section>
 
   <!-- 12. FINAL CTA -->
+  <!-- 12b. COBERTURA · mapa + los más activos -->
+  <section class="v2-cov" id="cobertura">
+    <div class="container">
+      <div class="v2-cov-grid">
+        <div class="v2-cov-copy">
+          <span class="e-eyebrow"><span class="dot"></span> Clubs and organizers</span>
+          <h2>CourtBit runs in <em>8 states</em> across Mexico.</h2>
+          <p>From Baja California Sur to Quintana Roo. Clubs, academies, and organizers running their bookings, classes, and tournaments from a single account.</p>
+          <div class="v2-cov-nums">
+            <div><b>65</b><span>clubs and organizers</span></div>
+            <div><b>8</b><span>states</span></div>
+            <div><b>14</b><span>towns and cities</span></div>
+          </div>
+        </div>
+        <div><svg class="v2-map" viewBox="0 0 1000 627" role="img" aria-label="Map of Mexico showing CourtBit's 25 active clubs and organizers"><g class="states"><path d="M554.1 281.6L539.2 296.2L536.5 307.8L517.1 323.2L508.5 325.2L508.4 340.8L523.6 353.3L536.7 345.7L540.1 348.9L533.2 375.6L518.0 367.9L515.8 362.2L506.6 355.5L496.6 362.3L489.7 376.0L496.9 388.0L495.1 393.2L480.9 403.2L466.7 401.8L461.6 397.7L468.0 393.3L463.3 387.8L467.6 384.8L467.8 379.3L480.4 371.1L482.8 362.9L476.5 358.4L471.1 367.7L464.1 368.3L468.4 357.5L464.0 352.7L458.9 354.3L457.0 364.6L455.5 358.0L461.1 348.0L458.8 346.7L452.7 349.2L453.6 358.4L451.0 359.3L451.7 354.6L447.3 360.0L442.8 359.4L444.0 351.9L449.7 347.3L448.9 334.7L453.1 321.0L459.6 314.2L457.5 298.8L472.1 285.5L499.4 286.2L498.4 271.9L493.6 263.3L501.2 261.2L513.1 262.0L528.0 271.2L528.7 275.7L540.1 274.4L545.8 281.8L554.1 281.6Z"><title>Zacatecas</title></path><path d="M974.2 387.4L974.3 405.9L969.5 417.0L959.7 423.6L953.0 423.5L951.4 429.9L948.5 427.8L935.0 438.9L917.0 444.5L914.9 450.7L896.4 422.9L893.7 424.9L884.1 420.5L885.0 405.2L900.7 395.9L933.1 390.5L955.7 382.7L974.2 387.4Z"><title>Yucatán</title></path><path d="M650.2 361.1L653.7 381.4L659.8 388.7L669.6 415.8L692.7 444.0L697.5 462.4L714.5 480.4L711.2 480.1L711.4 483.0L715.0 480.5L732.7 483.3L744.2 489.1L754.3 502.5L768.3 499.6L766.0 500.5L767.7 512.4L778.3 519.6L782.4 530.5L774.0 537.0L738.0 534.7L729.0 521.3L729.6 516.9L711.5 522.5L708.5 514.2L710.7 501.8L701.1 501.2L692.0 494.3L688.5 485.9L686.3 492.9L680.8 489.0L676.0 491.3L673.8 486.2L668.0 483.7L669.5 465.3L676.5 464.5L665.7 458.0L664.2 451.8L672.3 432.2L663.4 429.0L658.8 434.2L653.5 431.2L652.8 422.9L658.2 419.9L651.7 412.7L653.3 409.4L649.3 409.3L645.6 417.2L642.7 416.5L630.8 426.8L627.6 422.3L629.0 413.2L633.3 408.6L637.4 410.1L640.1 402.3L637.0 397.5L627.8 394.7L623.7 381.2L629.3 377.2L625.5 371.7L628.6 366.6L633.1 365.6L630.8 360.1L621.1 356.8L637.6 354.1L647.6 362.9L650.2 361.1ZM655.8 375.4L664.7 385.1L661.4 394.6L663.1 385.9L655.8 375.4Z"><title>Veracruz</title></path><path d="M625.1 457.1L622.3 454.2L643.7 446.9L658.0 459.3L640.3 468.5L625.1 457.1Z"><title>Tlaxcala</title></path><path d="M650.2 361.1L647.6 362.9L637.6 354.1L631.7 356.8L606.2 356.6L596.4 344.4L593.6 346.6L580.1 342.4L576.6 324.0L581.5 323.6L584.4 310.7L597.4 307.1L590.7 295.9L591.8 287.3L588.1 281.8L601.8 271.4L604.1 272.6L609.7 260.7L614.6 262.5L630.5 249.0L626.2 246.9L625.2 231.2L614.2 232.5L590.5 209.0L591.4 203.4L587.1 200.3L590.2 195.6L587.8 181.5L582.2 180.9L589.1 174.2L595.8 177.9L598.0 196.5L609.7 218.1L618.3 219.1L637.3 229.9L654.1 231.0L661.7 237.2L670.6 233.3L661.9 258.1L662.8 252.4L658.4 249.8L658.5 256.2L653.4 253.7L651.2 257.1L654.0 260.2L651.4 266.8L654.5 268.6L651.7 271.3L651.7 283.9L648.0 282.7L650.3 288.4L651.4 285.4L652.0 308.7L650.9 339.6L646.8 349.0L650.2 361.1Z"><title>Tamaulipas</title></path><path d="M818.5 485.3L836.0 509.3L846.1 510.5L846.4 505.4L849.9 505.2L865.5 511.9L865.2 533.2L851.8 533.5L852.1 529.4L844.7 526.2L840.1 512.9L833.3 511.3L809.3 529.8L802.6 524.7L799.9 518.1L801.8 512.1L793.4 508.6L785.6 526.3L780.3 529.9L778.3 519.6L767.7 512.4L766.0 500.5L789.1 492.8L799.2 494.7L797.3 493.0L818.5 485.3Z"><title>Tabasco</title></path><path class="on" d="M192.2 120.2L195.0 127.6L191.4 137.0L182.8 132.6L186.8 121.4L192.2 120.2ZM303.2 47.8L306.4 58.1L303.7 62.6L308.6 69.7L312.3 88.7L309.9 99.0L312.0 121.1L306.3 139.6L306.8 145.5L311.6 148.7L295.0 154.8L309.8 182.9L307.9 194.2L317.2 197.2L308.8 211.2L294.5 221.4L280.7 206.1L274.4 208.5L270.3 206.0L264.7 193.2L254.9 192.0L249.3 187.4L244.5 175.7L247.4 167.8L238.3 164.4L236.7 167.9L227.2 162.9L218.3 150.3L210.3 146.9L203.0 136.4L205.8 135.5L195.7 129.3L193.8 117.6L188.5 116.7L189.2 111.7L177.6 96.7L176.7 86.1L167.0 70.6L166.6 52.9L149.9 48.0L148.9 42.3L141.7 38.3L133.3 42.2L106.7 27.6L105.2 15.2L109.1 7.8L112.2 7.7L230.5 47.9L303.2 47.8Z"><title>Sonora</title></path><path class="on" d="M289.2 220.6L291.8 223.6L290.6 216.8L294.5 221.4L302.4 217.1L303.1 212.9L313.2 206.2L317.2 196.2L324.2 196.4L335.3 226.0L347.1 228.6L355.2 242.8L351.7 247.5L350.7 262.0L354.6 270.7L362.5 275.3L368.7 290.4L377.6 285.9L389.4 294.9L402.8 331.4L409.8 333.7L405.5 342.8L408.1 352.1L401.3 349.7L400.1 344.4L400.2 353.4L377.2 328.3L354.3 295.8L333.8 283.7L343.1 289.4L342.8 283.8L338.9 284.9L328.1 278.7L325.5 263.4L304.7 252.8L301.1 246.8L294.6 250.2L292.3 247.6L298.0 243.1L294.2 246.1L285.5 243.9L282.2 231.8L289.2 220.6Z"><title>Sinaloa</title></path><path class="on" d="M576.7 326.7L581.4 343.6L593.6 346.6L595.6 344.0L606.2 356.6L614.9 355.7L631.6 361.0L633.1 365.6L625.5 371.7L629.3 377.2L623.7 381.2L626.7 390.0L620.9 396.2L616.7 397.6L613.5 393.1L609.6 393.8L603.5 385.0L599.6 388.8L593.2 388.7L589.8 384.1L578.3 388.0L566.3 380.2L564.4 385.0L559.0 385.8L549.3 379.1L535.2 375.5L535.7 360.4L540.2 349.8L537.6 345.6L524.3 353.6L508.4 340.8L509.6 323.0L517.1 323.2L536.5 307.8L539.2 296.2L553.4 282.1L558.7 285.4L557.4 290.2L564.1 302.0L565.4 326.5L568.9 329.3L571.8 325.7L576.7 326.7Z"><title>San Luis Potosí</title></path><path class="on" d="M999.9 418.3L991.4 429.2L993.6 419.6L999.9 418.3ZM923.5 509.7L926.9 501.1L924.7 484.2L927.7 465.2L914.9 450.7L916.3 445.1L935.0 438.9L948.5 427.8L951.4 429.9L953.0 423.5L959.7 423.6L969.5 417.0L974.3 405.9L974.2 387.4L985.3 389.0L988.0 384.1L991.0 385.0L996.1 395.5L997.7 390.2L999.1 399.9L977.9 430.8L975.6 445.4L967.9 451.0L970.7 455.8L978.2 453.7L970.4 462.6L969.9 466.3L977.1 462.6L964.6 500.8L961.8 492.8L957.2 490.1L959.6 482.3L957.5 478.0L950.4 490.7L943.3 491.8L933.0 512.3L927.4 507.7L923.5 509.7Z"><title>Quintana Roo</title></path><path d="M610.7 394.1L609.1 398.1L600.3 400.7L595.8 415.1L586.0 419.6L582.1 434.2L575.6 436.6L564.2 422.1L563.7 407.6L574.8 406.8L580.5 397.3L588.6 396.4L588.4 384.0L594.2 388.9L603.5 385.0L610.7 394.1Z"><title>Querétaro</title></path><path d="M686.3 492.9L682.9 498.5L675.4 502.8L669.0 502.0L663.5 509.0L658.4 495.5L651.8 502.3L655.3 505.5L653.2 508.2L641.8 506.7L635.7 510.8L631.7 507.1L626.2 508.5L612.8 497.3L619.6 489.4L624.5 491.8L625.1 457.1L640.3 468.5L657.6 460.8L644.4 447.0L638.4 449.1L637.5 444.4L640.5 432.6L636.4 428.6L645.7 421.1L649.3 409.3L653.3 409.4L651.7 412.7L658.2 419.9L652.8 422.9L653.5 431.2L658.8 434.2L663.4 429.0L672.3 432.2L664.2 451.8L665.7 458.0L676.5 464.5L669.5 465.3L668.0 483.7L673.8 486.2L676.0 491.3L680.8 489.0L686.3 492.9Z"><title>Puebla</title></path><path d="M774.0 537.0L765.2 558.7L766.2 569.0L756.1 568.4L766.6 574.8L747.8 569.4L751.7 565.2L745.0 567.2L742.8 561.8L735.2 568.7L744.2 569.2L733.8 570.1L724.8 577.4L689.2 588.4L668.6 579.4L650.8 577.5L626.1 565.7L642.9 545.5L636.1 535.8L633.3 517.9L635.7 510.8L641.8 506.7L653.2 508.2L655.3 505.5L651.8 502.3L658.4 495.5L663.5 509.0L669.0 502.0L675.4 502.8L682.9 498.5L688.5 485.9L692.0 494.3L701.1 501.2L710.7 501.8L708.5 514.2L711.5 522.5L729.6 516.9L729.0 521.3L738.0 534.7L774.0 537.0Z"><title>Oaxaca</title></path><path d="M589.1 174.2L582.2 180.9L587.8 181.5L590.2 195.6L587.1 200.3L591.4 203.4L590.5 209.0L614.2 232.5L625.2 231.2L626.2 246.9L630.5 249.0L614.6 262.5L609.7 260.7L604.1 272.6L588.4 281.1L591.8 287.3L590.7 295.9L597.4 307.1L584.4 310.7L581.5 323.6L568.9 329.3L564.7 324.4L564.1 302.0L557.4 290.2L558.7 285.4L553.4 282.1L555.4 277.5L552.7 269.7L556.2 268.7L555.0 262.3L559.0 256.5L570.8 259.4L572.4 256.6L565.6 253.2L559.9 243.7L554.8 242.6L554.2 232.9L540.6 218.6L546.3 210.0L558.0 207.6L560.8 203.9L561.3 194.8L558.0 192.9L556.3 196.8L552.4 190.1L556.3 185.2L564.0 184.1L567.0 174.2L580.0 174.2L586.3 170.6L589.1 174.2Z"><title>Nuevo León</title></path><path class="on" d="M442.5 355.8L443.5 371.9L449.2 373.5L450.4 379.1L456.0 379.8L460.3 388.9L459.3 395.4L446.8 399.5L443.3 411.5L445.9 418.3L428.7 404.1L418.0 408.0L413.0 414.8L406.0 412.1L414.7 402.5L416.4 388.9L408.2 382.5L401.8 369.2L403.0 363.3L407.2 367.3L403.0 362.3L400.9 349.9L408.8 350.9L405.5 342.8L408.8 334.4L412.6 337.0L416.6 334.9L425.7 341.7L420.8 347.8L423.6 353.7L427.2 349.3L437.7 359.3L442.5 355.8Z"><title>Nayarit</title></path><path d="M616.3 470.7L621.9 475.1L626.4 472.2L622.9 481.5L623.8 492.7L619.6 489.4L612.9 495.7L597.2 487.5L605.2 471.0L616.3 470.7Z"><title>Morelos</title></path><path d="M569.0 428.5L577.5 442.2L571.7 448.2L573.8 458.2L567.9 470.6L555.5 481.0L560.0 497.1L548.5 490.7L532.5 491.1L524.8 487.3L520.6 489.2L520.8 498.4L511.7 502.1L511.2 510.7L474.2 498.6L463.5 487.2L465.2 477.5L476.9 472.3L479.5 474.6L489.4 466.0L494.0 465.8L498.1 459.5L493.0 456.7L492.2 442.9L482.6 440.1L485.8 433.5L490.8 435.7L501.6 428.0L511.6 426.0L517.3 426.7L520.0 432.2L533.8 427.7L536.9 431.1L536.0 437.8L548.0 436.4L548.6 440.2L563.8 441.5L569.5 436.8L569.0 428.5Z"><title>Michoacán</title></path><path d="M622.3 454.2L626.2 466.4L626.4 472.2L623.1 474.4L618.1 473.2L608.7 454.9L601.7 464.0L605.2 471.0L597.3 484.9L590.6 483.1L588.3 487.9L579.0 489.2L573.8 495.4L565.7 491.0L567.2 471.1L573.8 458.2L571.7 448.2L575.4 447.1L576.4 437.2L582.1 434.2L581.3 430.3L584.8 428.1L595.5 432.8L600.5 448.1L602.4 444.1L606.0 444.4L606.6 439.5L615.7 436.4L613.5 448.7L624.2 444.7L622.3 454.2Z"><title>México</title></path><path class="on" d="M492.7 380.5L511.0 381.3L520.5 373.5L518.0 367.9L531.5 375.1L528.0 392.9L513.1 411.9L517.9 417.9L515.1 426.0L501.6 428.0L490.8 435.7L483.8 435.0L483.3 441.2L492.2 442.9L493.0 456.7L498.0 457.5L494.0 465.8L489.4 466.0L479.5 474.6L476.9 472.3L470.0 474.6L470.2 461.9L466.2 453.9L458.9 459.2L433.8 466.5L423.8 462.0L407.5 440.1L400.4 424.6L412.3 420.9L418.0 408.0L428.7 404.1L445.9 418.3L443.3 411.5L446.8 399.5L459.8 394.3L456.0 379.8L450.4 379.1L449.2 373.5L443.1 370.7L447.8 356.1L452.4 355.1L451.4 359.9L454.9 356.9L452.7 349.2L461.1 348.0L455.5 358.0L457.7 365.0L458.9 354.3L467.6 355.0L464.1 368.3L471.1 367.7L476.5 358.4L482.8 362.9L480.4 371.1L467.8 379.3L467.6 384.8L463.3 387.8L468.0 393.3L461.6 397.7L466.7 401.8L480.9 403.2L495.1 393.2L496.9 388.0L492.7 380.5Z"><title>Jalisco</title></path><path d="M626.7 390.0L630.1 396.9L637.0 397.5L640.1 402.3L637.4 410.1L633.3 408.6L629.0 413.2L629.1 425.7L643.8 416.0L645.7 421.1L636.4 428.6L640.5 432.6L638.4 449.1L622.3 454.2L624.2 444.7L613.5 448.7L615.7 436.4L606.6 439.5L606.0 444.4L602.4 444.1L600.5 448.1L596.4 433.8L584.8 428.1L586.0 419.6L595.8 415.1L600.3 400.7L609.1 398.1L612.6 393.3L618.0 397.6L626.7 390.0Z"><title>Hidalgo</title></path><path d="M597.3 484.9L626.2 508.5L631.7 507.1L635.7 510.8L633.3 517.9L636.1 535.8L642.9 545.5L626.1 565.7L619.1 557.5L590.5 552.4L580.6 545.3L547.0 532.7L523.5 511.8L511.7 508.0L511.7 502.1L520.8 498.4L520.6 489.2L524.8 487.3L532.5 491.1L548.5 490.7L560.0 497.1L555.5 481.0L567.2 471.1L565.7 491.0L572.1 495.7L580.3 488.5L588.3 487.9L590.6 483.1L597.3 484.9Z"><title>Guerrero</title></path><path d="M587.3 386.5L588.6 396.4L580.5 397.3L574.8 406.8L562.8 409.5L569.7 435.9L563.8 441.5L548.6 440.2L548.0 436.4L536.0 437.8L536.9 431.1L533.8 427.7L526.1 432.1L518.4 431.5L515.1 426.0L517.7 417.2L513.0 412.4L528.0 392.9L531.1 375.3L549.3 379.1L559.0 385.8L564.4 385.0L566.3 380.2L578.3 388.0L587.3 386.5Z"><title>Guanajuato</title></path><path d="M458.2 206.0L464.4 209.2L470.1 218.3L473.1 239.5L468.4 247.0L471.9 251.0L467.3 253.3L468.1 257.2L475.6 269.5L481.6 273.0L488.6 274.6L489.0 269.1L493.6 265.3L498.4 271.9L500.2 283.7L488.7 287.8L471.4 285.7L457.8 298.4L459.6 314.2L453.1 321.0L448.9 334.7L449.7 347.3L437.7 359.3L427.2 349.3L422.8 352.6L420.8 347.8L425.8 343.3L422.4 337.9L416.6 334.9L412.6 337.0L407.2 330.9L402.8 331.4L387.0 290.7L377.6 285.9L368.7 290.4L362.5 275.3L354.6 270.7L350.7 262.0L351.7 247.5L356.8 240.4L366.5 245.7L372.1 240.6L375.7 224.0L381.5 219.2L382.9 205.8L386.3 202.8L405.8 215.1L416.4 212.6L427.9 217.6L441.8 207.0L440.6 203.4L458.2 206.0Z"><title>Durango</title></path><path d="M616.3 470.7L608.3 472.2L601.9 465.3L608.7 454.9L615.9 464.8L616.3 470.7Z"><title>Ciudad de México</title></path><path d="M470.0 474.6L462.0 483.7L442.4 469.1L431.8 466.9L458.9 459.2L466.2 453.9L470.2 461.9L470.0 474.6Z"><title>Colima</title></path><path d="M585.4 170.9L580.0 174.2L568.4 173.4L564.0 184.1L554.8 186.5L552.8 194.2L556.3 196.8L558.0 192.9L561.3 194.8L560.8 203.9L558.0 207.6L546.3 210.0L540.8 217.5L554.7 233.7L554.8 242.6L559.9 243.7L565.6 253.2L572.4 256.6L570.8 259.4L560.2 256.1L557.1 258.2L556.2 268.7L552.7 269.7L554.1 281.6L545.8 281.8L540.1 274.4L528.7 275.7L528.0 271.2L512.2 261.8L494.4 262.6L487.8 274.9L475.6 269.5L467.3 253.3L471.9 251.0L468.4 247.0L473.1 239.5L469.1 215.0L454.1 201.4L459.4 194.5L456.4 192.7L453.1 165.3L464.0 143.1L473.1 134.1L470.6 132.4L473.4 127.4L481.9 128.8L489.8 120.6L495.5 103.4L504.3 101.9L507.1 98.0L513.6 101.0L534.3 101.1L558.9 124.5L571.2 153.2L582.3 163.3L585.4 170.9Z"><title>Coahuila</title></path><path d="M473.4 127.4L471.9 136.1L461.1 147.7L456.9 160.7L454.0 160.3L456.0 164.2L453.1 165.3L453.0 172.3L456.4 192.7L459.4 194.5L453.8 198.5L458.2 206.0L440.6 203.4L441.8 207.0L427.9 217.6L416.4 212.6L405.8 215.1L386.3 202.8L382.9 205.8L381.5 219.2L375.7 224.0L372.1 240.6L366.5 245.7L357.5 240.4L354.2 242.2L347.1 228.6L335.3 226.0L324.2 196.4L307.9 194.2L309.8 182.9L295.0 154.8L311.6 148.7L306.8 145.5L306.3 139.6L312.0 121.1L309.9 99.0L312.3 88.7L308.6 69.7L303.7 62.6L306.4 58.1L303.2 47.8L321.0 47.7L321.0 32.2L377.4 33.3L384.3 43.2L425.6 74.2L437.1 105.2L473.4 127.4Z"><title>Chihuahua</title></path><path d="M766.2 569.0L767.5 551.4L774.6 536.0L785.6 526.3L793.4 508.6L801.8 512.1L799.9 518.1L802.6 524.7L809.3 529.8L827.0 517.4L827.7 513.1L839.4 512.2L844.7 526.2L853.5 531.7L851.7 534.9L874.0 551.7L876.2 558.9L884.0 563.7L882.5 574.3L841.9 573.9L826.5 602.0L831.4 608.7L826.1 627.2L766.2 569.0Z"><title>Chiapas</title></path><path class="on" d="M884.3 411.1L884.1 420.5L893.7 424.9L896.4 422.9L927.1 463.6L924.7 484.2L927.0 499.9L923.4 514.1L865.4 514.1L849.9 505.2L842.3 511.5L830.5 504.4L827.3 495.5L819.9 490.2L818.5 485.3L832.8 483.6L837.8 486.7L833.3 487.0L833.4 489.9L846.6 492.5L855.1 488.5L857.4 482.5L853.1 480.4L854.7 476.3L849.1 480.4L873.1 461.8L874.1 449.9L882.2 440.1L880.6 421.5L884.3 411.1Z"><title>Campeche</title></path><path class="on" d="M197.1 256.9L194.3 271.4L199.3 282.2L195.7 274.4L191.6 273.4L197.1 256.9ZM133.3 164.4L175.0 164.5L182.4 174.8L189.8 178.2L194.4 189.8L202.7 193.9L200.7 198.1L208.2 212.2L211.4 211.5L207.0 207.0L206.8 200.8L218.7 213.8L223.1 239.6L232.2 248.4L235.7 261.2L243.6 272.8L241.0 279.2L242.8 288.3L247.0 293.6L254.0 294.6L251.2 297.0L254.8 294.5L255.0 288.6L264.8 299.1L269.9 298.6L273.9 312.3L282.6 319.9L279.1 331.4L269.0 338.8L263.8 338.5L253.7 315.6L214.8 286.7L212.1 281.1L206.8 282.8L202.9 274.5L197.9 273.8L197.5 266.8L195.8 272.7L199.2 245.3L195.1 232.1L188.3 223.3L179.7 220.9L161.9 204.7L164.4 197.5L160.6 205.9L156.4 203.0L150.3 207.1L142.1 198.0L124.2 191.1L121.4 182.6L106.1 172.4L104.7 167.5L122.0 170.6L127.6 167.0L129.0 171.9L142.3 178.4L139.3 167.7L138.3 171.4L132.2 171.4L133.3 164.4Z"><title>Baja California Sur</title></path><path d="M152.0 109.2L157.1 112.4L157.9 117.5L163.9 118.3L165.9 128.7L153.9 118.4L152.0 109.2ZM99.6 149.7L99.1 161.8L95.0 160.0L99.6 149.7ZM112.2 7.7L105.3 14.6L105.5 26.5L112.7 31.0L109.8 53.6L115.2 61.5L116.9 87.2L125.6 101.3L131.4 102.6L149.5 118.5L153.0 132.0L155.9 129.9L158.4 135.1L162.8 134.5L166.3 145.3L174.5 148.2L176.9 166.9L175.0 164.5L135.0 164.4L135.8 145.0L107.9 115.8L84.3 101.9L81.0 84.1L73.2 77.5L73.1 66.9L64.4 60.7L63.2 50.7L52.9 39.6L51.3 33.6L53.9 34.5L55.5 30.3L47.7 25.1L41.9 14.9L39.3 6.5L115.3 0.0L112.2 7.7ZM3.3 121.7L2.8 132.3L0.1 123.1L3.3 121.7Z"><title>Baja California</title></path><path d="M492.7 380.5L489.7 376.0L496.6 362.3L507.6 355.3L515.8 362.2L520.5 373.5L511.9 380.6L492.7 380.5Z"><title>Aguascalientes</title></path></g><g class="pins"><circle cx="473.4" cy="412.9" r="7"><title>All Seasons Padel Club</title></circle><circle cx="470.9" cy="414.0" r="7"><title>ALTIUM PADEL SPORTS COMPLEX</title></circle><circle cx="470.2" cy="419.1" r="7"><title>Amber Pádel Club - Santa Anita</title></circle><circle cx="472.2" cy="413.2" r="7"><title>Amber Padel Club Zona Real</title></circle><circle cx="976.6" cy="431.4" r="7"><title>Distrito Padel Tulum</title></circle><circle cx="266.4" cy="179.4" r="7"><title>DÚO PÁDEL PARK</title></circle><circle cx="472.0" cy="413.2" r="7"><title>Europadelite</title></circle><circle cx="471.3" cy="415.1" r="7"><title>GA Padel</title></circle><circle cx="235.7" cy="165.8" r="7"><title>GM Padel</title></circle><circle cx="471.3" cy="419.0" r="7"><title>Impakto Pádel Club</title></circle><circle cx="472.5" cy="415.5" r="7"><title>LEVA</title></circle><circle cx="879.7" cy="445.2" r="7"><title>Mayacorptrips</title></circle><circle cx="235.6" cy="166.5" r="7"><title>Municipal Guaymas</title></circle><circle cx="235.0" cy="165.3" r="7"><title>One Padel Guaymas</title></circle><circle cx="471.3" cy="414.8" r="7"><title>PADEL FACTORY GDL</title></circle><circle cx="235.7" cy="165.8" r="7"><title>Padel Guaymas</title></circle><circle cx="470.8" cy="414.4" r="7"><title>Padel Pro Club</title></circle><circle cx="471.7" cy="418.6" r="7"><title>PUNTACO Padel Club</title></circle><circle cx="425.7" cy="386.8" r="7"><title>Select Pádel CUP</title></circle><circle cx="312.8" cy="246.7" r="7"><title>SEVEN PADEL CLUB</title></circle><circle cx="474.6" cy="416.0" r="7"><title>SIAMO</title></circle><circle cx="235.7" cy="165.8" r="7"><title>Tennis Guaymas</title></circle><circle cx="615.9" cy="379.4" r="7"><title>Torneos de Padel Metan</title></circle><circle cx="253.8" cy="297.2" r="7"><title>Viper Padel Club</title></circle><circle cx="235.7" cy="165.8" r="7"><title>TX8s</title></circle></g></svg></div>
+      </div>
+      <div class="v2-cov-bar">
+        <h3>The most active</h3>
+        <span>25 running today</span>
+      </div>
+      <div class="v2-cov-list"><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/6b9eaa0e-7fe3-4766-918d-89f1ab2df3d5?v=1778697674092" alt="" loading="lazy" width="34" height="34"><span><b>All Seasons Padel Club</b><span>Zapopan, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/3364a10d-5124-4b5a-8c4c-b520c83f3593?v=1784090810388" alt="" loading="lazy" width="34" height="34"><span><b>ALTIUM Padel Sports Complex</b><span>Zapopan, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e5bdc7c8-ef69-4a55-b49f-c9227b9e3b6a?v=1779295213230" alt="" loading="lazy" width="34" height="34"><span><b>Amber Pádel Club · Santa Anita</b><span>San Agustín, Jal.</span></span></div><div class="v2-club"><span class="v2-club-ini">AP</span><span><b>Amber Padel Club Zona Real</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/5b8a043a-3546-4d2f-8cb5-8f461bdd547e?v=1788543127976" alt="" loading="lazy" width="34" height="34"><span><b>Distrito Padel Tulum</b><span>Tulum, Q. Roo</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e884f2a0-08da-4e4f-9c7c-f457bc83cb7c?v=1781044366757" alt="" loading="lazy" width="34" height="34"><span><b>DÚO PÁDEL PARK</b><span>Cd. Obregón, Son.</span></span></div><div class="v2-club"><span class="v2-club-ini">E</span><span><b>Europadelite</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/66a393fe-e0b1-4486-8270-4968cd1ffb76?v=1787884724216" alt="" loading="lazy" width="34" height="34"><span><b>GA Padel</b><span>Zapopan, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e0240092-8a14-420d-9fb2-632f341f9314?v=1777882465675" alt="" loading="lazy" width="34" height="34"><span><b>GM Padel</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/287d0530-0536-4d68-80f3-4b8f946cdcd2?v=1784860468477" alt="" loading="lazy" width="34" height="34"><span><b>Impakto Pádel Club</b><span>Los Gavilanes, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/cf84b9c9-a215-453f-8630-72d4e0c51b65?v=1777882466004" alt="" loading="lazy" width="34" height="34"><span><b>LEVA</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><span class="v2-club-ini">M</span><span><b>Mayacorptrips</b><span>Campeche, Camp.</span></span></div><div class="v2-club"><span class="v2-club-ini">MG</span><span><b>Municipal Guaymas</b><span>Hermosillo, Son.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/b32976bf-1ef7-449b-91d6-b7e236cce0ea?v=1777882417537" alt="" loading="lazy" width="34" height="34"><span><b>One Padel Guaymas</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/dc68e9ba-edb3-449b-92ef-2d081021965e?v=1777882466949" alt="" loading="lazy" width="34" height="34"><span><b>Padel Factory GDL</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/770b3dbf-5073-49d2-b4a1-64fbc34200c9?v=1777882542510" alt="" loading="lazy" width="34" height="34"><span><b>Padel Guaymas</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><span class="v2-club-ini">PP</span><span><b>Padel Pro Club</b><span>Zapopan, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/0af59a65-6936-496c-850e-e62a5806be17?v=1784327739948" alt="" loading="lazy" width="34" height="34"><span><b>PUNTACO Padel Club</b><span>La Tijera, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/032a12c2-0529-42c9-8e67-9be9845efd91?v=1784829512461" alt="" loading="lazy" width="34" height="34"><span><b>Select Pádel CUP</b><span>Tepic, Nay.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/6a07f886-95b7-4f26-bd55-8a513cdc9575?v=1788071859014" alt="" loading="lazy" width="34" height="34"><span><b>SEVEN PADEL CLUB</b><span>Guasave, Sin.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/f9877a1e-10a8-4663-b3ca-1ea9fe33a4b2?v=1777882466313" alt="" loading="lazy" width="34" height="34"><span><b>SIAMO</b><span>Guadalajara, Jal.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/eda14f75-3dc1-4534-a060-d9721f471b6e?v=1785781828718" alt="" loading="lazy" width="34" height="34"><span><b>Tennis Guaymas</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><span class="v2-club-ini">TD</span><span><b>Torneos de Padel Metan</b><span>Tamuín, S.L.P.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/9915543a-205f-4aea-ad63-5ad9767cfe7f?v=1777882417860" alt="" loading="lazy" width="34" height="34"><span><b>TX8s</b><span>Guaymas, Son.</span></span></div><div class="v2-club"><img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/38837fcf-dbf8-4226-a134-4fc76fed8e05?v=1783617104872" alt="" loading="lazy" width="34" height="34"><span><b>Viper Padel Club</b><span>La Paz, B.C.S.</span></span></div></div>
+    </div>
+  </section>
+
   <section class="e-final" id="contacto">
     <div class="e-final-inner">
       <h2>Start today. Your first payment in <em>10 minutes</em>.</h2>

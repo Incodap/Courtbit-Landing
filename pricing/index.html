@@ -1428,8 +1428,7 @@
                 gap: 10px 24px;
             }
         }
-    
-    /* ═══ PRICING V2 · comparativa Free vs Enterprise (espejo del Dashboard) ═══ */
+        /* ═══ PRICING V2 · comparativa Free vs Enterprise (espejo del Dashboard) ═══ */
     .pv2 { padding: 88px 0; background: var(--paper, #fff); }
     .pv2-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
     .pv2-head h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.035em; margin: 16px 0 12px; }
@@ -1485,6 +1484,7 @@
       .pv2-price > span { margin-left: 0; }
     }
 
+  
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -1497,9 +1497,9 @@
       <img src="/Assets/courtbit-logo.svg" alt="CourtBit">
     </a>
     <div class="e-nav-links">
-      <a href="/clubes/" class="">Para clubes</a>
-      <a href="/academias/" class="">Para academias</a>
-      <a href="/competencias/" class="">Para organizadores</a>
+      <a href="/competencias/" class="">Competencias</a>
+      <a href="/clubes/" class="">Reservas</a>
+      <a href="/academias/" class="">Academia</a>
       <a href="/torneos/">Torneos</a>
       <a href="/guias/">Guías</a>
       <a href="/pricing/" class="is-active">Precios</a>
@@ -1589,70 +1589,28 @@
                         <button type="button" id="pv2-anual" aria-pressed="false">Anual <span class="pv2-save">2 meses gratis</span></button>
                     </div>
                 </div>
-
                 <div class="pv2-grid">
                     <article class="pv2-plan">
                         <header>
                             <div><h3>Free</h3><p>Para probar CourtBit</p></div>
-                            <div class="pv2-price">
-                                <b>Gratis</b>
-                                <span>7% de comisión al jugador en pagos por la app</span>
-                            </div>
+                            <div class="pv2-price"><b>Gratis</b><span>7% de comisión al jugador en pagos por la app</span></div>
                         </header>
                         <a href="/empezar/" class="pv2-cta pv2-cta-ghost">Crear cuenta gratis</a>
-                        <div class="pv2-rows"><div class="pv2-row"><b>Torneos</b><ul><li>Solo 1 torneo de prueba, con 1 categoría y hasta 12 parejas</li><li class="off">Al usarlo, crear más torneos requiere Enterprise</li></ul></div><div class="pv2-row"><b>Ligas</b><ul><li class="off">Bloqueadas: ligas americanas y escalera solo en Enterprise</li></ul></div><div class="pv2-row"><b>Retas</b><ul><li>Rey de la cancha y americano, con inscripción y pago en línea</li></ul></div><div class="pv2-row"><b>Reservas</b><ul><li>Calendario de canchas, enlace público de reserva y cobros</li></ul></div><div class="pv2-row"><b>Jugadores y pagos</b><ul><li>Inscripciones y pagos en línea (obligatorios para publicar)</li><li class="off">Códigos de descuento</li></ul></div><div class="pv2-row"><b>Equipo</b><ul><li>Solo tú (1 miembro)</li></ul></div><div class="pv2-row"><b>Herramientas premium</b><ul><li class="off">Ranking, autorellenado, Excel y PDFs con marca: solo en Enterprise</li></ul></div></div>
+                        <div class="pv2-rows"><div class="pv2-row"><b>Torneos</b><ul><li>Solo 1 torneo de prueba, con 1 categoría y hasta 12 parejas</li><li class="off">Al usarlo, crear más torneos requiere Enterprise</li></ul></div><div class="pv2-row"><b>Ligas</b><ul><li class="off">Bloqueadas: ligas americanas y escalera solo en Enterprise</li></ul></div><div class="pv2-row"><b>Retas</b><ul><li>Rey de la cancha y americano, con inscripción y pago en línea</li></ul></div><div class="pv2-row"><b>Reservas</b><ul><li>Calendario de canchas, enlace público de reserva y cobros</li></ul></div><div class="pv2-row"><b>Jugadores y pagos</b><ul><li>Inscripciones y pagos en línea (obligatorios para publicar)</li><li class="off">Códigos de descuento</li></ul></div><div class="pv2-row"><b>Equipo</b><ul><li>Solo tú (1 miembro)</li></ul></div><div class="pv2-row"><b>Soporte</b><ul><li>Por chat bot</li><li class="off">Soporte con expertos por WhatsApp: solo en Enterprise</li></ul></div><div class="pv2-row"><b>Herramientas premium</b><ul><li class="off">Ranking, autorellenado, Excel y PDFs con marca: solo en Enterprise</li></ul></div></div>
                     </article>
-
                     <article class="pv2-plan pv2-plan--reco">
                         <span class="pv2-badge">Recomendado</span>
                         <header>
                             <div><h3>Enterprise</h3><p>Acceso total a todo CourtBit</p></div>
-                            <div class="pv2-price">
-                                <b><span data-plan="mensual">$1,499<small>/mes</small></span><span data-plan="anual" hidden>$14,990<small>/año</small></span></b>
-                                <span>5% de comisión al jugador en pagos por la app</span>
-                            </div>
+                            <div class="pv2-price"><b><span data-plan="mensual">$1,499<small>/mes</small></span><span data-plan="anual" hidden>$14,990<small>/año</small></span></b><span>5% de comisión al jugador en pagos por la app</span></div>
                         </header>
                         <a href="/empezar/" class="pv2-cta pv2-cta-main">Empezar ahora →</a>
-                        <div class="pv2-rows"><div class="pv2-row"><b>Torneos</b><ul><li>Todos los torneos que organices, con categorías y parejas sin tope</li></ul></div><div class="pv2-row"><b>Ligas</b><ul><li>Ligas americanas y escalera, todas las que necesites</li></ul></div><div class="pv2-row"><b>Retas</b><ul><li>Rey de la cancha y americano, con inscripción y pago en línea</li></ul></div><div class="pv2-row"><b>Reservas</b><ul><li>Calendario de canchas, enlace público de reserva y cobros</li></ul></div><div class="pv2-row"><b>Jugadores y pagos</b><ul><li>Inscripciones con o sin cobro en línea; publicas cuando quieras</li><li>Códigos de descuento</li></ul></div><div class="pv2-row"><b>Equipo</b><ul><li>Todo tu equipo, sin límite de miembros</li></ul></div><div class="pv2-row"><b>Herramientas premium</b><ul><li>Ranking de circuito, autorellenado del calendario, reportes Excel, PDFs y TV con tu marca</li></ul></div></div>
+                        <div class="pv2-rows"><div class="pv2-row"><b>Torneos</b><ul><li>Todos los torneos que organices, con categorías y parejas sin tope</li></ul></div><div class="pv2-row"><b>Ligas</b><ul><li>Ligas americanas y escalera, todas las que necesites</li></ul></div><div class="pv2-row"><b>Retas</b><ul><li>Rey de la cancha y americano, con inscripción y pago en línea</li></ul></div><div class="pv2-row"><b>Reservas</b><ul><li>Calendario de canchas, enlace público de reserva y cobros</li></ul></div><div class="pv2-row"><b>Jugadores y pagos</b><ul><li>Inscripciones con o sin cobro en línea; publicas cuando quieras</li><li>Códigos de descuento</li></ul></div><div class="pv2-row"><b>Equipo</b><ul><li>Todo tu equipo, sin límite de miembros</li></ul></div><div class="pv2-row"><b>Soporte</b><ul><li>Con expertos por WhatsApp: sin bots, ni chats complicados</li></ul></div><div class="pv2-row"><b>Herramientas premium</b><ul><li>Ranking de circuito, autorellenado del calendario, reportes Excel, PDFs y TV con tu marca</li></ul></div></div>
                     </article>
                 </div>
                 <p class="pv2-iva"><b>+ IVA</b> · sin permanencia, cancelas cuando quieras</p>
-
-                <div class="pv2-why">
-                    <h3>¿Por qué actualizar?</h3>
-                    <div class="pv2-why-grid">
-                        <div class="pv2-why-card">
-                            <h4>Opera sin topes</h4>
-                            <p>Todos los torneos y ligas que tu club necesite, con las categorías y parejas que se inscriban.</p>
-                        </div>
-                        <div class="pv2-why-card">
-                            <h4>Cobra con menos comisión</h4>
-                            <p>Del 7% al 5% al jugador en cada pago por la app, y publicas sin exigir cobro en línea.</p>
-                        </div>
-                        <div class="pv2-why-card">
-                            <h4>Tu marca en todo</h4>
-                            <p>Rol, cuadros y resultados en PDF y pantalla de TV con tu identidad, ranking de circuito y equipo sin límite.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pv2-all">
-                    <h3>Todo lo que incluye Enterprise</h3>
-                    <ul>
-                        <li>Torneos y categorías ilimitados</li>
-                        <li>Brackets automáticos</li>
-                        <li>Calendario de jornadas automático</li>
-                        <li>Ligas: americana, escalera e individual</li>
-                        <li>Retas: americano y rey de la cancha</li>
-                        <li>Ranking por puntos y de circuito</li>
-                        <li>Resultados en vivo</li>
-                        <li>Pantalla de partidos en vivo (TV)</li>
-                        <li>Múltiples sedes</li>
-                        <li>Reportes financieros y analíticos</li>
-                        <li>APIs públicas + White-label</li>
-                        <li>Soporte prioritario por WhatsApp</li>
-                    </ul>
-                </div>
+                <div class="pv2-why"><h3>¿Por qué actualizar?</h3><div class="pv2-why-grid"><div class="pv2-why-card"><h4>Opera sin topes</h4><p>Todos los torneos y ligas que tu club necesite, con las categorías y parejas que se inscriban.</p></div><div class="pv2-why-card"><h4>Cobra con menos comisión</h4><p>Del 7% al 5% al jugador en cada pago por la app, y publicas sin exigir cobro en línea.</p></div><div class="pv2-why-card"><h4>Hablas con expertos</h4><p>Soporte por WhatsApp con gente que conoce tu operación. Sin bots ni tickets.</p></div><div class="pv2-why-card"><h4>Tu marca en todo</h4><p>Rol, cuadros y resultados en PDF y pantalla de TV con tu identidad, ranking de circuito y equipo sin límite.</p></div></div></div>
+                <div class="pv2-all"><h3>Todo lo que incluye Enterprise</h3><ul><li>Torneos y categorías ilimitados</li><li>Brackets automáticos</li><li>Calendario de jornadas automático</li><li>Ligas: americana, escalera e individual</li><li>Retas: americano y rey de la cancha</li><li>Ranking por puntos y de circuito</li><li>Resultados en vivo</li><li>Pantalla de partidos en vivo (TV)</li><li>Múltiples sedes</li><li>Reportes financieros y analíticos</li><li>APIs públicas + White-label</li><li>Soporte con expertos por WhatsApp</li></ul></div>
             </div>
         </section>
 
@@ -1699,9 +1657,9 @@
 
       <div class="footer-col">
         <h4>Producto</h4>
-        <a href="/clubes/" class="footer-link">Para clubes</a>
-        <a href="/academias/" class="footer-link">Para academias</a>
-        <a href="/competencias/" class="footer-link">Para organizadores</a>
+        <a href="/competencias/" class="footer-link">Competencias</a>
+        <a href="/clubes/" class="footer-link">Reservas</a>
+        <a href="/academias/" class="footer-link">Academia</a>
         <a href="/torneos/" class="footer-link">Torneos</a>
         <a href="/pricing/" class="footer-link">Precios</a>
         <a href="/apps/" class="footer-link">Descargar la app</a>
