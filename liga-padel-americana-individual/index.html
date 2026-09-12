@@ -283,6 +283,21 @@
 
         /* CTA */
         .cta-section { padding: 64px 0; }
+        /* Bloque explicativo + FAQ. Las 3 preguntas del FAQPage de esta pagina
+           existian solo en el JSON-LD: Google exige que el contenido del schema
+           sea visible en la pagina. Se publican aqui, con el mismo texto. */
+        .tool-info { padding: 8px 0 0; }
+        .tool-info h2 { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+        .tool-info .sub { color: var(--text-gray); margin-bottom: 28px; max-width: 720px; }
+        .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 48px; }
+        .step { background: var(--bg-gray); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+        .step-n { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 999px; background: var(--green); color: #fff; font-weight: 800; font-size: 0.85rem; margin-bottom: 10px; }
+        .step h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+        .step p { font-size: 0.9rem; color: var(--text-gray); line-height: 1.55; }
+        .faq-q { border-top: 1px solid var(--border); padding: 20px 0; }
+        .faq-q:last-child { border-bottom: 1px solid var(--border); }
+        .faq-q h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+        .faq-q p { color: var(--text-gray); line-height: 1.6; font-size: 0.95rem; }
         .cta-card { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border: 1px solid var(--green-border); border-radius: var(--radius-lg, 24px); padding: 48px 32px; text-align: center; }
         .cta-card h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
         .cta-card p { color: var(--text-gray); margin-bottom: 24px; }
@@ -391,6 +406,43 @@
             </div>
         </div>
     </section>
+
+    <section class="tool-info"><div class="container">
+        <h2>Como usar el generador</h2>
+        <p class="sub">La herramienta arma el calendario completo de tu liga: cuantas jornadas caben, que grupos de 4 se forman en cada una, las 3 rotaciones de dobles de cada grupo y a quien le toca descansar.</p>
+        <div class="step-grid">
+            <div class="step">
+                <div class="step-n">1</div>
+                <h3>Captura jugadores y canchas</h3>
+                <p>Minimo 4 jugadores. El numero de canchas define cuantos grupos juegan en paralelo y, por lo tanto, cuanto dura cada jornada.</p>
+            </div>
+            <div class="step">
+                <div class="step-n">2</div>
+                <h3>Revisa el maximo de jornadas</h3>
+                <p>El generador calcula hasta donde puedes llegar sin que nadie repita rival. Pasado ese limite las repeticiones son inevitables.</p>
+            </div>
+            <div class="step">
+                <div class="step-n">3</div>
+                <h3>Genera y revisa la tabla</h3>
+                <p>Obtienes la tabla de encuentros jornada por jornada, con los grupos, los 3 partidos de cada grupo y los descansos ya rotados.</p>
+            </div>
+        </div>
+
+        <h2>Preguntas frecuentes</h2>
+        <p class="sub">Si buscas la explicacion completa del formato, esta en la <a href="/liga-americana-padel/" style="color:var(--green);font-weight:600">guia de la liga americana</a>.</p>
+        <div class="faq-q">
+            <h3>Que es una liga americana de padel individual?</h3>
+            <p>Es un formato donde los jugadores compiten individualmente a lo largo de varias jornadas. En cada jornada se forman grupos de 4 que juegan 3 partidos de dobles rotando parejas, para que todos se enfrenten entre si. Los puntos se acumulan de forma individual.</p>
+        </div>
+        <div class="faq-q">
+            <h3>Como funcionan las rotaciones en cada grupo?</h3>
+            <p>En cada grupo de 4 jugadores (A, B, C, D) se juegan 3 partidos: A+B vs C+D, A+C vs B+D, y A+D vs B+C. Asi cada jugador se enfrenta contra los otros 3 como rival exactamente 2 veces.</p>
+        </div>
+        <div class="faq-q">
+            <h3>Cuantas jornadas necesita mi liga?</h3>
+            <p>Depende de cuantos jugadores y canchas tengas. Con 20 jugadores y 4 canchas puedes hacer hasta 7 jornadas sin que nadie repita rival. Con 16 jugadores y 4 canchas, 5 jornadas. El generador te calcula automaticamente el maximo recomendado.</p>
+        </div>
+    </div></section>
 
     <section class="cta-section"><div class="container">
         <div class="cta-card">
