@@ -1829,8 +1829,14 @@
       top: 24px; left: -20px; width: 170px;
       animation-delay: 0.8s;
     }
+    /* height:auto es obligatorio: sin el, el atributo height="900" del <img>
+       entra como hint de presentacion y gana sobre aspect-ratio, dejando la
+       foto en 900px fijos a cualquier ancho (ratio 0.40 en un telefono de
+       360px). Por eso el aspect-ratio se redeclaraba en cada breakpoint sin
+       ningun efecto. */
     .e-showcase .visual-photo {
       width: 100%;
+      height: auto;
       aspect-ratio: 4 / 3;
       object-fit: cover;
       object-position: center 30%;
