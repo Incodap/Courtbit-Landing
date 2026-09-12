@@ -333,6 +333,8 @@
       0%, 100% { transform: translateY(0); }
       50%      { transform: translateY(-10px); }
     }
+    .v2-eco.is-idle *, .v2-eco.is-idle { animation-play-state: paused !important; }
+
     @media (prefers-reduced-motion: reduce) {
       .e-chip, .e-ring { animation: none !important; }
     }
@@ -2487,7 +2489,6 @@
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.09);
-      will-change: transform;
     }
     .eco-card--comp { animation: eco-float-a 7.4s ease-in-out 1.1s infinite, eco-focus-comp 10s linear 1.1s infinite; }
     .eco-card--res  { animation: eco-float-b 8.6s ease-in-out 1.1s infinite, eco-focus-res  10s linear 1.1s infinite; }
@@ -2620,6 +2621,7 @@
     @keyframes eco-in4  { 0%,65% { opacity: 0; transform: translateY(4px) } 69%,82% { opacity: 1; transform: translateY(0) } 87%,100% { opacity: 0; transform: translateY(4px) } }
 
     @media (max-width: 1080px) { .v2-eco { margin-right: 0 } .v2-eco-slot--comp { padding-left: 0 } }
+    @media (max-width: 768px) { .v2-eco { display: none; } }
     @media (prefers-reduced-motion: reduce) {
       .v2-eco-slot, .eco-card, .eco-sc .late, .eco-wire .lit,
       .eco-next .a, .eco-next .b, .eco-cell-swap .a, .eco-cell-swap .b,
@@ -2664,7 +2666,7 @@
           </div>
         </div>
 
-        <div class="v2-eco" id="eco" aria-label="CourtBit in action: competitions, bookings, and academy">
+        <div class="v2-eco" id="eco" role="img" aria-label="CourtBit in action: competitions, bookings, and academy">
 
           <div class="v2-eco-slot v2-eco-slot--comp">
             <article class="eco-card eco-card--comp">
@@ -2779,6 +2781,10 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </header>
+
         <script>
         (function () {
           var eco = document.getElementById('eco');
@@ -2795,13 +2801,15 @@
             });
           });
           eco.addEventListener('pointerleave', function () { eco.style.transform = ''; });
+          if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (es) {
+              eco.classList.toggle('is-idle', !es[0].isIntersecting);
+            }, { rootMargin: '120px' }).observe(eco);
+          }
           eco.style.transition = 'transform 420ms cubic-bezier(.22,1,.36,1)';
           if (cards.length) eco.style.transformStyle = 'preserve-3d';
         })();
         </script>
-      </div>
-    </div>
-  </header>
 
   <!-- 3b. FRANJA DE NÚMEROS -->
   <section class="v2-stats" aria-label="CourtBit in numbers">
@@ -3361,7 +3369,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/9172bc43-112c-4737-b549-7296559e12a4"
                      alt="Liga Municipal Pádel Guaymas"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
@@ -3379,7 +3387,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/18794d39-05c1-4781-97c3-f0da3452179b"
                      alt="Club Deportivo Miramar"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
@@ -3397,7 +3405,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/b32976bf-1ef7-449b-91d6-b7e236cce0ea"
                      alt="One Padel Guaymas"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
@@ -3415,7 +3423,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e884f2a0-08da-4e4f-9c7c-f457bc83cb7c"
                      alt="DÚO PÁDEL PARK"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
@@ -3433,7 +3441,7 @@
                 <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/e0240092-8a14-420d-9fb2-632f341f9314"
                      alt="GM Padel"
                      loading="lazy"
-                     onerror="this.parentElement.classList.remove('has-logo')">
+                     onerror="this.parentElement.classList.remove('has-logo')" width="54" height="54" loading="lazy" decoding="async">
               </div>
             </a>
             <div>
