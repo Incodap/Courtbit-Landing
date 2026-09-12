@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CourtBit Reservas para clubes de padel — calendario y pagos</title>
-  <meta name="description" content="Software de reservas para clubes de padel: calendario, app de jugadores y pagos directos a tu Stripe o MercadoPago. Sin permanencia.">
+  <title>Software de Reservas para Clubes de Pádel | CourtBit</title>
+  <meta name="description" content="Gestiona reservas, canchas, horarios y pagos de tu club de pádel con CourtBit. Configuración en 10 minutos, CourtAI y pagos con Stripe o MercadoPago.">
   <link rel="canonical" href="https://www.courtbit.com.mx/clubes/">
   <link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/clubes/">
   <link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/clubes/">
@@ -14,7 +14,7 @@
   <!-- OG / Twitter -->
   <meta property="og:url" content="https://www.courtbit.com.mx/clubes/">
   <meta property="og:title" content="CourtBit Reservas — para tu club de padel">
-  <meta property="og:description" content="Calendario, app de jugadores, pagos directos a tu Stripe o MercadoPago. CourtBit solo cobra 4% al jugador, nunca al club.">
+  <meta property="og:description" content="Calendario, app de jugadores, pagos directos a tu Stripe o MercadoPago. La comisión la paga el jugador, nunca el club.">
   <meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-clubes.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -378,10 +378,184 @@
         align-items: center;
       }
     }
+  
+    /* ═══ /clubes/ · secciones de conversión y SEO ═══ */
+    .cb-sec { padding: 84px 0; }
+    .cb-sec--tint { background: var(--bg); border-block: 1px solid var(--border); }
+    .cb-head { max-width: 720px; margin: 0 auto 40px; text-align: center; }
+    .cb-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .6875rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-deep); background: var(--blue-mist); border-radius: 999px; padding: 6px 13px; }
+    .cb-head h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); font-weight: 800; letter-spacing: -.032em; line-height: 1.1; margin: 16px 0 12px; color: var(--navy); text-wrap: balance; }
+    .cb-head h2 em { font-style: italic; color: var(--blue); }
+    .cb-head p { margin: 0; color: var(--text-soft); font-size: 1.0625rem; line-height: 1.55; }
+
+    .cb-pain { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 14px; max-width: 940px; margin: 0 auto; }
+    .cb-pain li { list-style: none; display: flex; gap: 11px; align-items: flex-start; background: var(--paper); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; font-size: .9375rem; color: var(--text-soft); line-height: 1.45; }
+    .cb-pain li::before { content: '✕'; flex: none; width: 20px; height: 20px; border-radius: 999px; background: #fbeceb; color: #b8453a; font-size: .625rem; font-weight: 800; display: grid; place-items: center; margin-top: 1px; }
+    ul.cb-pain { margin: 0; padding: 0; }
+
+    .cb-ai { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.05fr); gap: clamp(28px,5vw,60px); align-items: center; }
+    .cb-ai h2 { font-size: clamp(1.7rem,3.4vw,2.4rem); font-weight: 800; letter-spacing: -.032em; line-height: 1.1; margin: 16px 0 14px; color: var(--navy); }
+    .cb-ai h2 em { font-style: italic; color: var(--blue); }
+    .cb-ai > div > p { color: var(--text-soft); font-size: 1.0625rem; line-height: 1.6; margin: 0 0 20px; max-width: 46ch; }
+    .cb-ai-steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .cb-ai-steps li { display: flex; gap: 11px; align-items: flex-start; font-size: .9375rem; color: var(--text-soft); }
+    .cb-ai-steps li b { color: var(--navy); font-weight: 700; }
+    .cb-ai-steps li::before { content: '✓'; flex: none; width: 20px; height: 20px; border-radius: 999px; background: var(--blue-mist); color: var(--blue-deep); font-size: .6875rem; font-weight: 800; display: grid; place-items: center; }
+    .cb-chat { background: var(--paper); border: 1px solid var(--border); border-radius: 20px; padding: 20px; box-shadow: 0 1px 2px rgba(16,48,42,.04), 0 16px 40px rgba(16,48,42,.09); }
+    .cb-chat-head { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--hairline); margin-bottom: 16px; }
+    .cb-chat-ico { width: 32px; height: 32px; flex: none; border-radius: 10px; background: linear-gradient(135deg, var(--blue), #1aa352); color: #fff; display: grid; place-items: center; font-size: .875rem; }
+    .cb-chat-head b { display: block; font-size: .9375rem; font-weight: 800; color: var(--navy); }
+    .cb-chat-head span { display: block; font-size: .75rem; color: var(--text-muted); }
+    .cb-msg { border-radius: 14px; padding: 11px 14px; font-size: .875rem; line-height: 1.45; max-width: 86%; margin-bottom: 10px; }
+    .cb-msg--in { background: var(--bg-tint); color: var(--navy); margin-left: auto; border-bottom-right-radius: 4px; }
+    .cb-msg--out { background: var(--blue-mist); color: var(--blue-deep); font-weight: 600; border-bottom-left-radius: 4px; }
+    .cb-msg time { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .625rem; opacity: .6; margin-top: 4px; }
+    .cb-slotcard { border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+    .cb-slotcard b { display: block; font-size: .875rem; color: var(--navy); }
+    .cb-slotcard span { display: block; font-size: .75rem; color: var(--text-muted); }
+    .cb-confirm { margin-top: 12px; background: var(--blue); color: #fff; border-radius: 999px; padding: 11px; text-align: center; font-weight: 700; font-size: .875rem; }
+
+    .cb-control { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; margin: 0; padding: 0; }
+    .cb-control li { list-style: none; background: var(--paper); padding: 20px; }
+    .cb-control b { display: block; font-size: .9375rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+    .cb-control span { font-size: .875rem; color: var(--text-soft); line-height: 1.5; }
+
+    .cb-benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+    .cb-benefit { background: var(--paper); border: 1px solid var(--border); border-radius: 18px; padding: 24px; }
+    .cb-benefit h3 { font-size: 1.0625rem; font-weight: 800; letter-spacing: -.02em; margin: 0 0 8px; color: var(--navy); }
+    .cb-benefit p { margin: 0; font-size: .9375rem; color: var(--text-soft); line-height: 1.55; }
+
+    .cb-nums { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--paper); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+    .cb-nums > div { padding: 26px 22px; border-right: 1px solid var(--border); }
+    .cb-nums > div:last-child { border-right: 0; }
+    .cb-nums b { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: clamp(1.4rem,2.8vw,2rem); font-weight: 700; letter-spacing: -.035em; color: var(--navy); }
+    .cb-nums span { display: block; font-size: .8125rem; color: var(--text-muted); margin-top: 5px; line-height: 1.4; }
+
+    .cb-tablebox { overflow-x: auto; border: 1px solid var(--border); border-radius: 20px; background: var(--paper); }
+    .cb-table { border-collapse: collapse; width: 100%; min-width: 520px; }
+    .cb-table th, .cb-table td { padding: 14px 20px; text-align: left; border-bottom: 1px solid var(--border); font-size: .9375rem; }
+    .cb-table tr:last-child td { border-bottom: 0; }
+    .cb-table thead th { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); background: var(--bg-tint); }
+    .cb-table thead th:last-child { color: var(--blue-deep); }
+    .cb-table td:first-child { font-weight: 600; color: var(--navy); }
+    .cb-table td { color: var(--text-soft); }
+    .cb-yes { color: var(--blue-deep); font-weight: 800; }
+    .cb-no { color: #b8453a; font-weight: 800; }
+
+    .cb-faq { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+    .cb-faq details { background: var(--paper); }
+    .cb-faq summary { cursor: pointer; list-style: none; padding: 18px 22px; font-size: 1rem; font-weight: 700; color: var(--navy); display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+    .cb-faq summary::-webkit-details-marker { display: none; }
+    .cb-faq summary::after { content: '+'; flex: none; font-size: 1.25rem; font-weight: 700; color: var(--blue); }
+    .cb-faq details[open] summary::after { content: '−'; }
+    .cb-faq details p { margin: 0; padding: 0 22px 20px; font-size: .9375rem; color: var(--text-soft); line-height: 1.6; }
+    .cb-faq a { color: var(--blue-deep); font-weight: 700; }
+
+    .cb-price-note { max-width: 640px; margin: 0 auto; text-align: center; background: var(--paper); border: 1px solid var(--border); border-radius: 20px; padding: 32px; }
+    .cb-price-note p { margin: 0 0 8px; font-size: 1.0625rem; color: var(--text-soft); line-height: 1.6; }
+    .cb-price-note b { color: var(--navy); }
+    .cb-price-note .fine { font-size: .875rem; color: var(--text-muted); }
+    .cb-price-note a { display: inline-block; margin-top: 18px; background: var(--blue); color: #fff; font-weight: 700; font-size: .9375rem; padding: 12px 24px; border-radius: 999px; }
+
+    @media (max-width: 860px) {
+      .cb-ai { grid-template-columns: 1fr; }
+      .cb-nums { grid-template-columns: repeat(2, 1fr); }
+      .cb-nums > div:nth-child(2) { border-right: 0; }
+      .cb-nums > div:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .cb-sec { padding: 60px 0; }
+    }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo funciona un sistema de reservas para canchas de pádel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Configuras tus canchas, sus horarios y sus tarifas una sola vez. A partir de ahí tus jugadores ven la disponibilidad real y reservan solos desde la app o por WhatsApp con CourtAI. Cada reserva bloquea la cancha al instante, así que no hay forma de duplicar un horario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta CourtBit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hay un plan gratuito para probar y uno de pago con acceso completo. Los detalles están en la página de planes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿CourtBit le cobra comisión al club?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La comisión la paga el jugador y solo cuando paga con tarjeta desde la app. Si tu club cobra en efectivo o por transferencia, no hay comisión de CourtBit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo recibir pagos con MercadoPago?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Conectas tu propia cuenta de MercadoPago en un clic y el dinero cae directo ahí. También puedes usar Stripe. Un procesador activo a la vez, y lo cambias cuando quieras desde tu dashboard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo recibir pagos con Stripe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, con Stripe Connect. El cobro es nativo dentro de la app de jugadores y los depósitos llegan automáticamente a tu banco."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los jugadores necesitan descargar una app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No es obligatorio. Pueden reservar desde el enlace público de tu club o por WhatsApp con CourtAI. La app nativa existe para iOS y Android y le sirve al jugador frecuente, que además ve sus partidos y su ranking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo bloquear horarios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Bloqueas una cancha por mantenimiento, torneo o evento privado y deja de ofrecerse de inmediato, sin tener que avisar a nadie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo gestionar varias canchas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y también varias sedes. Cada cancha tiene su propio horario, superficie, tarifa y reglas, y todas se ven en un mismo calendario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si un jugador cancela?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tú defines las reglas: con cuánta anticipación se puede cancelar y si aplica reembolso. El horario vuelve a quedar disponible automáticamente para que otro jugador lo tome."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda configurar mi club?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Alrededor de diez minutos: creas tu cuenta, das de alta tus canchas con sus horarios y conectas tu procesador de pagos. No hay llamadas con ventas ni implementación."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -397,8 +571,9 @@
       <div class="e-hero-grid">
         <div>
           <span class="p-eyebrow"><span class="dot"></span> Reservas para clubes</span>
-          <h1>Tu sistema de reservas, <em>listo en 10 minutos</em>.</h1>
-          <p class="lead">Calendario por cancha, app de jugadores y pagos directos a tu Stripe o MercadoPago. Sin permanencia: cancelas cuando quieras. CourtBit cobra <strong>4% al jugador</strong>, nunca al club.</p>
+          <h1>Software de reservas para <em>clubes de pádel</em></h1>
+          <p class="e-hero-sub" style="font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-.02em;margin:14px 0 0;">Tu sistema de reservas, listo en 10 minutos.</p>
+          <p class="lead">Calendario por cancha, app de jugadores y pagos directos a tu Stripe o MercadoPago. Tus jugadores reservan desde la app o con <strong>CourtAI</strong>. La comisión la paga el jugador, nunca el club.</p>
           <div class="e-hero-actions">
             <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
             <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">Ver precios</a>
@@ -416,7 +591,7 @@
                  decoding="async" fetchpriority="high">
           </picture></div>
           <div class="e-float-card">
-            <strong>4% al jugador, nunca al club</strong>
+            <strong>Comisión al jugador, nunca al club</strong>
             <small>Solo en pagos con tarjeta por la app</small>
           </div>
         </div>
@@ -425,7 +600,26 @@
   </section>
 
   <!-- 2. Feature trio: Calendario · App jugadores · Pagos Stripe/MercadoPago -->
-  <section class="e-features">
+    <!-- El problema que ya vive el club -->
+  <section class="cb-sec cb-sec--tint">
+    <div class="container">
+      <div class="cb-head">
+        <span class="cb-eyebrow">Antes de CourtBit</span>
+        <h2>¿Todavía administras las reservas <em>por WhatsApp</em>?</h2>
+        <p>No es que tu equipo lo haga mal. Es que la herramienta no da para más.</p>
+      </div>
+      <ul class="cb-pain">
+        <li>Mensajes a todas horas, incluso domingo en la noche.</li>
+        <li>Horarios duplicados que alguien descubre ya en la cancha.</li>
+        <li>Cambios y cancelaciones que se apuntan a mano.</li>
+        <li>Cobros difíciles de cuadrar a fin de mes.</li>
+        <li>Recepción contestando las mismas cinco preguntas todos los días.</li>
+        <li>Huecos que se quedan vacíos porque nadie preguntó a tiempo.</li>
+      </ul>
+    </div>
+  </section>
+
+<section class="e-features">
     <div class="container">
       <span class="p-eyebrow"><span class="dot"></span> Cómo funciona</span>
       <h2>Tres herramientas. <em>Una</em> plataforma.</h2>
@@ -444,7 +638,7 @@
         <article class="e-feature">
           <div class="icon">C</div>
           <h3>Cobra por Stripe o MercadoPago</h3>
-          <p>Tú eliges el procesador y el dinero llega a tu propia cuenta, sin intermediarios. CourtBit cobra solo 4% al jugador cuando paga por la app — al club, nunca.</p>
+          <p>Tú eliges el procesador y el dinero llega a tu propia cuenta, sin intermediarios. La comisión la paga el jugador solo cuando usa tarjeta en la app — al club, nunca.</p>
         </article>
       </div>
     </div>
@@ -477,7 +671,94 @@
   </section>
 
   <!-- 4. Testimonial (1 card, real Supabase logo) -->
-  <section class="e-testimonial">
+
+  <!-- 5. Final CTA -->
+    <!-- CourtAI -->
+  <section class="cb-sec">
+    <div class="container">
+      <div class="cb-ai">
+        <div>
+          <span class="cb-eyebrow">CourtAI</span>
+          <h2>Reservas de pádel con <em>inteligencia artificial</em></h2>
+          <p>Tus jugadores escriben por WhatsApp como siempre. La diferencia es que ya no contesta tu recepción: contesta CourtAI, consulta la disponibilidad real de tus canchas y deja la reserva hecha.</p>
+          <ul class="cb-ai-steps">
+            <li><span><b>Consulta disponibilidad</b> en tiempo real, cancha por cancha.</span></li>
+            <li><span><b>Propone opciones</b> cuando el horario pedido ya está ocupado.</span></li>
+            <li><span><b>Crea la reserva</b> y la bloquea en tu calendario al instante.</span></li>
+            <li><span><b>Confirma al jugador</b> y le manda el cobro si tu club lo pide.</span></li>
+          </ul>
+          <p style="margin-top:22px"><b style="color:var(--navy)">Menos mensajes para tu equipo. Más facilidad para tus jugadores.</b></p>
+        </div>
+        <div class="cb-chat" role="img" aria-label="Conversación de ejemplo: un jugador pide cancha por WhatsApp y CourtAI confirma la reserva">
+          <div class="cb-chat-head">
+            <span class="cb-chat-ico"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"/></svg></span>
+            <span><b>CourtAI</b><span>Responde 24/7 por WhatsApp</span></span>
+          </div>
+          <div class="cb-msg cb-msg--in">Quiero una cancha mañana a las 7 para cuatro personas<time>11:24</time></div>
+          <div class="cb-msg cb-msg--out">¡Listo! Encontré disponibilidad:<time>11:24</time></div>
+          <div class="cb-slotcard">
+            <span><b>Cancha 2 · mañana 19:00 – 20:00</b><span>4 jugadores · $320 MXN</span></span>
+          </div>
+          <div class="cb-confirm">Confirmar reserva</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué controla el gerente -->
+  <section class="cb-sec cb-sec--tint">
+    <div class="container">
+      <div class="cb-head">
+        <span class="cb-eyebrow">Para el gerente</span>
+        <h2>Gestiona las reservas de tu club <em>desde un solo lugar</em></h2>
+        <p>Un calendario que refleja la operación real, no una versión simplificada de ella.</p>
+      </div>
+      <ul class="cb-control">
+        <li><b>Disponibilidad por cancha</b><span>Cada cancha con su propio horario, superficie y reglas.</span></li>
+        <li><b>Horarios y tarifas</b><span>Precios distintos por franja, por día o por temporada.</span></li>
+        <li><b>Reservas recurrentes</b><span>El grupo de los martes queda fijo sin volver a capturarlo.</span></li>
+        <li><b>Bloqueos y mantenimiento</b><span>Cierras una cancha y deja de ofrecerse al instante.</span></li>
+        <li><b>Clases y academia</b><span>Las clases ocupan cancha y se ven en el mismo calendario.</span></li>
+        <li><b>Pagos</b><span>Quién pagó, quién debe y con qué método.</span></li>
+        <li><b>Cancelaciones</b><span>Con tus reglas de anticipación y reembolso.</span></li>
+        <li><b>Historial de jugadores</b><span>Quién juega, cuánto y desde cuándo.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Beneficios operativos -->
+  <section class="cb-sec">
+    <div class="container">
+      <div class="cb-head">
+        <span class="cb-eyebrow">Qué cambia</span>
+        <h2>Menos administración. <em>Más ocupación.</em></h2>
+      </div>
+      <div class="cb-benefits">
+        <article class="cb-benefit"><h3>Reduce el trabajo manual</h3><p>Tus jugadores reservan solos, sin depender de que recepción esté disponible para contestar.</p></article>
+        <article class="cb-benefit"><h3>Llena los horarios muertos</h3><p>El jugador ve la disponibilidad real a cualquier hora, y los huecos dejan de depender de que alguien pregunte.</p></article>
+        <article class="cb-benefit"><h3>Centraliza los cobros</h3><p>La reserva y su pago viven en el mismo sistema, así que cuadrar el mes deja de ser un ejercicio de memoria.</p></article>
+        <article class="cb-benefit"><h3>Mejora la experiencia</h3><p>Reservar toma segundos desde el celular. El jugador que reserva fácil, vuelve.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prueba social -->
+  <section class="cb-sec cb-sec--tint">
+    <div class="container">
+      <div class="cb-head">
+        <span class="cb-eyebrow">Quién ya opera así</span>
+        <h2>Clubes y organizadores que <em>ya dejaron el WhatsApp</em></h2>
+      </div>
+      <div class="cb-nums">
+        <div><b>65</b><span>clubes y organizadores en CourtBit</span></div>
+        <div><b>2,246</b><span>jugadores registrados en la app</span></div>
+        <div><b>4,801</b><span>partidos gestionados</span></div>
+        <div><b>8</b><span>estados de México</span></div>
+      </div>
+    </div>
+  </section>
+
+<section class="e-testimonial">
     <div class="container">
       <div class="header-wrap">
         <span class="p-eyebrow"><span class="dot"></span> Testimonio</span>
@@ -501,11 +782,72 @@
     </div>
   </section>
 
-  <!-- 5. Final CTA -->
-  <section class="e-final-cta">
+  <!-- Comparativa -->
+  <section class="cb-sec">
+    <div class="container">
+      <div class="cb-head">
+        <span class="cb-eyebrow">Comparación</span>
+        <h2>Software para administrar canchas de pádel <em>contra WhatsApp y Excel</em></h2>
+      </div>
+      <div class="cb-tablebox">
+        <table class="cb-table">
+          <thead><tr><th scope="col">&nbsp;</th><th scope="col">WhatsApp / Excel</th><th scope="col">CourtBit</th></tr></thead>
+          <tbody>
+            <tr><td>Disponibilidad en tiempo real</td><td><span class="cb-no">✕</span></td><td><span class="cb-yes">✓</span></td></tr>
+            <tr><td>Reservas 24/7 sin recepción</td><td><span class="cb-no">✕</span></td><td><span class="cb-yes">✓</span></td></tr>
+            <tr><td>Pagos integrados</td><td><span class="cb-no">✕</span></td><td><span class="cb-yes">✓</span></td></tr>
+            <tr><td>Reservas asistidas por IA</td><td><span class="cb-no">✕</span></td><td><span class="cb-yes">✓</span> CourtAI</td></tr>
+            <tr><td>Historial de jugadores</td><td>Limitado</td><td><span class="cb-yes">✓</span></td></tr>
+            <tr><td>Calendario por cancha</td><td>Manual</td><td><span class="cb-yes">✓</span></td></tr>
+            <tr><td>Bloqueos y mantenimiento</td><td>Manual</td><td><span class="cb-yes">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Precio -->
+  <section class="cb-sec cb-sec--tint">
+    <div class="container">
+      <div class="cb-head">
+        <span class="cb-eyebrow">Cómo cobramos</span>
+        <h2>Al club <em>nunca</em> le cobramos comisión por reserva</h2>
+      </div>
+      <div class="cb-price-note">
+        <p>La comisión la paga el jugador, y solo cuando paga con tarjeta desde la app. <b>En efectivo y transferencia es cero.</b></p>
+        <p>El dinero llega directo a tu propia cuenta de Stripe o MercadoPago: CourtBit nunca lo retiene.</p>
+        <p class="fine">Sin permanencia. Cancelas cuando quieras.</p>
+        <a href="/pricing/">Ver planes y comisiones →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="cb-sec">
+    <div class="container">
+      <div class="cb-head">
+        <span class="cb-eyebrow">Preguntas frecuentes</span>
+        <h2>Lo que preguntan los clubes <em>antes de empezar</em></h2>
+      </div>
+      <div class="cb-faq">
+        <details><summary>¿Cómo funciona un sistema de reservas para canchas de pádel?</summary><p>Configuras tus canchas, sus horarios y sus tarifas una sola vez. A partir de ahí tus jugadores ven la disponibilidad real y reservan solos desde la app o por WhatsApp con CourtAI. Cada reserva bloquea la cancha al instante, así que no hay forma de duplicar un horario.</p></details>
+        <details><summary>¿Cuánto cuesta CourtBit?</summary><p>Hay un plan gratuito para probar y uno de pago con acceso completo. Los detalles están en la <a href="/pricing/">página de planes</a>.</p></details>
+        <details><summary>¿CourtBit le cobra comisión al club?</summary><p>No. La comisión la paga el jugador y solo cuando paga con tarjeta desde la app. Si tu club cobra en efectivo o por transferencia, no hay comisión de CourtBit.</p></details>
+        <details><summary>¿Puedo recibir pagos con MercadoPago?</summary><p>Sí. Conectas tu propia cuenta de MercadoPago en un clic y el dinero cae directo ahí. También puedes usar Stripe. Un procesador activo a la vez, y lo cambias cuando quieras desde tu dashboard.</p></details>
+        <details><summary>¿Puedo recibir pagos con Stripe?</summary><p>Sí, con Stripe Connect. El cobro es nativo dentro de la app de jugadores y los depósitos llegan automáticamente a tu banco.</p></details>
+        <details><summary>¿Los jugadores necesitan descargar una app?</summary><p>No es obligatorio. Pueden reservar desde el enlace público de tu club o por WhatsApp con CourtAI. La app nativa existe para iOS y Android y le sirve al jugador frecuente, que además ve sus partidos y su ranking.</p></details>
+        <details><summary>¿Puedo bloquear horarios?</summary><p>Sí. Bloqueas una cancha por mantenimiento, torneo o evento privado y deja de ofrecerse de inmediato, sin tener que avisar a nadie.</p></details>
+        <details><summary>¿Puedo gestionar varias canchas?</summary><p>Sí, y también varias sedes. Cada cancha tiene su propio horario, superficie, tarifa y reglas, y todas se ven en un mismo calendario.</p></details>
+        <details><summary>¿Qué pasa si un jugador cancela?</summary><p>Tú defines las reglas: con cuánta anticipación se puede cancelar y si aplica reembolso. El horario vuelve a quedar disponible automáticamente para que otro jugador lo tome.</p></details>
+        <details><summary>¿Cuánto tarda configurar mi club?</summary><p>Alrededor de diez minutos: creas tu cuenta, das de alta tus canchas con sus horarios y conectas tu procesador de pagos. No hay llamadas con ventas ni implementación.</p></details>
+      </div>
+    </div>
+  </section>
+
+<section class="e-final-cta">
     <div class="container">
       <h2>Empieza hoy. Tu primera <em>reserva</em> en 10 minutos.</h2>
-      <p>Sin permanencia. Cancela cuando quieras. CourtBit solo cobra 4% al jugador.</p>
+      <p>Sin permanencia. Cancela cuando quieras. La comisión la paga el jugador, nunca el club.</p>
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
         <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
         <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">Ver precios</a>
