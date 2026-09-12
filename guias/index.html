@@ -90,21 +90,22 @@
       font-size: 0.825rem;
       font-weight: 500;
     }
-    .e-nav { background: var(--blue); color: var(--paper); padding: 18px 0; position: sticky; top: 0; z-index: 50; }
+    .e-nav { background: var(--paper);;
+      border-bottom: 1px solid var(--border) color: var(--paper); padding: 18px 0; position: sticky; top: 0; z-index: 50; }
     .e-nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .e-logo { display: flex; align-items: center; }
     .e-logo img { height: 90px; width: auto; display: block; }
     .e-nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
     .e-nav-links a { color: var(--paper); font-weight: 600; font-size: 0.95rem; opacity: 0.9; transition: opacity 200ms; }
     .e-nav-links a:hover { opacity: 1; }
-    .e-nav-links a.is-active { color: var(--lime); opacity: 1; }
+    .e-nav-links a.is-active { color: var(--blue); opacity: 1; }
     .p-btn-lime {
       display: inline-block;
       background: var(--lime); color: var(--navy);
       border: 2px solid var(--lime);
       padding: 13px 24px; border-radius: 999px;
       font-weight: 700; font-size: 0.95rem;
-      box-shadow: 0 12px 32px -8px rgba(184, 240, 43, 0.4);
+      box-shadow: 0 12px 32px -8px rgba(21,128,61,0.28);
       transition: all 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .p-btn-lime:hover { background: #c7f548; transform: translateY(-2px); box-shadow: 0 18px 36px -8px rgba(184, 240, 43, 0.55); }
@@ -263,19 +264,29 @@
 
   <div class="e-statusbar">Guías CourtBit · Manuales de operación para tu club</div>
 
-  <nav class="e-nav">
-    <div class="container e-nav-inner">
-      <a href="/" class="e-logo" aria-label="CourtBit"><img src="../Assets/courtbit-logo.svg" alt="CourtBit"></a>
-      <ul class="e-nav-links">
-        <li><a href="/clubes/">Para clubes</a></li>
-        <li><a href="/academias/">Para academias</a></li>
-        <li><a href="/competencias/">Para organizadores</a></li>
-        <li><a href="/guias/" class="is-active">Guías</a></li>
-        <li><a href="/pricing/">Precios</a></li>
-      </ul>
-      <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
+  <nav class="e-nav" aria-label="Principal">
+  <div class="e-nav-inner">
+    <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
+      <img src="/Assets/courtbit-logo.svg" alt="CourtBit" width="286" height="150" fetchpriority="high">
+    </a>
+    <div class="e-nav-links">
+      <a href="/competencias/" class="">Competencias</a>
+      <a href="/clubes/" class="">Reservas</a>
+      <a href="/academias/" class="">Academia</a>
+      <a href="/torneos/">Torneos</a>
+      <a href="/guias/">Guías</a>
+      <a href="/pricing/" class="">Precios</a>
     </div>
-  </nav>
+    <div class="e-nav-secondary">
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">Dashboard</a>
+      <a href="/en/" class="e-nav-lang">EN</a>
+    </div>
+    <a href="/empezar/" class="e-nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Empezar gratis
+    </a>
+  </div>
+</nav>
 
   <header class="g-hero">
     <div class="container">
@@ -358,9 +369,9 @@
 
         <div class="e-footer-col">
           <h4>Producto</h4>
-          <a href="/clubes/" class="e-fl">Para clubes</a>
-          <a href="/academias/" class="e-fl">Para academias</a>
-          <a href="/competencias/" class="e-fl">Para organizadores</a>
+          <a href="/competencias/" class="e-fl">Competencias</a>
+      <a href="/clubes/" class="e-fl">Reservas</a>
+          <a href="/academias/" class="e-fl">Academia</a>
           <a href="/pricing/" class="e-fl">Precios</a>
         </div>
 

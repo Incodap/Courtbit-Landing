@@ -71,9 +71,10 @@
     }
     .e-topbar b { color: var(--lime); font-weight: 700; }
 
-    /* ─── Nav over saturated blue ─── */
+    /* ─── Nav clara: una sola banda a sangre en todo el sitio, y es el CTA final ─── */
     .e-nav {
-      background: var(--blue);
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
       position: sticky; top: 0; z-index: 50;
     }
     .e-nav-inner {
@@ -86,7 +87,7 @@
       font-weight: 800;
       font-size: 1.1rem;
       letter-spacing: 0.16em;
-      color: var(--paper);
+      color: var(--navy);
       text-transform: uppercase;
       display: flex; align-items: center; gap: 10px;
     }
@@ -98,7 +99,7 @@
     }
     .e-nav-links a {
       font-size: 0.9375rem;
-      color: rgba(255,255,255,0.92);
+      color: var(--text-soft);
       font-weight: 600;
       white-space: nowrap;
       transition: color 150ms;
@@ -106,11 +107,11 @@
       align-items: center;
       gap: 5px;
     }
-    .e-nav-links a:hover { color: var(--lime); }
-    .e-nav-links a.is-active { color: var(--lime); }
+    .e-nav-links a:hover { color: var(--blue); }
+    .e-nav-links a.is-active { color: var(--blue); }
     .e-nav-cta {
-      background: var(--lime);
-      color: var(--navy);
+      background: var(--blue);
+      color: var(--paper);
       display: inline-flex; align-items: center; justify-content: center;
       gap: 8px;
       transition: all 180ms;
@@ -124,9 +125,9 @@
       flex-shrink: 0;
     }
     .e-nav-cta:hover {
-      background: #c7f548;
+      background: var(--blue-deep);
       transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(184, 240, 43, 0.4);
+      box-shadow: 0 8px 20px rgba(21,128,61,0.28);
     }
     .e-nav-cta svg { width: 14px; height: 14px; }
 
@@ -139,22 +140,22 @@
     }
     .e-nav-secondary a {
       font-size: 0.875rem;
-      color: rgba(255,255,255,0.85);
+      color: var(--text-muted);
       font-weight: 600;
       transition: color 150ms;
     }
-    .e-nav-secondary a:hover { color: var(--paper); }
+    .e-nav-secondary a:hover { color: var(--navy); }
     .e-nav-lang {
       font-size: 0.8125rem;
       font-weight: 700;
       letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.85);
-      border: 1px solid rgba(255,255,255,0.35);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
       border-radius: 999px;
       padding: 4px 10px;
       transition: all 150ms;
     }
-    .e-nav-lang:hover { color: var(--paper); border-color: var(--paper); }
+    .e-nav-lang:hover { color: var(--navy); border-color: var(--navy); }
 
     /* ─── Footer ─── */
     footer {

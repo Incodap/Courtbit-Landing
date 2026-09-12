@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Torneos y Ligas de Padel con Cuota Fija | CourtBit</title>
-<meta name="description" content="Organiza torneos, ligas y retas por una cuota fija de $1,499 al mes: inscripciones, pagos con tu Stripe o MercadoPago y app para tus jugadores." />
+<meta name="description" content="Organiza torneos, ligas y retas por una cuota fija mensual: inscripciones, pagos con tu Stripe o MercadoPago y app para tus jugadores." />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejecuta tus propios torneos, ligas y retas — con una cuota fija" />
-<meta property="og:description" content="Todo lo que necesitas para gestionar tus torneos, ligas y retas: inscripciones, pagos, grupos, fases finales y calendario. Desde $1,499/mes." />
+<meta property="og:description" content="Todo lo que necesitas para gestionar tus torneos, ligas y retas: inscripciones, pagos, grupos, fases finales y calendario. Con una cuota fija mensual." />
 <link rel="canonical" href="https://www.courtbit.com.mx/torneos/">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
@@ -43,15 +43,16 @@
   .e-topbar b{color:var(--lime);font-weight:700}
 
   /* ───────── Nav ───────── */
-  .e-nav{background:var(--blue);position:sticky;top:0;z-index:50}
+  .e-nav{background:var(--paper);;
+      border-bottom: 1px solid var(--border)position:sticky;top:0;z-index:50}
   .e-nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
   .e-logo{display:flex;align-items:center;gap:10px}
   .e-logo img{height:84px;width:auto;display:block}
   .e-nav-links{display:flex;gap:28px;align-items:center}
   .e-nav-links a{font-size:.9375rem;color:rgba(255,255,255,.92);font-weight:600;transition:color 150ms}
-  .e-nav-links a:hover{color:var(--lime)}
-  .e-nav-cta{background:var(--lime);color:var(--navy);display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all 180ms;cursor:pointer;border:none;font-size:.875rem;font-weight:700;padding:10px 18px;border-radius:999px;white-space:nowrap;flex-shrink:0}
-  .e-nav-cta:hover{background:#c7f548;transform:translateY(-1px);box-shadow:0 8px 20px rgba(184,240,43,.4)}
+  .e-nav-links a:hover{color:var(--blue)}
+  .e-nav-cta{background:var(--blue);color:var(--paper);display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all 180ms;cursor:pointer;border:none;font-size:.875rem;font-weight:700;padding:10px 18px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+  .e-nav-cta:hover{background:var(--blue-deep);transform:translateY(-1px);box-shadow:0 8px 20px rgba(184,240,43,.4)}
   .e-nav-cta svg{width:14px;height:14px}
 
   /* ───────── Buttons ───────── */
@@ -296,21 +297,31 @@
 
 <!-- ===================== TOPBAR ===================== -->
 <div class="e-topbar">
-  <span><b>Cuota fija</b> · Torneos, ligas y retas ilimitados desde <b>$1,499/mes</b> — tú tienes el control</span>
+  <span><b>Cuota fija</b> · Torneos, ligas y retas ilimitados — tú tienes el control</span>
 </div>
 
 <!-- ===================== NAV ===================== -->
 <nav class="e-nav" aria-label="Principal">
   <div class="e-nav-inner">
-    <a href="/" class="e-logo" aria-label="Courtbit — Inicio">
-      <img src="/Assets/courtbit-logo.svg" alt="Courtbit">
+    <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
+      <img src="/Assets/courtbit-logo.svg" alt="CourtBit" width="286" height="150" fetchpriority="high">
     </a>
     <div class="e-nav-links">
-      <a href="/clubes/">Para clubes</a>
-      <a href="/academias/">Para academias</a>
-      <a href="/competencias/">Para organizadores</a>
-      <a href="/pricing/">Precios</a>
+      <a href="/competencias/" class="">Competencias</a>
+      <a href="/clubes/" class="">Reservas</a>
+      <a href="/academias/" class="">Academia</a>
+      <a href="/torneos/">Torneos</a>
+      <a href="/guias/">Guías</a>
+      <a href="/pricing/" class="">Precios</a>
     </div>
+    <div class="e-nav-secondary">
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">Dashboard</a>
+      <a href="/en/" class="e-nav-lang">EN</a>
+    </div>
+    <a href="/empezar/" class="e-nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Empezar gratis
+    </a>
   </div>
 </nav>
 
@@ -338,7 +349,7 @@
         <div class="t-vs__grid" style="grid-template-columns:1fr">
           <div class="t-pane win">
             <div class="tag">Con Courtbit</div>
-            <div class="price"><span class="pre">Cuota fija</span>$1,499<small>MXN / mes · torneos, ligas y retas ilimitados</small></div>
+            <div class="price"><span class="pre">Cuota fija</span>Un plan<small>torneos, ligas y retas ilimitados</small></div>
             <div class="note">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
               Mismo costo, organices los que organices
@@ -624,7 +635,7 @@
 <section class="e-final" id="contacto">
   <div class="e-final-inner">
     <h2>Tu club, tus torneos, <em>tu dinero</em>.</h2>
-    <p>Deja de pagar por evento. Con Courtbit organizas torneos ilimitados con una cuota fija de $1,499/mes — y todo el control se queda contigo.</p>
+    <p>Deja de pagar por evento. Con Courtbit organizas torneos ilimitados con una cuota fija mensual — y todo el control se queda contigo.</p>
   </div>
 </section>
 
@@ -642,9 +653,9 @@
       </div>
       <div class="footer-col">
         <h4>Producto</h4>
-        <a href="/clubes/" class="footer-link">Para clubes</a>
-        <a href="/academias/" class="footer-link">Para academias</a>
-        <a href="/competencias/" class="footer-link">Para organizadores</a>
+        <a href="/competencias/" class="footer-link">Competencias</a>
+      <a href="/clubes/" class="footer-link">Reservas</a>
+        <a href="/academias/" class="footer-link">Academia</a>
         <a href="/pricing/" class="footer-link">Precios</a>
       </div>
       <div class="footer-col">

@@ -160,9 +160,10 @@
     }
     .e-topbar b { color: var(--lime); font-weight: 700; }
 
-    /* ─── Nav over saturated blue ─── */
+    /* ─── Nav clara: una sola banda a sangre en todo el sitio, y es el CTA final ─── */
     .e-nav {
-      background: var(--blue);
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
       position: sticky; top: 0; z-index: 50;
     }
     .e-nav-inner {
@@ -175,7 +176,7 @@
       font-weight: 800;
       font-size: 1.1rem;
       letter-spacing: 0.16em;
-      color: var(--paper);
+      color: var(--navy);
       text-transform: uppercase;
       display: flex; align-items: center; gap: 10px;
     }
@@ -187,7 +188,7 @@
     }
     .e-nav-links a {
       font-size: 0.9375rem;
-      color: rgba(255,255,255,0.92);
+      color: var(--text-soft);
       font-weight: 600;
       white-space: nowrap;
       transition: color 150ms;
@@ -195,11 +196,11 @@
       align-items: center;
       gap: 5px;
     }
-    .e-nav-links a:hover { color: var(--lime); }
-    .e-nav-links a.is-active { color: var(--lime); }
+    .e-nav-links a:hover { color: var(--blue); }
+    .e-nav-links a.is-active { color: var(--blue); }
     .e-nav-cta {
-      background: var(--lime);
-      color: var(--navy);
+      background: var(--blue);
+      color: var(--paper);
       display: inline-flex; align-items: center; justify-content: center;
       gap: 8px;
       transition: all 180ms;
@@ -213,9 +214,9 @@
       flex-shrink: 0;
     }
     .e-nav-cta:hover {
-      background: #c7f548;
+      background: var(--blue-deep);
       transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(184, 240, 43, 0.4);
+      box-shadow: 0 8px 20px rgba(21,128,61,0.28);
     }
     .e-nav-cta svg { width: 14px; height: 14px; }
 
@@ -228,22 +229,22 @@
     }
     .e-nav-secondary a {
       font-size: 0.875rem;
-      color: rgba(255,255,255,0.85);
+      color: var(--text-muted);
       font-weight: 600;
       transition: color 150ms;
     }
-    .e-nav-secondary a:hover { color: var(--paper); }
+    .e-nav-secondary a:hover { color: var(--navy); }
     .e-nav-lang {
       font-size: 0.8125rem;
       font-weight: 700;
       letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.85);
-      border: 1px solid rgba(255,255,255,0.35);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
       border-radius: 999px;
       padding: 4px 10px;
       transition: all 150ms;
     }
-    .e-nav-lang:hover { color: var(--paper); border-color: var(--paper); }
+    .e-nav-lang:hover { color: var(--navy); border-color: var(--navy); }
 
     /* ─── Footer ─── */
     footer {
@@ -537,7 +538,7 @@
             text-decoration: none; transition: all 180ms;
             border: none; white-space: nowrap; flex-shrink: 0;
         }
-        .nav-cta:hover { background: var(--lime-deep); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(184,240,43,0.4); }
+        .nav-cta:hover { background: var(--lime-deep); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(21,128,61,0.28); }
         .mobile-toggle { display: none; background: none; border: none; color: var(--white); cursor: pointer; padding: 8px; }
         .mobile-toggle svg { width: 24px; height: 24px; }
 
@@ -607,7 +608,7 @@
             font-weight: 700; font-size: 0.9375rem;
             text-decoration: none; transition: all 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
             border: 2px solid var(--lime);
-            box-shadow: 0 12px 32px -8px rgba(184, 240, 43, 0.4);
+            box-shadow: 0 12px 32px -8px rgba(21,128,61,0.28);
         }
         .btn-primary:hover { background: #c7f548; border-color: #c7f548; transform: translateY(-2px); box-shadow: 0 18px 36px -8px rgba(184, 240, 43, 0.55); }
         .btn-secondary {
@@ -721,7 +722,7 @@
             border-radius: var(--radius-full); font-weight: 700;
             font-size: 0.875rem; text-decoration: none; transition: all 0.2s;
         }
-        .sticky-cta-primary { background: var(--lime); color: var(--navy); box-shadow: 0 6px 16px -4px rgba(184, 240, 43, 0.4); }
+        .sticky-cta-primary { background: var(--lime); color: var(--navy); box-shadow: 0 6px 16px -4px rgba(21,128,61,0.28); }
         .sticky-cta-secondary { background: var(--white); color: var(--navy); border: 1.5px solid var(--border); }
 
         @media (max-width:768px) {
@@ -915,7 +916,7 @@
         .pricing-feature svg { width: 16px; height: 16px; color: #5a9e00; flex-shrink: 0; }
         .pricing-feature.highlight {
             background: linear-gradient(135deg, var(--lime-bg), rgba(184,240,43,0.12));
-            border: 1px solid rgba(184,240,43,0.4);
+            border: 1px solid rgba(21,128,61,0.28);
             border-radius: 8px; padding: 7px 10px; margin: 2px -10px;
             font-weight: 600; color: var(--navy); position: relative;
         }
@@ -1714,7 +1715,7 @@
             <div class="section-header reveal"><span class="section-tag">Precios</span><h2 class="section-title">Un solo plan. <em>Todo incluido</em>.</h2></div>
             <div class="pricing-grid pricing-grid-single">
                 <div class="pricing-card featured reveal">
-                    <div class="pricing-name">Competencias</div><div class="pricing-price">$1,499 <span>MXN / mes</span></div><div class="pricing-desc">+ IVA · sin permanencia · para clubes, organizadores, asociaciones y federaciones</div>
+                    <div class="pricing-name">Competencias</div><div class="pricing-price">Un plan <span>todo incluido</span></div><div class="pricing-desc">sin permanencia · para clubes, organizadores, asociaciones y federaciones</div>
                     <div class="pricing-features">
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Torneos y categorias ilimitados</div>
                         <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Brackets automaticos</div>

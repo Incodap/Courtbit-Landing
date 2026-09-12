@@ -47,7 +47,8 @@
     .e-topbar b{color:var(--lime);font-weight:700;}
 
     /* ─── Nav ─── */
-    .e-nav{background:var(--blue);position:sticky;top:0;z-index:50;}
+    .e-nav{background:var(--paper);;
+      border-bottom: 1px solid var(--border)position:sticky;top:0;z-index:50;}
     .e-nav-inner{
       max-width:1120px;margin:0 auto;padding:12px 24px;
       display:flex;align-items:center;justify-content:space-between;gap:24px;
@@ -58,14 +59,14 @@
     .e-nav-links a{
       font-size:.9375rem;color:rgba(255,255,255,.92);font-weight:600;transition:color .15s;
     }
-    .e-nav-links a:hover{color:var(--lime);}
+    .e-nav-links a:hover{color:var(--blue);}
     .e-nav-cta{
-      background:var(--lime);color:var(--navy);
+      background:var(--blue);color:var(--paper);
       display:inline-flex;align-items:center;gap:8px;
       font-size:.875rem;font-weight:700;padding:10px 18px;border-radius:999px;
       border:none;cursor:pointer;white-space:nowrap;transition:all .18s;
     }
-    .e-nav-cta:hover{background:#c7f548;transform:translateY(-1px);box-shadow:0 8px 20px rgba(184,240,43,.4);}
+    .e-nav-cta:hover{background:var(--blue-deep);transform:translateY(-1px);box-shadow:0 8px 20px rgba(184,240,43,.4);}
     @media(max-width:860px){.e-nav-links{display:none;}}
 
     /* ─── Buttons ─── */
@@ -303,6 +304,11 @@
       .e-tiers{grid-template-columns:1fr;}
       .e-hero-meta{gap:18px;}
     }
+  
+    .e-subnav { background: var(--bg); border-bottom: 1px solid var(--border); }
+    .e-subnav-inner { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; gap: 22px; flex-wrap: wrap; }
+    .e-subnav a { font-size: 0.8125rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+    .e-subnav a:hover { color: var(--blue); }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -317,22 +323,29 @@
 
   <!-- Nav -->
   <nav class="e-nav" aria-label="Principal">
-    <div class="e-nav-inner">
-      <a href="#top" class="e-logo" aria-label="CourtBit — Inicio">
-        <img src="/Assets/courtbit-logo.svg" alt="CourtBit">
-      </a>
-      <div class="e-nav-links">
-        <a href="#productos">Qué ofrecemos</a>
-        <a href="#modelo">Modelo</a>
-        <a href="#para-quien">Para quién</a>
-        <a href="#por-que">Por qué</a>
-      </div>
-      <a href="#empezar" class="e-nav-cta">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" width="14" height="14"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Empezar gratis
-      </a>
+  <div class="e-nav-inner">
+    <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
+      <img src="/Assets/courtbit-logo.svg" alt="CourtBit" width="286" height="150" fetchpriority="high">
+    </a>
+    <div class="e-nav-links">
+      <a href="/competencias/" class="">Competencias</a>
+      <a href="/clubes/" class="">Reservas</a>
+      <a href="/academias/" class="">Academia</a>
+      <a href="/torneos/">Torneos</a>
+      <a href="/guias/">Guías</a>
+      <a href="/pricing/" class="">Precios</a>
     </div>
-  </nav>
+    <div class="e-nav-secondary">
+      <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">Dashboard</a>
+      <a href="/en/" class="e-nav-lang">EN</a>
+    </div>
+    <a href="/empezar/" class="e-nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Empezar gratis
+    </a>
+  </div>
+</nav>
+<div class="e-subnav"><div class="e-subnav-inner"><a href="#productos">Qué ofrecemos</a><a href="#modelo">Modelo</a><a href="#para-quien">Para quién</a><a href="#por-que">Por qué</a></div></div>
 
   <!-- Hero -->
   <header class="e-hero" id="top">
@@ -439,7 +452,7 @@
           <div class="label">Para organizadores</div>
           <h3>Competencias</h3>
           <div class="who">Torneos, ligas y circuitos</div>
-          <div class="price">$1,499 <small>MXN / mes</small></div>
+          <div class="price">un solo plan <small>MXN / mes</small></div>
           <p class="desc">Cuadros automáticos, jornadas y ranking por puntos. Captura resultados en cancha con Live Control y muéstralos en pantalla.</p>
           <ul class="e-feat">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Brackets: americano, mexicano, eliminatoria y grupos</li>
@@ -480,7 +493,7 @@
           <p>Quien organiza torneos y ligas obtiene herramientas avanzadas: cuadros automáticos, ligas con jornadas, ranking de circuito, reportes y pantalla en vivo.</p>
           <p>Por eso Competencias tiene <b>un solo plan con todo incluido</b>: sin niveles ni límites de categorías, parejas o sedes.</p>
           <div class="e-fee-note">
-            <span class="big">$1,499</span>
+            <span class="big">un solo plan</span>
             <span class="txt"><b>MXN/mes + IVA</b>, todo incluido. Sin permanencia: cancelas cuando quieras.</span>
           </div>
         </div>
@@ -494,7 +507,7 @@
         <div class="e-tier hot">
           <span class="tag">Todo incluido</span>
           <div class="name">Competencias</div>
-          <div class="amt">$1,499 <small>MXN/mes + IVA</small></div>
+          <div class="amt">un solo plan <small>MXN/mes + IVA</small></div>
           <div class="desc">Torneos, categorías y sedes ilimitados · brackets y calendario automáticos · ligas y retas · ranking de circuito · resultados y pantalla en vivo (TV) · reportes financieros · APIs públicas y white-label · soporte prioritario por WhatsApp.</div>
         </div>
       </div>
