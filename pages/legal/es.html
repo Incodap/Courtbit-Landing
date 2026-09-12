@@ -498,6 +498,15 @@
     
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
     .skip-link:focus { left: 0; }
+  
+    .tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+    .tabla-scroll > table { min-width: max-content; }
+  
+    /* Un track `1fr` trae `min-width: auto`, así que no puede encoger por
+       debajo del contenido: una tabla ancha dentro estiraba toda la página
+       a 927 px en móvil. `min-width: 0` le devuelve la capacidad de encoger
+       y deja que la tabla scrollee dentro de su propio contenedor. */
+    .legal-layout > *, .legal-content, .doc-section { min-width: 0; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -698,14 +707,14 @@
                     </div>
 
                     <h2 id="o-2">2. Planes y Precios</h2>
-                    <table>
+                    <div class="tabla-scroll"><table>
                         <thead>
                             <tr><th>Plan</th><th>Precio mensual (MXN)</th><th>Comisión al jugador</th></tr>
                         </thead>
                         <tbody>
                             <tr><td>Enterprise (plan único de Competencias)</td><td>$1,499</td><td>5%</td></tr>
                         </tbody>
-                    </table>
+                    </table></div>
                     <ul>
                         <li>Los precios están en pesos mexicanos (MXN) y no incluyen IVA salvo que se indique lo contrario.</li>
                         <li>CourtBit se reserva el derecho de modificar precios notificando con 30 días de anticipación.</li>
@@ -872,7 +881,7 @@
 
                     <h2 id="p-3">3. Transferencias de Datos</h2>
                     <p>CourtBit podrá transferir datos personales a los siguientes terceros:</p>
-                    <table>
+                    <div class="tabla-scroll"><table>
                         <thead>
                             <tr><th>Destinatario</th><th>Finalidad</th><th>País</th></tr>
                         </thead>
@@ -884,7 +893,7 @@
                             <tr><td>Organizadores de eventos</td><td>Gestión de inscripciones y resultados (nombre, categoría, contacto)</td><td>México</td></tr>
                             <tr><td>Autoridades mexicanas</td><td>Cuando sea requerido por ley o resolución judicial</td><td>México</td></tr>
                         </tbody>
-                    </table>
+                    </table></div>
                     <p>Los datos transferidos a empresas en Estados Unidos están protegidos bajo las políticas de privacidad de dichas empresas y los acuerdos contractuales con CourtBit. MercadoPago opera en México a través de las entidades del grupo Mercado Libre y trata los datos conforme a su propio <a href="https://www.mercadopago.com.mx/privacidad" target="_blank" rel="noopener">Aviso de Privacidad</a>, que puede contemplar transferencias a otros países donde el grupo opera.</p>
 
                     <h2 id="p-4">4. Derechos ARCO</h2>
@@ -1093,7 +1102,7 @@
                     </div>
 
                     <h3>3.1 Almacenamiento local (localStorage) — solo en páginas con inicio de sesión</h3>
-                    <table>
+                    <div class="tabla-scroll"><table>
                         <thead>
                             <tr><th>Clave</th><th>Propósito</th><th>Duración</th><th>Tipo</th></tr>
                         </thead>
@@ -1101,11 +1110,11 @@
                             <tr><td><code>courtbit_token</code></td><td>Mantener tu sesión iniciada (JWT)</td><td>Hasta cerrar sesión</td><td>Funcional / necesario</td></tr>
                             <tr><td><code>courtbit_user</code></td><td>Almacenar datos básicos de tu perfil para la interfaz</td><td>Hasta cerrar sesión</td><td>Funcional / necesario</td></tr>
                         </tbody>
-                    </table>
+                    </table></div>
                     <p>Estos datos se almacenan <strong>solo en tu dispositivo</strong> y se eliminan al cerrar sesión. No se comparten con terceros.</p>
 
                     <h3>3.2 Recursos externos</h3>
-                    <table>
+                    <div class="tabla-scroll"><table>
                         <thead>
                             <tr><th>Servicio</th><th>Proveedor</th><th>Propósito</th><th>Cookies</th></tr>
                         </thead>
@@ -1116,7 +1125,7 @@
                             <tr><td>Stripe.js</td><td>Stripe, Inc.</td><td>Formulario de pago seguro y prevención de fraude — solo en páginas de pago</td><td>Sí, cookies propias de Stripe</td></tr>
                             <tr><td>SDK de MercadoPago</td><td>MP Agregador, S. de R.L. de C.V.</td><td>Formulario de pago seguro y prevención de fraude — solo en páginas de pago</td><td>Sí, cookies e identificadores de dispositivo propios de MercadoPago</td></tr>
                         </tbody>
-                    </table>
+                    </table></div>
 
                     <h3>3.3 Cookies de terceros — no utilizadas actualmente</h3>
                     <p>CourtBit <strong>no utiliza</strong> actualmente:</p>

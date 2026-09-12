@@ -918,6 +918,9 @@
       nav.e-nav .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 6px 0; }
     }
     @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
+  
+    .tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+    .tabla-scroll > table { min-width: max-content; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -1273,7 +1276,7 @@
       <article class="e-test-card">
         <header class="e-test-head">
           <div class="e-test-avatar">
-            <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/object/public/courtbit-media/organizers/logos/9172bc43-112c-4737-b549-7296559e12a4?v=1777882417231"
+            <img src="https://qhtykipawsulyejtvvkm.supabase.co/storage/v1/render/image/public/courtbit-media/organizers/logos/9172bc43-112c-4737-b549-7296559e12a4?v=1777882417231&width=128&height=128&resize=contain&quality=80"
                  alt="Liga Municipal de Pádel Guaymas" loading="lazy"
                  onerror="this.style.display='none'">
           </div>
@@ -1296,7 +1299,7 @@
         <h2>Software para administrar canchas de pádel <em>contra WhatsApp y Excel</em></h2>
       </div>
       <div class="cb-tablebox">
-        <table class="cb-table">
+        <div class="tabla-scroll"><table class="cb-table">
           <thead><tr><th scope="col">&nbsp;</th><th scope="col">WhatsApp / Excel</th><th scope="col">CourtBit</th></tr></thead>
           <tbody>
             <tr><td>Disponibilidad en tiempo real</td><td><span class="cb-no">✕</span></td><td><span class="cb-yes">✓</span></td></tr>
@@ -1307,7 +1310,7 @@
             <tr><td>Calendario por cancha</td><td>Manual</td><td><span class="cb-yes">✓</span></td></tr>
             <tr><td>Bloqueos y mantenimiento</td><td>Manual</td><td><span class="cb-yes">✓</span></td></tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
   </section>

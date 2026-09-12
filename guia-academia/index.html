@@ -559,6 +559,11 @@
       nav.e-nav .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 6px 0; }
     }
     @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
+  
+    /* Una tabla puede ser más ancha que el teléfono; lo que no puede es
+       empujar la página entera. Cada una scrollea dentro de su contenedor. */
+    .tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+    .tabla-scroll > table { min-width: max-content; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -731,7 +736,7 @@
 
     <p class="h2-sub" style="margin-top: 24px;">Resumen de los dos caminos según cómo pagó cada alumno:</p>
     <div class="tablewrap tcard">
-      <table>
+      <div class="tabla-scroll"><table>
         <thead>
           <tr>
             <th>Situación</th>
@@ -751,7 +756,7 @@
             <td class="num">50/50 y cobro de $300 → $150 y $150</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
     <div class="note">En el reporte, una clase pagada solo con paquetes (mensualidad o por sesiones) muestra <b>"—" en la columna Bruto</b>: es normal. Ese dinero ya quedó registrado cuando se vendió el paquete; aquí solo se ve la ganancia del profesor. Por lo mismo, en las tarjetas de arriba "Paga entrenador" indica cuánto viene de paquetes y "Queda club" se refiere solo a los cobros hechos en clases.</div>
     <figure class="shot">

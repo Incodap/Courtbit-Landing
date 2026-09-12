@@ -498,6 +498,15 @@
     
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
     .skip-link:focus { left: 0; }
+  
+    .tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+    .tabla-scroll > table { min-width: max-content; }
+  
+    /* Un track `1fr` trae `min-width: auto`, así que no puede encoger por
+       debajo del contenido: una tabla ancha dentro estiraba toda la página
+       a 927 px en móvil. `min-width: 0` le devuelve la capacidad de encoger
+       y deja que la tabla scrollee dentro de su propio contenedor. */
+    .legal-layout > *, .legal-content, .doc-section { min-width: 0; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -701,14 +710,14 @@
                     </div>
 
                     <h2 id="o-2">2. Plans and Pricing</h2>
-                    <table>
+                    <div class="tabla-scroll"><table>
                         <thead>
                             <tr><th>Plan</th><th>Monthly price (MXN)</th><th>Player fee</th></tr>
                         </thead>
                         <tbody>
                             <tr><td>Enterprise (single Competencias plan)</td><td>$1,499</td><td>5%</td></tr>
                         </tbody>
-                    </table>
+                    </table></div>
                     <ul>
                         <li>Prices are in Mexican pesos (MXN) and do not include VAT (IVA) unless stated otherwise.</li>
                         <li>CourtBit reserves the right to modify prices by giving 30 days' notice.</li>
@@ -875,7 +884,7 @@
 
                     <h2 id="p-3">3. Data Transfers</h2>
                     <p>CourtBit may transfer personal data to the following third parties:</p>
-                    <table>
+                    <div class="tabla-scroll"><table>
                         <thead>
                             <tr><th>Recipient</th><th>Purpose</th><th>Country</th></tr>
                         </thead>
@@ -887,7 +896,7 @@
                             <tr><td>Event organizers</td><td>Managing registrations and results (name, category, contact info)</td><td>Mexico</td></tr>
                             <tr><td>Mexican authorities</td><td>When required by law or a judicial order</td><td>Mexico</td></tr>
                         </tbody>
-                    </table>
+                    </table></div>
                     <p>Data transferred to companies in the United States is protected under those companies' privacy policies and the contractual agreements with CourtBit. MercadoPago operates in Mexico through the Mercado Libre group entities and processes data under its own <a href="https://www.mercadopago.com.mx/privacidad" target="_blank" rel="noopener">Privacy Notice</a>, which may contemplate transfers to other countries where the group operates.</p>
 
                     <h2 id="p-4">4. ARCO Rights</h2>
@@ -1096,7 +1105,7 @@
                     </div>
 
                     <h3>3.1 Local storage (localStorage) — only on pages with sign-in</h3>
-                    <table>
+                    <div class="tabla-scroll"><table>
                         <thead>
                             <tr><th>Key</th><th>Purpose</th><th>Duration</th><th>Type</th></tr>
                         </thead>
@@ -1104,11 +1113,11 @@
                             <tr><td><code>courtbit_token</code></td><td>Keep you signed in (JWT)</td><td>Until you sign out</td><td>Functional / necessary</td></tr>
                             <tr><td><code>courtbit_user</code></td><td>Store basic profile data for the interface</td><td>Until you sign out</td><td>Functional / necessary</td></tr>
                         </tbody>
-                    </table>
+                    </table></div>
                     <p>This data is stored <strong>only on your device</strong> and is deleted when you sign out. It is not shared with third parties.</p>
 
                     <h3>3.2 External resources</h3>
-                    <table>
+                    <div class="tabla-scroll"><table>
                         <thead>
                             <tr><th>Service</th><th>Provider</th><th>Purpose</th><th>Cookies</th></tr>
                         </thead>
@@ -1119,7 +1128,7 @@
                             <tr><td>Stripe.js</td><td>Stripe, Inc.</td><td>Secure payment form and fraud prevention — payment pages only</td><td>Yes, Stripe's own cookies</td></tr>
                             <tr><td>MercadoPago SDK</td><td>MP Agregador, S. de R.L. de C.V.</td><td>Secure payment form and fraud prevention — payment pages only</td><td>Yes, MercadoPago's own cookies and device identifiers</td></tr>
                         </tbody>
-                    </table>
+                    </table></div>
 
                     <h3>3.3 Third-party cookies — not currently used</h3>
                     <p>CourtBit does <strong>not</strong> currently use:</p>

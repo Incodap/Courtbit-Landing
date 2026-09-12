@@ -299,6 +299,11 @@
 
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
     .skip-link:focus { left: 0; }
+  
+    /* Una tabla puede ser más ancha que el teléfono; lo que no puede es
+       empujar la página entera. Cada una scrollea dentro de su contenedor. */
+    .tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+    .tabla-scroll > table { min-width: max-content; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -652,7 +657,7 @@
     <div class="two">
       <div class="reveal d1">
         <div class="tbl-wrap" style="margin-bottom:18px">
-          <table>
+          <div class="tabla-scroll"><table>
             <thead>
               <tr><th>Partido</th><th>Valor en la tabla</th></tr>
             </thead>
@@ -661,10 +666,10 @@
               <tr><td>2 · Réplica</td><td><span class="pts">3</span> <span style="color:var(--muted);font-size:.8rem">puntos</span></td></tr>
               <tr><td>3 · El Cruce de Reinas <span style="color:var(--muted);font-size:.8rem">(decisivo)</span></td><td><span class="pts">2</span> <span style="color:var(--muted);font-size:.8rem">puntos</span></td></tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
         <div class="tbl-wrap">
-          <table>
+          <div class="tabla-scroll"><table>
             <thead>
               <tr><th>Resultado del duelo</th><th>Ganador</th><th>Perdedor</th></tr>
             </thead>
@@ -673,7 +678,7 @@
               <tr><td><b>2–1</b> · se decide en El Cruce</td><td><span class="pts">5</span></td><td><span class="pts">3</span></td></tr>
               <tr><td><b>W.O.</b> · no se presenta</td><td><span class="pts">6</span></td><td>0</td></tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
         <p style="font-size:.84rem;color:var(--muted);margin-top:14px">El decisivo vale 2 (y no 3) a propósito: así una <b>barrida 2–0 (6 pts)</b> pesa más que ganar sufriendo 2–1 (5 pts), y quien pierde peleando aún se lleva <b>3 pts</b>. La tabla general se ordena por <b>puntos totales</b>.</p>
       </div>
@@ -743,7 +748,7 @@
     </div>
 
     <div class="tbl-wrap reveal d2">
-      <table class="matrix">
+      <div class="tabla-scroll"><table class="matrix">
         <thead>
           <tr><th>Equipo</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
         </thead>
@@ -757,7 +762,7 @@
           <tr><th>7</th><td><span class="jpill">J6</span></td><td><span class="jpill">J7</span></td><td><span class="jpill">J4</span></td><td><span class="jpill">J1</span></td><td><span class="jpill">J5</span></td><td><span class="jpill">J2</span></td><td class="self">–</td><td><span class="jpill">J3</span></td></tr>
           <tr><th>8</th><td><span class="jpill">J7</span></td><td><span class="jpill">J4</span></td><td><span class="jpill">J1</span></td><td><span class="jpill">J5</span></td><td><span class="jpill">J2</span></td><td><span class="jpill">J6</span></td><td><span class="jpill">J3</span></td><td class="self">–</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <p style="text-align:center;margin-top:18px;font-size:.88rem;color:var(--muted)" class="reveal d3">

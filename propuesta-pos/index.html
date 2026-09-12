@@ -449,6 +449,11 @@ body.has-mobar{padding-bottom:76px}
 
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
     .skip-link:focus { left: 0; }
+  
+    /* Una tabla puede ser más ancha que el teléfono; lo que no puede es
+       empujar la página entera. Cada una scrollea dentro de su contenedor. */
+    .tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+    .tabla-scroll > table { min-width: max-content; }
   </style>
 </head>
 <body>
@@ -702,7 +707,7 @@ body.has-mobar{padding-bottom:76px}
       <h2>Lo que necesitas en el <em>mostrador</em></h2>
       <p>Equipo sencillo y barato. Nada que instalar más allá del driver de la impresora.</p>
     </div>
-    <div class="tw"><table class="outtbl">
+    <div class="tw"><div class="tabla-scroll"><table class="outtbl">
       <thead><tr><th>Equipo</th><th>Para qué</th><th>Costo aproximado</th></tr></thead>
       <tbody>
         <tr><td>PC, laptop o tablet</td><td>Operar el punto de venta desde el navegador</td><td>Ya lo tienes</td></tr>
@@ -711,7 +716,7 @@ body.has-mobar{padding-bottom:76px}
         <tr><td>Terminal bancaria</td><td>Cobrar con tarjeta. El POS registra el cobro; la terminal lo procesa</td><td>Ya la tienes</td></tr>
         <tr><td>Cajón de dinero <span class="chip next">Segunda etapa</span></td><td>Se abre desde la impresora. Requiere la app de escritorio</td><td>$1,500 – $3,000 MXN</td></tr>
       </tbody>
-    </table></div>
+    </table></div></div>
   </div>
 </section>
 </div>
@@ -811,7 +816,7 @@ body.has-mobar{padding-bottom:76px}
             <span class="cp on">Todas</span><span class="cp">Bebidas</span><span class="cp">Snacks</span><span class="cp">Pelotas</span><span class="cp">Grips</span><span class="cp">Ropa</span><span class="cp">Accesorios</span><span class="cp">Servicios</span>
             <span class="fld" style="margin-left:auto;padding:5px 11px;font-size:11.5px"><svg class="ic" style="width:12px;height:12px"><use href="#i-search"/></svg> Buscar producto…</span>
           </div>
-          <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><table class="tbl" id="tblProductos"></table></div></div>
+          <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><div class="tabla-scroll"><table class="tbl" id="tblProductos"></table></div></div></div>
         </section>
 
         <!-- ── Inventario ── -->
@@ -829,10 +834,10 @@ body.has-mobar{padding-bottom:76px}
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px">
             <span class="cp on">Todos</span><span class="cp">Stock bajo</span><span class="cp">Agotados</span><span class="cp">Sin movimiento</span>
           </div>
-          <div class="card" style="overflow:hidden;margin-bottom:16px"><div style="overflow-x:auto"><table class="tbl" id="tblStock"></table></div></div>
+          <div class="card" style="overflow:hidden;margin-bottom:16px"><div style="overflow-x:auto"><div class="tabla-scroll"><table class="tbl" id="tblStock"></table></div></div></div>
 
           <h3 style="font-size:13px;font-weight:800;letter-spacing:-.02em;margin:0 0 9px;color:var(--ink)">Movimientos recientes · Overgrip Wilson</h3>
-          <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><table class="tbl">
+          <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><div class="tabla-scroll"><table class="tbl">
             <thead><tr><th>Fecha</th><th>Movimiento</th><th>Motivo / referencia</th><th>Usuario</th><th class="n">Antes</th><th class="n">Mov.</th><th class="n">Después</th></tr></thead>
             <tbody>
               <tr><td>28 ago 11:04</td><td><span class="cp ok">Entrada</span></td><td>Distribuidora Padel MX</td><td>Encargado</td><td class="n">2</td><td class="n" style="color:var(--deep)">+12</td><td class="n">14</td></tr>
@@ -840,7 +845,7 @@ body.has-mobar{padding-bottom:76px}
               <tr><td>30 ago 20:41</td><td><span class="cp">Venta</span></td><td style="font-family:var(--mono);font-size:10.5px">A-000141</td><td>María G.</td><td class="n">12</td><td class="n" style="color:var(--danger)">−8</td><td class="n">4</td></tr>
               <tr><td>31 ago 09:15</td><td><span class="cp wr">Merma</span></td><td>Empaque dañado</td><td>Encargado · PIN «Mostrador»</td><td class="n">4</td><td class="n" style="color:var(--danger)">−1</td><td class="n">3</td></tr>
             </tbody>
-          </table></div></div>
+          </table></div></div></div>
         </section>
 
         <!-- ── Ventas ── -->
@@ -861,7 +866,7 @@ body.has-mobar{padding-bottom:76px}
             <span class="cp">Todos los métodos</span><span class="cp">Todos los cajeros</span><span class="cp">Solo crédito</span>
             <span class="fld" style="margin-left:auto;padding:5px 11px;font-size:11.5px"><svg class="ic" style="width:12px;height:12px"><use href="#i-search"/></svg> Buscar folio…</span>
           </div>
-          <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><table class="tbl">
+          <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><div class="tabla-scroll"><table class="tbl">
             <thead><tr><th>Folio</th><th>Hora</th><th>Cliente</th><th>Artículos</th><th>Método</th><th>Cajero</th><th class="n">Total</th><th></th></tr></thead>
             <tbody>
               <tr><td style="font-family:var(--mono)">A-000148</td><td>20:14</td><td>Venta general</td><td>3</td><td><span class="cp ok">Efectivo</span></td><td>María G.</td><td class="n">$400.00</td><td class="n"><button class="cp on" type="button" data-modal="mTicket">Ticket</button></td></tr>
@@ -871,7 +876,7 @@ body.has-mobar{padding-bottom:76px}
               <tr style="opacity:.6"><td style="font-family:var(--mono)">A-000144</td><td>18:40</td><td>Venta general</td><td>2</td><td><span class="cp bd">Cancelada</span></td><td>Luis P.</td><td class="n" style="text-decoration:line-through">$155.00</td><td class="n"><button class="cp" type="button" data-modal="mTicket">Ticket</button></td></tr>
               <tr><td style="font-family:var(--mono)">A-000143</td><td>18:12</td><td>Venta general</td><td>4</td><td><span class="cp ok">Efectivo</span></td><td>Luis P.</td><td class="n">$318.00</td><td class="n"><button class="cp" type="button" data-modal="mTicket">Ticket</button></td></tr>
             </tbody>
-          </table></div></div>
+          </table></div></div></div>
         </section>
 
         <!-- ── Clientes ── -->
@@ -881,7 +886,7 @@ body.has-mobar{padding-bottom:76px}
             <button class="btn" type="button"><svg class="ic" style="width:13px;height:13px"><use href="#i-plus"/></svg> Nuevo cliente</button>
           </div>
           <div style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:12px;align-items:start" id="cliGrid">
-            <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><table class="tbl">
+            <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><div class="tabla-scroll"><table class="tbl">
               <thead><tr><th>Cliente</th><th>Teléfono</th><th class="n">Compras</th><th class="n">Saldo</th><th>Última compra</th></tr></thead>
               <tbody>
                 <tr style="background:var(--soft)"><td>Christian Michell</td><td style="font-family:var(--mono);font-size:10.5px">667 118 2204</td><td class="n">14</td><td class="n" style="color:var(--danger)">$750.00</td><td>05 sep</td></tr>
@@ -890,7 +895,7 @@ body.has-mobar{padding-bottom:76px}
                 <tr><td>Sofía Ochoa</td><td style="font-family:var(--mono);font-size:10.5px">667 908 1145</td><td class="n">9</td><td class="n" style="color:var(--danger)">$410.00</td><td>07 sep</td></tr>
                 <tr><td>Luis Fernando Ríos</td><td style="font-family:var(--mono);font-size:10.5px">667 331 0092</td><td class="n">22</td><td class="n">$0.00</td><td>04 sep</td></tr>
               </tbody>
-            </table></div></div>
+            </table></div></div></div>
 
             <div class="card" style="padding:15px;display:grid;gap:12px">
               <div style="display:flex;align-items:center;gap:10px">
@@ -903,13 +908,13 @@ body.has-mobar{padding-bottom:76px}
               </div>
               <div>
                 <span class="lb">Últimas compras</span>
-                <table class="tbl" style="font-size:11.5px">
+                <div class="tabla-scroll"><table class="tbl" style="font-size:11.5px">
                   <tbody>
                     <tr><td style="padding:7px 0">01 sep · <span style="font-family:var(--mono);font-size:10px">A-001023</span></td><td class="n" style="padding:7px 0">$850.00</td></tr>
                     <tr><td style="padding:7px 0">03 sep · <span style="font-family:var(--mono);font-size:10px">A-001045</span></td><td class="n" style="padding:7px 0">$400.00</td></tr>
                     <tr><td style="padding:7px 0">28 ago · <span style="font-family:var(--mono);font-size:10px">A-000982</span></td><td class="n" style="padding:7px 0">$260.00</td></tr>
                   </tbody>
-                </table>
+                </table></div>
               </div>
               <button class="btn" type="button" style="justify-content:center" data-pane-go="cxc">Ver estado de cuenta</button>
             </div>
@@ -932,7 +937,7 @@ body.has-mobar{padding-bottom:76px}
             <span style="width:1px;height:18px;background:var(--ln);margin:0 4px"></span>
             <span style="font-size:10.5px;color:var(--ink3);font-weight:700">Ordenar:</span><span class="cp on">Saldo</span><span class="cp">Antigüedad</span>
           </div>
-          <div class="card" style="overflow:hidden;margin-bottom:18px"><div style="overflow-x:auto"><table class="tbl">
+          <div class="card" style="overflow:hidden;margin-bottom:18px"><div style="overflow-x:auto"><div class="tabla-scroll"><table class="tbl">
             <thead><tr><th>Cliente</th><th class="n">Saldo</th><th class="n">Ventas pendientes</th><th>Última compra</th><th>Último pago</th><th class="n">Antigüedad</th><th></th></tr></thead>
             <tbody>
               <tr><td>Ana Beltrán</td><td class="n" style="color:var(--danger)">$4,120.00</td><td class="n">7</td><td>06 sep</td><td>12 ago</td><td class="n"><span class="cp bd">26 días</span></td><td class="n"><button class="cp on" type="button" data-modal="mAbono">Registrar abono</button></td></tr>
@@ -940,7 +945,7 @@ body.has-mobar{padding-bottom:76px}
               <tr style="background:var(--soft)"><td>Christian Michell</td><td class="n" style="color:var(--danger)">$750.00</td><td class="n">2</td><td>03 sep</td><td>05 sep</td><td class="n"><span class="cp ok">2 días</span></td><td class="n"><button class="cp on" type="button" data-modal="mAbono">Registrar abono</button></td></tr>
               <tr><td>Sofía Ochoa</td><td class="n" style="color:var(--danger)">$410.00</td><td class="n">1</td><td>07 sep</td><td>—</td><td class="n"><span class="cp ok">1 día</span></td><td class="n"><button class="cp" type="button" data-modal="mAbono">Registrar abono</button></td></tr>
             </tbody>
-          </table></div></div>
+          </table></div></div></div>
 
           <h3 style="font-size:13px;font-weight:800;letter-spacing:-.02em;margin:0 0 9px;color:var(--ink)">Estado de cuenta · Christian Michell</h3>
           <div class="card" style="padding:15px;margin-bottom:10px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
@@ -953,14 +958,14 @@ body.has-mobar{padding-bottom:76px}
             </div>
             <button class="btn" type="button" data-modal="mAbono"><svg class="ic" style="width:13px;height:13px"><use href="#i-cash"/></svg> Registrar abono</button>
           </div>
-          <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><table class="tbl">
+          <div class="card" style="overflow:hidden"><div style="overflow-x:auto"><div class="tabla-scroll"><table class="tbl">
             <thead><tr><th>Fecha</th><th>Concepto</th><th>Referencia</th><th>Usuario</th><th class="n">Cargo</th><th class="n">Abono</th><th class="n">Saldo</th></tr></thead>
             <tbody>
               <tr><td>01 sep</td><td><span class="cp bd">Cargo</span> Venta #1023</td><td style="font-family:var(--mono);font-size:10.5px;color:var(--deep)">A-001023</td><td>María G.</td><td class="n">$850.00</td><td class="n" style="color:var(--ink3);font-weight:500">—</td><td class="n">$850.00</td></tr>
               <tr><td>03 sep</td><td><span class="cp bd">Cargo</span> Venta #1045</td><td style="font-family:var(--mono);font-size:10.5px;color:var(--deep)">A-001045</td><td>Luis P.</td><td class="n">$400.00</td><td class="n" style="color:var(--ink3);font-weight:500">—</td><td class="n">$1,250.00</td></tr>
               <tr><td>05 sep</td><td><span class="cp ok">Abono</span> Efectivo</td><td style="font-family:var(--mono);font-size:10.5px;color:var(--deep)">AB-0012</td><td>María G. · Caja 1</td><td class="n" style="color:var(--ink3);font-weight:500">—</td><td class="n" style="color:var(--deep)">$500.00</td><td class="n">$750.00</td></tr>
             </tbody>
-          </table></div></div>
+          </table></div></div></div>
         </section>
 
         <!-- ── Caja ── -->
@@ -997,14 +1002,14 @@ body.has-mobar{padding-bottom:76px}
           </div>
           <div class="card" style="padding:15px;margin-top:10px">
             <span class="lb">Historial de cortes</span>
-            <div style="overflow-x:auto"><table class="tbl">
+            <div style="overflow-x:auto"><div class="tabla-scroll"><table class="tbl">
               <thead><tr><th>Sesión</th><th>Caja</th><th>Usuario</th><th>Abierta</th><th>Cerrada</th><th class="n">Esperado</th><th class="n">Contado</th><th class="n">Diferencia</th></tr></thead>
               <tbody>
                 <tr><td style="font-family:var(--mono)">#48</td><td>Caja 1</td><td>María G.</td><td>08 sep 09:12</td><td><span class="cp ok">En curso</span></td><td class="n">$8,400.00</td><td class="n">—</td><td class="n">—</td></tr>
                 <tr><td style="font-family:var(--mono)">#47</td><td>Caja 1</td><td>Luis P.</td><td>07 sep 08:58</td><td>07 sep 22:04</td><td class="n">$9,120.00</td><td class="n">$9,060.00</td><td class="n" style="color:var(--danger)">−$60.00</td></tr>
                 <tr><td style="font-family:var(--mono)">#46</td><td>Caja 1</td><td>María G.</td><td>06 sep 09:05</td><td>06 sep 21:48</td><td class="n">$7,340.00</td><td class="n">$7,340.00</td><td class="n" style="color:var(--deep)">$0.00</td></tr>
               </tbody>
-            </table></div>
+            </table></div></div>
           </div>
         </section>
 
@@ -1023,23 +1028,23 @@ body.has-mobar{padding-bottom:76px}
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="repGrid">
             <div class="card" style="padding:15px">
               <span class="lb">Productos más vendidos</span>
-              <table class="tbl"><tbody>
+              <div class="tabla-scroll"><table class="tbl"><tbody>
                 <tr><td>Gatorade 600 ml</td><td class="n">184 pz</td><td class="n">$6,440</td></tr>
                 <tr><td>Agua Ciel 1 L</td><td class="n">151 pz</td><td class="n">$3,020</td></tr>
                 <tr><td>Bote Head Pro x3</td><td class="n">42 pz</td><td class="n">$10,920</td></tr>
                 <tr><td>Overgrip Wilson</td><td class="n">38 pz</td><td class="n">$3,610</td></tr>
                 <tr><td>Barra proteína</td><td class="n">33 pz</td><td class="n">$1,485</td></tr>
-              </tbody></table>
+              </tbody></table></div>
             </div>
             <div class="card" style="padding:15px">
               <span class="lb">Ventas por método de pago</span>
-              <table class="tbl"><tbody>
+              <div class="tabla-scroll"><table class="tbl"><tbody>
                 <tr><td>Efectivo</td><td class="n">198</td><td class="n">$41,300</td></tr>
                 <tr><td>Tarjeta débito</td><td class="n">61</td><td class="n">$26,140</td></tr>
                 <tr><td>Tarjeta crédito</td><td class="n">28</td><td class="n">$14,020</td></tr>
                 <tr><td>Transferencia</td><td class="n">11</td><td class="n">$2,160</td></tr>
                 <tr><td>A crédito</td><td class="n">14</td><td class="n">$12,780</td></tr>
-              </tbody></table>
+              </tbody></table></div>
             </div>
           </div>
         </section>

@@ -143,6 +143,11 @@
     
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
     .skip-link:focus { left: 0; }
+  
+    /* Una tabla puede ser más ancha que el teléfono; lo que no puede es
+       empujar la página entera. Cada una scrollea dentro de su contenedor. */
+    .tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+    .tabla-scroll > table { min-width: max-content; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -216,7 +221,7 @@
             </div>
 
             <!-- Quarterly summary table -->
-            <table class="qtable">
+            <div class="tabla-scroll"><table class="qtable">
                 <thead>
                     <tr>
                         <th></th>
@@ -257,7 +262,7 @@
                         <td>74</td>
                     </tr>
                 </tbody>
-            </table>
+            </table></div>
 
             <!-- Clients per quarter -->
             <div class="clients-row">
