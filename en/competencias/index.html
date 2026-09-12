@@ -408,6 +408,10 @@
        parche por página se convierte en whack-a-mole. Este bloque va SIEMPRE
        al final del <style> y usa `nav.e-nav` para ganar por especificidad,
        no por orden. Si se toca el menú móvil, se toca aquí. ═══════════════ */
+    /* El nav necesita su propio contexto de apilamiento: en las páginas donde
+       es `position: static`, el panel se dibujaba correctamente pero el hero
+       lo tapaba. */
+    nav.e-nav { position: relative; z-index: 60; }
     nav.e-nav .e-nav-inner { position: relative; }
     nav.e-nav .e-nav-burger {
       display: inline-flex; flex: none; width: 44px; height: 44px; padding: 0;
@@ -424,8 +428,15 @@
     }
     @media (max-width: 900px) {
       nav.e-nav:not(.is-open) .e-nav-links { display: none; }
+      /* Orden fijo de la barra: logo · idioma · CTA · botón. Sin esto, cada
+         página lo acomodaba distinto y el botón saltaba de lado. */
+      nav.e-nav .e-logo { order: 1; }
+      nav.e-nav .e-nav-secondary { order: 2; }
+      nav.e-nav .e-nav-cta { order: 3; }
+      nav.e-nav .e-nav-burger { order: 4; }
+      nav.e-nav .e-nav-links { order: 5; }
       nav.e-nav .e-nav-links {
-        display: flex; position: absolute; left: 0; right: 0; top: 100%;
+        display: flex; position: absolute; left: 0; right: 0; top: 100%; z-index: 61;
         flex-direction: column; gap: 0; align-items: stretch; margin: 0;
         background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
         box-shadow: 0 14px 30px rgba(16,48,42,.10); padding: 4px 16px 10px;
@@ -436,7 +447,11 @@
       nav.e-nav .e-nav-links a:last-child { border-bottom: 0; }
       nav.e-nav .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 6px 0; }
       nav.e-nav .e-only-mobile { display: flex; }
-      nav.e-nav .e-nav-secondary { display: none; }
+      /* El idioma es un control persistente, no un destino: vive siempre en
+         la barra. Dashboard sí es un destino y se queda dentro del panel. */
+      nav.e-nav .e-nav-secondary { display: flex; order: 2; margin-left: auto; gap: 0; }
+      nav.e-nav .e-nav-secondary .e-nav-login { display: none; }
+      nav.e-nav .e-nav-secondary .e-nav-lang { min-height: 40px; display: inline-flex; align-items: center; }
     }
     @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
     </style>
@@ -1370,7 +1385,6 @@
       <a href="/en/pricing/" class="">Pricing</a>
       <span class="e-nav-sep" aria-hidden="true"></span>
       <a href="https://dashboard.courtbit.com.mx" class="e-nav-login e-only-mobile">Dashboard</a>
-      <a href="/competencias/" class="e-nav-lang e-only-mobile">ES</a>
     </div>
     <div class="e-nav-secondary">
       <a href="https://dashboard.courtbit.com.mx" class="e-nav-login">Dashboard</a>
