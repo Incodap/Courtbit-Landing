@@ -489,82 +489,6 @@
       font-weight: 700;
     }
 
-    /* ─── Pricing Why (gratis vs pago) ─── */
-    .e-pricing-why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      max-width: 920px;
-      margin: 0 auto;
-    }
-    .e-pricing-why-card {
-      background: var(--bg-tint);
-      border: 1px solid rgba(21,128,61, 0.12);
-      border-radius: 22px;
-      padding: 32px;
-      transition: transform 220ms;
-    }
-    .e-pricing-why-card:hover { transform: translateY(-3px); }
-    .e-pricing-why-card.dark {
-      background: var(--navy);
-      color: var(--paper);
-      border-color: transparent;
-      position: relative;
-      overflow: hidden;
-    }
-    .e-pricing-why-card.dark::before {
-      content: '';
-      position: absolute;
-      top: -30%; right: -10%;
-      width: 60%; height: 130%;
-      background: var(--blue);
-      opacity: 0.22;
-      transform: skewX(-15deg);
-      pointer-events: none;
-    }
-    .e-pricing-why-badge {
-      display: inline-flex;
-      align-items: center;
-      font-size: 0.6875rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 2;
-    }
-    .e-pricing-why-badge-lime {
-      background: var(--lime);
-      color: var(--navy);
-    }
-    .e-pricing-why-card h3 {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.022em;
-      margin: 0 0 12px;
-      color: var(--navy);
-      position: relative;
-      z-index: 2;
-    }
-    .e-pricing-why-card.dark h3 { color: var(--paper); }
-    .e-pricing-why-card p {
-      margin: 0 0 14px;
-      color: var(--text-soft);
-      font-size: 0.9375rem;
-      line-height: 1.6;
-      position: relative;
-      z-index: 2;
-    }
-    .e-pricing-why-card p:last-child { margin-bottom: 0; }
-    .e-pricing-why-card.dark p {
-      color: rgba(255,255,255,0.88);
-    }
-    .e-pricing-why-card b { color: var(--navy); }
-    .e-pricing-why-card.dark b { color: var(--lime); }
-
     /* ─── Compact secondary mocks (Academia + Bracket) ─── */
     .e-mock-pair {
       display: grid;
@@ -2939,34 +2863,6 @@
     </div>
   </section>
 
-  <!-- 6.5 PRICING MODEL — gratis vs pago -->
-  <section class="e-pricing-why" style="padding: 96px 0; background: var(--paper);">
-    <div class="container">
-      <div class="e-section-header">
-        <span class="e-eyebrow"><span class="dot"></span> Nuestro modelo</span>
-        <h2 class="e-section-title">Pagas según <em>cómo operas</em>.</h2>
-        <p class="e-section-desc">Planes a la medida de tu club, tu academia o tu torneo. El dinero de tus cobros llega directo a tu Stripe o MercadoPago; la comisión la paga el jugador, nunca el club.</p>
-      </div>
-
-      <div class="e-pricing-why-grid">
-        <div class="e-pricing-why-card">
-          <div class="e-pricing-why-badge e-pricing-why-badge-lime">Planes para tu club</div>
-          <h3>Clubes y academias</h3>
-          <p>Al club <b>nunca le cobramos comisión.</b> El jugador o alumno paga comisión solo si usa tarjeta, y baja al pasar a Enterprise. Efectivo y transferencia: cero. Pagos directos a tu Stripe o MercadoPago.</p>
-        </div>
-        <div class="e-pricing-why-card dark">
-          <div class="e-pricing-why-badge e-pricing-why-badge-lime">Un solo plan · todo incluido</div>
-          <h3>Organizadores de torneos y ligas</h3>
-          <p>Un torneo es <b>operación intensa</b>. Por eso hay un solo plan con <b>acceso total a todo CourtBit</b>, sin niveles ni permanencia. El precio está en la página de planes.</p>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 36px;">
-        <a href="/pricing/" class="e-btn e-btn-blue">Ver todos los planes →</a>
-      </div>
-    </div>
-  </section>
-
   <!-- 7. PRODUCT SHOWCASE 1 — Dashboard + App Reservar -->
   <section class="e-showcase">
     <div class="container">
@@ -3501,7 +3397,7 @@
 
   <section class="e-final" id="contacto">
     <div class="e-final-inner">
-      <h2>Empieza hoy. En <em>10 minutos</em>, tu primer cobro.</h2>
+      <h2>Empieza <em>gratis</em>. Crece cuando lo necesites.</h2>
       <p>Una cuenta, tres productos. Sin tarjeta, sin contratos, sin costos ocultos.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
         <a href="/empezar/" class="e-btn e-btn-lime">Crear cuenta gratis →</a>
