@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Precios — CourtBit. Planes para tu club de padel.</title>
-    <meta name="description" content="Reservas y academias: 4% al pagador, nunca al club ni al instructor. Competencias en un solo plan de $1,499 MXN/mes + IVA con todas las funcionalidades.">
+    <meta name="description" content="Free para probar CourtBit y Enterprise por $1,499 MXN/mes + IVA con acceso total: torneos, ligas, retas y reservas sin límites. La comisión la paga el jugador, nunca el club.">
     <meta property="og:title" content="Precios — CourtBit. Planes para tu club de padel.">
-    <meta property="og:description" content="4% al pagador en reservas y academias. Competencias en un solo plan de $1,499/mes + IVA, todo incluido.">
+    <meta property="og:description" content="Free para probar y Enterprise por $1,499/mes + IVA con acceso total a todo CourtBit. La comisión la paga el jugador, nunca el club.">
     <meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-pricing.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -17,7 +17,7 @@
     <meta property="og:site_name" content="CourtBit">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Precios — CourtBit. Planes para tu club de padel.">
-    <meta name="twitter:description" content="4% al pagador en reservas y academias. Competencias en un solo plan, todo incluido.">
+    <meta name="twitter:description" content="Free para probar y Enterprise con acceso total a todo CourtBit. La comisión la paga el jugador, nunca el club.">
     <meta name="twitter:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-pricing.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.courtbit.com.mx/pricing/">
@@ -1428,7 +1428,64 @@
                 gap: 10px 24px;
             }
         }
-    </style>
+    
+    /* ═══ PRICING V2 · comparativa Free vs Enterprise (espejo del Dashboard) ═══ */
+    .pv2 { padding: 88px 0; background: var(--paper, #fff); }
+    .pv2-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+    .pv2-head h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.035em; margin: 16px 0 12px; }
+    .pv2-head > p { color: var(--text-soft, #3a4262); font-size: 1.0625rem; line-height: 1.55; margin: 0 auto; max-width: 56ch; }
+    .pv2-toggle { display: inline-flex; gap: 4px; margin-top: 26px; background: var(--bg-tint, #f4f6ff); border: 1px solid var(--border, #e6e8ef); border-radius: 999px; padding: 4px; }
+    .pv2-toggle button { font: inherit; font-size: 0.875rem; font-weight: 700; color: var(--text-muted, #6b7191); background: none; border: 0; border-radius: 999px; padding: 9px 18px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+    .pv2-toggle button.is-on { background: var(--navy, #0f1d4d); color: #fff; }
+    .pv2-save { font-size: 0.6875rem; font-weight: 700; background: var(--lime-soft, #e9fbb8); color: #3f5406; border-radius: 999px; padding: 3px 8px; }
+    .pv2-toggle button.is-on .pv2-save { background: rgba(255,255,255,.16); color: #d7f78a; }
+
+    .pv2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+    .pv2-plan { position: relative; border: 1px solid var(--border, #e6e8ef); border-radius: 22px; background: var(--paper, #fff); padding: 28px; display: flex; flex-direction: column; gap: 20px; }
+    .pv2-plan--reco { border-color: var(--blue, #2e59fb); box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 38px rgba(46,89,251,.12); }
+    .pv2-badge { position: absolute; top: -12px; left: 24px; background: var(--blue, #2e59fb); color: #fff; font-size: 0.6875rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 5px 13px; }
+    .pv2-plan header { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; flex-wrap: wrap; }
+    .pv2-plan h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; margin: 0; }
+    .pv2-plan header p { margin: 4px 0 0; font-size: 0.875rem; color: var(--text-muted, #6b7191); }
+    .pv2-price { text-align: right; }
+    .pv2-price b { display: block; font-size: clamp(1.75rem, 3.4vw, 2.5rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+    .pv2-price b small { font-size: 0.875rem; font-weight: 600; color: var(--text-muted, #6b7191); letter-spacing: 0; margin-left: 3px; }
+    .pv2-price > span { display: block; margin-top: 7px; font-size: 0.75rem; color: var(--text-muted, #6b7191); max-width: 30ch; margin-left: auto; line-height: 1.4; }
+    .pv2-cta { display: block; text-align: center; border-radius: 999px; padding: 14px 20px; font-weight: 800; font-size: 0.9375rem; }
+    .pv2-cta-main { background: var(--blue, #2e59fb); color: #fff; }
+    .pv2-cta-ghost { border: 1px solid var(--border, #e6e8ef); color: var(--navy, #0f1d4d); }
+    .pv2-rows { margin: 0; padding: 0; display: flex; flex-direction: column; }
+    .pv2-row { display: grid; grid-template-columns: 118px 1fr; gap: 14px; padding: 14px 0; border-top: 1px solid var(--border, #e6e8ef); align-items: start; }
+    .pv2-row:first-child { border-top: 0; padding-top: 0; }
+    .pv2-row > b { font-size: 0.8125rem; font-weight: 700; color: var(--navy, #0f1d4d); line-height: 1.35; }
+    .pv2-row ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .pv2-row li { font-size: 0.8125rem; line-height: 1.45; color: var(--text-soft, #3a4262); padding-left: 20px; position: relative; }
+    .pv2-row li::before { content: '✓'; position: absolute; left: 0; top: -1px; color: #2f8f4e; font-weight: 800; }
+    .pv2-row li.off { color: var(--text-faint, #9aa0bb); }
+    .pv2-row li.off::before { content: '🔒'; font-size: 0.6875rem; top: 1px; }
+    .pv2-iva { font-size: 0.75rem; color: var(--text-muted, #6b7191); text-align: center; margin: 18px 0 0; }
+
+    .pv2-why { margin-top: 56px; }
+    .pv2-why h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 20px; }
+    .pv2-why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .pv2-why-card { border: 1px solid var(--border, #e6e8ef); border-radius: 18px; padding: 22px; background: var(--paper, #fff); }
+    .pv2-why-card h4 { font-size: 1.0625rem; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .pv2-why-card p { margin: 0; font-size: 0.875rem; line-height: 1.55; color: var(--text-soft, #3a4262); }
+
+    .pv2-all { margin-top: 48px; border-top: 1px solid var(--border, #e6e8ef); padding-top: 32px; }
+    .pv2-all h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.022em; margin: 0 0 16px; }
+    .pv2-all ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px 26px; }
+    .pv2-all li { font-size: 0.875rem; color: var(--text-soft, #3a4262); padding-left: 22px; position: relative; line-height: 1.5; }
+    .pv2-all li::before { content: '✓'; position: absolute; left: 0; color: #2f8f4e; font-weight: 800; }
+
+    @media (max-width: 860px) {
+      .pv2-grid { grid-template-columns: 1fr; }
+      .pv2 { padding: 64px 0; }
+      .pv2-price { text-align: left; }
+      .pv2-price > span { margin-left: 0; }
+    }
+
+  </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
@@ -1468,7 +1525,7 @@
                 <div class="b-pricing-hero-header reveal">
                     <span class="p-eyebrow"><span class="dot"></span> Precios</span>
                     <h1>Precios claros.<br><em>Sin sorpresas.</em></h1>
-                    <p class="b-pricing-desc">Reservas y Academias tienen planes a la medida de tu club. CourtBit cobra 4% al pagador (jugador o alumno) solo cuando paga por la app, nunca al club ni al instructor. Competencias es un módulo opcional con un solo plan que incluye todo.</p>
+                    <p class="b-pricing-desc">Reservas y Academias tienen planes a la medida de tu club. La comisión la paga el jugador o alumno solo cuando paga por la app, nunca el club ni el instructor: 7% en Free y 5% en Enterprise. En efectivo y transferencia, cero.</p>
                 </div>
 
                 <!-- ═══ SECTION 1: PLANES PARA CLUBES Y ACADEMIAS ═══ -->
@@ -1478,7 +1535,7 @@
                         <span class="ribbon">★ Para clubes</span>
                         <h2>Reservas</h2>
                         <div class="b-price-display">Planes <small>para tu club</small></div>
-                        <p class="b-fee-note">Solo <b>4% al jugador</b> cuando paga reservas por la app. Sin permanencia, cancelas cuando quieras.</p>
+                        <p class="b-fee-note">La comisión la paga el jugador cuando reserva por la app: <b>7% en Free y 5% en Enterprise</b>. Sin permanencia, cancelas cuando quieras.</p>
                         <ul class="b-bullets">
                             <li><span class="check"></span> Calendario multi-cancha · multi-sede</li>
                             <li><span class="check"></span> App nativa para jugadores (iOS + Android)</li>
@@ -1495,7 +1552,7 @@
                         <span class="ribbon">★ Para entrenadores</span>
                         <h2>Academias</h2>
                         <div class="b-price-display">Planes <small>para tu academia</small></div>
-                        <p class="b-fee-note">Solo <b>4% al alumno</b> cuando paga colegiatura por la app. Sin permanencia, cancelas cuando quieras.</p>
+                        <p class="b-fee-note">La comisión la paga el alumno cuando paga colegiatura por la app: <b>7% en Free y 5% en Enterprise</b>. Sin permanencia, cancelas cuando quieras.</p>
                         <ul class="b-bullets">
                             <li><span class="check"></span> Inscripciones online y cobros recurrentes</li>
                             <li><span class="check"></span> Asistencia y comunicación con padres</li>
@@ -1521,57 +1578,101 @@
         <!-- ════════════════════════════════════════════════════ -->
         <!-- SECTION 2: ¿Organizas torneos? — Competencias, plan único -->
         <!-- ════════════════════════════════════════════════════ -->
-        <section class="tier-table-intro">
-            <div class="container reveal">
-                <span class="p-eyebrow"><span class="dot"></span> Opcional · Solo para organizadores</span>
-                <h2>¿Organizas <em>torneos</em>?</h2>
-                <p>Si solo gestionas reservas o tu academia, las dos secciones de arriba ya cubren tu negocio. Competencias es un módulo opcional para clubes y operadores que necesitan brackets automáticos, calendario de jornadas, ranking por puntos y Live Control en cancha. Un solo plan, con todo incluido.</p>
-            </div>
-        </section>
-
-        <!-- SINGLE COMPETENCIAS PLAN — reemplaza la tabla de 4 planes -->
-        <section class="pricing">
+        <section class="pv2" id="planes">
             <div class="container">
-                <div class="b-stack reveal">
-                    <article class="b-hero-card">
-                        <div>
-                            <span class="ribbon">★ Un solo plan</span>
-                            <h2>Todo para tus <em>torneos</em></h2>
-                            <p class="b-tagline">Sin niveles ni límites: todas las funcionalidades de Competencias en una sola mensualidad.</p>
-                            <ul class="b-bullets b-bullets-2col">
-                                <li><span class="check"></span> Torneos y categorías ilimitados</li>
-                                <li><span class="check"></span> Brackets automáticos</li>
-                                <li><span class="check"></span> Calendario de jornadas automático</li>
-                                <li><span class="check"></span> Ligas: americana, escalera e individual</li>
-                                <li><span class="check"></span> Retas: americano y rey de la cancha</li>
-                                <li><span class="check"></span> Ranking por puntos y de circuito</li>
-                                <li><span class="check"></span> Resultados en vivo</li>
-                                <li><span class="check"></span> Pantalla de partidos en vivo (TV)</li>
-                                <li><span class="check"></span> Múltiples sedes</li>
-                                <li><span class="check"></span> Reportes financieros y analíticos</li>
-                                <li><span class="check"></span> APIs públicas + White-label</li>
-                                <li><span class="check"></span> Soporte prioritario por WhatsApp</li>
-                            </ul>
-                            <div class="b-ctas">
-                                <a href="/empezar/" class="p-btn p-btn-lime">Empezar ahora →</a>
-                                <a href="/competencias/" class="p-btn p-btn-ghost">Ver Competencias</a>
-                            </div>
-                        </div>
+                <div class="pv2-head">
+                    <span class="p-eyebrow"><span class="dot"></span> Un plan · Acceso total</span>
+                    <h2>Compara los planes</h2>
+                    <p>Free es para probar CourtBit. Enterprise es para operar tu club: torneos, ligas, retas y reservas sin límites.</p>
+                    <div class="pv2-toggle" role="group" aria-label="Periodo de facturación">
+                        <button type="button" id="pv2-mensual" class="is-on" aria-pressed="true">Mensual</button>
+                        <button type="button" id="pv2-anual" aria-pressed="false">Anual <span class="pv2-save">2 meses gratis</span></button>
+                    </div>
+                </div>
 
-                        <div class="b-breakdown">
-                            <h4>Mensualidad</h4>
-                            <div class="b-number">$1,499<small>MXN / mes</small></div>
-                            <p class="b-iva"><b>+ IVA</b> · sin permanencia</p>
-                            <ul>
-                                <li><b>Todas las funcionalidades</b> de Competencias</li>
-                                <li><b>Sin límites</b> de categorías, torneos ni sedes</li>
-                                <li>Cancela cuando quieras</li>
-                            </ul>
-                        </div>
+                <div class="pv2-grid">
+                    <article class="pv2-plan">
+                        <header>
+                            <div><h3>Free</h3><p>Para probar CourtBit</p></div>
+                            <div class="pv2-price">
+                                <b>Gratis</b>
+                                <span>7% de comisión al jugador en pagos por la app</span>
+                            </div>
+                        </header>
+                        <a href="/empezar/" class="pv2-cta pv2-cta-ghost">Crear cuenta gratis</a>
+                        <div class="pv2-rows"><div class="pv2-row"><b>Torneos</b><ul><li>Solo 1 torneo de prueba, con 1 categoría y hasta 12 parejas</li><li class="off">Al usarlo, crear más torneos requiere Enterprise</li></ul></div><div class="pv2-row"><b>Ligas</b><ul><li class="off">Bloqueadas: ligas americanas y escalera solo en Enterprise</li></ul></div><div class="pv2-row"><b>Retas</b><ul><li>Rey de la cancha y americano, con inscripción y pago en línea</li></ul></div><div class="pv2-row"><b>Reservas</b><ul><li>Calendario de canchas, enlace público de reserva y cobros</li></ul></div><div class="pv2-row"><b>Jugadores y pagos</b><ul><li>Inscripciones y pagos en línea (obligatorios para publicar)</li><li class="off">Códigos de descuento</li></ul></div><div class="pv2-row"><b>Equipo</b><ul><li>Solo tú (1 miembro)</li></ul></div><div class="pv2-row"><b>Herramientas premium</b><ul><li class="off">Ranking, autorellenado, Excel y PDFs con marca: solo en Enterprise</li></ul></div></div>
                     </article>
+
+                    <article class="pv2-plan pv2-plan--reco">
+                        <span class="pv2-badge">Recomendado</span>
+                        <header>
+                            <div><h3>Enterprise</h3><p>Acceso total a todo CourtBit</p></div>
+                            <div class="pv2-price">
+                                <b><span data-plan="mensual">$1,499<small>/mes</small></span><span data-plan="anual" hidden>$14,990<small>/año</small></span></b>
+                                <span>5% de comisión al jugador en pagos por la app</span>
+                            </div>
+                        </header>
+                        <a href="/empezar/" class="pv2-cta pv2-cta-main">Empezar ahora →</a>
+                        <div class="pv2-rows"><div class="pv2-row"><b>Torneos</b><ul><li>Todos los torneos que organices, con categorías y parejas sin tope</li></ul></div><div class="pv2-row"><b>Ligas</b><ul><li>Ligas americanas y escalera, todas las que necesites</li></ul></div><div class="pv2-row"><b>Retas</b><ul><li>Rey de la cancha y americano, con inscripción y pago en línea</li></ul></div><div class="pv2-row"><b>Reservas</b><ul><li>Calendario de canchas, enlace público de reserva y cobros</li></ul></div><div class="pv2-row"><b>Jugadores y pagos</b><ul><li>Inscripciones con o sin cobro en línea; publicas cuando quieras</li><li>Códigos de descuento</li></ul></div><div class="pv2-row"><b>Equipo</b><ul><li>Todo tu equipo, sin límite de miembros</li></ul></div><div class="pv2-row"><b>Herramientas premium</b><ul><li>Ranking de circuito, autorellenado del calendario, reportes Excel, PDFs y TV con tu marca</li></ul></div></div>
+                    </article>
+                </div>
+                <p class="pv2-iva"><b>+ IVA</b> · sin permanencia, cancelas cuando quieras</p>
+
+                <div class="pv2-why">
+                    <h3>¿Por qué actualizar?</h3>
+                    <div class="pv2-why-grid">
+                        <div class="pv2-why-card">
+                            <h4>Opera sin topes</h4>
+                            <p>Todos los torneos y ligas que tu club necesite, con las categorías y parejas que se inscriban.</p>
+                        </div>
+                        <div class="pv2-why-card">
+                            <h4>Cobra con menos comisión</h4>
+                            <p>Del 7% al 5% al jugador en cada pago por la app, y publicas sin exigir cobro en línea.</p>
+                        </div>
+                        <div class="pv2-why-card">
+                            <h4>Tu marca en todo</h4>
+                            <p>Rol, cuadros y resultados en PDF y pantalla de TV con tu identidad, ranking de circuito y equipo sin límite.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pv2-all">
+                    <h3>Todo lo que incluye Enterprise</h3>
+                    <ul>
+                        <li>Torneos y categorías ilimitados</li>
+                        <li>Brackets automáticos</li>
+                        <li>Calendario de jornadas automático</li>
+                        <li>Ligas: americana, escalera e individual</li>
+                        <li>Retas: americano y rey de la cancha</li>
+                        <li>Ranking por puntos y de circuito</li>
+                        <li>Resultados en vivo</li>
+                        <li>Pantalla de partidos en vivo (TV)</li>
+                        <li>Múltiples sedes</li>
+                        <li>Reportes financieros y analíticos</li>
+                        <li>APIs públicas + White-label</li>
+                        <li>Soporte prioritario por WhatsApp</li>
+                    </ul>
                 </div>
             </div>
         </section>
+
+        <script>
+        (function () {
+          var m = document.getElementById('pv2-mensual'), a = document.getElementById('pv2-anual');
+          if (!m || !a) return;
+          function set(periodo) {
+            document.querySelectorAll('[data-plan]').forEach(function (el) {
+              el.hidden = el.getAttribute('data-plan') !== periodo;
+            });
+            m.classList.toggle('is-on', periodo === 'mensual');
+            a.classList.toggle('is-on', periodo === 'anual');
+            m.setAttribute('aria-pressed', String(periodo === 'mensual'));
+            a.setAttribute('aria-pressed', String(periodo === 'anual'));
+          }
+          m.addEventListener('click', function () { set('mensual'); });
+          a.addEventListener('click', function () { set('anual'); });
+        })();
+        </script>
 
         <section class="custom-cta">
             <div class="container">
