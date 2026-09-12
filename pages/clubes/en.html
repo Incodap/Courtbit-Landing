@@ -147,7 +147,7 @@
     .e-nav-links a { color: var(--paper); font-weight: 600; font-size: 0.95rem; opacity: 0.9; transition: opacity 200ms; }
     .e-nav-links a:hover { opacity: 1; }
     .e-nav-links a.is-active { color: var(--blue); opacity: 1; }
-    @media (max-width: 860px) { .e-nav-links { display: none; } }
+    @media (max-width: 860px) { }
 
     /* Hero */
     .e-hero { background: var(--blue); color: var(--paper); padding: 80px 0 96px; position: relative; overflow: hidden; }
@@ -378,18 +378,24 @@
         align-items: center;
       }
     }
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Skip to content</a>
 
   <!-- Status bar -->
   <div class="e-statusbar">New · CourtBit Reservas now available in Mexico · Booking for your padel club</div>
 
   <!-- NAV -->
   <!-- /NAV -->
+
+<main id="contenido">
 
   <!-- 1. Hero -->
   <section class="e-hero">
@@ -513,7 +519,9 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  </main>
+
+<!-- FOOTER -->
   <!-- /FOOTER -->
 
 </body>

@@ -300,6 +300,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <!-- TOPBAR -->
   <div class="topbar">
@@ -325,6 +326,8 @@
       </div>
     </div>
   </nav>
+
+<main id="contenido">
 
   <!-- HERO -->
   <header class="hero">
@@ -512,7 +515,9 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  </main>
+
+<footer>
     <div class="container">
       <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px" class="cf-grid">
         <div>
@@ -553,7 +558,10 @@
       @media (max-width:900px){footer .cf-grid{grid-template-columns:1fr 1fr 1fr !important;gap:32px !important}footer .cf-grid>div:first-child{grid-column:1 / -1}}
       @media (max-width:600px){footer .cf-grid{grid-template-columns:1fr 1fr !important;gap:28px !important}footer .cf-grid>div:first-child{grid-column:1 / -1}}
       @media (max-width:380px){footer .cf-grid{grid-template-columns:1fr !important;gap:24px !important}}
-    </style>
+    
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
   </footer>
 
   <!-- WHATSAPP FLOAT -->

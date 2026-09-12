@@ -509,7 +509,7 @@
       gap: 40px;
       margin-bottom: 32px;
     }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 0.6875rem;
       font-weight: 800;
       color: var(--navy);
@@ -572,7 +572,6 @@
       .e-phone { width: 200px; }
       .e-float.left { left: -8px; top: 46%; }
       .e-float.right { right: -8px; bottom: 10%; }
-      .e-nav-links { display: none; }
       .e-feature-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
       .footer-grid .footer-col:first-child { grid-column: 1 / -1; }
@@ -588,6 +587,9 @@
       .e-logo img { height: 64px; }
       .e-nav-inner { padding: 12px 16px; }
     }
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
   </style>
 
   <!-- Google Analytics (GA4) -->
@@ -596,6 +598,7 @@
 </head>
 
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div class="e-topbar">
     <span><b>Disponible</b> · CourtBit en iOS y Android · <b>Gratis</b></span>
   </div>
@@ -623,6 +626,8 @@
     </a>
   </div>
 </nav>
+
+<main id="contenido">
 
   <header class="e-hero">
     <div class="container">
@@ -762,7 +767,9 @@
     </div>
   </section>
 
-  <footer>
+  </main>
+
+<footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
@@ -775,7 +782,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Producto</h4>
+          <h3>Producto</h3>
           <a href="/competencias/" class="footer-link">Competencias</a>
       <a href="/clubes/" class="footer-link">Reservas</a>
           <a href="/academias/" class="footer-link">Academia</a>
@@ -783,14 +790,14 @@
         </div>
 
         <div class="footer-col">
-          <h4>Herramientas</h4>
+          <h3>Herramientas</h3>
           <a href="/calculadora-torneo/" class="footer-link">Calculadora de torneo</a>
           <a href="/calculadora-liga/" class="footer-link">Calculadora de liga</a>
           <a href="/generador-cuadro-torneo-padel/" class="footer-link">Generador de cuadros</a>
         </div>
 
         <div class="footer-col">
-          <h4>Guías</h4>
+          <h3>Guías</h3>
           <a href="/como-organizar-torneo-padel/" class="footer-link">Cómo organizar un torneo</a>
           <a href="/mejores-practicas-torneo-padel/" class="footer-link">Mejores prácticas</a>
           <a href="/liga-americana-padel/" class="footer-link">Liga americana</a>

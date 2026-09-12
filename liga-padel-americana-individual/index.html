@@ -322,16 +322,22 @@
 
         .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 8px; vertical-align: middle; }
         @keyframes spin { to { transform: rotate(360deg); } }
-    </style>
+    
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
     <nav><div class="nav-c">
         <a href="/" class="logo">Court<span>Bit</span></a>
         <a href="/" class="back-link">&larr; Volver al inicio</a>
     </div></nav>
+
+<main id="contenido">
 
     <section class="hero">
         <div class="container">
@@ -458,7 +464,9 @@
         </div>
     </div></section>
 
-    <footer><div class="container">
+    </main>
+
+<footer><div class="container">
         <div class="footer-logo">Court<span>Bit</span></div>
         <p class="footer-text">&copy; 2026 CourtBit. Todos los derechos reservados.</p>
     </div></footer>

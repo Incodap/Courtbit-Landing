@@ -256,7 +256,7 @@
       gap: 40px;
       margin-bottom: 32px;
     }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 0.6875rem;
       font-weight: 800;
       color: var(--navy);
@@ -339,8 +339,26 @@
       .e-nav-links a { font-size: 0.8125rem; }
     }
     @media (max-width: 900px) {
-      .e-nav-links { display: none; }
-      .e-nav-secondary { display: none; }
+      /* La nav NO desaparece en móvil: pasa a una tira deslizable bajo el
+         logo. Un prospecto que aún no quiere dejar datos necesita poder
+         evaluar producto y precios sin quedar atrapado en el scroll. */
+      .e-nav-inner { flex-wrap: wrap; row-gap: 0; }
+      .e-logo { order: 1; }
+      .e-nav-cta { order: 2; }
+      .e-nav-links { order: 3; }
+      .e-nav-secondary { order: 4; }
+      .e-nav-links {
+        display: flex; flex: 1 1 200px; gap: 18px;
+        overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+        border-top: 1px solid var(--border); margin-top: 10px; padding: 9px 0 2px;
+      }
+      .e-nav-links::-webkit-scrollbar { display: none; }
+      .e-nav-links a { font-size: 0.875rem; min-height: 30px; align-items: center; }
+      .e-nav-secondary {
+        display: flex; flex: none; gap: 14px;
+        border-top: 1px solid var(--border); margin-top: 10px; padding: 9px 0 2px;
+      }
+      .e-nav-secondary a { min-height: 30px; display: inline-flex; align-items: center; }
       .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
       .footer-grid .footer-col:first-child { grid-column: 1 / -1; margin-bottom: 4px; }
       .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
@@ -370,6 +388,9 @@
       .e-logo img { height: 80px; }
       .e-nav-cta { padding: 8px 13px; font-size: 0.75rem; }
     }
+
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
     </style>
   <style>
     /* ─── HERO ─── */
@@ -822,7 +843,7 @@
       white-space: nowrap;
     }
     .e-mock-tile-head a:hover { color: var(--blue-deep); }
-    .e-mock-tile h4 {
+    .e-mock-tile h3 {
       font-family: 'DM Sans', system-ui, sans-serif;
       font-size: 1.125rem;
       font-weight: 800;
@@ -1526,7 +1547,7 @@
       padding: 14px 18px 12px;
       border-bottom: 1px solid #eef0f6;
     }
-    .dm-mockup-header h4 {
+    .dm-mockup-header .dm-mockup-header-title {
       font-size: 15px;
       font-weight: 700;
       letter-spacing: -0.012em;
@@ -1832,7 +1853,7 @@
       font-size: 10px;
       color: #687872;
     }
-    .pm-header h5 {
+    .pm-header .pm-header-title {
       flex: 1;
       text-align: center;
       font-size: 11px;
@@ -2259,7 +2280,7 @@
       gap: 40px;
       margin-bottom: 32px;
     }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 0.6875rem;
       font-weight: 800;
       color: var(--navy);
@@ -2340,7 +2361,6 @@
       .e-test-card,
       .e-test-card:nth-child(4),
       .e-test-card:nth-child(5) { grid-column: auto; }
-      .e-nav-links { display: none; }
       .e-compare-row { grid-template-columns: 1.5fr 1fr 1fr; padding: 14px 16px; font-size: 0.875rem; }
       .e-showcase-grid,
       .e-showcase-grid.reverse { grid-template-columns: 1fr; gap: 32px; }
@@ -2433,7 +2453,7 @@
       .e-proc-card { padding: 22px; }
       .e-pricing-why-card h3 { font-size: 1.25rem; }
       .e-mock-tile { padding: 20px; }
-      .e-mock-tile h4 { font-size: 1rem; }
+      .e-mock-tile h3 { font-size: 1rem; }
       .e-test-grid .e-test-card:nth-child(n+4) { display: none; }
       .e-showcase-visual { min-height: 280px; }
       .e-showcase-visual .ph-floating.delay-1 { width: 110px; right: -10px; bottom: -24px; }
@@ -2832,12 +2852,16 @@
       .eco-sc .late { opacity: 1 !important; }
       .eco-wire .lit { stroke-dashoffset: 0 !important; }
     }
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Skip to content</a>
 
   <!-- 1. Top status bar -->
   <div class="e-topbar">
@@ -2869,6 +2893,8 @@
   </div>
 </nav>
 
+
+<main id="contenido">
 
   <!-- 3. HERO -->
   <header class="e-hero">
@@ -3097,7 +3123,7 @@
       <div class="e-section-header">
         <span class="e-eyebrow"><span class="dot"></span> How it works</span>
         <h2 class="e-section-title">Your first payment in <em>10 minutes</em>.</h2>
-        <p class="e-section-desc">Three steps. No sales calls.</p>
+        <p class="e-section-desc">Three steps. Or we set it up for you, free.</p>
       </div>
       <div class="e-steps">
         <div class="e-step">
@@ -3187,7 +3213,7 @@
           <div class="dm-mockup ph-base" role="img" aria-label="CourtBit dashboard · daily multi-court calendar view">
             <header class="dm-mockup-header">
               <div>
-                <h4>Court bookings</h4>
+                <div class="dm-mockup-header-title">Court bookings</div>
                 <div class="meta">5 courts · Mexico City</div>
               </div>
               <button class="dm-add-btn" type="button">+ Booking</button>
@@ -3300,7 +3326,7 @@
             <span class="label">For your academy</span>
             <a href="/academias/">Explore Academias →</a>
           </div>
-          <h4>Attendance, enrollments, and payments.</h4>
+          <h3>Attendance, enrollments, and payments.</h3>
           <div class="am-mock" role="img" aria-label="Class attendance · CourtBit Academias">
             <div class="am-mock-head">
               <span class="name">Saturday Clinic · Court 2</span>
@@ -3344,7 +3370,7 @@
             <span class="label">For your tournament · Group stage</span>
             <a href="/torneos/">See Tournaments →</a>
           </div>
-          <h4>Smart groups. Efficient scheduling.</h4>
+          <h3>Smart groups. Efficient scheduling.</h3>
           <p>Groups build themselves while respecting each player's schedule. You set the format.</p>
           <div class="gr-mock" role="img" aria-label="Group stage · Group D · live standings with qualifying leaders">
             <header class="gr-mock-header">
@@ -3384,7 +3410,7 @@
             <span class="label">For your tournament · Knockout bracket</span>
             <a href="/torneos/">See Tournaments →</a>
           </div>
-          <h4>Automatic brackets with on-court Live Control.</h4>
+          <h3>Automatic brackets with on-court Live Control.</h3>
           <div class="br-mock" role="img" aria-label="Knockout bracket · Quarterfinals, semifinals, and final with Live Control">
             <div class="br-mock-head">
               <span class="name">Lagartos Open · Final bracket</span>
@@ -3508,7 +3534,7 @@
               </div>
               <div class="pm-header">
                 <span class="back">‹</span>
-                <h5>My Bookings</h5>
+                <div class="pm-header-title">My Bookings</div>
                 <span style="width:16px;"></span>
               </div>
               <div class="pm-tabs">
@@ -3708,7 +3734,9 @@
   </section>
 
   <!-- Footer -->
-  <footer>
+  </main>
+
+<footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
@@ -3721,7 +3749,7 @@
       </div>
 
       <div class="footer-col">
-        <h4>Product</h4>
+        <h3>Product</h3>
         <a href="/en/competencias/" class="footer-link">Competitions</a>
         <a href="/en/clubes/" class="footer-link">Bookings</a>
         <a href="/en/academias/" class="footer-link">Academy</a>
@@ -3738,14 +3766,14 @@
       </div>
 
       <div class="footer-col">
-        <h4>Tools</h4>
+        <h3>Tools</h3>
         <a href="/calculadora-torneo/" class="footer-link">Tournament calculator</a>
         <a href="/calculadora-liga/" class="footer-link">League calculator</a>
         <a href="/generador-cuadro-torneo-padel/" class="footer-link">Bracket generator</a>
       </div>
 
       <div class="footer-col">
-        <h4>Guides</h4>
+        <h3>Guides</h3>
         <a href="/guias/" class="footer-link">All guides</a>
         <a href="/guia-academia/" class="footer-link">Academy: packages and commissions</a>
         <a href="/como-organizar-torneo-padel/" class="footer-link">How to organize a tournament</a>

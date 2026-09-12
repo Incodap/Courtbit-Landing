@@ -535,7 +535,7 @@
       white-space: nowrap;
     }
     .e-mock-tile-head a:hover { color: var(--blue-deep); }
-    .e-mock-tile h4 {
+    .e-mock-tile h3 {
       font-family: 'DM Sans', system-ui, sans-serif;
       font-size: 1.125rem;
       font-weight: 800;
@@ -1239,7 +1239,7 @@
       padding: 14px 18px 12px;
       border-bottom: 1px solid #eef0f6;
     }
-    .dm-mockup-header h4 {
+    .dm-mockup-header .dm-mockup-header-title {
       font-size: 15px;
       font-weight: 700;
       letter-spacing: -0.012em;
@@ -1545,7 +1545,7 @@
       font-size: 10px;
       color: #687872;
     }
-    .pm-header h5 {
+    .pm-header .pm-header-title {
       flex: 1;
       text-align: center;
       font-size: 11px;
@@ -1972,7 +1972,7 @@
       gap: 40px;
       margin-bottom: 32px;
     }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 0.6875rem;
       font-weight: 800;
       color: var(--navy);
@@ -2053,7 +2053,6 @@
       .e-test-card,
       .e-test-card:nth-child(4),
       .e-test-card:nth-child(5) { grid-column: auto; }
-      .e-nav-links { display: none; }
       .e-compare-row { grid-template-columns: 1.5fr 1fr 1fr; padding: 14px 16px; font-size: 0.875rem; }
       .e-showcase-grid,
       .e-showcase-grid.reverse { grid-template-columns: 1fr; gap: 32px; }
@@ -2146,7 +2145,7 @@
       .e-proc-card { padding: 22px; }
       .e-pricing-why-card h3 { font-size: 1.25rem; }
       .e-mock-tile { padding: 20px; }
-      .e-mock-tile h4 { font-size: 1rem; }
+      .e-mock-tile h3 { font-size: 1rem; }
       .e-test-grid .e-test-card:nth-child(n+4) { display: none; }
       .e-showcase-visual { min-height: 280px; }
       .e-showcase-visual .ph-floating.delay-1 { width: 110px; right: -10px; bottom: -24px; }
@@ -2545,12 +2544,16 @@
       .eco-sc .late { opacity: 1 !important; }
       .eco-wire .lit { stroke-dashoffset: 0 !important; }
     }
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <!-- 1. Top status bar -->
   <div class="e-topbar">
@@ -2560,6 +2563,8 @@
   <!-- 2. Nav -->
   <!-- NAV -->
   <!-- /NAV -->
+
+<main id="contenido">
 
   <!-- 3. HERO -->
   <header class="e-hero">
@@ -2788,7 +2793,7 @@
       <div class="e-section-header">
         <span class="e-eyebrow"><span class="dot"></span> Cómo funciona</span>
         <h2 class="e-section-title">En <em>10 minutos</em>, tu primer cobro.</h2>
-        <p class="e-section-desc">Tres pasos. Sin llamadas con ventas.</p>
+        <p class="e-section-desc">Tres pasos. Y si prefieres, te lo configuramos nosotros, gratis.</p>
       </div>
       <div class="e-steps">
         <div class="e-step">
@@ -2878,7 +2883,7 @@
           <div class="dm-mockup ph-base" role="img" aria-label="Dashboard de CourtBit · vista de calendario diario multi-cancha">
             <header class="dm-mockup-header">
               <div>
-                <h4>Reservas de cancha</h4>
+                <div class="dm-mockup-header-title">Reservas de cancha</div>
                 <div class="meta">5 canchas · CDMX</div>
               </div>
               <button class="dm-add-btn" type="button">+ Reserva</button>
@@ -2991,7 +2996,7 @@
             <span class="label">Para tu academia</span>
             <a href="/academias/">Conocer Academias →</a>
           </div>
-          <h4>Asistencia, inscripciones y cobros.</h4>
+          <h3>Asistencia, inscripciones y cobros.</h3>
           <div class="am-mock" role="img" aria-label="Asistencia de clase · CourtBit Academias">
             <div class="am-mock-head">
               <span class="name">Clínica Sábado · Cancha 2</span>
@@ -3035,7 +3040,7 @@
             <span class="label">Para tu torneo · Fase de grupos</span>
             <a href="/torneos/">Ver Torneos →</a>
           </div>
-          <h4>Grupos inteligentes. Calendario eficiente.</h4>
+          <h3>Grupos inteligentes. Calendario eficiente.</h3>
           <p>Los grupos se arman solos respetando los horarios de cada jugador. Tú defines el formato.</p>
           <div class="gr-mock" role="img" aria-label="Fase de grupos · Grupo D · ranking en vivo con los líderes que clasifican">
             <header class="gr-mock-header">
@@ -3075,7 +3080,7 @@
             <span class="label">Para tu torneo · Cuadro de eliminación</span>
             <a href="/torneos/">Ver Torneos →</a>
           </div>
-          <h4>Brackets automáticos con Live Control en cancha.</h4>
+          <h3>Brackets automáticos con Live Control en cancha.</h3>
           <div class="br-mock" role="img" aria-label="Bracket de eliminación · Cuartos, semis y final con Live Control">
             <div class="br-mock-head">
               <span class="name">Lagartos Open · Cuadro final</span>
@@ -3199,7 +3204,7 @@
               </div>
               <div class="pm-header">
                 <span class="back">‹</span>
-                <h5>Mis reservas</h5>
+                <div class="pm-header-title">Mis reservas</div>
                 <span style="width:16px;"></span>
               </div>
               <div class="pm-tabs">
@@ -3399,7 +3404,9 @@
   </section>
 
   <!-- Footer -->
-  <!-- FOOTER -->
+  </main>
+
+<!-- FOOTER -->
   <!-- /FOOTER -->
 
 </body>

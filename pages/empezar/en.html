@@ -511,6 +511,9 @@
     }
 
     @keyframes spin { to { transform: rotate(360deg); } }
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -531,6 +534,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <!-- TikTok Pixel Code End -->
 </head>
 <body>
+<a class="skip-link" href="#contenido">Skip to content</a>
 
   <!-- Nav: self-contained, minimal signup-flow chrome — not templated -->
   <nav class="ob-nav">
@@ -549,7 +553,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   </nav>
 
   <!-- MAIN: split welcome + form -->
-  <main class="ob-main">
+  <main id="contenido" class="ob-main">
     <div class="ob-split">
 
       <!-- LEFT: welcome -->
@@ -590,7 +594,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         </div>
 
         <div class="ob-trust">
-          <span><b>30+</b> active clubs</span>
+          <span><b>65</b> clubs and organizers</span>
           <span>No credit card</span>
           <span>No commitment</span>
         </div>

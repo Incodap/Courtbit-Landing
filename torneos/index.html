@@ -200,7 +200,7 @@
   /* ───────── Footer ───────── */
   footer{padding:56px 0 24px;border-top:1px solid var(--border);background:var(--paper)}
   .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
-  .footer-col h4{font-size:.6875rem;font-weight:800;color:var(--navy);letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px}
+  .footer-col h3{font-size:.6875rem;font-weight:800;color:var(--navy);letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px}
   .footer-col .footer-link{display:block;margin-bottom:8px;font-size:.875rem;color:var(--text-muted);transition:color .2s}
   .footer-col .footer-link:hover{color:var(--blue)}
   .footer-brand{font-size:1.25rem;font-weight:800;color:var(--navy);letter-spacing:.04em}
@@ -235,7 +235,6 @@
     .t-dual .t-float-phone .t-phone{max-width:200px;border-radius:34px;padding:7px}
     .t-dual .t-float-phone .t-phone__screen{border-radius:27px}
     .t-phones{grid-template-columns:repeat(2,1fr)}
-    .e-nav-links{display:none}
     .footer-grid{grid-template-columns:1fr 1fr 1fr;gap:32px}
     .footer-grid .footer-col:first-child{grid-column:1 / -1;margin-bottom:4px}
     .footer-bottom{flex-direction:column;align-items:center;text-align:center;gap:12px}
@@ -288,12 +287,16 @@
     .t-frame--narrow{max-width:90mm}
     a[href]{color:inherit;text-decoration:none}
   }
-</style>
+
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <!-- ===================== TOPBAR ===================== -->
 <div class="e-topbar">
@@ -324,6 +327,8 @@
     </a>
   </div>
 </nav>
+
+<main id="contenido">
 
 <!-- ===================== HERO ===================== -->
 <header class="e-hero">
@@ -640,6 +645,8 @@
 </section>
 
 <!-- ===================== FOOTER ===================== -->
+</main>
+
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -652,20 +659,20 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Producto</h4>
+        <h3>Producto</h3>
         <a href="/competencias/" class="footer-link">Competencias</a>
       <a href="/clubes/" class="footer-link">Reservas</a>
         <a href="/academias/" class="footer-link">Academia</a>
         <a href="/pricing/" class="footer-link">Precios</a>
       </div>
       <div class="footer-col">
-        <h4>Herramientas</h4>
+        <h3>Herramientas</h3>
         <a href="/calculadora-torneo/" class="footer-link">Calculadora de torneo</a>
         <a href="/calculadora-liga/" class="footer-link">Calculadora de liga</a>
         <a href="/generador-cuadro-torneo-padel/" class="footer-link">Generador de cuadros</a>
       </div>
       <div class="footer-col">
-        <h4>Guías</h4>
+        <h3>Guías</h3>
         <a href="/como-organizar-torneo-padel/" class="footer-link">Cómo organizar un torneo</a>
         <a href="/mejores-practicas-torneo-padel/" class="footer-link">Mejores prácticas</a>
         <a href="/liga-americana-padel/" class="footer-link">Liga americana</a>

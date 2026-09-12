@@ -220,7 +220,7 @@
       gap: 40px;
       margin-bottom: 32px;
     }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 0.6875rem;
       font-weight: 800;
       color: var(--navy);
@@ -303,8 +303,26 @@
       .e-nav-links a { font-size: 0.8125rem; }
     }
     @media (max-width: 900px) {
-      .e-nav-links { display: none; }
-      .e-nav-secondary { display: none; }
+      /* La nav NO desaparece en móvil: pasa a una tira deslizable bajo el
+         logo. Un prospecto que aún no quiere dejar datos necesita poder
+         evaluar producto y precios sin quedar atrapado en el scroll. */
+      .e-nav-inner { flex-wrap: wrap; row-gap: 0; }
+      .e-logo { order: 1; }
+      .e-nav-cta { order: 2; }
+      .e-nav-links { order: 3; }
+      .e-nav-secondary { order: 4; }
+      .e-nav-links {
+        display: flex; flex: 1 1 200px; gap: 18px;
+        overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+        border-top: 1px solid var(--border); margin-top: 10px; padding: 9px 0 2px;
+      }
+      .e-nav-links::-webkit-scrollbar { display: none; }
+      .e-nav-links a { font-size: 0.875rem; min-height: 30px; align-items: center; }
+      .e-nav-secondary {
+        display: flex; flex: none; gap: 14px;
+        border-top: 1px solid var(--border); margin-top: 10px; padding: 9px 0 2px;
+      }
+      .e-nav-secondary a { min-height: 30px; display: inline-flex; align-items: center; }
       .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
       .footer-grid .footer-col:first-child { grid-column: 1 / -1; margin-bottom: 4px; }
       .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
@@ -334,6 +352,9 @@
       .e-logo img { height: 80px; }
       .e-nav-cta { padding: 8px 13px; font-size: 0.75rem; }
     }
+
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
     </style>
   <style>
     :root {
@@ -434,7 +455,7 @@
     .e-nav-links a { color: var(--paper); font-weight: 600; font-size: 0.95rem; opacity: 0.9; transition: opacity 200ms; }
     .e-nav-links a:hover { opacity: 1; }
     .e-nav-links a.is-active { color: var(--blue); opacity: 1; }
-    @media (max-width: 860px) { .e-nav-links { display: none; } }
+    @media (max-width: 860px) { }
 
     /* Hero */
     .e-hero { background: var(--blue); color: var(--paper); padding: 80px 0 96px; position: relative; overflow: hidden; }
@@ -670,12 +691,16 @@
         align-items: center;
       }
     }
+  
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <!-- Status bar -->
   <div class="e-statusbar">Nuevo · CourtBit Academia ya disponible en México · Academia para entrenadores de padel</div>
@@ -704,6 +729,8 @@
   </div>
 </nav>
 
+
+<main id="contenido">
 
   <!-- 1. Hero -->
   <section class="e-hero">
@@ -818,7 +845,9 @@
     </div>
   </section>
 
-  <footer>
+  </main>
+
+<footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
@@ -831,7 +860,7 @@
       </div>
 
       <div class="footer-col">
-        <h4>Producto</h4>
+        <h3>Producto</h3>
         <a href="/competencias/" class="footer-link">Competencias</a>
         <a href="/clubes/" class="footer-link">Reservas</a>
         <a href="/academias/" class="footer-link">Academia</a>
@@ -848,14 +877,14 @@
       </div>
 
       <div class="footer-col">
-        <h4>Herramientas</h4>
+        <h3>Herramientas</h3>
         <a href="/calculadora-torneo/" class="footer-link">Calculadora de torneo</a>
         <a href="/calculadora-liga/" class="footer-link">Calculadora de liga</a>
         <a href="/generador-cuadro-torneo-padel/" class="footer-link">Generador de cuadros</a>
       </div>
 
       <div class="footer-col">
-        <h4>Guías</h4>
+        <h3>Guías</h3>
         <a href="/guias/" class="footer-link">Todas las guías</a>
         <a href="/guia-academia/" class="footer-link">Academia: paquetes y comisiones</a>
         <a href="/como-organizar-torneo-padel/" class="footer-link">Cómo organizar un torneo</a>

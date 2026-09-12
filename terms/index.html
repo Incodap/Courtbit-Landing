@@ -34,10 +34,14 @@
     display: inline-block; background: var(--blue); color: #fff; text-decoration: none;
     font-weight: 700; font-size: .9375rem; padding: 12px 22px; border-radius: 999px;
   }
-</style>
+
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
+    .skip-link:focus { left: 0; }
+  </style>
 </head>
 <body>
-  <main class="card">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <main id="contenido" class="card">
     <img src="/Assets/courtbit-logo.svg" alt="CourtBit" width="286" height="150">
     <h1>Los términos ahora viven en un solo lugar</h1>
     <p>Reunimos términos, aviso de privacidad, cookies y política de reembolsos en una sola página. Te estamos llevando ahí.</p>
