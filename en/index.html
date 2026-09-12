@@ -2679,34 +2679,6 @@
       color: var(--text-muted); border: 1px solid var(--border); border-radius: 999px; padding: 6px 13px;
     }
 
-    /* Mockup real del dashboard en el hero */
-    .v2-shot { position: relative; }
-    .v2-card {
-      background: var(--paper); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
-      box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 18px 44px rgba(15,29,77,.10);
-    }
-    .v2-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--border); }
-    .v2-card-head strong { display: block; font-size: 0.9375rem; font-weight: 800; color: var(--navy); letter-spacing: -0.015em; }
-    .v2-card-head em { display: block; font-style: normal; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.625rem; color: var(--text-faint); letter-spacing: 0.05em; margin-top: 2px; }
-    .v2-pill { background: var(--navy); color: var(--paper); font-size: 0.6875rem; font-weight: 700; border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
-    .v2-cal { display: grid; grid-template-columns: 46px repeat(4, 1fr); font-size: 0.625rem; }
-    .v2-cal > div { border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 6px 7px; min-height: 40px; }
-    .v2-cal > div:nth-child(5n) { border-right: 0; }
-    .v2-cal .th { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.5625rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); background: var(--bg-tint); }
-    .v2-cal .hr { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.5625rem; color: var(--text-faint); }
-    .v2-bk { border-radius: 7px; padding: 5px 7px; font-weight: 700; font-size: 0.625rem; line-height: 1.25; }
-    .v2-bk small { display: block; font-weight: 500; opacity: 0.72; font-size: 0.5625rem; }
-    .v2-bk.a { background: var(--blue-mist); color: var(--blue-deep); }
-    .v2-bk.b { background: var(--lime-soft); color: #3f5406; }
-    .v2-float {
-      position: absolute; right: -10px; bottom: -20px; display: flex; align-items: center; gap: 10px;
-      background: var(--paper); border: 1px solid var(--border); border-radius: 14px; padding: 11px 15px;
-      box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.12); max-width: 260px;
-    }
-    .v2-float-ic { width: 28px; height: 28px; flex: none; border-radius: 9px; background: var(--lime-soft); color: #3f5406; display: grid; place-items: center; font-weight: 800; font-size: 0.8125rem; }
-    .v2-float b { display: block; font-size: 0.8125rem; color: var(--navy); letter-spacing: -0.01em; }
-    .v2-float i { display: block; font-style: normal; font-size: 0.6875rem; color: var(--text-muted); }
-
     /* S-nuevo · franja de números */
     .v2-stats { background: var(--paper); border-bottom: 1px solid var(--border); }
     .v2-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -2775,6 +2747,155 @@
     .v2-club span.v2-ini-d { background-color: #3a2140; }
     .v2-club span.v2-ini-e { background-color: #2a313f; }
     .v2-club span.v2-ini-f { background-color: #10404b; }
+  
+    /* ═══ HERO · ecosistema CourtBit (Competencias + Reservas + Academia) ═══ */
+    .v2-eco {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-right: -46px;
+      perspective: 1100px;
+    }
+    .v2-eco-slot { animation: eco-in 720ms cubic-bezier(.22,1,.36,1) backwards; }
+    .v2-eco-slot--comp { grid-column: 1 / -1; padding-left: 9%; animation-delay: 260ms; }
+    .v2-eco-slot--res  { margin-top: -14px; animation-delay: 60ms; }
+    .v2-eco-slot--aca  { margin-top: -2px; animation-delay: 460ms; }
+    @keyframes eco-in { from { opacity: 0; transform: translateY(18px); } }
+
+    .eco-card {
+      position: relative;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.09);
+      will-change: transform;
+    }
+    .eco-card--comp { animation: eco-float-a 7.4s ease-in-out 1.1s infinite, eco-focus-comp 10s linear 1.1s infinite; }
+    .eco-card--res  { animation: eco-float-b 8.6s ease-in-out 1.1s infinite, eco-focus-res  10s linear 1.1s infinite; }
+    .eco-card--aca  { animation: eco-float-c 6.8s ease-in-out 1.1s infinite, eco-focus-aca  10s linear 1.1s infinite; }
+    @keyframes eco-float-a { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-4px) } }
+    @keyframes eco-float-b { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-2.5px) } }
+    @keyframes eco-float-c { 0%,100% { transform: translateY(-3px) } 50% { transform: translateY(0) } }
+
+    /* el foco viaja: Competencias → Reservas → Academia → reposo */
+    @keyframes eco-focus-comp {
+      0%,4%    { box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.09); border-color: var(--border); }
+      9%,28%   { box-shadow: 0 1px 2px rgba(46,89,251,.06), 0 18px 44px rgba(46,89,251,.20); border-color: #c3d2ff; }
+      34%,100% { box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.09); border-color: var(--border); }
+    }
+    @keyframes eco-focus-res {
+      0%,30%   { box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.09); border-color: var(--border); }
+      36%,56%  { box-shadow: 0 1px 2px rgba(46,89,251,.06), 0 18px 44px rgba(46,89,251,.20); border-color: #c3d2ff; }
+      62%,100% { box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.09); border-color: var(--border); }
+    }
+    @keyframes eco-focus-aca {
+      0%,58%   { box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.09); border-color: var(--border); }
+      64%,80%  { box-shadow: 0 1px 2px rgba(46,89,251,.06), 0 18px 44px rgba(46,89,251,.20); border-color: #c3d2ff; }
+      86%,100% { box-shadow: 0 1px 2px rgba(15,29,77,.04), 0 14px 34px rgba(15,29,77,.09); border-color: var(--border); }
+    }
+
+    /* cabecera común */
+    .eco-head { display: flex; align-items: flex-start; gap: 9px; padding: 11px 12px; border-bottom: 1px solid var(--hairline); }
+    .eco-ico { width: 26px; height: 26px; flex: none; border-radius: 8px; display: grid; place-items: center; }
+    .eco-ico svg { width: 14px; height: 14px; }
+    .eco-ico--comp { background: var(--blue-mist); color: var(--blue-deep); }
+    .eco-ico--res  { background: #e7f3ff; color: #1668b8; }
+    .eco-ico--aca  { background: #fdf0e3; color: #a75f12; }
+    .eco-head-tx { min-width: 0; flex: 1; }
+    .eco-head-tx b { display: block; font-size: .8125rem; font-weight: 800; color: var(--navy); letter-spacing: -.018em; line-height: 1.2; }
+    .eco-head-tx span { display: block; font-size: .5625rem; color: var(--text-muted); margin-top: 1px; line-height: 1.3; }
+    .eco-link { font-size: .5625rem; font-weight: 700; color: var(--blue); white-space: nowrap; padding-top: 2px; }
+
+    /* Competencias */
+    .eco-body { padding: 10px 12px 12px; }
+    .eco-torneo { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 9px; }
+    .eco-torneo b { display: block; font-size: .6875rem; font-weight: 800; color: var(--navy); letter-spacing: -.012em; }
+    .eco-torneo i { display: block; font-style: normal; font-size: .5625rem; color: var(--text-faint); margin-top: 1px; }
+    .eco-live { display: inline-flex; align-items: center; gap: 5px; font-size: .5rem; font-weight: 700; color: #2f7a45; background: #e9f6ee; border-radius: 999px; padding: 3px 8px; white-space: nowrap; }
+    .eco-live::before { content: ''; width: 4px; height: 4px; border-radius: 999px; background: #35a15c; }
+    .eco-bracket { display: grid; grid-template-columns: 1fr 34px 1fr; align-items: stretch; gap: 0; }
+    .eco-col { display: flex; flex-direction: column; gap: 7px; }
+    .eco-match { border: 1px solid var(--border); border-radius: 9px; overflow: hidden; }
+    .eco-team { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 4px 7px; font-size: .5625rem; color: var(--text-soft); line-height: 1.3; }
+    .eco-team + .eco-team { border-top: 1px solid var(--hairline); }
+    .eco-team.win { color: var(--navy); font-weight: 700; background: #f7faff; }
+    .eco-sc { display: flex; gap: 5px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .5625rem; font-weight: 700; color: var(--text-faint); }
+    .eco-team.win .eco-sc { color: var(--blue-deep); }
+    .eco-sc b { font-weight: 700; }
+    .eco-sc .late { opacity: 0; animation: eco-appear 10s linear 1.1s infinite; }
+    @keyframes eco-appear { 0%,10% { opacity: 0 } 14%,30% { opacity: 1 } 36%,100% { opacity: 0 } }
+    .eco-wire { width: 34px; height: 100%; align-self: stretch; overflow: visible; }
+    .eco-wire path { fill: none; stroke: var(--border); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+    .eco-wire .lit { stroke: var(--blue); stroke-dasharray: 60; stroke-dashoffset: 60; animation: eco-draw 10s linear 1.1s infinite; }
+    @keyframes eco-draw { 0%,13% { stroke-dashoffset: 60 } 22%,30% { stroke-dashoffset: 0 } 34%,100% { stroke-dashoffset: 60 } }
+    .eco-next { position: relative; }
+    .eco-next .swap { display: block; }
+    .eco-next .a { animation: eco-out 10s linear 1.1s infinite; }
+    .eco-next .b { position: absolute; inset: 1px 7px; background: #f7faff; opacity: 0; animation: eco-in2 10s linear 1.1s infinite; }
+    @keyframes eco-out { 0%,20% { opacity: 1 } 25%,30% { opacity: 0 } 36%,100% { opacity: 1 } }
+    @keyframes eco-in2 { 0%,20% { opacity: 0 } 25%,30% { opacity: 1 } 36%,100% { opacity: 0 } }
+    .eco-final { margin-top: 7px; border: 1px dashed var(--border); border-radius: 9px; padding: 6px 8px; font-size: .5rem; color: var(--text-faint); line-height: 1.4; }
+    .eco-final b { display: block; color: var(--text-soft); font-size: .5625rem; font-weight: 700; }
+    .eco-fase { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .4375rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 5px; }
+
+    /* Reservas */
+    .eco-grid { display: grid; grid-template-columns: 30px repeat(4, 1fr); font-size: .5rem; }
+    .eco-grid > div { border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 3px; min-height: 26px; }
+    .eco-grid > div:nth-child(5n) { border-right: 0; }
+    .eco-grid .th { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .4375rem; letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); background: var(--bg-tint); text-align: center; }
+    .eco-grid .hr { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .4375rem; color: var(--text-faint); display: grid; place-items: center; }
+    .eco-slot { border-radius: 5px; padding: 3px 4px; font-size: .4375rem; font-weight: 700; line-height: 1.25; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+    .eco-slot.free { background: #eef8f1; color: #3d7d55; font-weight: 600; }
+    .eco-slot.busy { background: var(--blue-mist); color: var(--blue-deep); }
+    .eco-slot small { display: block; font-weight: 500; opacity: .75; font-size: .4375rem; }
+    .eco-cell-swap { position: relative; }
+    .eco-cell-swap .a { animation: eco-out2 10s linear 1.1s infinite; }
+    .eco-cell-swap .b { position: absolute; inset: 3px; opacity: 0; animation: eco-in3 10s linear 1.1s infinite; }
+    @keyframes eco-out2 { 0%,42% { opacity: 1 } 46%,58% { opacity: 0 } 63%,100% { opacity: 1 } }
+    @keyframes eco-in3  { 0%,42% { opacity: 0 } 46%,58% { opacity: 1 } 63%,100% { opacity: 0 } }
+    .eco-toast {
+      position: absolute; right: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 6px;
+      background: var(--paper); border: 1px solid #cfe9d8; border-radius: 999px; padding: 5px 10px;
+      font-size: .5rem; font-weight: 700; color: #2f7a45; white-space: nowrap;
+      box-shadow: 0 6px 18px rgba(15,29,77,.12); opacity: 0;
+      animation: eco-toast 10s cubic-bezier(.22,1,.36,1) 1.1s infinite;
+    }
+    .eco-toast::before { content: '✓'; color: #35a15c; font-weight: 800; }
+    @keyframes eco-toast {
+      0%,45%   { opacity: 0; transform: translateY(6px) }
+      49%,56%  { opacity: 1; transform: translateY(0) }
+      61%,100% { opacity: 0; transform: translateY(6px) }
+    }
+
+    /* Academia */
+    .eco-tabs { display: flex; gap: 4px; padding: 9px 12px 0; }
+    .eco-tabs span { font-size: .4375rem; font-weight: 700; border-radius: 999px; padding: 4px 8px; color: var(--text-muted); background: var(--bg-tint); white-space: nowrap; }
+    .eco-tabs span.on { background: var(--navy); color: #fff; }
+    .eco-clase { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--hairline); }
+    .eco-clase:first-of-type { border-top: 0; }
+    .eco-av { width: 24px; height: 24px; flex: none; border-radius: 7px; display: grid; place-items: center; font-size: .4375rem; font-weight: 800; color: #fff; background-image: linear-gradient(158deg, rgba(255,255,255,.18), rgba(255,255,255,0) 62%); }
+    .eco-clase-tx { flex: 1; min-width: 0; }
+    .eco-clase-tx b { display: block; font-size: .5625rem; font-weight: 700; color: var(--navy); line-height: 1.25; }
+    .eco-clase-tx span { display: block; font-size: .4375rem; color: var(--text-muted); margin-top: 1px; }
+    .eco-cupo { text-align: right; position: relative; white-space: nowrap; }
+    .eco-cupo b { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .625rem; font-weight: 700; color: var(--navy); letter-spacing: -.02em; }
+    .eco-cupo i { display: block; font-style: normal; font-size: .4375rem; color: var(--text-faint); }
+    .eco-cupo .a { animation: eco-out3 10s linear 1.1s infinite; }
+    .eco-cupo .b { position: absolute; top: 0; right: 0; padding-left: 6px; background: var(--paper); opacity: 0; animation: eco-in4 10s cubic-bezier(.22,1,.36,1) 1.1s infinite; }
+    @keyframes eco-out3 { 0%,65% { opacity: 1 } 69%,82% { opacity: 0 } 87%,100% { opacity: 1 } }
+    @keyframes eco-in4  { 0%,65% { opacity: 0; transform: translateY(4px) } 69%,82% { opacity: 1; transform: translateY(0) } 87%,100% { opacity: 0; transform: translateY(4px) } }
+
+    @media (max-width: 1080px) { .v2-eco { margin-right: 0 } .v2-eco-slot--comp { padding-left: 0 } }
+    @media (prefers-reduced-motion: reduce) {
+      .v2-eco-slot, .eco-card, .eco-sc .late, .eco-wire .lit,
+      .eco-next .a, .eco-next .b, .eco-cell-swap .a, .eco-cell-swap .b,
+      .eco-toast, .eco-cupo .a, .eco-cupo .b { animation: none !important; }
+      .eco-next .b, .eco-cell-swap .b, .eco-cupo .b, .eco-toast { opacity: 0 !important; }
+      .eco-sc .late { opacity: 1 !important; }
+      .eco-wire .lit { stroke-dashoffset: 0 !important; }
+    }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -2833,41 +2954,140 @@
           </div>
         </div>
 
-        <div class="v2-shot">
-          <div class="v2-card" aria-label="CourtBit booking calendar">
-            <div class="v2-card-head">
-              <div><strong>Court bookings</strong><em>5 courts · today</em></div>
-              <span class="v2-pill">+ Booking</span>
-            </div>
-            <div class="v2-cal">
-              <div class="th"></div><div class="th">Court 1</div><div class="th">Court 2</div><div class="th">Court 3</div><div class="th">Court 4</div>
-              <div class="hr">09:00</div>
-              <div><span class="v2-bk a">M. Hinojosa<small>09:00 · 10:30</small></span></div>
-              <div></div>
-              <div><span class="v2-bk a">A. Salazar<small>09:00 · 10:30</small></span></div>
-              <div><span class="v2-bk b">F. Quiroz<small>09:00 · 10:00</small></span></div>
-              <div class="hr">10:00</div>
-              <div></div>
-              <div><span class="v2-bk b">Kids class<small>10:00 · 11:30</small></span></div>
-              <div></div>
-              <div><span class="v2-bk a">D. Vega<small>10:00 · 11:30</small></span></div>
-              <div class="hr">11:00</div>
-              <div><span class="v2-bk a">N. Pérez<small>11:00 · 12:00</small></span></div>
-              <div></div>
-              <div><span class="v2-bk a">L. Mata<small>11:00 · 12:30</small></span></div>
-              <div></div>
-              <div class="hr">12:00</div>
-              <div></div>
-              <div><span class="v2-bk b">Clinic<small>12:00 · 13:30</small></span></div>
-              <div></div>
-              <div><span class="v2-bk a">A. Galán<small>12:00 · 13:00</small></span></div>
-            </div>
+        <div class="v2-eco" id="eco" aria-label="CourtBit in action: competitions, bookings, and academy">
+
+          <div class="v2-eco-slot v2-eco-slot--comp">
+            <article class="eco-card eco-card--comp">
+              <div class="eco-head">
+                <span class="eco-ico eco-ico--comp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M6 4h12v5a6 6 0 0 1-12 0V4ZM6 6H4a2 2 0 0 0 0 4h2M18 6h2a2 2 0 0 1 0 4h-2"/></svg></span>
+                <span class="eco-head-tx"><b>Competitions</b><span>Tournaments and leagues, without the headaches.</span></span>
+                <span class="eco-link">View all →</span>
+              </div>
+              <div class="eco-body">
+                <div class="eco-torneo">
+                  <span><b>Lagartos League · 3rd Tier</b><i>Men's · 16 pairs</i></span>
+                  <span class="eco-live">Live</span>
+                </div>
+                <div class="eco-bracket">
+                  <div class="eco-col">
+                    <div class="eco-fase">Quarterfinals</div>
+                    <div class="eco-match">
+                      <div class="eco-team win">R. Torres / M. Ruiz <span class="eco-sc"><b>6</b><b class="late">6</b></span></div>
+                      <div class="eco-team">A. García / L. Méndez <span class="eco-sc"><b>4</b><b class="late">3</b></span></div>
+                    </div>
+                    <div class="eco-match">
+                      <div class="eco-team win">D. Soto / F. Ibarra <span class="eco-sc"><b>6</b><b class="late">7</b></span></div>
+                      <div class="eco-team">C. Peña / J. Morales <span class="eco-sc"><b>1</b><b class="late">5</b></span></div>
+                    </div>
+                  </div>
+                  <svg class="eco-wire" viewBox="0 0 34 100" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0 39.6 H17 V81.3 H0"/>
+                    <path class="lit" d="M0 39.6 H17 V29.6 H34"/>
+                  </svg>
+                  <div class="eco-col">
+                    <div class="eco-fase">Semifinal</div>
+                    <div class="eco-match">
+                      <div class="eco-team win eco-next">
+                        <span class="swap a">To be decided</span>
+                        <span class="swap b">R. Torres / M. Ruiz</span>
+                        <span class="eco-sc"><b>—</b></span>
+                      </div>
+                      <div class="eco-team">D. Soto / F. Ibarra <span class="eco-sc"><b>—</b></span></div>
+                    </div>
+                    <div class="eco-final"><b>Final · Sat Sep 27 · 7:00 PM</b>Center Court</div>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="v2-float">
-            <span class="v2-float-ic">✓</span>
-            <span><b>Payment received</b><i>straight to your account, never through CourtBit</i></span>
+
+          <div class="v2-eco-slot v2-eco-slot--res">
+            <article class="eco-card eco-card--res">
+              <div class="eco-head">
+                <span class="eco-ico eco-ico--res"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg></span>
+                <span class="eco-head-tx"><b>Court bookings</b><span>Today · 5 courts</span></span>
+              </div>
+              <div class="eco-grid">
+                <div class="th"></div><div class="th">C1</div><div class="th">C2</div><div class="th">C3</div><div class="th">C4</div>
+                <div class="hr">17:00</div>
+                <div><span class="eco-slot busy">M. López<small>17:00 · 18:00</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot busy">C. Vega<small>17:00 · 18:00</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div class="hr">18:00</div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot busy">A. Salazar<small>18:00 · 19:00</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div class="hr">19:00</div>
+                <div><span class="eco-slot busy">D. Morales<small>19:00 · 20:00</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div class="hr">20:00</div>
+                <div><span class="eco-slot busy">KOC Training<small>20:00 · 21:30</small></span></div>
+                <div><span class="eco-slot free">Available</span></div>
+                <div class="eco-cell-swap">
+                  <span class="eco-slot free a">Available</span>
+                  <span class="eco-slot busy b">L. Peña<small>20:00 · 21:00</small></span>
+                </div>
+                <div><span class="eco-slot free">Available</span></div>
+              </div>
+              <span class="eco-toast">Booking confirmed</span>
+            </article>
+          </div>
+
+          <div class="v2-eco-slot v2-eco-slot--aca">
+            <article class="eco-card eco-card--aca">
+              <div class="eco-head">
+                <span class="eco-ico eco-ico--aca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <span class="eco-head-tx"><b>Academy</b><span>Classes, coaches, and students.</span></span>
+              </div>
+              <div class="eco-tabs"><span class="on">Upcoming classes</span><span>Coaches</span><span>Students</span></div>
+              <div style="padding-top:8px">
+                <div class="eco-clase">
+                  <span class="eco-av" style="background-color:#17395f">CM</span>
+                  <span class="eco-clase-tx"><b>Beginners Class</b><span>With Carlos Méndez · 17:00 · Court 4</span></span>
+                  <span class="eco-cupo"><b>6 / 8</b><i>students</i></span>
+                </div>
+                <div class="eco-clase">
+                  <span class="eco-av" style="background-color:#1d3a33">AT</span>
+                  <span class="eco-clase-tx"><b>Intermediate Class</b><span>With Ana Torres · 18:30 · Court 2</span></span>
+                  <span class="eco-cupo">
+                    <span class="a"><b>5 / 8</b><i>students</i></span>
+                    <span class="b"><b>6 / 8</b><i>students</i></span>
+                  </span>
+                </div>
+                <div class="eco-clase">
+                  <span class="eco-av" style="background-color:#3a2140">RP</span>
+                  <span class="eco-clase-tx"><b>Advanced Training</b><span>With Rodrigo Peña · 20:00 · Court 1</span></span>
+                  <span class="eco-cupo"><b>7 / 8</b><i>students</i></span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
+
+        <script>
+        (function () {
+          var eco = document.getElementById('eco');
+          if (!eco || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          var cards = eco.querySelectorAll('.eco-card'), raf = 0;
+          eco.addEventListener('pointermove', function (e) {
+            if (raf) return;
+            raf = requestAnimationFrame(function () {
+              raf = 0;
+              var r = eco.getBoundingClientRect();
+              var rx = (0.5 - (e.clientY - r.top) / r.height) * 2.6;
+              var ry = ((e.clientX - r.left) / r.width - 0.5) * 2.6;
+              eco.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+            });
+          });
+          eco.addEventListener('pointerleave', function () { eco.style.transform = ''; });
+          eco.style.transition = 'transform 420ms cubic-bezier(.22,1,.36,1)';
+          if (cards.length) eco.style.transformStyle = 'preserve-3d';
+        })();
+        </script>
       </div>
     </div>
   </header>
