@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CourtBit — Software para clubes y organizadores de padel | Reservas, academias y torneos</title>
-  <meta name="description" content="La plataforma de padel en México. Reservas, academias y competencias en una sola plataforma. Planes para clubes y organizadores. Cobra con Stripe o MercadoPago — CourtBit solo cobra 4% al pagador.">
+  <title>Software de Padel para Clubes y Organizadores | CourtBit</title>
+  <meta name="description" content="Reservas, academias y competencias en una sola plataforma de padel. Planes para clubes y organizadores. Cobra con Stripe o MercadoPago.">
   <link rel="canonical" href="https://www.courtbit.com.mx/">
   <link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/">
   <link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/">
@@ -50,7 +50,7 @@
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web, iOS, Android",
     "url": "https://www.courtbit.com.mx/",
-    "image": "https://www.courtbit.com.mx/Assets/marketing/hero/hero-clubes.png",
+    "image": "https://www.courtbit.com.mx/Assets/marketing/og/og-home.jpg",
     "description": "Plataforma de padel para clubes y organizadores: reservas, academias y competencias en una sola plataforma. Planes para clubes y organizadores. Cobra con Stripe o MercadoPago.",
     "offers": {
       "@type": "AggregateOffer",
@@ -128,6 +128,10 @@
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
+    /* <picture> es solo un contenedor de <source>: no debe generar caja propia,
+       o los .ph-floating absolutos y los wrappers con aspect-ratio heredan una
+       linea de texto vacia y el layout se desplaza. */
+    picture { display: contents; }
     button { font-family: inherit; }
 
     .container {
@@ -2992,10 +2996,15 @@
               <div class="dm-cell"></div>
             </div>
           </div>
-          <img src="/Assets/marketing/product/app-reservar.png"
-               alt="App de CourtBit · pantalla de reserva del jugador"
-               class="ph-floating delay-1"
-               loading="lazy">
+          <picture>
+            <source type="image/webp"
+                    srcset="/Assets/marketing/product/app-reservar-400.webp 400w"
+                    sizes="200px">
+            <img src="/Assets/marketing/product/app-reservar.jpg"
+                 alt="App de CourtBit · pantalla de reserva del jugador" class="ph-floating delay-1"
+                 width="400" height="869"
+                 decoding="async" loading="lazy">
+          </picture>
         </div>
       </div>
 
@@ -3199,11 +3208,17 @@
         </div>
 
         <div class="e-showcase-visual">
-          <img src="/Assets/marketing/product/socio-foto.png"
-               alt="Jugador del club usando la app CourtBit"
-               class="visual-photo"
-               loading="lazy"
-               width="1200" height="900">
+          <picture>
+            <source type="image/webp"
+                    srcset="/Assets/marketing/product/socio-foto-448.webp 448w,
+                            /Assets/marketing/product/socio-foto-896.webp 896w,
+                            /Assets/marketing/product/socio-foto-1122.webp 1122w"
+                    sizes="(max-width: 900px) 100vw, 560px">
+            <img src="/Assets/marketing/product/socio-foto.jpg"
+                 alt="Jugador del club usando la app CourtBit" class="visual-photo"
+                 width="1200" height="900"
+                 decoding="async" loading="lazy">
+          </picture>
           <!-- HTML phone mockup (vector-crisp, no image dependency) -->
           <div class="pm-phone ph-floating delay-2" role="img" aria-label="App de CourtBit · pantalla Mis reservas del jugador">
             <div class="pm-phone-screen">
@@ -3408,6 +3423,7 @@
         <a href="/competencias/" class="footer-link">Para organizadores</a>
         <a href="/torneos/" class="footer-link">Torneos</a>
         <a href="/pricing/" class="footer-link">Precios</a>
+        <a href="/apps/" class="footer-link">Descargar la app</a>
         <!-- Directorio público (app.courtbit.com.mx). Va en el footer de todas
              las páginas a propósito: es un subdominio nuevo sin autoridad
              propia, y estos enlaces son lo que lo respalda desde el dominio

@@ -26,7 +26,8 @@
     "footerCopyright": "© 2026 CourtBit · Todos los derechos reservados",
     "footerLegal": "Legal",
     "footerDirectoryTournaments": "Torneos por ciudad",
-    "footerDirectoryClubs": "Clubes por ciudad"
+    "footerDirectoryClubs": "Clubes por ciudad",
+    "footerApps": "Descargar la app"
   },
   "en": {
     "navAriaLabel": "Main",
@@ -55,6 +56,7 @@
     "footerCopyright": "© 2026 CourtBit · All rights reserved",
     "footerLegal": "Legal",
     "footerDirectoryTournaments": "Tournaments by city",
-    "footerDirectoryClubs": "Clubs by city"
+    "footerDirectoryClubs": "Clubs by city",
+    "footerApps": "Download the app"
   }
 }

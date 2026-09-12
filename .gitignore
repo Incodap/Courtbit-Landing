@@ -11,3 +11,6 @@ Thumbs.db
 # Local development
 .env
 .env.local
+
+# Scratch de sesiones de Claude Code: no debe publicarse en el sitio
+Claude outputs/
