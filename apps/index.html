@@ -926,6 +926,9 @@
       var ua = navigator.userAgent || '';
       var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
       var isAndroid = /android/i.test(ua);
+      // Googlebot rastrea como celular Android: sin esto lo mandamos a Play Store
+      // y Search Console marca /apps/ como "Página con redirección".
+      var isBot = /bot|crawl|spider|slurp|lighthouse|inspectiontool/i.test(ua);
 
       var params = new URLSearchParams(window.location.search);
       var utm = params.toString();
@@ -938,7 +941,7 @@
       document.getElementById('appStoreBtn').href = withUtm(APP_STORE);
       document.getElementById('googlePlayBtn').href = withUtm(GOOGLE_PLAY);
 
-      if (isIOS || isAndroid) {
+      if (!isBot && (isIOS || isAndroid)) {
         document.getElementById('redirectNotice').classList.add('visible');
         var target = isIOS ? withUtm(APP_STORE) : withUtm(GOOGLE_PLAY);
         setTimeout(function () { window.location.href = target; }, 1200);
