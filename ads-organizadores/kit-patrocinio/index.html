@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  KIT DE PATROCINIO — plantilla para que el ORGANIZADOR venda los  ║
+  ║  espacios de patrocinio de SU evento a sus marcas.               ║
+  ║                                                                  ║
+  ║  CÓMO PERSONALIZARLO (busca estos marcadores "EDITA:" en el      ║
+  ║  código y cambia el texto/ejemplo que sigue):                    ║
+  ║   · Nombre del evento, categoría, fechas, sede                   ║
+  ║   · Logo del evento (reemplaza el placeholder .ev-logo)          ║
+  ║   · Números de alcance (jugadores, aperturas, días)             ║
+  ║   · Precios de cada paquete de patrocinio (los pones TÚ)         ║
+  ║   · Tu contacto: WhatsApp, teléfono, correo                     ║
+  ║                                                                  ║
+  ║  El contenido de ejemplo ya está pulido para que puedas          ║
+  ║  enseñarlo tal cual y sólo ajustar tus datos. CourtBit aporta    ║
+  ║  el espacio dentro de la app + el reporte de alcance.            ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- EDITA: título (tu club / organizador) -->
+    <title>Patrocina nuestros próximos torneos — Propuesta de patrocinio | CourtBit</title>
+    <meta name="description" content="Pon tu marca dentro de la app del torneo, frente a una audiencia 100% de pádel. Propuesta de patrocinio digital con reporte de alcance.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="/Assets/Logo-CB-icono.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=swap">
+<style>
+  :root{
+    --blue:#2e59fb;--blue-deep:#1a45e0;--blue-soft:#5a7afc;--blue-mist:#eaf0ff;
+    --navy:#0f1d4d;--navy-light:#1a2c6e;
+    --lime:#B8F02B;--lime-soft:#e9fbb8;--lime-deep:#9fd121;--lime-bg:#f4fdd6;
+    --paper:#fff;--bg:#fbfbfd;--bg-tint:#f4f6ff;
+    --text:#0f1d4d;--text-soft:#3a4262;--text-muted:#6b7191;--text-faint:#9aa0bb;
+    --border:#e6e8ef;--hairline:rgba(15,29,77,.08);
+    --shadow-sm:0 1px 3px rgba(15,29,77,.06);
+    --shadow-md:0 4px 12px rgba(15,29,77,.08);
+    --shadow-lg:0 12px 32px rgba(15,29,77,.1);
+    --shadow-xl:0 24px 60px rgba(15,29,77,.14);
+    --radius:16px;--radius-lg:24px;--radius-full:100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px}
+  section{padding:80px 0}
+  .eyebrow{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);background:var(--blue-mist);padding:6px 14px;border-radius:var(--radius-full);margin-bottom:18px}
+  .eyebrow.lime{color:var(--lime-deep);background:var(--lime-bg)}
+  h1,h2,h3{letter-spacing:-.02em;line-height:1.12;color:var(--navy);font-weight:800}
+  h2.sec-title{font-size:clamp(1.9rem,4vw,2.7rem);max-width:760px}
+  .sec-sub{font-size:1.075rem;color:var(--text-muted);max-width:640px;margin-top:16px}
+  .center{text-align:center}
+  .center .sec-sub{margin-left:auto;margin-right:auto}
+  strong{color:var(--navy)}
+
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:.975rem;font-weight:700;padding:14px 26px;border-radius:var(--radius-full);border:none;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,background .2s ease;white-space:nowrap}
+  .btn svg{width:18px;height:18px}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 6px 18px rgba(46,89,251,.32)}
+  .btn-primary:hover{background:var(--blue-deep);transform:translateY(-2px);box-shadow:0 10px 26px rgba(46,89,251,.4)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+  .btn-wa{background:#25D366;color:#fff}
+  .btn-wa:hover{background:#1eb858;transform:translateY(-2px)}
+  .btn-lg{font-size:1.1rem;padding:18px 36px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--hairline)}
+  nav .container{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;gap:16px}
+  .ev-brand{display:flex;align-items:center;gap:12px;min-width:0}
+  /* EDITA: logo del evento — sustituye este recuadro por <img src="tu-logo.png"> */
+  .ev-logo{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto;letter-spacing:.5px}
+  .ev-name{font-size:1.02rem;font-weight:800;color:var(--navy);line-height:1.1}
+  .ev-name small{display:block;font-size:.72rem;font-weight:600;color:var(--text-muted);letter-spacing:.02em}
+  .nav-right{display:flex;align-items:center;gap:16px}
+  .powered{display:flex;align-items:center;gap:7px;font-size:.74rem;font-weight:600;color:var(--text-faint);white-space:nowrap}
+  .powered img{height:30px;width:auto;opacity:.9}
+  .nav-cta{background:var(--blue);color:#fff !important;padding:11px 22px;border-radius:var(--radius-full);font-size:.9rem;font-weight:700;box-shadow:0 4px 14px rgba(46,89,251,.3)}
+  .nav-cta:hover{background:var(--blue-deep)}
+
+  /* HERO */
+  .hero{padding:64px 0 56px;background:radial-gradient(1100px 520px at 80% -10%,var(--blue-mist) 0%,transparent 60%),var(--bg)}
+  .hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+  .hero h1 .hl{color:var(--blue);position:relative;white-space:nowrap}
+  .hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.28em;background:var(--lime);opacity:.45;z-index:-1;border-radius:3px}
+  .hero p.lead{font-size:1.16rem;color:var(--text-soft);margin-top:22px;max-width:540px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .hero-meta .m{display:inline-flex;align-items:center;gap:7px;font-size:.86rem;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--border);border-radius:var(--radius-full);padding:8px 15px;box-shadow:var(--shadow-sm)}
+  .hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .hero-visual{display:flex;justify-content:center;position:relative}
+  .hero-visual::before{content:"";position:absolute;width:320px;height:320px;background:var(--lime);opacity:.16;border-radius:50%;filter:blur(22px);z-index:0}
+
+  /* PHONE w/ screenshot + brackets */
+  .phone-wrap{position:relative;display:inline-block;z-index:1}
+  .phone{width:248px;border:9px solid var(--navy);border-radius:40px;background:var(--navy);box-shadow:var(--shadow-xl);overflow:hidden}
+  .phone.tilt{transform:rotate(-2.5deg)}
+  .phone .scr.scrshot{display:block;background:#fff}
+  .ssimg{width:100%;height:auto;display:block}
+  .adbrace{position:absolute;width:16px;pointer-events:none;z-index:3}
+  .adbrace.l{left:-22px;border:3px solid var(--blue);border-right:none;border-radius:9px 0 0 9px}
+  .adbrace.r{right:-22px;border:3px solid var(--blue);border-left:none;border-radius:0 9px 9px 0}
+
+  /* STATS BAND */
+  .stats{background:var(--navy);color:#fff}
+  .stats .container{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .stats .s .n{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800;color:var(--lime);line-height:1}
+  .stats .s .l{font-size:.9rem;color:#c4cbe8;margin-top:8px}
+  .stats .note{grid-column:1/-1;font-size:.8rem;color:#8b94c0;margin-top:6px}
+
+  /* VALUE CARDS */
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
+  .vcard{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease}
+  .vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .vcard .ico{width:48px;height:48px;border-radius:13px;background:var(--blue-mist);display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:16px}
+  .vcard h3{font-size:1.15rem;margin-bottom:8px}
+  .vcard p{font-size:.94rem;color:var(--text-muted)}
+
+  /* MOCKUPS */
+  .mockups{display:grid;grid-template-columns:repeat(3,auto);justify-content:center;gap:46px 40px;margin-top:52px;align-items:start}
+  .mock{display:flex;flex-direction:column;align-items:center;gap:16px}
+  .mock .phone{width:210px}
+  .mock .cap{text-align:center;max-width:230px}
+  .mock .cap b{color:var(--navy);display:block;font-size:1.02rem;font-weight:800;margin-bottom:4px}
+  .mock .cap span.d{font-size:.88rem;color:var(--text-muted);display:block}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+  .step{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;box-shadow:var(--shadow-sm)}
+  .step .num{width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:16px}
+  .step h3{font-size:1.12rem;margin-bottom:7px}
+  .step p{font-size:.94rem;color:var(--text-muted)}
+
+  /* PRICING (precios que pone el ORGANIZADOR) */
+  .pricing-wrap{background:var(--bg-tint)}
+  .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;align-items:stretch}
+  .pcard{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 26px;display:flex;flex-direction:column;position:relative;box-shadow:var(--shadow-md)}
+  .pcard.pop{border:3px solid var(--lime);box-shadow:var(--shadow-lg)}
+  .pcard .popbadge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--lime);color:var(--navy);font-size:.72rem;font-weight:800;letter-spacing:.04em;padding:6px 16px;border-radius:var(--radius-full);white-space:nowrap;text-transform:uppercase}
+  .pcard .tier{font-size:.82rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+  .pcard .price{font-size:2.1rem;font-weight:800;color:var(--navy);margin-top:12px;line-height:1}
+  .pcard .price small{font-size:.82rem;font-weight:600;color:var(--text-muted)}
+  .pcard .who{font-size:.9rem;color:var(--text-soft);font-weight:500;margin-top:8px;min-height:42px;line-height:1.4}
+  .pcard .hr{height:1px;background:var(--border);margin:18px 0}
+  .pcard ul{list-style:none;flex:1;margin:0}
+  .pcard ul li{position:relative;padding:7px 0 7px 28px;font-size:.92rem;color:var(--text-soft)}
+  .pcard ul li::before{content:"";position:absolute;left:0;top:10px;width:16px;height:16px;border-radius:50%;background:var(--blue-mist)}
+  .pcard ul li::after{content:"✓";position:absolute;left:4px;top:7px;color:var(--blue);font-weight:800;font-size:.72rem}
+  .pcard ul li strong{color:var(--navy)}
+  .pcard .btn{margin-top:20px;width:100%;justify-content:center}
+  .price-note{font-size:.85rem;color:var(--text-muted);margin-top:24px;text-align:center}
+
+  /* NEED / REPORT split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:46px}
+  .panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 30px;box-shadow:var(--shadow-sm)}
+  .panel h3{font-size:1.25rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .panel h3 .e{font-size:1.4rem}
+  .panel ul{list-style:none}
+  .panel ul li{position:relative;padding:9px 0 9px 26px;font-size:.97rem;color:var(--text-soft);border-bottom:1px solid var(--hairline)}
+  .panel ul li:last-child{border-bottom:none}
+  .panel ul li::before{content:"";position:absolute;left:0;top:16px;width:8px;height:8px;border-radius:50%;background:var(--lime-deep)}
+  .panel ul li strong{color:var(--navy)}
+
+  /* CTA */
+  .lead-wrap{background:radial-gradient(900px 500px at 50% 0%,var(--blue-mist),transparent 60%),var(--bg)}
+  .lead-center{max-width:680px;margin:0 auto;text-align:center}
+  .lead-center h2{font-size:clamp(1.9rem,4vw,2.6rem)}
+  .lead-center p{font-size:1.08rem;color:var(--text-soft);margin:16px auto 0;max-width:520px}
+  .contact-card{display:inline-flex;flex-wrap:wrap;gap:14px 30px;justify-content:center;margin:28px auto 6px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 28px;box-shadow:var(--shadow-md)}
+  .contact-card .ci{display:flex;align-items:center;gap:9px;font-size:.97rem;font-weight:700;color:var(--navy)}
+  .contact-card .ci svg{width:18px;height:18px;color:var(--blue)}
+  .lead-cta{margin-top:26px}
+  .lead-scarcity{font-size:.85rem;color:var(--text-muted);margin-top:16px}
+
+  /* FOOTER */
+  footer{padding:40px 0;border-top:1px solid var(--border);background:var(--paper)}
+  footer .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .foot-powered{display:flex;align-items:center;gap:9px;font-size:.84rem;color:var(--text-muted)}
+  .foot-powered img{height:34px;width:auto}
+  .footer-copy{font-size:.8rem;color:var(--text-faint)}
+
+  /* WA FLOAT */
+  .wa-float{position:fixed;bottom:22px;right:22px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.45);z-index:90;transition:transform .2s ease}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  @media (max-width:980px){
+    .hero .container{grid-template-columns:1fr;gap:36px}
+    .hero-visual{order:-1}
+    .grid-4{grid-template-columns:1fr 1fr}
+    .stats .container{grid-template-columns:1fr 1fr;gap:28px 18px}
+  }
+  @media (max-width:860px){
+    section{padding:60px 0}
+    .mockups,.steps,.pricing,.split{grid-template-columns:1fr;gap:22px}
+    .mockups{gap:34px;justify-items:center}
+    .powered span{display:none}
+  }
+  @media (max-width:480px){
+    .grid-4{grid-template-columns:1fr}
+    .ev-name small{display:none}
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV / BRAND DEL EVENTO -->
+  <nav>
+    <div class="container">
+      <!-- EDITA: logo + nombre de tu club / organizador -->
+      <div class="ev-brand">
+        <div class="ev-logo">PP</div>
+        <div class="ev-name">Club Padel Pro<small>Torneos de pádel · 2026</small></div>
+      </div>
+      <div class="nav-right">
+        <span class="powered"><img src="../../Assets/courtbit-logo.svg" alt="CourtBit"><span>Con tecnología de</span></span>
+        <a href="#contacto" class="nav-cta">Quiero patrocinar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-copy">
+        <span class="eyebrow">Propuesta de patrocinio</span>
+        <!-- EDITA: ajusta el enganche — "próximos torneos" / "serie de torneos" / nombre de tu evento -->
+        <h1>Tu marca dentro de nuestros <span class="hl">próximos torneos</span>.</h1>
+        <p class="lead">Cada jugador de nuestros torneos abre la app decenas de veces — para ver su cuadro, su horario y sus resultados. Pon tu marca justo ahí, frente a una audiencia <strong>100% de pádel</strong>, torneo tras torneo.</p>
+        <!-- EDITA: cadencia / sede / volumen -->
+        <div class="hero-meta">
+          <span class="m">📅 Torneos todo el año</span>
+          <span class="m">📍 Club Padel Pro</span>
+          <span class="m">🎾 Cientos de jugadores</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#contacto" class="btn btn-primary">Quiero patrocinar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#donde" class="btn btn-ghost">Ver dónde aparece mi marca</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="phone-wrap">
+          <div class="phone tilt"><div class="scr scrshot"><img class="ssimg" src="../../Assets/marketing/ads/ad-detalle-torneo.jpg" alt="Marca patrocinadora dentro del detalle del torneo"></div></div>
+          <span class="adbrace l" style="top:44.2%;height:11.8%"></span>
+          <span class="adbrace r" style="top:44.2%;height:11.8%"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS / ALCANCE -->
+  <!-- EDITA: cambia estos números por los reales de tus torneos -->
+  <section class="stats" style="padding:48px 0">
+    <div class="container">
+      <div class="s"><div class="n">+500</div><div class="l">jugadores al año</div></div>
+      <div class="s"><div class="n">100%</div><div class="l">audiencia de pádel</div></div>
+      <div class="s"><div class="n">×35</div><div class="l">aperturas por jugador*</div></div>
+      <div class="s"><div class="n">Todo el año</div><div class="l">de visibilidad</div></div>
+      <div class="note">*Estimado: los jugadores revisan su cuadro, horario y resultados una y otra vez durante el torneo.</div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ PATROCINAR (valor para el PATROCINADOR) -->
+  <section>
+    <div class="container">
+      <div class="center" style="margin:0 auto;max-width:760px">
+        <span class="eyebrow lime">Por qué tu marca aquí</span>
+        <h2 class="sec-title" style="margin:0 auto">Una vitrina digital y medible para tu marca.</h2>
+        <p class="sec-sub">Tu patrocinio acompaña al jugador en su teléfono, justo en los momentos en que más mira la pantalla del evento.</p>
+      </div>
+      <div class="grid-4">
+        <div class="vcard reveal"><div class="ico">🎯</div><h3>Audiencia exacta</h3><p>Llegas solo a jugadores de pádel inscritos en el torneo — en su momento de máxima atención.</p></div>
+        <div class="vcard reveal"><div class="ico">👆</div><h3>Se toca y se mide</h3><p>Tu banner lleva a tu sitio o WhatsApp con un toque, y sabes cuántos lo vieron y cuántos tocaron.</p></div>
+        <div class="vcard reveal"><div class="ico">🏆</div><h3>Asóciate a nuestros torneos</h3><p>Tu marca aparece junto a cada torneo, como patrocinador, durante toda la temporada.</p></div>
+        <div class="vcard reveal"><div class="ico">📱</div><h3>Presencia premium</h3><p>Formato nativo dentro de la app, integrado al diseño y marcado como «Patrocinado». Nada intrusivo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DÓNDE APARECE TU MARCA -->
+  <section id="donde" style="background:var(--bg-tint)">
+    <div class="container">
+      <div class="center" style="margin:0 auto;max-width:820px">
+        <span class="eyebrow">Dónde aparece tu marca</span>
+        <h2 class="sec-title" style="margin:0 auto">Dentro de la app, donde el jugador ya está mirando.</h2>
+        <p class="sec-sub">Tu logo y tu banner en las pantallas del torneo: detalle, registro, cuadro, grupos y captura de marcador.</p>
+      </div>
+      <div class="mockups">
+        <div class="mock reveal">
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../../Assets/marketing/ads/ad-detalle-torneo.jpg" alt="Patrocinador en el detalle del torneo" loading="lazy"></div></div><span class="adbrace l" style="top:44.2%;height:11.8%"></span><span class="adbrace r" style="top:44.2%;height:11.8%"></span></div>
+          <div class="cap"><b>Detalle del evento</b><span class="d">Lo primero que abre el jugador, junto al flyer.</span></div>
+        </div>
+        <div class="mock reveal">
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../../Assets/marketing/ads/ad-registro-torneo.jpg" alt="Patrocinador en el registro al torneo" loading="lazy"></div></div><span class="adbrace l" style="top:12%;height:14%"></span><span class="adbrace r" style="top:12%;height:14%"></span></div>
+          <div class="cap"><b>Registro</b><span class="d">Mientras el jugador se inscribe y elige categoría.</span></div>
+        </div>
+        <div class="mock reveal">
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../../Assets/marketing/ads/ad-cuadro-eliminatoria.jpg" alt="Patrocinador en el cuadro de eliminatoria" loading="lazy"></div></div><span class="adbrace l" style="top:17.5%;height:14%"></span><span class="adbrace r" style="top:17.5%;height:14%"></span></div>
+          <div class="cap"><b>Cuadro · eliminatoria</b><span class="d">La pantalla que más se abre durante el torneo.</span></div>
+        </div>
+        <div class="mock reveal">
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../../Assets/marketing/ads/ad-cuadro-grupos.jpg" alt="Patrocinador en grupos y tabla" loading="lazy"></div></div><span class="adbrace l" style="top:17.5%;height:14%"></span><span class="adbrace r" style="top:17.5%;height:14%"></span></div>
+          <div class="cap"><b>Grupos y tabla</b><span class="d">Acompaña la tabla y la posición de cada equipo.</span></div>
+        </div>
+        <div class="mock reveal">
+          <div class="phone-wrap"><div class="phone"><div class="scr scrshot"><img class="ssimg" src="../../Assets/marketing/ads/ad-marcador.jpg" alt="Patrocinador en la captura de marcador" loading="lazy"></div></div><span class="adbrace l" style="top:23%;height:14%"></span><span class="adbrace r" style="top:23%;height:14%"></span></div>
+          <div class="cap"><b>Captura de marcador</b><span class="d">Cuando suben el resultado de su partido.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAQUETES DE PATROCINIO (precios que pones TÚ, el organizador) -->
+  <section id="paquetes" class="pricing-wrap">
+    <div class="container">
+      <div class="center" style="margin:0 auto;max-width:760px">
+        <span class="eyebrow">Paquetes de patrocinio</span>
+        <h2 class="sec-title" style="margin:0 auto">Elige cómo quieres aparecer.</h2>
+        <p class="sec-sub">Cupo limitado de patrocinadores por torneo para mantener el valor de cada marca.</p>
+      </div>
+      <!-- EDITA: precios y beneficios de cada paquete los defines TÚ -->
+      <div class="pricing">
+        <div class="pcard reveal">
+          <div class="tier">Colaborador</div>
+          <div class="price">$2,500<small> / temporada</small></div>
+          <div class="who">Para sumar tu marca con presencia puntual.</div>
+          <div class="hr"></div>
+          <ul>
+            <li>Banner en <strong>una pantalla</strong> del evento</li>
+            <li>Enlace a tu sitio o WhatsApp</li>
+            <li>Marcado como «Patrocinado»</li>
+          </ul>
+          <a href="#contacto" class="btn btn-ghost">Reservar Colaborador</a>
+        </div>
+        <div class="pcard pop reveal">
+          <div class="popbadge">★ Más visible</div>
+          <div class="tier">Patrocinador</div>
+          <div class="price">$4,500<small> / temporada</small></div>
+          <div class="who">Tu marca presente en las pantallas que más se abren.</div>
+          <div class="hr"></div>
+          <ul>
+            <li>Banner en <strong>detalle, cuadro y grupos</strong></li>
+            <li>Enlace a tu sitio o WhatsApp</li>
+            <li>Mención como patrocinador de la temporada</li>
+            <li>Reporte de alcance al cierre</li>
+          </ul>
+          <a href="#contacto" class="btn btn-primary">Reservar Patrocinador</a>
+        </div>
+        <div class="pcard reveal">
+          <div class="tier">Patrocinador Oficial</div>
+          <div class="price">$8,000<small> / temporada</small></div>
+          <div class="who">La máxima presencia. Tu marca, en toda la temporada.</div>
+          <div class="hr"></div>
+          <ul>
+            <li>Banner en <strong>todas las pantallas</strong></li>
+            <li>Sello <strong>«Patrocinador Oficial»</strong></li>
+            <li>Posición prioritaria, siempre arriba</li>
+            <li>Reporte de alcance detallado</li>
+          </ul>
+          <a href="#contacto" class="btn btn-ghost">Reservar Oficial</a>
+        </div>
+      </div>
+      <p class="price-note">Precios de ejemplo — ajústalos a tus torneos. ¿Tu marca necesita algo a la medida? Escríbenos.</p>
+    </div>
+  </section>
+
+  <!-- QUÉ NECESITAMOS / REPORTE -->
+  <section>
+    <div class="container">
+      <div class="center" style="margin:0 auto;max-width:760px">
+        <span class="eyebrow lime">Simple para tu marca</span>
+        <h2 class="sec-title" style="margin:0 auto">Tú nos pasas tu material; nosotros lo subimos.</h2>
+      </div>
+      <div class="split">
+        <div class="panel reveal">
+          <h3><span class="e">📎</span> Qué necesitamos de ti</h3>
+          <ul>
+            <li><strong>Tu logo</strong> en buena calidad (PNG o vectorial)</li>
+            <li><strong>Un mensaje corto</strong> (ej. «12% off a jugadores del torneo»)</li>
+            <li><strong>Tu enlace</strong>: sitio web o WhatsApp a donde quieres llevar al jugador</li>
+            <li>Si tienes <strong>un banner diseñado</strong>, lo usamos; si no, te ayudamos a armarlo</li>
+          </ul>
+        </div>
+        <div class="panel reveal">
+          <h3><span class="e">📊</span> Tu reporte al cierre</h3>
+          <ul>
+            <li><strong>Cuántos jugadores vieron</strong> tu marca</li>
+            <li><strong>Cuántos tocaron</strong> para conocerte</li>
+            <li>Las <strong>pantallas</strong> donde más se mostró</li>
+            <li>Datos reales para medir el retorno de tu inversión</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section style="background:var(--bg-tint)">
+    <div class="container">
+      <div class="center" style="margin:0 auto;max-width:760px">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2 class="sec-title" style="margin:0 auto">En vivo antes de la primera jornada.</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="num">1</div><h3>Eliges tu paquete</h3><p>Nos dices con qué presencia quieres aparecer y apartamos tu lugar.</p></div>
+        <div class="step reveal"><div class="num">2</div><h3>Nos pasas tu material</h3><p>Logo, mensaje y enlace. Lo integramos al diseño del evento, premium y no intrusivo.</p></div>
+        <div class="step reveal"><div class="num">3</div><h3>Apareces y medimos</h3><p>Tu marca entra en vivo en iOS y Android. Al cierre te entregamos tu reporte de alcance.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="lead-wrap">
+    <div class="container">
+      <div class="lead-center reveal">
+        <span class="eyebrow lime">Aparta tu lugar</span>
+        <h2>Pon tu marca dentro de nuestros próximos torneos.</h2>
+        <p>Escríbenos y reservamos tu paquete. El cupo de patrocinadores es limitado.</p>
+        <!-- EDITA: tus datos de contacto (organizador) -->
+        <div class="contact-card">
+          <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 33 1234 5678</div>
+          <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg> patrocinios@tuclub.com</div>
+        </div>
+        <!-- EDITA: tu número de WhatsApp en el enlace (wa.me/52XXXXXXXXXX) -->
+        <div class="lead-cta">
+          <a href="https://wa.me/5213312345678?text=Hola%2C%20me%20interesa%20patrocinar%20sus%20torneos" target="_blank" rel="noopener" class="btn btn-wa btn-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escríbenos por WhatsApp
+          </a>
+        </div>
+        <p class="lead-scarcity">Cupo limitado de patrocinadores por torneo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="foot-powered"><img src="../../Assets/courtbit-logo.svg" alt="CourtBit"><span>Patrocinio digital gestionado con CourtBit</span></div>
+      <span class="footer-copy">&copy; 2026 · Propuesta de patrocinio</span>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT — EDITA: tu número -->
+  <a href="https://wa.me/5213312345678?text=Hola%2C%20me%20interesa%20patrocinar%20sus%20torneos" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href.length<2)return;const t=document.querySelector(href);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+  </script>
+</body>
+</html>
