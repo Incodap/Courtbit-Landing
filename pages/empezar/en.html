@@ -723,8 +723,24 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       const card = document.getElementById('ob-form-card');
       const nameSpan = document.getElementById('ob-success-name');
 
+      // Mirrors the API's lead phone check: Mexican numbers need 10 digits (+52 and the legacy +521 are fine), and 7+ repeated or consecutive digits are made up.
+      function leadPhoneProblem(raw){
+        var intl=raw.trim().charAt(0)==='+',d=raw.replace(/\D/g,'');
+        if(!intl||d.indexOf('52')===0){
+          if(intl){d=d.slice(2);if(d.length===11&&d.charAt(0)==='1')d=d.slice(1);}
+          if(d.length!==10)return 'length';
+        }else if(d.length<8||d.length>15)return 'length';
+        var same=1,up=1,down=1;
+        for(var i=1;i<d.length;i++){var s=d.charCodeAt(i)-d.charCodeAt(i-1);same=s===0?same+1:1;up=s===1?up+1:1;down=s===-1?down+1:1;if(Math.max(same,up,down)>=7)return 'fake';}
+        return null;
+      }
+      const LEAD_PHONE_MESSAGES={length:'Enter your 10-digit phone (or include the international code).',fake:'That number looks made up. Enter your real phone.'};
+      form.elements.telefono.addEventListener('input',e=>e.target.setCustomValidity(''));
       form.addEventListener('submit', async e => {
         e.preventDefault();
+        const phoneField=form.elements.telefono,phoneProblem=leadPhoneProblem(phoneField.value);
+        phoneField.setCustomValidity(phoneProblem?LEAD_PHONE_MESSAGES[phoneProblem]:'');
+        if(phoneProblem){phoneField.reportValidity();return;}
         const btn = document.getElementById('ob-submit-btn');
         const originalBtnContent = btn.innerHTML;
         btn.disabled = true;
