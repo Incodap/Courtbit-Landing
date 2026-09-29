@@ -345,6 +345,24 @@
         }
         .hero-pill svg { width: 14px; height: 14px; color: var(--lime); flex-shrink: 0; }
 
+        /* ── VIDEOS POR FORMATO ── (sin .reveal: los bloques nuevos no dependen del observador) */
+        .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 8px; }
+        .video-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; }
+        .video-card .yt { position: relative; height: 0; padding: 56.25% 0 0; background: #0b1f1a; cursor: pointer; border: 0; width: 100%; display: block; overflow: hidden; }
+        .video-card .yt img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+        .video-card .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .video-card .yt .play { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: var(--blue); box-shadow: 0 10px 30px rgba(21,128,61,0.45); display: flex; align-items: center; justify-content: center; transition: transform .2s; }
+        .video-card .yt:hover .play, .video-card .yt:focus-visible .play { transform: scale(1.08); }
+        .video-card .yt .play svg { width: 26px; height: 26px; margin-left: 4px; fill: #fff; }
+        .video-card .yt .dur { position: absolute; right: 10px; bottom: 10px; background: rgba(0,0,0,0.75); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+        .video-card-body { padding: 18px 20px 22px; }
+        .video-card-body h3 { font-size: 1.05rem; font-weight: 800; color: var(--text); margin: 0 0 6px; }
+        .video-card-body p { font-size: 0.9rem; color: var(--text-soft); margin: 0; line-height: 1.5; }
+        .videos-more { text-align: center; margin-top: 28px; font-size: 0.95rem; }
+        .videos-more a { color: var(--blue); font-weight: 700; }
+        @media (max-width: 960px) { .videos-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .videos-grid { grid-template-columns: 1fr; gap: 18px; } }
+
         /* ── VIDEO DEMO ── */
         .video-section { padding: 72px 0 0; background: var(--white); }
         .video-wrapper {
@@ -1049,10 +1067,10 @@
         <div class="container">
             <div style="text-align:center; margin-bottom:32px;" class="reveal">
                 <span class="section-tag">See How It Works</span>
-                <h2 class="section-title">Your next tournament in 60 seconds</h2>
+                <h2 class="section-title">All your competitions in one place</h2>
             </div>
             <div class="video-wrapper reveal d1">
-                <iframe src="https://www.youtube.com/embed/a3DlW1BjFg0?rel=0" title="CourtBit — Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <iframe src="https://www.youtube.com/embed/MRqjOHKvuN0?rel=0" title="CourtBit — All your competitions in one place" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -1441,6 +1459,64 @@
         </div>
     </section>
 
+    <!-- VIDEOS POR FORMATO -->
+    <section class="section section-gray" id="videos">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">Videos</span><h2 class="section-title">Get to know every format</h2><p class="section-desc">A short video per format: how to create it, how players register and how it is played. Videos in Spanish.</p></div>
+            <div class="videos-grid">
+                <article class="video-card">
+                    <button type="button" class="yt" data-id="voJbO2FBgP8" aria-label="Play video: Bracket tournament">
+                        <img src="https://i.ytimg.com/vi/voJbO2FBgP8/hqdefault.jpg" alt="" loading="lazy" width="480" height="270">
+                        <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                        <span class="dur">6:33</span>
+                    </button>
+                    <div class="video-card-body"><h3>Bracket tournament</h3><p>Your tournament end to end: registrations, payments, groups, schedule and ranking.</p></div>
+                </article>
+                <article class="video-card">
+                    <button type="button" class="yt" data-id="Nwi7BMmYQAU" aria-label="Play video: Americana league">
+                        <img src="https://i.ytimg.com/vi/Nwi7BMmYQAU/hqdefault.jpg" alt="" loading="lazy" width="480" height="270">
+                        <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                        <span class="dur">2:36</span>
+                    </button>
+                    <div class="video-card-body"><h3>Americana league</h3><p>Players without a partner: CourtBit builds the groups and rotations.</p></div>
+                </article>
+                <article class="video-card">
+                    <button type="button" class="yt" data-id="QzNYmI8faeA" aria-label="Play video: Ladder league">
+                        <img src="https://i.ytimg.com/vi/QzNYmI8faeA/hqdefault.jpg" alt="" loading="lazy" width="480" height="270">
+                        <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                        <span class="dur">2:10</span>
+                    </button>
+                    <div class="video-card-body"><h3>Ladder league</h3><p>Every matchday winners move up a level and losers move down.</p></div>
+                </article>
+                <article class="video-card">
+                    <button type="button" class="yt" data-id="10W_sWvsAnk" aria-label="Play video: Pairs league">
+                        <img src="https://i.ytimg.com/vi/10W_sWvsAnk/hqdefault.jpg" alt="" loading="lazy" width="480" height="270">
+                        <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                        <span class="dur">1:50</span>
+                    </button>
+                    <div class="video-card-body"><h3>Pairs league</h3><p>Every matchday of your league scheduled in one click.</p></div>
+                </article>
+                <article class="video-card">
+                    <button type="button" class="yt" data-id="CJMQAiIN01s" aria-label="Play video: King of the court">
+                        <img src="https://i.ytimg.com/vi/CJMQAiIN01s/hqdefault.jpg" alt="" loading="lazy" width="480" height="270">
+                        <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                        <span class="dur">1:54</span>
+                    </button>
+                    <div class="video-card-body"><h3>King of the court</h3><p>Winners move up a court, losers move down. Scores from the phone.</p></div>
+                </article>
+                <article class="video-card">
+                    <button type="button" class="yt" data-id="fhkPmYVSlKg" aria-label="Play video: Americano express">
+                        <img src="https://i.ytimg.com/vi/fhkPmYVSlKg/hqdefault.jpg" alt="" loading="lazy" width="480" height="270">
+                        <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                        <span class="dur">1:27</span>
+                    </button>
+                    <div class="video-card-body"><h3>Americano express</h3><p>Every round in one click, no one repeats an opponent.</p></div>
+                </article>
+            </div>
+            <p class="videos-more">More videos on our <a href="https://www.youtube.com/channel/UCxpftJrEgU9RL2Q4nb67Tvg" target="_blank" rel="noopener">YouTube channel</a></p>
+        </div>
+    </section>
+
     <!-- GUIDE CTA -->
     <section class="section">
         <div class="container">
@@ -1655,6 +1731,22 @@
             formC.style.display='none';successC.style.display='block';
             btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg> Start free';
         });
+    </script>
+    <script>
+    // Videos por formato: se muestra la miniatura y el reproductor de YouTube se carga solo al hacer clic.
+    document.querySelectorAll('.video-card button.yt').forEach(function (b) {
+        b.addEventListener('click', function () {
+            var f = document.createElement('iframe');
+            f.src = 'https://www.youtube.com/embed/' + b.dataset.id + '?autoplay=1&rel=0';
+            f.title = b.getAttribute('aria-label');
+            f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            f.allowFullscreen = true;
+            var box = document.createElement('div');
+            box.className = 'yt';
+            box.appendChild(f);
+            b.replaceWith(box);
+        }, { once: true });
+    });
     </script>
 </body>
 </html>
