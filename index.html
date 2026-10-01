@@ -123,7 +123,7 @@
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       margin: 0;
-      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--paper);
       color: var(--text);
       line-height: 1.55;
@@ -169,7 +169,7 @@
       display: flex; align-items: center; justify-content: space-between; gap: 24px;
     }
     .e-logo {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
       font-weight: 800;
       font-size: 1.1rem;
       letter-spacing: 0.16em;
@@ -459,6 +459,29 @@
     @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
     </style>
   <style>
+    /* Respaldo con las métricas de DM Sans (misma fórmula que next/font): el
+       texto cae en las mismas líneas con Arial que con la fuente real, así que
+       cuando llega DM Sans nada se re-acomoda (antes: salto de 0.13 en el hero). */
+    @font-face {
+      font-family: 'DM Sans Fallback';
+      src: local('Arial');
+      font-weight: 100 600;
+      size-adjust: 104.53%;
+      ascent-override: 94.90%;
+      descent-override: 29.66%;
+      line-gap-override: 0%;
+    }
+    /* Las negritas van aparte: DM Sans 700-800 es ~5 % más angosta que Arial
+       Bold (medido con los textos del hero), al revés que el peso regular. */
+    @font-face {
+      font-family: 'DM Sans Fallback';
+      src: local('Arial Bold'), local('Arial-BoldMT');
+      font-weight: 700 900;
+      size-adjust: 94.8%;
+      ascent-override: 104.64%;
+      descent-override: 32.70%;
+      line-gap-override: 0%;
+    }
     /* ─── HERO ─── */
     .e-hero {
       background: var(--blue);
@@ -493,7 +516,7 @@
       align-items: center;
     }
     .e-hero h1 {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
       font-size: clamp(2.75rem, 6vw, 4.75rem);
       font-weight: 800;
       letter-spacing: -0.038em;
@@ -505,7 +528,7 @@
       font-style: italic;
       color: var(--lime);
       font-weight: 800;
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
     }
     .e-hero p.lead {
       font-size: 1.25rem;
@@ -665,7 +688,7 @@
       letter-spacing: -0.01em;
     }
     .e-chip-tx .v small {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', sans-serif;
       font-size: 0.7rem; font-weight: 600;
       color: rgba(255,255,255,0.7);
     }
@@ -785,7 +808,7 @@
       box-shadow: 0 0 0 3px rgba(21,128,61,0.18);
     }
     .e-section-title {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 800;
       letter-spacing: -0.032em;
@@ -910,7 +933,7 @@
     }
     .e-mock-tile-head a:hover { color: var(--blue-deep); }
     .e-mock-tile h3 {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
       font-size: 1.125rem;
       font-weight: 800;
       letter-spacing: -0.018em;
@@ -930,7 +953,7 @@
       border: 1px solid #eef0f6;
       border-radius: 12px;
       padding: 12px 14px;
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
     }
     .am-mock-head {
       display: flex;
@@ -1005,7 +1028,7 @@
       border: 1px solid #eef0f6;
       border-radius: 12px;
       overflow: hidden;
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
     }
     .gr-mock-header {
       background: linear-gradient(180deg, #1a2c6e 0%, #10302a 100%);
@@ -1146,7 +1169,7 @@
       border: 1px solid #eef0f6;
       border-radius: 12px;
       padding: 18px;
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
     }
     .br-mock-head {
       display: flex;
@@ -1550,7 +1573,7 @@
     .e-showcase-grid.reverse .e-showcase-text { order: 2; }
     .e-showcase-grid.reverse .e-showcase-visual { order: 1; }
     .e-showcase h2 {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
       font-size: clamp(1.875rem, 3.6vw, 2.75rem);
       font-weight: 800;
       letter-spacing: -0.028em;
@@ -1601,7 +1624,7 @@
       border-radius: 14px;
       border: 1px solid #e4eae7;
       overflow: hidden;
-      font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', -apple-system, system-ui, sans-serif;
       color: #10302a;
       font-size: 12px;
       line-height: 1.35;
@@ -1885,7 +1908,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
       color: #10302a;
     }
     .pm-statusbar {
@@ -2109,7 +2132,7 @@
     }
     .e-aud-card.featured .label { color: var(--lime); opacity: 1; }
     .e-aud-card h3 {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
       font-size: 1.875rem;
       font-weight: 800;
       letter-spacing: -0.028em;
@@ -2317,7 +2340,7 @@
       margin: 0 auto;
     }
     .e-final h2 {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
       font-size: clamp(2.25rem, 5vw, 3.5rem);
       font-weight: 800;
       letter-spacing: -0.034em;
