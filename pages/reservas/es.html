@@ -593,9 +593,9 @@
        del <style> y usa `nav.e-nav` para ganar por especificidad y no por
        orden. Si se toca el header, se toca aquí. ════════════════════════ */
     nav.e-nav { position: relative; z-index: 60; background: var(--paper); border-bottom: 1px solid var(--border); padding: 0; margin: 0; }
-    nav.e-nav .e-nav-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 20px; position: relative; flex-wrap: nowrap; }
+    nav.e-nav .e-nav-inner { max-width: none; margin: 0; padding: 14px 32px; display: flex; align-items: center; gap: 20px; position: relative; flex-wrap: nowrap; }
     nav.e-nav .e-logo { flex: none; display: flex; align-items: center; }
-    nav.e-nav .e-logo img { height: 34px; width: auto; display: block; }
+    nav.e-nav .e-logo img { height: 26px; width: auto; display: block; }
     /* El "Dashboard" del menú es solo para móvil: en escritorio ya está en .e-nav-secondary. */
     nav.e-nav .e-nav-links .e-only-mobile { display: none; }
     nav.e-nav .e-nav-links { display: flex; gap: 24px; align-items: center; }
@@ -617,13 +617,13 @@
     nav.e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
     nav.e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
     nav.e-nav .e-nav-sep { display: none; }
-    @media (min-width: 1181px) {
+    @media (min-width: 1101px) {
       nav.e-nav .e-nav-burger { display: none; }
     }
-    @media (max-width: 1180px) {
+    @media (max-width: 1100px) {
       nav.e-nav .e-nav-inner { padding: 10px 16px; gap: 12px; }
       nav.e-nav .e-logo { flex: 0 1 auto; min-width: 0; }
-      nav.e-nav .e-logo img { height: auto; width: 100%; max-width: 160px; }
+      nav.e-nav .e-logo img { height: auto; width: 100%; max-width: 150px; }
       nav.e-nav .e-nav-links .e-only-mobile { display: flex; }
       nav.e-nav .e-logo { order: 1; }
       nav.e-nav .e-nav-secondary { order: 2; gap: 0; }
