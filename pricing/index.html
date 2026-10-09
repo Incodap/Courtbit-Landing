@@ -357,7 +357,7 @@
        del <style> y usa `nav.e-nav` para ganar por especificidad y no por
        orden. Si se toca el header, se toca aquí. ════════════════════════ */
     nav.e-nav { position: relative; z-index: 60; background: var(--paper); border-bottom: 1px solid var(--border); padding: 0; margin: 0; }
-    nav.e-nav .e-nav-inner { max-width: none; margin: 0; padding: 14px 32px; display: flex; align-items: center; gap: 20px; position: relative; flex-wrap: nowrap; }
+    nav.e-nav .e-nav-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 20px; position: relative; flex-wrap: nowrap; }
     nav.e-nav .e-logo { flex: none; display: flex; align-items: center; }
     nav.e-nav .e-logo img { height: 26px; width: auto; display: block; }
     /* El "Dashboard" del menú es solo para móvil: en escritorio ya está en .e-nav-secondary. */
@@ -383,6 +383,10 @@
     nav.e-nav .e-nav-sep { display: none; }
     @media (min-width: 1101px) {
       nav.e-nav .e-nav-burger { display: none; }
+      /* Logo pegado a la izquierda de la pantalla; el resto del menú sigue centrado en el contenedor de 1200 px.
+         207px = 32 de margen + 151 del logo + 24 de aire: si el contenedor quedaría debajo del logo, arranca después. */
+      nav.e-nav .e-logo { position: absolute; left: 32px; top: 50%; transform: translateY(-50%); z-index: 2; }
+      nav.e-nav .e-nav-inner { position: static; padding-left: max(24px, calc(207px - max(0px, (100vw - 1200px) / 2))); }
     }
     @media (max-width: 1100px) {
       nav.e-nav .e-nav-inner { padding: 10px 16px; gap: 12px; }
