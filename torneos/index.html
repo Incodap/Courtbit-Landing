@@ -397,7 +397,9 @@
     nav.e-nav { position: relative; z-index: 60; background: var(--paper); border-bottom: 1px solid var(--border); padding: 0; margin: 0; }
     nav.e-nav .e-nav-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 20px; position: relative; flex-wrap: nowrap; }
     nav.e-nav .e-logo { flex: none; display: flex; align-items: center; }
-    nav.e-nav .e-logo img { height: 56px; width: auto; display: block; }
+    nav.e-nav .e-logo img { height: 34px; width: auto; display: block; }
+    /* El "Dashboard" del menú es solo para móvil: en escritorio ya está en .e-nav-secondary. */
+    nav.e-nav .e-nav-links .e-only-mobile { display: none; }
     nav.e-nav .e-nav-links { display: flex; gap: 24px; align-items: center; }
     nav.e-nav .e-nav-links a { font-size: 0.9375rem; font-weight: 600; color: var(--text-soft); white-space: nowrap; display: inline-flex; align-items: center; opacity: 1; }
     nav.e-nav .e-nav-links a:hover, nav.e-nav .e-nav-links a.is-active { color: var(--blue); }
@@ -417,12 +419,14 @@
     nav.e-nav.is-open .e-nav-burger span:nth-child(2) { opacity: 0; }
     nav.e-nav.is-open .e-nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
     nav.e-nav .e-nav-sep { display: none; }
-    @media (min-width: 901px) {
+    @media (min-width: 1181px) {
       nav.e-nav .e-nav-burger { display: none; }
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1180px) {
       nav.e-nav .e-nav-inner { padding: 10px 16px; gap: 12px; }
-      nav.e-nav .e-logo img { height: 42px; }
+      nav.e-nav .e-logo { flex: 0 1 auto; min-width: 0; }
+      nav.e-nav .e-logo img { height: auto; width: 100%; max-width: 160px; }
+      nav.e-nav .e-nav-links .e-only-mobile { display: flex; }
       nav.e-nav .e-logo { order: 1; }
       nav.e-nav .e-nav-secondary { order: 2; gap: 0; }
       nav.e-nav .e-nav-secondary .e-nav-login { display: none; }
@@ -445,6 +449,8 @@
       nav.e-nav .e-nav-sep { display: block; height: 1px; background: var(--border); margin: 6px 0; }
     }
     @media (prefers-reduced-motion: reduce) { nav.e-nav .e-nav-burger span { transition: none; } }
+    @media (max-width: 600px) { nav.e-nav .e-logo img { max-width: 132px; } }
+    @media (max-width: 400px) { nav.e-nav .e-nav-inner { gap: 8px; } nav.e-nav .e-nav-cta { padding: 9px 12px; } }
   </style>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
@@ -462,7 +468,7 @@
 <nav class="e-nav" aria-label="Principal">
   <div class="e-nav-inner">
     <a href="/" class="e-logo" aria-label="CourtBit — Inicio">
-      <img src="/Assets/courtbit-logo.svg" alt="CourtBit" width="286" height="150" fetchpriority="high">
+      <img src="/Assets/courtbit-logo-header.svg" alt="CourtBit" width="990" height="170" fetchpriority="high">
     </a>
     <div class="e-nav-links" id="e-nav-menu">
       <a href="/competencias/" class="">Competencias</a>
