@@ -138,8 +138,8 @@
 
   /* dashboard + floating phone (dual) */
   .t-dual{position:relative}
-  .t-dual .t-float-phone{position:absolute;right:-6px;bottom:64px;width:150px;max-width:150px;z-index:3;animation:e-float 5s ease-in-out infinite}
-  .t-dual .t-float-phone .t-phone{max-width:152px;border-radius:26px;padding:5px}
+  .t-dual .t-float-phone{position:absolute;right:-6px;bottom:-18px;width:160px;max-width:160px;z-index:3;animation:e-float 5s ease-in-out infinite}
+  .t-dual .t-float-phone .t-phone{max-width:160px;border-radius:26px;padding:5px}
   .t-dual .t-float-phone .t-phone__screen{border-radius:21px}
   @keyframes e-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
@@ -236,9 +236,10 @@
   .t-pop img{display:block;width:100%;height:auto}
   .t-pop--small{width:48%;left:-18px;right:auto}
 
-  /* Captura + celular al costado, sin taparle información */
-  .t-dual--side .t-frame{width:78%}
-  .t-dual--side .t-float-phone{right:-4px;bottom:28px}
+  /* Captura + celular lado a lado, centrados y con poco traslape: el celular no le tapa información a la captura */
+  .t-dual--side{display:grid;grid-template-columns:minmax(0,1fr) 160px;align-items:center}
+  .t-dual--side .t-frame{margin-right:-20px}
+  .t-dual--side .t-float-phone{position:relative;right:auto;bottom:auto;width:auto;max-width:none}
 
   /* ───────── El día del torneo ───────── */
   .t-live{padding:96px 0;background:var(--navy-950);color:var(--paper);position:relative;overflow:hidden}
@@ -275,7 +276,8 @@
     .t-hero-phone{width:120px}
     .t-stages{grid-template-columns:repeat(2,minmax(0,1fr))}
     .t-stage::after{display:none}
-    .t-dual--side .t-frame{width:auto}
+    .t-dual--side{display:block}
+    .t-dual--side .t-frame{margin-right:0}
     .t-pop{right:0}
     .t-pop--small{left:0}
     .t-live-grid{grid-template-columns:1fr;gap:32px}
@@ -664,7 +666,7 @@
             <figcaption class="t-frame__cap"><b>Ajustes del torneo</b> · activas tarjeta, transferencia o efectivo.</figcaption>
           </figure>
           <div class="t-float-phone">
-            <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/torneos/inscripcion-app.webp" width="600" height="846" alt="El jugador revisa su inscripción y paga desde la app" loading="lazy"></div></div>
+            <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/torneos/inscripcion-app.webp" width="600" height="1300" alt="El jugador revisa su inscripción y paga desde la app" loading="lazy"></div></div>
           </div>
         </div>
       </div>
@@ -725,14 +727,14 @@
       </div>
 
       <div class="e-showcase-visual">
-        <div class="t-dual">
+        <div class="t-dual t-dual--side">
           <figure class="t-frame">
             <div class="t-frame__bar"><i></i><i></i><i></i></div>
             <img src="/Assets/torneos/restricciones-organizador.webp" width="1400" height="670" alt="El organizador define días disponibles y el rango horario permitido" loading="lazy">
             <figcaption class="t-frame__cap"><b>El organizador define</b> los días disponibles y el rango horario.</figcaption>
           </figure>
           <div class="t-float-phone">
-            <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/torneos/restricciones-jugador.webp" width="600" height="894" alt="El jugador indica su preferencia de horario al inscribirse" loading="lazy"></div></div>
+            <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/torneos/restricciones-jugador.webp" width="600" height="1300" alt="El jugador indica su preferencia de horario al inscribirse" loading="lazy"></div></div>
           </div>
         </div>
       </div>
