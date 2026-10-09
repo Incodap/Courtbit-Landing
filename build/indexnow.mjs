@@ -4,7 +4,7 @@
 //
 // Uso:
 //   node build/indexnow.mjs              → envia todas las URLs del sitemap
-//   node build/indexnow.mjs /clubes/ /   → envia solo esas rutas
+//   node build/indexnow.mjs /reservas/ /   → envia solo esas rutas
 //   node build/indexnow.mjs --dry-run    → imprime lo que enviaria, sin llamar
 //
 // Correrlo DESPUES de que el deploy este en vivo: los motores verifican la clave

@@ -30,7 +30,7 @@ const LOCALES = ['es', 'en'];
 const PAGES = [
   { slug: '', activeNavKey: null },
   { slug: 'competencias', activeNavKey: 'competencias' },
-  { slug: 'clubes', activeNavKey: 'clubes' },
+  { slug: 'reservas', activeNavKey: 'clubes' },
   { slug: 'academias', activeNavKey: 'academias' },
   { slug: 'pricing', activeNavKey: 'pricing' },
   // empezar is a noindex, single-purpose signup/lead-capture page — deliberately
@@ -172,6 +172,40 @@ function buildPage(page, locale) {
   return outFile;
 }
 
+// Rutas que se movieron. GitHub Pages no manda 301: cada ruta vieja queda como
+// una página mínima con canonical a la nueva y redirección inmediata, para no
+// perder enlaces externos ni lo que ya estaba indexado.
+const REDIRECTS = [
+  { from: 'clubes', to: 'reservas' }, // 2026-10-08: la página de reservas vivía en /clubes/
+];
+const REDIRECT_COPY = {
+  es: { title: 'Reservas para clubes de pádel | CourtBit', moved: 'Esta página se movió a' },
+  en: { title: 'Booking software for padel clubs | CourtBit', moved: 'This page moved to' },
+};
+
+function buildRedirect(redirect, locale) {
+  const to = pagePath(redirect.to, locale);
+  const copy = REDIRECT_COPY[locale];
+  const html = `<!DOCTYPE html>
+<html lang="${locale}">
+<head>
+  <meta charset="utf-8">
+  <title>${copy.title}</title>
+  <link rel="canonical" href="https://www.courtbit.com.mx${to}">
+  <meta http-equiv="refresh" content="0; url=${to}">
+  <script>location.replace('${to}' + location.search + location.hash);</script>
+</head>
+<body>
+  <p>${copy.moved} <a href="${to}">courtbit.com.mx${to}</a>.</p>
+</body>
+</html>
+`;
+  const outFile = outputFilePath(redirect.from, locale);
+  mkdirSync(path.dirname(outFile), { recursive: true });
+  writeFileSync(outFile, html, 'utf8');
+  return outFile;
+}
+
 let count = 0;
 for (const page of PAGES) {
   for (const locale of LOCALES) {
@@ -180,4 +214,9 @@ for (const page of PAGES) {
     count++;
   }
 }
-console.log(`\n${count} pages built (${PAGES.length} pages × ${LOCALES.length} locales).`);
+for (const redirect of REDIRECTS) {
+  for (const locale of LOCALES) {
+    console.log(`redirect ${path.relative(ROOT, buildRedirect(redirect, locale))} → ${pagePath(redirect.to, locale)}`);
+  }
+}
+console.log(`\n${count} pages built (${PAGES.length} pages × ${LOCALES.length} locales), ${REDIRECTS.length * LOCALES.length} redirects.`);

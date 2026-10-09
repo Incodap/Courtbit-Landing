@@ -104,18 +104,18 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.courtbit.com.mx/clubes/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/clubes/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/clubes/"/>
-    <lastmod>2026-09-11</lastmod>
+    <loc>https://www.courtbit.com.mx/reservas/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/reservas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/reservas/"/>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.courtbit.com.mx/en/clubes/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/clubes/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/clubes/"/>
-    <lastmod>2026-09-11</lastmod>
+    <loc>https://www.courtbit.com.mx/en/reservas/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/reservas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/reservas/"/>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

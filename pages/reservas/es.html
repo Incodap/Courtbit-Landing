@@ -4,27 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Software de Reservas para Clubes de Pádel | CourtBit</title>
-  <meta name="description" content="Gestiona reservas, canchas, horarios y pagos de tu club de pádel con CourtBit. Configuración en 10 minutos, CourtAI y pagos con Stripe o MercadoPago.">
-  <link rel="canonical" href="https://www.courtbit.com.mx/clubes/">
-  <link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/clubes/">
-  <link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/clubes/">
-  <link rel="alternate" hreflang="x-default" href="https://www.courtbit.com.mx/clubes/">
+  <meta name="description" content="Calendario por cancha, cobros en línea y en recepción, academia, monedero y CourtAI en WhatsApp. Tus clientes reservan sin descargar nada. Listo en 10 minutos.">
+  <link rel="canonical" href="https://www.courtbit.com.mx/reservas/">
+  <link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/reservas/">
+  <link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/reservas/">
+  <link rel="alternate" hreflang="x-default" href="https://www.courtbit.com.mx/reservas/">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
   <!-- OG / Twitter -->
-  <meta property="og:url" content="https://www.courtbit.com.mx/clubes/">
-  <meta property="og:title" content="CourtBit Reservas — para tu club de padel">
-  <meta property="og:description" content="Calendario, app de jugadores, pagos directos a tu Stripe o MercadoPago. La comisión la paga el jugador, nunca el club.">
-  <meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-clubes.jpg">
+  <meta property="og:url" content="https://www.courtbit.com.mx/reservas/">
+  <meta property="og:title" content="CourtBit Reservas — todo tu club de pádel en un solo lugar">
+  <meta property="og:description" content="Calendario por cancha, cobros, academia, monedero y CourtAI en WhatsApp. La comisión la paga el jugador, nunca el club.">
+  <meta property="og:image" content="https://www.courtbit.com.mx/Assets/reservas/og-reservas.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- LCP: el hero es el elemento mas grande del viewport; se precarga
-       la variante webp que el navegador va a elegir de todas formas. -->
-  <link rel="preload" as="image" type="image/webp"
-        imagesrcset="/Assets/marketing/hero/hero-clubes-448.webp 448w, /Assets/marketing/hero/hero-clubes-896.webp 896w"
-        imagesizes="(max-width: 900px) 100vw, 448px"
-        fetchpriority="high">
+  <!-- LCP: la captura del calendario es el elemento más grande del hero. -->
+  <link rel="preload" as="image" type="image/webp" href="/Assets/reservas/hero-calendario.webp" fetchpriority="high">
 
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
@@ -43,7 +39,7 @@
     "name": "CourtBit Reservas",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web, iOS, Android",
-    "url": "https://www.courtbit.com.mx/clubes/"
+    "url": "https://www.courtbit.com.mx/reservas/"
   }
   </script>
 
@@ -465,6 +461,109 @@
       .cb-sec { padding: 60px 0; }
     }
   
+    /* ═══ /reservas/ · capturas reales del producto (oct 2026) ═══ */
+    .e-hero-grid.r-hero-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; }
+    .r-hero-visual { position: relative; padding: 0 0 30px 36px; }
+    .r-hero-visual .t-frame { border-color: rgba(255,255,255,.2); box-shadow: 0 40px 80px -28px rgba(6,21,18,.7); }
+    .r-hero-phone { position: absolute; left: 0; bottom: 0; width: 150px; z-index: 2; }
+    .r-hero-phone .t-phone { border-radius: 26px; padding: 5px; box-shadow: 0 30px 60px -16px rgba(6,21,18,.75); }
+    .r-hero-phone .t-phone__screen { border-radius: 21px; }
+
+    /* Índice "Todo tu club" */
+    .r-index { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .r-index a { display: flex; gap: 14px; align-items: flex-start; height: 100%; background: var(--paper); border: 1px solid var(--border); border-radius: 18px; padding: 20px; color: inherit; transition: border-color .15s, transform .15s, box-shadow .15s; }
+    .r-index a:hover { border-color: rgba(21,128,61,.35); transform: translateY(-2px); box-shadow: 0 16px 32px -20px rgba(16,48,42,.3); }
+    .r-index .ic { flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--blue-mist); color: var(--blue-deep); display: grid; place-items: center; }
+    .r-index .ic svg { width: 21px; height: 21px; }
+    .r-index b { display: block; font-size: .98rem; font-weight: 800; color: var(--navy); letter-spacing: -.012em; }
+    .r-index p { margin: 3px 0 0; font-size: .875rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* Secciones con captura */
+    .e-showcase { padding: 88px 0; background: var(--paper); border-top: 1px solid var(--border); }
+    .e-showcase.alt { background: var(--bg); }
+    .e-showcase-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 64px; align-items: center; }
+    .e-showcase-grid.reverse { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+    .e-showcase-grid.reverse .e-showcase-text { order: 2; }
+    .e-showcase-grid.reverse .e-showcase-visual { order: 1; }
+    .e-showcase .p-eyebrow { margin-bottom: 14px; }
+    .e-showcase h2 { font-size: clamp(1.875rem, 3.6vw, 2.6rem); line-height: 1.06; color: var(--navy); text-wrap: balance; }
+    .e-showcase h2 em { color: var(--blue); }
+    .e-showcase .lead { color: var(--text-soft); font-size: 1.0625rem; margin: 0 0 22px; line-height: 1.55; }
+    .e-showcase .lead b { color: var(--navy); }
+    .r-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .r-list li { display: flex; gap: 11px; align-items: flex-start; font-size: .97rem; color: var(--text-soft); line-height: 1.5; }
+    .r-list li::before { content: '✓'; flex: none; width: 22px; height: 22px; border-radius: 7px; background: var(--lime); color: #4d6a16; font-size: .75rem; font-weight: 800; display: grid; place-items: center; margin-top: 1px; }
+    .r-list b { color: var(--navy); }
+    .r-more { display: inline-block; margin-top: 22px; font-weight: 700; color: var(--blue-deep); }
+    .r-more:hover { color: var(--blue); }
+
+    /* Marco de navegador, celular y combinaciones */
+    .t-frame { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: var(--paper); box-shadow: 0 24px 48px -16px rgba(16,48,42,.28); margin: 0; }
+    .t-frame__bar { height: 38px; display: flex; align-items: center; gap: 7px; padding: 0 16px; background: #f4f6fb; border-bottom: 1px solid var(--border); }
+    .t-frame__bar i { width: 11px; height: 11px; border-radius: 50%; background: #cdd3e2; display: block; }
+    .t-frame img { width: 100%; height: auto; }
+    .t-frame__cap { font-size: .82rem; color: var(--text-muted); padding: 12px 16px; border-top: 1px solid var(--border); background: var(--paper); line-height: 1.45; }
+    .t-frame__cap b { color: var(--blue-deep); }
+    .t-cap { font-size: .85rem; color: var(--text-muted); text-align: center; margin-top: 14px; line-height: 1.45; }
+    .t-cap b { color: var(--blue-deep); }
+    .t-stack { display: grid; gap: 26px; }
+    .t-phone { width: 100%; max-width: 266px; margin: 0 auto; background: #0a1238; border-radius: 38px; padding: 8px; box-shadow: 0 24px 48px -14px rgba(16,48,42,.45); }
+    .t-phone__screen { border-radius: 30px; overflow: hidden; background: #fff; }
+    .t-phone__screen img { width: 100%; height: auto; }
+    /* Captura + celular lado a lado: el celular no le tapa información a la captura */
+    .t-dual--side { display: grid; grid-template-columns: minmax(0, 1fr) 160px; align-items: center; }
+    .t-dual--side .t-frame { margin-right: -20px; }
+    .t-dual--side .t-float-phone { position: relative; z-index: 3; animation: r-float 5s ease-in-out infinite; }
+    .t-dual--side .t-phone { border-radius: 26px; padding: 5px; }
+    .t-dual--side .t-phone__screen { border-radius: 21px; }
+    @keyframes r-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    /* Captura con un diálogo encima */
+    .t-overlay { position: relative; padding-bottom: 56px; }
+    .t-pop { position: absolute; right: -18px; bottom: 0; width: 44%; margin: 0; border-radius: 16px; overflow: hidden; background: var(--paper); border: 1px solid var(--border); box-shadow: 0 30px 60px -18px rgba(16,48,42,.45); z-index: 2; }
+    .t-pop img { width: 100%; height: auto; }
+
+    /* Lightbox */
+    .t-frame img, .t-phone__screen img, .t-pop img { cursor: zoom-in; }
+    .lightbox { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(6,21,18,.94); backdrop-filter: blur(6px); overflow: auto; }
+    .lightbox.open { display: flex; }
+    .lightbox.scroll { align-items: flex-start; }
+    .lightbox__img { max-width: 96vw; max-height: 92vh; object-fit: contain; border-radius: 12px; box-shadow: 0 24px 70px rgba(0,0,0,.55); cursor: zoom-in; }
+    .lightbox__img.zoomed { max-width: none; max-height: none; width: auto; cursor: zoom-out; }
+    .lightbox__close { position: fixed; top: 16px; right: 18px; z-index: 210; width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer; background: rgba(255,255,255,.16); color: #fff; font-size: 26px; line-height: 1; display: grid; place-items: center; }
+    .lightbox__close:hover { background: rgba(255,255,255,.3); }
+
+    /* "Y además": 4 columnas para que los 8 puntos no dejen hueco */
+    #ademas .cb-control { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .e-testimonial h2 em { color: var(--blue); }
+    @media (max-width: 900px) { #ademas .cb-control { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { #ademas .cb-control { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .t-dual--side .t-float-phone { animation: none; } }
+    @media (max-width: 900px) {
+      .e-hero-grid.r-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .r-hero-visual { max-width: 640px; padding: 0 0 24px 26px; }
+      .r-hero-phone { width: 120px; }
+      .r-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .e-showcase-grid, .e-showcase-grid.reverse { grid-template-columns: 1fr; gap: 36px; }
+      .e-showcase-grid.reverse .e-showcase-text { order: 1; }
+      .e-showcase-grid.reverse .e-showcase-visual { order: 2; }
+      .t-dual--side { display: block; }
+      .t-dual--side .t-frame { margin-right: 0; }
+      .t-dual--side .t-float-phone { width: 58%; max-width: 200px; margin: 18px auto 0; }
+      .t-dual--side .t-phone { border-radius: 34px; padding: 7px; }
+      .t-dual--side .t-phone__screen { border-radius: 27px; }
+      .t-pop { right: 0; }
+    }
+    @media (max-width: 600px) {
+      .e-showcase { padding: 56px 0; }
+      .r-index { grid-template-columns: 1fr; }
+      .r-hero-visual { padding: 0 0 20px 18px; }
+      .r-hero-phone { width: 92px; }
+      .r-hero-phone .t-phone { border-radius: 18px; padding: 4px; }
+      .r-hero-phone .t-phone__screen { border-radius: 14px; }
+      .t-overlay { padding-bottom: 0; }
+      .t-pop { position: relative; right: auto; bottom: auto; width: 86%; margin: -28px 0 0 auto; }
+    }
+
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
     .skip-link:focus { left: 0; }
   
@@ -644,49 +743,40 @@
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <!-- Status bar -->
-  <div class="e-statusbar">Nuevo · CourtBit Reservas ya disponible en México · Reservas para tu club de padel</div>
+  <div class="e-statusbar">Calendario, cobros, academia y CourtAI · Todo tu club de pádel en un solo lugar</div>
 
   <!-- NAV -->
   <!-- /NAV -->
 
 <main id="contenido">
-
   <!-- 1. Hero -->
   <section class="e-hero">
     <div class="container">
-      <div class="e-hero-grid">
+      <div class="e-hero-grid r-hero-grid">
         <div>
           <span class="p-eyebrow"><span class="dot"></span> Reservas para clubes</span>
           <h1>Software de reservas para <em>clubes de pádel</em></h1>
-          <p class="e-hero-sub" style="font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-.02em;margin:14px 0 0;">Tu sistema de reservas, listo en 10 minutos.</p>
-          <p class="lead">Calendario por cancha, app de jugadores y pagos directos a tu Stripe o MercadoPago. Tus jugadores reservan desde la app o con <strong>CourtAI</strong>. La comisión la paga el jugador, nunca el club.</p>
+          <p class="e-hero-sub" style="font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-.02em;margin:14px 0 0;">Todo tu club en un solo lugar, listo en 10 minutos.</p>
+          <p class="lead">Calendario por cancha, cobros en línea y en recepción, academia, monedero y <strong>CourtAI</strong> en tu WhatsApp. Tus clientes reservan desde el celular sin descargar nada. La comisión la paga el jugador, nunca el club.</p>
           <div class="e-hero-actions">
             <a href="/empezar/" class="p-btn-lime">Empezar gratis</a>
             <a href="/pricing/" class="p-btn-ghost" style="color: var(--paper); border-color: var(--paper);">Ver precios</a>
           </div>
         </div>
-        <div style="position: relative;">
-          <div class="e-hero-photo"><picture>
-            <source type="image/webp"
-                    srcset="/Assets/marketing/hero/hero-clubes-448.webp 448w,
-                            /Assets/marketing/hero/hero-clubes-896.webp 896w"
-                    sizes="(max-width: 900px) 100vw, 448px">
-            <img src="/Assets/marketing/hero/hero-clubes.jpg"
-                 alt="Cancha de padel iluminada al atardecer"
-                 width="896" height="1120"
-                 decoding="async" fetchpriority="high">
-          </picture></div>
-          <div class="e-float-card">
-            <strong>Comisión al jugador, nunca al club</strong>
-            <small>Solo en pagos con tarjeta por la app</small>
+        <div class="r-hero-visual">
+          <figure class="t-frame">
+            <div class="t-frame__bar"><i></i><i></i><i></i></div>
+            <img src="/Assets/reservas/hero-calendario.webp" width="1600" height="1000" alt="Calendario de reservas por cancha en el dashboard de Courtbit" fetchpriority="high">
+          </figure>
+          <div class="r-hero-phone">
+            <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/reservas/hero-enlace.webp" width="600" height="1298" alt="Enlace de reservas del club: el cliente elige día y horario desde el celular"></div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. Feature trio: Calendario · App jugadores · Pagos Stripe/MercadoPago -->
-    <!-- El problema que ya vive el club -->
+  <!-- El problema que ya vive el club -->
   <section class="cb-sec cb-sec--tint">
     <div class="container">
       <div class="cb-head">
@@ -705,37 +795,239 @@
     </div>
   </section>
 
-<section class="e-features">
+  <!-- Qué incluye -->
+  <section class="cb-sec">
     <div class="container">
-      <span class="p-eyebrow"><span class="dot"></span> Cómo funciona</span>
-      <h2>Tres herramientas. <em>Una</em> plataforma.</h2>
-      <p style="color: var(--text-soft); max-width: 620px; margin: 0;">Lo esencial para operar tu club: agendar canchas, atender a tus jugadores desde su celular y cobrar por Stripe o MercadoPago sin intermediarios.</p>
-      <div class="e-feature-grid">
-        <article class="e-feature">
-          <div class="icon">A</div>
-          <h3>Calendario por cancha</h3>
-          <p>Vista diaria, semanal o por cancha. Bloqueos por mantenimiento, pre-reservas, lista de espera y reportes — todo desde un panel.</p>
-        </article>
-        <article class="e-feature">
-          <div class="icon">B</div>
-          <h3>App nativa para jugadores</h3>
-          <p>iOS y Android. Tus jugadores reservan en 3 toques, ven sus partidos, pagan desde la app y reciben recordatorios automáticos.</p>
-        </article>
-        <article class="e-feature">
-          <div class="icon">C</div>
-          <h3>Cobra por Stripe o MercadoPago</h3>
-          <p>Tú eliges el procesador y el dinero llega a tu propia cuenta, sin intermediarios. La comisión la paga el jugador solo cuando usa tarjeta en la app — al club, nunca.</p>
-        </article>
+      <div class="cb-head">
+        <span class="cb-eyebrow">Qué incluye</span>
+        <h2>Todo tu club, <em>en un solo lugar</em></h2>
+        <p>Calendario, cobros, academia, clientes y tu agente de WhatsApp, conectados entre sí.</p>
+      </div>
+      <ul class="r-index">
+        <li><a href="#calendario"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span><div><b>Calendario por cancha</b><p>Arrastra para reservar, incluso varias canchas.</p></div></a></li>
+        <li><a href="#cobros"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span><div><b>Cobros</b><p>En línea, efectivo, transferencia o monedero.</p></div></a></li>
+        <li><a href="#academia"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><div><b>Clases y academia</b><p>Profesores, alumnos, paquetes y comisiones.</p></div></a></li>
+        <li><a href="#clientes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M3 5v14a2 2 0 0 0 2 2h15V7"/><path d="M16 14h.01"/></svg></span><div><b>Monedero y embajadores</b><p>Saldo a favor y clientes que te traen clientes.</p></div></a></li>
+        <li><a href="#courtai"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12Z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg></span><div><b>CourtAI</b><p>Atiende tu WhatsApp y cierra reservas con pago.</p></div></a></li>
+        <li><a href="#enlace"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></span><div><b>Enlace de reservas</b><p>Sin app y sin crear cuenta.</p></div></a></li>
+        <li><a href="#resumen"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><div><b>Resumen del mes</b><p>Ingresos, ocupación y meta mensual.</p></div></a></li>
+        <li><a href="#ademas"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></span><div><b>Y más</b><p>Tarifas por horario, recurrentes, equipo con permisos.</p></div></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Calendario -->
+  <section class="e-showcase" id="calendario">
+    <div class="container">
+      <div class="e-showcase-grid">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Calendario</span>
+          <h2>Todas tus canchas del día, <em>en una sola vista</em></h2>
+          <p class="lead">Cada reserva, clase y pago a la vista, cancha por cancha. Para reservar arrastras sobre el horario, y si cruzas varias canchas las apartas <b>todas de una vez</b>, con su título y su color.</p>
+          <ul class="r-list">
+            <li><span><b>Arrastra para reservar</b>, incluso varias canchas a la vez.</span></li>
+            <li><span><b>Título y color</b> para distinguir clínicas, torneos o eventos.</span></li>
+            <li><span><b>Bloquea canchas por mantenimiento</b> y nadie podrá reservarlas en ese horario.</span></li>
+            <li><span><b>Quién pagó y quién no</b>, marcado en cada reserva.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <figure class="t-frame">
+            <div class="t-frame__bar"><i></i><i></i><i></i></div>
+            <img src="/Assets/reservas/calendario.webp" width="1400" height="1064" alt="Calendario del día con reservas, clases, una clínica en tres canchas y un mantenimiento" loading="lazy">
+            <figcaption class="t-frame__cap"><b>Calendario del día</b> · reservas, clases, una clínica en tres canchas y un mantenimiento.</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. Setup steps -->
+  <!-- Cobros -->
+  <section class="e-showcase alt" id="cobros">
+    <div class="container">
+      <div class="e-showcase-grid reverse">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Cobros</span>
+          <h2>Cada reserva <em>con su cobro</em></h2>
+          <p class="lead">Cobras en línea, en efectivo, por transferencia o con saldo del monedero, y ves quién pagó y cuánto falta. Lo que se cobra en línea llega <b>directo a tu cuenta de Stripe o Mercado Pago</b>.</p>
+          <ul class="r-list">
+            <li><span><b>Efectivo, tarjeta, transferencia, gift card o monedero</b> en recepción.</span></li>
+            <li><span><b>Pago dividido</b>: cada jugador puede pagar su parte desde su celular.</span></li>
+            <li><span><b>Historial de cada reserva</b>: quién la creó, quién cobró y qué cambió.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <div class="t-overlay">
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/reservas/reserva.webp" width="1400" height="1064" alt="Detalle de una reserva con el pago completo y los jugadores" loading="lazy">
+            </figure>
+            <figure class="t-pop">
+              <img src="/Assets/reservas/registrar-pago.webp" width="900" height="924" alt="Registrar un pago en recepción: efectivo, tarjeta, transferencia, gift card o monedero" loading="lazy">
+            </figure>
+          </div>
+          <div class="t-cap"><b>Detalle de la reserva</b> · el pago, los jugadores y el cobro en recepción.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clases y academia -->
+  <section class="e-showcase" id="academia">
+    <div class="container">
+      <div class="e-showcase-grid">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Clases y academia</span>
+          <h2>Tus clases, <em>en el mismo calendario</em></h2>
+          <p class="lead">Las clases ocupan cancha con el color de su profesor, sus alumnos y lo que ya pagaron. Y en <b>Academia</b> controlas a tus profesores, sus clases, paquetes y comisiones.</p>
+          <ul class="r-list">
+            <li><span><b>Color por profesor</b> en el calendario.</span></li>
+            <li><span><b>Alumnos inscritos y su pago</b> en cada clase.</span></li>
+            <li><span><b>Paquetes de clases</b> para vender por adelantado.</span></li>
+            <li><span><b>Comisión del profesor</b> en cada cobro: cuánto le toca y cuánto queda para el club.</span></li>
+          </ul>
+          <a class="r-more" href="/academias/">Conoce Academia →</a>
+        </div>
+        <div class="e-showcase-visual">
+          <div class="t-stack">
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/reservas/clase.webp" width="1400" height="1064" alt="Detalle de una clase con el profesor, sus alumnos y el pago" loading="lazy">
+              <figcaption class="t-frame__cap"><b>Una clase</b> · el profesor, sus alumnos y el pago.</figcaption>
+            </figure>
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/reservas/academia.webp" width="1400" height="804" alt="Entrenadores de la academia con lo cobrado y la comisión de cada uno" loading="lazy">
+              <figcaption class="t-frame__cap"><b>Entrenadores</b> · lo cobrado, lo que le toca a cada profesor y lo que queda para el club.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Monedero y embajadores -->
+  <section class="e-showcase alt" id="clientes">
+    <div class="container">
+      <div class="e-showcase-grid reverse">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Clientes</span>
+          <h2>Clientes que <em>vuelven</em></h2>
+          <p class="lead">Con el monedero das saldo a favor —por ejemplo, cuando se cancela una reserva por lluvia— y tus clientes lo usan en su siguiente reserva. Y a tus mejores clientes los premias como <b>embajadores</b>.</p>
+          <ul class="r-list">
+            <li><span><b>Monedero</b>: saldo a favor que se usa para pagar reservas.</span></li>
+            <li><span><b>Embajadores</b> con descuento y más días para reservar.</span></li>
+            <li><span><b>Ventas por embajador</b>: cuántas reservas y cuánto ingreso te trae cada uno.</span></li>
+            <li><span><b>Tu libreta de clientes</b>, con contactos importados desde CSV.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <div class="t-stack">
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/reservas/monedero.webp" width="1400" height="768" alt="Monederos del club con el saldo de cada cliente" loading="lazy">
+              <figcaption class="t-frame__cap"><b>Monederos del club</b> · el saldo de cada cliente.</figcaption>
+            </figure>
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/reservas/embajadores.webp" width="1400" height="1016" alt="Ventas por embajador: reservas, clientes e ingreso de cada uno" loading="lazy">
+              <figcaption class="t-frame__cap"><b>Clientes y embajadores</b> · quiénes son tus embajadores y cuánto te trae cada uno.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CourtAI -->
+  <section class="e-showcase" id="courtai">
+    <div class="container">
+      <div class="e-showcase-grid">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> CourtAI</span>
+          <h2>Reservas de pádel con <em>inteligencia artificial</em></h2>
+          <p class="lead">Tus jugadores escriben por WhatsApp como siempre. La diferencia es que ya no contesta tu recepción: contesta CourtAI, consulta la disponibilidad real de tus canchas y <b>cierra la reserva con pago</b>, las 24 horas.</p>
+          <ul class="r-list">
+            <li><span><b>Consulta disponibilidad</b> en tiempo real, cancha por cancha.</span></li>
+            <li><span><b>Propone opciones</b> cuando el horario pedido ya está ocupado.</span></li>
+            <li><span><b>Manda el enlace de pago</b> y confirma la reserva en tu calendario.</span></li>
+            <li><span><b>Tu equipo toma el control</b> cuando quiere: el bot se pausa mientras contestas.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <figure class="t-frame">
+            <div class="t-frame__bar"><i></i><i></i><i></i></div>
+            <img src="/Assets/reservas/courtai.webp" width="1400" height="1064" alt="Bandeja de CourtAI con una reserva cerrada por WhatsApp" loading="lazy">
+            <figcaption class="t-frame__cap"><b>Bandeja de CourtAI</b> · una reserva cerrada por WhatsApp, con pago.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enlace de reservas -->
+  <section class="e-showcase alt" id="enlace">
+    <div class="container">
+      <div class="e-showcase-grid reverse">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Enlace de reservas</span>
+          <h2>Tus clientes reservan <em>sin descargar nada</em></h2>
+          <p class="lead">Comparte tu enlace por WhatsApp, en Instagram o con un QR en tu recepción. Tus clientes eligen día, horario y cancha desde el celular, sin crear cuenta, pagan en línea y <b>la reserva cae sola en tu calendario</b>.</p>
+          <ul class="r-list">
+            <li><span><b>Sin app y sin cuenta</b>: solo nombre y teléfono.</span></li>
+            <li><span><b>Anticipo configurable</b>: cobra el 25, 50, 75 o 100&nbsp;% al reservar.</span></li>
+            <li><span><b>Varias canchas a la vez</b> para grupos y clínicas.</span></li>
+            <li><span><b>Profesores y actividades</b> del club en la misma página.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <div class="t-dual--side">
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/reservas/enlace.webp" width="1100" height="456" alt="Enlace de reservas del club con botones para copiar, QR y anticipo" loading="lazy">
+              <figcaption class="t-frame__cap"><b>Tu enlace</b> · listo para copiar, con QR y anticipo.</figcaption>
+            </figure>
+            <div class="t-float-phone">
+              <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/reservas/enlace-cancha.webp" width="600" height="1298" alt="El cliente elige horario y cancha con su precio desde el celular" loading="lazy"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resumen -->
+  <section class="e-showcase" id="resumen">
+    <div class="container">
+      <div class="e-showcase-grid">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Resumen</span>
+          <h2>Tus números del mes, <em>de un vistazo</em></h2>
+          <p class="lead">En el resumen ves tus ingresos, tus reservas, tu ocupación y tus clientes, y <b>cuánto te falta para la meta del mes</b>, con la proyección de cierre.</p>
+          <ul class="r-list">
+            <li><span><b>Ingresos, reservas, ocupación y clientes únicos</b>, contra el periodo anterior.</span></li>
+            <li><span><b>Meta mensual</b> con el ritmo que llevas.</span></li>
+            <li><span><b>Proyección de fin de mes</b>, tu día más fuerte y tu hora pico.</span></li>
+            <li><span><b>Exporta a CSV</b> cuando lo necesites.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <figure class="t-frame">
+            <div class="t-frame__bar"><i></i><i></i><i></i></div>
+            <img src="/Assets/reservas/resumen.webp" width="1400" height="1064" alt="Resumen del club con ingresos, reservas, ocupación, proyección y meta mensual" loading="lazy">
+            <figcaption class="t-frame__cap"><b>Resumen del club</b> · ingresos, ocupación y meta del mes.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Setup -->
   <section class="e-steps">
     <div class="container">
       <span class="p-eyebrow" style="background: rgba(255,255,255,0.18); color: var(--paper); border-color: rgba(255,255,255,0.3);"><span class="dot" style="background: var(--lime); box-shadow: 0 0 0 3px rgba(184,240,43,0.3);"></span> Setup</span>
       <h2>Tu primera reserva en <em>10 minutos</em>.</h2>
-      <p class="lead">Sin demos, sin onboarding pagado. Te conectas, conectas Stripe o MercadoPago y compartes el link.</p>
+      <p class="lead">Sin demos, sin onboarding pagado. Te conectas, conectas Stripe o Mercado Pago y compartes el enlace.</p>
       <div class="e-steps-grid">
         <div class="e-step">
           <span class="step-num">1</span>
@@ -745,69 +1037,34 @@
         <div class="e-step">
           <span class="step-num">2</span>
           <h3>Conecta tu cobro</h3>
-          <p>Stripe o MercadoPago: tu cuenta, tu dinero. CourtBit nunca toca tus pagos. 3 minutos.</p>
+          <p>Stripe o Mercado Pago: tu cuenta, tu dinero. CourtBit nunca toca tus pagos. 3 minutos.</p>
         </div>
         <div class="e-step">
           <span class="step-num">3</span>
-          <h3>Comparte el link</h3>
+          <h3>Comparte el enlace</h3>
           <p>Listo. Primera reserva el mismo día. Sin instalaciones ni capacitación.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Testimonial (1 card, real Supabase logo) -->
-
-  <!-- 5. Final CTA -->
-    <!-- CourtAI -->
-  <section class="cb-sec">
-    <div class="container">
-      <div class="cb-ai">
-        <div>
-          <span class="cb-eyebrow">CourtAI</span>
-          <h2>Reservas de pádel con <em>inteligencia artificial</em></h2>
-          <p>Tus jugadores escriben por WhatsApp como siempre. La diferencia es que ya no contesta tu recepción: contesta CourtAI, consulta la disponibilidad real de tus canchas y deja la reserva hecha.</p>
-          <ul class="cb-ai-steps">
-            <li><span><b>Consulta disponibilidad</b> en tiempo real, cancha por cancha.</span></li>
-            <li><span><b>Propone opciones</b> cuando el horario pedido ya está ocupado.</span></li>
-            <li><span><b>Crea la reserva</b> y la bloquea en tu calendario al instante.</span></li>
-            <li><span><b>Confirma al jugador</b> y le manda el cobro si tu club lo pide.</span></li>
-          </ul>
-          <p style="margin-top:22px"><b style="color:var(--navy)">Menos mensajes para tu equipo. Más facilidad para tus jugadores.</b></p>
-        </div>
-        <div class="cb-chat" role="img" aria-label="Conversación de ejemplo: un jugador pide cancha por WhatsApp y CourtAI confirma la reserva">
-          <div class="cb-chat-head">
-            <span class="cb-chat-ico"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"/></svg></span>
-            <span><b>CourtAI</b><span>Responde 24/7 por WhatsApp</span></span>
-          </div>
-          <div class="cb-msg cb-msg--in">Quiero una cancha mañana a las 7 para cuatro personas<time>11:24</time></div>
-          <div class="cb-msg cb-msg--out">¡Listo! Encontré disponibilidad:<time>11:24</time></div>
-          <div class="cb-slotcard">
-            <span><b>Cancha 2 · mañana 19:00 – 20:00</b><span>4 jugadores · $320 MXN</span></span>
-          </div>
-          <div class="cb-confirm">Confirmar reserva</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Qué controla el gerente -->
-  <section class="cb-sec cb-sec--tint">
+  <!-- Y además -->
+  <section class="cb-sec cb-sec--tint" id="ademas">
     <div class="container">
       <div class="cb-head">
-        <span class="cb-eyebrow">Para el gerente</span>
-        <h2>Gestiona las reservas de tu club <em>desde un solo lugar</em></h2>
+        <span class="cb-eyebrow">Y además</span>
+        <h2>Configurado <em>como opera tu club</em></h2>
         <p>Un calendario que refleja la operación real, no una versión simplificada de ella.</p>
       </div>
       <ul class="cb-control">
-        <li><b>Disponibilidad por cancha</b><span>Cada cancha con su propio horario, superficie y reglas.</span></li>
         <li><b>Horarios y tarifas</b><span>Precios distintos por franja, por día o por temporada.</span></li>
         <li><b>Reservas recurrentes</b><span>El grupo de los martes queda fijo sin volver a capturarlo.</span></li>
-        <li><b>Bloqueos y mantenimiento</b><span>Cierras una cancha y deja de ofrecerse al instante.</span></li>
-        <li><b>Clases y academia</b><span>Las clases ocupan cancha y se ven en el mismo calendario.</span></li>
-        <li><b>Pagos</b><span>Quién pagó, quién debe y con qué método.</span></li>
         <li><b>Cancelaciones</b><span>Con tus reglas de anticipación y reembolso.</span></li>
-        <li><b>Historial de jugadores</b><span>Quién juega, cuánto y desde cuándo.</span></li>
+        <li><b>Días cerrados</b><span>Festivos y días sin servicio que ya no se ofrecen.</span></li>
+        <li><b>Equipo con permisos</b><span>Permisos por persona y PIN para autorizar cobros y cancelaciones.</span></li>
+        <li><b>Varias sedes</b><span>Cada club con sus canchas, horarios y reglas, desde la misma cuenta.</span></li>
+        <li><b>Eventos y paquetes</b><span>Eventos del club y venta de paquetes desde el panel.</span></li>
+        <li><b>Historial de clientes</b><span>Quién juega, cuánto y desde cuándo.</span></li>
       </ul>
     </div>
   </section>
@@ -820,10 +1077,10 @@
         <h2>Menos administración. <em>Más ocupación.</em></h2>
       </div>
       <div class="cb-benefits">
-        <article class="cb-benefit"><h3>Reduce el trabajo manual</h3><p>Tus jugadores reservan solos, sin depender de que recepción esté disponible para contestar.</p></article>
-        <article class="cb-benefit"><h3>Llena los horarios muertos</h3><p>El jugador ve la disponibilidad real a cualquier hora, y los huecos dejan de depender de que alguien pregunte.</p></article>
+        <article class="cb-benefit"><h3>Reduce el trabajo manual</h3><p>Tus clientes reservan solos, sin depender de que recepción esté disponible para contestar.</p></article>
+        <article class="cb-benefit"><h3>Llena los horarios muertos</h3><p>El cliente ve la disponibilidad real a cualquier hora, y los huecos dejan de depender de que alguien pregunte.</p></article>
         <article class="cb-benefit"><h3>Centraliza los cobros</h3><p>La reserva y su pago viven en el mismo sistema, así que cuadrar el mes deja de ser un ejercicio de memoria.</p></article>
-        <article class="cb-benefit"><h3>Mejora la experiencia</h3><p>Reservar toma segundos desde el celular. El jugador que reserva fácil, vuelve.</p></article>
+        <article class="cb-benefit"><h3>Mejora la experiencia</h3><p>Reservar toma segundos desde el celular. El cliente que reserva fácil, vuelve.</p></article>
       </div>
     </div>
   </section>
@@ -844,7 +1101,7 @@
     </div>
   </section>
 
-<section class="e-testimonial">
+  <section class="e-testimonial">
     <div class="container">
       <div class="header-wrap">
         <span class="p-eyebrow"><span class="dot"></span> Testimonio</span>
@@ -900,8 +1157,8 @@
         <h2>Al club <em>nunca</em> le cobramos comisión por reserva</h2>
       </div>
       <div class="cb-price-note">
-        <p>La comisión la paga el jugador, y solo cuando paga con tarjeta desde la app. <b>En efectivo y transferencia es cero.</b></p>
-        <p>El dinero llega directo a tu propia cuenta de Stripe o MercadoPago: CourtBit nunca lo retiene.</p>
+        <p>La comisión la paga el jugador, y solo cuando paga con tarjeta en línea. <b>En efectivo y transferencia es cero.</b></p>
+        <p>El dinero llega directo a tu propia cuenta de Stripe o Mercado Pago: CourtBit nunca lo retiene.</p>
         <p class="fine">Sin permanencia. Cancelas cuando quieras.</p>
         <a href="/pricing/">Ver planes y comisiones →</a>
       </div>
@@ -916,21 +1173,21 @@
         <h2>Lo que preguntan los clubes <em>antes de empezar</em></h2>
       </div>
       <div class="cb-faq">
-        <details><summary>¿Cómo funciona un sistema de reservas para canchas de pádel?</summary><p>Configuras tus canchas, sus horarios y sus tarifas una sola vez. A partir de ahí tus jugadores ven la disponibilidad real y reservan solos desde la app o por WhatsApp con CourtAI. Cada reserva bloquea la cancha al instante, así que no hay forma de duplicar un horario.</p></details>
+        <details><summary>¿Cómo funciona un sistema de reservas para canchas de pádel?</summary><p>Configuras tus canchas, sus horarios y sus tarifas una sola vez. A partir de ahí tus clientes ven la disponibilidad real y reservan solos desde el enlace de tu club, la app o por WhatsApp con CourtAI. Cada reserva bloquea la cancha al instante, así que no hay forma de duplicar un horario.</p></details>
         <details><summary>¿Cuánto cuesta CourtBit?</summary><p>Hay un plan gratuito para probar y uno de pago con acceso completo. Los detalles están en la <a href="/pricing/">página de planes</a>.</p></details>
-        <details><summary>¿CourtBit le cobra comisión al club?</summary><p>No. La comisión la paga el jugador y solo cuando paga con tarjeta desde la app. Si tu club cobra en efectivo o por transferencia, no hay comisión de CourtBit.</p></details>
-        <details><summary>¿Puedo recibir pagos con MercadoPago?</summary><p>Sí. Conectas tu propia cuenta de MercadoPago en un clic y el dinero cae directo ahí. También puedes usar Stripe. Un procesador activo a la vez, y lo cambias cuando quieras desde tu dashboard.</p></details>
-        <details><summary>¿Puedo recibir pagos con Stripe?</summary><p>Sí, con Stripe Connect. El cobro es nativo dentro de la app de jugadores y los depósitos llegan automáticamente a tu banco.</p></details>
-        <details><summary>¿Los jugadores necesitan descargar una app?</summary><p>No es obligatorio. Pueden reservar desde el enlace público de tu club o por WhatsApp con CourtAI. La app nativa existe para iOS y Android y le sirve al jugador frecuente, que además ve sus partidos y su ranking.</p></details>
+        <details><summary>¿CourtBit le cobra comisión al club?</summary><p>No. La comisión la paga el jugador y solo cuando paga con tarjeta en línea. Si tu club cobra en efectivo o por transferencia, no hay comisión de CourtBit.</p></details>
+        <details><summary>¿Puedo recibir pagos con Mercado Pago?</summary><p>Sí. Conectas tu propia cuenta de Mercado Pago y el dinero cae directo ahí. También puedes usar Stripe. Un procesador activo a la vez, y lo cambias cuando quieras desde tu dashboard.</p></details>
+        <details><summary>¿Puedo recibir pagos con Stripe?</summary><p>Sí, con Stripe Connect. El cobro es nativo en el enlace de reservas y en la app de jugadores, y los depósitos llegan automáticamente a tu banco.</p></details>
+        <details><summary>¿Los jugadores necesitan descargar una app?</summary><p>No. Reservan desde el enlace de tu club sin descargar nada ni crear cuenta, o por WhatsApp con CourtAI. La app nativa para iOS y Android le sirve al jugador frecuente, que además ve sus partidos y su ranking.</p></details>
         <details><summary>¿Puedo bloquear horarios?</summary><p>Sí. Bloqueas una cancha por mantenimiento, torneo o evento privado y deja de ofrecerse de inmediato, sin tener que avisar a nadie.</p></details>
-        <details><summary>¿Puedo gestionar varias canchas?</summary><p>Sí, y también varias sedes. Cada cancha tiene su propio horario, superficie, tarifa y reglas, y todas se ven en un mismo calendario.</p></details>
-        <details><summary>¿Qué pasa si un jugador cancela?</summary><p>Tú defines las reglas: con cuánta anticipación se puede cancelar y si aplica reembolso. El horario vuelve a quedar disponible automáticamente para que otro jugador lo tome.</p></details>
+        <details><summary>¿Puedo gestionar varias canchas?</summary><p>Sí, y también varias sedes. Cada cancha tiene su propio horario, tarifa y reglas, y todas se ven en un mismo calendario. Además puedes apartar varias canchas en una sola reserva.</p></details>
+        <details><summary>¿Qué pasa si un jugador cancela?</summary><p>Tú defines las reglas: con cuánta anticipación se puede cancelar y si aplica reembolso, incluso como saldo a favor en su monedero. El horario vuelve a quedar disponible automáticamente para que otro jugador lo tome.</p></details>
         <details><summary>¿Cuánto tarda configurar mi club?</summary><p>Alrededor de diez minutos: creas tu cuenta, das de alta tus canchas con sus horarios y conectas tu procesador de pagos. No hay llamadas con ventas ni implementación.</p></details>
       </div>
     </div>
   </section>
 
-<section class="e-final-cta">
+  <section class="e-final-cta">
     <div class="container">
       <h2>Empieza hoy. Tu primera <em>reserva</em> en 10 minutos.</h2>
       <p>Sin permanencia. Cancela cuando quieras. La comisión la paga el jugador, nunca el club.</p>
@@ -940,8 +1197,40 @@
       </div>
     </div>
   </section>
+</main>
 
-  </main>
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Imagen ampliada">
+  <button class="lightbox__close" type="button" aria-label="Cerrar">&times;</button>
+  <img class="lightbox__img" src="" alt="">
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('lightbox');
+  var lbImg = lb.querySelector('.lightbox__img');
+  function open(src, alt){
+    lbImg.classList.remove('zoomed'); lb.classList.remove('scroll');
+    lbImg.src = src; lbImg.alt = alt || '';
+    lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.t-frame img, .t-phone__screen img, .t-pop img').forEach(function(img){
+    img.addEventListener('click', function(){ open(img.currentSrc || img.src, img.alt); });
+  });
+  lbImg.addEventListener('click', function(e){
+    e.stopPropagation();
+    var z = lbImg.classList.toggle('zoomed');
+    lb.classList.toggle('scroll', z);
+    if(!z) lb.scrollTo(0,0);
+  });
+  lb.querySelector('.lightbox__close').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.classList.contains('open')) close(); });
+})();
+</script>
 
 <!-- FOOTER -->
   <!-- /FOOTER -->

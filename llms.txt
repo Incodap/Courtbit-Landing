@@ -20,7 +20,7 @@ Disponible como app nativa (App Store y Google Play) para jugadores y como panel
 
 ## Páginas
 
-- [Reservas para clubes](https://www.courtbit.com.mx/clubes/): sistema de reservas para clubes de pádel.
+- [Reservas para clubes](https://www.courtbit.com.mx/reservas/): sistema de reservas para clubes de pádel.
 - [Academias](https://www.courtbit.com.mx/academias/): gestión de alumnos y clases para entrenadores.
 - [Competencias / organizadores](https://www.courtbit.com.mx/competencias/): torneos, ligas y retas.
 - [Precios](https://www.courtbit.com.mx/pricing/): planes y costos.
@@ -49,7 +49,7 @@ Disponible como app nativa (App Store y Google Play) para jugadores y como panel
 CourtBit's core pages are also available in English at the same paths under `/en/`:
 
 - [Home](https://www.courtbit.com.mx/en/)
-- [Bookings for clubs](https://www.courtbit.com.mx/en/clubes/)
+- [Bookings for clubs](https://www.courtbit.com.mx/en/reservas/)
 - [Academies](https://www.courtbit.com.mx/en/academias/)
 - [Competitions / organizers](https://www.courtbit.com.mx/en/competencias/)
 - [Pricing](https://www.courtbit.com.mx/en/pricing/)
