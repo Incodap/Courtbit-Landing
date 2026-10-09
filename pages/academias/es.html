@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CourtBit Academia — alumnos y clases para entrenadores</title>
-  <meta name="description" content="Software de academia de padel: lista de alumnos, agenda de clases y pagos directos. Planes para tu academia; CourtBit solo cobra 4% al alumno.">
+  <meta name="description" content="Software de academia de pádel: clases y clínicas en tu calendario, paquetes, comisiones por profesor que el sistema respeta y app para tus profesores. CourtBit solo cobra 4% al alumno.">
   <link rel="canonical" href="https://www.courtbit.com.mx/academias/">
   <link rel="alternate" hreflang="es" href="https://www.courtbit.com.mx/academias/">
   <link rel="alternate" hreflang="en" href="https://www.courtbit.com.mx/en/academias/">
@@ -14,7 +14,7 @@
   <!-- OG / Twitter -->
   <meta property="og:url" content="https://www.courtbit.com.mx/academias/">
   <meta property="og:title" content="CourtBit Academia — para tu academia de padel">
-  <meta property="og:description" content="Lista de alumnos, agenda de clases, cobros directos. CourtBit solo cobra 4% al alumno, nunca al instructor.">
+  <meta property="og:description" content="Clases, paquetes, comisiones por profesor y app para tus profesores. CourtBit solo cobra 4% al alumno, nunca al instructor.">
   <meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-academias.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -384,6 +384,103 @@
       }
     }
   
+    /* ═══ /academias/ · lo que sigue al hero: capturas reales del producto (oct 2026) ═══ */
+    .cb-sec { padding: 84px 0; }
+    .cb-sec--tint { background: var(--bg); border-block: 1px solid var(--border); }
+    .cb-head { max-width: 740px; margin: 0 auto 40px; text-align: center; }
+    .cb-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .6875rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-deep); background: var(--blue-mist); border-radius: 999px; padding: 6px 13px; }
+    .cb-head h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); font-weight: 800; letter-spacing: -.032em; line-height: 1.1; margin: 16px 0 12px; color: var(--navy); text-wrap: balance; }
+    .cb-head h2 em { font-style: italic; color: var(--blue); }
+    .cb-head p { margin: 0; color: var(--text-soft); font-size: 1.0625rem; line-height: 1.55; }
+
+    /* Índice "Todo lo que hace Academia" */
+    .r-index { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .r-index a { display: flex; gap: 14px; align-items: flex-start; height: 100%; background: var(--paper); border: 1px solid var(--border); border-radius: 18px; padding: 20px; color: inherit; transition: border-color .15s, transform .15s, box-shadow .15s; }
+    .r-index a:hover { border-color: rgba(21,128,61,.35); transform: translateY(-2px); box-shadow: 0 16px 32px -20px rgba(16,48,42,.3); }
+    .r-index .ic { flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--blue-mist); color: var(--blue-deep); display: grid; place-items: center; }
+    .r-index .ic svg { width: 21px; height: 21px; }
+    .r-index b { display: block; font-size: .98rem; font-weight: 800; color: var(--navy); letter-spacing: -.012em; }
+    .r-index p { margin: 3px 0 0; font-size: .875rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* Secciones con captura */
+    .e-showcase { padding: 88px 0; background: var(--paper); border-top: 1px solid var(--border); }
+    .e-showcase.alt { background: var(--bg); }
+    .e-showcase-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 64px; align-items: center; }
+    .e-showcase-grid.reverse { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+    .e-showcase-grid.reverse .e-showcase-text { order: 2; }
+    .e-showcase-grid.reverse .e-showcase-visual { order: 1; }
+    .e-showcase .p-eyebrow { margin-bottom: 14px; }
+    .e-showcase h2 { font-size: clamp(1.875rem, 3.6vw, 2.6rem); line-height: 1.06; color: var(--navy); text-wrap: balance; }
+    .e-showcase h2 em { color: var(--blue); }
+    .e-showcase .lead { color: var(--text-soft); font-size: 1.0625rem; margin: 0 0 22px; line-height: 1.55; }
+    .e-showcase .lead b { color: var(--navy); }
+    .r-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .r-list li { display: flex; gap: 11px; align-items: flex-start; font-size: .97rem; color: var(--text-soft); line-height: 1.5; }
+    .r-list li::before { content: '✓'; flex: none; width: 22px; height: 22px; border-radius: 7px; background: var(--lime); color: #4d6a16; font-size: .75rem; font-weight: 800; display: grid; place-items: center; margin-top: 1px; }
+    .r-list b { color: var(--navy); }
+
+    /* Marco de navegador, celular, combinaciones */
+    .t-frame { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: var(--paper); box-shadow: 0 24px 48px -16px rgba(16,48,42,.28); margin: 0; }
+    .t-frame__bar { height: 38px; display: flex; align-items: center; gap: 7px; padding: 0 16px; background: #f4f6fb; border-bottom: 1px solid var(--border); }
+    .t-frame__bar i { width: 11px; height: 11px; border-radius: 50%; background: #cdd3e2; display: block; }
+    .t-frame img { width: 100%; height: auto; }
+    .t-frame__cap { font-size: .82rem; color: var(--text-muted); padding: 12px 16px; border-top: 1px solid var(--border); background: var(--paper); line-height: 1.45; }
+    .t-frame__cap b { color: var(--blue-deep); }
+    .t-cap { font-size: .85rem; color: var(--text-muted); text-align: center; margin-top: 14px; line-height: 1.45; }
+    .t-cap b { color: var(--blue-deep); }
+    .t-stack { display: grid; gap: 26px; }
+    .t-phone { width: 100%; max-width: 266px; margin: 0 auto; background: #0a1238; border-radius: 38px; padding: 8px; box-shadow: 0 24px 48px -14px rgba(16,48,42,.45); }
+    .t-phone__screen { border-radius: 30px; overflow: hidden; background: #fff; }
+    .t-phone__screen img { width: 100%; height: auto; }
+    .t-overlay { position: relative; padding-bottom: 64px; }
+    .t-pop { position: absolute; right: -18px; bottom: 0; width: 54%; margin: 0; border-radius: 16px; overflow: hidden; background: var(--paper); border: 1px solid var(--border); box-shadow: 0 30px 60px -18px rgba(16,48,42,.45); z-index: 2; }
+    .t-pop img { width: 100%; height: auto; }
+
+    /* Reglas que se cumplen solas */
+    .a-rules { list-style: none; margin: 0 0 44px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .a-rules li { background: var(--paper); border: 1px solid var(--border); border-radius: 18px; padding: 22px 22px 20px; }
+    .a-rules .n { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: var(--lime); color: var(--navy); font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: .85rem; margin-bottom: 12px; }
+    .a-rules b { display: block; font-size: 1.02rem; font-weight: 800; color: var(--navy); letter-spacing: -.012em; margin-bottom: 5px; }
+    .a-rules span { font-size: .92rem; color: var(--text-soft); line-height: 1.5; }
+    .a-proof { max-width: 980px; margin: 0 auto; }
+
+    /* App del profesor */
+    .a-phones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+    .a-phone { margin: 0; }
+    .a-phone figcaption { margin-top: 16px; text-align: center; font-size: .92rem; color: var(--text-soft); font-weight: 600; line-height: 1.4; }
+    .a-phone .step { display: inline-grid; place-items: center; width: 23px; height: 23px; border-radius: 50%; background: var(--lime); color: #4d6a16; font-size: .78rem; font-weight: 800; margin-right: 7px; vertical-align: middle; }
+    .a-note { max-width: 640px; margin: 36px auto 0; text-align: center; font-size: .95rem; color: var(--text-soft); line-height: 1.55; }
+    .a-note b { color: var(--navy); }
+
+    .e-testimonial h2 em { color: var(--blue); }
+    /* Lightbox */
+    .t-frame img, .t-phone__screen img, .t-pop img { cursor: zoom-in; }
+    .lightbox { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(6,21,18,.94); backdrop-filter: blur(6px); overflow: auto; }
+    .lightbox.open { display: flex; }
+    .lightbox.scroll { align-items: flex-start; }
+    .lightbox__img { max-width: 96vw; max-height: 92vh; object-fit: contain; border-radius: 12px; box-shadow: 0 24px 70px rgba(0,0,0,.55); cursor: zoom-in; }
+    .lightbox__img.zoomed { max-width: none; max-height: none; width: auto; cursor: zoom-out; }
+    .lightbox__close { position: fixed; top: 16px; right: 18px; z-index: 210; width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer; background: rgba(255,255,255,.16); color: #fff; font-size: 26px; line-height: 1; display: grid; place-items: center; }
+    .lightbox__close:hover { background: rgba(255,255,255,.3); }
+
+    @media (max-width: 900px) {
+      .r-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .e-showcase-grid, .e-showcase-grid.reverse { grid-template-columns: 1fr; gap: 36px; }
+      .e-showcase-grid.reverse .e-showcase-text { order: 1; }
+      .e-showcase-grid.reverse .e-showcase-visual { order: 2; }
+      .t-pop { right: 0; }
+      .a-rules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .a-phones { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
+      .cb-sec { padding: 60px 0; }
+    }
+    @media (max-width: 600px) {
+      .e-showcase { padding: 56px 0; }
+      .r-index, .a-rules { grid-template-columns: 1fr; }
+      .a-phones { grid-template-columns: minmax(0, 260px); justify-content: center; }
+      .t-overlay { padding-bottom: 0; }
+      .t-pop { position: relative; right: auto; bottom: auto; width: 88%; margin: -28px 0 0 auto; }
+    }
+
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 999; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; font-weight: 700; font-size: .9375rem; }
     .skip-link:focus { left: 0; }
   
@@ -518,28 +615,221 @@
     </div>
   </section>
 
-  <!-- 2. Feature trio: Alumnos · Agenda · Pagos -->
-  <section class="e-features">
+  <!-- 2. Todo lo que hace Academia -->
+  <section class="cb-sec cb-sec--tint">
     <div class="container">
-      <span class="p-eyebrow"><span class="dot"></span> Cómo funciona</span>
-      <h2>Lo que necesita una academia. <em>Nada</em> más.</h2>
-      <p style="color: var(--text-soft); max-width: 620px; margin: 0;">Tu lista de alumnos, tu agenda de clases y tus cobros — todo en un solo lugar. Sin doble captura, sin colegiaturas perdidas.</p>
-      <div class="e-feature-grid">
-        <article class="e-feature">
-          <div class="icon">A</div>
-          <h3>Lista de alumnos</h3>
-          <p>Perfiles con nivel, asistencia, historial de clases y notas. Tus alumnos centralizados, donde tu equipo los encuentra al instante.</p>
-        </article>
-        <article class="e-feature">
-          <div class="icon">B</div>
-          <h3>Agenda de clases</h3>
-          <p>Clases privadas y grupales con cupo, recordatorios automáticos por la app y reposiciones cuando un alumno cancela.</p>
-        </article>
-        <article class="e-feature">
-          <div class="icon">C</div>
-          <h3>Pagos directos</h3>
-          <p>Colegiaturas mensuales, paquetes de clases y pagos sueltos. CourtBit cobra solo 4% al alumno — al instructor, nunca.</p>
-        </article>
+      <div class="cb-head">
+        <span class="cb-eyebrow">Todo lo que hace Academia</span>
+        <h2>Tu academia completa, <em>conectada con tu club</em></h2>
+        <p>Clases, paquetes, profesores y cobros en el mismo sistema que tus reservas. Tú pones las reglas; Courtbit las cumple.</p>
+      </div>
+      <ul class="r-index">
+        <li><a href="#clases"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span><div><b>Clases y clínicas</b><p>En el mismo calendario de tus canchas.</p></div></a></li>
+        <li><a href="#paquetes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span><div><b>Paquetes y mensualidades</b><p>Bonos de sesiones que se descuentan solos.</p></div></a></li>
+        <li><a href="#comisiones"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><div><b>Comisiones por profesor</b><p>Porcentaje, cuota fija o por horario.</p></div></a></li>
+        <li><a href="#reglas"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 7.6 8 9 4.6-1.4 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><div><b>Reglas que se cumplen solas</b><p>Solo cuenta lo que ya se dio.</p></div></a></li>
+        <li><a href="#profesor"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><div><b>App del profesor</b><p>Sus clases, sus alumnos y sus ingresos.</p></div></a></li>
+        <li><a href="#permisos"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><div><b>Permisos y límites</b><p>Tú decides qué puede hacer cada uno.</p></div></a></li>
+        <li><a href="#resumen"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><div><b>Reportes</b><p>Ingresos, ocupación y lo de cada profesor.</p></div></a></li>
+        <li><a href="#permisos"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><div><b>Perfil público</b><p>CourtAI manda ahí a quien pregunta por clases.</p></div></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Clases y clínicas -->
+  <section class="e-showcase" id="clases">
+    <div class="container">
+      <div class="e-showcase-grid">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Clases y clínicas</span>
+          <h2>Tus clases, <em>en el calendario de tus canchas</em></h2>
+          <p class="lead">Clases privadas, grupales y clínicas recurrentes ocupan cancha como cualquier reserva, con el color de su profesor. En cada una ves a los alumnos inscritos, lo que ya pagaron y <b>cuánto le toca al profesor</b>.</p>
+          <ul class="r-list">
+            <li><span><b>Privadas, grupales y clínicas</b> con sesiones recurrentes.</span></li>
+            <li><span><b>Color por profesor</b> en el calendario.</span></li>
+            <li><span><b>Alumnos inscritos y su pago</b> en cada clase.</span></li>
+            <li><span><b>Asistencia</b>: presente, ausente o tarde.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <figure class="t-frame">
+            <div class="t-frame__bar"><i></i><i></i><i></i></div>
+            <img src="/Assets/academias/clase.webp" width="1400" height="1064" alt="Una clase en el calendario del club con su profesor, sus alumnos, el pago y la comisión" loading="lazy">
+            <figcaption class="t-frame__cap"><b>Una clase en el calendario</b> · alumnos, pago y comisión del profesor.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paquetes y mensualidades -->
+  <section class="e-showcase alt" id="paquetes">
+    <div class="container">
+      <div class="e-showcase-grid reverse">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Paquetes y mensualidades</span>
+          <h2>Paquetes que <em>se descuentan solos</em></h2>
+          <p class="lead">Vende bonos de sesiones —por ejemplo, 8 clases por $1,400 con vigencia de 60 días— o mensualidades. Al inscribir al alumno en una clase se descuenta una sesión de su paquete, y ves <b>cuántas le quedan y cuándo vence</b>.</p>
+          <ul class="r-list">
+            <li><span><b>Bonos de sesiones</b> con vigencia, o <b>mensualidades</b>.</span></li>
+            <li><span><b>Avance por alumno</b>: sesiones usadas, restantes y vencimiento.</span></li>
+            <li><span><b>Por agotar</b>: quién está por terminar su paquete.</span></li>
+            <li><span><b>Venta en recepción</b> con efectivo, transferencia o terminal.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <figure class="t-frame">
+            <div class="t-frame__bar"><i></i><i></i><i></i></div>
+            <img src="/Assets/academias/paquetes.webp" width="1400" height="946" alt="Paquetes vendidos con el avance de sesiones de cada alumno" loading="lazy">
+            <figcaption class="t-frame__cap"><b>Paquetes</b> · vendidos, ingreso del mes y el avance de cada alumno.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comisiones -->
+  <section class="e-showcase" id="comisiones">
+    <div class="container">
+      <div class="e-showcase-grid">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Comisiones</span>
+          <h2>Tú defines la comisión de cada profesor. <em>El sistema la respeta.</em></h2>
+          <p class="lead">Para cada profesor eliges cuánto le toca de cada peso que junta una clase: un porcentaje o una cuota fija, con excepciones por horario. Y si una clase es especial, le pones su propia comisión. <b>Lo que paga el alumno no cambia</b>: solo cómo se reparte.</p>
+          <ul class="r-list">
+            <li><span><b>Porcentaje o cuota fija</b> por profesor.</span></li>
+            <li><span><b>Excepciones por horario</b>: otro porcentaje en franjas como lunes a viernes de 17:00 a 22:00.</span></li>
+            <li><span><b>Comisión especial por clase</b>: porcentaje propio, cuota fija por alumno o monto fijo por clase.</span></li>
+            <li><span><b>El porcentaje queda guardado en cada cobro</b>: si mañana cambias la comisión, lo ya cobrado no se mueve.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <div class="t-stack">
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/academias/reparto.webp" width="1200" height="894" alt="Reparto con el club: porcentaje base del profesor y excepciones por horario" loading="lazy">
+              <figcaption class="t-frame__cap"><b>Reparto del profesor</b> · % base y excepciones por horario.</figcaption>
+            </figure>
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/academias/comision-clase.webp" width="1200" height="216" alt="Comisión especial de una clase: automática, porcentaje personalizado, cuota fija por alumno o monto fijo por clase" loading="lazy">
+              <figcaption class="t-frame__cap"><b>Comisión especial de una clase</b> · reemplaza a la del profesor solo en esa clase.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reglas que se cumplen solas -->
+  <section class="cb-sec cb-sec--tint" id="reglas">
+    <div class="container">
+      <div class="cb-head">
+        <span class="cb-eyebrow">Reglas</span>
+        <h2>Reglas que se cumplen <em>solas</em></h2>
+        <p>Sin hojas de cálculo ni discusiones a fin de mes: el reparto sigue tus reglas y deja registro de cada clase.</p>
+      </div>
+      <ol class="a-rules">
+        <li><span class="n">01</span><b>Solo cuenta lo que ya se dio</b><span>Una clase que todavía no ocurre no genera comisión, aunque ya esté pagada.</span></li>
+        <li><span class="n">02</span><b>Las canceladas no cuentan</b><span>Ni clases, ni alumnos, ni dinero para el profesor.</span></li>
+        <li><span class="n">03</span><b>El porcentaje se guarda al cobrar</b><span>Si actualizas la comisión, los reportes pasados no se mueven.</span></li>
+        <li><span class="n">04</span><b>Cada clase, con su origen</b><span>El historial dice qué regla se aplicó: la base, la de horario o la especial.</span></li>
+        <li><span class="n">05</span><b>Límite de tarjeta por profesor</b><span>Aviso por push y correo al acercarse al límite y al llegar al 100&nbsp;%.</span></li>
+        <li><span class="n">06</span><b>El dinero lo cobra el club</b><span>El profesor solo registra cobros si tú le das permiso.</span></li>
+      </ol>
+      <figure class="t-frame a-proof">
+        <div class="t-frame__bar"><i></i><i></i><i></i></div>
+        <img src="/Assets/academias/historial.webp" width="1400" height="1064" alt="Historial de comisiones del profesor: las clases que todavía no se dan aparecen con ganancia de $0" loading="lazy">
+        <figcaption class="t-frame__cap"><b>Historial de comisiones</b> · lo cobrado, lo del profesor y lo del club; las clases que todavía no se dan aparecen en $0.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- App del profesor -->
+  <section class="cb-sec" id="profesor">
+    <div class="container">
+      <div class="cb-head">
+        <span class="cb-eyebrow">Para tus profesores</span>
+        <h2>Cada profesor, <em>con su academia en el celular</em></h2>
+        <p>Tus profesores tienen su propia área en la app de Courtbit y en el portal de profesores: ven sus clases, pasan lista, agregan alumnos y saben cuánto llevan ganado, sin preguntarle a recepción.</p>
+      </div>
+      <div class="a-phones">
+        <figure class="a-phone">
+          <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/academias/prof-clases.webp" width="600" height="1298" alt="Mis clases del profesor: próximas y pasadas" loading="lazy"></div></div>
+          <figcaption><span class="step">1</span>Sus clases de la semana</figcaption>
+        </figure>
+        <figure class="a-phone">
+          <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/academias/prof-clase.webp" width="600" height="1298" alt="Detalle de una clase: inscritos, asistencia y agregar alumno" loading="lazy"></div></div>
+          <figcaption><span class="step">2</span>Pasa lista y agrega alumnos</figcaption>
+        </figure>
+        <figure class="a-phone">
+          <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/academias/prof-reportes.webp" width="600" height="1298" alt="Reportes del profesor: bruto cobrado, su comisión y lo que se queda el club" loading="lazy"></div></div>
+          <figcaption><span class="step">3</span>Lo que cobró y su comisión, explicada</figcaption>
+        </figure>
+        <figure class="a-phone">
+          <div class="t-phone"><div class="t-phone__screen"><img src="/Assets/academias/prof-nueva.webp" width="600" height="1298" alt="Crear una clase nueva desde el celular" loading="lazy"></div></div>
+          <figcaption><span class="step">4</span>Crea clases, si tú se lo permites</figcaption>
+        </figure>
+      </div>
+      <p class="a-note">La comisión la ve <b>tal como la configuró el club</b>, con el cálculo explicado, y no la puede cambiar.</p>
+    </div>
+  </section>
+
+  <!-- Permisos y límites -->
+  <section class="e-showcase alt" id="permisos">
+    <div class="container">
+      <div class="e-showcase-grid reverse">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Permisos y límites</span>
+          <h2>Tú decides <em>qué puede hacer cada profesor</em></h2>
+          <p class="lead">Cada profesor tiene sus permisos: si puede crear clases, registrar cobros o cambiar el precio de una clase desde la app. Y le pones un <b>límite de cobros con tarjeta</b> por semana o por mes, con aviso cuando se acerca.</p>
+          <ul class="r-list">
+            <li><span><b>Crear clases desde la app</b>, o solo consultar la disponibilidad.</span></li>
+            <li><span><b>Registrar cobros</b>: apagado por defecto; tú decides en quién confías.</span></li>
+            <li><span><b>Editar el precio</b> de una clase ya creada.</span></li>
+            <li><span><b>Perfil público</b> con WhatsApp, niveles y especialidades: CourtAI manda ahí a quien pregunta por clases.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <figure class="t-frame">
+            <div class="t-frame__bar"><i></i><i></i><i></i></div>
+            <img src="/Assets/academias/permisos.webp" width="1200" height="908" alt="Permisos del profesor en la app y límite de cobros con tarjeta" loading="lazy">
+            <figcaption class="t-frame__cap"><b>Preferencias del profesor</b> · permisos en la app y límite de cobros con tarjeta.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reportes -->
+  <section class="e-showcase" id="resumen">
+    <div class="container">
+      <div class="e-showcase-grid">
+        <div class="e-showcase-text">
+          <span class="p-eyebrow"><span class="dot"></span> Reportes</span>
+          <h2>Tu academia en números, <em>al día</em></h2>
+          <p class="lead">Ingresos de academia, sesiones impartidas, ocupación y alumnos activos del mes, con <b>lo que se paga a cada profesor y lo que se queda el club</b>.</p>
+          <ul class="r-list">
+            <li><span><b>Resumen del mes</b>: ingresos, sesiones, ocupación y alumnos con paquete vigente.</span></li>
+            <li><span><b>Por profesor</b>: cobrado, lo que le toca y lo que queda para el club.</span></li>
+            <li><span><b>Clases de hoy</b> con asistencia y cobro a un clic.</span></li>
+            <li><span><b>Exporta a CSV</b> para tu contador.</span></li>
+          </ul>
+        </div>
+        <div class="e-showcase-visual">
+          <div class="t-stack">
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/academias/resumen.webp" width="1400" height="1064" alt="Resumen de Academia: ingresos, sesiones impartidas, ocupación, alumnos activos y clases de hoy" loading="lazy">
+              <figcaption class="t-frame__cap"><b>Resumen de Academia</b> · el mes de un vistazo y las clases de hoy.</figcaption>
+            </figure>
+            <figure class="t-frame">
+              <div class="t-frame__bar"><i></i><i></i><i></i></div>
+              <img src="/Assets/academias/entrenadores.webp" width="1400" height="804" alt="Entrenadores: cobrado, paga a entrenadores y lo que queda para el club" loading="lazy">
+              <figcaption class="t-frame__cap"><b>Entrenadores</b> · cobrado, lo de cada profesor y lo del club.</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -599,6 +889,39 @@
   </section>
 
   </main>
+
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Imagen ampliada">
+  <button class="lightbox__close" type="button" aria-label="Cerrar">&times;</button>
+  <img class="lightbox__img" src="" alt="">
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('lightbox');
+  var lbImg = lb.querySelector('.lightbox__img');
+  function open(src, alt){
+    lbImg.classList.remove('zoomed'); lb.classList.remove('scroll');
+    lbImg.src = src; lbImg.alt = alt || '';
+    lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.t-frame img, .t-phone__screen img, .t-pop img').forEach(function(img){
+    img.addEventListener('click', function(){ open(img.currentSrc || img.src, img.alt); });
+  });
+  lbImg.addEventListener('click', function(e){
+    e.stopPropagation();
+    var z = lbImg.classList.toggle('zoomed');
+    lb.classList.toggle('scroll', z);
+    if(!z) lb.scrollTo(0,0);
+  });
+  lb.querySelector('.lightbox__close').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.classList.contains('open')) close(); });
+})();
+</script>
 
 <!-- FOOTER -->
   <!-- /FOOTER -->
