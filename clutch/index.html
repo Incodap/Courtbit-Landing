@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>CourtBit × Clutch</title>
+<meta name="description" content="A partnership proposal from CourtBit to Clutch for padel tournaments in Mexico.">
+<meta property="og:title" content="CourtBit × Clutch">
+<meta property="og:description" content="A partnership for padel tournaments in Mexico.">
+<meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/hero/hero-clubes.jpg">
+<meta name="theme-color" content="#04241a">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Clutch's visual language (forest + warm paper, pill nav, green pill buttons, Plus Jakarta Sans + Inter)
+   carrying CourtBit's content. One idea per section, readable at arm's length on a laptop or iPad. */
+:root{
+  --forest:#04241a; --forest-2:#0b3427; --forest-line:rgba(255,255,255,.14);
+  --paper:#fbf9f4; --paper-2:#f3efe7; --line:#e4ded3;
+  --ink:#121513; --ink-2:#3f4642;
+  --on-dark:#ffffff; --on-dark-2:#c9d6cf;
+  --green:#1f8a5f; --green-hover:#23996a; --green-ink:#146b47; --mint:#6ad8a4;
+  --head:"Plus Jakarta Sans","Inter",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.23,1,.32,1);
+  --maxw:1160px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}
+@media (max-width:520px){.wrap{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}}
+section{padding-block:clamp(72px,9vw,120px)}
+h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.03em;line-height:1.08;text-wrap:balance}
+h2{font-size:clamp(32px,4.2vw,52px)}
+h3{font-size:22px;letter-spacing:-.02em;line-height:1.25}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--ink-2);margin-top:16px;max-width:58ch}
+.dark{background:var(--forest);color:var(--on-dark)}
+.dark .lead{color:var(--on-dark-2)}
+.sec-head{max-width:760px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:600 17px var(--body);text-decoration:none;white-space:nowrap;border:0;cursor:pointer;transition:transform 160ms var(--ease),background-color 200ms ease,box-shadow 200ms ease}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--green);color:#fff}
+.btn-outline{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6)}
+.btn-outline-dark{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+@media (hover:hover) and (pointer:fine){
+  .btn-primary:hover{background:var(--green-hover)}
+  .btn-outline:hover{box-shadow:inset 0 0 0 1.5px #fff;background:rgba(255,255,255,.06)}
+  .btn-outline-dark:hover{background:rgba(18,21,19,.05)}
+}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:8px}
+
+/* Header */
+.top{position:sticky;top:0;z-index:20;padding-top:max(12px,env(safe-area-inset-top));padding-bottom:12px;background:linear-gradient(var(--forest) 60%,rgba(4,36,26,0))}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--paper);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 12px 40px -24px rgba(0,0,0,.6)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand img{height:26px;width:auto}
+.brand .x{color:var(--ink-2);font-size:15px}
+.brand .clutch{font-family:var(--head);font-weight:800;font-size:21px;letter-spacing:-.01em}
+.nav-links{display:flex;gap:28px;font-size:15px;font-weight:500;color:var(--ink-2)}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+.nav .btn{min-height:44px;padding:0 20px;font-size:15px}
+@media (max-width:900px){.nav-links{display:none}}
+@media (max-width:440px){.brand img{height:22px}.brand .clutch{font-size:18px}.nav .btn{padding:0 16px}}
+
+/* Hero */
+.hero{background:var(--forest);color:#fff;padding-block:clamp(32px,5vw,64px) clamp(72px,9vw,112px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(36px,6vw,80px);align-items:center}
+.hero h1{font-size:clamp(40px,5vw,64px)}
+.hero p{font-size:clamp(18px,1.6vw,21px);color:var(--on-dark-2);margin-top:22px;max-width:46ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.proof{display:flex;width:fit-content;max-width:100%;flex-wrap:wrap;gap:6px 22px;margin-top:36px;background:#fff;color:var(--ink);border-radius:20px;padding:14px 22px;font-size:15px}
+.proof b{font-family:var(--head);font-weight:800;font-size:17px;margin-right:4px}
+.photo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo figcaption{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(4,36,26,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;border-radius:16px;padding:12px 16px;font-size:14px;line-height:1.45}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.photo{aspect-ratio:4/3;max-width:560px}}
+
+/* Proposal */
+.deal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:clamp(36px,5vw,56px)}
+.side{background:#fff;border:1px solid var(--line);border-radius:24px;padding:clamp(26px,3.4vw,40px);min-width:0}
+.side-head{display:flex;align-items:center;gap:12px;padding-bottom:20px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.side-head img{height:26px;width:auto}
+.side-head .clutch{font-family:var(--head);font-weight:800;font-size:24px;letter-spacing:-.01em}
+.side-head span:last-child{color:var(--ink-2);font-size:16px}
+.checks{list-style:none;display:grid}
+.checks li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;padding-block:16px;border-bottom:1px solid var(--line)}
+.checks li:last-child{border-bottom:0;padding-bottom:0}
+.checks li::before{content:"";width:24px;height:24px;margin-top:2px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
+.checks b{display:block;font-weight:600}
+.checks span{display:block;color:var(--ink-2);font-size:16px;margin-top:2px}
+.deal-note{margin-top:20px;color:var(--ink-2);font-size:16px}
+@media (max-width:820px){.deal{grid-template-columns:1fr}}
+
+/* Benefits */
+.wins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,72px);margin-top:clamp(36px,5vw,56px)}
+.win h3{font-size:clamp(22px,2.2vw,28px);display:flex;align-items:center;gap:12px;padding-bottom:18px;border-bottom:2px solid var(--mint)}
+.win h3 img{height:26px;width:auto}
+.win ul{list-style:none}
+.win li{padding-block:20px;border-bottom:1px solid var(--forest-line)}
+.win li b{display:block;font-weight:600;font-size:19px}
+.win li span{display:block;color:var(--on-dark-2);margin-top:4px;font-size:16px}
+.together{margin-top:clamp(36px,5vw,56px);background:var(--mint);color:var(--forest);border-radius:24px;padding:clamp(22px,3vw,32px) clamp(24px,3.4vw,40px);display:flex;flex-wrap:wrap;gap:8px 28px;align-items:baseline}
+.together strong{font-family:var(--head);font-size:20px;letter-spacing:-.02em}
+.together span{font-weight:500;font-size:17px}
+@media (max-width:820px){.wins{grid-template-columns:1fr}}
+
+/* Brand placement */
+.place{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.net{border-radius:24px;overflow:hidden;aspect-ratio:16/11}
+.net img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
+.spots{list-style:none;margin-top:28px;display:grid;gap:12px}
+.spots li{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px;font-weight:500}
+.spots li i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--green)}
+@media (max-width:860px){.place{grid-template-columns:1fr}}
+
+/* How it works */
+.how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,5vw,72px);align-items:center}
+.steps{list-style:none;counter-reset:s;margin-top:32px;display:grid}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding-block:18px;border-top:1px solid var(--line)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--forest);color:#fff;font-weight:600;font-size:15px}
+.steps b{display:block;font-weight:600}
+.steps span{display:block;color:var(--ink-2);font-size:16px}
+.viewer{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:1/1;background:radial-gradient(90% 80% at 50% 40%,#0f4a35,var(--forest));touch-action:pan-y;cursor:grab}
+.viewer:active{cursor:grabbing}
+.viewer canvas{width:100%;height:100%;display:block}
+.viewer .hint{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;pointer-events:none}
+.viewer .cam-tag{position:absolute;right:16px;top:16px;background:var(--mint);color:var(--forest);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;pointer-events:none}
+@media (max-width:900px){.how{grid-template-columns:1fr}.viewer{aspect-ratio:4/3}}
+
+/* Long term */
+.long{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:clamp(36px,5vw,56px)}
+.long div{border-top:2px solid var(--mint);padding-top:20px}
+.long b{display:block;font-family:var(--head);font-size:21px;letter-spacing:-.02em}
+.long span{display:block;color:var(--on-dark-2);margin-top:8px;font-size:16px}
+@media (max-width:820px){.long{grid-template-columns:1fr}}
+
+/* Final CTA */
+.final{text-align:center}
+.final .lead{margin-inline:auto}
+.final .actions{justify-content:center}
+.contact{margin-top:28px;color:var(--ink-2);font-size:16px}
+.contact b{color:var(--ink)}
+footer{background:var(--forest);color:var(--on-dark-2);font-size:15px;padding-block:32px max(32px,env(safe-area-inset-bottom))}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+footer b{color:#fff;font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top" aria-label="CourtBit and Clutch">
+        <img src="/clutch/assets/courtbit-logo.png" alt="CourtBit" width="160" height="26">
+        <span class="x" aria-hidden="true">×</span>
+        <span class="clutch">CLUTCH</span>
+      </a>
+      <div class="nav-links">
+        <a href="#proposal">Proposal</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#how">How it works</a>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/526221471800?text=Hi%20Sa%C3%BAl%2C%20let%27s%20talk%20about%20CourtBit%20x%20Clutch" target="_blank" rel="noopener">Let's talk</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 id="heroTitle">Better players. Busier courts. Bigger tournaments.</h1>
+      <p>CourtBit runs padel tournaments and leagues across Jalisco. Clutch makes every match worth watching. Let's grow in Mexico together.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#proposal">See the proposal</a>
+        <a class="btn btn-outline" href="#benefits">What we both win</a>
+      </div>
+      <div class="proof">
+        <span><b>3,000+</b>players</span>
+        <span><b>6,000+</b>matches scheduled</span>
+        <span><b>24</b>organizers and clubs</span>
+      </div>
+    </div>
+    <figure class="photo">
+      <img src="/Assets/marketing/hero/hero-clubes-896.webp" alt="Night padel match on a blue court at a CourtBit tournament, with CourtBit branding on the net and the LED board" width="896" height="1120" fetchpriority="high">
+      <figcaption>A CourtBit tournament in Jalisco. Picture Clutch on these courts.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="proposal" aria-labelledby="proposalTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="proposalTitle">The proposal in 30 seconds</h2>
+      <p class="lead">A long-term partnership. Each side brings what it does best.</p>
+    </div>
+    <div class="deal">
+      <div class="side">
+        <div class="side-head"><span class="clutch">CLUTCH</span><span>brings</span></div>
+        <ul class="checks">
+          <li><div><b>2 Clutch Cams</b><span>Installed at our flagship tournament venue.</span></div></li>
+          <li><div><b>A subscription for those courts</b><span>So every match there is recorded and analyzed.</span></div></li>
+          <li><div><b>A recommendation</b><span>CourtBit as the competition platform for Clutch clubs in Mexico.</span></div></li>
+          <li><div><b>API access</b><span>And a technical contact for the integration.</span></div></li>
+        </ul>
+      </div>
+      <div class="side">
+        <div class="side-head"><img src="/clutch/assets/courtbit-logo.png" alt="CourtBit" width="160" height="26"><span>brings</span></div>
+        <ul class="checks">
+          <li><div><b>Clutch at every major tournament we run</b><span>On the net, the LED boards, our app and our tournament pages.</span></div></li>
+          <li><div><b>Clutch as a free extra for organizers</b><span>Offered openly to everyone who runs a competition on CourtBit.</span></div></li>
+          <li><div><b>Introductions to our clubs</b><span>The organizers and clubs we already work with.</span></div></li>
+          <li><div><b>The full integration, built by us</b><span>Clutch highlights and stats inside the CourtBit app.</span></div></li>
+        </ul>
+      </div>
+    </div>
+    <p class="deal-note">Plus promotion of both brands on our social channels, in press and at events.</p>
+  </div>
+</section>
+
+<section id="benefits" class="dark" aria-labelledby="benefitsTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="benefitsTitle">What we both win</h2>
+      <p class="lead">Clutch makes players better. CourtBit gives them the tournaments to play in. Each brand makes the other stronger.</p>
+    </div>
+    <div class="wins">
+      <div class="win">
+        <h3>For Clutch</h3>
+        <ul>
+          <li><b>A launchpad into Mexico</b><span>Your cameras at the biggest padel tournaments in Jalisco.</span></li>
+          <li><b>Players who already care</b><span>3,000+ players see Clutch highlights next to their results and rankings.</span></li>
+          <li><b>Warm introductions to clubs</b><span>Organizers and clubs that already trust CourtBit.</span></li>
+          <li><b>An integration you don't have to build</b><span>Our team does the work on your API.</span></li>
+        </ul>
+      </div>
+      <div class="win">
+        <h3>For CourtBit</h3>
+        <ul>
+          <li><b>The best video in padel for our players</b><span>Highlights, stats and Clutch Score inside the CourtBit app.</span></li>
+          <li><b>Stronger tournaments</b><span>Events filmed by Clutch draw more players and sponsors for our organizers.</span></li>
+          <li><b>New organizers through Clutch clubs</b><span>Your recommendation brings CourtBit to clubs that use Clutch.</span></li>
+          <li><b>Credibility with the market</b><span>Partnering with the most innovative camera in padel.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="together"><strong>Together</strong><span>Content from every tournament on both brands' channels, and a stronger position in Mexican padel.</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="placeTitle">
+  <div class="wrap place">
+    <div class="net"><img src="/Assets/marketing/hero/hero-clubes-896.webp" alt="Close-up of a CourtBit tournament court with branded net tape" width="896" height="1120" loading="lazy"></div>
+    <div>
+      <h2 id="placeTitle">Where players will see Clutch</h2>
+      <p class="lead">Our tournaments already carry brand placements. Clutch gets the best ones.</p>
+      <ul class="spots">
+        <li><i aria-hidden="true"></i>Net tape and LED boards on tournament courts</li>
+        <li><i aria-hidden="true"></i>A Clutch Court for semifinals and finals</li>
+        <li><i aria-hidden="true"></i>Sponsor banners in the CourtBit app</li>
+        <li><i aria-hidden="true"></i>Tournament pages and social posts</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="how" aria-labelledby="howTitle" style="padding-top:0">
+  <div class="wrap how">
+    <div>
+      <h2 id="howTitle">How it works for players</h2>
+      <ol class="steps">
+        <li><div><b>The organizer schedules a match on a Clutch court</b><span>In CourtBit, the way they assign courts today.</span></div></li>
+        <li><div><b>Clutch records it</b><span>Linked to the CourtBit match and its four players.</span></div></li>
+        <li><div><b>Highlights come back through the Clutch API</b><span>Clips, stats and Clutch Score.</span></div></li>
+        <li><div><b>Players watch and share</b><span>Next to their result, bracket and ranking in CourtBit.</span></div></li>
+      </ol>
+    </div>
+    <div class="viewer" id="viewer" aria-label="3D padel court with a Clutch Cam behind the back glass" role="img">
+      <canvas id="court3d"></canvas>
+      <span class="cam-tag">Clutch Cam</span>
+      <span class="hint" id="hint">Drag to rotate</span>
+    </div>
+  </div>
+</section>
+
+<section class="dark" aria-labelledby="longTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="longTitle">No end date. We grow, you grow.</h2>
+      <p class="lead">This is a long-term partnership. Wherever CourtBit goes next, Clutch goes with it.</p>
+    </div>
+    <div class="long">
+      <div><b>Every new tournament</b><span>is another showcase for Clutch.</span></div>
+      <div><b>Every new club we sign</b><span>is another door opened for Clutch in Mexico.</span></div>
+      <div><b>Every new Clutch feature</b><span>reaches our players through CourtBit.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="finalTitle">
+  <div class="wrap">
+    <h2 id="finalTitle">Let's build this together</h2>
+    <p class="lead">Say yes and we'll pick the venue and the first tournament together.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/526221471800?text=Hi%20Sa%C3%BAl%2C%20let%27s%20talk%20about%20CourtBit%20x%20Clutch" target="_blank" rel="noopener">Message us on WhatsApp</a>
+      <a class="btn btn-outline-dark" href="mailto:contacto@courtbit.com.mx?subject=CourtBit%20x%20Clutch">Email us</a>
+    </div>
+    <p class="contact"><b>Saúl Urias</b>, Founder of CourtBit. contacto@courtbit.com.mx, +52 622 147 1800</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b>CourtBit</b>, Guadalajara, Jalisco, Mexico</span>
+    <span>Players and organizers: CourtBit data, October 2026</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script>
+addEventListener('DOMContentLoaded', function(){
+  var viewer = document.getElementById('viewer'), canvas = document.getElementById('court3d');
+  if (!window.THREE || !viewer) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true, alpha: true}); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  var scene = new THREE.Scene();
+  var cam = new THREE.PerspectiveCamera(36, 1, .1, 200);
+  scene.add(new THREE.HemisphereLight(0xeef6ff, 0x04241a, .85));
+  var key = new THREE.DirectionalLight(0xffffff, .9); key.position.set(-8, 18, 10); scene.add(key);
+
+  var lineMat = new THREE.MeshBasicMaterial({color: 0xffffff});
+  var glassMat = new THREE.MeshStandardMaterial({color: 0xd6ecff, transparent: true, opacity: .12, roughness: .05, side: THREE.DoubleSide, depthWrite: false});
+  var edgeMat = new THREE.LineBasicMaterial({color: 0x6ad8a4, transparent: true, opacity: .6});
+  function bar(w, d, x, z){ var m = new THREE.Mesh(new THREE.BoxGeometry(w, .02, d), lineMat); m.position.set(x, .011, z); scene.add(m); }
+  function glass(w, h, x, y, z, ry){
+    var g = new THREE.PlaneGeometry(w, h), m = new THREE.Mesh(g, glassMat); m.position.set(x, y, z); m.rotation.y = ry; scene.add(m);
+    var e = new THREE.LineSegments(new THREE.EdgesGeometry(g), edgeMat); e.position.copy(m.position); e.rotation.y = ry; scene.add(e);
+  }
+  // Padel court: 10 x 20 m, service lines 6.95 m from the net
+  var surface = new THREE.Mesh(new THREE.PlaneGeometry(10, 20), new THREE.MeshStandardMaterial({color: 0x2456a6, roughness: .85}));
+  surface.rotation.x = -Math.PI / 2; scene.add(surface);
+  bar(10, .05, 0, -10); bar(10, .05, 0, 10); bar(.05, 20, -5, 0); bar(.05, 20, 5, 0);
+  bar(10, .05, 0, -6.95); bar(10, .05, 0, 6.95); bar(.05, 13.9, 0, 0);
+  var net = new THREE.Mesh(new THREE.PlaneGeometry(10, .88), new THREE.MeshStandardMaterial({color: 0xffffff, transparent: true, opacity: .3, side: THREE.DoubleSide}));
+  net.position.set(0, .44, 0); scene.add(net);
+  var tape = new THREE.Mesh(new THREE.BoxGeometry(10, .08, .04), new THREE.MeshBasicMaterial({color: 0x6ad8a4})); tape.position.set(0, .88, 0); scene.add(tape);
+  glass(10, 3, 0, 1.5, -10, 0); glass(10, 3, 0, 1.5, 10, 0);
+  [-5, 5].forEach(function(x){ glass(2, 3, x, 1.5, -9, Math.PI / 2); glass(2, 3, x, 1.5, 9, Math.PI / 2); });
+
+  // Clutch Cam behind the back glass, and what it sees
+  var body = new THREE.Mesh(new THREE.BoxGeometry(.9, .45, .45), new THREE.MeshStandardMaterial({color: 0xf4f1ea, roughness: .35}));
+  body.position.set(0, 3.6, -10.4); scene.add(body);
+  var lens = new THREE.Mesh(new THREE.CylinderGeometry(.11, .11, .06, 24), new THREE.MeshStandardMaterial({color: 0x6ad8a4, emissive: 0x6ad8a4, emissiveIntensity: 1}));
+  lens.rotation.x = Math.PI / 2; lens.position.set(0, 3.6, -10.15); scene.add(lens);
+  var apex = [0, 3.6, -10.1], corners = [[-5, 0, 10], [5, 0, 10], [5, 0, -8.5], [-5, 0, -8.5]], v = [], f = [];
+  corners.forEach(function(c, i){
+    var n = corners[(i + 1) % 4];
+    f.push(apex[0], apex[1], apex[2], c[0], c[1], c[2]);
+    v.push(apex[0], apex[1], apex[2], c[0], c[1], c[2], n[0], n[1], n[2]);
+  });
+  var fg = new THREE.BufferGeometry(); fg.setAttribute('position', new THREE.Float32BufferAttribute(f, 3));
+  scene.add(new THREE.LineSegments(fg, new THREE.LineBasicMaterial({color: 0x6ad8a4, transparent: true, opacity: .35})));
+  var cg = new THREE.BufferGeometry(); cg.setAttribute('position', new THREE.Float32BufferAttribute(v, 3));
+  scene.add(new THREE.Mesh(cg, new THREE.MeshBasicMaterial({color: 0x6ad8a4, transparent: true, opacity: .07, side: THREE.DoubleSide, depthWrite: false})));
+
+  var ball = new THREE.Mesh(new THREE.SphereGeometry(.16, 20, 20), new THREE.MeshStandardMaterial({color: 0xdcf24a, emissive: 0xb9d43a, emissiveIntensity: .5}));
+  scene.add(ball);
+
+  function resize(){
+    var w = viewer.clientWidth, h = viewer.clientHeight; if (!w || !h) return;
+    renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
+  }
+  new ResizeObserver(resize).observe(viewer); resize();
+
+  // Drag to rotate; idle auto-rotation
+  var angle = .7, vel = 0, dragging = false, lastX = 0, touched = false, visible = true;
+  viewer.addEventListener('pointerdown', function(e){ dragging = true; lastX = e.clientX; viewer.setPointerCapture(e.pointerId); });
+  viewer.addEventListener('pointermove', function(e){
+    if (!dragging) return;
+    var dx = e.clientX - lastX; lastX = e.clientX; vel = dx * .006; angle += vel;
+    if (!touched){ touched = true; document.getElementById('hint').hidden = true; }
+  });
+  function end(){ dragging = false; }
+  viewer.addEventListener('pointerup', end); viewer.addEventListener('pointercancel', end);
+  new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if (visible) requestAnimationFrame(frame); }).observe(viewer);
+
+  function frame(now){
+    var t = now / 1000;
+    if (!dragging){ vel *= .94; angle += vel + (reduce ? 0 : .0016); }
+    cam.position.set(Math.sin(angle) * 27, 15, Math.cos(angle) * 27);
+    cam.lookAt(0, 0, 0);
+    var T = 1.6, k = (t % (2 * T)) / T, dir = k < 1 ? 1 : -1, p = k < 1 ? k : k - 1;
+    if (reduce) { p = .5; dir = 1; }
+    ball.position.set(Math.sin(t * .9) * 2.6, .3 + 2.6 * 4 * p * (1 - p), dir * (-8 + 16 * p));
+    lens.material.emissiveIntensity = .6 + .4 * Math.sin(t * 3);
+    renderer.render(scene, cam);
+    if (visible && (!reduce || dragging)) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  if (reduce) viewer.addEventListener('pointermove', function(){ if (dragging) requestAnimationFrame(frame); });
+});
+</script>
+</body>
+</html>
