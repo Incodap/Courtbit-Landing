@@ -9,216 +9,399 @@
 <meta property="og:title" content="CourtBit × Clutch">
 <meta property="og:description" content="A partnership for padel tournaments in Mexico.">
 <meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/hero/hero-clubes.jpg">
-<meta name="theme-color" content="#04241a">
+<meta name="theme-color" content="#002a16">
 <link rel="icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap">
+<link rel="preload" as="image" href="/Assets/marketing/hero/hero-clubes-896.webp">
 <style>
-/* Clutch's visual language (forest + warm paper, pill nav, green pill buttons, Plus Jakarta Sans + Inter)
-   carrying CourtBit's content. One idea per section, readable at arm's length on a laptop or iPad. */
+/* Clutch's own visual language (forest, warm paper, Clutch green, Inter, pill controls) carrying
+   CourtBit's proposal. Built to be presented in person: one idea per slide, arrow keys move between
+   slides, and it falls back to a normal scrolling page on phones. */
 :root{
-  --forest:#04241a; --forest-2:#0b3427; --forest-line:rgba(255,255,255,.14);
-  --paper:#fbf9f4; --paper-2:#f3efe7; --line:#e4ded3;
-  --ink:#121513; --ink-2:#3f4642;
-  --on-dark:#ffffff; --on-dark-2:#c9d6cf;
-  --green:#1f8a5f; --green-hover:#23996a; --green-ink:#146b47; --mint:#6ad8a4;
-  --head:"Plus Jakarta Sans","Inter",system-ui,sans-serif;
-  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --forest:#002a16; --forest-2:#073a22; --forest-3:#0f4a2e; --forest-line:rgba(233,244,236,.16);
+  --paper:#fbf9f4; --paper-2:#f2eee5; --line:#e2dccf;
+  --ink:#131614; --ink-2:#48514c;
+  --on-dark:#f4f8f5; --on-dark-2:#acd4ba;
+  --green:#1a7f56; --green-hover:#156b48; --mint:#7fd6a8;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ease:cubic-bezier(.23,1,.32,1);
-  --maxw:1160px;
+  --maxw:1240px; --bar:76px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:96px}
+html{scroll-behavior:smooth;scroll-padding-top:0}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:inherit}
-.wrap{max-width:var(--maxw);margin-inline:auto;padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}
+body{touch-action:manipulation;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;font-optical-sizing:auto}
+::selection{background:var(--mint);color:var(--forest)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-underline-offset:.2em}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:10px}
+.light :focus-visible{outline-color:var(--green)}
+.num{font-variant-numeric:tabular-nums}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}
 @media (max-width:520px){.wrap{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}}
-section{padding-block:clamp(72px,9vw,120px)}
-h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.03em;line-height:1.08;text-wrap:balance}
-h2{font-size:clamp(32px,4.2vw,52px)}
-h3{font-size:22px;letter-spacing:-.02em;line-height:1.25}
-.lead{font-size:clamp(18px,1.6vw,21px);color:var(--ink-2);margin-top:16px;max-width:58ch}
+
+h1,h2,h3{font-weight:750;letter-spacing:-.035em;line-height:1.04;text-wrap:balance}
+h2{font-size:clamp(34px,4.4vw,60px)}
+h3{font-size:20px;letter-spacing:-.02em;line-height:1.25;font-weight:650}
+.lead{font-size:clamp(18px,1.5vw,21px);color:var(--ink-2);margin-top:18px;max-width:54ch;text-wrap:pretty}
 .dark{background:var(--forest);color:var(--on-dark)}
 .dark .lead{color:var(--on-dark-2)}
-.sec-head{max-width:760px}
+.tint{background:var(--paper-2)}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:600 17px var(--body);text-decoration:none;white-space:nowrap;border:0;cursor:pointer;transition:transform 160ms var(--ease),background-color 200ms ease,box-shadow 200ms ease}
+/* Slides: snap one per screen on laptops and TVs, scroll normally on phones */
+.slide{position:relative;display:flex;align-items:center;padding-block:calc(var(--bar) + 40px) 72px}
+@media (min-width:1024px) and (min-height:660px){
+  html{scroll-snap-type:y mandatory}
+  .slide{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always}
+}
+@media (max-width:1023px),(max-height:659px){.slide{padding-block:calc(var(--bar) + 24px) 64px}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:17px;text-decoration:none;white-space:nowrap;transition:transform 160ms var(--ease),background-color 200ms ease,box-shadow 200ms ease}
 .btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
 .btn-primary{background:var(--green);color:#fff}
-.btn-outline{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6)}
-.btn-outline-dark{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-ghost{color:var(--on-dark);box-shadow:inset 0 0 0 1.5px var(--forest-line)}
 @media (hover:hover) and (pointer:fine){
   .btn-primary:hover{background:var(--green-hover)}
-  .btn-outline:hover{box-shadow:inset 0 0 0 1.5px #fff;background:rgba(255,255,255,.06)}
-  .btn-outline-dark:hover{background:rgba(18,21,19,.05)}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--on-dark-2)}
 }
-:focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:8px}
+
+/* Logos: inline symbols so they work on paper and on forest */
+.logo-cb{--cb-word:#1c3e52;--cb-deep:#24574b}
+.dark .logo-cb{--cb-word:#f4f8f5;--cb-deep:#3d8a5c}
+.logo-cl{color:var(--ink)}
+.dark .logo-cl{color:var(--on-dark)}
+
+.skip{position:fixed;left:16px;top:-80px;z-index:30;background:var(--forest);color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;text-decoration:none}
+.skip:focus{top:16px}
 
 /* Header */
-.top{position:sticky;top:0;z-index:20;padding-top:max(12px,env(safe-area-inset-top));padding-bottom:12px;background:linear-gradient(var(--forest) 60%,rgba(4,36,26,0))}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--paper);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 12px 40px -24px rgba(0,0,0,.6)}
+.top{position:fixed;inset:0 0 auto;z-index:20;padding-top:max(14px,env(safe-area-inset-top));pointer-events:none}
+.nav{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;height:52px;background:var(--paper);border-radius:999px;padding:0 8px 0 20px;box-shadow:0 1px 0 rgba(19,22,20,.06),0 14px 40px -22px rgba(0,42,22,.55)}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
-.brand img{height:26px;width:auto}
+.brand .logo-cb{width:118px;height:21px}
+.brand .logo-cl{width:78px;height:14px;margin-top:1px}
 .brand .x{color:var(--ink-2);font-size:15px}
-.brand .clutch{font-family:var(--head);font-weight:800;font-size:21px;letter-spacing:-.01em}
-.nav-links{display:flex;gap:28px;font-size:15px;font-weight:500;color:var(--ink-2)}
-.nav-links a{text-decoration:none}
-.nav-links a:hover{color:var(--ink)}
-.nav .btn{min-height:44px;padding:0 20px;font-size:15px}
-@media (max-width:900px){.nav-links{display:none}}
-@media (max-width:440px){.brand img{height:22px}.brand .clutch{font-size:18px}.nav .btn{padding:0 16px}}
+.nav-links{display:flex;gap:4px;font-size:15px;font-weight:500;color:var(--ink-2)}
+.nav-links a{text-decoration:none;padding:8px 14px;border-radius:999px;transition:background-color 200ms ease,color 200ms ease}
+.nav-links a[aria-current="true"]{background:var(--forest);color:#fff}
+@media (hover:hover) and (pointer:fine){.nav-links a:not([aria-current="true"]):hover{color:var(--ink);background:var(--paper-2)}}
+.progress{position:absolute;left:22px;right:22px;bottom:0;height:2px;border-radius:2px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--green);transform-origin:left;transform:scaleX(var(--p,0));transition:transform 400ms var(--ease)}
+.nav{position:relative}
+@media (max-width:1060px){.nav-links{display:none}}
+@media (max-width:420px){.brand .logo-cb{width:100px;height:18px}.brand .logo-cl{width:66px;height:12px}}
 
-/* Hero */
-.hero{background:var(--forest);color:#fff;padding-block:clamp(32px,5vw,64px) clamp(72px,9vw,112px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(36px,6vw,80px);align-items:center}
-.hero h1{font-size:clamp(40px,5vw,64px)}
-.hero p{font-size:clamp(18px,1.6vw,21px);color:var(--on-dark-2);margin-top:22px;max-width:46ch}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.proof{display:flex;width:fit-content;max-width:100%;flex-wrap:wrap;gap:6px 22px;margin-top:36px;background:#fff;color:var(--ink);border-radius:20px;padding:14px 22px;font-size:15px}
-.proof b{font-family:var(--head);font-weight:800;font-size:17px;margin-right:4px}
-.photo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
-.photo img{width:100%;height:100%;object-fit:cover}
-.photo figcaption{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(4,36,26,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;border-radius:16px;padding:12px 16px;font-size:14px;line-height:1.45}
-@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.photo{aspect-ratio:4/3;max-width:560px}}
+/* Presenter control */
+.deck{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:20;display:flex;align-items:center;gap:2px;background:var(--forest);color:#fff;border-radius:999px;padding:4px;box-shadow:0 0 0 1px var(--forest-line),0 16px 40px -18px rgba(0,0,0,.6)}
+.deck button{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;transition:background-color 160ms ease,transform 160ms var(--ease)}
+.deck button:active{transform:scale(.94)}
+.deck button:disabled{opacity:.35;cursor:default}
+.deck svg{width:18px;height:18px}
+.deck output{min-width:112px;text-align:center;font-size:14px;font-weight:500;color:var(--on-dark-2)}
+.deck output b{color:#fff;font-weight:600}
+@media (hover:hover) and (pointer:fine){.deck button:not(:disabled):hover{background:var(--forest-3)}}
+@media (max-width:1023px),(max-height:659px){.deck{display:none}}
 
-/* Proposal */
-.deal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:clamp(36px,5vw,56px)}
-.side{background:#fff;border:1px solid var(--line);border-radius:24px;padding:clamp(26px,3.4vw,40px);min-width:0}
-.side-head{display:flex;align-items:center;gap:12px;padding-bottom:20px;margin-bottom:6px;border-bottom:1px solid var(--line)}
-.side-head img{height:26px;width:auto}
-.side-head .clutch{font-family:var(--head);font-weight:800;font-size:24px;letter-spacing:-.01em}
-.side-head span:last-child{color:var(--ink-2);font-size:16px}
-.checks{list-style:none;display:grid}
-.checks li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;padding-block:16px;border-bottom:1px solid var(--line)}
-.checks li:last-child{border-bottom:0;padding-bottom:0}
-.checks li::before{content:"";width:24px;height:24px;margin-top:2px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
-.checks b{display:block;font-weight:600}
-.checks span{display:block;color:var(--ink-2);font-size:16px;margin-top:2px}
-.deal-note{margin-top:20px;color:var(--ink-2);font-size:16px}
-@media (max-width:820px){.deal{grid-template-columns:1fr}}
+/* 1. Cover */
+.cover{overflow:hidden}
+.cover-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(36px,6vw,96px);align-items:center}
+.lockup{display:flex;align-items:center;gap:18px}
+.lockup .logo-cb{width:170px;height:30px}
+.lockup .logo-cl{width:116px;height:21px;margin-top:2px}
+.lockup .x{color:var(--on-dark-2);font-size:22px;font-weight:400}
+.cover h1{font-size:clamp(46px,6.4vw,92px);letter-spacing:-.045em;line-height:.98;margin-top:clamp(28px,4vh,48px)}
+.cover .lead{max-width:44ch}
+.cover .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.byline{margin-top:clamp(32px,6vh,72px);display:flex;align-items:center;gap:14px;font-size:15px;color:var(--on-dark-2)}
+.byline b{color:var(--on-dark);font-weight:600}
+.byline span{display:block}
+.cover-photo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;max-height:calc(100dvh - var(--bar) - 112px);margin-left:auto;box-shadow:0 50px 100px -50px rgba(0,0,0,.9)}
+.cover-photo img{width:100%;height:100%;object-fit:cover}
+@media (max-width:900px){
+  .cover-grid{grid-template-columns:1fr}
+  .cover-photo{aspect-ratio:4/3;max-height:none;margin-left:0}
+}
+@media (prefers-reduced-motion:no-preference){
+  .cover .rise{animation:rise 900ms var(--ease) both;animation-delay:calc(var(--i,0) * 90ms + 120ms)}
+  .cover-photo{animation:unveil 1300ms cubic-bezier(.77,0,.175,1) both}
+  .cover-photo img{animation:settle 1800ms var(--ease) both}
+}
+@keyframes rise{from{opacity:0;transform:translateY(18px);filter:blur(6px)}}
+@keyframes unveil{from{clip-path:inset(100% 0 0 0 round 28px)}to{clip-path:inset(0 0 0 0 round 28px)}}
+@keyframes settle{from{transform:scale(1.12)}}
 
-/* Benefits */
-.wins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,72px);margin-top:clamp(36px,5vw,56px)}
-.win h3{font-size:clamp(22px,2.2vw,28px);display:flex;align-items:center;gap:12px;padding-bottom:18px;border-bottom:2px solid var(--mint)}
-.win h3 img{height:26px;width:auto}
-.win ul{list-style:none}
-.win li{padding-block:20px;border-bottom:1px solid var(--forest-line)}
-.win li b{display:block;font-weight:600;font-size:19px}
-.win li span{display:block;color:var(--on-dark-2);margin-top:4px;font-size:16px}
-.together{margin-top:clamp(36px,5vw,56px);background:var(--mint);color:var(--forest);border-radius:24px;padding:clamp(22px,3vw,32px) clamp(24px,3.4vw,40px);display:flex;flex-wrap:wrap;gap:8px 28px;align-items:baseline}
-.together strong{font-family:var(--head);font-size:20px;letter-spacing:-.02em}
-.together span{font-weight:500;font-size:17px}
-@media (max-width:820px){.wins{grid-template-columns:1fr}}
+/* 2. Who we are */
+.who{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(40px,6vw,96px);align-items:center}
+.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px clamp(28px,4vw,56px);margin-top:clamp(32px,5vh,56px);padding-top:28px;border-top:1px solid var(--line)}
+.facts b{display:block;font-size:clamp(40px,4.6vw,64px);font-weight:750;letter-spacing:-.045em;line-height:1;color:var(--forest)}
+.facts span{display:block;margin-top:10px;font-size:15px;color:var(--ink-2);max-width:14ch}
+.facts-note{margin-top:22px;font-size:14px;color:var(--ink-2)}
+.who-media{position:relative;justify-self:end;width:min(100%,520px)}
+.who-media .photo{border-radius:28px;overflow:hidden;aspect-ratio:4/5;max-height:calc(100dvh - var(--bar) - 140px)}
+.who-media .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.who-media .phone{position:absolute;left:-6%;bottom:-6%;width:38%;border-radius:22px;overflow:hidden;border:6px solid #fff;box-shadow:0 30px 60px -28px rgba(0,42,22,.55),0 2px 6px rgba(0,42,22,.12)}
+@media (max-width:900px){
+  .who{grid-template-columns:1fr}
+  .who-media{justify-self:start;margin-left:12%;width:min(88%,460px)}
+  .facts{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:520px){.facts b{font-size:34px}.facts span{font-size:14px}}
 
-/* Brand placement */
-.place{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
-.net{border-radius:24px;overflow:hidden;aspect-ratio:16/11}
-.net img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
-.spots{list-style:none;margin-top:28px;display:grid;gap:12px}
-.spots li{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px;font-weight:500}
-.spots li i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--green)}
-@media (max-width:860px){.place{grid-template-columns:1fr}}
+/* 3. Proposal */
+.deal{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:0;margin-top:clamp(28px,5vh,52px);align-items:stretch}
+.side{background:#fff;border-radius:24px;padding:clamp(24px,3vw,36px);box-shadow:0 1px 0 rgba(19,22,20,.05),0 24px 50px -36px rgba(0,42,22,.45);min-width:0}
+.side-head{display:flex;align-items:center;gap:12px;padding-bottom:18px;border-bottom:1px solid var(--line);font-size:16px;color:var(--ink-2)}
+.side-head .logo-cl{width:96px;height:17px}
+.side-head .logo-cb{width:138px;height:25px}
+.give{list-style:none;display:grid}
+.give li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;padding-top:16px}
+.give li::before{content:"";width:24px;height:24px;margin-top:1px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
+.give b{display:block;font-weight:600;font-size:18px;line-height:1.35}
+.give span{display:block;color:var(--ink-2);font-size:16px;margin-top:2px}
+.swap{display:grid;place-items:center;padding-inline:clamp(10px,1.4vw,18px)}
+.swap span{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--forest);color:#fff;box-shadow:0 0 0 8px var(--paper-2)}
+.swap svg{width:22px;height:22px}
+.deal-note{margin-top:22px;color:var(--ink-2);font-size:16px}
+@media (max-width:900px){
+  .deal{grid-template-columns:1fr}
+  .swap{padding:0;margin-block:-14px;position:relative;z-index:1}
+  .swap svg{transform:rotate(90deg)}
+}
 
-/* How it works */
-.how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,5vw,72px);align-items:center}
-.steps{list-style:none;counter-reset:s;margin-top:32px;display:grid}
-.steps li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding-block:18px;border-top:1px solid var(--line)}
-.steps li:last-child{border-bottom:1px solid var(--line)}
-.steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--forest);color:#fff;font-weight:600;font-size:15px}
-.steps b{display:block;font-weight:600}
-.steps span{display:block;color:var(--ink-2);font-size:16px}
-.viewer{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:1/1;background:radial-gradient(90% 80% at 50% 40%,#0f4a35,var(--forest));touch-action:pan-y;cursor:grab}
+/* 4. Placement */
+.place{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.court-shot{position:relative;width:min(44vw,520px,calc((100dvh - var(--bar) - 180px) * .8));justify-self:start}
+.court-shot .frame{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:896/1120}
+.court-shot img{width:100%;height:100%}
+/* The LED board sits at these exact proportions of the photo */
+.led{position:absolute;left:39.4%;top:31.5%;width:53.2%;height:5.3%;background:#060a08;display:flex;align-items:center;justify-content:center;gap:5%;opacity:0;transition:opacity 500ms var(--ease),filter 500ms var(--ease);filter:blur(4px)}
+.led .logo-cl{color:#e9fff2;width:34%;height:62%;-webkit-mask:radial-gradient(circle at center,#000 58%,transparent 62%) 0 0/3px 3px;mask:radial-gradient(circle at center,#000 58%,transparent 62%) 0 0/3px 3px}
+.led .logo-cb{--cb-word:#e9fff2;--cb-deep:#3d8a5c;width:40%;height:70%;-webkit-mask:radial-gradient(circle at center,#000 58%,transparent 62%) 0 0/3px 3px;mask:radial-gradient(circle at center,#000 58%,transparent 62%) 0 0/3px 3px}
+.court-shot[data-clutch="on"] .led{opacity:1;filter:none}
+.pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--mint);color:var(--forest);font-size:14px;font-weight:700;display:grid;place-items:center;box-shadow:0 0 0 5px rgba(127,214,168,.28),0 6px 16px rgba(0,0,0,.4)}
+.mock-toggle{margin-top:16px;display:flex;align-items:center;gap:14px;font-size:15px;color:var(--on-dark-2)}
+.switch{position:relative;display:inline-flex;align-items:center;gap:12px;min-height:44px;padding:0 18px 0 8px;border-radius:999px;background:var(--forest-2);box-shadow:inset 0 0 0 1px var(--forest-line);font-weight:600;color:var(--on-dark);transition:transform 160ms var(--ease)}
+.switch:active{transform:scale(.97)}
+.switch i{position:relative;width:44px;height:28px;border-radius:999px;background:rgba(255,255,255,.18);transition:background-color 200ms ease}
+.switch i::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform 260ms var(--ease)}
+.switch[aria-pressed="true"] i{background:var(--green)}
+.switch[aria-pressed="true"] i::after{transform:translateX(16px)}
+.spots{list-style:none;margin-top:clamp(24px,4vh,40px);display:grid;border-top:1px solid var(--forest-line)}
+.spots li{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:baseline;padding-block:16px;border-bottom:1px solid var(--forest-line)}
+.spots li > span{font-size:15px;font-weight:700;color:var(--mint)}
+.spots b{display:block;font-weight:600;font-size:19px}
+.spots small{display:block;color:var(--on-dark-2);font-size:16px;margin-top:2px}
+@media (max-width:900px){.place{grid-template-columns:1fr}.court-shot{width:min(100%,460px)}}
+
+/* 5. How it works */
+.how{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,5vw,80px);align-items:center}
+.steps{list-style:none;margin-top:clamp(24px,4vh,36px);display:grid;gap:6px}
+.steps button{width:100%;text-align:left;display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:14px 16px 14px 12px;border-radius:18px;transition:background-color 220ms ease,transform 160ms var(--ease)}
+.steps button:active{transform:scale(.985)}
+.steps .n{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:700;background:var(--paper-2);color:var(--ink-2);margin-top:1px;transition:background-color 220ms ease,color 220ms ease}
+.steps b{display:block;font-weight:600;font-size:18px;line-height:1.35}
+.steps span:not(.n){display:block;color:var(--ink-2);font-size:16px}
+.steps button[aria-pressed="true"]{background:#fff;box-shadow:0 1px 0 rgba(19,22,20,.05),0 18px 40px -30px rgba(0,42,22,.5)}
+.steps button[aria-pressed="true"] .n{background:var(--green);color:#fff}
+@media (hover:hover) and (pointer:fine){.steps button[aria-pressed="false"]:hover{background:var(--paper-2)}}
+.viewer{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:1/1;max-height:calc(100dvh - var(--bar) - 130px);width:100%;justify-self:end;background:radial-gradient(90% 80% at 50% 40%,#0d4a2f,var(--forest));touch-action:pan-y;cursor:grab}
 .viewer:active{cursor:grabbing}
 .viewer canvas{width:100%;height:100%;display:block}
-.viewer .hint{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;pointer-events:none}
-.viewer .cam-tag{position:absolute;right:16px;top:16px;background:var(--mint);color:var(--forest);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;pointer-events:none}
-@media (max-width:900px){.how{grid-template-columns:1fr}.viewer{aspect-ratio:4/3}}
+.viewer.no-gl{background:var(--forest) url("/clutch/assets/clutch-cam.webp") center/cover no-repeat;cursor:default}
+.viewer.no-gl .hint{display:none}
+.viewer .tag{position:absolute;left:16px;top:16px;display:flex;align-items:center;gap:8px;background:rgba(0,42,22,.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;border-radius:999px;padding:8px 14px 8px 12px;font-size:14px;font-weight:600;pointer-events:none}
+.viewer .tag i{width:8px;height:8px;border-radius:50%;background:var(--mint)}
+.viewer[data-step="1"] .tag i{background:#ff5a4f}
+@media (prefers-reduced-motion:no-preference){.viewer[data-step="1"] .tag i{animation:blink 1.2s steps(2,start) infinite}}
+@keyframes blink{to{visibility:hidden}}
+.viewer .hint{position:absolute;right:16px;bottom:16px;background:rgba(255,255,255,.92);color:var(--ink);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:500;pointer-events:none;transition:opacity 300ms ease}
+@media (max-width:900px){.how{grid-template-columns:1fr}.viewer{aspect-ratio:4/3;max-height:none}}
 
-/* Long term */
-.long{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:clamp(36px,5vw,56px)}
-.long div{border-top:2px solid var(--mint);padding-top:20px}
-.long b{display:block;font-family:var(--head);font-size:21px;letter-spacing:-.02em}
-.long span{display:block;color:var(--on-dark-2);margin-top:8px;font-size:16px}
-@media (max-width:820px){.long{grid-template-columns:1fr}}
+/* 6. What players get */
+.get{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,6vw,96px);align-items:center}
+.get-media{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:18px;align-items:end}
+.get-media figure{min-width:0}
+.get-media .cb{border-radius:24px;overflow:hidden;aspect-ratio:560/1100;background:#fff}
+.get-media .cb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.get-media .cl{display:grid;gap:18px}
+.get-media .cl .hl{border-radius:20px;overflow:hidden;background:#fff}
+.get-media .cl .stats{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.get-media .cl .stats img{border-radius:18px}
+.get-media .cl .stats p{font-size:16px;color:var(--on-dark-2)}
+.get-media .cl .stats p b{display:block;color:var(--on-dark);font-size:18px;margin-bottom:4px}
+.get-media figcaption{margin-top:12px;font-size:14px;color:var(--on-dark-2)}
+.get-media figcaption b{color:var(--on-dark);font-weight:600}
+@media (max-width:900px){.get{grid-template-columns:1fr}}
+@media (max-width:560px){.get-media{grid-template-columns:1fr}.get-media .cb{aspect-ratio:4/5}}
 
-/* Final CTA */
-.final{text-align:center}
-.final .lead{margin-inline:auto}
-.final .actions{justify-content:center}
-.contact{margin-top:28px;color:var(--ink-2);font-size:16px}
-.contact b{color:var(--ink)}
-footer{background:var(--forest);color:var(--on-dark-2);font-size:15px;padding-block:32px max(32px,env(safe-area-inset-bottom))}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
-footer b{color:#fff;font-weight:600}
+/* 7. Benefits */
+.wins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,80px);margin-top:clamp(28px,5vh,52px)}
+.win-head{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--ink-2);padding-bottom:16px;border-bottom:2px solid var(--forest)}
+.win-head .logo-cl{width:96px;height:17px}
+.win-head .logo-cb{width:138px;height:25px}
+.win ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 28px;padding-top:24px}
+.win li b{display:block;font-weight:650;font-size:19px;letter-spacing:-.01em;line-height:1.3}
+.win li span{display:block;color:var(--ink-2);margin-top:6px;font-size:16px}
+.together{margin-top:clamp(28px,5vh,48px);background:var(--forest);color:var(--on-dark);border-radius:24px;padding:22px clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline}
+.together b{font-size:19px;color:var(--mint)}
+.together span{font-size:17px;color:var(--on-dark-2)}
+@media (max-width:900px){.wins{grid-template-columns:1fr}}
+@media (max-width:520px){.win ul{grid-template-columns:1fr}}
+
+/* 8. Next steps */
+.path{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:clamp(36px,6vh,64px);counter-reset:p}
+.path li{counter-increment:p;position:relative;padding:0 24px 0 0}
+.path li::before{content:counter(p);position:relative;z-index:1;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--forest-2);box-shadow:inset 0 0 0 1.5px var(--mint);color:var(--mint);font-weight:700;font-size:16px}
+.path li::after{content:"";position:absolute;left:44px;right:0;top:21px;height:2px;background:linear-gradient(90deg,var(--mint),var(--forest-line))}
+.path li:last-child::after{display:none}
+.path li:first-child::before{background:var(--mint);color:var(--forest)}
+.path b{display:block;margin-top:20px;font-size:20px;font-weight:650;letter-spacing:-.015em;line-height:1.3}
+.path span{display:block;margin-top:6px;color:var(--on-dark-2);font-size:16px;max-width:28ch}
+.after{margin-top:clamp(40px,7vh,72px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 40px;padding-top:28px;border-top:1px solid var(--forest-line)}
+.after p{font-size:17px;color:var(--on-dark-2)}
+.after b{color:var(--on-dark);font-weight:600}
+@media (max-width:900px){
+  .path{grid-template-columns:1fr;gap:28px}
+  .path li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 18px;padding:0}
+  .path li::before{grid-row:span 2}
+  .path li::after{left:21px;right:auto;top:44px;bottom:-28px;width:2px;height:auto;background:var(--forest-line)}
+  .path b{margin-top:8px}
+  .after{grid-template-columns:1fr}
+}
+
+
+/* Short screens (1280x720 projectors): tighten vertical rhythm so every slide fits */
+@media (min-width:1024px) and (max-height:820px){
+  .slide{padding-block:calc(var(--bar) + 16px) 64px}
+  h2{font-size:clamp(32px,3.6vw,48px)}
+  .lead{margin-top:12px;font-size:18px}
+  .deal,.wins{margin-top:22px}
+  .side{padding:20px 24px}
+  .side-head{padding-bottom:12px}
+  .give li{padding-top:11px}
+  .give b{font-size:17px}
+  .give span{font-size:15px}
+  .deal-note{margin-top:14px;font-size:15px}
+  .spots{margin-top:18px}
+  .spots li{padding-block:10px}
+  .spots b{font-size:18px}
+  .spots small{font-size:15px}
+  .get-media{gap:14px}
+  .get-media .cl{gap:14px}
+}
+
+/* 9. Close */
+.close{text-align:center;flex-direction:column;justify-content:center}
+.close .wrap{display:flex;flex-direction:column;align-items:center}
+.close h2{font-size:clamp(44px,6vw,84px);letter-spacing:-.045em}
+.close .lead{margin-inline:auto}
+.close .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px}
+.contact{margin-top:28px;color:var(--ink-2);font-size:16px;line-height:1.7}
+.contact b{color:var(--ink);font-weight:600}
+.foot{width:100%;position:absolute;left:0;right:0;bottom:24px;font-size:14px;color:var(--ink-2)}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;text-align:left}
+@media (max-width:1023px),(max-height:659px){.foot{position:static;margin-top:64px}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="cb-logo" overflow="visible"><g> <path style="fill:var(--cb-word,#1f3d53)" d="M526.91,259.49l-3.5,21.88c-11.14-.32-18.47-.48-32.48-.48s-18.15,4.15-21.81,32.58c-3.34,24.27-1.91,30.34,11.62,30.34,15.6,0,24.36-.32,34.39-1.28l1.11,22.04c-11.3,3.51-21.17,4.79-36.77,4.79-35.34,0-47.44-15.65-41.55-58.12,6.05-43.59,19.1-55.89,54.44-55.89,15.92,0,24.36,1.28,34.55,4.15Z"/> <path style="fill:var(--cb-word,#1f3d53)" d="M613.82,328.95c-4.3,29.86-16.4,40.4-46.64,40.4s-43.14-11.5-38.68-42.64c4.14-30.18,16.24-40.88,46.96-40.88s42.82,11.82,38.37,43.11ZM558.58,328.95c-2.23,16.29-.8,20.12,9.55,20.12s13.21-4.31,15.76-22.36c2.55-16.61.8-20.44-8.92-20.44-10.51,0-13.69,3.99-16.4,22.67Z"/> <path style="fill:var(--cb-word,#1f3d53)" d="M701.22,367.43h-22.61l-.16-14.21c-11.78,11.34-22.13,16.45-33.27,16.45-15.92,0-23.24-8.46-21.17-22.67l8.12-58.92h29.13l-7.32,50.78c-.64,4.95,1.11,6.39,4.62,6.39,5.73,0,10.35-2.55,18.31-8.78l6.69-48.38h28.66l-10.98,79.36Z"/> <path style="fill:var(--cb-word,#1f3d53)" d="M783.2,312.5h-6.69c-6.21,0-12.42,1.92-23.4,5.59l-6.69,49.34h-29.13l11.14-79.36h22.61l.64,12.62c11.3-10.06,22.45-14.85,32.32-14.85h5.41l-6.21,26.67Z"/> <path style="fill:var(--cb-word,#1f3d53)" d="M827.61,340.45c-.8,4.95.16,6.23,5.73,6.23h9.87l1.43,19.32c-6.69,2.56-18.47,3.51-24.36,3.51-15.6,0-24.52-8.78-22.45-23l5.89-40.24h-13.85l2.23-17.41,14.33-.8,3.18-21.4h28.5l-3.02,21.4h20.22l-2.55,18.2h-20.22l-4.94,34.17Z"/> <path fill="#9ac144" d="M928.85,309.95l-.16.8c17.03,1.44,22.29,12.46,19.74,30.34-3.18,22.2-14.65,27.62-41.23,27.62-23.56,0-35.98-.16-50.78-1.28l15.44-110.18c13.05-1.12,24.36-1.28,42.66-1.28,28.34,0,39.8,6.71,36.77,29.86-2.07,15.33-7.64,22.83-22.45,24.11ZM907.68,319.85h-15.44l-3.82,27.31h13.21c11.94,0,15.28-2.56,17.03-14.21,1.43-10.7-.8-13.09-10.98-13.09ZM913.57,277.53h-15.44l-3.18,23.31h13.37c9.87,0,12.9-2.4,14.49-13.09,1.11-8.14-1.11-10.22-9.23-10.22Z"/> <path fill="#9ac144" d="M958.62,367.43l10.98-79.36h28.81l-10.98,79.36h-28.81ZM994.28,252.3c6.21,0,8.92,3.03,8.28,9.1l-1.12,8.3c-.8,5.59-3.5,7.98-9.39,7.98h-11.78c-6.05,0-8.76-2.87-7.96-9.1l1.11-8.3c.48-5.43,3.5-7.98,9.39-7.98h11.46Z"/> <path fill="#9ac144" d="M1044.74,340.45c-.8,4.95.16,6.23,5.73,6.23h9.87l1.43,19.32c-6.69,2.56-18.47,3.51-24.36,3.51-15.6,0-24.52-8.78-22.45-23l5.89-40.24h-13.85l2.23-17.41,14.33-.8,3.18-21.4h28.5l-3.02,21.4h20.22l-2.55,18.2h-20.22l-4.94,34.17Z"/> </g> <g> <g> <polygon fill="#fff" points="244.77 242.39 244.77 364.33 95.29 361.4 111.58 247.35 161.75 235.23 244.77 242.39"/> <polygon fill="#3d7f4b" points="173.01 262.61 163.52 346.1 244.77 346.1 244.77 262.61 173.01 262.61"/> <path style="fill:var(--cb-deep,#24574b)" d="M96.18,355.16l-2.25,15.72c-1.09,7.63,4.83,14.46,12.54,14.46h138.29v-30.18H96.18Z"/> <polygon style="fill:var(--cb-deep,#25584c)" points="164.04 262.61 109.4 262.61 97.48 346.1 153.49 346.1 164.04 262.61"/> <path style="fill:var(--cb-deep,#225549)" d="M244.77,226.67l-119.29.22c-6.3.01-11.63,4.64-12.52,10.88l-2.26,15.8h134.07v-26.89Z"/> </g> <g> <g> <path style="fill:var(--cb-word,#1c3e52)" d="M402.78,355.73h-92.32l.2-8.76v-3.58h-13.74v-14.53h12.74v-10.35h13.94v-13.14h-13.54v-13.93h12.94v-5.77h7.76v-5.77h-7.17v-10.35h13.94v-7.76l.2-8.76h48.85l-2.01-12.76c-1.24-7.84-8-13.61-15.93-13.61h-114.63v158.67h134.43c9.91,0,17.48-9.7,15.93-19.48l-1.6-10.12Z"/> <polygon fill="#fff" points="337.53 261.79 387.97 261.79 386.59 253.04 337.73 253.04 337.53 261.79"/> <polygon fill="#fff" points="310.65 346.97 310.46 355.73 402.78 355.73 401.4 346.97 310.65 346.97"/> <polygon fill="#a8cd51" points="387.97 261.79 337.53 261.79 337.53 269.56 323.6 269.56 323.6 279.9 330.76 279.9 330.76 285.68 323 285.68 323 291.45 310.06 291.45 310.06 305.38 323.6 305.38 323.6 318.51 309.66 318.51 309.66 328.86 296.92 328.86 296.92 343.39 310.65 343.39 310.65 346.97 401.4 346.97 387.97 261.79"/> </g> <rect style="fill:var(--cb-word,#1c4452)" x="330.72" y="291.44" width="11.35" height="11.35"/> <rect style="fill:var(--cb-word,#1c4452)" x="324.55" y="329.49" width="14.74" height="14.74"/> <rect fill="#a7cd50" x="284.71" y="346.62" width="11.95" height="11.95"/> <rect fill="#fff" x="262.6" y="365.35" width="13.35" height="13.35"/> <rect fill="#fff" x="271.56" y="328.89" width="13.35" height="13.35"/> <rect fill="#a7cd50" x="269.17" y="305.39" width="12.55" height="12.55"/> <rect fill="#63af5a" x="295.07" y="306.78" width="11.16" height="11.16"/> <rect fill="#a7cd50" x="284.91" y="283.87" width="11.35" height="11.35"/> <rect fill="#a7cd50" x="298.05" y="254.99" width="13.35" height="13.35"/> <rect fill="#a7cd50" x="321.96" y="254.99" width="11.55" height="11.55"/> <rect fill="#63af5a" x="262.79" y="285.07" width="11.35" height="11.35"/> <rect fill="#fdfdfd" x="253.83" y="287.86" width="6.77" height="18.73"/> <rect fill="#fdfdfd" x="253.83" y="268.54" width="8.57" height="12.15"/> <rect fill="#fdfdfd" x="253.25" y="251.4" width="9.55" height="11.95"/> <rect fill="#fff" x="262.2" y="232.08" width="13.74" height="13.74"/> <rect fill="#fff" x="268.37" y="266.14" width="13.74" height="13.74"/> <rect fill="#fdfdfd" x="253.83" y="312.36" width="9.76" height="15.14"/> <rect fill="#fdfdfd" x="253.83" y="333.28" width="9.76" height="8.17"/> <rect fill="#fdfdfd" x="253.25" y="345.83" width="10.34" height="12.35"/> </g> </g></symbol><symbol id="cl-logo" overflow="visible"><g clip-path='url(#clclip)'><path d='M34.7281 26.6285H44.9286C44.5286 32.8618 39.3073 44.7706 22.6643 44.7706C8.56886 44.7706 0 34.5033 0 22.38C0 10.2673 8.40043 0 22.717 0C38.2441 0 44.7602 11.1792 44.7602 18.6035H34.5597C34.2649 14.6124 30.4121 8.81895 23.0538 8.81895C15.7692 8.81895 10.369 13.8185 10.369 22.38C10.369 31.0916 15.885 36.0268 23.0538 36.0268C31.0648 36.0375 34.4228 30.3299 34.7281 26.6285Z' fill='currentColor'/><path d='M59.1727 35.5101L83.774 35.5101V43.8463L49.1406 43.8463L49.1406 0.953125L59.1727 0.953125L59.1727 35.5101Z' fill='currentColor'/><path d='M113.601 0.953125L123.634 0.953125V28.8369C123.634 35.832 118.549 44.7904 104.938 44.7904C91.3267 44.7904 86.2422 35.7998 86.2422 28.8369V0.953125L96.2743 0.953125V27.292C96.2743 30.929 97.7691 35.9607 104.938 35.9607C112.117 35.9607 113.612 30.929 113.612 27.292V0.953125H113.601Z' fill='currentColor'/><path d='M164.11 0.953125V9.28928L150.12 9.28928V43.8355L140.088 43.8355V9.28928L126.098 9.28928V0.953125L164.11 0.953125Z' fill='currentColor'/><path d='M199.271 26.6285H209.472C209.072 32.8618 203.85 44.7706 187.207 44.7706C173.112 44.7706 164.543 34.5033 164.543 22.38C164.543 10.2673 172.943 0 187.26 0C202.787 0 209.303 11.1792 209.303 18.6035H199.103C198.808 14.6124 194.955 8.81895 187.597 8.81895C180.312 8.81895 174.912 13.8185 174.912 22.38C174.912 31.0916 180.428 36.0268 187.597 36.0268C195.608 36.0375 198.966 30.3299 199.271 26.6285Z' fill='currentColor'/><path d='M239.969 0.953125L250.001 0.953125V43.8463H239.969V26.2513L223.716 26.2513V43.8355H213.684V0.953125L223.716 0.953125V17.9151L239.969 17.9151V0.953125Z' fill='currentColor'/></g><defs><clipPath id='clclip'><rect width='250.001' height='44.7904' fill='currentColor'/></clipPath></defs></symbol></svg>
 
+<a class="skip" href="#proposal">Skip to the proposal</a>
 <header class="top">
   <div class="wrap">
-    <nav class="nav" aria-label="Main">
-      <a class="brand" href="#top" aria-label="CourtBit and Clutch">
-        <img src="/clutch/assets/courtbit-logo.png" alt="CourtBit" width="160" height="26">
+    <nav class="nav" aria-label="Slides">
+      <a class="brand" href="#cover" aria-label="CourtBit and Clutch, back to the start">
+        <svg class="logo-cb" viewBox="88 220 990 172" aria-hidden="true"><use href="#cb-logo"/></svg>
         <span class="x" aria-hidden="true">×</span>
-        <span class="clutch">CLUTCH</span>
+        <svg class="logo-cl" viewBox="0 0 250 45" aria-hidden="true"><use href="#cl-logo"/></svg>
       </a>
       <div class="nav-links">
         <a href="#proposal">Proposal</a>
-        <a href="#benefits">Benefits</a>
+        <a href="#placement">On court</a>
         <a href="#how">How it works</a>
+        <a href="#benefits">What we win</a>
+        <a href="#next">Next steps</a>
       </div>
-      <a class="btn btn-primary" href="https://wa.me/526221471800?text=Hi%20Sa%C3%BAl%2C%20let%27s%20talk%20about%20CourtBit%20x%20Clutch" target="_blank" rel="noopener">Let's talk</a>
+      <div class="progress" aria-hidden="true"><i id="progress"></i></div>
     </nav>
   </div>
 </header>
 
-<main id="top">
-<section class="hero" aria-labelledby="heroTitle">
-  <div class="wrap hero-grid">
+<div class="deck" role="group" aria-label="Slide controls">
+  <button type="button" id="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <output id="counter" aria-live="polite"><b class="num">1</b> / <span class="num">9</span></output>
+  <button type="button" id="next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+</div>
+
+<main>
+
+<section class="slide dark cover" id="cover" aria-labelledby="coverTitle">
+  <div class="wrap cover-grid">
     <div>
-      <h1 id="heroTitle">Better players. Busier courts. Bigger tournaments.</h1>
-      <p>CourtBit runs padel tournaments and leagues across Jalisco. Clutch makes every match worth watching. Let's grow in Mexico together.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#proposal">See the proposal</a>
-        <a class="btn btn-outline" href="#benefits">What we both win</a>
+      <div class="lockup rise" style="--i:0">
+        <svg class="logo-cb" viewBox="88 220 990 172" role="img" aria-label="CourtBit"><use href="#cb-logo"/></svg>
+        <span class="x" aria-hidden="true">×</span>
+        <svg class="logo-cl" viewBox="0 0 250 45" role="img" aria-label="Clutch"><use href="#cl-logo"/></svg>
       </div>
-      <div class="proof">
-        <span><b>3,000+</b>players</span>
-        <span><b>6,000+</b>matches scheduled</span>
-        <span><b>24</b>organizers and clubs</span>
+      <h1 id="coverTitle" class="rise" style="--i:1">Clutch, at every tournament we run.</h1>
+      <p class="lead rise" style="--i:2">A long-term partnership between the camera that makes padel players better and the platform where they compete in Mexico.</p>
+      <div class="byline rise" style="--i:3">
+        <span><b>Saúl Urias</b>, Founder of CourtBit</span>
+        <span aria-hidden="true">·</span>
+        <span>October 2026</span>
       </div>
     </div>
-    <figure class="photo">
-      <img src="/Assets/marketing/hero/hero-clubes-896.webp" alt="Night padel match on a blue court at a CourtBit tournament, with CourtBit branding on the net and the LED board" width="896" height="1120" fetchpriority="high">
-      <figcaption>A CourtBit tournament in Jalisco. Picture Clutch on these courts.</figcaption>
+    <figure class="cover-photo">
+      <img src="/Assets/marketing/hero/hero-clubes-896.webp" alt="Night padel match on a blue court at a CourtBit tournament, with CourtBit on the net tape and the LED board" width="896" height="1120" fetchpriority="high">
     </figure>
   </div>
 </section>
 
-<section id="proposal" aria-labelledby="proposalTitle">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="proposalTitle">The proposal in 30 seconds</h2>
-      <p class="lead">A long-term partnership. Each side brings what it does best.</p>
+<section class="slide light" id="who" aria-labelledby="whoTitle">
+  <div class="wrap who">
+    <div>
+      <h2 id="whoTitle">We run the competitions players care about.</h2>
+      <p class="lead">Organizers and clubs use CourtBit for registration, brackets, schedules, live scores and rankings. Players follow every match in our app.</p>
+      <div class="facts">
+        <div><b class="num">3,000+</b><span>players competing</span></div>
+        <div><b class="num">6,000+</b><span>matches scheduled</span></div>
+        <div><b class="num">24</b><span>organizers and clubs</span></div>
+      </div>
+      <p class="facts-note">CourtBit data, October 2026.</p>
     </div>
+    <div class="who-media">
+      <div class="photo"><img src="/Assets/marketing/product/socio-foto-896.webp" alt="A player checks the CourtBit app courtside during a night tournament" width="896" height="1120" loading="lazy"></div>
+      <img class="phone" src="/Assets/marketing/ads/detalle-torneo.jpg" alt="CourtBit tournament page in the app, with dates, organizer and registration" width="560" height="1254" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="slide light tint" id="proposal" aria-labelledby="proposalTitle">
+  <div class="wrap">
+    <h2 id="proposalTitle">The proposal</h2>
+    <p class="lead">Each side brings what it does best. No end date.</p>
     <div class="deal">
       <div class="side">
-        <div class="side-head"><span class="clutch">CLUTCH</span><span>brings</span></div>
-        <ul class="checks">
+        <div class="side-head"><svg class="logo-cl" viewBox="0 0 250 45" role="img" aria-label="Clutch"><use href="#cl-logo"/></svg><span>brings</span></div>
+        <ul class="give">
           <li><div><b>2 Clutch Cams</b><span>Installed at our flagship tournament venue.</span></div></li>
           <li><div><b>A subscription for those courts</b><span>So every match there is recorded and analyzed.</span></div></li>
           <li><div><b>A recommendation</b><span>CourtBit as the competition platform for Clutch clubs in Mexico.</span></div></li>
-          <li><div><b>API access</b><span>And a technical contact for the integration.</span></div></li>
+          <li><div><b>API access</b><span>Plus a technical contact for the integration.</span></div></li>
         </ul>
       </div>
+      <div class="swap" aria-hidden="true"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h12l-3-3M17 16H5l3 3"/></svg></span></div>
       <div class="side">
-        <div class="side-head"><img src="/clutch/assets/courtbit-logo.png" alt="CourtBit" width="160" height="26"><span>brings</span></div>
-        <ul class="checks">
+        <div class="side-head"><svg class="logo-cb" viewBox="88 220 990 172" role="img" aria-label="CourtBit"><use href="#cb-logo"/></svg><span>brings</span></div>
+        <ul class="give">
           <li><div><b>Clutch at every major tournament we run</b><span>On the net, the LED boards, our app and our tournament pages.</span></div></li>
-          <li><div><b>Clutch as a free extra for organizers</b><span>Offered openly to everyone who runs a competition on CourtBit.</span></div></li>
+          <li><div><b>Clutch as a free extra for organizers</b><span>Offered to everyone who runs a competition on CourtBit.</span></div></li>
           <li><div><b>Introductions to our clubs</b><span>The organizers and clubs we already work with.</span></div></li>
           <li><div><b>The full integration, built by us</b><span>Clutch highlights and stats inside the CourtBit app.</span></div></li>
         </ul>
@@ -228,142 +411,259 @@ footer b{color:#fff;font-weight:600}
   </div>
 </section>
 
-<section id="benefits" class="dark" aria-labelledby="benefitsTitle">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="benefitsTitle">What we both win</h2>
-      <p class="lead">Clutch makes players better. CourtBit gives them the tournaments to play in. Each brand makes the other stronger.</p>
-    </div>
-    <div class="wins">
-      <div class="win">
-        <h3>For Clutch</h3>
-        <ul>
-          <li><b>A launchpad into Mexico</b><span>Your cameras at the biggest padel tournaments in Jalisco.</span></li>
-          <li><b>Players who already care</b><span>3,000+ players see Clutch highlights next to their results and rankings.</span></li>
-          <li><b>Warm introductions to clubs</b><span>Organizers and clubs that already trust CourtBit.</span></li>
-          <li><b>An integration you don't have to build</b><span>Our team does the work on your API.</span></li>
-        </ul>
-      </div>
-      <div class="win">
-        <h3>For CourtBit</h3>
-        <ul>
-          <li><b>The best video in padel for our players</b><span>Highlights, stats and Clutch Score inside the CourtBit app.</span></li>
-          <li><b>Stronger tournaments</b><span>Events filmed by Clutch draw more players and sponsors for our organizers.</span></li>
-          <li><b>New organizers through Clutch clubs</b><span>Your recommendation brings CourtBit to clubs that use Clutch.</span></li>
-          <li><b>Credibility with the market</b><span>Partnering with the most innovative camera in padel.</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="together"><strong>Together</strong><span>Content from every tournament on both brands' channels, and a stronger position in Mexican padel.</span></div>
-  </div>
-</section>
-
-<section aria-labelledby="placeTitle">
+<section class="slide dark" id="placement" aria-labelledby="placeTitle">
   <div class="wrap place">
-    <div class="net"><img src="/Assets/marketing/hero/hero-clubes-896.webp" alt="Close-up of a CourtBit tournament court with branded net tape" width="896" height="1120" loading="lazy"></div>
+    <div>
+      <div class="court-shot" id="courtShot" data-clutch="off">
+        <div class="frame">
+          <img src="/Assets/marketing/hero/hero-clubes-896.webp" alt="CourtBit tournament court at night, with the LED board behind the far court and branded net tape" width="896" height="1120" loading="lazy">
+          <div class="led" aria-hidden="true">
+            <svg class="logo-cl" viewBox="0 0 250 45"><use href="#cl-logo"/></svg>
+            <svg class="logo-cb" viewBox="88 220 990 172"><use href="#cb-logo"/></svg>
+          </div>
+          <span class="pin" style="left:36.5%;top:34%" aria-hidden="true">1</span>
+          <span class="pin" style="left:46%;top:53%" aria-hidden="true">2</span>
+        </div>
+      </div>
+      <div class="mock-toggle">
+        <button type="button" class="switch" id="mockSwitch" aria-pressed="false" aria-controls="courtShot"><i aria-hidden="true"></i>Show Clutch on this court</button>
+        <span>Mockup</span>
+      </div>
+    </div>
     <div>
       <h2 id="placeTitle">Where players will see Clutch</h2>
       <p class="lead">Our tournaments already carry brand placements. Clutch gets the best ones.</p>
-      <ul class="spots">
-        <li><i aria-hidden="true"></i>Net tape and LED boards on tournament courts</li>
-        <li><i aria-hidden="true"></i>A Clutch Court for semifinals and finals</li>
-        <li><i aria-hidden="true"></i>Sponsor banners in the CourtBit app</li>
-        <li><i aria-hidden="true"></i>Tournament pages and social posts</li>
-      </ul>
+      <ol class="spots">
+        <li><span>1</span><div><b>LED boards</b><small>Behind every tournament court, all match long.</small></div></li>
+        <li><span>2</span><div><b>Net tape</b><small>In every photo and every clip from the event.</small></div></li>
+        <li><span>3</span><div><b>The Clutch Court</b><small>Where semifinals and finals are played.</small></div></li>
+        <li><span>4</span><div><b>The CourtBit app and tournament pages</b><small>Sponsor banners next to brackets and results, plus our social posts.</small></div></li>
+      </ol>
     </div>
   </div>
 </section>
 
-<section id="how" aria-labelledby="howTitle" style="padding-top:0">
+<section class="slide light" id="how" aria-labelledby="howTitle">
   <div class="wrap how">
     <div>
       <h2 id="howTitle">How it works for players</h2>
-      <ol class="steps">
-        <li><div><b>The organizer schedules a match on a Clutch court</b><span>In CourtBit, the way they assign courts today.</span></div></li>
-        <li><div><b>Clutch records it</b><span>Linked to the CourtBit match and its four players.</span></div></li>
-        <li><div><b>Highlights come back through the Clutch API</b><span>Clips, stats and Clutch Score.</span></div></li>
-        <li><div><b>Players watch and share</b><span>Next to their result, bracket and ranking in CourtBit.</span></div></li>
+      <ol class="steps" id="steps">
+        <li><button type="button" aria-pressed="true" data-step="0"><span class="n">1</span><span><b>The organizer schedules a match on a Clutch court</b><span>In CourtBit, the way they assign courts today.</span></span></button></li>
+        <li><button type="button" aria-pressed="false" data-step="1"><span class="n">2</span><span><b>Clutch records it</b><span>Linked to the CourtBit match and its four players.</span></span></button></li>
+        <li><button type="button" aria-pressed="false" data-step="2"><span class="n">3</span><span><b>Highlights come back through the Clutch API</b><span>Clips, stats and Clutch Score.</span></span></button></li>
+        <li><button type="button" aria-pressed="false" data-step="3"><span class="n">4</span><span><b>Players watch and share</b><span>Next to their result, bracket and ranking in CourtBit.</span></span></button></li>
       </ol>
     </div>
-    <div class="viewer" id="viewer" aria-label="3D padel court with a Clutch Cam behind the back glass" role="img">
+    <div class="viewer" id="viewer" data-step="0" role="img" aria-label="3D padel court with a Clutch Cam behind the back glass">
       <canvas id="court3d"></canvas>
-      <span class="cam-tag">Clutch Cam</span>
+      <span class="tag"><i aria-hidden="true"></i><span id="stepTag">Match on a Clutch court</span></span>
       <span class="hint" id="hint">Drag to rotate</span>
     </div>
   </div>
 </section>
 
-<section class="dark" aria-labelledby="longTitle">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="longTitle">No end date. We grow, you grow.</h2>
-      <p class="lead">This is a long-term partnership. Wherever CourtBit goes next, Clutch goes with it.</p>
+<section class="slide dark" id="players" aria-labelledby="playersTitle">
+  <div class="wrap get">
+    <div>
+      <h2 id="playersTitle">Their highlights, right next to their bracket.</h2>
+      <p class="lead">Players already open CourtBit to check results, brackets and rankings. That is where their Clutch clips, stats and Clutch Score will be waiting.</p>
     </div>
-    <div class="long">
-      <div><b>Every new tournament</b><span>is another showcase for Clutch.</span></div>
-      <div><b>Every new club we sign</b><span>is another door opened for Clutch in Mexico.</span></div>
-      <div><b>Every new Clutch feature</b><span>reaches our players through CourtBit.</span></div>
+    <div class="get-media">
+      <figure>
+        <div class="cb"><img src="/Assets/marketing/ads/detalle-torneo.jpg" alt="CourtBit tournament page in the app" width="560" height="1254" loading="lazy"></div>
+        <figcaption><b>CourtBit</b> tournament page</figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="hl"><img src="/clutch/assets/clutch-highlights.webp" alt="Four Clutch highlight clips from padel matches" width="1400" height="741" loading="lazy"></div>
+        <div class="stats">
+          <img src="/clutch/assets/clutch-match-stats.webp" alt="Clutch match stats: duration, time in play, rally length and longest rally" width="394" height="547" loading="lazy">
+          <p><b>From every Clutch court</b>Clips of the best points, match stats and each player's Clutch Score.</p>
+        </div>
+        <figcaption><b>Clutch</b> highlights and match stats</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="final" aria-labelledby="finalTitle">
+<section class="slide light" id="benefits" aria-labelledby="benefitsTitle">
   <div class="wrap">
-    <h2 id="finalTitle">Let's build this together</h2>
+    <h2 id="benefitsTitle">What we both win</h2>
+    <div class="wins">
+      <div class="win">
+        <div class="win-head">For <svg class="logo-cl" viewBox="0 0 250 45" role="img" aria-label="Clutch"><use href="#cl-logo"/></svg></div>
+        <ul>
+          <li><b>A launchpad into Mexico</b><span>Your cameras at our biggest padel tournaments.</span></li>
+          <li><b>Players who already care</b><span>3,000+ players see Clutch next to their results.</span></li>
+          <li><b>Warm introductions to clubs</b><span>Organizers and clubs that already trust CourtBit.</span></li>
+          <li><b>An integration you don't build</b><span>Our team does the work on your API.</span></li>
+        </ul>
+      </div>
+      <div class="win">
+        <div class="win-head">For <svg class="logo-cb" viewBox="88 220 990 172" role="img" aria-label="CourtBit"><use href="#cb-logo"/></svg></div>
+        <ul>
+          <li><b>The best video in padel</b><span>Highlights, stats and Clutch Score in our app.</span></li>
+          <li><b>Stronger tournaments</b><span>Filmed events draw more players and sponsors.</span></li>
+          <li><b>New organizers through Clutch clubs</b><span>Your recommendation opens doors for us.</span></li>
+          <li><b>Credibility with the market</b><span>Partnering with the most innovative camera in padel.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="together"><b>Together</b><span>Content from every tournament on both brands' channels, and a stronger position in Mexican padel.</span></div>
+  </div>
+</section>
+
+<section class="slide dark" id="next" aria-labelledby="nextTitle">
+  <div class="wrap">
+    <h2 id="nextTitle">No end date. We grow, you grow.</h2>
+    <p class="lead">Here is how we start, and what keeps happening after that.</p>
+    <ol class="path">
+      <li><b>You say yes</b><span>We agree on the terms on this page.</span></li>
+      <li><b>We pick the venue</b><span>And the first tournament, together.</span></li>
+      <li><b>Clutch Cams go in</b><span>Organizers get Clutch as a free extra.</span></li>
+      <li><b>Highlights go live</b><span>Inside the CourtBit app, next to every result.</span></li>
+    </ol>
+    <div class="after">
+      <p><b>Every new tournament</b> is another showcase for Clutch.</p>
+      <p><b>Every new club we sign</b> is another door opened for Clutch in Mexico.</p>
+      <p><b>Every new Clutch feature</b> reaches our players through CourtBit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide light close" id="contact" aria-labelledby="closeTitle">
+  <div class="wrap">
+    <svg class="logo-cb" viewBox="88 220 990 172" style="width:150px;height:26px" aria-hidden="true"><use href="#cb-logo"/></svg>
+    <h2 id="closeTitle" style="margin-top:28px">Let's build this together.</h2>
     <p class="lead">Say yes and we'll pick the venue and the first tournament together.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="https://wa.me/526221471800?text=Hi%20Sa%C3%BAl%2C%20let%27s%20talk%20about%20CourtBit%20x%20Clutch" target="_blank" rel="noopener">Message us on WhatsApp</a>
-      <a class="btn btn-outline-dark" href="mailto:contacto@courtbit.com.mx?subject=CourtBit%20x%20Clutch">Email us</a>
+      <a class="btn btn-primary" href="https://wa.me/526221471800?text=Hi%20Sa%C3%BAl%2C%20let%27s%20talk%20about%20CourtBit%20x%20Clutch" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.66 15.01L2 22l5.12-1.32A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.04.78.81-2.96-.2-.31A8.2 8.2 0 1 1 12 20.2Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.31c-.23.25-.86.84-.86 2.05 0 1.2.88 2.37 1 2.53.12.17 1.73 2.64 4.2 3.7.58.26 1.04.41 1.4.52.59.19 1.12.16 1.55.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.47-.29Z"/></svg>Message Saúl on WhatsApp</a>
     </div>
-    <p class="contact"><b>Saúl Urias</b>, Founder of CourtBit. contacto@courtbit.com.mx, +52 622 147 1800</p>
+    <p class="contact"><b>Saúl Urias</b>, Founder of CourtBit<br><a href="mailto:contacto@courtbit.com.mx?subject=CourtBit%20x%20Clutch">contacto@courtbit.com.mx</a> &nbsp;or&nbsp; <a href="tel:+526221471800" class="num">+52 622 147 1800</a></p>
+  </div>
+  <div class="foot">
+    <div class="wrap">
+      <span><b>CourtBit</b>, Guadalajara, Jalisco, Mexico</span>
+      <span>Clutch images from clutchapp.io, shown for this proposal only.</span>
+    </div>
   </div>
 </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span><b>CourtBit</b>, Guadalajara, Jalisco, Mexico</span>
-    <span>Players and organizers: CourtBit data, October 2026</span>
-  </div>
-</footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var slides = [].slice.call(document.querySelectorAll('.slide'));
+  var navLinks = [].slice.call(document.querySelectorAll('.nav-links a'));
+  var counter = document.getElementById('counter'), progress = document.getElementById('progress');
+  var prev = document.getElementById('prev'), next = document.getElementById('next');
+  var current = 0, lockUntil = 0;
+  counter.querySelector('span').textContent = slides.length;
+
+  function setCurrent(i){
+    current = i;
+    counter.querySelector('b').textContent = i + 1;
+    progress.style.setProperty('--p', slides.length > 1 ? i / (slides.length - 1) : 1);
+    prev.disabled = i === 0; next.disabled = i === slides.length - 1;
+    var id = slides[i].id;
+    navLinks.forEach(function(a){
+      var target = a.getAttribute('href').slice(1);
+      // "How it works" stays lit on the slide that shows the result
+      var on = target === id || (target === 'how' && id === 'players');
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  }
+  var io = new IntersectionObserver(function(entries){
+    if (performance.now() < lockUntil) return;
+    entries.forEach(function(e){ if (e.isIntersecting) setCurrent(slides.indexOf(e.target)); });
+  }, {threshold: .55});
+  slides.forEach(function(s){ io.observe(s); });
+
+  function go(i){
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    // Keys can arrive faster than the scroll settles; trust the target, not the observer
+    lockUntil = performance.now() + 900; setCurrent(i);
+    slides[i].scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+  }
+  prev.addEventListener('click', function(){ go(current - 1); });
+  next.addEventListener('click', function(){ go(current + 1); });
+
+  addEventListener('keydown', function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    var k = e.key;
+    if (k === 'ArrowDown' || k === 'ArrowRight' || k === 'PageDown' || (k === ' ' && !e.shiftKey)) { e.preventDefault(); go(current + 1); }
+    else if (k === 'ArrowUp' || k === 'ArrowLeft' || k === 'PageUp' || (k === ' ' && e.shiftKey)) { e.preventDefault(); go(current - 1); }
+    else if (k === 'Home') { e.preventDefault(); go(0); }
+    else if (k === 'End') { e.preventDefault(); go(slides.length - 1); }
+    else if ((k === 'f' || k === 'F') && document.documentElement.requestFullscreen) {
+      if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(function(){});
+    }
+  });
+
+  // Mockup: Clutch on the LED board
+  var sw = document.getElementById('mockSwitch'), shot = document.getElementById('courtShot');
+  sw.addEventListener('click', function(){
+    var on = sw.getAttribute('aria-pressed') !== 'true';
+    sw.setAttribute('aria-pressed', on);
+    shot.dataset.clutch = on ? 'on' : 'off';
+  });
+})();
+
 addEventListener('DOMContentLoaded', function(){
   var viewer = document.getElementById('viewer'), canvas = document.getElementById('court3d');
-  if (!window.THREE || !viewer) return;
+  var stepButtons = [].slice.call(document.querySelectorAll('#steps button'));
+  var stepTag = document.getElementById('stepTag');
+  var tags = ['Match on a Clutch court', 'Recording', 'Highlights detected', 'The Clutch view'];
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var step = 0, autoplay = !reduce, lastSwitch = performance.now();
+
+  function setStep(s, fromUser){
+    step = s; viewer.dataset.step = s; stepTag.textContent = tags[s];
+    stepButtons.forEach(function(b, i){ b.setAttribute('aria-pressed', i === s); });
+    if (fromUser) autoplay = false;
+    lastSwitch = performance.now();
+    if (window.__kick) window.__kick();
+  }
+  stepButtons.forEach(function(b, i){ b.addEventListener('click', function(){ setStep(i, true); }); });
+
+  function noGL(){ viewer.classList.add('no-gl'); viewer.setAttribute('aria-label', 'A Clutch Cam, the camera installed behind the back glass of a padel court'); }
+  if (!window.THREE) return noGL();
   var renderer;
-  try { renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true, alpha: true}); } catch (e) { return; }
+  try { renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true, alpha: true}); } catch (e) { return noGL(); }
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   var scene = new THREE.Scene();
   var cam = new THREE.PerspectiveCamera(36, 1, .1, 200);
-  scene.add(new THREE.HemisphereLight(0xeef6ff, 0x04241a, .85));
+  scene.add(new THREE.HemisphereLight(0xeef6ff, 0x002a16, .85));
   var key = new THREE.DirectionalLight(0xffffff, .9); key.position.set(-8, 18, 10); scene.add(key);
 
+  var MINT = new THREE.Color(0x7fd6a8), WHITE = new THREE.Color(0xffffff), REC = new THREE.Color(0xff5a4f);
   var lineMat = new THREE.MeshBasicMaterial({color: 0xffffff});
   var glassMat = new THREE.MeshStandardMaterial({color: 0xd6ecff, transparent: true, opacity: .12, roughness: .05, side: THREE.DoubleSide, depthWrite: false});
-  var edgeMat = new THREE.LineBasicMaterial({color: 0x6ad8a4, transparent: true, opacity: .6});
+  var edgeMat = new THREE.LineBasicMaterial({color: 0x7fd6a8, transparent: true, opacity: .55});
   function bar(w, d, x, z){ var m = new THREE.Mesh(new THREE.BoxGeometry(w, .02, d), lineMat); m.position.set(x, .011, z); scene.add(m); }
   function glass(w, h, x, y, z, ry){
     var g = new THREE.PlaneGeometry(w, h), m = new THREE.Mesh(g, glassMat); m.position.set(x, y, z); m.rotation.y = ry; scene.add(m);
     var e = new THREE.LineSegments(new THREE.EdgesGeometry(g), edgeMat); e.position.copy(m.position); e.rotation.y = ry; scene.add(e);
   }
   // Padel court: 10 x 20 m, service lines 6.95 m from the net
-  var surface = new THREE.Mesh(new THREE.PlaneGeometry(10, 20), new THREE.MeshStandardMaterial({color: 0x2456a6, roughness: .85}));
+  var surfMat = new THREE.MeshStandardMaterial({color: 0x2456a6, roughness: .85, emissive: 0x7fd6a8, emissiveIntensity: 0});
+  var surface = new THREE.Mesh(new THREE.PlaneGeometry(10, 20), surfMat);
   surface.rotation.x = -Math.PI / 2; scene.add(surface);
   bar(10, .05, 0, -10); bar(10, .05, 0, 10); bar(.05, 20, -5, 0); bar(.05, 20, 5, 0);
   bar(10, .05, 0, -6.95); bar(10, .05, 0, 6.95); bar(.05, 13.9, 0, 0);
   var net = new THREE.Mesh(new THREE.PlaneGeometry(10, .88), new THREE.MeshStandardMaterial({color: 0xffffff, transparent: true, opacity: .3, side: THREE.DoubleSide}));
   net.position.set(0, .44, 0); scene.add(net);
-  var tape = new THREE.Mesh(new THREE.BoxGeometry(10, .08, .04), new THREE.MeshBasicMaterial({color: 0x6ad8a4})); tape.position.set(0, .88, 0); scene.add(tape);
+  var tape = new THREE.Mesh(new THREE.BoxGeometry(10, .08, .04), new THREE.MeshBasicMaterial({color: 0x7fd6a8})); tape.position.set(0, .88, 0); scene.add(tape);
   glass(10, 3, 0, 1.5, -10, 0); glass(10, 3, 0, 1.5, 10, 0);
   [-5, 5].forEach(function(x){ glass(2, 3, x, 1.5, -9, Math.PI / 2); glass(2, 3, x, 1.5, 9, Math.PI / 2); });
 
   // Clutch Cam behind the back glass, and what it sees
   var body = new THREE.Mesh(new THREE.BoxGeometry(.9, .45, .45), new THREE.MeshStandardMaterial({color: 0xf4f1ea, roughness: .35}));
   body.position.set(0, 3.6, -10.4); scene.add(body);
-  var lens = new THREE.Mesh(new THREE.CylinderGeometry(.11, .11, .06, 24), new THREE.MeshStandardMaterial({color: 0x6ad8a4, emissive: 0x6ad8a4, emissiveIntensity: 1}));
+  var lensMat = new THREE.MeshStandardMaterial({color: 0x7fd6a8, emissive: 0x7fd6a8, emissiveIntensity: .6});
+  var lens = new THREE.Mesh(new THREE.CylinderGeometry(.11, .11, .06, 24), lensMat);
   lens.rotation.x = Math.PI / 2; lens.position.set(0, 3.6, -10.15); scene.add(lens);
   var apex = [0, 3.6, -10.1], corners = [[-5, 0, 10], [5, 0, 10], [5, 0, -8.5], [-5, 0, -8.5]], v = [], f = [];
   corners.forEach(function(c, i){
@@ -372,12 +672,21 @@ addEventListener('DOMContentLoaded', function(){
     v.push(apex[0], apex[1], apex[2], c[0], c[1], c[2], n[0], n[1], n[2]);
   });
   var fg = new THREE.BufferGeometry(); fg.setAttribute('position', new THREE.Float32BufferAttribute(f, 3));
-  scene.add(new THREE.LineSegments(fg, new THREE.LineBasicMaterial({color: 0x6ad8a4, transparent: true, opacity: .35})));
+  var frustumLines = new THREE.LineBasicMaterial({color: 0x7fd6a8, transparent: true, opacity: 0});
+  scene.add(new THREE.LineSegments(fg, frustumLines));
   var cg = new THREE.BufferGeometry(); cg.setAttribute('position', new THREE.Float32BufferAttribute(v, 3));
-  scene.add(new THREE.Mesh(cg, new THREE.MeshBasicMaterial({color: 0x6ad8a4, transparent: true, opacity: .07, side: THREE.DoubleSide, depthWrite: false})));
+  var frustumFill = new THREE.MeshBasicMaterial({color: 0x7fd6a8, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false});
+  scene.add(new THREE.Mesh(cg, frustumFill));
 
   var ball = new THREE.Mesh(new THREE.SphereGeometry(.16, 20, 20), new THREE.MeshStandardMaterial({color: 0xdcf24a, emissive: 0xb9d43a, emissiveIntensity: .5}));
   scene.add(ball);
+
+  // Highlight rings where the ball lands (step 3 onwards)
+  var rings = [0, 1, 2].map(function(){
+    var m = new THREE.Mesh(new THREE.RingGeometry(.5, .62, 40), new THREE.MeshBasicMaterial({color: 0x7fd6a8, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false}));
+    m.rotation.x = -Math.PI / 2; m.position.y = .03; m.userData.born = -10; scene.add(m); return m;
+  });
+  var ringIdx = 0;
 
   function resize(){
     var w = viewer.clientWidth, h = viewer.clientHeight; if (!w || !h) return;
@@ -385,32 +694,62 @@ addEventListener('DOMContentLoaded', function(){
   }
   new ResizeObserver(resize).observe(viewer); resize();
 
-  // Drag to rotate; idle auto-rotation
-  var angle = .7, vel = 0, dragging = false, lastX = 0, touched = false, visible = true;
-  viewer.addEventListener('pointerdown', function(e){ dragging = true; lastX = e.clientX; viewer.setPointerCapture(e.pointerId); });
+  var angle = .7, vel = 0, dragging = false, lastX = 0, touched = false, visible = false, running = false;
+  viewer.addEventListener('pointerdown', function(e){ dragging = true; lastX = e.clientX; viewer.setPointerCapture(e.pointerId); kick(); });
   viewer.addEventListener('pointermove', function(e){
     if (!dragging) return;
     var dx = e.clientX - lastX; lastX = e.clientX; vel = dx * .006; angle += vel;
-    if (!touched){ touched = true; document.getElementById('hint').hidden = true; }
+    if (step === 3) setStep(2, true);
+    if (!touched){ touched = true; document.getElementById('hint').style.opacity = 0; }
   });
   function end(){ dragging = false; }
   viewer.addEventListener('pointerup', end); viewer.addEventListener('pointercancel', end);
-  new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if (visible) requestAnimationFrame(frame); }).observe(viewer);
+  new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if (visible){ lastSwitch = performance.now(); kick(); } }, {threshold: .35}).observe(viewer);
+
+  var blend = 0, frust = 0, glow = 0, prevDir = 1, settleUntil = 0;
+  var orbitPos = new THREE.Vector3(), clutchPos = new THREE.Vector3(0, 4.4, -13.2), look = new THREE.Vector3(), lookOrbit = new THREE.Vector3(0, 0, 0), lookClutch = new THREE.Vector3(0, 0, 2);
+  function kick(){ settleUntil = performance.now() + 1600; if (!running){ running = true; requestAnimationFrame(frame); } }
+  window.__kick = kick;
 
   function frame(now){
     var t = now / 1000;
-    if (!dragging){ vel *= .94; angle += vel + (reduce ? 0 : .0016); }
-    cam.position.set(Math.sin(angle) * 27, 15, Math.cos(angle) * 27);
-    cam.lookAt(0, 0, 0);
-    var T = 1.6, k = (t % (2 * T)) / T, dir = k < 1 ? 1 : -1, p = k < 1 ? k : k - 1;
-    if (reduce) { p = .5; dir = 1; }
+    if (autoplay && visible && now - lastSwitch > 4200) setStep((step + 1) % 4, false);
+
+    // Ease scene state toward the current step
+    var k = reduce ? 1 : .08;
+    glow += ((step === 0 ? 1 : 0) - glow) * k;
+    frust += ((step >= 1 ? 1 : 0) - frust) * k;
+    blend += ((step === 3 ? 1 : 0) - blend) * (reduce ? 1 : .05);
+    surfMat.emissiveIntensity = glow * (.12 + .08 * Math.sin(t * 3));
+    lineMat.color.copy(WHITE).lerp(MINT, glow);
+    frustumLines.opacity = .45 * frust; frustumFill.opacity = .08 * frust;
+    lensMat.color.copy(step === 1 ? REC : MINT); lensMat.emissive.copy(lensMat.color);
+    lensMat.emissiveIntensity = step === 1 ? .5 + .5 * Math.sin(t * 6) : .6;
+
+    if (!dragging){ vel *= .94; angle += vel + (reduce ? 0 : .0016) * (1 - blend); }
+    orbitPos.set(Math.sin(angle) * 27, 15, Math.cos(angle) * 27);
+    cam.position.copy(orbitPos).lerp(clutchPos, blend);
+    look.copy(lookOrbit).lerp(lookClutch, blend);
+    cam.lookAt(look);
+
+    var T = 1.6, ph = (t % (2 * T)) / T, dir = ph < 1 ? 1 : -1, p = ph < 1 ? ph : ph - 1;
+    if (reduce){ p = .5; dir = 1; }
+    ball.visible = step >= 1;
     ball.position.set(Math.sin(t * .9) * 2.6, .3 + 2.6 * 4 * p * (1 - p), dir * (-8 + 16 * p));
-    lens.material.emissiveIntensity = .6 + .4 * Math.sin(t * 3);
+    if (dir !== prevDir && step >= 2){
+      var r = rings[ringIdx++ % rings.length]; r.userData.born = t; r.position.x = ball.position.x; r.position.z = ball.position.z;
+    }
+    prevDir = dir;
+    rings.forEach(function(r){
+      var age = t - r.userData.born, life = 1.4;
+      if (age < life){ var q = age / life; r.scale.setScalar(.6 + q * 2.2); r.material.opacity = .85 * (1 - q); } else r.material.opacity = 0;
+    });
+
     renderer.render(scene, cam);
-    if (visible && (!reduce || dragging)) requestAnimationFrame(frame);
+    var keepGoing = visible && (!reduce || dragging || now < settleUntil);
+    if (keepGoing) requestAnimationFrame(frame); else running = false;
   }
-  requestAnimationFrame(frame);
-  if (reduce) viewer.addEventListener('pointermove', function(){ if (dragging) requestAnimationFrame(frame); });
+  kick();
 });
 </script>
 </body>
