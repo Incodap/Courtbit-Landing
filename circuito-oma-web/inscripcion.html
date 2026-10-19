@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Inscripción · Circuito OMA Pádel</title>
+  <meta name="description" content="Inscribe a tu pareja en una etapa del Circuito OMA Pádel: elige categoría, registra a los dos jugadores y paga en línea.">
+  <meta name="theme-color" content="#101B30">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/flow.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script>(function(){try{var t=localStorage.getItem("oma-tema")}catch(e){}document.documentElement.setAttribute("data-theme",t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))})()</script>
+</head>
+<body class="flow-page">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="nav nav--solid">
+    <a class="brand" href="./" aria-label="Circuito OMA Pádel, inicio">
+      <span class="brand__oma">OMA</span>
+      <span class="brand__desc"><span>Circuito</span><i aria-hidden="true"></i><span>Pádel</span></span>
+    </a>
+    <a class="flow-back" href="./"><i class="ph ph-arrow-left" aria-hidden="true"></i>Volver al circuito</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Cambiar tema"><i class="ph ph-moon" aria-hidden="true"></i></button>
+  </header>
+
+  <main id="contenido" class="flow">
+    <aside class="flow__stage" data-summary>
+      <p class="flow__kicker" data-sum-kicker>Etapa 1</p>
+      <h1 class="flow__city" data-sum-city>Monterrey</h1>
+      <dl class="sum">
+        <div><dt>Fechas</dt><dd data-sum-dates>12-15 febrero 2027</dd></div>
+        <div><dt>Categoría</dt><dd data-sum-cat>Por elegir</dd></div>
+        <div><dt>Pareja</dt><dd data-sum-pair>Por registrar</dd></div>
+        <div class="sum__total"><dt>Total</dt><dd data-sum-total>$1,900</dd></div>
+      </dl>
+      <p class="flow__note" data-sum-close></p>
+    </aside>
+
+    <div class="flow__main">
+      <ol class="steps" aria-label="Pasos de la inscripción">
+        <li data-step-dot="1" aria-current="step"><span>1</span>Categoría</li>
+        <li data-step-dot="2"><span>2</span>Pareja</li>
+        <li data-step-dot="3"><span>3</span>Pago</li>
+      </ol>
+
+      <div class="demo-banner" data-demo><i class="ph-bold ph-info" aria-hidden="true"></i>Modo de prueba: puedes recorrer todo el proceso, no se realiza ningún cargo.</div>
+
+      <form class="step" data-step="1" novalidate>
+        <h2 class="step__title">Elige tu categoría</h2>
+        <fieldset class="field">
+          <legend>Etapa</legend>
+          <select id="f-etapa" name="etapa" data-etapas></select>
+        </fieldset>
+        <fieldset class="field">
+          <legend>Rama</legend>
+          <div class="seg" role="radiogroup">
+            <label><input type="radio" name="rama" value="Varonil" checked><span>Varonil</span></label>
+            <label><input type="radio" name="rama" value="Femenil"><span>Femenil</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend>Categoría</legend>
+          <div class="choice" data-cats></div>
+          <p class="field__error" id="err-cat" hidden>Elige una categoría para continuar.</p>
+        </fieldset>
+        <div class="step__actions"><button class="btn btn--lime btn--lg" type="submit">Continuar</button></div>
+      </form>
+
+      <form class="step" data-step="2" novalidate hidden>
+        <h2 class="step__title">Registra a tu pareja</h2>
+        <div class="pair">
+          <fieldset class="player">
+            <legend>Jugador 1 (tú)</legend>
+            <div class="field"><label for="p1-nombre">Nombre completo</label><input id="p1-nombre" name="p1-nombre" autocomplete="name" required><p class="field__error" hidden>Escribe tu nombre y apellido.</p></div>
+            <div class="field"><label for="p1-correo">Correo</label><input id="p1-correo" name="p1-correo" type="email" spellcheck="false" autocomplete="email" required><p class="field__help">Aquí llega tu confirmación y tu orden de juego.</p><p class="field__error" hidden>Escribe un correo válido, por ejemplo nombre@correo.com.</p></div>
+            <div class="field"><label for="p1-tel">WhatsApp</label><input id="p1-tel" name="p1-tel" type="tel" inputmode="tel" autocomplete="tel" required placeholder="10 dígitos"><p class="field__error" hidden>Escribe un número de 10 dígitos.</p></div>
+          </fieldset>
+          <fieldset class="player">
+            <legend>Jugador 2</legend>
+            <div class="field"><label for="p2-nombre">Nombre completo</label><input id="p2-nombre" name="p2-nombre" required><p class="field__error" hidden>Escribe el nombre y apellido de tu pareja.</p></div>
+            <div class="field"><label for="p2-correo">Correo</label><input id="p2-correo" name="p2-correo" type="email" spellcheck="false" autocomplete="off" required><p class="field__help">Le enviamos una invitación para confirmar su lugar.</p><p class="field__error" hidden>Escribe un correo válido, por ejemplo nombre@correo.com.</p></div>
+            <div class="field"><label for="p2-tel">WhatsApp</label><input id="p2-tel" name="p2-tel" type="tel" inputmode="tel" required placeholder="10 dígitos"><p class="field__error" hidden>Escribe un número de 10 dígitos.</p></div>
+          </fieldset>
+        </div>
+        <label class="check"><input type="checkbox" name="reglamento" required><span>Leímos y aceptamos el <a href="reglamento.html" target="_blank" rel="noopener">reglamento del circuito</a>.</span></label>
+        <p class="field__error" id="err-reg" hidden>Acepta el reglamento para continuar.</p>
+        <div class="step__actions">
+          <button class="btn btn--quiet" type="button" data-back>Atrás</button>
+          <button class="btn btn--lime btn--lg" type="submit">Continuar al pago</button>
+        </div>
+      </form>
+
+      <form class="step" data-step="3" novalidate hidden>
+        <h2 class="step__title">Paga tu inscripción</h2>
+        <fieldset class="field">
+          <legend>Método de pago</legend>
+          <div class="choice choice--pay">
+            <label class="opt"><input type="radio" name="metodo" value="tarjeta" checked><span class="opt__body"><i class="ph ph-credit-card" aria-hidden="true"></i><strong>Tarjeta</strong><small>Crédito o débito. Confirmación inmediata.</small></span></label>
+            <label class="opt"><input type="radio" name="metodo" value="oxxo"><span class="opt__body"><i class="ph ph-storefront" aria-hidden="true"></i><strong>Efectivo en tienda</strong><small>Recibes una referencia. Tu lugar se confirma al pagar.</small></span></label>
+            <label class="opt"><input type="radio" name="metodo" value="spei"><span class="opt__body"><i class="ph ph-bank" aria-hidden="true"></i><strong>Transferencia</strong><small>CLABE única. Se confirma en minutos.</small></span></label>
+          </div>
+        </fieldset>
+        <div class="card-fields" data-card>
+          <div class="field"><label for="c-num">Número de tarjeta</label><input id="c-num" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="19"><p class="field__error" hidden>Revisa el número: deben ser 16 dígitos.</p></div>
+          <div class="field-row">
+            <div class="field"><label for="c-exp">Vence</label><input id="c-exp" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5"><p class="field__error" hidden>Usa el formato MM/AA.</p></div>
+            <div class="field"><label for="c-cvv">CVV</label><input id="c-cvv" inputmode="numeric" autocomplete="cc-csc" placeholder="3 dígitos" maxlength="4"><p class="field__error" hidden>Escribe los 3 dígitos de atrás.</p></div>
+          </div>
+        </div>
+        <p class="pay-note"><i class="ph ph-lock-simple" aria-hidden="true"></i>Pago procesado de forma segura. Tu pareja no tiene que pagar por separado.</p>
+        <div class="step__actions">
+          <button class="btn btn--quiet" type="button" data-back>Atrás</button>
+          <button class="btn btn--lime btn--lg" type="submit" data-pay>Pagar <span data-pay-amount>$1,900</span></button>
+        </div>
+      </form>
+
+      <section class="step step--done" data-step="4" hidden aria-live="polite" tabindex="-1">
+        <div class="done__mark" aria-hidden="true"><i class="ph-bold ph-check"></i></div>
+        <h2 class="step__title">Inscripción confirmada</h2>
+        <p class="done__text" data-done-text></p>
+        <dl class="ticket" data-ticket></dl>
+        <div class="step__actions step__actions--start">
+          <a class="btn btn--lime" href="acceso.html">Ver mi panel</a>
+          <a class="btn btn--quiet" href="./#etapas">Ver calendario</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/inscripcion.js"></script>
+  <script src="js/tema.js"></script>
+</body>
+</html>

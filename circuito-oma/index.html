@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>App Circuito OMA Pádel</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Presentación del prototipo: página oscura de una sola dirección visual (azul noche + lima),
+   capturas del teléfono con una explicación breve por pantalla. */
+:root {
+  --bg: #0B1324;
+  --navy: #101B30;
+  --s1: #16233D;
+  --line: rgba(245, 246, 242, 0.10);
+  --line-2: rgba(245, 246, 242, 0.18);
+  --fg: #F5F6F2;
+  --muted: rgba(245, 246, 242, 0.66);
+  --muted-2: rgba(245, 246, 242, 0.42);
+  --lime: #C2F34A;
+  --lime-ink: #101B30;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --sans: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.kicker { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lime); }
+h1, h2, h3 { font-family: var(--display); font-style: italic; font-weight: 800; text-transform: uppercase; line-height: 0.95; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(52px, 9vw, 112px); letter-spacing: 0.005em; }
+h2 { font-size: clamp(34px, 5vw, 56px); }
+h3 { font-size: 28px; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+a { color: var(--lime); }
+.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--lime); color: var(--lime-ink); font-weight: 700; text-decoration: none; padding: 14px 22px; border-radius: 12px; font-size: 15px; }
+.btn:hover { filter: brightness(1.05); }
+.btn--ghost { background: transparent; color: var(--fg); border: 1px solid var(--line-2); }
+
+/* Portada */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--navy); }
+.hero__inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; padding-block: 64px 40px; }
+.hero__logo { display: inline-flex; align-items: baseline; gap: 10px; margin-bottom: 28px; }
+.hero__logo b { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 34px; line-height: 1; }
+.hero__logo b::after { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--lime); margin-left: 4px; transform: skewX(-12deg); }
+.hero__logo span { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
+.hero__lead { font-size: 19px; color: var(--muted); max-width: 54ch; margin: 22px 0 28px; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero__phones { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 0; min-height: 420px; }
+.hero__phones img { width: 46%; max-width: 250px; border-radius: 28px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55); border: 1px solid var(--line-2); }
+.hero__phones img:first-child { transform: translate(14%, 30px) rotate(-5deg); z-index: 1; }
+.hero__phones img:last-child { transform: translate(-14%, 0) rotate(4deg); z-index: 2; }
+.hero__court { position: absolute; inset: 0; pointer-events: none; opacity: 0.35; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding-block: 28px 44px; }
+.fact { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: var(--s1); }
+.fact b { display: block; font-family: var(--display); font-style: italic; font-weight: 800; font-size: 34px; line-height: 1; color: var(--lime); margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.fact span { font-size: 13px; color: var(--muted); }
+
+/* Capítulos y pantallas */
+.chapter { padding-block: 40px 8px; }
+.chapter__head { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: baseline; border-top: 1px solid var(--line); padding-top: 28px; margin-bottom: 26px; }
+.chapter__num { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 44px; line-height: 1; color: var(--muted-2); }
+.chapter__intro { color: var(--muted); max-width: 64ch; margin-top: 8px; font-size: 15px; }
+.screens { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.screen { display: grid; grid-template-columns: 220px 1fr; gap: 22px; align-items: start; background: var(--s1); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
+.screen img { width: 100%; border-radius: 22px; border: 1px solid var(--line-2); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4); display: block; }
+.screen__body { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding-top: 6px; }
+.screen__body h3 { font-size: 30px; }
+.screen__body p { font-size: 15px; color: var(--muted); }
+.screen ul { margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.screen li { position: relative; padding-left: 18px; font-size: 14px; line-height: 1.45; }
+.screen li::before { content: ""; position: absolute; left: 0; top: 8px; width: 9px; height: 3px; background: var(--lime); border-radius: 2px; }
+.screen--wide { grid-column: 1 / -1; grid-template-columns: 220px 220px 1fr; }
+.tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border: 1px dashed var(--line-2); border-radius: 6px; padding: 3px 8px; width: max-content; }
+
+/* Cierre */
+.closing { margin-block: 48px 40px; border: 1px solid var(--line-2); border-radius: 20px; padding: 36px; background: linear-gradient(135deg, #16233D, #101B30); display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: center; }
+.closing h2 { margin-bottom: 12px; }
+.closing p { color: var(--muted); font-size: 15px; }
+.closing .hero__cta { margin-top: 20px; }
+.notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
+.note { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 13px; color: var(--muted); }
+.note b { display: block; color: var(--fg); margin-bottom: 4px; font-weight: 600; }
+footer { border-top: 1px solid var(--line); padding-block: 22px 40px; font-size: 12px; color: var(--muted-2); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; padding-block: 44px 24px; }
+  .hero__phones { min-height: 0; margin-top: 10px; }
+  .hero__phones img:first-child, .hero__phones img:last-child { transform: none; }
+  .hero__phones { gap: 12px; }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .screens { grid-template-columns: 1fr; }
+  .screen--wide { grid-template-columns: 1fr 1fr; }
+  .screen--wide .screen__body { grid-column: 1 / -1; }
+  .closing { grid-template-columns: 1fr; padding: 24px; }
+  .notes { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .screen { grid-template-columns: 1fr; }
+  .screen img { max-width: 260px; margin: 0 auto; }
+  .screen--wide { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<section class="hero">
+  <svg class="hero__court" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="#F5F6F2" stroke-opacity="0.08" stroke-width="2" fill="none">
+      <rect x="100" y="-100" width="1000" height="800" /><line x1="600" y1="-100" x2="600" y2="700" /><line x1="100" y1="300" x2="1100" y2="300" />
+    </g>
+    <path d="M-50 480 C 300 60, 700 120, 1250 360" stroke="#C2F34A" stroke-width="2" stroke-dasharray="8 10" fill="none" opacity="0.7" />
+  </svg>
+  <div class="wrap hero__inner">
+    <div>
+      <div class="hero__logo"><b>OMA</b><span>Circuito · Pádel</span></div>
+      <div class="kicker">Propuesta de app para jugadores</div>
+      <h1>El siguiente nivel del pádel en México</h1>
+      <p class="hero__lead">Así podría verse la app oficial de Circuito OMA Pádel: inscripción con tu pareja, horarios y canchas, grupos, cuadros, resultados y un ranking propio. Todo en una experiencia con identidad OMA.</p>
+      <div class="hero__cta">
+        <a class="btn" href="/circuito-oma-app/" target="_blank" rel="noopener">Abrir el prototipo interactivo</a>
+        <a class="btn btn--ghost" href="/circuito-oma-web/" target="_blank" rel="noopener">Ver el sitio web del circuito</a>
+        <a class="btn btn--ghost" href="#pantallas">Ver las pantallas</a>
+      </div>
+    </div>
+    <div class="hero__phones">
+      <img src="shots/inicio.png" alt="Pantalla de inicio de la app OMA" />
+      <img src="shots/cuadro.png" alt="Cuadro de eliminatorias" />
+    </div>
+  </div>
+  <div class="wrap facts">
+    <div class="fact"><b>4</b><span>Secciones principales: Inicio, Etapas, Ranking y Perfil</span></div>
+    <div class="fact"><b>5</b><span>Pasos para inscribirse con pareja y pagar en línea</span></div>
+    <div class="fact"><b>6</b><span>Etapas de ejemplo con grupos, cuadros y resultados</span></div>
+    <div class="fact"><b>2</b><span>Modos visuales: oscuro y claro con la misma paleta</span></div>
+  </div>
+</section>
+
+<main class="wrap" id="pantallas">
+
+  <section class="chapter">
+    <div class="chapter__head">
+      <span class="chapter__num">01</span>
+      <div><h2>Descubrir el circuito</h2><p class="chapter__intro">La portada cambia según el momento de la etapa: antes muestra sede, fechas e inscripción; durante, partidos y avisos; después, campeones y ranking.</p></div>
+    </div>
+    <div class="screens">
+      <article class="screen">
+        <img src="shots/inicio.png" alt="Inicio con etapa destacada y próximo partido" loading="lazy" />
+        <div class="screen__body">
+          <h3>Inicio</h3>
+          <p>La etapa en curso como protagonista y tu próximo partido con horario y cancha a un toque.</p>
+          <ul>
+            <li>Hero editorial con fotografía, estado de la etapa y acción contextual (inscribirme, ver partidos o resultados).</li>
+            <li>Tu próximo partido: pareja, rivales, cancha, categoría y fase.</li>
+            <li>Avisos del circuito, próximas etapas, tu posición en el ranking y jugador destacado.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/etapas.png" alt="Calendario de etapas con filtros" loading="lazy" />
+        <div class="screen__body">
+          <h3>Etapas</h3>
+          <p>El calendario completo del circuito, agrupado por estado y con filtros que sí filtran.</p>
+          <ul>
+            <li>En curso, con inscripciones abiertas, próximas y finalizadas.</li>
+            <li>Búsqueda por nombre, ciudad o sede; filtros por ciudad, sede, categoría y mes.</li>
+            <li>Cada tarjeta indica si ya estás inscrito.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/etapa.png" alt="Detalle de etapa con pestañas" loading="lazy" />
+        <div class="screen__body">
+          <h3>Detalle de etapa</h3>
+          <p>Toda la información del torneo organizada en pestañas: Info, Partidos, Grupos, Cuadro y Resultados.</p>
+          <ul>
+            <li>Sede, fechas, formato, cupo por categoría, precio, premios y reglamento.</li>
+            <li>Cambio de categoría sin salir de la pantalla.</li>
+            <li>Compartir con un enlace que abre la etapa directamente en la app.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/inicio-claro.png" alt="Inicio en modo claro" loading="lazy" />
+        <div class="screen__body">
+          <h3>Modo claro</h3>
+          <p>La misma identidad sobre blanco suave para quien prefiere pantallas claras o juega bajo el sol.</p>
+          <ul>
+            <li>Azul noche como tinta, lima solo para acciones y estados activos.</li>
+            <li>Las portadas con fotografía se mantienen en azul noche en ambos modos.</li>
+            <li>La preferencia se recuerda en el dispositivo.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter__head">
+      <span class="chapter__num">02</span>
+      <div><h2>Inscribirse con tu pareja</h2><p class="chapter__intro">Un flujo de cinco pasos que termina con la inscripción reflejada en Inicio, Etapas, Perfil y Mis torneos.</p></div>
+    </div>
+    <div class="screens">
+      <article class="screen">
+        <img src="shots/inscripcion-revisar.png" alt="Revisión de la inscripción" loading="lazy" />
+        <div class="screen__body">
+          <h3>Categoría, pareja y revisión</h3>
+          <p>Eliges categoría con cupo y precio visibles, buscas a tu pareja por nombre y confirmas el resumen.</p>
+          <ul>
+            <li>Categorías llenas aparecen bloqueadas; las abiertas muestran lugares disponibles.</li>
+            <li>Tu pareja habitual aparece sugerida al inicio de la búsqueda.</li>
+            <li>Resumen con torneo, categoría, jugadores y total por pareja.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/inscripcion.png" alt="Confirmación de inscripción" loading="lazy" />
+        <div class="screen__body">
+          <h3>Pago y confirmación</h3>
+          <p>Tarjeta, transferencia o efectivo en sede. Al confirmar, la pareja queda inscrita y recibe una notificación.</p>
+          <ul>
+            <li>El cupo de la categoría se actualiza al instante.</li>
+            <li>Accesos directos al detalle del torneo y a Mis torneos.</li>
+            <li>En el prototipo el pago es simulado: no se piden datos bancarios.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter__head">
+      <span class="chapter__num">03</span>
+      <div><h2>Competir</h2><p class="chapter__intro">Grupos, cuadros y marcadores con estética de transmisión deportiva. Los resultados alimentan las tablas, los clasificados pasan al cuadro y los ganadores avanzan de ronda.</p></div>
+    </div>
+    <div class="screens">
+      <article class="screen">
+        <img src="shots/grupos.png" alt="Tabla de clasificación de un grupo" loading="lazy" />
+        <div class="screen__body">
+          <h3>Grupos</h3>
+          <p>Clasificación por grupo con partidos jugados, ganados, perdidos y diferencia de sets y games.</p>
+          <ul>
+            <li>Las dos parejas clasificadas se resaltan en lima.</li>
+            <li>Glosario de abreviaturas y criterios de desempate a un toque.</li>
+            <li>Acceso a los partidos del grupo, pendientes y finalizados.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/cuadro.png" alt="Cuadro de eliminatorias" loading="lazy" />
+        <div class="screen__body">
+          <h3>Cuadro</h3>
+          <p>Cuartos, semifinales y final conectados entre sí, con banderas, marcadores y los espacios aún por definir.</p>
+          <ul>
+            <li>Desplazamiento horizontal solo dentro del cuadro.</li>
+            <li>Las líneas de la pareja ganadora se iluminan en lima.</li>
+            <li>Cada caja abre el detalle del partido.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/partido.png" alt="Detalle de partido con marcador por sets" loading="lazy" />
+        <div class="screen__body">
+          <h3>Detalle del partido</h3>
+          <p>Marcador por set, fecha, cancha, estado y contexto de grupo o eliminatoria.</p>
+          <ul>
+            <li>Toca a cualquier jugador para ir a su perfil.</li>
+            <li>Estados claros: programado, en curso, pendiente de resultado y finalizado.</li>
+            <li>Muestra a qué partido avanza el ganador.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/mistorneos.png" alt="Mis torneos" loading="lazy" />
+        <div class="screen__body">
+          <h3>Mis torneos</h3>
+          <p>Tus inscripciones con pareja, estado, próximo encuentro y último resultado, ordenadas por relevancia.</p>
+          <ul>
+            <li>La etapa en curso siempre arriba; después las próximas y las finalizadas.</li>
+            <li>Horarios y canchas en cuanto la organización los publica.</li>
+            <li>Si no hay inscripciones, invita a explorar las próximas etapas.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter__head">
+      <span class="chapter__num">04</span>
+      <div><h2>Ranking y perfil</h2><p class="chapter__intro">Cada punto cuenta. El ranking OMA se calcula con los resultados de las etapas finalizadas y cada jugador tiene su ficha deportiva.</p></div>
+    </div>
+    <div class="screens">
+      <article class="screen">
+        <img src="shots/ranking.png" alt="Ranking OMA por categoría" loading="lazy" />
+        <div class="screen__body">
+          <h3>Ranking</h3>
+          <p>Podio y tabla por categoría con puntos, pareja, variación de posición y tendencia.</p>
+          <ul>
+            <li>Selector de categoría y pestaña con el ranking APPM 2025-26 como referencia.</li>
+            <li>Tu posición fija en la parte superior.</li>
+            <li>Tabla de puntos por fase consultable desde la pantalla.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/perfil.png" alt="Perfil de jugador" loading="lazy" />
+        <div class="screen__body">
+          <h3>Perfil del jugador</h3>
+          <p>Fotografía, nacionalidad, posición y puntos OMA, pareja actual y pestañas con torneos, partidos y desglose de puntos.</p>
+          <ul>
+            <li>Historial por etapa con el resultado alcanzado.</li>
+            <li>Desglose de puntos con acumulado.</li>
+            <li>Galería de fotos a pantalla completa.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter__head">
+      <span class="chapter__num">05</span>
+      <div><h2>Avisos y seguimiento</h2><p class="chapter__intro">La app avisa lo que importa: cambios de horario, resultados publicados, nuevas etapas y la actividad de los jugadores que sigues.</p></div>
+    </div>
+    <div class="screens">
+      <article class="screen">
+        <img src="shots/inicio-2.png" alt="Sección de jugadores seguidos en Inicio" loading="lazy" />
+        <div class="screen__body">
+          <h3>Tus jugadores</h3>
+          <p>Sigue a tus jugadores favoritos desde su perfil y mira su estado en Inicio: en cancha, juega hoy o su último resultado.</p>
+          <ul>
+            <li>Preferencias por jugador: sale a cancha, resultado, cambio de horario, nueva inscripción.</li>
+            <li>Los jugadores seguidos llevan un corazón en ranking y marcadores.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/push.png" alt="Notificación push simulada" loading="lazy" />
+        <div class="screen__body">
+          <h3>Notificación push</h3>
+          <p>Cuando un jugador seguido está por salir a cancha, llega un aviso con fase, cancha y hora. Al tocarlo abre el partido.</p>
+          <ul>
+            <li>En el prototipo es una simulación visual dentro del teléfono.</li>
+            <li>En producción llega como push al dispositivo.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="screen">
+        <img src="shots/notificaciones.png" alt="Bandeja de notificaciones" loading="lazy" />
+        <div class="screen__body">
+          <h3>Bandeja de notificaciones</h3>
+          <p>Todo lo recibido en un solo lugar, con icono y texto por tipo de aviso.</p>
+          <ul>
+            <li>Horario actualizado, resultado publicado, aviso del circuito, inscripciones abiertas, inscripción confirmada.</li>
+            <li>Cada notificación navega a la pantalla correspondiente.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div>
+      <div class="kicker">Explóralo tú mismo</div>
+      <h2>Toma el teléfono y recorre la app</h2>
+      <p>El prototipo es navegable de principio a fin: inscríbete a Querétaro, consulta el cuadro Pro Varonil, abre el perfil de Matías Almada, sigue a un jugador y cambia a modo claro.</p>
+      <div class="hero__cta">
+        <a class="btn" href="/circuito-oma-app/" target="_blank" rel="noopener">Abrir el prototipo interactivo</a>
+        <a class="btn btn--ghost" href="/circuito-oma-web/" target="_blank" rel="noopener">Ver el sitio web del circuito</a>
+      </div>
+    </div>
+    <img src="shots/perfil.png" alt="" style="width: 100%; max-width: 240px; justify-self: center; border-radius: 24px; border: 1px solid var(--line-2); box-shadow: 0 20px 50px rgba(0,0,0,.5);" loading="lazy" />
+  </section>
+
+  <div class="notes">
+    <div class="note"><b>Datos de demostración</b>Etapas, parejas, resultados, puntos y el ranking OMA son ilustrativos. No representan eventos ni resultados confirmados.</div>
+    <div class="note"><b>Identidad real</b>Los nombres del Pro Varonil provienen del ranking APPM 2025-26 proporcionado por la organización. Las fotografías fueron entregadas por la organización para esta propuesta.</div>
+    <div class="note"><b>Alcance</b>Prototipo de experiencia del jugador. No incluye backend, cobros reales ni panel del organizador; la infraestructura de torneos de Courtbit servirá como base.</div>
+  </div>
+
+</main>
+<footer class="wrap">
+  <span>Circuito OMA Pádel · Prototipo de app móvil · Octubre 2026</span>
+  <span>Presentado por Incodap</span>
+</footer>
+
+</html>

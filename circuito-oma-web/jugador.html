@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jugador · Circuito OMA Pádel</title>
+  <meta name="description" content="Perfil de competencia: puntos, historial de torneos, parejas, rivales y efectividad.">
+  <meta name="theme-color" content="#101B30">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/ranking.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script>(function(){try{var t=localStorage.getItem("oma-tema")}catch(e){}document.documentElement.setAttribute("data-theme",t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))})()</script>
+</head>
+<body class="page-dark">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="nav nav--solid">
+    <a class="brand" href="./" aria-label="Circuito OMA Pádel, inicio">
+      <span class="brand__oma">OMA</span>
+      <span class="brand__desc"><span>Circuito</span><i aria-hidden="true"></i><span>Pádel</span></span>
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="./#circuito">Circuito</a>
+      <a href="./#etapas">Etapas</a>
+      <a href="ranking.html" aria-current="true">Ranking</a>
+      <a href="./#resultados">Resultados</a>
+      <a href="./#sedes" class="nav__club">Sé sede</a>
+    </nav>
+    <a class="btn btn--ghost nav__cta" href="acceso.html">Acceso jugadores</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Cambiar tema"><i class="ph ph-moon" aria-hidden="true"></i></button>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu-movil" data-menu-toggle>
+      <i class="ph ph-list" aria-hidden="true"></i><span class="sr">Menú</span>
+    </button>
+    <div class="nav__sheet" id="menu-movil" hidden data-menu>
+      <a href="./#circuito">Circuito</a>
+      <a href="./#etapas">Etapas</a>
+      <a href="ranking.html">Ranking</a>
+      <a href="./#resultados">Resultados</a>
+      <a href="./#sedes" class="nav__club">Sé sede</a>
+      <a href="acceso.html">Acceso jugadores</a>
+    </div>
+  </header>
+
+  <main id="contenido" data-perfil>
+    <section class="pf-hero">
+      <span class="pf-num" data-num aria-hidden="true"></span>
+      <img class="pf-img" data-img alt="">
+      <div class="wrap pf-hero__in">
+        <a class="pf-back" href="ranking.html"><i class="ph ph-arrow-left" aria-hidden="true"></i>Ranking completo</a>
+        <p class="pf-ex" data-ex hidden><i class="ph-bold ph-info" aria-hidden="true"></i>Perfil de ejemplo: el jugador, sus parejas y sus rivales son inventados.</p>
+        <h1 class="pf-name" data-name></h1>
+        <p class="pf-meta" data-meta></p>
+        <dl class="pf-stats" data-stats></dl>
+      </div>
+    </section>
+
+    <div data-cuerpo></div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <a class="brand" href="./" aria-label="Circuito OMA Pádel, inicio">
+        <span class="brand__oma">OMA</span>
+        <span class="brand__desc"><span>Circuito</span><i aria-hidden="true"></i><span>Pádel</span></span>
+      </a>
+      <nav class="footer__nav" aria-label="Pie de página">
+        <a href="./#etapas">Etapas</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="./#resultados">Resultados</a>
+      <a href="./#sedes" class="nav__club">Sé sede</a>
+        <a href="reglamento.html">Reglamento</a>
+        <a href="acceso.html">Acceso jugadores</a>
+      </nav>
+      <p class="footer__small">Inscripciones, ranking y resultados con CourtBit. Sitio por Incodap.</p>
+    </div>
+  </footer>
+
+  <div class="chart-tip" data-tip hidden role="status"></div>
+
+  <script src="js/ranking.js"></script>
+  <script src="js/fotos.js"></script>
+  <script src="js/jugadores.js"></script>
+  <script src="js/historial-appm.js"></script>
+  <script src="js/ejemplo.js"></script>
+  <script src="js/jugador.js"></script>
+  <script src="js/tema.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+/* Tema claro y oscuro.
+   La portada, la barra, el pie, los flyers, el tablero, las fichas con foto y las tarjetas de partido
+   son siempre azul noche (identidad de la guía). El resto de secciones cambia con el tema
+   reasignando los tokens dentro de cada sección, así los componentes no necesitan reglas propias. */
+
+/* Componentes siempre oscuros: se fijan sus tokens para que no hereden la reasignación. */
+.hero, .nav, .footer, .stage, .spot, .pod, .board, .match, .players, .host, .close, .rkp-head, .pf-hero, .flow__stage, .access__art, .ticket, .panel--night, .chart-tip {
+  --night: #101b30; --night-deep: #090c1a; --night-raise: #172540;
+  --on-night: #f5f6f2; --on-night-2: #aeb7c8; --line-night: rgb(245 246 242 / 0.16);
+  --lime-text: var(--lime); --win-text: #b7d97a; --loss-text: #b3bdf0;
+}
+.rkp-head, .pf-hero, .hero, .flow__stage, .access__art { color: var(--on-night); }
+
+/* Modo claro: las secciones oscuras de contenido pasan a blanco suave. */
+html[data-theme="light"] :is(.moment, .stages, .rk, .founder, .podium, .rkp-list, .pf-sec, [data-cuerpo]) {
+  --night: #f5f6f2; --night-deep: #ffffff; --night-raise: #e7e9e2;
+  --on-night: #101b30; --on-night-2: #4b5569; --line-night: rgb(16 27 48 / 0.14);
+  --lime-text: #4a7300; --win-text: #3f6b00; --loss-text: #3d4fb3;
+  color: var(--on-night);
+}
+html[data-theme="light"] :is(.moment, .stages, .rk, .founder, .podium, .rkp-list, .pf-sec) :focus-visible { outline-color: var(--ink); }
+html[data-theme="light"] body.page-dark, html[data-theme="light"] body.page-dark main { background: #f5f6f2; color: var(--ink); }
+html[data-theme="light"] .rk { background: #eef0ea; }
+html[data-theme="light"] .stages { background: #f5f6f2; border-top-color: transparent; }
+html[data-theme="light"] .moment { background: #ffffff; border-top-color: rgb(16 27 48 / 0.1); }
+html[data-theme="light"] .founder { background: #eef0ea; }
+html[data-theme="light"] .rk__tools input, html[data-theme="light"] .rkp-tools input { background: #ffffff; }
+html[data-theme="light"] .pf-card, html[data-theme="light"] .tiles { background: #ffffff; }
+html[data-theme="light"] .rkp-row:nth-child(-n+3) .rkp-pos { color: var(--lime-text); }
+
+/* Modo oscuro: las secciones claras (lectura, reglas, noticias, formularios) pasan a azul noche. */
+html[data-theme="dark"] :is(.results, .rules, .news, .flow__main, .access__form, .doc, .dash) {
+  --paper: #0f1a2e; --paper-dim: #0b1324; --on-paper: #f5f6f2; --on-paper-2: #aeb7c8; --line-paper: rgb(245 246 242 / 0.14);
+  --field: #16233d; --field-line: rgb(245 246 242 / 0.22); --err: #ff8f80; --lime-text: var(--lime);
+  color: var(--on-paper);
+}
+html[data-theme="dark"] body { background: #0b1324; }
+html[data-theme="dark"] body.flow-page, html[data-theme="dark"] .flow, html[data-theme="dark"] .access { background: #0b1324; }
+html[data-theme="dark"] .results { background: #0f1a2e; }
+html[data-theme="dark"] .news { background: #0f1a2e; }
+html[data-theme="dark"] .post__date { color: var(--on-paper-2); }
+html[data-theme="dark"] .demo-banner { border-color: rgb(245 246 242 / 0.3); }
+html[data-theme="dark"] .field select { color-scheme: dark; }
+
+/* Botón de tema en la barra */
+.theme-btn { width: 44px; height: 44px; display: grid; place-items: center; flex: none; border: 1px solid var(--line-night); background: transparent; color: var(--on-night); border-radius: var(--radius); cursor: pointer; font-size: 20px; transition: border-color 160ms ease, transform 160ms var(--ease-out); }
+.theme-btn:hover { border-color: var(--on-night); }
+.theme-btn:active { transform: scale(0.95); }
+.nav__cta ~ .theme-btn, .theme-btn { margin-left: 8px; }
+.nav__links + .theme-btn { margin-left: auto; }
+.nav--solid .theme-btn { margin-left: 12px; }
+@media (max-width: 860px) { .nav .theme-btn { margin-left: auto; } .nav .theme-btn + .nav__menu { margin-left: 8px; } }
+:root { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+.flow-back + .theme-btn { margin-left: 12px !important; }

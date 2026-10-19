@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ranking · Circuito OMA Pádel</title>
+  <meta name="description" content="Ranking completo del circuito: posición, puntos y torneos de cada jugador, con su perfil de competencia.">
+  <meta name="theme-color" content="#101B30">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/ranking.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script>(function(){try{var t=localStorage.getItem("oma-tema")}catch(e){}document.documentElement.setAttribute("data-theme",t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))})()</script>
+</head>
+<body class="page-dark">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="nav nav--solid">
+    <a class="brand" href="./" aria-label="Circuito OMA Pádel, inicio">
+      <span class="brand__oma">OMA</span>
+      <span class="brand__desc"><span>Circuito</span><i aria-hidden="true"></i><span>Pádel</span></span>
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="./#circuito">Circuito</a>
+      <a href="./#etapas">Etapas</a>
+      <a href="ranking.html" aria-current="true">Ranking</a>
+      <a href="./#resultados">Resultados</a>
+      <a href="./#sedes" class="nav__club">Sé sede</a>
+    </nav>
+    <a class="btn btn--ghost nav__cta" href="acceso.html">Acceso jugadores</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Cambiar tema"><i class="ph ph-moon" aria-hidden="true"></i></button>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu-movil" data-menu-toggle>
+      <i class="ph ph-list" aria-hidden="true"></i><span class="sr">Menú</span>
+    </button>
+    <div class="nav__sheet" id="menu-movil" hidden data-menu>
+      <a href="./#circuito">Circuito</a>
+      <a href="./#etapas">Etapas</a>
+      <a href="ranking.html">Ranking</a>
+      <a href="./#resultados">Resultados</a>
+      <a href="./#sedes" class="nav__club">Sé sede</a>
+      <a href="acceso.html">Acceso jugadores</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="rkp-head">
+      <div class="wrap">
+        <h1 class="rkp-title">Ranking</h1>
+        <div class="rkp-bar">
+          <p class="rkp-src" data-src></p>
+          <div class="tabs tabs--night" role="tablist" aria-label="Rama">
+            <button role="tab" aria-selected="true" data-rama="v">Varonil</button>
+            <button role="tab" aria-selected="false" data-rama="f">Femenil</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="podium wrap" aria-label="Primeros tres lugares" data-podium></section>
+
+    <section class="wrap rkp-list" aria-labelledby="lista-title">
+      <div class="rkp-tools">
+        <h2 class="sr" id="lista-title">Todos los jugadores</h2>
+        <div class="rk__tools">
+          <label class="sr" for="buscar">Buscar jugador</label>
+          <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+          <input id="buscar" type="search" placeholder="Busca tu nombre o apellido" autocomplete="off" spellcheck="false" data-search>
+        </div>
+        <a class="ex-link" href="jugador.html?id=ejemplo"><i class="ph-bold ph-user-focus" aria-hidden="true"></i>Así se ve un perfil completo</a>
+      </div>
+
+      <div class="rkp-table" role="table" aria-label="Ranking de jugadores">
+        <div class="rkp-row rkp-row--head" role="row">
+          <span role="columnheader">Pos.</span>
+          <span role="columnheader">Jugador</span>
+          <span role="columnheader" class="num">Torneos</span>
+          <span role="columnheader" class="num">Por torneo</span>
+          <span role="columnheader" class="num">Puntos</span>
+        </div>
+        <div data-rows role="rowgroup"></div>
+      </div>
+      <div class="empty empty--night" data-empty hidden aria-live="polite"></div>
+      <button class="btn btn--ghost rk__more" type="button" data-more hidden></button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <a class="brand" href="./" aria-label="Circuito OMA Pádel, inicio">
+        <span class="brand__oma">OMA</span>
+        <span class="brand__desc"><span>Circuito</span><i aria-hidden="true"></i><span>Pádel</span></span>
+      </a>
+      <nav class="footer__nav" aria-label="Pie de página">
+        <a href="./#etapas">Etapas</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="./#resultados">Resultados</a>
+      <a href="./#sedes" class="nav__club">Sé sede</a>
+        <a href="reglamento.html">Reglamento</a>
+        <a href="acceso.html">Acceso jugadores</a>
+      </nav>
+      <p class="footer__small">Inscripciones, ranking y resultados con CourtBit. Sitio por Incodap.</p>
+    </div>
+  </footer>
+
+  <script src="js/ranking.js"></script>
+  <script src="js/fotos.js"></script>
+  <script src="js/jugadores.js"></script>
+  <script src="js/ranking-page.js"></script>
+  <script src="js/tema.js"></script>
+</body>
+</html>

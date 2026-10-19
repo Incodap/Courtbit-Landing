@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Acceso jugadores · Circuito OMA Pádel</title>
+  <meta name="description" content="Entra a tu cuenta del Circuito OMA Pádel para ver tu próximo partido, tus inscripciones y tus puntos.">
+  <meta name="theme-color" content="#101B30">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/flow.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script>(function(){try{var t=localStorage.getItem("oma-tema")}catch(e){}document.documentElement.setAttribute("data-theme",t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))})()</script>
+</head>
+<body class="flow-page">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="nav nav--solid">
+    <a class="brand" href="./" aria-label="Circuito OMA Pádel, inicio">
+      <span class="brand__oma">OMA</span>
+      <span class="brand__desc"><span>Circuito</span><i aria-hidden="true"></i><span>Pádel</span></span>
+    </a>
+    <a class="flow-back" href="./"><i class="ph ph-arrow-left" aria-hidden="true"></i>Volver al circuito</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Cambiar tema"><i class="ph ph-moon" aria-hidden="true"></i></button>
+  </header>
+
+  <main id="contenido">
+    <section class="access" data-view="login">
+      <div class="access__art">
+        <img src="assets/img/accion-varonil.jpg" alt="" width="1024" height="1280">
+        <p>Tu próximo partido</p>
+      </div>
+      <div class="access__form">
+        <div class="demo-banner" data-demo><i class="ph-bold ph-info" aria-hidden="true"></i>Modo de prueba: cualquier correo y contraseña de 8 caracteres entran a un panel de ejemplo.</div>
+        <h1 class="step__title" data-title>Entra a tu cuenta</h1>
+        <form data-form novalidate>
+          <div class="field" data-only="signup" hidden><label for="a-nombre">Nombre completo</label><input id="a-nombre" autocomplete="name"><p class="field__error" hidden>Escribe tu nombre y apellido.</p></div>
+          <div class="field"><label for="a-correo">Correo</label><input id="a-correo" type="email" spellcheck="false" autocomplete="email" required><p class="field__error" hidden>Escribe un correo válido.</p></div>
+          <div class="field"><label for="a-pass">Contraseña</label><input id="a-pass" type="password" autocomplete="current-password" required minlength="8"><p class="field__help" data-only="signup" hidden>Mínimo 8 caracteres.</p><p class="field__error" hidden>La contraseña debe tener al menos 8 caracteres.</p></div>
+          <p class="form-msg" data-msg hidden role="alert"></p>
+          <button class="btn btn--lime btn--lg" type="submit" data-submit>Entrar</button>
+        </form>
+        <p class="access__alt" data-alt>¿Primera vez en el circuito? <button type="button" data-switch>Crea tu cuenta</button></p>
+      </div>
+    </section>
+
+    <section class="dash" data-view="dash" hidden>
+      <h1 class="dash__hello" data-hello>Hola, Rodrigo</h1>
+      <div class="dash__grid">
+        <article class="panel panel--night">
+          <h2>Tu próximo partido</h2>
+          <p class="next__vs">Treviño / Salazar <span>vs</span> Villarreal / Cantú</p>
+          <p class="next__meta"><span>Sábado 14 feb · <strong>17:00</strong></span><span>Cancha <strong>Central</strong></span><span>Varonil Primera · Semifinal</span></p>
+        </article>
+        <article class="panel">
+          <h2>Avisos</h2>
+          <div class="notice"><i class="ph-bold ph-clock-countdown" aria-hidden="true"></i><p><strong>Horario actualizado</strong><br><small>La final de Varonil Segunda pasa de 18:00 a 18:30.</small></p></div>
+          <div class="notice"><i class="ph-bold ph-megaphone" aria-hidden="true"></i><p><strong>Registro en sede desde las 15:30</strong><br><small>Presenta tu folio en la mesa del circuito.</small></p></div>
+        </article>
+        <article class="panel">
+          <h2>Torneos inscritos</h2>
+          <table class="mini"><tbody>
+            <tr><td>Etapa 1 · Monterrey · Varonil Primera</td><td>Pagado</td></tr>
+            <tr><td>Etapa 2 · Hermosillo</td><td>Abre pronto</td></tr>
+          </tbody></table>
+        </article>
+        <article class="panel">
+          <h2>Tu ranking</h2>
+          <div class="stat"><strong>1</strong><span>Varonil Primera<br><small>2,360 puntos</small></span></div>
+          <table class="mini"><tbody>
+            <tr><td>Etapa 1 · Monterrey</td><td>+360</td></tr>
+          </tbody></table>
+        </article>
+      </div>
+      <p class="table-note" style="padding-inline:0"><span class="demo-tag" data-demo>Panel de ejemplo</span> <button class="btn btn--quiet" type="button" data-logout>Salir</button></p>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script>
+  (function () {
+    if (!window.OMA.DEMO) document.documentElement.classList.add("no-demo");
+    var modo = "login";
+    var $ = function (s) { return document.querySelector(s); };
+    var all = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    function setModo(m) {
+      modo = m;
+      all("[data-only=signup]").forEach(function (el) { el.hidden = m !== "signup"; });
+      $("[data-title]").textContent = m === "signup" ? "Crea tu cuenta" : "Entra a tu cuenta";
+      $("[data-submit]").textContent = m === "signup" ? "Crear cuenta" : "Entrar";
+      $("#a-pass").autocomplete = m === "signup" ? "new-password" : "current-password";
+      $("[data-alt]").innerHTML = m === "signup" ? '¿Ya tienes cuenta? <button type="button" data-switch>Entra</button>' : '¿Primera vez en el circuito? <button type="button" data-switch>Crea tu cuenta</button>';
+      $("[data-switch]").addEventListener("click", function () { setModo(modo === "login" ? "signup" : "login"); });
+      $("[data-msg]").hidden = true;
+    }
+    function marca(i, ok) { var e = i.parentElement.querySelector(".field__error"); i.setAttribute("aria-invalid", String(!ok)); if (e) e.hidden = ok; return ok; }
+    function dash(nombre) {
+      $("[data-view=login]").hidden = true; $("[data-view=dash]").hidden = false;
+      $("[data-hello]").textContent = "Hola, " + nombre;
+      $("[data-hello]").setAttribute("tabindex", "-1"); $("[data-hello]").focus();
+    }
+    $("[data-form]").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var ok = true, first = null;
+      if (modo === "signup") { var n = $("#a-nombre"); if (!marca(n, n.value.trim().split(/\s+/).length >= 2)) { ok = false; first = first || n; } }
+      var c = $("#a-correo"); if (!marca(c, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c.value.trim()))) { ok = false; first = first || c; }
+      var p = $("#a-pass"); if (!marca(p, p.value.length >= 8)) { ok = false; first = first || p; }
+      if (!ok) return first.focus();
+      var btn = $("[data-submit]"); btn.classList.add("is-busy");
+      setTimeout(function () {
+        btn.classList.remove("is-busy");
+        var nombre = modo === "signup" ? $("#a-nombre").value.trim().split(/\s+/)[0] : "Rodrigo";
+        try { sessionStorage.setItem("oma-nombre", nombre); } catch (e) {}
+        dash(nombre);
+      }, 700);
+    });
+    $("[data-logout]").addEventListener("click", function () {
+      try { sessionStorage.removeItem("oma-nombre"); } catch (e) {}
+      $("[data-view=dash]").hidden = true; $("[data-view=login]").hidden = false; $("#a-correo").focus();
+    });
+    setModo("login");
+    try { var s = sessionStorage.getItem("oma-nombre"); if (s) dash(s); } catch (e) {}
+  })();
+  </script>
+  <script src="js/tema.js"></script>
+</body>
+</html>
