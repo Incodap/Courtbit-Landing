@@ -177,6 +177,86 @@
   .picker-note{margin-top:14px;font-size:.82rem;color:var(--muted);line-height:1.5}
   .picker-note b{color:var(--ink-2)}
 
+  /* ---------- Experiencia del jugador (pantallas) ---------- */
+  .player-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:28px 18px;margin-top:8px}
+  .pstep{display:flex;flex-direction:column;align-items:center;gap:12px;width:min(236px,84vw);margin:0}
+  .pstep .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);font-weight:700}
+  .pstep figcaption{font-size:.86rem;color:var(--ink-2);text-align:center;line-height:1.45;max-width:26ch}
+  .pstep figcaption b{color:var(--ink)}
+  .p-arrow{align-self:flex-start;color:var(--faint);display:flex;align-items:center;justify-content:center;padding-top:230px}
+  .p-arrow svg{width:30px;height:30px}
+  .p-or-wrap{align-self:flex-start;margin-top:226px}
+  .p-or{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+        color:var(--muted);font-weight:700;border:1px solid var(--line-strong);border-radius:999px;padding:0 10px;line-height:2.2;background:var(--surface)}
+  .phone{width:100%;aspect-ratio:9/19;border-radius:34px;background:#0b1a15;padding:6px;
+         box-shadow:0 30px 60px -30px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.14)}
+  .screen{position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;background:var(--surface);color:var(--ink);
+          font-size:10.5px;line-height:1.35;display:flex;flex-direction:column}
+  .notch{position:absolute;top:7px;left:50%;transform:translateX(-50%);width:34%;height:13px;border-radius:999px;background:#0b1a15;z-index:5}
+  /* pantalla bloqueada */
+  .lock{background:linear-gradient(170deg,#124634 0%,#071f17 52%,#03110c 100%);color:#fff;align-items:center;text-align:center}
+  .lock .time{font-size:46px;font-weight:300;letter-spacing:-.03em;margin-top:34px;line-height:1}
+  .lock .date{font-size:9.5px;opacity:.72;margin-top:5px}
+  .notif{position:relative;margin:30px 10px 0;width:calc(100% - 20px);background:rgba(255,255,255,.15);backdrop-filter:blur(14px);
+         -webkit-backdrop-filter:blur(14px);border-radius:16px;padding:10px 11px;display:flex;gap:9px;text-align:left;
+         border:1px solid rgba(255,255,255,.16)}
+  .notif .app{width:30px;height:30px;border-radius:8px;background:var(--lime);flex:none;display:grid;place-items:center;color:var(--card-on-lime)}
+  .notif .app svg{width:17px;height:17px}
+  .notif .nt{display:flex;justify-content:space-between;font-size:8.5px;opacity:.72;margin-bottom:2px}
+  .notif .nh{font-weight:800;font-size:10.5px;line-height:1.25}
+  .notif .nb{font-size:9.3px;opacity:.9;margin-top:2px}
+  .tapring{position:absolute;right:-4px;bottom:-9px;width:24px;height:24px;border-radius:50%;border:2px solid var(--lime);
+           box-shadow:0 0 0 6px rgba(184,240,43,.22)}
+  @media (prefers-reduced-motion:no-preference){
+    .tapring{animation:tap 1.8s ease-in-out infinite}
+    @keyframes tap{0%,100%{transform:scale(1);box-shadow:0 0 0 6px rgba(184,240,43,.22)}50%{transform:scale(.86);box-shadow:0 0 0 10px rgba(184,240,43,.08)}}
+  }
+  /* pantallas de la app */
+  .app-top{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);font-weight:800;font-size:11px;margin-top:20px}
+  .app-top svg{width:15px;height:15px;color:var(--ink-2);flex:none}
+  .app-body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .app-body .igc{--u:5.9px;width:100%;padding-top:calc(var(--u)*1.3);padding-bottom:calc(var(--u)*1.3);border-radius:calc(var(--u)*1.4);aspect-ratio:auto;flex:none}
+  .app-body .igc .ig-photo{min-height:calc(var(--u)*21)}
+  .app-h{font-weight:800;font-size:12.5px;letter-spacing:-.01em;line-height:1.2}
+  .app-sub{color:var(--muted);font-size:9.2px}
+  .share{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .share .sb{display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 3px;border-radius:10px;border:1px solid var(--line-strong);
+             font-size:8.3px;font-weight:700;color:var(--ink-2);background:var(--surface-2);text-align:center;line-height:1.15}
+  .share .sb svg{width:16px;height:16px}
+  .share .sb.pri{background:var(--lime);color:var(--card-on-lime);border-color:transparent}
+  .app-foot{font-size:8.6px;color:var(--muted);text-align:center;margin-top:auto}
+  .app-foot b{color:var(--ink-2)}
+  /* detalle del partido: filas planas */
+  .row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:9.6px}
+  .row .k{color:var(--muted)}
+  .row .v{font-weight:700;text-align:right}
+  .scoreline{display:flex;flex-direction:column;gap:5px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .scoreline .tm{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:10px;gap:8px;color:var(--ink-2)}
+  .scoreline .tm .sc{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:800;letter-spacing:.14em;color:var(--muted)}
+  .scoreline .tm.win{color:var(--ink)}
+  .scoreline .tm.win .sc{color:var(--forest-deep)}
+  .status-chip{font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+               color:var(--forest-deep);background:var(--surface-2);border:1px solid var(--line-strong);padding:2px 7px;border-radius:999px}
+  .recap-row{display:flex;gap:9px;align-items:center;padding:9px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);margin-top:4px}
+  .recap-row .thumb{width:30px;aspect-ratio:9/16;border-radius:5px;flex:none;position:relative;overflow:hidden;
+                    background:linear-gradient(156deg,#0c4a2c 0%,#083a24 40%,#04251a 100%)}
+  .recap-row .thumb i{position:absolute;left:3px;right:3px;top:9px;height:22px;border-radius:2px;background:#2f7d59}
+  .recap-row .thumb em{position:absolute;left:3px;bottom:5px;width:12px;height:3px;border-radius:2px;background:var(--lime)}
+  .recap-row .rt{flex:1;min-width:0}
+  .recap-row .rt b{display:block;font-size:9.8px}
+  .recap-row .rt span{font-size:8.3px;color:var(--muted)}
+  .recap-row .go{font-size:8.8px;font-weight:800;color:var(--forest-deep);white-space:nowrap}
+  @media (prefers-color-scheme:dark){
+    .scoreline .tm.win .sc,.status-chip,.recap-row .go{color:var(--lime)}
+  }
+  :root[data-theme="dark"] .scoreline .tm.win .sc,:root[data-theme="dark"] .status-chip,:root[data-theme="dark"] .recap-row .go{color:var(--lime)}
+  :root[data-theme="light"] .scoreline .tm.win .sc,:root[data-theme="light"] .status-chip,:root[data-theme="light"] .recap-row .go{color:var(--forest-deep)}
+  @media (max-width:640px){
+    .p-arrow{padding-top:0;align-self:center;transform:rotate(90deg);flex-basis:100%}
+    .player-grid{row-gap:18px}
+    .p-or-wrap{flex-basis:100%;display:flex;justify-content:center;margin-top:0}
+  }
+
   /* ---------- Secciones ---------- */
   section{margin:clamp(40px,7vw,80px) 0}
   .shead{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;flex-wrap:wrap}
@@ -503,6 +583,96 @@
         </div>
         <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Al iniciar, CourtBit ofrece tomar la foto en el mismo paso.</div>
       </div>
+    </div>
+  </section>
+
+  <!-- Experiencia del jugador -->
+  <section>
+    <div class="shead"><span class="n">Lo que ve el jugador</span><h2>Le llega, lo abre, lo comparte</h2></div>
+    <p class="intro">El recap no se queda en el dashboard. Al cerrar el partido se le manda a los cuatro jugadores por <b>push</b>; lo tocan, ven su tarjeta y la comparten en un paso. Y si lo perdieron o quieren volver a verlo, siempre está en el <b>detalle de su partido</b> en la app.</p>
+
+    <div class="player-grid">
+
+      <figure class="pstep">
+        <span class="lbl">01 · Le llega</span>
+        <div class="phone">
+          <div class="screen lock" role="img" aria-label="Pantalla bloqueada con la notificación de CourtBit: Ganaron 6-4 7-5, tu recap de Copa Padel Pro ya está listo">
+            <span class="notch"></span>
+            <div class="time">21:47</div>
+            <div class="date">sábado, 14 de marzo</div>
+            <div class="notif">
+              <span class="app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.2"/></svg></span>
+              <div>
+                <div class="nt"><span>CourtBit</span><span>ahora</span></div>
+                <div class="nh">🏆 Ganaron 6–4 · 7–5</div>
+                <div class="nb">Tu recap de Copa Padel Pro ya está listo. Tócalo para compartirlo en tus redes.</div>
+              </div>
+              <span class="tapring" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+        <figcaption>Push al cerrar el partido, <b>a los cuatro jugadores</b>. Los rivales reciben la misma tarjeta con su resultado.</figcaption>
+      </figure>
+
+      <span class="p-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+
+      <figure class="pstep">
+        <span class="lbl">02 · Lo abre y comparte</span>
+        <div class="phone">
+          <div class="screen" role="img" aria-label="Pantalla Tu recap en la app: la tarjeta con la foto y el marcador, y botones para compartir en Instagram, WhatsApp o guardar">
+            <span class="notch"></span>
+            <div class="app-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg> Tu recap</div>
+            <div class="app-body">
+              <div class="igc" aria-hidden="true">
+                <div class="ig-head"><span class="ig-org">Padel Pro Club</span><span class="ig-cat">4ta Varonil</span></div>
+                <div class="ig-tourney">Copa Padel Pro · Marzo 2026</div>
+                <div class="ig-photo"><svg viewBox="0 0 300 360" preserveAspectRatio="xMidYMax slice"><use href="#teamphoto"/></svg></div>
+                <div class="ig-result"><span class="ig-win">★ Ganadores</span><div class="ig-names">Christian U. · Saúl U.</div><div class="ig-score">6–4 · 7–5</div></div>
+              </div>
+              <div>
+                <div class="app-h">¡Felicidades, Christian!</div>
+                <div class="app-sub">Copa Padel Pro · 4ta Varonil · Cancha 3</div>
+              </div>
+              <div class="share">
+                <span class="sb pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>Instagram<br>Stories</span>
+                <span class="sb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20l1.3-3.9A8 8 0 1 1 8.2 19z"/><path d="M9 10c.5 2 2.5 4 4.5 4.5l1.3-1.3 2 1-.3 1.7c-3.5.6-8-3.9-7.3-7.4L11 8l1 2z" fill="currentColor" stroke="none"/></svg>WhatsApp</span>
+                <span class="sb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg>Guardar</span>
+              </div>
+              <div class="app-foot">Instagram abre directo en Stories con la imagen cargada. Etiqueta a <b>@padel.pro.club</b>.</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Una sola pantalla: <b>la tarjeta y tres salidas</b>. Sin editar nada, sin buscar la foto en la galería.</figcaption>
+      </figure>
+
+      <span class="p-or-wrap" aria-hidden="true"><span class="p-or">o bien</span></span>
+
+      <figure class="pstep">
+        <span class="lbl">Desde su partido</span>
+        <div class="phone">
+          <div class="screen" role="img" aria-label="Detalle del partido en la app con el marcador final y una fila Recap del partido con el botón Ver">
+            <span class="notch"></span>
+            <div class="app-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg> Partido</div>
+            <div class="app-body">
+              <div class="row"><span class="k">Torneo</span><span class="v">Copa Padel Pro</span></div>
+              <div class="row"><span class="k">Categoría</span><span class="v">4ta Varonil</span></div>
+              <div class="row"><span class="k">Cancha 3</span><span class="v">14 mar · 19:30</span></div>
+              <div class="scoreline">
+                <div class="tm win"><span>Christian U. · Saúl U.</span><span class="sc">6 7</span></div>
+                <div class="tm"><span>Juan P. · Diego M.</span><span class="sc">4 5</span></div>
+              </div>
+              <div class="row"><span class="k">Estado</span><span class="status-chip">Finalizado</span></div>
+              <div class="recap-row">
+                <span class="thumb" aria-hidden="true"><i></i><em></em></span>
+                <span class="rt"><b>Recap del partido</b><span>Foto + marcador, listo para compartir</span></span>
+                <span class="go">Ver →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>En <b>Mis partidos</b>, cada partido con foto muestra su recap. Sin push, sin buscar: siempre a la mano.</figcaption>
+      </figure>
+
     </div>
   </section>
 
