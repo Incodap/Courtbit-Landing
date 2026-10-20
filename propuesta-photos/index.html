@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Recap Card · Courtbit — Propuesta: foto de equipos → story compartible</title>
+<meta name="description" content="Propuesta de funcionalidad: el staff toma una foto de los equipos al iniciar el partido y Courtbit la convierte en una imagen con el marcador, lista para Instagram o WhatsApp." />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
+<style>
+  :root{
+    /* Marca CourtBit (del logo + tokens del dashboard) */
+    --lime:#b8f02b; --lime-deep:#9fd121; --lime-ink:#1b3300;
+    --teal-900:#0a221d; --teal-800:#0f2f28; --teal-700:#16433b; --teal-600:#1d564a;
+    --forest:#46a35f; --forest-deep:#2f7d47;
+
+    /* Neutros sesgados a verde (elegidos, no por defecto) */
+    --bg:#f6f9f1; --surface:#ffffff; --surface-2:#eef3e6; --surface-3:#e7eede;
+    --ink:#0d201b; --ink-2:#37473f; --muted:#657468; --faint:#8a988c;
+    --line:#e0e8d7; --line-strong:#ccd8bf;
+    --accent:#1d7a4e;           /* verde para enlaces/acciones quietas */
+    --card-on-lime:#13300a;
+
+    --radius:18px; --radius-sm:11px;
+    --maxw:1120px;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+
+    --logo:url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iODUgMjE4IDEwMDAgMTc1Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMzAuMi4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjEgQnVpbGQgMSkgIC0tPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuc3QwIHsKICAgICAgICBmaWxsOiAjYTdjZDUwOwogICAgICB9CgogICAgICAuc3QxIHsKICAgICAgICBmaWxsOiAjMWMzZTUyOwogICAgICB9CgogICAgICAuc3QyIHsKICAgICAgICBmaWxsOiAjYThjZDUxOwogICAgICB9CgogICAgICAuc3QzIHsKICAgICAgICBmaWxsOiAjNjNhZjVhOwogICAgICB9CgogICAgICAuc3Q0IHsKICAgICAgICBmaWxsOiAjOWFjMTQ0OwogICAgICB9CgogICAgICAuc3Q1IHsKICAgICAgICBmaWxsOiAjM2Q3ZjRiOwogICAgICB9CgogICAgICAuc3Q2IHsKICAgICAgICBmaWxsOiAjMjQ1NzRiOwogICAgICB9CgogICAgICAuc3Q3IHsKICAgICAgICBmaWxsOiAjZmZmOwogICAgICB9CgogICAgICAuc3Q4IHsKICAgICAgICBmaWxsOiAjMjU1ODRjOwogICAgICB9CgogICAgICAuc3Q5IHsKICAgICAgICBmaWxsOiAjMWM0NDUyOwogICAgICB9CgogICAgICAuc3QxMCB7CiAgICAgICAgZmlsbDogIzFmM2Q1MzsKICAgICAgfQoKICAgICAgLnN0MTEgewogICAgICAgIGZpbGw6ICMyMjU1NDk7CiAgICAgIH0KCiAgICAgIC5zdDEyIHsKICAgICAgICBmaWxsOiAjZmRmZGZkOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8Zz4KICAgIDxwYXRoIGNsYXNzPSJzdDEwIiBkPSJNNTI2LjkxLDI1OS40OWwtMy41LDIxLjg4Yy0xMS4xNC0uMzItMTguNDctLjQ4LTMyLjQ4LS40OHMtMTguMTUsNC4xNS0yMS44MSwzMi41OGMtMy4zNCwyNC4yNy0xLjkxLDMwLjM0LDExLjYyLDMwLjM0LDE1LjYsMCwyNC4zNi0uMzIsMzQuMzktMS4yOGwxLjExLDIyLjA0Yy0xMS4zLDMuNTEtMjEuMTcsNC43OS0zNi43Nyw0Ljc5LTM1LjM0LDAtNDcuNDQtMTUuNjUtNDEuNTUtNTguMTIsNi4wNS00My41OSwxOS4xLTU1Ljg5LDU0LjQ0LTU1Ljg5LDE1LjkyLDAsMjQuMzYsMS4yOCwzNC41NSw0LjE1WiIvPgogICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik02MTMuODIsMzI4Ljk1Yy00LjMsMjkuODYtMTYuNCw0MC40LTQ2LjY0LDQwLjRzLTQzLjE0LTExLjUtMzguNjgtNDIuNjRjNC4xNC0zMC4xOCwxNi4yNC00MC44OCw0Ni45Ni00MC44OHM0Mi44MiwxMS44MiwzOC4zNyw0My4xMVpNNTU4LjU4LDMyOC45NWMtMi4yMywxNi4yOS0uOCwyMC4xMiw5LjU1LDIwLjEyczEzLjIxLTQuMzEsMTUuNzYtMjIuMzZjMi41NS0xNi42MS44LTIwLjQ0LTguOTItMjAuNDQtMTAuNTEsMC0xMy42OSwzLjk5LTE2LjQsMjIuNjdaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTcwMS4yMiwzNjcuNDNoLTIyLjYxbC0uMTYtMTQuMjFjLTExLjc4LDExLjM0LTIyLjEzLDE2LjQ1LTMzLjI3LDE2LjQ1LTE1LjkyLDAtMjMuMjQtOC40Ni0yMS4xNy0yMi42N2w4LjEyLTU4LjkyaDI5LjEzbC03LjMyLDUwLjc4Yy0uNjQsNC45NSwxLjExLDYuMzksNC42Miw2LjM5LDUuNzMsMCwxMC4zNS0yLjU1LDE4LjMxLTguNzhsNi42OS00OC4zOGgyOC42NmwtMTAuOTgsNzkuMzZaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTc4My4yLDMxMi41aC02LjY5Yy02LjIxLDAtMTIuNDIsMS45Mi0yMy40LDUuNTlsLTYuNjksNDkuMzRoLTI5LjEzbDExLjE0LTc5LjM2aDIyLjYxbC42NCwxMi42MmMxMS4zLTEwLjA2LDIyLjQ1LTE0Ljg1LDMyLjMyLTE0Ljg1aDUuNDFsLTYuMjEsMjYuNjdaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTgyNy42MSwzNDAuNDVjLS44LDQuOTUuMTYsNi4yMyw1LjczLDYuMjNoOS44N2wxLjQzLDE5LjMyYy02LjY5LDIuNTYtMTguNDcsMy41MS0yNC4zNiwzLjUxLTE1LjYsMC0yNC41Mi04Ljc4LTIyLjQ1LTIzbDUuODktNDAuMjRoLTEzLjg1bDIuMjMtMTcuNDEsMTQuMzMtLjgsMy4xOC0yMS40aDI4LjVsLTMuMDIsMjEuNGgyMC4yMmwtMi41NSwxOC4yaC0yMC4yMmwtNC45NCwzNC4xN1oiLz4KICAgIDxwYXRoIGNsYXNzPSJzdDQiIGQ9Ik05MjguODUsMzA5Ljk1bC0uMTYuOGMxNy4wMywxLjQ0LDIyLjI5LDEyLjQ2LDE5Ljc0LDMwLjM0LTMuMTgsMjIuMi0xNC42NSwyNy42Mi00MS4yMywyNy42Mi0yMy41NiwwLTM1Ljk4LS4xNi01MC43OC0xLjI4bDE1LjQ0LTExMC4xOGMxMy4wNS0xLjEyLDI0LjM2LTEuMjgsNDIuNjYtMS4yOCwyOC4zNCwwLDM5LjgsNi43MSwzNi43NywyOS44Ni0yLjA3LDE1LjMzLTcuNjQsMjIuODMtMjIuNDUsMjQuMTFaTTkwNy42OCwzMTkuODVoLTE1LjQ0bC0zLjgyLDI3LjMxaDEzLjIxYzExLjk0LDAsMTUuMjgtMi41NiwxNy4wMy0xNC4yMSwxLjQzLTEwLjctLjgtMTMuMDktMTAuOTgtMTMuMDlaTTkxMy41NywyNzcuNTNoLTE1LjQ0bC0zLjE4LDIzLjMxaDEzLjM3YzkuODcsMCwxMi45LTIuNCwxNC40OS0xMy4wOSwxLjExLTguMTQtMS4xMS0xMC4yMi05LjIzLTEwLjIyWiIvPgogICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTk1OC42MiwzNjcuNDNsMTAuOTgtNzkuMzZoMjguODFsLTEwLjk4LDc5LjM2aC0yOC44MVpNOTk0LjI4LDI1Mi4zYzYuMjEsMCw4LjkyLDMuMDMsOC4yOCw5LjFsLTEuMTIsOC4zYy0uOCw1LjU5LTMuNSw3Ljk4LTkuMzksNy45OGgtMTEuNzhjLTYuMDUsMC04Ljc2LTIuODctNy45Ni05LjFsMS4xMS04LjNjLjQ4LTUuNDMsMy41LTcuOTgsOS4zOS03Ljk4aDExLjQ2WiIvPgogICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTEwNDQuNzQsMzQwLjQ1Yy0uOCw0Ljk1LjE2LDYuMjMsNS43Myw2LjIzaDkuODdsMS40MywxOS4zMmMtNi42OSwyLjU2LTE4LjQ3LDMuNTEtMjQuMzYsMy41MS0xNS42LDAtMjQuNTItOC43OC0yMi40NS0yM2w1Ljg5LTQwLjI0aC0xMy44NWwyLjIzLTE3LjQxLDE0LjMzLS44LDMuMTgtMjEuNGgyOC41bC0zLjAyLDIxLjRoMjAuMjJsLTIuNTUsMTguMmgtMjAuMjJsLTQuOTQsMzQuMTdaIi8+CiAgPC9nPgogIDxnPgogICAgPGc+CiAgICAgIDxwb2x5Z29uIGNsYXNzPSJzdDciIHBvaW50cz0iMjQ0Ljc3IDI0Mi4zOSAyNDQuNzcgMzY0LjMzIDk1LjI5IDM2MS40IDExMS41OCAyNDcuMzUgMTYxLjc1IDIzNS4yMyAyNDQuNzcgMjQyLjM5Ii8+CiAgICAgIDxwb2x5Z29uIGNsYXNzPSJzdDUiIHBvaW50cz0iMTczLjAxIDI2Mi42MSAxNjMuNTIgMzQ2LjEgMjQ0Ljc3IDM0Ni4xIDI0NC43NyAyNjIuNjEgMTczLjAxIDI2Mi42MSIvPgogICAgICA8cGF0aCBjbGFzcz0ic3Q2IiBkPSJNOTYuMTgsMzU1LjE2bC0yLjI1LDE1LjcyYy0xLjA5LDcuNjMsNC44MywxNC40NiwxMi41NCwxNC40NmgxMzguMjl2LTMwLjE4SDk2LjE4WiIvPgogICAgICA8cG9seWdvbiBjbGFzcz0ic3Q4IiBwb2ludHM9IjE2NC4wNCAyNjIuNjEgMTA5LjQgMjYyLjYxIDk3LjQ4IDM0Ni4xIDE1My40OSAzNDYuMSAxNjQuMDQgMjYyLjYxIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJzdDExIiBkPSJNMjQ0Ljc3LDIyNi42N2wtMTE5LjI5LjIyYy02LjMuMDEtMTEuNjMsNC42NC0xMi41MiwxMC44OGwtMi4yNiwxNS44aDEzNC4wN3YtMjYuODlaIi8+CiAgICA8L2c+CiAgICA8Zz4KICAgICAgPGc+CiAgICAgICAgPHBhdGggY2xhc3M9InN0MSIgZD0iTTQwMi43OCwzNTUuNzNoLTkyLjMybC4yLTguNzZ2LTMuNThoLTEzLjc0di0xNC41M2gxMi43NHYtMTAuMzVoMTMuOTR2LTEzLjE0aC0xMy41NHYtMTMuOTNoMTIuOTR2LTUuNzdoNy43NnYtNS43N2gtNy4xN3YtMTAuMzVoMTMuOTR2LTcuNzZsLjItOC43Nmg0OC44NWwtMi4wMS0xMi43NmMtMS4yNC03Ljg0LTgtMTMuNjEtMTUuOTMtMTMuNjFoLTExNC42M3YxNTguNjdoMTM0LjQzYzkuOTEsMCwxNy40OC05LjcsMTUuOTMtMTkuNDhsLTEuNi0xMC4xMloiLz4KICAgICAgICA8cG9seWdvbiBjbGFzcz0ic3Q3IiBwb2ludHM9IjMzNy41MyAyNjEuNzkgMzg3Ljk3IDI2MS43OSAzODYuNTkgMjUzLjA0IDMzNy43MyAyNTMuMDQgMzM3LjUzIDI2MS43OSIvPgogICAgICAgIDxwb2x5Z29uIGNsYXNzPSJzdDciIHBvaW50cz0iMzEwLjY1IDM0Ni45NyAzMTAuNDYgMzU1LjczIDQwMi43OCAzNTUuNzMgNDAxLjQgMzQ2Ljk3IDMxMC42NSAzNDYuOTciLz4KICAgICAgICA8cG9seWdvbiBjbGFzcz0ic3QyIiBwb2ludHM9IjM4Ny45NyAyNjEuNzkgMzM3LjUzIDI2MS43OSAzMzcuNTMgMjY5LjU2IDMyMy42IDI2OS41NiAzMjMuNiAyNzkuOSAzMzAuNzYgMjc5LjkgMzMwLjc2IDI4NS42OCAzMjMgMjg1LjY4IDMyMyAyOTEuNDUgMzEwLjA2IDI5MS40NSAzMTAuMDYgMzA1LjM4IDMyMy42IDMwNS4zOCAzMjMuNiAzMTguNTEgMzA5LjY2IDMxOC41MSAzMDkuNjYgMzI4Ljg2IDI5Ni45MiAzMjguODYgMjk2LjkyIDM0My4zOSAzMTAuNjUgMzQzLjM5IDMxMC42NSAzNDYuOTcgNDAxLjQgMzQ2Ljk3IDM4Ny45NyAyNjEuNzkiLz4KICAgICAgPC9nPgogICAgICA8cmVjdCBjbGFzcz0ic3Q5IiB4PSIzMzAuNzIiIHk9IjI5MS40NCIgd2lkdGg9IjExLjM1IiBoZWlnaHQ9IjExLjM1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDkiIHg9IjMyNC41NSIgeT0iMzI5LjQ5IiB3aWR0aD0iMTQuNzQiIGhlaWdodD0iMTQuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MCIgeD0iMjg0LjcxIiB5PSIzNDYuNjIiIHdpZHRoPSIxMS45NSIgaGVpZ2h0PSIxMS45NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q3IiB4PSIyNjIuNiIgeT0iMzY1LjM1IiB3aWR0aD0iMTMuMzUiIGhlaWdodD0iMTMuMzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NyIgeD0iMjcxLjU2IiB5PSIzMjguODkiIHdpZHRoPSIxMy4zNSIgaGVpZ2h0PSIxMy4zNSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIyNjkuMTciIHk9IjMwNS4zOSIgd2lkdGg9IjEyLjU1IiBoZWlnaHQ9IjEyLjU1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDMiIHg9IjI5NS4wNyIgeT0iMzA2Ljc4IiB3aWR0aD0iMTEuMTYiIGhlaWdodD0iMTEuMTYiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MCIgeD0iMjg0LjkxIiB5PSIyODMuODciIHdpZHRoPSIxMS4zNSIgaGVpZ2h0PSIxMS4zNSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIyOTguMDUiIHk9IjI1NC45OSIgd2lkdGg9IjEzLjM1IiBoZWlnaHQ9IjEzLjM1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDAiIHg9IjMyMS45NiIgeT0iMjU0Ljk5IiB3aWR0aD0iMTEuNTUiIGhlaWdodD0iMTEuNTUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MyIgeD0iMjYyLjc5IiB5PSIyODUuMDciIHdpZHRoPSIxMS4zNSIgaGVpZ2h0PSIxMS4zNSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMiIgeD0iMjUzLjgzIiB5PSIyODcuODYiIHdpZHRoPSI2Ljc3IiBoZWlnaHQ9IjE4LjczIi8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEyIiB4PSIyNTMuODMiIHk9IjI2OC41NCIgd2lkdGg9IjguNTciIGhlaWdodD0iMTIuMTUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTIiIHg9IjI1My4yNSIgeT0iMjUxLjQiIHdpZHRoPSI5LjU1IiBoZWlnaHQ9IjExLjk1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHg9IjI2Mi4yIiB5PSIyMzIuMDgiIHdpZHRoPSIxMy43NCIgaGVpZ2h0PSIxMy43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q3IiB4PSIyNjguMzciIHk9IjI2Ni4xNCIgd2lkdGg9IjEzLjc0IiBoZWlnaHQ9IjEzLjc0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEyIiB4PSIyNTMuODMiIHk9IjMxMi4zNiIgd2lkdGg9IjkuNzYiIGhlaWdodD0iMTUuMTQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTIiIHg9IjI1My44MyIgeT0iMzMzLjI4IiB3aWR0aD0iOS43NiIgaGVpZ2h0PSI4LjE3Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEyIiB4PSIyNTMuMjUiIHk9IjM0NS44MyIgd2lkdGg9IjEwLjM0IiBoZWlnaHQ9IjEyLjM1Ii8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=");
+    --logo-white:url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iODAgMjIwIDk5MCAxODAiPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAzMC4yLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAyLjEuMSBCdWlsZCAxKSAgLS0+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zdDAgewogICAgICAgIGZpbGw6ICNhN2NkNTA7CiAgICAgIH0KCiAgICAgIC5zdDEgewogICAgICAgIGZpbGw6ICMxYzNlNTI7CiAgICAgIH0KCiAgICAgIC5zdDIgewogICAgICAgIGZpbGw6ICNhOGNkNTE7CiAgICAgIH0KCiAgICAgIC5zdDMgewogICAgICAgIGZpbGw6ICM2M2FmNWE7CiAgICAgIH0KCiAgICAgIC5zdDQgewogICAgICAgIGZpbGw6ICM5YWMxNDQ7CiAgICAgIH0KCiAgICAgIC5zdDUgewogICAgICAgIGZpbGw6ICMzZDdmNGI7CiAgICAgIH0KCiAgICAgIC5zdDYgewogICAgICAgIGZpbGw6ICMyNDU3NGI7CiAgICAgIH0KCiAgICAgIC5zdDcgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5zdDggewogICAgICAgIGZpbGw6ICMyNTU4NGM7CiAgICAgIH0KCiAgICAgIC5zdDkgewogICAgICAgIGZpbGw6ICMxYzQ0NTI7CiAgICAgIH0KCiAgICAgIC5zdDEwIHsKICAgICAgICBmaWxsOiAjZmZmZmZmOwogICAgICB9CgogICAgICAuc3QxMSB7CiAgICAgICAgZmlsbDogIzIyNTU0OTsKICAgICAgfQoKICAgICAgLnN0MTIgewogICAgICAgIGZpbGw6ICNmZGZkZmQ7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnPgogICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik01MjYuOTEsMjU5LjQ5bC0zLjUsMjEuODhjLTExLjE0LS4zMi0xOC40Ny0uNDgtMzIuNDgtLjQ4cy0xOC4xNSw0LjE1LTIxLjgxLDMyLjU4Yy0zLjM0LDI0LjI3LTEuOTEsMzAuMzQsMTEuNjIsMzAuMzQsMTUuNiwwLDI0LjM2LS4zMiwzNC4zOS0xLjI4bDEuMTEsMjIuMDRjLTExLjMsMy41MS0yMS4xNyw0Ljc5LTM2Ljc3LDQuNzktMzUuMzQsMC00Ny40NC0xNS42NS00MS41NS01OC4xMiw2LjA1LTQzLjU5LDE5LjEtNTUuODksNTQuNDQtNTUuODksMTUuOTIsMCwyNC4zNiwxLjI4LDM0LjU1LDQuMTVaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTYxMy44MiwzMjguOTVjLTQuMywyOS44Ni0xNi40LDQwLjQtNDYuNjQsNDAuNHMtNDMuMTQtMTEuNS0zOC42OC00Mi42NGM0LjE0LTMwLjE4LDE2LjI0LTQwLjg4LDQ2Ljk2LTQwLjg4czQyLjgyLDExLjgyLDM4LjM3LDQzLjExWk01NTguNTgsMzI4Ljk1Yy0yLjIzLDE2LjI5LS44LDIwLjEyLDkuNTUsMjAuMTJzMTMuMjEtNC4zMSwxNS43Ni0yMi4zNmMyLjU1LTE2LjYxLjgtMjAuNDQtOC45Mi0yMC40NC0xMC41MSwwLTEzLjY5LDMuOTktMTYuNCwyMi42N1oiLz4KICAgIDxwYXRoIGNsYXNzPSJzdDEwIiBkPSJNNzAxLjIyLDM2Ny40M2gtMjIuNjFsLS4xNi0xNC4yMWMtMTEuNzgsMTEuMzQtMjIuMTMsMTYuNDUtMzMuMjcsMTYuNDUtMTUuOTIsMC0yMy4yNC04LjQ2LTIxLjE3LTIyLjY3bDguMTItNTguOTJoMjkuMTNsLTcuMzIsNTAuNzhjLS42NCw0Ljk1LDEuMTEsNi4zOSw0LjYyLDYuMzksNS43MywwLDEwLjM1LTIuNTUsMTguMzEtOC43OGw2LjY5LTQ4LjM4aDI4LjY2bC0xMC45OCw3OS4zNloiLz4KICAgIDxwYXRoIGNsYXNzPSJzdDEwIiBkPSJNNzgzLjIsMzEyLjVoLTYuNjljLTYuMjEsMC0xMi40MiwxLjkyLTIzLjQsNS41OWwtNi42OSw0OS4zNGgtMjkuMTNsMTEuMTQtNzkuMzZoMjIuNjFsLjY0LDEyLjYyYzExLjMtMTAuMDYsMjIuNDUtMTQuODUsMzIuMzItMTQuODVoNS40MWwtNi4yMSwyNi42N1oiLz4KICAgIDxwYXRoIGNsYXNzPSJzdDEwIiBkPSJNODI3LjYxLDM0MC40NWMtLjgsNC45NS4xNiw2LjIzLDUuNzMsNi4yM2g5Ljg3bDEuNDMsMTkuMzJjLTYuNjksMi41Ni0xOC40NywzLjUxLTI0LjM2LDMuNTEtMTUuNiwwLTI0LjUyLTguNzgtMjIuNDUtMjNsNS44OS00MC4yNGgtMTMuODVsMi4yMy0xNy40MSwxNC4zMy0uOCwzLjE4LTIxLjRoMjguNWwtMy4wMiwyMS40aDIwLjIybC0yLjU1LDE4LjJoLTIwLjIybC00Ljk0LDM0LjE3WiIvPgogICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTkyOC44NSwzMDkuOTVsLS4xNi44YzE3LjAzLDEuNDQsMjIuMjksMTIuNDYsMTkuNzQsMzAuMzQtMy4xOCwyMi4yLTE0LjY1LDI3LjYyLTQxLjIzLDI3LjYyLTIzLjU2LDAtMzUuOTgtLjE2LTUwLjc4LTEuMjhsMTUuNDQtMTEwLjE4YzEzLjA1LTEuMTIsMjQuMzYtMS4yOCw0Mi42Ni0xLjI4LDI4LjM0LDAsMzkuOCw2LjcxLDM2Ljc3LDI5Ljg2LTIuMDcsMTUuMzMtNy42NCwyMi44My0yMi40NSwyNC4xMVpNOTA3LjY4LDMxOS44NWgtMTUuNDRsLTMuODIsMjcuMzFoMTMuMjFjMTEuOTQsMCwxNS4yOC0yLjU2LDE3LjAzLTE0LjIxLDEuNDMtMTAuNy0uOC0xMy4wOS0xMC45OC0xMy4wOVpNOTEzLjU3LDI3Ny41M2gtMTUuNDRsLTMuMTgsMjMuMzFoMTMuMzdjOS44NywwLDEyLjktMi40LDE0LjQ5LTEzLjA5LDEuMTEtOC4xNC0xLjExLTEwLjIyLTkuMjMtMTAuMjJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q0IiBkPSJNOTU4LjYyLDM2Ny40M2wxMC45OC03OS4zNmgyOC44MWwtMTAuOTgsNzkuMzZoLTI4LjgxWk05OTQuMjgsMjUyLjNjNi4yMSwwLDguOTIsMy4wMyw4LjI4LDkuMWwtMS4xMiw4LjNjLS44LDUuNTktMy41LDcuOTgtOS4zOSw3Ljk4aC0xMS43OGMtNi4wNSwwLTguNzYtMi44Ny03Ljk2LTkuMWwxLjExLTguM2MuNDgtNS40MywzLjUtNy45OCw5LjM5LTcuOThoMTEuNDZaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3Q0IiBkPSJNMTA0NC43NCwzNDAuNDVjLS44LDQuOTUuMTYsNi4yMyw1LjczLDYuMjNoOS44N2wxLjQzLDE5LjMyYy02LjY5LDIuNTYtMTguNDcsMy41MS0yNC4zNiwzLjUxLTE1LjYsMC0yNC41Mi04Ljc4LTIyLjQ1LTIzbDUuODktNDAuMjRoLTEzLjg1bDIuMjMtMTcuNDEsMTQuMzMtLjgsMy4xOC0yMS40aDI4LjVsLTMuMDIsMjEuNGgyMC4yMmwtMi41NSwxOC4yaC0yMC4yMmwtNC45NCwzNC4xN1oiLz4KICA8L2c+CiAgPGc+CiAgICA8Zz4KICAgICAgPHBvbHlnb24gY2xhc3M9InN0NyIgcG9pbnRzPSIyNDQuNzcgMjQyLjM5IDI0NC43NyAzNjQuMzMgOTUuMjkgMzYxLjQgMTExLjU4IDI0Ny4zNSAxNjEuNzUgMjM1LjIzIDI0NC43NyAyNDIuMzkiLz4KICAgICAgPHBvbHlnb24gY2xhc3M9InN0NSIgcG9pbnRzPSIxNzMuMDEgMjYyLjYxIDE2My41MiAzNDYuMSAyNDQuNzcgMzQ2LjEgMjQ0Ljc3IDI2Mi42MSAxNzMuMDEgMjYyLjYxIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJzdDYiIGQ9Ik05Ni4xOCwzNTUuMTZsLTIuMjUsMTUuNzJjLTEuMDksNy42Myw0LjgzLDE0LjQ2LDEyLjU0LDE0LjQ2aDEzOC4yOXYtMzAuMThIOTYuMThaIi8+CiAgICAgIDxwb2x5Z29uIGNsYXNzPSJzdDgiIHBvaW50cz0iMTY0LjA0IDI2Mi42MSAxMDkuNCAyNjIuNjEgOTcuNDggMzQ2LjEgMTUzLjQ5IDM0Ni4xIDE2NC4wNCAyNjIuNjEiLz4KICAgICAgPHBhdGggY2xhc3M9InN0MTEiIGQ9Ik0yNDQuNzcsMjI2LjY3bC0xMTkuMjkuMjJjLTYuMy4wMS0xMS42Myw0LjY0LTEyLjUyLDEwLjg4bC0yLjI2LDE1LjhoMTM0LjA3di0yNi44OVoiLz4KICAgIDwvZz4KICAgIDxnPgogICAgICA8Zz4KICAgICAgICA8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDAyLjc4LDM1NS43M2gtOTIuMzJsLjItOC43NnYtMy41OGgtMTMuNzR2LTE0LjUzaDEyLjc0di0xMC4zNWgxMy45NHYtMTMuMTRoLTEzLjU0di0xMy45M2gxMi45NHYtNS43N2g3Ljc2di01Ljc3aC03LjE3di0xMC4zNWgxMy45NHYtNy43NmwuMi04Ljc2aDQ4Ljg1bC0yLjAxLTEyLjc2Yy0xLjI0LTcuODQtOC0xMy42MS0xNS45My0xMy42MWgtMTE0LjYzdjE1OC42N2gxMzQuNDNjOS45MSwwLDE3LjQ4LTkuNywxNS45My0xOS40OGwtMS42LTEwLjEyWiIvPgogICAgICAgIDxwb2x5Z29uIGNsYXNzPSJzdDciIHBvaW50cz0iMzM3LjUzIDI2MS43OSAzODcuOTcgMjYxLjc5IDM4Ni41OSAyNTMuMDQgMzM3LjczIDI1My4wNCAzMzcuNTMgMjYxLjc5Ii8+CiAgICAgICAgPHBvbHlnb24gY2xhc3M9InN0NyIgcG9pbnRzPSIzMTAuNjUgMzQ2Ljk3IDMxMC40NiAzNTUuNzMgNDAyLjc4IDM1NS43MyA0MDEuNCAzNDYuOTcgMzEwLjY1IDM0Ni45NyIvPgogICAgICAgIDxwb2x5Z29uIGNsYXNzPSJzdDIiIHBvaW50cz0iMzg3Ljk3IDI2MS43OSAzMzcuNTMgMjYxLjc5IDMzNy41MyAyNjkuNTYgMzIzLjYgMjY5LjU2IDMyMy42IDI3OS45IDMzMC43NiAyNzkuOSAzMzAuNzYgMjg1LjY4IDMyMyAyODUuNjggMzIzIDI5MS40NSAzMTAuMDYgMjkxLjQ1IDMxMC4wNiAzMDUuMzggMzIzLjYgMzA1LjM4IDMyMy42IDMxOC41MSAzMDkuNjYgMzE4LjUxIDMwOS42NiAzMjguODYgMjk2LjkyIDMyOC44NiAyOTYuOTIgMzQzLjM5IDMxMC42NSAzNDMuMzkgMzEwLjY1IDM0Ni45NyA0MDEuNCAzNDYuOTcgMzg3Ljk3IDI2MS43OSIvPgogICAgICA8L2c+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDkiIHg9IjMzMC43MiIgeT0iMjkxLjQ0IiB3aWR0aD0iMTEuMzUiIGhlaWdodD0iMTEuMzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0OSIgeD0iMzI0LjU1IiB5PSIzMjkuNDkiIHdpZHRoPSIxNC43NCIgaGVpZ2h0PSIxNC43NCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIyODQuNzEiIHk9IjM0Ni42MiIgd2lkdGg9IjExLjk1IiBoZWlnaHQ9IjExLjk1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHg9IjI2Mi42IiB5PSIzNjUuMzUiIHdpZHRoPSIxMy4zNSIgaGVpZ2h0PSIxMy4zNSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3Q3IiB4PSIyNzEuNTYiIHk9IjMyOC44OSIgd2lkdGg9IjEzLjM1IiBoZWlnaHQ9IjEzLjM1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDAiIHg9IjI2OS4xNyIgeT0iMzA1LjM5IiB3aWR0aD0iMTIuNTUiIGhlaWdodD0iMTIuNTUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MyIgeD0iMjk1LjA3IiB5PSIzMDYuNzgiIHdpZHRoPSIxMS4xNiIgaGVpZ2h0PSIxMS4xNiIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSIyODQuOTEiIHk9IjI4My44NyIgd2lkdGg9IjExLjM1IiBoZWlnaHQ9IjExLjM1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDAiIHg9IjI5OC4wNSIgeT0iMjU0Ljk5IiB3aWR0aD0iMTMuMzUiIGhlaWdodD0iMTMuMzUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MCIgeD0iMzIxLjk2IiB5PSIyNTQuOTkiIHdpZHRoPSIxMS41NSIgaGVpZ2h0PSIxMS41NSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QzIiB4PSIyNjIuNzkiIHk9IjI4NS4wNyIgd2lkdGg9IjExLjM1IiBoZWlnaHQ9IjExLjM1Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDEyIiB4PSIyNTMuODMiIHk9IjI4Ny44NiIgd2lkdGg9IjYuNzciIGhlaWdodD0iMTguNzMiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTIiIHg9IjI1My44MyIgeT0iMjY4LjU0IiB3aWR0aD0iOC41NyIgaGVpZ2h0PSIxMi4xNSIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMiIgeD0iMjUzLjI1IiB5PSIyNTEuNCIgd2lkdGg9IjkuNTUiIGhlaWdodD0iMTEuOTUiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0NyIgeD0iMjYyLjIiIHk9IjIzMi4wOCIgd2lkdGg9IjEzLjc0IiBoZWlnaHQ9IjEzLjc0Ii8+CiAgICAgIDxyZWN0IGNsYXNzPSJzdDciIHg9IjI2OC4zNyIgeT0iMjY2LjE0IiB3aWR0aD0iMTMuNzQiIGhlaWdodD0iMTMuNzQiLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTIiIHg9IjI1My44MyIgeT0iMzEyLjM2IiB3aWR0aD0iOS43NiIgaGVpZ2h0PSIxNS4xNCIvPgogICAgICA8cmVjdCBjbGFzcz0ic3QxMiIgeD0iMjUzLjgzIiB5PSIzMzMuMjgiIHdpZHRoPSI5Ljc2IiBoZWlnaHQ9IjguMTciLz4KICAgICAgPHJlY3QgY2xhc3M9InN0MTIiIHg9IjI1My4yNSIgeT0iMzQ1LjgzIiB3aWR0aD0iMTAuMzQiIGhlaWdodD0iMTIuMzUiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==");
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#06130f; --surface:#0d201b; --surface-2:#0a1b16; --surface-3:#102720;
+      --ink:#eaf4ea; --ink-2:#bccabf; --muted:#8aa094; --faint:#6a7f73;
+      --line:#1b312a; --line-strong:#294138;
+      --accent:#7fe0a3;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#06130f; --surface:#0d201b; --surface-2:#0a1b16; --surface-3:#102720;
+    --ink:#eaf4ea; --ink-2:#bccabf; --muted:#8aa094; --faint:#6a7f73;
+    --line:#1b312a; --line-strong:#294138; --accent:#7fe0a3;
+  }
+  :root[data-theme="light"]{
+    --bg:#f6f9f1; --surface:#ffffff; --surface-2:#eef3e6; --surface-3:#e7eede;
+    --ink:#0d201b; --ink-2:#37473f; --muted:#657468; --faint:#8a988c;
+    --line:#e0e8d7; --line-strong:#ccd8bf; --accent:#1d7a4e;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+       line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(20px,5vw,64px) clamp(18px,5vw,56px)}
+  h1,h2,h3{text-wrap:balance;line-height:1.08;letter-spacing:-.02em;margin:0}
+  p{margin:0}
+  a{color:var(--accent);text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:2.5px solid var(--forest);outline-offset:3px;border-radius:6px}
+
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+           color:var(--muted);font-weight:600}
+  .lime-text{color:var(--forest-deep)}
+  @media (prefers-color-scheme:dark){.lime-text{color:var(--lime)}}
+  :root[data-theme="dark"] .lime-text{color:var(--lime)}
+  :root[data-theme="light"] .lime-text{color:var(--forest-deep)}
+
+  /* ---------- Masthead ---------- */
+  .mast{display:flex;align-items:center;justify-content:space-between;gap:16px;
+        padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:clamp(28px,5vw,52px)}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .logo{width:148px;height:34px;background:var(--logo) left center/contain no-repeat}
+  @media (prefers-color-scheme:dark){.brand .logo{background-image:var(--logo-white)}}
+  :root[data-theme="dark"] .brand .logo{background-image:var(--logo-white)}
+  :root[data-theme="light"] .brand .logo{background-image:var(--logo)}
+  .mast .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+             color:var(--muted);text-align:right}
+
+  /* ---------- Hero ---------- */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,60px);align-items:center;
+        margin-bottom:clamp(40px,7vw,88px)}
+  .hero h1{font-size:clamp(2.1rem,5.4vw,3.5rem);font-weight:860}
+  .hero .lede{margin-top:20px;font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--ink-2);max-width:34ch}
+  .hero .meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;
+        padding:7px 13px;border-radius:999px;border:1px solid var(--line-strong);color:var(--ink-2);
+        background:var(--surface)}
+  .pill svg{width:14px;height:14px}
+
+  /* ---------- Recap card mock (objeto nocturno, igual en ambos temas) ---------- */
+  .stage{display:flex;flex-direction:column;align-items:center;gap:14px}
+  .igc{--u:13px;--pad:calc(var(--u)*1.5);
+       --acc:#B8F02B;                                   /* acento / marcador / destello (lima CourtBit) */
+       --g1:#0c4a2c;--g2:#083a24;--g3:#04251a;           /* degradado bosque: tema Courtbit del marcador */
+       --ink:#eef7ef;--chip-ink:#04251a;
+       display:flex;flex-direction:column;position:relative;overflow:hidden;isolation:isolate;
+       border-radius:calc(var(--u)*1.7);color:var(--ink);aspect-ratio:9/16;
+       padding-top:calc(var(--u)*4.4);padding-bottom:calc(var(--u)*6);
+       background:
+         radial-gradient(120% 75% at 100% 0%, color-mix(in srgb,var(--acc) 15%, transparent) 0%, transparent 46%),
+         linear-gradient(156deg,var(--g1) 0%,var(--g2) 40%,var(--g3) 100%);
+       box-shadow:0 26px 60px -30px rgba(0,0,0,.6)}
+  .igc::before{content:"";position:absolute;inset:0;pointer-events:none;
+       background:radial-gradient(70% 36% at 84% 1%, color-mix(in srgb,var(--acc) 26%, transparent), transparent 60%)}
+  .igc>*{position:relative}
+  .ig-hero{width:min(360px,90vw)}
+  .ig-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:calc(var(--u)*.2) var(--pad) 0}
+  .ig-logo{height:calc(var(--u)*1.8);width:calc(var(--u)*7.6);background:var(--logo-white) left center/contain no-repeat}
+  .ig-org{display:flex;align-items:center;gap:calc(var(--u)*.55);font-weight:800;letter-spacing:-.01em;font-size:calc(var(--u)*1.08)}
+  .ig-org::before{content:"";width:calc(var(--u)*1.5);height:calc(var(--u)*1.5);border-radius:calc(var(--u)*.42);background:var(--acc)}
+  .ig-cat{font-family:var(--mono);font-weight:800;text-transform:uppercase;letter-spacing:.08em;
+       font-size:calc(var(--u)*.72);padding:calc(var(--u)*.32) calc(var(--u)*.74);border-radius:999px;
+       background:var(--acc);color:var(--chip-ink)}
+  .ig-tourney{padding:calc(var(--u)*.72) var(--pad) 0;font-family:var(--mono);font-weight:700;
+       text-transform:uppercase;letter-spacing:.14em;font-size:calc(var(--u)*.72);
+       color:color-mix(in srgb,var(--ink) 60%, transparent)}
+  .ig-photo{position:relative;flex:1;min-height:0;margin:calc(var(--u)*.7) var(--pad) 0;
+       border-radius:calc(var(--u)*.9);overflow:hidden;
+       box-shadow:0 0 0 1px rgba(255,255,255,.14),0 calc(var(--u)*.8) calc(var(--u)*1.8) calc(var(--u)*-.9) rgba(0,0,0,.5)}
+  .ig-photo svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .ig-result{padding:calc(var(--u)*.85) var(--pad) 0}
+  .ig-win{display:inline-flex;align-items:center;font-family:var(--mono);font-weight:800;text-transform:uppercase;
+       letter-spacing:.1em;font-size:calc(var(--u)*.64);background:var(--acc);color:var(--chip-ink);
+       padding:calc(var(--u)*.26) calc(var(--u)*.64);border-radius:999px}
+  .ig-names{font-weight:800;font-size:calc(var(--u)*1.4);letter-spacing:-.01em;margin-top:calc(var(--u)*.5);line-height:1.04}
+  .ig-score{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:800;font-size:calc(var(--u)*3.2);
+       line-height:.95;margin-top:calc(var(--u)*.28);letter-spacing:.01em;color:var(--acc)}
+  .ig-vs{font-family:var(--mono);font-size:calc(var(--u)*.74);margin-top:calc(var(--u)*.4);font-weight:600;
+       color:color-mix(in srgb,var(--ink) 56%, transparent)}
+  .ig-spon{margin-top:calc(var(--u)*.85);display:flex;align-items:center;gap:calc(var(--u)*1.1);flex-wrap:wrap;
+       padding:calc(var(--u)*.78) var(--pad);background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.13)}
+  .ig-spon .spl{height:calc(var(--u)*1.7);width:auto;color:var(--ink);flex:none;overflow:visible;opacity:.95}
+  .ig-spon .cb{margin-left:auto;font-family:var(--mono);font-size:calc(var(--u)*.6);font-weight:700;letter-spacing:.06em;
+       color:color-mix(in srgb,var(--ink) 55%, transparent)}
+  /* Chrome de Instagram Stories sobre el hero: cae en las bandas seguras (arriba/abajo), nunca sobre el contenido */
+  .story-ui{position:absolute;inset:0;pointer-events:none;z-index:3;color:#fff}
+  .su-top{position:absolute;top:calc(var(--u)*.7);left:calc(var(--u)*1.2);right:calc(var(--u)*1.2)}
+  .su-bars{display:flex;gap:3px}
+  .su-bars i{height:2.5px;border-radius:2px;background:rgba(255,255,255,.4);flex:1}
+  .su-bars i:first-child{background:rgba(255,255,255,.92)}
+  .su-user{display:flex;align-items:center;gap:7px;margin-top:calc(var(--u)*.7)}
+  .su-ava{width:calc(var(--u)*1.7);height:calc(var(--u)*1.7);border-radius:50%;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.55)}
+  .su-name{font-size:calc(var(--u)*.74);font-weight:700}
+  .su-time{font-size:calc(var(--u)*.68);opacity:.72}
+  .su-x{margin-left:auto;font-size:calc(var(--u)*.95);opacity:.85}
+  .su-bot{position:absolute;left:calc(var(--u)*1.2);right:calc(var(--u)*1.2);bottom:calc(var(--u)*1.3);
+       display:flex;align-items:center;gap:calc(var(--u)*.8)}
+  .su-reply{flex:1;border:1px solid rgba(255,255,255,.55);border-radius:999px;
+       padding:calc(var(--u)*.55) calc(var(--u)*.95);font-size:calc(var(--u)*.74);opacity:.85}
+  .su-ic{width:calc(var(--u)*1.5);height:calc(var(--u)*1.5);opacity:.85;flex:none}
+  .ig-cap{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:center;max-width:300px;
+       line-height:1.5;letter-spacing:.02em}
+  .ig-cap b{color:var(--ink-2)}
+
+  /* ---------- Personalización (mini historias 9:16) ---------- */
+  .pers-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:26px;margin-top:8px}
+  .pers-item{margin:0;display:flex;flex-direction:column;gap:11px;align-items:center;width:min(250px,82vw)}
+  .pers-item .igc{--u:9px;width:100%}
+  .mc-cap{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.03em}
+  .mc-cap .sw{width:12px;height:12px;border-radius:4px;flex:none;border:1px solid var(--line-strong)}
+  .pers-note{margin-top:22px;font-size:.92rem;color:var(--ink-2);max-width:62ch}
+  /* Mini-picker de color del torneo (control del dashboard) */
+  .picker{max-width:430px;margin:0 auto 34px;background:var(--surface);border:1px solid var(--line);
+      border-radius:var(--radius);padding:18px 20px;box-shadow:0 16px 36px -28px rgba(10,34,25,.5)}
+  .picker-field{display:flex;flex-direction:column;gap:9px}
+  .picker-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .picker-row{display:flex;align-items:center;gap:11px;border:1px solid var(--line-strong);border-radius:11px;
+      padding:9px 12px;background:var(--surface-2)}
+  .picker-swatch{width:26px;height:26px;border-radius:7px;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.12) inset}
+  .picker-hex{font-family:var(--mono);font-size:.95rem;font-weight:700;color:var(--ink);letter-spacing:.02em;flex:1}
+  .picker-pick{color:var(--muted);font-size:.8rem;font-family:var(--mono)}
+  .picker-recents{display:flex;align-items:center;gap:9px;margin-top:15px;flex-wrap:wrap}
+  .pr-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:700}
+  .pr-dot{width:22px;height:22px;border-radius:50%;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.12) inset}
+  .pr-dot.sel{box-shadow:0 0 0 2px var(--surface),0 0 0 3.5px var(--forest)}
+  .pr-sep{width:1px;height:20px;background:var(--line-strong);margin:0 2px}
+  .picker-note{margin-top:14px;font-size:.82rem;color:var(--muted);line-height:1.5}
+  .picker-note b{color:var(--ink-2)}
+
+  /* ---------- Secciones ---------- */
+  section{margin:clamp(40px,7vw,80px) 0}
+  .shead{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+  .shead h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800}
+  .shead .n{font-family:var(--mono);font-size:.78rem;color:var(--forest);font-weight:700}
+  .intro{color:var(--ink-2);max-width:62ch;font-size:1.03rem}
+
+  /* 3 pasos */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+        padding:22px 20px;position:relative}
+  .step .k{font-family:var(--mono);font-size:.74rem;font-weight:700;color:var(--forest);
+        letter-spacing:.08em}
+  .step h3{font-size:1.12rem;font-weight:780;margin:12px 0 8px}
+  .step p{color:var(--ink-2);font-size:.95rem}
+  .step .ic{width:30px;height:30px;color:var(--forest-deep);margin-bottom:4px}
+  @media (prefers-color-scheme:dark){.step .ic{color:var(--lime)}}
+  :root[data-theme="dark"] .step .ic{color:var(--lime)}
+  :root[data-theme="light"] .step .ic{color:var(--forest-deep)}
+
+  /* Flujo del staff */
+  .flow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center}
+  .flow .copy h3{font-size:1.2rem;font-weight:800;margin-bottom:14px}
+  .flow ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+  .flow li{display:flex;gap:12px;color:var(--ink-2);font-size:.98rem}
+  .flow li .dot{flex:none;width:22px;height:22px;border-radius:50%;background:var(--surface-2);
+        border:1px solid var(--line-strong);display:grid;place-items:center;margin-top:2px}
+  .flow li .dot svg{width:12px;height:12px;color:var(--forest-deep)}
+  @media (prefers-color-scheme:dark){.flow li .dot svg{color:var(--lime)}.flow li .dot{background:var(--surface-3)}}
+  :root[data-theme="dark"] .flow li .dot svg{color:var(--lime)}
+  :root[data-theme="dark"] .flow li .dot{background:var(--surface-3)}
+  .flow li b{color:var(--ink);font-weight:700}
+
+  /* Mock de la tarjeta de partido (UI del staff) */
+  .ui{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:18px;box-shadow:0 18px 40px -30px rgba(10,34,25,.5)}
+  .ui .uihead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .ui .court-chip{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.06em}
+  .ui .live{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+        color:var(--forest-deep);font-weight:700;display:flex;align-items:center;gap:6px}
+  @media (prefers-color-scheme:dark){.ui .live{color:var(--lime)}}
+  :root[data-theme="dark"] .ui .live{color:var(--lime)}
+  .ui .teams{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+  .ui .team{display:flex;align-items:center;gap:10px;font-weight:650;font-size:.96rem}
+  .ui .team .av{width:26px;height:26px;border-radius:50%;background:var(--surface-3);
+        border:1px solid var(--line-strong);display:grid;place-items:center;font-size:.66rem;
+        font-weight:800;color:var(--ink-2);flex:none}
+  .ui .vsrow{font-family:var(--mono);font-size:.64rem;color:var(--faint);padding-left:36px}
+  .ui .actions{display:flex;flex-direction:column;gap:9px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:9px;padding:12px 14px;border-radius:12px;
+       font-weight:700;font-size:.95rem;border:1px solid transparent;cursor:default}
+  .btn svg{width:17px;height:17px}
+  .btn-primary{background:var(--lime);color:var(--card-on-lime);box-shadow:0 8px 20px -10px rgba(184,240,43,.6)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+  .btn-ghost .em{color:var(--forest-deep);font-weight:800}
+  @media (prefers-color-scheme:dark){.btn-ghost .em{color:var(--lime)}}
+  :root[data-theme="dark"] .btn-ghost .em{color:var(--lime)}
+  .ui .hint{margin-top:11px;font-size:.8rem;color:var(--muted);display:flex;gap:7px;align-items:flex-start}
+  .ui .hint svg{width:14px;height:14px;flex:none;margin-top:2px;color:var(--forest)}
+
+  /* Por qué: dos cartas */
+  .why{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .why .c{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .why .c .big{font-size:1.9rem;font-weight:860;letter-spacing:-.02em;color:var(--ink)}
+  .why .c .big span{color:var(--forest-deep)}
+  @media (prefers-color-scheme:dark){.why .c .big span{color:var(--lime)}}
+  :root[data-theme="dark"] .why .c .big span{color:var(--lime)}
+  .why .c h3{font-size:1.05rem;font-weight:780;margin:6px 0 8px}
+  .why .c p{color:var(--ink-2);font-size:.95rem}
+
+  /* Stack / esfuerzo */
+  .spec{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);
+        padding:clamp(22px,3vw,34px)}
+  .spec .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 40px}
+  .spec h3{font-size:1.02rem;font-weight:780;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+  .spec h3 .ph{font-family:var(--mono);font-size:.64rem;font-weight:700;color:var(--card-on-lime);
+        background:var(--lime);padding:3px 8px;border-radius:999px;letter-spacing:.06em}
+  .spec p{color:var(--ink-2);font-size:.95rem}
+  .spec code{font-family:var(--mono);font-size:.84em;background:var(--surface-3);padding:1px 6px;
+        border-radius:6px;color:var(--ink)}
+  .effort{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:18px;border-top:1px dashed var(--line-strong)}
+  .effort .e{font-family:var(--mono);font-size:.76rem;border:1px solid var(--line-strong);
+        border-radius:999px;padding:6px 12px;color:var(--ink-2)}
+  .effort .e b{color:var(--ink)}
+  .effort .s-min{color:var(--forest-deep);font-weight:700}
+  .effort .s-med{color:#b06a00;font-weight:700}
+  @media (prefers-color-scheme:dark){.effort .s-min{color:var(--lime)}.effort .s-med{color:#f5c15a}}
+  :root[data-theme="dark"] .effort .s-min{color:var(--lime)} :root[data-theme="dark"] .effort .s-med{color:#f5c15a}
+
+  footer{margin-top:clamp(40px,7vw,80px);padding-top:22px;border-top:1px solid var(--line);
+         display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+         font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr} .flow{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr} .why{grid-template-columns:1fr} .spec .grid{grid-template-columns:1fr}
+    .hero .stage{order:-1}
+  }
+
+  /* Entrada sutil */
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+    .hero .stage{animation-delay:.08s}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- Masthead -->
+  <header class="mast">
+    <div class="brand"><span class="logo" role="img" aria-label="CourtBit"></span></div>
+    <div class="tag">Propuesta de funcionalidad<br>Experiencia del jugador · 2026</div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="reveal">
+      <p class="eyebrow">Foto de equipos → Recap compartible</p>
+      <h1>Del saque al <span class="lime-text">story</span>.</h1>
+      <p class="lede">El staff toma una foto de los dos equipos al iniciar el partido. Al terminar,
+         CourtBit la convierte en una imagen con el marcador —lista para subir a Instagram o mandar por WhatsApp.</p>
+      <div class="meta">
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.2"/></svg> 1 foto al arrancar</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12l5-5M4 12l5 5"/></svg> Recap automático al cerrar</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg> Listo para compartir</span>
+      </div>
+    </div>
+
+    <!-- Recap card centerpiece -->
+    <div class="stage reveal">
+      <div class="igc ig-hero" role="img" aria-label="Ejemplo de recap card para Instagram: ganadores Christian U. y Saúl U., 6-4 7-5, 4ta varonil, Copa Padel Pro de Padel Pro Club">
+        <div class="ig-head">
+          <span class="ig-logo" aria-label="CourtBit"></span>
+          <span class="ig-cat">4ta Varonil</span>
+        </div>
+        <div class="ig-tourney">Copa Padel Pro · Marzo 2026</div>
+        <div class="ig-photo">
+            <svg class="grp" viewBox="0 0 300 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#3a6a82"/><stop offset="1" stop-color="#1c3e52"/>
+                </linearGradient>
+                <radialGradient id="vig" cx="50%" cy="42%" r="76%">
+                  <stop offset="54%" stop-color="#000" stop-opacity="0"/>
+                  <stop offset="100%" stop-color="#04140f" stop-opacity=".6"/>
+                </radialGradient>
+                <radialGradient id="keylight" cx="46%" cy="30%" r="60%">
+                  <stop offset="0" stop-color="#fff" stop-opacity=".14"/>
+                  <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="dof" x="-6%" y="-6%" width="112%" height="112%"><feGaussianBlur stdDeviation="1.6"/></filter>
+                <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="n"/><feColorMatrix in="n" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.10"/></feComponentTransfer></filter>
+              </defs>
+              <g id="teamphoto">
+              <!-- cancha de pádel al fondo (desenfocada: profundidad de campo) -->
+              <g filter="url(#dof)">
+                <rect x="0" y="0" width="300" height="150" fill="url(#sky)"/>
+                <g stroke="#355d72" stroke-width="2.5" opacity=".5">
+                  <line x1="48" y1="0" x2="48" y2="150"/><line x1="110" y1="0" x2="110" y2="150"/>
+                  <line x1="172" y1="0" x2="172" y2="150"/><line x1="234" y1="0" x2="234" y2="150"/>
+                </g>
+                <rect x="0" y="148" width="300" height="212" fill="#2f7d59"/>
+                <rect x="0" y="300" width="300" height="60" fill="#276a4b"/>
+                <rect x="0" y="147" width="300" height="3" fill="#eafaf0" opacity=".4"/>
+              </g>
+              <ellipse cx="150" cy="352" rx="122" ry="16" fill="#04140f" opacity=".3"/>
+              <!-- raquetas levantadas -->
+              <g transform="translate(94 116) rotate(-18)">
+                <rect x="-3" y="16" width="6" height="40" rx="3" fill="#b8f02b"/>
+                <ellipse cx="0" cy="0" rx="14" ry="18" fill="#b8f02b"/>
+                <circle cx="-4" cy="-2" r="2" fill="#1c3e52"/><circle cx="4" cy="-2" r="2" fill="#1c3e52"/><circle cx="0" cy="5" r="2" fill="#1c3e52"/>
+              </g>
+              <g transform="translate(258 124) rotate(18)">
+                <rect x="-3" y="16" width="6" height="40" rx="3" fill="#2b4a84"/>
+                <ellipse cx="0" cy="0" rx="14" ry="18" fill="#2b4a84"/>
+                <circle cx="-4" cy="-2" r="2" fill="#cdd9ef"/><circle cx="4" cy="-2" r="2" fill="#cdd9ef"/><circle cx="0" cy="5" r="2" fill="#cdd9ef"/>
+              </g>
+              <!-- torsos (pareja ganadora en lima, rivales en azul) -->
+              <path d="M66,196 C40,200 29,266 31,360 L101,360 C103,266 92,200 66,196 Z" fill="#b8f02b"/>
+              <path d="M120,192 C94,196 83,262 85,360 L155,360 C157,262 146,196 120,192 Z" fill="#a6db28"/>
+              <path d="M182,194 C156,198 145,264 147,360 L217,360 C219,264 208,198 182,194 Z" fill="#2b4a84"/>
+              <path d="M236,201 C210,205 199,270 201,360 L271,360 C273,270 262,205 236,201 Z" fill="#3f6bb0"/>
+              <!-- brazos sobre el hombro -->
+              <path d="M80,210 Q103,188 140,206" fill="none" stroke="#b8f02b" stroke-width="10" stroke-linecap="round"/>
+              <path d="M162,208 Q205,188 252,210" fill="none" stroke="#3f6bb0" stroke-width="10" stroke-linecap="round"/>
+              <!-- cabezas (cuello, pelo con forma, sombreado y facciones) -->
+              <g transform="translate(66 0)">
+                <rect x="-7" y="186" width="14" height="18" rx="4" fill="#cf9468"/>
+                <circle cx="0" cy="174" r="20" fill="#ecb78e"/>
+                <path d="M0,154 A20 20 0 0 1 0,194 A13 20 0 0 0 0,154 Z" fill="#cf9468" opacity=".45"/>
+                <path d="M-20,171 C-22,152 -10,146 0,146 C10,146 22,152 20,171 C13,158 -13,158 -20,171 Z" fill="#2c2118"/>
+                <path d="M-11,165 q3,-2.5 7,-0.5" fill="none" stroke="#2c2118" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M4,164.5 q3.5,-2 7,0.5" fill="none" stroke="#2c2118" stroke-width="1.6" stroke-linecap="round"/>
+                <ellipse cx="-7" cy="171" rx="2" ry="2.6" fill="#241a12"/><ellipse cx="7" cy="171" rx="2" ry="2.6" fill="#241a12"/>
+                <path d="M0,173 q2,5 -1.5,6.5" fill="none" stroke="#cf9468" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M-7,183 Q0,187.5 7,183" fill="none" stroke="#7a4e36" stroke-width="1.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(120 0)">
+                <rect x="-7" y="178" width="14" height="18" rx="4" fill="#b87d52"/>
+                <circle cx="0" cy="166" r="20" fill="#d89a6f"/>
+                <path d="M0,146 A20 20 0 0 1 0,186 A13 20 0 0 0 0,146 Z" fill="#b87d52" opacity=".45"/>
+                <path d="M-20,163 C-22,144 -10,138 0,138 C10,138 22,144 20,163 C13,150 -13,150 -20,163 Z" fill="#14110d"/>
+                <path d="M-11,157 q3,-2.5 7,-0.5" fill="none" stroke="#14110d" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M4,156.5 q3.5,-2 7,0.5" fill="none" stroke="#14110d" stroke-width="1.6" stroke-linecap="round"/>
+                <ellipse cx="-7" cy="163" rx="2" ry="2.6" fill="#241a10"/><ellipse cx="7" cy="163" rx="2" ry="2.6" fill="#241a10"/>
+                <path d="M0,165 q2,5 -1.5,6.5" fill="none" stroke="#b87d52" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M-7,175 Q0,179.5 7,175" fill="none" stroke="#6e4228" stroke-width="1.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(182 0)">
+                <rect x="-7" y="180" width="14" height="18" rx="4" fill="#d6a77c"/>
+                <circle cx="0" cy="168" r="20" fill="#f0c49e"/>
+                <path d="M0,148 A20 20 0 0 1 0,188 A13 20 0 0 0 0,148 Z" fill="#d6a77c" opacity=".45"/>
+                <path d="M-20,165 C-22,146 -10,140 0,140 C10,140 22,146 20,165 C13,152 -13,152 -20,165 Z" fill="#3f2d1d"/>
+                <path d="M-11,159 q3,-2.5 7,-0.5" fill="none" stroke="#3f2d1d" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M4,158.5 q3.5,-2 7,0.5" fill="none" stroke="#3f2d1d" stroke-width="1.6" stroke-linecap="round"/>
+                <ellipse cx="-7" cy="165" rx="2" ry="2.6" fill="#3a2817"/><ellipse cx="7" cy="165" rx="2" ry="2.6" fill="#3a2817"/>
+                <path d="M0,167 q2,5 -1.5,6.5" fill="none" stroke="#d6a77c" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M-7,177 Q0,181.5 7,177" fill="none" stroke="#8a5c3c" stroke-width="1.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(236 0)">
+                <rect x="-7" y="188" width="14" height="18" rx="4" fill="#a97d56"/>
+                <circle cx="0" cy="176" r="20" fill="#c99a72"/>
+                <path d="M0,156 A20 20 0 0 1 0,196 A13 20 0 0 0 0,156 Z" fill="#a97d56" opacity=".45"/>
+                <path d="M-20,173 C-22,154 -10,148 0,148 C10,148 22,154 20,173 C13,160 -13,160 -20,173 Z" fill="#1c1710"/>
+                <path d="M-11,167 q3,-2.5 7,-0.5" fill="none" stroke="#1c1710" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M4,166.5 q3.5,-2 7,0.5" fill="none" stroke="#1c1710" stroke-width="1.6" stroke-linecap="round"/>
+                <ellipse cx="-7" cy="173" rx="2" ry="2.6" fill="#201509"/><ellipse cx="7" cy="173" rx="2" ry="2.6" fill="#201509"/>
+                <path d="M0,175 q2,5 -1.5,6.5" fill="none" stroke="#a97d56" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M-7,185 Q0,189.5 7,185" fill="none" stroke="#6e4a2e" stroke-width="1.8" stroke-linecap="round"/>
+              </g>
+              <rect x="0" y="0" width="300" height="360" fill="url(#keylight)"/>
+              <rect x="0" y="0" width="300" height="360" fill="#5a3d10" opacity=".07"/>
+              <rect x="0" y="0" width="300" height="360" fill="url(#vig)"/>
+              <rect x="0" y="0" width="300" height="360" filter="url(#grain)" opacity=".5"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="ig-result">
+            <span class="ig-win">★ Ganadores</span>
+            <div class="ig-names">Christian U. · Saúl U.</div>
+            <div class="ig-score">6–4 · 7–5</div>
+            <div class="ig-vs">vs Juan P. · Diego M.</div>
+          </div>
+          <div class="ig-spon">
+            <svg class="spl" viewBox="0 0 64 22" fill="currentColor" role="img" aria-label="Nike"><path d="M8,15.2C22,2.5 45,-1.6 62,3.6 45.5,6.2 25,12.6 13,19.6 10.3,21 7.7,20 8,15.2Z"/></svg>
+            <svg class="spl" viewBox="0 0 76 22" fill="currentColor" role="img" aria-label="Wilson"><text x="0" y="17.5" font-family="Georgia,serif" font-weight="700" font-size="19">Wilson</text></svg>
+            <svg class="spl" viewBox="0 0 80 22" fill="currentColor" role="img" aria-label="Red Bull"><text x="0" y="17" font-family="system-ui,sans-serif" font-weight="800" font-size="16">Red Bull</text></svg>
+            <span class="cb">CourtBit</span>
+          </div>
+          <div class="story-ui" aria-hidden="true">
+            <div class="su-top">
+              <div class="su-bars"><i></i><i></i><i></i><i></i></div>
+              <div class="su-user"><span class="su-ava"></span><span class="su-name">padel.pro.club</span><span class="su-time">2 h</span><span class="su-x">✕</span></div>
+            </div>
+            <div class="su-bot">
+              <span class="su-reply">Enviar mensaje</span>
+              <svg class="su-ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 20s-7-4.4-9.2-8.4C1.3 8.9 2.8 6 5.6 6 7.3 6 8.6 7 12 10c3.4-3 4.7-4 6.4-4 2.8 0 4.3 2.9 2.8 5.6C19 15.6 12 20 12 20z"/></svg>
+              <svg class="su-ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 4 3 11l6 2 2 6z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p class="ig-cap">Vista previa en Stories: lo importante queda en la <b>zona segura</b> — fuera de la barra de arriba y de «Enviar mensaje».</p>
+    </div>
+  </div>
+
+  <!-- Cómo funciona -->
+  <section>
+    <div class="shead"><span class="n">Cómo funciona</span><h2>Tres momentos, un solo recuerdo</h2></div>
+    <p class="intro">Es una secuencia real sobre el partido: lo único nuevo para el staff es un paso de 5 segundos al inicio. Todo lo demás —marcador, resultado, categoría— ya vive en CourtBit.</p>
+    <div class="steps">
+      <div class="step">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.4"/></svg>
+        <div class="k">01 · Antes</div>
+        <h3>Foto de los dos equipos</h3>
+        <p>Desde la tarjeta del partido, el staff toca <b>Foto de equipos</b>: se abre la cámara, una toma, y queda adjunta al partido. Mismo gesto que ya hace al iniciarlo.</p>
+      </div>
+      <div class="step">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>
+        <div class="k">02 · Durante</div>
+        <h3>Se juega el partido</h3>
+        <p>El marcador en vivo que ya usan registra el resultado. Nada nuevo aquí: la foto sólo espera ligada al partido por su id.</p>
+      </div>
+      <div class="step">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 14v5h16v-5"/><path d="M12 3v11m0 0l-4-4m4 4l4-4"/></svg>
+        <div class="k">03 · Después</div>
+        <h3>Recap listo para compartir</h3>
+        <p>Al capturar el resultado, CourtBit arma la imagen —foto + marcador + categoría + torneo + marca— y la deja lista para descargar o mandar por WhatsApp a los jugadores.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flujo del staff -->
+  <section>
+    <div class="shead"><span class="n">Lo clave</span><h2>Que el staff la adjunte sin fricción</h2></div>
+    <div class="flow">
+      <div class="copy">
+        <h3>Un tap dentro de algo que ya hacen</h3>
+        <ul>
+          <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></span><span><b>No es una pantalla nueva.</b> El botón vive en la misma tarjeta donde hoy inician el partido.</span></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></span><span><b>Abre la cámara directo</b> (sin elegir archivos): una toma, preview, <b>Adjuntar</b>. Se puede repetir si salió mal.</span></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></span><span><b>Opcional, nunca bloquea.</b> Si el staff va a las prisas, el partido arranca igual; la foto se puede agregar después.</span></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></span><span><b>El organizador también puede.</b> Agregar o reemplazar la foto desde la misma tarjeta, antes o después del partido.</span></li>
+        </ul>
+      </div>
+
+      <!-- UI mock: tarjeta de partido -->
+      <div class="ui" role="img" aria-label="Mock de la tarjeta de partido con el botón Iniciar partido y el botón Foto de equipos">
+        <div class="uihead">
+          <span class="court-chip">Cancha 3 · 4ta Varonil</span>
+          <span class="live"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><circle cx="12" cy="12" r="6"/></svg> Por iniciar</span>
+        </div>
+        <div class="teams">
+          <div class="team"><span class="av">CU</span> Christian U. · Saúl U.</div>
+          <div class="vsrow">vs</div>
+          <div class="team"><span class="av">JP</span> Juan P. · Diego M.</div>
+        </div>
+        <div class="actions">
+          <div class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Iniciar partido</div>
+          <div class="btn btn-ghost"><svg class="em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.2"/></svg> <span class="em">Foto de equipos</span></div>
+        </div>
+        <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Al iniciar, CourtBit ofrece tomar la foto en el mismo paso.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personalización -->
+  <section>
+    <div class="shead"><span class="n">Personalización</span><h2>La tarjeta con la cara del torneo</h2></div>
+    <p class="intro">El organizador le pone <b>un color al torneo</b> para su tarjeta (uno por torneo, no por categoría), suma su <b>logo</b> y elige qué <b>patrocinadores</b> aparecen. La foto y el marco quedan fijos para que <b>siempre se lea bien</b>: es un personalizador con candados, no un editor libre. Y siempre co-brandeado con un «CourtBit» discreto.</p>
+    <div class="picker">
+      <div class="picker-field">
+        <span class="picker-label">Color de la tarjeta</span>
+        <div class="picker-row">
+          <span class="picker-swatch" style="background:#0C4A2C"></span>
+          <span class="picker-hex">#0C4A2C</span>
+          <span class="picker-pick">▾ elegir</span>
+        </div>
+      </div>
+      <div class="picker-recents">
+        <span class="pr-label">Recientes</span>
+        <span class="pr-dot sel" style="background:#0C4A2C"></span>
+        <span class="pr-dot" style="background:#36B5F0"></span>
+        <span class="pr-dot" style="background:#FF8A2B"></span>
+        <span class="pr-dot" style="background:#C77DFF"></span>
+        <span class="pr-sep"></span>
+        <span class="pr-label">Marca</span>
+        <span class="pr-dot" style="background:#B8F02B"></span>
+      </div>
+      <p class="picker-note"><b>Default:</b> el último color usado (la primera vez, el de tu marca). El texto de la tarjeta se ajusta solo —blanco o verde oscuro— para que siempre se lea.</p>
+    </div>
+
+    <div class="pers-grid">
+
+      <figure class="pers-item">
+        <div class="igc" style="--acc:#36B5F0;--g1:#0b3a57;--g2:#07293c;--g3:#03151f" role="img" aria-label="Recap Club Vista, color azul, con patrocinadores">
+          <div class="ig-head"><span class="ig-org">Club Vista</span><span class="ig-cat">4ta Varonil</span></div>
+          <div class="ig-tourney">Copa Vista · 2026</div>
+          <div class="ig-photo"><svg viewBox="0 0 300 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#teamphoto"/></svg></div>
+          <div class="ig-result"><span class="ig-win">★ Ganadores</span><div class="ig-names">Christian U. · Saúl U.</div><div class="ig-score">6–4 · 7–5</div></div>
+          <div class="ig-spon">
+            <svg class="spl" viewBox="0 0 58 22" fill="currentColor" role="img" aria-label="HEAD"><text x="0" y="17.5" font-family="system-ui,sans-serif" font-weight="900" font-size="18" letter-spacing="1">HEAD</text></svg>
+            <svg class="spl" viewBox="0 0 64 22" fill="currentColor" role="img" aria-label="Nike"><path d="M8,15.2C22,2.5 45,-1.6 62,3.6 45.5,6.2 25,12.6 13,19.6 10.3,21 7.7,20 8,15.2Z"/></svg>
+            <span class="cb">CourtBit</span>
+          </div>
+        </div>
+        <figcaption class="mc-cap"><span class="sw" style="background:#36B5F0"></span> Club Vista · azul</figcaption>
+      </figure>
+
+      <figure class="pers-item">
+        <div class="igc" style="--acc:#FF8A2B;--g1:#5a2f10;--g2:#3a1d08;--g3:#1e0e03" role="img" aria-label="Recap Pádel Norte, color naranja, con patrocinadores">
+          <div class="ig-head"><span class="ig-org">Pádel Norte</span><span class="ig-cat">2da Femenil</span></div>
+          <div class="ig-tourney">Liga Norte · 2026</div>
+          <div class="ig-photo"><svg viewBox="0 0 300 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#teamphoto"/></svg></div>
+          <div class="ig-result"><span class="ig-win">★ Ganadoras</span><div class="ig-names">Ana R. · Lucía M.</div><div class="ig-score">7–6 · 6–3</div></div>
+          <div class="ig-spon">
+            <svg class="spl" viewBox="0 0 46 22" fill="currentColor" role="img" aria-label="adidas"><path d="M4,20 14,3 20,3 10,20Z M14,20 24,3 30,3 20,20Z M24,20 34,3 40,3 30,20Z"/></svg>
+            <svg class="spl" viewBox="0 0 92 22" fill="currentColor" role="img" aria-label="bullpadel"><text x="0" y="17" font-family="system-ui,sans-serif" font-weight="800" font-size="16">bullpadel</text></svg>
+            <span class="cb">CourtBit</span>
+          </div>
+        </div>
+        <figcaption class="mc-cap"><span class="sw" style="background:#FF8A2B"></span> Pádel Norte · naranja</figcaption>
+      </figure>
+
+      <figure class="pers-item">
+        <div class="igc" style="--acc:#C77DFF;--g1:#3c1a63;--g2:#261040;--g3:#130823" role="img" aria-label="Recap Arena Roma, color violeta, con patrocinadores">
+          <div class="ig-head"><span class="ig-org">Arena Roma</span><span class="ig-cat">1ra Mixto</span></div>
+          <div class="ig-tourney">Abierto Roma · 2026</div>
+          <div class="ig-photo"><svg viewBox="0 0 300 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#teamphoto"/></svg></div>
+          <div class="ig-result"><span class="ig-win">★ Ganadores</span><div class="ig-names">Pablo G. · Mía T.</div><div class="ig-score">6–2 · 6–4</div></div>
+          <div class="ig-spon">
+            <svg class="spl" viewBox="0 0 76 22" fill="currentColor" role="img" aria-label="Wilson"><text x="0" y="17.5" font-family="Georgia,serif" font-weight="700" font-size="19">Wilson</text></svg>
+            <svg class="spl" viewBox="0 0 80 22" fill="currentColor" role="img" aria-label="Red Bull"><text x="0" y="17" font-family="system-ui,sans-serif" font-weight="800" font-size="16">Red Bull</text></svg>
+            <span class="cb">CourtBit</span>
+          </div>
+        </div>
+        <figcaption class="mc-cap"><span class="sw" style="background:#C77DFF"></span> Arena Roma · violeta</figcaption>
+      </figure>
+
+    </div>
+    <p class="pers-note">Mismo diseño, misma foto, mismo marco — lo que cambia es el <b>color del torneo</b> (por defecto el de su marca, editable por torneo) y <b>sus patrocinadores</b>. Nada de editores libres: el organizador elige, CourtBit garantiza que la tarjeta se vea bien y quede compartible. Los logos de marca son de ejemplo; en producción el organizador sube los de sus propios patrocinadores.</p>
+  </section>
+
+  <!-- Por qué -->
+  <section>
+    <div class="shead"><span class="n">Por qué</span><h2>El doble win</h2></div>
+    <div class="why">
+      <div class="c">
+        <div class="big">Para el <span>jugador</span></div>
+        <h3>Un recuerdo que sí quieren guardar</h3>
+        <p>El amateur presume su pádel. Darle una imagen limpia con su marcador, su pareja y su categoría —sin editar nada— convierte cada partido en un momento compartible. Eso es la experiencia que pediste.</p>
+      </div>
+      <div class="c">
+        <div class="big">Para el <span>torneo</span></div>
+        <h3>Difusión orgánica, gratis</h3>
+        <p>Cada recap que un jugador sube lleva el nombre del torneo y la marca CourtBit. Decenas de partidos = decenas de stories etiquetando tu evento, sin pauta. El recuerdo del jugador es tu marketing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack / esfuerzo -->
+  <section>
+    <div class="shead"><span class="n">Cómo se construye</span><h2>Dónde vive en el stack</h2></div>
+    <div class="spec">
+      <div class="grid">
+        <div>
+          <h3><span class="ph">Fase 1</span> Capturar y adjuntar</h3>
+          <p>Botón en la tarjeta del partido (<code>match-detail-dialog</code>) con <code>&lt;input capture&gt;</code> → la foto sube a <b>Cloudinary</b> (que ya usan) y se liga por <code>match id</code>, igual que hoy se liga el marcador en vivo.</p>
+        </div>
+        <div>
+          <h3><span class="ph">Fase 2</span> Componer el recap</h3>
+          <p>Al entrar el resultado, se compone la imagen con una plantilla brandeada por categoría: foto + marcador + nombres + torneo + logo. Server-side o canvas; se guarda y se expone link de descarga + botón compartir.</p>
+        </div>
+        <div>
+          <h3><span class="ph">Fase 3</span> Entregarla sola</h3>
+          <p>Opcional: al cerrar el partido, se manda el recap por <b>WhatsApp</b> a los jugadores (la infra de mensajería ya existe). Cero pasos extra para que llegue.</p>
+        </div>
+        <div>
+          <h3>Datos que ya tienes</h3>
+          <p>Equipos y nombres, categoría, marcador, torneo y los <code>@</code> de Instagram (cuando el torneo los pide). La pieza nueva es sólo la <b>foto</b> y la <b>plantilla</b>.</p>
+        </div>
+      </div>
+      <div class="effort">
+        <span class="e"><b>Fase 1</b> · esfuerzo <span class="s-min">bajo</span></span>
+        <span class="e"><b>Fase 2</b> · esfuerzo <span class="s-med">medio</span> (el diseño de plantilla manda)</span>
+        <span class="e"><b>Fase 3</b> · esfuerzo <span class="s-min">bajo</span></span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>CourtBit · Recap Card</span>
+    <span>Propuesta — Oct 2026</span>
+  </footer>
+</div>
+</body>
+</html>
