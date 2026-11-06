@@ -781,6 +781,8 @@ export function mountCourt(host, ui = {}) {
     }
   }
 
+  // Los tiempos de los tiros (rival, bote, devolución) también los usa el servidor para
+  // el mínimo físico de una partida: si cambian aquí, cambiar MinigameService.minDurationMs.
   function cpuShot(from) {
     const n = game.n;
     const tuto = game.tutorial;

@@ -1591,10 +1591,16 @@
     if (r.ok && r.data) {
       p.saved = true;
       const d = r.data;
-      track('minigame_save', { status: 'ok', rank: d.rank || 0, score: d.score });
+      track('minigame_save', { status: d.in_review ? 'review' : 'ok', rank: d.rank || 0, score: d.score });
       if (!current()) return;
       renderOver();
       const place = d.rank ? ` (lugar #${d.rank})` : '';
+      // Puntaje muy alto: queda guardado, pero sale en el ranking hasta que se apruebe
+      if (d.in_review) {
+        setStatus('¡Puntaje altísimo! Lo vamos a revisar y, si todo está bien, aparecerá en el ranking.');
+        viewRankBtn.focus({ preventScroll: true });
+        return;
+      }
       setStatus(d.is_best
         ? (d.rank ? `¡Guardado! Vas en el lugar #${d.rank} del ranking.` : '¡Guardado en el ranking!')
         : `Guardado. Tu mejor puntaje sigue siendo ${d.best}${place}.`);
