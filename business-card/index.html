@@ -329,10 +329,12 @@
   .play:focus { outline: none; }
   .play:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
 
-  .hud, .game-tip, .over { display: none; }
+  .hud, .game-tip, .over, .ready, .coach { display: none; }
   .is-playing .hud { display: flex; }
   .is-playing .game-tip.is-on { display: block; }
-  .is-playing .over:not([hidden]) { display: grid; }
+  .is-playing .over:not([hidden]), .is-playing .ready:not([hidden]) { display: grid; }
+  .is-playing .coach:not([hidden]) { display: block; }
+  .is-tutorial .hud-score, .is-tutorial .hud-mult, .is-tutorial .hud-time, .is-tutorial .game-tip { visibility: hidden; }
   .is-playing .ar, .is-playing .stage-actions, .is-over .hud { display: none; }
 
   .hud {
@@ -359,9 +361,14 @@
   .hud-lbl b { color: var(--lime); font-weight: 700; }
 
   .hud-side { display: flex; align-items: center; gap: 10px; pointer-events: auto; }
-  .hud-lives { display: flex; gap: 6px; padding: 10px 12px; border-radius: 999px; background: rgba(6, 22, 17, 0.72); }
-  .hud-lives i { width: 12px; height: 12px; border-radius: 50%; background: var(--lime); transition: transform 300ms var(--ease-out), opacity 300ms ease; }
-  .hud-lives i.is-lost { opacity: 0.18; transform: scale(0.7); }
+  .hud-time, .hud-mult {
+    display: grid; place-items: center; min-width: 44px; height: 44px; padding: 0 12px;
+    border-radius: 999px; background: rgba(6, 22, 17, 0.78);
+    font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--chalk);
+  }
+  .hud-time.is-low { color: var(--ink); background: var(--lime); }
+  .hud-mult { color: var(--chalk-soft); }
+  .hud-mult.is-on { color: var(--ink); background: var(--lime); }
 
   .hud-exit {
     width: 44px;
@@ -414,7 +421,7 @@
   .float.is-miss { color: var(--chalk-soft); }
   .float.is-tip { font-size: 13px; font-weight: 500; }
 
-  .over {
+  .over, .ready {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -431,6 +438,53 @@
     text-align: center;
   }
   .over-title { font-size: 14px; font-weight: 700; color: var(--lime); }
+
+  /* Práctica guiada: la primera vez que alguien juega */
+  .coach { position: absolute; inset: 0; pointer-events: none; }
+  .coach-card {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    width: min(340px, calc(100% - 24px));
+    padding: 11px 16px 13px;
+    border-radius: 16px;
+    background: rgba(6, 22, 17, 0.88);
+    border: 1px solid rgba(184, 240, 43, 0.35);
+    text-align: center;
+  }
+  .coach-dots { display: flex; justify-content: center; gap: 6px; margin-bottom: 7px; }
+  .coach-dots i { width: 18px; height: 4px; border-radius: 2px; background: rgba(244, 248, 246, 0.22); transition: background-color 200ms ease; }
+  .coach-dots i.is-on { background: var(--lime); }
+  .coach-title { font-size: 17px; font-weight: 700; color: var(--lime); }
+  .coach-body { margin-top: 2px; font-size: 14.5px; line-height: 1.35; color: var(--chalk); text-wrap: balance; }
+  .coach-body.is-hint { color: #ffb8ad; }
+  .coach-skip {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(6, 22, 17, 0.78);
+    color: var(--chalk);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
+    transition: transform 160ms var(--ease-out);
+  }
+  .coach-skip:active { transform: scale(0.97); }
+  .coach-skip:focus { outline: none; }
+  .coach-skip:focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; }
+  .ready-rules { display: grid; gap: 8px; margin: 6px 0 12px; padding: 0; list-style: none; text-align: left; }
+  .ready-rules li { position: relative; padding-left: 16px; font-size: 14.5px; line-height: 1.38; color: var(--chalk-soft); }
+  .ready-rules li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
+  .ready-rules b { color: var(--chalk); font-weight: 700; }
+  .ready .btn { width: 100%; }
   .over-score { font-size: 15px; font-weight: 500; color: var(--chalk-soft); }
   .over-score b { display: block; font-size: 52px; line-height: 1; font-weight: 700; color: var(--chalk); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
   .over-best { font-size: 13.5px; font-weight: 500; color: var(--mint); margin-bottom: 8px; }
@@ -465,7 +519,8 @@
   .over-status { font-size: 14px; font-weight: 500; color: var(--mint); line-height: 1.35; margin: 2px 0 4px; }
   .over-status.is-error { color: #ffb8ad; }
   .over-status:empty { display: none; }
-  .over-links { display: flex; justify-content: center; gap: 4px; }
+  .over-links { display: flex; justify-content: center; gap: 0; }
+  .over-links .btn { padding: 0 8px; font-size: 14px; white-space: nowrap; }
   .over-note { margin: -2px 0 4px; font-size: 12.5px; color: var(--chalk-soft); text-align: center; }
   .over-note[hidden] { display: none; }
   .btn[disabled] { opacity: 0.6; cursor: progress; }
@@ -882,15 +937,36 @@
         <span class="hud-lbl">puntos · récord <b class="hud-best">0</b></span>
       </div>
       <div class="hud-side">
-        <span class="hud-lives" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="hud-mult" aria-hidden="true">x1</span>
+        <span class="hud-time" aria-hidden="true">1:00</span>
         <button class="hud-exit" type="button" aria-label="Salir del juego">
           <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
         </button>
       </div>
     </div>
 
-    <p class="game-tip"><b>Deja que bote</b> y toca cuando el aro se cierre. Toca a la izquierda, al centro o a la derecha para dirigir tu bola.</p>
+    <p class="game-tip"><b>60 segundos, una vida.</b> Toca cuando el aro se cierre o pégale <b>de aire</b> en la zona lima. Perfectos y voleas multiplican tus puntos.</p>
     <div class="floats" aria-hidden="true"></div>
+
+    <div class="coach" hidden>
+      <button class="coach-skip" type="button" data-act="skip-tuto">Saltar práctica</button>
+      <div class="coach-card">
+        <span class="coach-dots" aria-hidden="true"><i></i><i></i></span>
+        <p class="coach-title"></p>
+        <p class="coach-body"></p>
+      </div>
+    </div>
+
+    <div class="ready" role="dialog" aria-labelledby="ready-title" hidden>
+      <p class="over-title" id="ready-title">¡Ya sabes jugar!</p>
+      <ul class="ready-rules">
+        <li><b>60 segundos y una sola vida.</b> Si tocas a destiempo, pierdes.</li>
+        <li><b>Perfectos y voleas seguidos</b> multiplican tus puntos, hasta x5.</li>
+        <li><b>Dirige tu bola</b> tocando a la izquierda o a la derecha.</li>
+      </ul>
+      <button class="btn btn--primary" type="button" data-act="begin">Empezar</button>
+      <button class="btn btn--text" type="button" data-act="retuto">Practicar otra vez</button>
+    </div>
 
     <div class="over" role="dialog" aria-labelledby="over-title" hidden>
       <p class="over-title" id="over-title">Fin del juego</p>
@@ -913,6 +989,7 @@
         </button>
         <div class="over-links">
           <button class="btn btn--text" type="button" data-act="share">Retar a un amigo</button>
+          <button class="btn btn--text" type="button" data-act="tuto">Cómo jugar</button>
           <button class="btn btn--text" type="button" data-act="exit">Salir</button>
         </div>
       </div>
@@ -1272,7 +1349,8 @@
   const rankBtn = stage.querySelector('.rank-btn');
   const hudNum = stage.querySelector('.hud-num');
   const hudBest = stage.querySelector('.hud-best');
-  const lives = [...stage.querySelectorAll('.hud-lives i')];
+  const hudTime = stage.querySelector('.hud-time');
+  const hudMult = stage.querySelector('.hud-mult');
   const tip = stage.querySelector('.game-tip');
   const floats = stage.querySelector('.floats');
   const overCard = stage.querySelector('.over');
@@ -1284,6 +1362,25 @@
   const againBtn = overCard.querySelector('[data-act="again"]');
   const overNote = overCard.querySelector('.over-note');
   const live = document.getElementById('game-live');
+  const coachEl = stage.querySelector('.coach');
+  const coachCard = coachEl.querySelector('.coach-card');
+  const coachTitle = coachEl.querySelector('.coach-title');
+  const coachBody = coachEl.querySelector('.coach-body');
+  const coachDots = [...coachEl.querySelectorAll('.coach-dots i')];
+  const readyCard = stage.querySelector('.ready');
+
+  // Práctica guiada: solo la primera vez (o desde "Cómo se juega")
+  const TUTO_KEY = 'cb-tuto-v1';
+  const COACH = {
+    1: ['Deja que bote', 'Cuando el aro se cierre sobre la bola, toca la pantalla.'],
+    2: ['Ahora de aire', 'Pégale antes del bote, mientras la bola cruza la zona lima junto a la red.'],
+  };
+  let tutoSeen = false;
+  try { tutoSeen = localStorage.getItem(TUTO_KEY) === '1'; } catch (e) { /* modo privado */ }
+  function markTutoSeen() {
+    tutoSeen = true;
+    try { localStorage.setItem(TUTO_KEY, '1'); } catch (e) { /* modo privado */ }
+  }
   const wa = document.querySelector('.cta-wa');
   const CARD = window.CB_CARD || null;
   const WA_BASE = `https://wa.me/${CARD ? CARD.wa : '526221471800'}?text=`;
@@ -1365,11 +1462,43 @@
     }
   };
 
-  ui.onGame = ({ score, lives: n, best, phase }) => {
+  ui.onGame = ({ score, best, mult, timeLeft, phase }) => {
     hudNum.textContent = score;
     hudBest.textContent = best;
-    lives.forEach((el, i) => el.classList.toggle('is-lost', i >= n));
+    const secs = Math.ceil(timeLeft);
+    hudTime.textContent = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`;
+    hudTime.classList.toggle('is-low', phase === 'play' && secs <= 10);
+    hudMult.textContent = `x${mult}`;
+    hudMult.classList.toggle('is-on', mult > 1);
     if (phase === 'play' && score > 0) tip.classList.remove('is-on');
+  };
+
+  ui.onCoach = ({ step, hint }) => {
+    stage.classList.toggle('is-tutorial', step > 0);
+    coachEl.hidden = !COACH[step];
+    readyCard.hidden = step !== 3;
+    if (COACH[step]) {
+      const [title, body] = COACH[step];
+      const text = hint || body;
+      const changed = coachTitle.textContent !== title || coachBody.textContent !== text;
+      coachTitle.textContent = title;
+      coachBody.textContent = text;
+      coachBody.classList.toggle('is-hint', !!hint);
+      coachDots.forEach((d, i) => d.classList.toggle('is-on', i < step));
+      if (changed) {
+        coachCard.animate(
+          [{ opacity: 0.35, transform: 'translate(-50%, 6px)' }, { opacity: 1, transform: 'translate(-50%, 0)' }],
+          { duration: 220, easing: 'cubic-bezier(.23,1,.32,1)' }
+        );
+        live.textContent = `${title}. ${text}`;
+      }
+    }
+    if (step === 3) {
+      markTutoSeen();
+      live.textContent = '¡Ya sabes jugar! 60 segundos y una sola vida.';
+      readyCard.querySelector('[data-act="begin"]').focus({ preventScroll: true });
+      track('tutorial_complete');
+    }
   };
 
   ui.onFloat = (text, x, y, tone) => {
@@ -1403,10 +1532,12 @@
     againBtn.classList.toggle('btn--ghost', !!pending);
   }
 
-  ui.onGameOver = ({ score, best, record, stats }) => {
+  ui.onGameOver = ({ score, best, record, reason, maxMult, stats }) => {
     lastScore = score;
     overNum.textContent = score;
-    overBest.textContent = record && score > 0 ? '¡Nuevo récord!' : `Récord: ${best}`;
+    overCard.querySelector('.over-title').textContent = reason === 'time' ? '¡Tiempo!' : 'Fin del juego';
+    const extra = maxMult > 1 ? ` · racha máxima x${maxMult}` : '';
+    overBest.textContent = (record && score > 0 ? '¡Nuevo récord!' : `Récord: ${best}`) + extra;
     overBest.classList.toggle('is-record', record && score > 0);
     pending = score > 0 ? { stats, ticketReq, saving: false, saved: false } : null;
     prefetchTicket(); // para "Jugar otra vez"
@@ -1445,7 +1576,10 @@
     const r = await call('/minigame/scores', {
       method: 'POST',
       auth: true,
-      body: { ticket, score: st.score, returns: st.returns, perfects: st.perfects, glass: st.glass, bits: st.bits, duration_ms: st.durationMs },
+      body: {
+        ticket, score: st.score, returns: st.returns, perfects: st.perfects, volleys: st.volleys,
+        glass: st.glass, bits: st.bits, events: st.events, duration_ms: st.durationMs,
+      },
     });
     p.saving = false;
     if (r.status === 401) {
@@ -1689,26 +1823,48 @@
     }
   });
 
-  function startGame() {
-    if (!api) return;
-    overCard.hidden = true;
-    stage.classList.remove('is-over');
-    stage.classList.add('is-playing');
+  function showTip() {
     tip.classList.add('is-on');
     clearTimeout(tipTimer);
     tipTimer = setTimeout(() => tip.classList.remove('is-on'), 7000);
+  }
+
+  // La primera vez arranca con la práctica guiada; después, directo a la partida
+  function startGame(opts) {
+    if (!api) return;
+    const tutorial = opts && opts.tutorial != null ? opts.tutorial : !tutoSeen;
+    overCard.hidden = true;
+    stage.classList.remove('is-over');
+    stage.classList.add('is-playing');
+    clearTimeout(tipTimer);
+    tip.classList.remove('is-on');
+    if (!tutorial) showTip();
     if (!window.matchMedia('(min-width: 960px)').matches) {
       stage.scrollIntoView({ block: 'start', behavior: 'smooth' });
     }
     pending = null;
     ticketReq = takeTicket();
-    api.startGame();
-    track('game_start');
+    api.startGame({ tutorial });
+    track('game_start', { tutorial: tutorial ? 1 : 0 });
+  }
+
+  // De la práctica a la partida de verdad (con "Empezar" o "Saltar práctica")
+  function beginRound(skipped) {
+    if (!api) return;
+    markTutoSeen();
+    if (skipped) {
+      track('tutorial_skip');
+      showTip();
+    }
+    api.startGame({ tutorial: false });
   }
 
   function exitGame() {
     if (!api) return;
     overCard.hidden = true;
+    readyCard.hidden = true;
+    coachEl.hidden = true;
+    stage.classList.remove('is-tutorial');
     tip.classList.remove('is-on');
     stage.classList.remove('is-playing', 'is-over');
     api.exitGame();
@@ -1736,10 +1892,18 @@
     if (act.dataset.act === 'ranking') openRanking();
     if (act.dataset.act === 'again') startGame();
     if (act.dataset.act === 'share') share();
+    if (act.dataset.act === 'tuto') startGame({ tutorial: true });
     if (act.dataset.act === 'exit') exitGame();
   });
+  coachEl.querySelector('[data-act="skip-tuto"]').addEventListener('click', () => beginRound(true));
+  readyCard.addEventListener('click', (e) => {
+    const act = e.target.closest('[data-act]');
+    if (!act) return;
+    if (act.dataset.act === 'begin') beginRound(false);
+    if (act.dataset.act === 'retuto') api.startGame({ tutorial: true });
+  });
   document.addEventListener('keydown', (e) => {
-    if (!stage.classList.contains('is-playing') || !overCard.hidden || document.querySelector('dialog[open]')) return;
+    if (!stage.classList.contains('is-playing') || !overCard.hidden || !readyCard.hidden || document.querySelector('dialog[open]')) return;
     if (e.key === 'Escape') { exitGame(); return; }
     if ((e.key === ' ' || e.key === 'Enter') && !e.target.closest('button, a')) {
       e.preventDefault();

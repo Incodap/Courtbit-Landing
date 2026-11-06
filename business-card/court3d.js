@@ -659,14 +659,30 @@ export function mountCourt(host, ui = {}) {
   // ---------- Minijuego: "Devuélvela" ----------
   // El rival (lado de la pared lima) te tira; deja que bote y toca su cancha
   // cuando el aro se cierre: el momento da la calidad, el lugar da la dirección.
+  // Contrarreloj: 60 s y una sola vida. Se pega después del bote cuando el aro se
+  // cierra, o de aire en la zona junto a la red. Perfectos y voleas hacen racha; cada
+  // 3 de racha sube el multiplicador. El servidor recalcula el puntaje con estas mismas
+  // reglas a partir de la secuencia de golpes (MinigameService.scoreFor).
+  const ROUND_S = 60;
+  const VOLLEY_Z = 3.6;      // zona de volea: de la red a esta distancia, de tu lado
+  const PERFECT_S = 0.09;    // ventana del perfecto alrededor del cierre del aro
+  const HIT_S = 0.3;         // antes de esto, tocar es golpe al aire
+  const MAX_MULT = 5;
+  const BASE = [1, 2, 3];    // normal, perfecto, de aire
+  const SHOT = { NORMAL: 0, PERFECT: 1, VOLLEY: 2 };
+  const BEST_KEY = 'cb-best-60';
+
   const game = {
-    phase: 'off', score: 0, lives: 3, n: 0, streak: 0, best: 0,
+    phase: 'off', score: 0, n: 0, best: 0,
     segs: [], cur: null, t: 0, wait: 0, first: true,
     win: false, inFlight: false, toH: 0, postT: 1, glass: false, H: null, B: null,
-    // Conteos para que el servidor valide la partida al guardarla en el ranking
-    perfects: 0, glassReturns: 0, bitsHit: 0, playStart: 0,
+    timeLeft: ROUND_S, playTime: 0, combo: 0, mult: 1, maxMult: 1, endReason: '',
+    // Secuencia de golpes para que el servidor valide la partida: tipo | vidrio<<2 | bit<<3
+    events: [], lastShot: null,
+    // Práctica guiada la primera vez: 1 deja que bote, 2 de aire, 3 lista para empezar
+    tutorial: 0, cued: false,
   };
-  try { game.best = parseInt(localStorage.getItem('cb-best'), 10) || 0; } catch (e) { game.best = 0; }
+  try { game.best = parseInt(localStorage.getItem(BEST_KEY), 10) || 0; } catch (e) { game.best = 0; }
 
   const markMat = ringMat();
   const bounceMark = new THREE.Mesh(ringGeo, markMat);
@@ -687,6 +703,22 @@ export function mountCourt(host, ui = {}) {
   aimMark.material.opacity = 0.85;
   aimMark.visible = false;
   scene.add(aimMark);
+  // Zona de volea: se ilumina cuando la bola del rival entra en ella
+  const volleyZone = new THREE.Mesh(
+    new THREE.PlaneGeometry(10, VOLLEY_Z),
+    new THREE.MeshBasicMaterial({ color: LIME, transparent: true, opacity: 0.05, depthWrite: false, blending: THREE.AdditiveBlending })
+  );
+  volleyZone.rotation.x = -Math.PI / 2;
+  volleyZone.position.set(0, 0.02, VOLLEY_Z / 2);
+  volleyZone.visible = false;
+  scene.add(volleyZone);
+  // Borde del fondo de la zona: hasta ahí se puede volear
+  const zoneEdge = new THREE.Mesh(
+    new THREE.PlaneGeometry(10, 0.09),
+    new THREE.MeshBasicMaterial({ color: LIME, transparent: true, opacity: 0.4, depthWrite: false })
+  );
+  zoneEdge.position.set(0, -VOLLEY_Z / 2, 0.002);
+  volleyZone.add(zoneEdge);
   // Mira tenue que sigue al cursor en la cancha rival (solo con mouse)
   const aimPreview = new THREE.Mesh(ringGeo, ringMat());
   aimPreview.rotation.x = -Math.PI / 2;
@@ -741,7 +773,7 @@ export function mountCourt(host, ui = {}) {
     ui.onFloat(text, s.x, s.y, tone);
   }
   function emit() {
-    if (ui.onGame) ui.onGame({ score: game.score, lives: game.lives, best: game.best, streak: game.streak, phase: game.phase });
+    if (ui.onGame) ui.onGame({ score: game.score, best: game.best, mult: game.mult, timeLeft: game.timeLeft, phase: game.phase });
   }
   function buzz(ms) {
     if (navigator.vibrate) {
@@ -751,12 +783,13 @@ export function mountCourt(host, ui = {}) {
 
   function cpuShot(from) {
     const n = game.n;
-    const T = game.first ? 1.45 : Math.max(0.74, 1.22 - n * 0.032);
-    const spread = Math.min(4.1, 2.4 + n * 0.12);
-    const B = V(rand(-spread, spread), 0, rand(3.4, 7.2));
+    const tuto = game.tutorial;
+    const T = tuto ? 1.35 : game.first ? 1.4 : Math.max(0.72, 1.15 - n * 0.03);
+    const spread = tuto ? 1.6 : Math.min(4.1, 2.4 + n * 0.12);
+    const B = V(rand(-spread, spread), 0, tuto === 2 ? rand(6.2, 7) : rand(3.4, 7.2));
     const segs = [overNet(from, B, T, { type: 'gBounce' })];
-    const useGlass = !game.first && Math.random() < Math.min(0.5, 0.2 + n * 0.025);
-    const post = Math.max(0.46, 0.74 - n * 0.012);
+    const useGlass = !tuto && !game.first && Math.random() < Math.min(0.5, 0.2 + n * 0.025);
+    const post = tuto ? 0.7 : Math.max(0.44, 0.7 - n * 0.012);
     let H, postT;
     if (useGlass) {
       const W = V(cx(B.x + rand(-1, 1)), rand(0.9, 1.4), 9.85);
@@ -772,7 +805,7 @@ export function mountCourt(host, ui = {}) {
     // Si nadie le pega, la bola sigue de largo
     const D = V(cx(H.x + (H.x - B.x) * 0.3), 0, Math.min(9.6, H.z + 0.9));
     segs.push(arc(H, D, 0.32, { type: 'gMiss' }));
-    Object.assign(game, { segs, cur: null, glass: useGlass, H, B, postT, toH: Infinity, win: false, inFlight: true, first: false });
+    Object.assign(game, { segs, cur: null, glass: useGlass, H, B, postT, toH: Infinity, win: false, inFlight: true, first: false, cued: false });
     bounceMark.position.set(B.x, 0.03, B.z);
     bounceMark.visible = true;
   }
@@ -784,43 +817,57 @@ export function mountCourt(host, ui = {}) {
     cpuShot(ball.position.clone());
   }
 
-  function over() {
+  function over(reason) {
     game.phase = 'over';
+    game.endReason = reason;
     game.segs = [];
     game.cur = null;
+    game.win = game.inFlight = false;
+    hitRing.visible = approach.visible = bounceMark.visible = aimMark.visible = false;
+    volleyZone.visible = false;
     const record = game.score > game.best;
     if (record) {
       game.best = game.score;
-      try { localStorage.setItem('cb-best', String(game.best)); } catch (e) { /* modo privado */ }
+      try { localStorage.setItem(BEST_KEY, String(game.best)); } catch (e) { /* modo privado */ }
     }
     targets.forEach((tg) => { tg.userData.goal = 0; });
     emit();
+    const count = (fn) => game.events.filter(fn).length;
     const stats = {
       score: game.score,
-      returns: game.n,
-      perfects: game.perfects,
-      glass: game.glassReturns,
-      bits: game.bitsHit,
-      durationMs: game.playStart ? Math.round(performance.now() - game.playStart) : 0,
+      returns: game.events.length,
+      perfects: count((e) => (e & 3) === SHOT.PERFECT),
+      volleys: count((e) => (e & 3) === SHOT.VOLLEY),
+      glass: count((e) => (e & 4) !== 0),
+      bits: count((e) => (e & 8) !== 0),
+      events: game.events.slice(),
+      durationMs: Math.round(game.playTime * 1000),
     };
-    if (ui.onGameOver) ui.onGameOver({ score: game.score, best: game.best, record, stats });
+    if (ui.onGameOver) ui.onGameOver({ score: game.score, best: game.best, record, reason, maxMult: game.maxMult, stats });
   }
 
-  function miss() {
-    game.win = false;
-    game.inFlight = false;
-    game.lives--;
-    game.streak = 0;
-    hitRing.visible = approach.visible = bounceMark.visible = aimMark.visible = false;
-    float('Se fue', ball.position, 'miss');
-    buzz(70);
-    emit();
-    if (game.lives <= 0) {
-      over();
-    } else {
-      game.phase = 'wait';
-      game.wait = 1.2;
+  // Una sola vida: se te fue la bola o le pegaste al aire. En la práctica no
+  // acaba: explica qué pasó y el rival vuelve a sacar.
+  function miss(label, hint) {
+    float(label, ball.position, 'miss');
+    if (!game.tutorial) {
+      buzz(80);
+      over('miss');
+      return;
     }
+    buzz(30);
+    game.segs = [];
+    game.cur = null;
+    game.win = game.inFlight = false;
+    hitRing.visible = approach.visible = bounceMark.visible = aimMark.visible = false;
+    game.phase = 'wait';
+    game.wait = 1.3;
+    coach(game.tutorial, hint);
+  }
+
+  function coach(step, hint) {
+    volleyZone.visible = step !== 1;
+    if (ui.onCoach) ui.onCoach({ step, hint: hint || '' });
   }
 
   // Puntería: si tocas la cancha del rival, la bola va a ese punto exacto. Si tocas en
@@ -840,35 +887,76 @@ export function mountCourt(host, ui = {}) {
 
   function swing(aimRaw) {
     if (game.phase !== 'play') return;
-    if (!game.win) {
-      const now = performance.now();
-      if (game.inFlight && now - (game.tipAt || 0) > 900) {
+    const now = performance.now();
+
+    // Tu bola va hacia el rival (o él está por pegarle): el toque no cuenta
+    if (!game.inFlight) {
+      if (now - (game.tipAt || 0) > 900) {
         game.tipAt = now;
-        float('Deja que bote', game.B || ball.position, 'tip');
+        float('Espera la bola del rival', ball.position, 'tip');
       }
       return;
     }
-    const d = game.toH;
-    const perfect = Math.abs(d) <= 0.12;
-    let pts = perfect ? 2 : 1;
-    let label = perfect ? '¡Perfecto! +2' : d > 0 ? 'Bien +1' : 'Justo +1';
-    if (game.glass) { pts += 1; label += ' · vidrio +1'; game.glassReturns++; }
-    if (perfect) game.perfects++;
-    game.score += pts;
-    game.n++;
-    game.streak++;
+
+    let type;
+    if (game.win) {
+      // Ya botó: hay que esperar a que el aro se cierre
+      if (game.toH > HIT_S) { miss('¡Muy pronto!', 'Muy pronto. Espera a que el aro se cierre sobre la bola.'); return; }
+      if (game.tutorial === 2) { miss('Ya botó', 'Esta vez pégale antes de que bote, cuando cruce la zona lima.'); return; }
+      type = Math.abs(game.toH) <= PERFECT_S ? SHOT.PERFECT : SHOT.NORMAL;
+    } else {
+      // Todavía en el aire: solo vale dentro de la zona junto a la red
+      const z = ball.position.z;
+      if (game.tutorial === 1) { miss('Deja que bote', 'Primero deja que bote. Toca cuando el aro se cierre.'); return; }
+      if (z < 0.2) { miss('¡Muy pronto!', 'Muy pronto. Espera a que la bola entre a la zona lima.'); return; }
+      if (z > VOLLEY_Z) { miss('Tarde para volear', 'Tarde. Tócala mientras está dentro de la zona lima.'); return; }
+      type = SHOT.VOLLEY;
+    }
+
+    if (game.tutorial) {
+      // Práctica: no suma puntos, solo avanza
+      float(type === SHOT.VOLLEY ? '¡De aire!' : '¡Eso!', ball.position, 'perfect');
+      ring(ball.position.clone(), null, 0.45);
+      buzz(22);
+      game.tutorial = game.tutorial === 1 ? 2 : 3;
+      if (game.tutorial === 2) coach(2);
+    } else {
+      addPoints(type);
+    }
+
     game.win = false;
     game.inFlight = false;
-    hitRing.visible = approach.visible = false;
-    float(label, ball.position, perfect ? 'perfect' : 'ok');
-    ring(ball.position.clone(), null, 0.45);
-    buzz(perfect ? 22 : 12);
+    hitRing.visible = approach.visible = bounceMark.visible = false;
+    returnShot(type, aimRaw);
+  }
 
+  function addPoints(type) {
+    // Racha y multiplicador: perfectos y voleas suben la racha; un golpe normal la corta
+    game.combo = type === SHOT.NORMAL ? 0 : game.combo + 1;
+    const prevMult = game.mult;
+    game.mult = Math.min(MAX_MULT, 1 + Math.floor(game.combo / 3));
+    game.maxMult = Math.max(game.maxMult, game.mult);
+    const glass = type !== SHOT.VOLLEY && game.glass ? 1 : 0;
+    const pts = (BASE[type] + glass) * game.mult;
+    game.score += pts;
+    game.n++;
+    game.events.push(type | (glass << 2));
+    game.lastShot = { idx: game.events.length - 1, mult: game.mult, volley: type === SHOT.VOLLEY };
+
+    const name = type === SHOT.VOLLEY ? '¡De aire!' : type === SHOT.PERFECT ? '¡Perfecto!' : 'Bien';
+    float(`${name}${glass ? ' + vidrio' : ''} +${pts}`, ball.position, type === SHOT.NORMAL ? 'ok' : 'perfect');
+    if (game.mult > prevMult) setTimeout(() => float(`¡x${game.mult}!`, V(0, 2.2, 3), 'perfect'), 260);
+    ring(ball.position.clone(), null, 0.45);
+    buzz(type === SHOT.NORMAL ? 12 : 22);
+  }
+
+  function returnShot(type, aimRaw) {
     // A dónde va: el punto exacto si tocaste la cancha rival; si no, la dirección del
-    // toque y una profundidad según el golpe (el perfecto va al fondo)
+    // toque y una profundidad según el golpe (perfecto y volea van al fondo)
+    const deep = type !== SHOT.NORMAL;
     const aim = aimRaw.exact
       ? V(aimRaw.x, 0, aimRaw.z)
-      : V(clamp(aimRaw.x + rand(-0.35, 0.35), -4.4, 4.4), 0, perfect ? -rand(7.2, 8.6) : -rand(4.2, 6.2));
+      : V(clamp(aimRaw.x + rand(-0.35, 0.35), -4.4, 4.4), 0, deep ? -rand(7.2, 8.6) : -rand(4.2, 6.2));
     aimMark.position.set(aim.x, 0.035, aim.z);
     aimMark.scale.setScalar(0.55);
     aimMark.visible = true;
@@ -876,7 +964,7 @@ export function mountCourt(host, ui = {}) {
     // Tu devolución y la respuesta del rival (a veces por la pared lima)
     const from = ball.position.clone();
     if (from.y < 0.5) from.y = 0.6;
-    const T = perfect ? 0.82 : 1.02;
+    const T = type === SHOT.NORMAL ? 1.02 : 0.84;
     const segs = [overNet(from, aim, T, { type: 'rBounce' })];
     if (Math.random() < 0.35) {
       const W = V(cx(aim.x + rand(-1, 1)), rand(1, 1.6), -9.85);
@@ -901,7 +989,8 @@ export function mountCourt(host, ui = {}) {
         game.toH = game.postT;
         hitRing.position.set(game.H.x, 0.035, game.H.z);
         approach.position.set(game.H.x, 0.04, game.H.z);
-        hitRing.visible = approach.visible = true;
+        // En la práctica de volea el aro distraería: ahí se pega antes del bote
+        hitRing.visible = approach.visible = game.tutorial !== 2;
         break;
       case 'gGlass':
       case 'cGlass':
@@ -909,24 +998,40 @@ export function mountCourt(host, ui = {}) {
         flashGlass(p);
         break;
       case 'gMiss':
-        if (game.win) { miss(); return false; }
+        if (game.win) {
+          miss('Se fue', game.tutorial === 2
+            ? 'Se fue. Pégale antes del bote, mientras cruza la zona lima.'
+            : 'Se fue. Toca justo cuando el aro se cierre sobre la bola.');
+          return false;
+        }
         break;
       case 'rBounce':
         aimMark.visible = false;
         ring(V(p.x, 0.03, p.z), 'y', 0.8);
-        for (const tg of targets) {
+        for (const tg of game.tutorial ? [] : targets) {
           if (tg.visible && tg.userData.goal && Math.hypot(tg.position.x - p.x, tg.position.z - p.z) < 1.35) {
-            game.score += 2;
-            game.bitsHit++;
-            float('¡Bit! +2', V(tg.position.x, 1, tg.position.z), 'perfect');
+            const shot = game.lastShot;
+            const bitPts = (shot && shot.volley ? 5 : 2) * (shot ? shot.mult : 1);
+            game.score += bitPts;
+            if (shot) game.events[shot.idx] |= 8;
+            float(`¡Bit${shot && shot.volley ? ' de aire' : ''}! +${bitPts}`, V(tg.position.x, 1, tg.position.z), 'perfect');
             burst(V(tg.position.x, 0.6, tg.position.z), 16);
             tg.userData.goal = 0;
-            setTimeout(() => { if (game.phase === 'play' || game.phase === 'wait') placeTarget(tg); }, 700);
+            setTimeout(() => { if (game.phase === 'play') placeTarget(tg); }, 700);
             emit();
+            break; // un bit por bola: el servidor cuenta uno por golpe
           }
         }
         break;
       case 'cHit':
+        if (game.tutorial === 3) {
+          // Práctica completa: la bola llega al rival y esperamos a "Empezar"
+          game.phase = 'coach';
+          game.segs = [];
+          game.cur = null;
+          coach(3);
+          return false;
+        }
         cpuShot(p.clone());
         break;
       default:
@@ -940,25 +1045,50 @@ export function mountCourt(host, ui = {}) {
       game.wait -= dt;
       if (game.wait <= 0) {
         game.phase = 'play';
-        if (!game.playStart) game.playStart = performance.now();
         cpuServe();
         emit();
       }
       return;
     }
-    if (game.phase === 'over') {
+    if (game.phase === 'over' || game.phase === 'coach') {
       ballScale = Math.max(0, ballScale - dt * 4);
       return;
     }
     if (game.phase !== 'play') return;
     ballScale = Math.min(1, ballScale + dt * 6);
+
+    // Reloj de la partida (tiempo de juego: se detiene si la pestaña se oculta)
+    if (!game.tutorial) {
+      const shown = Math.ceil(game.timeLeft);
+      game.playTime += dt;
+      game.timeLeft = Math.max(0, ROUND_S - game.playTime);
+      if (game.timeLeft <= 0) { float('¡Tiempo!', V(0, 2.4, 2), 'perfect'); over('time'); return; }
+      if (Math.ceil(game.timeLeft) !== shown) emit();
+    }
+
+    // La zona de volea se enciende mientras la bola del rival pasa por ella
+    const inZone = game.inFlight && !game.win && ball.position.z > 0.2 && ball.position.z < VOLLEY_Z;
+    const zoneGoal = inZone ? 0.3 : game.tutorial === 2 ? 0.17 + Math.sin(performance.now() / 260) * 0.06 : 0.08;
+    volleyZone.material.opacity += (zoneGoal - volleyZone.material.opacity) * (1 - Math.exp(-dt * 14));
+    zoneEdge.material.opacity = Math.min(0.9, 0.25 + volleyZone.material.opacity * 2.2);
+
+    // Práctica: cámara lenta en el momento de pegar y un "¡Ahora!" justo a tiempo
+    if (game.tutorial === 1) dt *= game.win ? 0.5 : 0.75;
+    else if (game.tutorial === 2) dt *= inZone ? 0.3 : 0.75;
+    if (game.tutorial && game.tutorial < 3 && !game.cued &&
+        ((game.tutorial === 1 && game.win && game.toH <= PERFECT_S + 0.05) || (game.tutorial === 2 && inZone && ball.position.z > 0.6))) {
+      game.cued = true;
+      float('¡Ahora!', ball.position, 'perfect');
+      buzz(15);
+    }
+
     if (game.win) {
       game.toH -= dt;
       // Aro que se cierra: cuando toca el aro fijo es el momento perfecto
       const k = clamp(game.toH / game.postT, 0, 1);
       approach.scale.setScalar(0.75 * (1 + k * 1.9));
       approach.material.opacity = 0.35 + 0.6 * (1 - k);
-      hitRing.material.opacity = Math.abs(game.toH) <= 0.12 ? 1 : 0.5;
+      hitRing.material.opacity = Math.abs(game.toH) <= PERFECT_S ? 1 : game.toH <= HIT_S ? 0.7 : 0.3;
       hitRing.scale.setScalar(0.75);
     }
     if (bounceMark.visible) {
@@ -970,18 +1100,22 @@ export function mountCourt(host, ui = {}) {
     runSegs(game, dt, onGameEvent);
   }
 
-  function startGame() {
+  function startGame(opts) {
     if (reduce) return;
+    const tutorial = !!(opts && opts.tutorial);
     mode = 'game';
     Object.assign(game, {
-      phase: 'ready', score: 0, lives: 3, n: 0, streak: 0, wait: 1.3, first: true, segs: [], cur: null, win: false, inFlight: false,
-      perfects: 0, glassReturns: 0, bitsHit: 0, playStart: 0,
+      phase: 'ready', score: 0, n: 0, wait: 1.3, first: true, segs: [], cur: null, win: false, inFlight: false,
+      timeLeft: ROUND_S, playTime: 0, combo: 0, mult: 1, maxMult: 1, endReason: '', events: [], lastShot: null,
+      tutorial: tutorial ? 1 : 0, cued: false,
     });
+    volleyZone.material.opacity = 0.08;
+    coach(game.tutorial);
     rally.segs = [];
     rally.cur = null;
     gameAz = Math.round(orbit / TAU) * TAU;
-    targets.forEach((tg) => { tg.visible = false; });
-    targets.forEach((tg) => placeTarget(tg));
+    targets.forEach((tg) => { tg.visible = false; tg.userData.goal = 0; });
+    if (!tutorial) targets.forEach((tg) => placeTarget(tg));
     hitRing.visible = approach.visible = bounceMark.visible = aimMark.visible = false;
     canvas.classList.add('is-game');
     dragVel = 0;
@@ -992,10 +1126,12 @@ export function mountCourt(host, ui = {}) {
   function exitGame() {
     mode = 'show';
     game.phase = 'off';
+    game.tutorial = 0;
     game.segs = [];
     game.cur = null;
     targets.forEach((tg) => { tg.userData.goal = 0; });
     hitRing.visible = approach.visible = bounceMark.visible = aimMark.visible = aimPreview.visible = false;
+    volleyZone.visible = false;
     canvas.classList.remove('is-game');
     rally.segs = [];
     rally.cur = null;
@@ -1436,6 +1572,7 @@ export function mountCourt(host, ui = {}) {
 
   return {
     scoreText,
+    // startGame({ tutorial: true }) arranca con la práctica guiada (ui.onCoach avisa cada paso)
     startGame,
     exitGame,
     // Teclado: espacio pega hacia donde está el cursor, o al centro de la cancha rival
