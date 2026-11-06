@@ -49,17 +49,18 @@ export function mountCourt(host, ui = {}) {
   let mode = 'show';
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-  let dpr = Math.min(window.devicePixelRatio || 1, coarse ? 2 : 1.75);
+  let dpr = Math.min(window.devicePixelRatio || 1, 1.75);
   renderer.setPixelRatio(dpr);
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.08;
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.shadowMap.autoUpdate = false;
   const canvas = renderer.domElement;
   canvas.className = 'stage-canvas';
+  canvas.style.opacity = '0';
   host.prepend(canvas);
   const aniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
 
@@ -181,6 +182,7 @@ export function mountCourt(host, ui = {}) {
   turf.rotation.x = -Math.PI / 2;
   turf.position.y = 0.004;
   turf.receiveShadow = true;
+  turf.renderOrder = -1;
   scene.add(turf);
 
   // Líneas: servicio a 6.95 m de la red y central con 20 cm de extensión
@@ -976,7 +978,7 @@ export function mountCourt(host, ui = {}) {
   }
   function fitFor(az, el, tgt, pts, mx, my) {
     let lo = 6, hi = 160;
-    for (let k = 0; k < 22; k++) {
+    for (let k = 0; k < 16; k++) {
       const mid = (lo + hi) / 2;
       camPos(probe.position, az, el, mid, tgt);
       probe.lookAt(tgt);
@@ -997,7 +999,7 @@ export function mountCourt(host, ui = {}) {
     probe.far = 300;
     probe.updateProjectionMatrix();
     fitTable.length = 0;
-    for (let i = 0; i < 72; i++) fitTable.push(fitFor((i / 72) * TAU, EL_REST, TARGET_SHOW, fitShow, 0.93, 0.9));
+    for (let i = 0; i < 36; i++) fitTable.push(fitFor((i / 36) * TAU, EL_REST, TARGET_SHOW, fitShow, 0.93, 0.9));
     fitGame = fitFor(0, EL_GAME, TARGET_GAME, fitCore, 0.96, 0.94);
   }
   function fitDist(az) {
@@ -1076,9 +1078,14 @@ export function mountCourt(host, ui = {}) {
   });
 
   // ---------- Tamaño ----------
-  function resize() {
+  let lastSize = '';
+  function resize(force) {
     const w = host.clientWidth, h = host.clientHeight;
     if (!w || !h) return;
+    // El observador avisa también al registrarse: si el tamaño no cambió, no recalcular
+    const key = w + 'x' + h + '@' + dpr;
+    if (key === lastSize && force !== true) return;
+    lastSize = key;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.fov = w / h < 0.9 ? 34 : 30;
@@ -1086,7 +1093,7 @@ export function mountCourt(host, ui = {}) {
     buildFit();
     dirty = true;
   }
-  const ro = new ResizeObserver(resize);
+  const ro = new ResizeObserver(() => resize());
   ro.observe(host);
 
   // ---------- Capa digital (etiqueta AR) ----------
@@ -1144,7 +1151,6 @@ export function mountCourt(host, ui = {}) {
     const tf = seg(t, 1.3, 1.8);
     turfMat.opacity = tf;
     show(turf, tf);
-    if (t >= 1.8 && turfMat.transparent) { turfMat.transparent = false; turfMat.needsUpdate = true; }
 
     lines.forEach((m, i) => {
       const s = inOut(seg(t, 1.65 + i * 0.08, 2.2 + i * 0.08));
@@ -1170,10 +1176,12 @@ export function mountCourt(host, ui = {}) {
     coneMat.opacity = 0.07 * lamp;
   }
 
+  let shadowStep = 0;
   function update(dt, now) {
     if (t < INTRO_END + 0.5) {
       applyIntro(t);
-      renderer.shadowMap.needsUpdate = true;
+      // Las sombras aparecen con las luces: se calculan dos veces, no en cada cuadro
+      if (shadowStep === 0 && t > 2.9) { renderer.shadowMap.needsUpdate = true; shadowStep = 1; }
     } else if (!shadowsDone) {
       applyIntro(INTRO_END + 1);
       renderer.shadowMap.needsUpdate = true;
@@ -1309,7 +1317,7 @@ export function mountCourt(host, ui = {}) {
     if (!visible) return;
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
-    if (!reduce) t += dt;
+    if (!reduce && now > holdUntil) t += t < INTRO_END ? dt * 1.3 : dt;
     const live = !reduce || dirty || dragVel !== 0;
     if (live) {
       update(dt, now);
@@ -1320,20 +1328,23 @@ export function mountCourt(host, ui = {}) {
     if (ui.onTime) ui.onTime(t);
 
     // Calidad adaptativa: si el teléfono no da, bajamos resolución una vez
-    if (!reduce && t > INTRO_END + 0.5 && frames < 150) {
+    if (!reduce && t > INTRO_END + 0.5 && frames < 300) {
       frames++;
       if (dt > 0.024) slow++;
-      if (frames === 150 && slow > 70 && dpr > 1) {
-        dpr = 1;
-        renderer.setPixelRatio(1);
-        resize();
+      if (frames % 150 === 0) {
+        if (slow > 70 && dpr > 1) {
+          dpr = dpr > 1.3 ? 1.25 : 1;
+          renderer.setPixelRatio(dpr);
+          resize();
+        }
+        slow = 0;
       }
     }
     if (!reduce || down || dragVel !== 0 || dirty) raf = requestAnimationFrame(frame);
   }
 
   function kick() {
-    if (!raf && visible) { last = performance.now(); raf = requestAnimationFrame(frame); }
+    if (!raf && visible && ready) { last = performance.now(); raf = requestAnimationFrame(frame); }
   }
   canvas.addEventListener('pointerdown', kick);
   canvas.addEventListener('pointermove', () => { if (down) kick(); });
@@ -1344,9 +1355,34 @@ export function mountCourt(host, ui = {}) {
   });
   io.observe(host);
 
-  if (reduce) applyIntro(INTRO_END + 1);
-  resize();
-  kick();
+  // Precalentar: compilar todos los materiales (y el pase de sombras) antes de la
+  // entrada, con el canvas oculto. Así ningún material se compila a media animación.
+  let ready = false, holdUntil = 0;
+  async function warm() {
+    resize();
+    const hiddenObjs = [];
+    scene.traverse((o) => { if (!o.visible) { hiddenObjs.push(o); o.visible = true; } });
+    camPos(camera.position, AZ_REST, EL_REST, fitDist(AZ_REST), TARGET_SHOW);
+    camera.lookAt(TARGET_SHOW);
+    try {
+      if (renderer.compileAsync) await renderer.compileAsync(scene, camera);
+      else renderer.compile(scene, camera);
+    } catch (e) { /* si falla, se compila al vuelo */ }
+    renderer.shadowMap.needsUpdate = true;
+    renderer.render(scene, camera);
+    hiddenObjs.forEach((o) => { o.visible = false; });
+    applyIntro(reduce ? INTRO_END + 1 : 0);
+    renderer.shadowMap.needsUpdate = true;
+    renderer.render(scene, camera);
+    if (ui.startGate) await Promise.race([ui.startGate, new Promise((r) => setTimeout(r, 2500))]);
+    ready = true;
+    holdUntil = performance.now() + 180; // el primer cuadro visible absorbe la última carga
+    canvas.style.transition = 'opacity 300ms ease';
+    canvas.style.opacity = '';
+    last = performance.now();
+    kick();
+  }
+  warm();
 
   return {
     scoreText,

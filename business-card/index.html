@@ -517,8 +517,6 @@
       linear-gradient(90deg, rgba(196, 238, 176, 0.045) 1px, transparent 1px) 0 0 / 22px 22px,
       rgba(7, 26, 20, 0.6);
     border: 1px solid rgba(184, 240, 43, 0.2);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
     overflow: hidden;
   }
   .panel li { position: relative; }
@@ -564,6 +562,7 @@
   .go-c { border: 1px solid rgba(244, 248, 246, 0.22); color: var(--chalk); }
 
   .save {
+    overflow: hidden;
     border-radius: 20px;
     border: 1px solid rgba(244, 248, 246, 0.24);
     background: rgba(244, 248, 246, 0.03);
@@ -583,13 +582,13 @@
   .bits-cover {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: 3;
-    display: grid;
+    display: block;
     border-radius: inherit;
-    overflow: hidden;
     pointer-events: none;
   }
-  .bits-cover i { display: block; }
   html.bits .reveal { visibility: hidden; }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -644,7 +643,7 @@
 </style>
 
 <!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
+<script async id="ga" src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE" onload="window.__ga=1" onerror="window.__ga=1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
 </head>
 <body>
@@ -829,41 +828,57 @@
   </nav>
 
   <script>
-    // Cada bloque se arma con bits, como la cancha. Sin JS o sin movimiento, se ve directo.
+    // Cada bloque se arma con bits, como la cancha: un solo canvas por bloque
+    // (no cientos de elementos), para que el teléfono no se trabe al cargar.
     (function () {
       var html = document.documentElement;
       if (!html.classList.contains('bits')) return;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
       var DARK = ['#0f2c24', '#0f2c24', '#0f2c24', '#123629', '#b8f02b', '#a7cd50', '#63af5a', '#f4f8f6'];
       var LIME = ['#b8f02b', '#b8f02b', '#c9f65c', '#a7cd50', '#63af5a', '#0f2c24', '#f4f8f6'];
-      var els = document.querySelectorAll('.reveal');
-      els.forEach(function (el, n) {
+      var jobs = [];
+      document.querySelectorAll('.reveal').forEach(function (el, n) {
         var r = el.getBoundingClientRect();
-        var size = 15;
-        var cols = Math.max(1, Math.ceil(r.width / size));
-        var rows = Math.max(1, Math.ceil(r.height / size));
+        var cols = Math.max(1, Math.round(r.width / 16));
+        var rows = Math.max(1, Math.round(r.height / 16));
+        var cw = r.width / cols, ch = r.height / rows;
         var pal = el.getAttribute('data-bits') === 'lime' ? LIME : DARK;
-        var cover = document.createElement('span');
-        cover.className = 'bits-cover';
-        cover.setAttribute('aria-hidden', 'true');
-        cover.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
-        cover.style.gridTemplateRows = 'repeat(' + rows + ', 1fr)';
-        var cells = [];
+        var cv = document.createElement('canvas');
+        cv.className = 'bits-cover';
+        cv.setAttribute('aria-hidden', 'true');
+        cv.width = Math.round(r.width * dpr);
+        cv.height = Math.round(r.height * dpr);
+        el.appendChild(cv);
+        var g = cv.getContext('2d');
+        g.scale(dpr, dpr);
+        var cells = [], base = 200 + n * 140;
         for (var j = 0; j < rows; j++) for (var i = 0; i < cols; i++) {
-          var c = document.createElement('i');
-          c.style.background = pal[(Math.random() * pal.length) | 0];
-          cover.appendChild(c);
-          cells.push([c, i / cols]);
+          cells.push({ x: i * cw, y: j * ch, c: pal[(Math.random() * pal.length) | 0], d: base + (i / cols) * 420 + Math.random() * 220 });
         }
-        el.appendChild(cover);
-        var base = 250 + n * 140, end = 0;
-        cells.forEach(function (it) {
-          var d = base + it[1] * 420 + Math.random() * 220;
-          end = Math.max(end, d + 260);
-          it[0].animate([{ opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(.4)' }], { duration: 260, delay: d, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'forwards' });
-        });
-        setTimeout(function () { cover.remove(); }, end + 60);
+        jobs.push({ cv: cv, g: g, cells: cells, w: r.width, h: r.height, cw: cw, ch: ch });
       });
       html.classList.remove('bits');
+      var t0 = performance.now();
+      function draw(now) {
+        var t = now - t0, alive = false;
+        jobs.forEach(function (job) {
+          if (!job.cv) return;
+          var g = job.g, any = false;
+          g.clearRect(0, 0, job.w, job.h);
+          for (var k = 0; k < job.cells.length; k++) {
+            var c = job.cells[k], p = (t - c.d) / 260;
+            if (p >= 1) continue;
+            any = true;
+            var e = p <= 0 ? 0 : 1 - Math.pow(1 - p, 3), sc = 1 - 0.6 * e;
+            g.globalAlpha = 1 - e;
+            g.fillStyle = c.c;
+            g.fillRect(c.x + (job.cw * (1 - sc)) / 2, c.y + (job.ch * (1 - sc)) / 2, job.cw * sc + 0.5, job.ch * sc + 0.5);
+          }
+          if (!any) { job.cv.remove(); job.cv = null; } else alive = true;
+        });
+        if (alive) requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
     })();
 
     // Guardar contacto: en Android (Chrome) abre directo el formulario de contacto nuevo,
@@ -923,6 +938,7 @@
   const HOLD = { score: 9, booking: 7, class: 7 };
   const AR_AT = 6.2; // la capa digital entra cuando la cancha ya se asentó
   let idx = 0, nextAt = AR_AT + HOLD.score, arOn = false, size = null;
+  let side = null, above = null, pos = null;
 
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const measure = () => { size = { w: tag.offsetWidth, h: tag.offsetHeight }; };
@@ -931,19 +947,31 @@
     reduce,
     ar(ax, ay, W, H) {
       if (!size) measure();
-      // La etiqueta se va en diagonal hacia el lado con más aire, para no tapar la cancha
-      const toLeft = ax > W / 2;
-      const left = clamp(toLeft ? ax - size.w - 34 : ax + 34, 10, W - size.w - 10);
-      let top = ay - size.h - 64;
-      const below = top < 10;
-      if (below) top = Math.min(ay + 52, H - size.h - 10);
-      tag.style.transform = `translate(${left.toFixed(1)}px, ${top.toFixed(1)}px)`;
+      // Lado de la etiqueta con histéresis: solo cambia si el ancla se aleja claramente
+      // del centro. Antes cambiaba de lado cada vez que la red cruzaba la mitad y brincaba.
+      if (side === null) side = ax > W / 2 ? 'L' : 'R';
+      else if (side === 'R' && ax > W * 0.64) side = 'L';
+      else if (side === 'L' && ax < W * 0.36) side = 'R';
+      if (above === null) above = ay - size.h - 64 >= 10;
+      else if (above && ay - size.h - 64 < 0) above = false;
+      else if (!above && ay - size.h - 64 > 24) above = true;
+      const goalL = clamp(side === 'L' ? ax - size.w - 34 : ax + 34, 10, W - size.w - 10);
+      const goalT = above ? Math.max(10, ay - size.h - 64) : Math.min(ay + 52, H - size.h - 10);
+      // La posición se desliza hacia su meta: nunca salta
+      const now = performance.now();
+      if (!pos) pos = { l: goalL, t: goalT, ts: now };
+      const k = 1 - Math.exp(-Math.min(0.1, (now - pos.ts) / 1000) * 5);
+      pos.l += (goalL - pos.l) * k;
+      pos.t += (goalT - pos.t) * k;
+      pos.ts = now;
+      tag.style.transform = `translate(${pos.l.toFixed(1)}px, ${pos.t.toFixed(1)}px)`;
       dot.style.transform = `translate(${ax.toFixed(1)}px, ${ay.toFixed(1)}px)`;
-      const lx = clamp(ax, left + 14, left + size.w - 14);
+      const lx = clamp(ax, pos.l + 14, pos.l + size.w - 14);
+      const ly = ay > pos.t + size.h / 2 ? pos.t + size.h : pos.t;
       line.setAttribute('x1', ax.toFixed(1));
       line.setAttribute('y1', ay.toFixed(1));
       line.setAttribute('x2', lx.toFixed(1));
-      line.setAttribute('y2', (below ? top : top + size.h).toFixed(1));
+      line.setAttribute('y2', ly.toFixed(1));
     },
     onScore([a, b]) {
       for (const [el, v] of [[sa, a], [sb, b]]) {
@@ -1079,6 +1107,19 @@
       e.preventDefault();
       api.swing();
     }
+  });
+
+  // La cancha arranca cuando Analytics ya terminó de cargar: su script se come
+  // ~200 ms del teléfono y, si coincide con la entrada, la animación se traba.
+  ui.startGate = new Promise((res) => {
+    const done = () => setTimeout(res, 80);
+    if (window.__ga) return done();
+    const ga = document.getElementById('ga');
+    if (ga) {
+      ga.addEventListener('load', done, { once: true });
+      ga.addEventListener('error', done, { once: true });
+    }
+    setTimeout(res, 2000);
   });
 
   try {
