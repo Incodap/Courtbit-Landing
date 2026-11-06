@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<script>
+  (function () {
+    var d = document.documentElement;
+    try {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'animate' in d) {
+        d.classList.add('bits');
+        setTimeout(function () { d.classList.remove('bits'); }, 2500);
+      }
+    } catch (e) {}
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#0b241e">
+<meta name="color-scheme" content="dark">
+
+<title>Contacto | CourtBit</title>
+<meta name="description" content="WhatsApp, Instagram, Facebook y sitio web de CourtBit: reservas, academias y competencias de pádel en una sola plataforma.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.courtbit.com.mx/business-card/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.courtbit.com.mx/business-card/">
+<meta property="og:title" content="Contacto | CourtBit">
+<meta property="og:description" content="Escríbenos por WhatsApp o síguenos en Instagram y Facebook.">
+<meta property="og:image" content="https://www.courtbit.com.mx/Assets/marketing/og/og-default.png">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="CourtBit">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="modulepreload" href="vendor/three-0.169.0.module.min.js">
+<link rel="modulepreload" href="court3d.js">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap">
+
+<style>
+  :root {
+    --bg: #0b241e;
+    --lime: #B8F02B;
+    --lime-hi: #c9f65c;
+    --ink: #10302a;
+    --chalk: #f4f8f6;
+    --chalk-soft: rgba(244, 248, 246, 0.72);
+    --mint: #c3dcbb;
+    --rule: rgba(244, 248, 246, 0.13);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { background: var(--bg); }
+
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+    background:
+      radial-gradient(120% 55% at 50% 30%, #17432f 0%, rgba(11, 36, 30, 0) 70%),
+      linear-gradient(180deg, #0c271f 0%, #0b241e 45%, #071a14 100%);
+    color: var(--chalk);
+    font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--lime); color: var(--ink); }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding:
+      max(22px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+      max(28px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+  }
+
+  /* ---------- Marca ---------- */
+
+  .brand {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 16px;
+    align-items: center;
+  }
+
+  .tile {
+    grid-row: span 2;
+    width: 62px;
+    aspect-ratio: 1;
+    border-radius: 23%;
+    background: #fbfdfc;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.7);
+  }
+
+  .tile svg { width: 78%; height: auto; display: block; }
+
+  h1 { line-height: 0; }
+
+  .wordmark { display: block; height: 36px; width: auto; aspect-ratio: 648 / 126; }
+
+  .tagline {
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--chalk-soft);
+    text-wrap: balance;
+  }
+
+  /* ---------- Escenario 3D ---------- */
+
+  .stage {
+    position: relative;
+    margin: 6px -20px 4px;
+    height: clamp(300px, 98vw, 50svh);
+    max-height: 470px;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .stage-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: pan-y;
+    cursor: grab;
+    outline: none;
+  }
+
+  .stage-canvas.is-dragging { cursor: grabbing; }
+
+  .poster {
+    display: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .no-3d .poster { display: block; }
+  .no-3d .ar, .no-3d .play { display: none; }
+
+  /* Capa digital: etiqueta anclada a la cancha */
+  .ar {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+
+  .ar.is-on { opacity: 1; }
+  .ar-state { transition: opacity 260ms ease; }
+  .ar-tag.is-swapping .ar-state { opacity: 0; }
+
+  .ar-line { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .ar-line line { stroke: rgba(184, 240, 43, 0.75); stroke-width: 1; }
+
+  .ar-dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    border-radius: 50%;
+    background: var(--lime);
+  }
+
+  .ar-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid rgba(184, 240, 43, 0.45);
+    transform: scale(2);
+  }
+
+  .ar-tag {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 138px;
+    padding: 9px 13px 10px;
+    border-radius: 12px;
+    background: rgba(6, 22, 17, 0.9);
+    border: 1px solid rgba(184, 240, 43, 0.34);
+  }
+
+  .ar-state { display: none; }
+  .ar-tag[data-state="score"] [data-k="score"],
+  .ar-tag[data-state="booking"] [data-k="booking"],
+  .ar-tag[data-state="class"] [data-k="class"] { display: grid; row-gap: 2px; }
+
+  .ar-kicker { font-size: 11.5px; font-weight: 700; color: var(--lime); }
+
+  .ar-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .ar-main b { display: inline-block; min-width: 1.4em; font-weight: 700; }
+  .ar-main i { width: 1px; height: 17px; background: rgba(244, 248, 246, 0.35); }
+  .ar-sub { font-size: 12px; font-weight: 500; color: var(--chalk-soft); }
+
+  /* ---------- Minijuego ---------- */
+
+  .stage { scroll-margin-top: 8px; }
+
+  .play {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    translate: -50% 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 6px 22px 6px 6px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--chalk);
+    color: var(--ink);
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    cursor: pointer;
+    touch-action: manipulation;
+    box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 450ms ease, transform 600ms var(--ease-out), background-color 200ms ease;
+  }
+  .play.is-on { opacity: 1; transform: none; }
+  .play:active { transform: scale(0.96); }
+  .play::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid var(--chalk);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .play.is-on::before { animation: play-ring 1.6s var(--ease-out) 700ms 3; }
+  @keyframes play-ring {
+    from { transform: scale(1); opacity: 0.75; }
+    to { transform: scale(1.18, 1.5); opacity: 0; }
+  }
+  .play-ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    display: grid;
+    place-items: center;
+  }
+  .play-ball svg { width: 24px; height: 24px; fill: var(--lime); }
+  .play.is-on .play-ball svg { animation: hop 1s var(--ease-out) 500ms 4; }
+  @keyframes hop {
+    0%, 100% { transform: none; }
+    30% { transform: translateY(-5px) rotate(-25deg); }
+    55% { transform: translateY(1px) scale(1.06, 0.94); }
+  }
+  .play:focus { outline: none; }
+  .play:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+
+  .hud, .game-tip, .over { display: none; }
+  .is-playing .hud { display: flex; }
+  .is-playing .game-tip.is-on { display: block; }
+  .is-playing .over:not([hidden]) { display: grid; }
+  .is-playing .ar, .is-playing .play, .is-over .hud { display: none; }
+
+  .hud {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: 12px;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none;
+  }
+
+  .hud-score {
+    display: grid;
+    padding: 8px 14px 9px;
+    border-radius: 12px;
+    background: rgba(6, 22, 17, 0.72);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(184, 240, 43, 0.3);
+  }
+  .hud-num { font-size: 26px; font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .hud-lbl { font-size: 12px; font-weight: 500; color: var(--chalk-soft); }
+  .hud-lbl b { color: var(--lime); font-weight: 700; }
+
+  .hud-side { display: flex; align-items: center; gap: 10px; pointer-events: auto; }
+  .hud-lives { display: flex; gap: 6px; padding: 10px 12px; border-radius: 999px; background: rgba(6, 22, 17, 0.72); }
+  .hud-lives i { width: 12px; height: 12px; border-radius: 50%; background: var(--lime); transition: transform 300ms var(--ease-out), opacity 300ms ease; }
+  .hud-lives i.is-lost { opacity: 0.18; transform: scale(0.7); }
+
+  .hud-exit {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(6, 22, 17, 0.72);
+    color: var(--chalk);
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  .hud-exit svg { width: 20px; height: 20px; fill: currentColor; }
+  .hud-exit:focus { outline: none; }
+  .hud-exit:focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; }
+
+  .game-tip {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 24px);
+    padding: 8px 14px;
+    border-radius: 12px;
+    background: rgba(6, 22, 17, 0.78);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: center;
+    color: var(--chalk);
+    pointer-events: none;
+    text-wrap: balance;
+  }
+  .game-tip b { color: var(--lime); }
+
+  .floats { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .float {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--chalk);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  }
+  .float.is-perfect { color: var(--lime); font-size: 19px; }
+  .float.is-miss { color: var(--chalk-soft); }
+  .float.is-tip { font-size: 13px; font-weight: 500; }
+
+  .over {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(320px, calc(100% - 32px));
+    transform: translate(-50%, -50%);
+    justify-items: center;
+    gap: 6px;
+    padding: 22px 20px 16px;
+    border-radius: 18px;
+    background: rgba(6, 22, 17, 0.86);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    backdrop-filter: blur(12px) saturate(140%);
+    border: 1px solid rgba(184, 240, 43, 0.35);
+    text-align: center;
+  }
+  .over-title { font-size: 14px; font-weight: 700; color: var(--lime); }
+  .over-score { font-size: 15px; font-weight: 500; color: var(--chalk-soft); }
+  .over-score b { display: block; font-size: 52px; line-height: 1; font-weight: 700; color: var(--chalk); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .over-best { font-size: 13.5px; font-weight: 500; color: var(--mint); margin-bottom: 8px; }
+  .over-best.is-record { color: var(--lime); font-weight: 700; }
+  .over-actions { display: grid; gap: 8px; width: 100%; }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1.5px solid transparent;
+    font: inherit;
+    font-size: 15.5px;
+    font-weight: 700;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: transform 160ms var(--ease-out), background-color 200ms ease;
+  }
+  .btn svg { width: 18px; height: 18px; fill: currentColor; }
+  .btn:active { transform: scale(0.97); }
+  .btn:focus { outline: none; }
+  .btn:focus-visible { outline: 3px solid var(--chalk); outline-offset: 2px; }
+  .btn--primary { background: var(--lime); color: var(--ink); }
+  .btn--ghost { background: transparent; color: var(--chalk); border-color: rgba(244, 248, 246, 0.5); }
+  .btn--text { background: transparent; color: var(--chalk-soft); min-height: 40px; font-weight: 500; }
+
+  .stage-canvas.is-game { touch-action: none; cursor: crosshair; }
+
+  @media (max-width: 959px) {
+    .stage.is-playing { height: min(66svh, 560px); max-height: none; }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .play:hover { background: #ffffff; }
+    .btn--primary:hover { background: var(--lime-hi); }
+    .btn--ghost:hover { border-color: var(--lime); }
+  }
+
+  /* ---------- Enlaces: panel de control ---------- */
+
+  .links { display: grid; gap: 12px; }
+
+  .cta-wa, .row, .save {
+    position: relative;
+    display: grid;
+    align-items: center;
+    column-gap: 14px;
+    color: var(--chalk);
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: transform 160ms var(--ease-out), background-color 200ms ease, border-color 200ms ease;
+  }
+  .cta-wa:active, .row:active, .save:active { transform: scale(0.98); }
+  .cta-wa:focus, .row:focus, .save:focus { outline: none; }
+  .cta-wa:focus-visible, .row:focus-visible, .save:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+
+  .label { display: block; font-size: 17px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+  .detail.detail--long { font-size: clamp(13px, 3.75vw, 15px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; overflow-wrap: normal; }
+  .detail { display: block; margin-top: 3px; font-size: 15px; font-weight: 500; color: var(--mint); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+  /* WhatsApp: la acción principal, con un destello que la recorre */
+  .cta-wa {
+    grid-template-columns: 46px minmax(0, 1fr) 36px;
+    column-gap: 12px;
+    padding: 14px 12px;
+    border-radius: 20px;
+    background: var(--lime);
+    color: var(--ink);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 18px 34px -20px rgba(0, 0, 0, 0.95);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .cta-wa > * { position: relative; z-index: 1; }
+  .cta-wa::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    bottom: -30%;
+    left: 0;
+    width: 34%;
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: translateX(-160%) skewX(-18deg);
+    pointer-events: none;
+  }
+  .cta-ico {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--lime);
+    display: grid;
+    place-items: center;
+  }
+  .cta-ico svg { width: 26px; height: 26px; fill: currentColor; }
+  .cta-wa .label { font-size: 16.5px; white-space: nowrap; }
+  .cta-wa .detail { color: rgba(16, 48, 42, 0.82); font-size: 16px; }
+  .cta-go, .go-c {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, transform 260ms var(--ease-out);
+  }
+  .cta-go { background: rgba(16, 48, 42, 0.12); }
+  .cta-go svg, .go-c svg { width: 17px; height: 17px; fill: currentColor; }
+
+  /* Panel de vidrio con la cuadrícula del piso de la cancha */
+  .panel {
+    list-style: none;
+    position: relative;
+    border-radius: 20px;
+    background:
+      linear-gradient(rgba(196, 238, 176, 0.045) 1px, transparent 1px) 0 0 / 22px 22px,
+      linear-gradient(90deg, rgba(196, 238, 176, 0.045) 1px, transparent 1px) 0 0 / 22px 22px,
+      rgba(7, 26, 20, 0.6);
+    border: 1px solid rgba(184, 240, 43, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+  }
+  .panel li { position: relative; }
+  .panel li + li::before {
+    content: "";
+    position: absolute;
+    left: 76px;
+    right: 16px;
+    top: 0;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .row, .save { grid-template-columns: 46px minmax(0, 1fr) 36px; padding: 14px 14px 14px 16px; }
+  .row { overflow: hidden; }
+
+  /* Luz que sigue al dedo o al cursor */
+  .row::after, .save::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), rgba(184, 240, 43, 0.14), rgba(184, 240, 43, 0) 70%);
+    opacity: 0;
+    transition: opacity 260ms ease;
+    pointer-events: none;
+  }
+  .row.is-lit::after, .save.is-lit::after { opacity: 1; }
+
+  .tile-ico {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(184, 240, 43, 0.1);
+    border: 1px solid rgba(184, 240, 43, 0.3);
+    color: var(--lime);
+    transition: transform 260ms var(--ease-out), background-color 200ms ease;
+  }
+  .tile-ico svg { width: 24px; height: 24px; fill: currentColor; }
+
+  .go-c { border: 1px solid rgba(244, 248, 246, 0.22); color: var(--chalk); }
+
+  .save {
+    border-radius: 20px;
+    border: 1px solid rgba(244, 248, 246, 0.24);
+    background: rgba(244, 248, 246, 0.03);
+  }
+  .save .tile-ico { background: rgba(244, 248, 246, 0.06); border-color: rgba(244, 248, 246, 0.24); color: var(--chalk); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .cta-wa:hover { background: var(--lime-hi); }
+    .cta-wa:hover .cta-go { background: var(--ink); color: var(--lime); transform: rotate(45deg); }
+    .row:hover .go-c, .save:hover .go-c { background: var(--lime); border-color: var(--lime); color: var(--ink); transform: rotate(45deg); }
+    .save:hover .go-c { transform: none; }
+    .row:hover .tile-ico, .save:hover .tile-ico { transform: scale(1.06); }
+    .save:hover { border-color: rgba(184, 240, 43, 0.5); }
+  }
+
+  /* Bits que arman cada bloque al entrar */
+  .bits-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: grid;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .bits-cover i { display: block; }
+  html.bits .reveal { visibility: hidden; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .brand { animation: rise 600ms var(--ease-out) both; }
+    .cta-wa::after { animation: sheen 6.5s ease-in-out 2.2s infinite; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes sheen {
+      0% { transform: translateX(-160%) skewX(-18deg); }
+      18%, 100% { transform: translateX(360%) skewX(-18deg); }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-wa, .row, .save, .go-c, .cta-go, .tile-ico { transition: none; }
+    .cta-wa:active, .row:active, .save:active { transform: none; }
+  }
+
+  /* ---------- Escritorio: la cancha ocupa el escenario ---------- */
+
+  @media (min-width: 960px) {
+    .page {
+      max-width: none;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 420px);
+      grid-template-rows: 1fr auto auto 1fr;
+      grid-template-areas: "stage ." "stage brand" "stage links" "stage .";
+      column-gap: clamp(32px, 4vw, 72px);
+      row-gap: 36px;
+      padding: 0 clamp(32px, 5vw, 88px) 0 0;
+    }
+    .brand { grid-area: brand; }
+    .links { grid-area: links; }
+    .stage {
+      grid-area: stage;
+      margin: 0;
+      height: 100vh;
+      height: 100svh;
+      max-height: none;
+      position: sticky;
+      top: 0;
+    }
+    .tile { width: 68px; }
+    .wordmark { height: 40px; }
+    .play { bottom: clamp(24px, 11svh, 140px); }
+    .cta-wa .label { font-size: 17.5px; }
+  }
+</style>
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FH9P56YWE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-5FH9P56YWE");</script>
+</head>
+<body>
+<main class="page">
+  <header class="brand">
+    <span class="tile" aria-hidden="true">
+      <svg viewBox="186 112 830 412" focusable="false">
+        <polygon fill="#fff" points="571.99 157.9 571.99 464.68 195.93 457.33 236.92 170.39 363.12 139.89 571.99 157.9"/>
+        <polygon fill="#3d7f4b" points="391.45 208.79 367.58 418.83 571.99 418.83 571.99 208.79 391.45 208.79"/>
+        <path fill="#24574b" d="M198.17,441.61l-5.65,39.54c-2.74,19.2,12.16,36.38,31.55,36.38h347.91v-75.92H198.17Z"/>
+        <polygon fill="#25584c" points="368.89 208.79 231.43 208.79 201.43 418.83 342.34 418.83 368.89 208.79"/>
+        <path fill="#225549" d="M571.99,118.35l-300.13.55c-15.84.03-29.25,11.69-31.49,27.37l-5.68,39.75h337.3v-67.66Z"/>
+        <path fill="#1c3e52" d="M969.53,443.05h-232.27l.5-22.03v-9.01h-34.56v-36.55h32.06v-26.04h35.06v-33.05h-34.06v-35.05h32.56v-14.52h19.53v-14.52h-18.03v-26.04h35.06v-19.53l.5-22.03h122.91l-5.06-32.09c-3.11-19.72-20.11-34.25-40.09-34.25h-288.39v399.18h338.2c24.93,0,43.97-24.39,40.09-49.01l-4.02-25.47Z"/>
+        <polygon fill="#fff" points="805.38 206.72 932.26 206.72 928.79 184.69 805.88 184.69 805.38 206.72"/>
+        <polygon fill="#fff" points="737.76 421.02 737.25 443.05 969.53 443.05 966.05 421.02 737.76 421.02"/>
+        <polygon fill="#a8cd51" points="932.26 206.72 805.38 206.72 805.38 226.25 770.31 226.25 770.31 252.28 788.34 252.28 788.34 266.8 768.81 266.8 768.81 281.32 736.25 281.32 736.25 316.37 770.31 316.37 770.31 349.42 735.25 349.42 735.25 375.45 703.19 375.45 703.19 412.01 737.76 412.01 737.76 421.02 966.05 421.02 932.26 206.72"/>
+        <rect fill="#1c4452" x="788.24" y="281.31" width="28.57" height="28.57"/>
+        <rect fill="#1c4452" x="772.71" y="377.04" width="37.09" height="37.09"/>
+        <rect fill="#a7cd50" x="672.47" y="420.14" width="30.07" height="30.07"/>
+        <rect fill="#fff" x="616.84" y="467.25" width="33.58" height="33.58"/>
+        <rect fill="#fff" x="639.4" y="375.53" width="33.58" height="33.58"/>
+        <rect fill="#a7cd50" x="633.38" y="316.4" width="31.57" height="31.57"/>
+        <rect fill="#63af5a" x="698.53" y="319.9" width="28.07" height="28.07"/>
+        <rect fill="#a7cd50" x="672.97" y="262.27" width="28.57" height="28.57"/>
+        <rect fill="#a7cd50" x="706.05" y="189.6" width="33.58" height="33.58"/>
+        <rect fill="#a7cd50" x="766.19" y="189.6" width="29.07" height="29.07"/>
+        <rect fill="#63af5a" x="617.34" y="265.28" width="28.57" height="28.57"/>
+        <rect fill="#fdfdfd" x="594.79" y="272.29" width="17.04" height="47.11"/>
+        <rect fill="#fdfdfd" x="594.79" y="223.68" width="21.55" height="30.57"/>
+        <rect fill="#fdfdfd" x="593.33" y="180.58" width="24.02" height="30.07"/>
+        <rect fill="#fff" x="615.84" y="131.97" width="34.58" height="34.58"/>
+        <rect fill="#fff" x="631.38" y="217.67" width="34.58" height="34.58"/>
+        <rect fill="#fdfdfd" x="594.79" y="333.94" width="24.56" height="38.09"/>
+        <rect fill="#fdfdfd" x="594.79" y="386.56" width="24.56" height="20.55"/>
+        <rect fill="#fdfdfd" x="593.33" y="418.13" width="26.02" height="31.07"/>
+      </svg>
+    </span>
+    <h1>
+      <span class="sr-only" translate="no">CourtBit</span>
+      <svg class="wordmark" viewBox="428 248 648 126" aria-hidden="true" focusable="false">
+        <g fill="#f4f8f6">
+          <path d="M526.91,259.49l-3.5,21.88c-11.14-.32-18.47-.48-32.48-.48s-18.15,4.15-21.81,32.58c-3.34,24.27-1.91,30.34,11.62,30.34,15.6,0,24.36-.32,34.39-1.28l1.11,22.04c-11.3,3.51-21.17,4.79-36.77,4.79-35.34,0-47.44-15.65-41.55-58.12,6.05-43.59,19.1-55.89,54.44-55.89,15.92,0,24.36,1.28,34.55,4.15Z"/>
+          <path d="M613.82,328.95c-4.3,29.86-16.4,40.4-46.64,40.4s-43.14-11.5-38.68-42.64c4.14-30.18,16.24-40.88,46.96-40.88s42.82,11.82,38.37,43.11ZM558.58,328.95c-2.23,16.29-.8,20.12,9.55,20.12s13.21-4.31,15.76-22.36c2.55-16.61.8-20.44-8.92-20.44-10.51,0-13.69,3.99-16.4,22.67Z"/>
+          <path d="M701.22,367.43h-22.61l-.16-14.21c-11.78,11.34-22.13,16.45-33.27,16.45-15.92,0-23.24-8.46-21.17-22.67l8.12-58.92h29.13l-7.32,50.78c-.64,4.95,1.11,6.39,4.62,6.39,5.73,0,10.35-2.55,18.31-8.78l6.69-48.38h28.66l-10.98,79.36Z"/>
+          <path d="M783.2,312.5h-6.69c-6.21,0-12.42,1.92-23.4,5.59l-6.69,49.34h-29.13l11.14-79.36h22.61l.64,12.62c11.3-10.06,22.45-14.85,32.32-14.85h5.41l-6.21,26.67Z"/>
+          <path d="M827.61,340.45c-.8,4.95.16,6.23,5.73,6.23h9.87l1.43,19.32c-6.69,2.56-18.47,3.51-24.36,3.51-15.6,0-24.52-8.78-22.45-23l5.89-40.24h-13.85l2.23-17.41,14.33-.8,3.18-21.4h28.5l-3.02,21.4h20.22l-2.55,18.2h-20.22l-4.94,34.17Z"/>
+        </g>
+        <g fill="#9ac144">
+          <path d="M928.85,309.95l-.16.8c17.03,1.44,22.29,12.46,19.74,30.34-3.18,22.2-14.65,27.62-41.23,27.62-23.56,0-35.98-.16-50.78-1.28l15.44-110.18c13.05-1.12,24.36-1.28,42.66-1.28,28.34,0,39.8,6.71,36.77,29.86-2.07,15.33-7.64,22.83-22.45,24.11ZM907.68,319.85h-15.44l-3.82,27.31h13.21c11.94,0,15.28-2.56,17.03-14.21,1.43-10.7-.8-13.09-10.98-13.09ZM913.57,277.53h-15.44l-3.18,23.31h13.37c9.87,0,12.9-2.4,14.49-13.09,1.11-8.14-1.11-10.22-9.23-10.22Z"/>
+          <path d="M958.62,367.43l10.98-79.36h28.81l-10.98,79.36h-28.81ZM994.28,252.3c6.21,0,8.92,3.03,8.28,9.1l-1.12,8.3c-.8,5.59-3.5,7.98-9.39,7.98h-11.78c-6.05,0-8.76-2.87-7.96-9.1l1.11-8.3c.48-5.43,3.5-7.98,9.39-7.98h11.46Z"/>
+          <path d="M1044.74,340.45c-.8,4.95.16,6.23,5.73,6.23h9.87l1.43,19.32c-6.69,2.56-18.47,3.51-24.36,3.51-15.6,0-24.52-8.78-22.45-23l5.89-40.24h-13.85l2.23-17.41,14.33-.8,3.18-21.4h28.5l-3.02,21.4h20.22l-2.55,18.2h-20.22l-4.94,34.17Z"/>
+        </g>
+      </svg>
+    </h1>
+    <p class="tagline">Reservas, academias y competencias de pádel.</p>
+  </header>
+
+  <section class="stage" id="stage" aria-label="Cancha de pádel en 3D. Puedes girarla o tocarla para sacar una bola.">
+    <img class="poster" src="court-poster.webp" alt="Cancha de pádel de CourtBit en 3D" width="940" height="922" loading="lazy">
+    <div class="ar" aria-hidden="true">
+      <svg class="ar-line" focusable="false"><line x1="0" y1="0" x2="0" y2="0"/></svg>
+      <span class="ar-dot"></span>
+      <div class="ar-tag" data-state="score">
+        <div class="ar-state" data-k="score">
+          <span class="ar-kicker">Competencias</span>
+          <span class="ar-main"><b class="sa">15</b><i></i><b class="sb">30</b></span>
+          <span class="ar-sub">Marcador en vivo</span>
+        </div>
+        <div class="ar-state" data-k="booking">
+          <span class="ar-kicker">Reservas</span>
+          <span class="ar-main">19:00</span>
+          <span class="ar-sub">Cancha 1 reservada</span>
+        </div>
+        <div class="ar-state" data-k="class">
+          <span class="ar-kicker">Academias</span>
+          <span class="ar-main">7:00</span>
+          <span class="ar-sub">Clase grupal confirmada</span>
+        </div>
+      </div>
+    </div>
+    <button class="play" type="button" hidden>
+      <span class="play-ball"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M201.57,54.46a104,104,0,1,0,0,147.08A103.4,103.4,0,0,0,201.57,54.46ZM65.75,65.77a87.63,87.63,0,0,1,53.66-25.31A87.31,87.31,0,0,1,94,94.06a87.42,87.42,0,0,1-53.62,25.35A87.58,87.58,0,0,1,65.75,65.77ZM40.33,135.48a103.29,103.29,0,0,0,65-30.11,103.24,103.24,0,0,0,30.13-65,87.78,87.78,0,0,1,80.18,80.14,104,104,0,0,0-95.16,95.1,87.78,87.78,0,0,1-80.18-80.14Zm149.92,54.75a87.69,87.69,0,0,1-53.66,25.31,88,88,0,0,1,79-78.95A87.58,87.58,0,0,1,190.25,190.23Z"/></svg></span>
+      <span>Jugar minijuego</span>
+    </button>
+
+    <div class="hud">
+      <div class="hud-score">
+        <b class="hud-num">0</b>
+        <span class="hud-lbl">puntos · récord <b class="hud-best">0</b></span>
+      </div>
+      <div class="hud-side">
+        <span class="hud-lives" aria-hidden="true"><i></i><i></i><i></i></span>
+        <button class="hud-exit" type="button" aria-label="Salir del juego">
+          <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <p class="game-tip"><b>Deja que bote</b> y toca la cancha del rival cuando el aro se cierre. Donde toques, ahí va tu bola.</p>
+    <div class="floats" aria-hidden="true"></div>
+
+    <div class="over" role="dialog" aria-labelledby="over-title" hidden>
+      <p class="over-title" id="over-title">Fin del juego</p>
+      <p class="over-score"><b class="over-num">0</b>puntos</p>
+      <p class="over-best"></p>
+      <div class="over-actions">
+        <button class="btn btn--primary" type="button" data-act="again">
+          <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M224,128a96,96,0,0,1-94.71,96H128A95.38,95.38,0,0,1,62.1,197.8a8,8,0,0,1,11-11.63A80,80,0,1,0,71.43,71.39a3.07,3.07,0,0,1-.26.25L44.59,96H72a8,8,0,0,1,0,16H24a8,8,0,0,1-8-8V56a8,8,0,0,1,16,0V85.8L60.25,60A96,96,0,0,1,224,128Z"/></svg>
+          Jugar otra vez
+        </button>
+        <button class="btn btn--ghost" type="button" data-act="share">
+          <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg>
+          Retar a un amigo
+        </button>
+        <button class="btn btn--text" type="button" data-act="exit">Salir</button>
+      </div>
+    </div>
+    <p class="sr-only" id="game-live" aria-live="polite"></p>
+  </section>
+
+  <nav class="links" aria-label="Contacto">
+    <a class="cta-wa reveal" href="https://wa.me/526221471800?text=Hola%20CourtBit%2C%20escane%C3%A9%20su%20tarjeta%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." data-track="whatsapp" data-bits="lime">
+      <span class="cta-ico"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg></span>
+      <span>
+        <span class="label">Escríbenos por <span translate="no">WhatsApp</span></span>
+        <span class="detail">+52 622 147 1800</span>
+      </span>
+      <span class="cta-go"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+    </a>
+
+    <ul class="panel reveal" role="list">
+      <li>
+        <a class="row" href="mailto:contacto@courtbit.com.mx?subject=Contacto%20desde%20la%20tarjeta%20de%20CourtBit" data-track="email">
+          <span class="tile-ico"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg></span>
+          <span>
+            <span class="label">Correo</span>
+            <span class="detail detail--long" translate="no">contacto@courtbit.com.mx</span>
+          </span>
+          <span class="go-c"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+        </a>
+      </li>
+      <li>
+        <a class="row" href="https://www.courtbit.com.mx/" data-track="sitio">
+          <span class="tile-ico"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm88,104a87.61,87.61,0,0,1-3.33,24H174.16a157.44,157.44,0,0,0,0-48h38.51A87.61,87.61,0,0,1,216,128ZM102,168H154a115.11,115.11,0,0,1-26,45A115.27,115.27,0,0,1,102,168Zm-3.9-16a140.84,140.84,0,0,1,0-48h59.88a140.84,140.84,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.84a157.44,157.44,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154,88H102a115.11,115.11,0,0,1,26-45A115.27,115.27,0,0,1,154,88Zm52.33,0H170.71a135.28,135.28,0,0,0-22.3-45.6A88.29,88.29,0,0,1,206.37,88ZM107.59,42.4A135.28,135.28,0,0,0,85.29,88H49.63A88.29,88.29,0,0,1,107.59,42.4ZM49.63,168H85.29a135.28,135.28,0,0,0,22.3,45.6A88.29,88.29,0,0,1,49.63,168Zm98.78,45.6a135.28,135.28,0,0,0,22.3-45.6h35.66A88.29,88.29,0,0,1,148.41,213.6Z"/></svg></span>
+          <span>
+            <span class="label">Sitio web</span>
+            <span class="detail" translate="no">courtbit.com.mx</span>
+          </span>
+          <span class="go-c"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+        </a>
+      </li>
+      <li>
+        <a class="row" href="https://www.instagram.com/courtbit/" data-track="instagram">
+          <span class="tile-ico"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/></svg></span>
+          <span>
+            <span class="label" translate="no">Instagram</span>
+            <span class="detail" translate="no">@courtbit</span>
+          </span>
+          <span class="go-c"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+        </a>
+      </li>
+      <li>
+        <a class="row" href="https://www.facebook.com/profile.php?id=61591753200759" data-track="facebook">
+          <span class="tile-ico"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"/></svg></span>
+          <span>
+            <span class="label" translate="no">Facebook</span>
+            <span class="detail" translate="no">CourtBit</span>
+          </span>
+          <span class="go-c"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+        </a>
+      </li>
+    </ul>
+
+    <a class="save reveal" href="courtbit.vcf" type="text/vcard" data-track="vcard">
+      <span class="tile-ico"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136Zm-57.87,58.85a8,8,0,0,1-12.26,10.3C165.75,181.19,138.09,168,108,168s-57.75,13.19-77.87,37.15a8,8,0,0,1-12.25-10.3c14.94-17.78,33.52-30.41,54.17-37.17a68,68,0,1,1,71.9,0C164.6,164.44,183.18,177.07,198.13,194.85ZM108,152a52,52,0,1,0-52-52A52.06,52.06,0,0,0,108,152Z"/></svg></span>
+      <span>
+        <span class="label">Guardar contacto</span>
+        <span class="detail">Agrégalo a tus contactos</span>
+      </span>
+      <span class="go-c"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg></span>
+    </a>
+  </nav>
+
+  <script>
+    // Cada bloque se arma con bits, como la cancha. Sin JS o sin movimiento, se ve directo.
+    (function () {
+      var html = document.documentElement;
+      if (!html.classList.contains('bits')) return;
+      var DARK = ['#0f2c24', '#0f2c24', '#0f2c24', '#123629', '#b8f02b', '#a7cd50', '#63af5a', '#f4f8f6'];
+      var LIME = ['#b8f02b', '#b8f02b', '#c9f65c', '#a7cd50', '#63af5a', '#0f2c24', '#f4f8f6'];
+      var els = document.querySelectorAll('.reveal');
+      els.forEach(function (el, n) {
+        var r = el.getBoundingClientRect();
+        var size = 15;
+        var cols = Math.max(1, Math.ceil(r.width / size));
+        var rows = Math.max(1, Math.ceil(r.height / size));
+        var pal = el.getAttribute('data-bits') === 'lime' ? LIME : DARK;
+        var cover = document.createElement('span');
+        cover.className = 'bits-cover';
+        cover.setAttribute('aria-hidden', 'true');
+        cover.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+        cover.style.gridTemplateRows = 'repeat(' + rows + ', 1fr)';
+        var cells = [];
+        for (var j = 0; j < rows; j++) for (var i = 0; i < cols; i++) {
+          var c = document.createElement('i');
+          c.style.background = pal[(Math.random() * pal.length) | 0];
+          cover.appendChild(c);
+          cells.push([c, i / cols]);
+        }
+        el.appendChild(cover);
+        var base = 250 + n * 140, end = 0;
+        cells.forEach(function (it) {
+          var d = base + it[1] * 420 + Math.random() * 220;
+          end = Math.max(end, d + 260);
+          it[0].animate([{ opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(.4)' }], { duration: 260, delay: d, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'forwards' });
+        });
+        setTimeout(function () { cover.remove(); }, end + 60);
+      });
+      html.classList.remove('bits');
+    })();
+
+    // Guardar contacto: en Android (Chrome) abre directo el formulario de contacto nuevo,
+    // ya lleno. Si el teléfono no lo permite, Chrome cae a la vCard. En iPhone la vCard
+    // abre la ficha del contacto con "Crear contacto nuevo".
+    (function () {
+      var ua = navigator.userAgent;
+      var inApp = /; wv\)|FBAN|FBAV|Instagram|Line\//.test(ua);
+      if (!/Android/i.test(ua) || inApp) return;
+      var vcf = new URL('courtbit.vcf', location.href).href;
+      var extra = function (k, v) { return 'S.' + k + '=' + encodeURIComponent(v) + ';'; };
+      var intent = 'intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/raw_contact;' +
+        extra('name', 'CourtBit') + extra('company', 'CourtBit') + extra('phone', '+52 622 147 1800') +
+        extra('email', 'contacto@courtbit.com.mx') + extra('notes', 'https://www.courtbit.com.mx/') +
+        extra('browser_fallback_url', vcf) + 'end';
+      document.querySelector('.save').setAttribute('href', intent);
+    })();
+
+    // Luz que sigue al dedo o al cursor sobre cada enlace
+    document.querySelectorAll('.row, .save').forEach(function (el) {
+      function at(e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }
+      el.addEventListener('pointerenter', function (e) { at(e); el.classList.add('is-lit'); });
+      el.addEventListener('pointermove', at);
+      el.addEventListener('pointerdown', function (e) { at(e); el.classList.add('is-lit'); });
+      el.addEventListener('pointerleave', function () { el.classList.remove('is-lit'); });
+      el.addEventListener('pointercancel', function () { el.classList.remove('is-lit'); });
+    });
+  </script>
+</main>
+
+<noscript><style>.poster { display: block; }</style></noscript>
+
+<script>
+  document.querySelector('.links').addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-track]');
+    if (a && typeof window.gtag === 'function') {
+      window.gtag('event', 'business_card_click', { link_id: a.getAttribute('data-track') });
+    }
+  });
+</script>
+
+<script type="module">
+  const stage = document.getElementById('stage');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ar = stage.querySelector('.ar');
+  const tag = ar.querySelector('.ar-tag');
+  const dot = ar.querySelector('.ar-dot');
+  const line = ar.querySelector('.ar-line line');
+  const sa = tag.querySelector('.sa');
+  const sb = tag.querySelector('.sb');
+
+  const ORDER = ['score', 'booking', 'class'];
+  const HOLD = { score: 9, booking: 7, class: 7 };
+  const AR_AT = 6.2; // la capa digital entra cuando la cancha ya se asentó
+  let idx = 0, nextAt = AR_AT + HOLD.score, arOn = false, size = null;
+
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const measure = () => { size = { w: tag.offsetWidth, h: tag.offsetHeight }; };
+
+  const ui = {
+    reduce,
+    ar(ax, ay, W, H) {
+      if (!size) measure();
+      // La etiqueta se va en diagonal hacia el lado con más aire, para no tapar la cancha
+      const toLeft = ax > W / 2;
+      const left = clamp(toLeft ? ax - size.w - 34 : ax + 34, 10, W - size.w - 10);
+      let top = ay - size.h - 64;
+      const below = top < 10;
+      if (below) top = Math.min(ay + 52, H - size.h - 10);
+      tag.style.transform = `translate(${left.toFixed(1)}px, ${top.toFixed(1)}px)`;
+      dot.style.transform = `translate(${ax.toFixed(1)}px, ${ay.toFixed(1)}px)`;
+      const lx = clamp(ax, left + 14, left + size.w - 14);
+      line.setAttribute('x1', ax.toFixed(1));
+      line.setAttribute('y1', ay.toFixed(1));
+      line.setAttribute('x2', lx.toFixed(1));
+      line.setAttribute('y2', (below ? top : top + size.h).toFixed(1));
+    },
+    onScore([a, b]) {
+      for (const [el, v] of [[sa, a], [sb, b]]) {
+        if (el.textContent === v) continue;
+        el.textContent = v;
+      }
+    },
+    onTime(t) {
+      if (!arOn && t > AR_AT) { ar.classList.add('is-on'); arOn = true; }
+      if (!reduce && t > nextAt) {
+        idx = (idx + 1) % ORDER.length;
+        const next = ORDER[idx];
+        nextAt = t + HOLD[next];
+        // Solo el texto cambia con un fundido corto; la etiqueta no parpadea
+        tag.classList.add('is-swapping');
+        setTimeout(() => {
+          tag.dataset.state = next;
+          measure();
+          if (ui.setAnchor) ui.setAnchor(next);
+          requestAnimationFrame(() => tag.classList.remove('is-swapping'));
+        }, 270);
+      }
+    },
+  };
+
+  // ---------- Minijuego ----------
+  const play = stage.querySelector('.play');
+  const hudNum = stage.querySelector('.hud-num');
+  const hudBest = stage.querySelector('.hud-best');
+  const lives = [...stage.querySelectorAll('.hud-lives i')];
+  const tip = stage.querySelector('.game-tip');
+  const floats = stage.querySelector('.floats');
+  const overCard = stage.querySelector('.over');
+  const overNum = overCard.querySelector('.over-num');
+  const overBest = overCard.querySelector('.over-best');
+  const live = document.getElementById('game-live');
+  const wa = document.querySelector('.cta-wa');
+  const WA_BASE = 'https://wa.me/526221471800?text=';
+  const PAGE = 'https://www.courtbit.com.mx/business-card/';
+  const track = (name, params) => { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); };
+  let api = null, lastScore = 0, tipTimer = 0, playShown = false;
+
+  const prevOnTime = ui.onTime;
+  ui.onTime = (t) => {
+    prevOnTime(t);
+    if (!reduce && !playShown && t > 3.4) { play.hidden = false; requestAnimationFrame(() => play.classList.add('is-on')); playShown = true; }
+  };
+
+  ui.onGame = ({ score, lives: n, best, phase }) => {
+    hudNum.textContent = score;
+    hudBest.textContent = best;
+    lives.forEach((el, i) => el.classList.toggle('is-lost', i >= n));
+    if (phase === 'play' && score > 0) tip.classList.remove('is-on');
+  };
+
+  ui.onFloat = (text, x, y, tone) => {
+    const el = document.createElement('span');
+    el.className = 'float' + (tone ? ' is-' + tone : '');
+    el.textContent = text;
+    floats.appendChild(el);
+    const w = el.offsetWidth;
+    const left = Math.min(Math.max(x - w / 2, 8), stage.clientWidth - w - 8);
+    const anim = el.animate([
+      { transform: `translate(${left}px, ${y - 10}px) scale(.9)`, opacity: 0 },
+      { transform: `translate(${left}px, ${y - 34}px) scale(1)`, opacity: 1, offset: 0.25 },
+      { transform: `translate(${left}px, ${y - 64}px) scale(1)`, opacity: 0 },
+    ], { duration: 900, easing: 'cubic-bezier(.23,1,.32,1)' });
+    anim.onfinish = () => el.remove();
+  };
+
+  ui.onGameOver = ({ score, best, record }) => {
+    lastScore = score;
+    overNum.textContent = score;
+    overBest.textContent = record && score > 0 ? '¡Nuevo récord!' : `Récord: ${best}`;
+    overBest.classList.toggle('is-record', record && score > 0);
+    overCard.hidden = false;
+    stage.classList.add('is-over');
+    overCard.querySelector('[data-act="again"]').focus({ preventScroll: true });
+    live.textContent = `Fin del juego. ${score} puntos. ${record && score > 0 ? 'Nuevo récord.' : 'Récord: ' + best + '.'}`;
+    if (score > 0) {
+      const msg = `Hola CourtBit, escaneé su tarjeta e hice ${score} puntos en el minijuego. Quiero más información.`;
+      wa.href = WA_BASE + encodeURIComponent(msg);
+    }
+    track('game_over', { score });
+  };
+
+  function startGame() {
+    if (!api) return;
+    overCard.hidden = true;
+    stage.classList.remove('is-over');
+    stage.classList.add('is-playing');
+    tip.classList.add('is-on');
+    clearTimeout(tipTimer);
+    tipTimer = setTimeout(() => tip.classList.remove('is-on'), 7000);
+    if (!window.matchMedia('(min-width: 960px)').matches) {
+      stage.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+    api.startGame();
+    track('game_start');
+  }
+
+  function exitGame() {
+    if (!api) return;
+    overCard.hidden = true;
+    tip.classList.remove('is-on');
+    stage.classList.remove('is-playing', 'is-over');
+    api.exitGame();
+    play.focus({ preventScroll: true });
+  }
+
+  async function share() {
+    const text = `Hice ${lastScore} puntos en el minijuego de pádel de CourtBit. ¿Me ganas?`;
+    track('game_share', { score: lastScore });
+    if (navigator.share) {
+      try { await navigator.share({ title: 'CourtBit', text, url: PAGE }); return; } catch (e) { if (e && e.name === 'AbortError') return; }
+    }
+    window.location.href = 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + PAGE);
+  }
+
+  play.addEventListener('click', startGame);
+  stage.querySelector('.hud-exit').addEventListener('click', exitGame);
+  overCard.addEventListener('click', (e) => {
+    const act = e.target.closest('[data-act]');
+    if (!act) return;
+    if (act.dataset.act === 'again') startGame();
+    if (act.dataset.act === 'share') share();
+    if (act.dataset.act === 'exit') exitGame();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!stage.classList.contains('is-playing') || !overCard.hidden) return;
+    if (e.key === 'Escape') { exitGame(); return; }
+    if ((e.key === ' ' || e.key === 'Enter') && !e.target.closest('button, a')) {
+      e.preventDefault();
+      api.swing();
+    }
+  });
+
+  try {
+    const { mountCourt } = await import('./court3d.js');
+    api = mountCourt(stage, ui);
+    hudBest.textContent = api.best();
+    stage.classList.add('has-3d');
+  } catch (err) {
+    stage.classList.add('no-3d');
+  }
+</script>
+<script nomodule>document.getElementById('stage').className += ' no-3d';</script>
+</body>
+</html>
