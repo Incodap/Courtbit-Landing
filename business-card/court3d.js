@@ -665,8 +665,8 @@ export function mountCourt(host, ui = {}) {
   // reglas a partir de la secuencia de golpes (MinigameService.scoreFor).
   const ROUND_S = 60;
   const VOLLEY_Z = 3.6;      // zona de volea: de la red a esta distancia, de tu lado
-  const PERFECT_S = 0.09;    // ventana del perfecto alrededor del cierre del aro
-  const HIT_S = 0.3;         // antes de esto, tocar es golpe al aire
+  const PERFECT_S = 0.12;    // ventana del perfecto alrededor del cierre del aro
+  const STUN_S = 0.35;       // un toque a destiempo frena la raqueta; cada toque extra lo alarga
   const MAX_MULT = 5;
   const BASE = [1, 2, 3];    // normal, perfecto, de aire
   const SHOT = { NORMAL: 0, PERFECT: 1, VOLLEY: 2 };
@@ -680,7 +680,7 @@ export function mountCourt(host, ui = {}) {
     // Secuencia de golpes para que el servidor valide la partida: tipo | vidrio<<2 | bit<<3
     events: [], lastShot: null,
     // Práctica guiada la primera vez: 1 deja que bote, 2 de aire, 3 lista para empezar
-    tutorial: 0, cued: false,
+    tutorial: 0, cued: false, stunUntil: 0,
   };
   try { game.best = parseInt(localStorage.getItem(BEST_KEY), 10) || 0; } catch (e) { game.best = 0; }
 
@@ -865,6 +865,23 @@ export function mountCourt(host, ui = {}) {
     coach(game.tutorial, hint);
   }
 
+  // Toque a destiempo: no pierdes, pero la raqueta se frena un instante
+  function tooEarly(now) {
+    game.stunUntil = now + STUN_S * 1000;
+    buzz(20);
+    if (now - (game.tipAt || 0) > 700) {
+      game.tipAt = now;
+      float(game.inFlight ? '¡Espera!' : 'Espera la bola del rival', ball.position, 'tip');
+    }
+    if (!game.tutorial || !game.inFlight) return;
+    const z = ball.position.z;
+    coach(game.tutorial, game.tutorial === 1
+      ? 'Muy pronto. Espera a que bote y entonces toca.'
+      : z <= 0.2
+        ? 'Muy pronto. Espera a que la bola entre a la zona lima.'
+        : 'Tarde para volear. Tócala mientras cruza la zona lima.');
+  }
+
   function coach(step, hint) {
     volleyZone.visible = step !== 1;
     if (ui.onCoach) ui.onCoach({ step, hint: hint || '' });
@@ -889,29 +906,23 @@ export function mountCourt(host, ui = {}) {
     if (game.phase !== 'play') return;
     const now = performance.now();
 
-    // Tu bola va hacia el rival (o él está por pegarle): el toque no cuenta
-    if (!game.inFlight) {
-      if (now - (game.tipAt || 0) > 900) {
-        game.tipAt = now;
-        float('Espera la bola del rival', ball.position, 'tip');
-      }
+    // Raqueta frenada por un toque a destiempo: cada toque extra alarga el freno,
+    // así que tocar sin parar no sirve (la bola se pasa y pierdes)
+    if (now < game.stunUntil) {
+      game.stunUntil = now + STUN_S * 1000;
       return;
     }
 
-    let type;
-    if (game.win) {
-      // Ya botó: hay que esperar a que el aro se cierre
-      if (game.toH > HIT_S) { miss('¡Muy pronto!', 'Muy pronto. Espera a que el aro se cierre sobre la bola.'); return; }
+    let type = null;
+    if (game.inFlight && game.win) {
+      // Ya botó: cualquier toque la devuelve; justo cuando el aro se cierra es perfecto
       if (game.tutorial === 2) { miss('Ya botó', 'Esta vez pégale antes de que bote, cuando cruce la zona lima.'); return; }
       type = Math.abs(game.toH) <= PERFECT_S ? SHOT.PERFECT : SHOT.NORMAL;
-    } else {
-      // Todavía en el aire: solo vale dentro de la zona junto a la red
-      const z = ball.position.z;
-      if (game.tutorial === 1) { miss('Deja que bote', 'Primero deja que bote. Toca cuando el aro se cierre.'); return; }
-      if (z < 0.2) { miss('¡Muy pronto!', 'Muy pronto. Espera a que la bola entre a la zona lima.'); return; }
-      if (z > VOLLEY_Z) { miss('Tarde para volear', 'Tarde. Tócala mientras está dentro de la zona lima.'); return; }
+    } else if (game.inFlight && game.tutorial !== 1 && ball.position.z > 0.2 && ball.position.z < VOLLEY_Z) {
+      // De aire: solo dentro de la zona junto a la red
       type = SHOT.VOLLEY;
     }
+    if (type === null) { tooEarly(now); return; }
 
     if (game.tutorial) {
       // Práctica: no suma puntos, solo avanza
@@ -1001,7 +1012,7 @@ export function mountCourt(host, ui = {}) {
         if (game.win) {
           miss('Se fue', game.tutorial === 2
             ? 'Se fue. Pégale antes del bote, mientras cruza la zona lima.'
-            : 'Se fue. Toca justo cuando el aro se cierre sobre la bola.');
+            : 'Se fue. Cuando bote, toca antes de que pase.');
           return false;
         }
         break;
@@ -1088,8 +1099,13 @@ export function mountCourt(host, ui = {}) {
       const k = clamp(game.toH / game.postT, 0, 1);
       approach.scale.setScalar(0.75 * (1 + k * 1.9));
       approach.material.opacity = 0.35 + 0.6 * (1 - k);
-      hitRing.material.opacity = Math.abs(game.toH) <= PERFECT_S ? 1 : game.toH <= HIT_S ? 0.7 : 0.3;
+      hitRing.material.opacity = Math.abs(game.toH) <= PERFECT_S ? 1 : 0.55;
       hitRing.scale.setScalar(0.75);
+    }
+    // Raqueta frenada: los aros se apagan mientras dura
+    if (performance.now() < game.stunUntil) {
+      approach.material.opacity *= 0.3;
+      hitRing.material.opacity *= 0.3;
     }
     if (bounceMark.visible) {
       bounceMark.scale.setScalar(0.45 + Math.sin(performance.now() / 120) * 0.05);
@@ -1107,7 +1123,7 @@ export function mountCourt(host, ui = {}) {
     Object.assign(game, {
       phase: 'ready', score: 0, n: 0, wait: 1.3, first: true, segs: [], cur: null, win: false, inFlight: false,
       timeLeft: ROUND_S, playTime: 0, combo: 0, mult: 1, maxMult: 1, endReason: '', events: [], lastShot: null,
-      tutorial: tutorial ? 1 : 0, cued: false,
+      tutorial: tutorial ? 1 : 0, cued: false, stunUntil: 0,
     });
     volleyZone.material.opacity = 0.08;
     coach(game.tutorial);

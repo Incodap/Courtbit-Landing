@@ -945,7 +945,7 @@
       </div>
     </div>
 
-    <p class="game-tip"><b>60 segundos, una vida.</b> Toca cuando el aro se cierre o pégale <b>de aire</b> en la zona lima. Perfectos y voleas multiplican tus puntos.</p>
+    <p class="game-tip"><b>60 segundos, una vida.</b> Toca después del bote o pégale <b>de aire</b> en la zona lima. Perfectos y voleas multiplican tus puntos.</p>
     <div class="floats" aria-hidden="true"></div>
 
     <div class="coach" hidden>
@@ -960,8 +960,9 @@
     <div class="ready" role="dialog" aria-labelledby="ready-title" hidden>
       <p class="over-title" id="ready-title">¡Ya sabes jugar!</p>
       <ul class="ready-rules">
-        <li><b>60 segundos y una sola vida.</b> Si tocas a destiempo, pierdes.</li>
+        <li><b>60 segundos y una sola vida.</b> Si se te pasa la bola, pierdes.</li>
         <li><b>Perfectos y voleas seguidos</b> multiplican tus puntos, hasta x5.</li>
+        <li><b>No toques antes de tiempo:</b> tu raqueta se frena un instante.</li>
         <li><b>Dirige tu bola</b> tocando a la izquierda o a la derecha.</li>
       </ul>
       <button class="btn btn--primary" type="button" data-act="begin">Empezar</button>
@@ -1372,7 +1373,7 @@
   // Práctica guiada: solo la primera vez (o desde "Cómo se juega")
   const TUTO_KEY = 'cb-tuto-v1';
   const COACH = {
-    1: ['Deja que bote', 'Cuando el aro se cierre sobre la bola, toca la pantalla.'],
+    1: ['Deja que bote', 'Cuando bote, toca la pantalla. Si tocas justo cuando el aro se cierra, es perfecto.'],
     2: ['Ahora de aire', 'Pégale antes del bote, mientras la bola cruza la zona lima junto a la red.'],
   };
   let tutoSeen = false;
