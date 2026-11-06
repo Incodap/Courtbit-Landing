@@ -681,6 +681,20 @@ export function mountCourt(host, ui = {}) {
   approach.rotation.x = -Math.PI / 2;
   approach.visible = false;
   scene.add(approach);
+  // Donde va a caer tu bola: aparece al pegar y se va cuando bota
+  const aimMark = new THREE.Mesh(ringGeo, ringMat());
+  aimMark.rotation.x = -Math.PI / 2;
+  aimMark.material.opacity = 0.85;
+  aimMark.visible = false;
+  scene.add(aimMark);
+  // Mira tenue que sigue al cursor en la cancha rival (solo con mouse)
+  const aimPreview = new THREE.Mesh(ringGeo, ringMat());
+  aimPreview.rotation.x = -Math.PI / 2;
+  aimPreview.material.opacity = 0.32;
+  aimPreview.scale.setScalar(0.5);
+  aimPreview.visible = false;
+  scene.add(aimPreview);
+  let mouseAim = null;
 
   // Bits objetivo en la cancha rival: si tu bola cae cerca, vale doble
   const targets = [0, 1].map(() => {
@@ -797,7 +811,7 @@ export function mountCourt(host, ui = {}) {
     game.inFlight = false;
     game.lives--;
     game.streak = 0;
-    hitRing.visible = approach.visible = bounceMark.visible = false;
+    hitRing.visible = approach.visible = bounceMark.visible = aimMark.visible = false;
     float('Se fue', ball.position, 'miss');
     buzz(70);
     emit();
@@ -809,16 +823,22 @@ export function mountCourt(host, ui = {}) {
     }
   }
 
+  // Puntería: si tocas la cancha del rival, la bola va a ese punto exacto. Si tocas en
+  // cualquier otro lado (la bola, el aro, tu cancha), el lado de la pantalla decide la
+  // dirección: izquierda, centro o derecha; la profundidad la da el golpe.
   function aimFrom(clientX, clientY) {
     const r = canvas.getBoundingClientRect();
-    const ndc = new THREE.Vector2(((clientX - r.left) / r.width) * 2 - 1, -((clientY - r.top) / r.height) * 2 + 1);
+    const u = ((clientX - r.left) / r.width) * 2 - 1;
+    const ndc = new THREE.Vector2(u, -((clientY - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(ndc, camera);
     const hit = ray.ray.intersectPlane(ground, V());
-    if (!hit) return V(0, 0, -5);
-    return V(clamp(hit.x, -4.4, 4.4), 0, -clamp(Math.abs(hit.z), 1.6, 9.2));
+    if (hit && hit.z < -0.8 && Math.abs(hit.x) < 5.6) {
+      return { x: clamp(hit.x, -4.4, 4.4), z: clamp(hit.z, -9.2, -1.6), exact: true };
+    }
+    return { x: clamp(u * 1.35, -1, 1) * 4.2, z: null, exact: false };
   }
 
-  function swing(aim) {
+  function swing(aimRaw) {
     if (game.phase !== 'play') return;
     if (!game.win) {
       const now = performance.now();
@@ -843,6 +863,15 @@ export function mountCourt(host, ui = {}) {
     float(label, ball.position, perfect ? 'perfect' : 'ok');
     ring(ball.position.clone(), null, 0.45);
     buzz(perfect ? 22 : 12);
+
+    // A dónde va: el punto exacto si tocaste la cancha rival; si no, la dirección del
+    // toque y una profundidad según el golpe (el perfecto va al fondo)
+    const aim = aimRaw.exact
+      ? V(aimRaw.x, 0, aimRaw.z)
+      : V(clamp(aimRaw.x + rand(-0.35, 0.35), -4.4, 4.4), 0, perfect ? -rand(7.2, 8.6) : -rand(4.2, 6.2));
+    aimMark.position.set(aim.x, 0.035, aim.z);
+    aimMark.scale.setScalar(0.55);
+    aimMark.visible = true;
 
     // Tu devolución y la respuesta del rival (a veces por la pared lima)
     const from = ball.position.clone();
@@ -883,6 +912,7 @@ export function mountCourt(host, ui = {}) {
         if (game.win) { miss(); return false; }
         break;
       case 'rBounce':
+        aimMark.visible = false;
         ring(V(p.x, 0.03, p.z), 'y', 0.8);
         for (const tg of targets) {
           if (tg.visible && tg.userData.goal && Math.hypot(tg.position.x - p.x, tg.position.z - p.z) < 1.35) {
@@ -935,6 +965,8 @@ export function mountCourt(host, ui = {}) {
       bounceMark.scale.setScalar(0.45 + Math.sin(performance.now() / 120) * 0.05);
       markMat.opacity = 0.55;
     }
+    aimPreview.visible = !!mouseAim && !aimMark.visible;
+    if (aimPreview.visible) aimPreview.position.set(mouseAim.x, 0.03, mouseAim.exact ? mouseAim.z : -6);
     runSegs(game, dt, onGameEvent);
   }
 
@@ -950,7 +982,7 @@ export function mountCourt(host, ui = {}) {
     gameAz = Math.round(orbit / TAU) * TAU;
     targets.forEach((tg) => { tg.visible = false; });
     targets.forEach((tg) => placeTarget(tg));
-    hitRing.visible = approach.visible = bounceMark.visible = false;
+    hitRing.visible = approach.visible = bounceMark.visible = aimMark.visible = false;
     canvas.classList.add('is-game');
     dragVel = 0;
     emit();
@@ -963,7 +995,7 @@ export function mountCourt(host, ui = {}) {
     game.segs = [];
     game.cur = null;
     targets.forEach((tg) => { tg.userData.goal = 0; });
-    hitRing.visible = approach.visible = bounceMark.visible = false;
+    hitRing.visible = approach.visible = bounceMark.visible = aimMark.visible = aimPreview.visible = false;
     canvas.classList.remove('is-game');
     rally.segs = [];
     rally.cur = null;
@@ -1050,6 +1082,7 @@ export function mountCourt(host, ui = {}) {
     if (e.pointerType === 'mouse') {
       hover.x = ((e.clientX - r.left) / r.width) * 2 - 1;
       hover.y = ((e.clientY - r.top) / r.height) * 2 - 1;
+      if (mode === 'game') mouseAim = aimFrom(e.clientX, e.clientY);
     }
     if (!down || mode === 'game') return;
     const dx = e.clientX - down.lx;
@@ -1090,7 +1123,7 @@ export function mountCourt(host, ui = {}) {
   canvas.addEventListener('pointerup', release);
   canvas.addEventListener('pointercancel', release);
   canvas.addEventListener('pointerleave', (e) => {
-    if (e.pointerType === 'mouse') { hover.x = 0; hover.y = 0; }
+    if (e.pointerType === 'mouse') { hover.x = 0; hover.y = 0; mouseAim = null; }
   });
 
   // ---------- Tamaño ----------
@@ -1251,6 +1284,7 @@ export function mountCourt(host, ui = {}) {
     // Bola
     if (!reduce && t > INTRO_END - 0.2) {
       if (mode === 'game') stepGame(dt); else stepRally(dt);
+      if (mode !== 'game' || game.phase !== 'play') aimPreview.visible = false;
       ball.visible = ballScale > 0.01;
       ball.scale.setScalar(Math.max(0.001, ballScale));
       blob.visible = ball.visible;
@@ -1406,7 +1440,7 @@ export function mountCourt(host, ui = {}) {
     exitGame,
     // Teclado: espacio pega hacia donde está el cursor, o al centro de la cancha rival
     swing() {
-      swing(lastPointer ? aimFrom(lastPointer.x, lastPointer.y) : V(rand(-2.5, 2.5), 0, -5.5));
+      swing(lastPointer ? aimFrom(lastPointer.x, lastPointer.y) : { x: rand(-2.5, 2.5), z: null, exact: false });
     },
     best: () => game.best,
   };
