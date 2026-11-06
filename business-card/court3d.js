@@ -663,6 +663,8 @@ export function mountCourt(host, ui = {}) {
     phase: 'off', score: 0, lives: 3, n: 0, streak: 0, best: 0,
     segs: [], cur: null, t: 0, wait: 0, first: true,
     win: false, inFlight: false, toH: 0, postT: 1, glass: false, H: null, B: null,
+    // Conteos para que el servidor valide la partida al guardarla en el ranking
+    perfects: 0, glassReturns: 0, bitsHit: 0, playStart: 0,
   };
   try { game.best = parseInt(localStorage.getItem('cb-best'), 10) || 0; } catch (e) { game.best = 0; }
 
@@ -779,7 +781,15 @@ export function mountCourt(host, ui = {}) {
     }
     targets.forEach((tg) => { tg.userData.goal = 0; });
     emit();
-    if (ui.onGameOver) ui.onGameOver({ score: game.score, best: game.best, record });
+    const stats = {
+      score: game.score,
+      returns: game.n,
+      perfects: game.perfects,
+      glass: game.glassReturns,
+      bits: game.bitsHit,
+      durationMs: game.playStart ? Math.round(performance.now() - game.playStart) : 0,
+    };
+    if (ui.onGameOver) ui.onGameOver({ score: game.score, best: game.best, record, stats });
   }
 
   function miss() {
@@ -822,7 +832,8 @@ export function mountCourt(host, ui = {}) {
     const perfect = Math.abs(d) <= 0.12;
     let pts = perfect ? 2 : 1;
     let label = perfect ? '¡Perfecto! +2' : d > 0 ? 'Bien +1' : 'Justo +1';
-    if (game.glass) { pts += 1; label += ' · vidrio +1'; }
+    if (game.glass) { pts += 1; label += ' · vidrio +1'; game.glassReturns++; }
+    if (perfect) game.perfects++;
     game.score += pts;
     game.n++;
     game.streak++;
@@ -876,6 +887,7 @@ export function mountCourt(host, ui = {}) {
         for (const tg of targets) {
           if (tg.visible && tg.userData.goal && Math.hypot(tg.position.x - p.x, tg.position.z - p.z) < 1.35) {
             game.score += 2;
+            game.bitsHit++;
             float('¡Bit! +2', V(tg.position.x, 1, tg.position.z), 'perfect');
             burst(V(tg.position.x, 0.6, tg.position.z), 16);
             tg.userData.goal = 0;
@@ -898,6 +910,7 @@ export function mountCourt(host, ui = {}) {
       game.wait -= dt;
       if (game.wait <= 0) {
         game.phase = 'play';
+        if (!game.playStart) game.playStart = performance.now();
         cpuServe();
         emit();
       }
@@ -928,7 +941,10 @@ export function mountCourt(host, ui = {}) {
   function startGame() {
     if (reduce) return;
     mode = 'game';
-    Object.assign(game, { phase: 'ready', score: 0, lives: 3, n: 0, streak: 0, wait: 1.3, first: true, segs: [], cur: null, win: false, inFlight: false });
+    Object.assign(game, {
+      phase: 'ready', score: 0, lives: 3, n: 0, streak: 0, wait: 1.3, first: true, segs: [], cur: null, win: false, inFlight: false,
+      perfects: 0, glassReturns: 0, bitsHit: 0, playStart: 0,
+    });
     rally.segs = [];
     rally.cur = null;
     gameAz = Math.round(orbit / TAU) * TAU;

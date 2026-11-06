@@ -160,7 +160,7 @@
   }
 
   .no-3d .poster { display: block; }
-  .no-3d .ar, .no-3d .play { display: none; }
+  .no-3d .ar, .no-3d .stage-actions { display: none; }
 
   /* Capa digital: etiqueta anclada a la cancha */
   .ar {
@@ -235,11 +235,42 @@
 
   .stage { scroll-margin-top: 8px; }
 
-  .play {
+  .stage-actions {
     position: absolute;
     left: 50%;
     bottom: 14px;
     translate: -50% 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .stage-actions[hidden] { display: none; }
+
+  .rank-btn {
+    width: 52px;
+    height: 52px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(6, 22, 17, 0.82);
+    color: var(--lime);
+    cursor: pointer;
+    touch-action: manipulation;
+    box-shadow: inset 0 0 0 1.5px rgba(184, 240, 43, 0.55), 0 14px 30px -12px rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 450ms ease 120ms, transform 600ms var(--ease-out) 120ms, background-color 200ms ease;
+  }
+  .rank-btn.is-on { opacity: 1; transform: none; }
+  .rank-btn:active { transform: scale(0.94); }
+  .rank-btn svg { width: 24px; height: 24px; fill: currentColor; }
+  .rank-btn:focus { outline: none; }
+  .rank-btn:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+
+  .play {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -299,7 +330,7 @@
   .is-playing .hud { display: flex; }
   .is-playing .game-tip.is-on { display: block; }
   .is-playing .over:not([hidden]) { display: grid; }
-  .is-playing .ar, .is-playing .play, .is-over .hud { display: none; }
+  .is-playing .ar, .is-playing .stage-actions, .is-over .hud { display: none; }
 
   .hud {
     position: absolute;
@@ -428,12 +459,122 @@
 
   .stage-canvas.is-game { touch-action: none; cursor: crosshair; }
 
+  .over-status { font-size: 14px; font-weight: 500; color: var(--mint); line-height: 1.35; margin: 2px 0 4px; }
+  .over-status.is-error { color: #ffb8ad; }
+  .over-status:empty { display: none; }
+  .over-links { display: flex; justify-content: center; gap: 4px; }
+  .over-note { margin: -2px 0 4px; font-size: 12.5px; color: var(--chalk-soft); text-align: center; }
+  .over-note[hidden] { display: none; }
+  .btn[disabled] { opacity: 0.6; cursor: progress; }
+  .btn[hidden] { display: none; }
+
+  /* ---------- Hojas: ranking e inicio de sesión ---------- */
+
+  dialog.sheet {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: min(560px, 100%);
+    max-width: 100%;
+    max-height: min(90svh, 760px);
+    margin: 0 auto;
+    padding: 0;
+    border: 1px solid rgba(184, 240, 43, 0.24);
+    border-bottom: 0;
+    border-radius: 22px 22px 0 0;
+    background: #0a221b;
+    color: var(--chalk);
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  dialog.sheet::backdrop { background: rgba(2, 10, 8, 0.66); }
+  dialog.sheet[open] { animation: sheet-in 340ms var(--ease-out); }
+  @keyframes sheet-in { from { transform: translateY(28px); opacity: 0; } }
+  @media (min-width: 720px) {
+    dialog.sheet { inset: 0; height: fit-content; margin: auto; border-bottom: 1px solid rgba(184, 240, 43, 0.24); border-radius: 22px; }
+  }
+
+  .sheet-in { padding: 18px 18px max(22px, env(safe-area-inset-bottom)); }
+  .sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .sheet-head h2 { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+  .sheet-head h2 svg { width: 24px; height: 24px; fill: var(--lime); }
+  .sheet-x {
+    width: 44px; height: 44px; flex: none; display: grid; place-items: center;
+    border: 0; border-radius: 50%; background: rgba(244, 248, 246, 0.07); color: var(--chalk); cursor: pointer;
+  }
+  .sheet-x svg { width: 20px; height: 20px; fill: currentColor; }
+  .sheet-x:focus { outline: none; }
+  .sheet-x:focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; }
+  .sheet-sub { margin: 4px 0 16px; font-size: 14px; line-height: 1.4; color: var(--chalk-soft); }
+
+  .board { list-style: none; display: grid; gap: 4px; }
+  .board-row {
+    display: grid;
+    grid-template-columns: 28px 40px minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 12px;
+    padding: 8px 10px;
+    border-radius: 14px;
+  }
+  .board-row.is-me { background: rgba(184, 240, 43, 0.12); box-shadow: inset 0 0 0 1px rgba(184, 240, 43, 0.4); }
+  .b-rank { text-align: center; font-weight: 700; font-size: 15px; color: var(--chalk-soft); font-variant-numeric: tabular-nums; }
+  .board-row.is-podium .b-rank { color: var(--lime); }
+  .b-avatar {
+    width: 40px; height: 40px; border-radius: 50%; overflow: hidden;
+    display: grid; place-items: center;
+    background: #163d31; color: var(--lime); font-size: 14px; font-weight: 700;
+  }
+  .b-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .b-name { font-size: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .b-name small { font-size: 12px; font-weight: 500; color: var(--lime); margin-left: 6px; }
+  .b-score { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .board-skel { height: 56px; border-radius: 14px; background: rgba(244, 248, 246, 0.05); }
+  .board-msg { padding: 22px 8px; text-align: center; font-size: 15px; line-height: 1.45; color: var(--chalk-soft); }
+  .board-me {
+    margin-top: 12px; padding: 12px 14px; border-radius: 14px;
+    background: rgba(184, 240, 43, 0.08); font-size: 14.5px; color: var(--chalk);
+  }
+  .board-me:empty { display: none; }
+  .board-me b { color: var(--lime); }
+  .sheet-foot { margin-top: 16px; display: grid; }
+
+  .auth { display: grid; gap: 14px; }
+  .auth-step { display: grid; gap: 14px; }
+  .auth-step[hidden] { display: none; }
+  .field { display: grid; gap: 6px; font-size: 14px; font-weight: 500; color: var(--chalk-soft); }
+  .field input {
+    min-height: 48px;
+    width: 100%;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(244, 248, 246, 0.24);
+    background: rgba(244, 248, 246, 0.06);
+    color: var(--chalk);
+    font: inherit;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .field input::placeholder { color: rgba(244, 248, 246, 0.5); }
+  .field input:focus { outline: none; }
+  .field input:focus-visible { border-color: var(--lime); box-shadow: 0 0 0 1px var(--lime); }
+  .field .hint { font-size: 12.5px; color: rgba(244, 248, 246, 0.62); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .check { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.4; color: var(--chalk-soft); }
+  .check input { width: 20px; height: 20px; flex: none; margin-top: 1px; accent-color: var(--lime); }
+  .check a { color: var(--lime); }
+  .who { font-size: 14.5px; color: var(--chalk-soft); overflow-wrap: anywhere; }
+  .who b { color: var(--chalk); font-weight: 600; }
+  .link-btn { border: 0; padding: 0; background: none; color: var(--lime); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .form-msg { font-size: 14px; line-height: 1.4; color: var(--mint); }
+  .form-msg.is-error { color: #ffb8ad; }
+  .form-msg:empty { display: none; }
+
   @media (max-width: 959px) {
     .stage.is-playing { height: min(66svh, 560px); max-height: none; }
   }
 
   @media (hover: hover) and (pointer: fine) {
     .play:hover { background: #ffffff; }
+    .rank-btn:hover { background: rgba(184, 240, 43, 0.16); }
     .btn--primary:hover { background: var(--lime-hi); }
     .btn--ghost:hover { border-color: var(--lime); }
   }
@@ -637,7 +778,7 @@
     }
     .tile { width: 68px; }
     .wordmark { height: 40px; }
-    .play { bottom: clamp(24px, 11svh, 140px); }
+    .stage-actions { bottom: clamp(24px, 11svh, 140px); }
     .cta-wa .label { font-size: 17.5px; }
   }
 </style>
@@ -724,10 +865,13 @@
         </div>
       </div>
     </div>
-    <button class="play" type="button" hidden>
-      <span class="play-ball"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M201.57,54.46a104,104,0,1,0,0,147.08A103.4,103.4,0,0,0,201.57,54.46ZM65.75,65.77a87.63,87.63,0,0,1,53.66-25.31A87.31,87.31,0,0,1,94,94.06a87.42,87.42,0,0,1-53.62,25.35A87.58,87.58,0,0,1,65.75,65.77ZM40.33,135.48a103.29,103.29,0,0,0,65-30.11,103.24,103.24,0,0,0,30.13-65,87.78,87.78,0,0,1,80.18,80.14,104,104,0,0,0-95.16,95.1,87.78,87.78,0,0,1-80.18-80.14Zm149.92,54.75a87.69,87.69,0,0,1-53.66,25.31,88,88,0,0,1,79-78.95A87.58,87.58,0,0,1,190.25,190.23Z"/></svg></span>
+    <div class="stage-actions" hidden>
+      <button class="play" type="button">      <span class="play-ball"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M201.57,54.46a104,104,0,1,0,0,147.08A103.4,103.4,0,0,0,201.57,54.46ZM65.75,65.77a87.63,87.63,0,0,1,53.66-25.31A87.31,87.31,0,0,1,94,94.06a87.42,87.42,0,0,1-53.62,25.35A87.58,87.58,0,0,1,65.75,65.77ZM40.33,135.48a103.29,103.29,0,0,0,65-30.11,103.24,103.24,0,0,0,30.13-65,87.78,87.78,0,0,1,80.18,80.14,104,104,0,0,0-95.16,95.1,87.78,87.78,0,0,1-80.18-80.14Zm149.92,54.75a87.69,87.69,0,0,1-53.66,25.31,88,88,0,0,1,79-78.95A87.58,87.58,0,0,1,190.25,190.23Z"/></svg></span>
       <span>Jugar minijuego</span>
-    </button>
+    
+      </button>
+      <button class="rank-btn" type="button" aria-label="Ver ranking" data-act="ranking"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-29,64.64-64,64.9a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"/></svg></button>
+    </div>
 
     <div class="hud">
       <div class="hud-score">
@@ -749,16 +893,25 @@
       <p class="over-title" id="over-title">Fin del juego</p>
       <p class="over-score"><b class="over-num">0</b>puntos</p>
       <p class="over-best"></p>
+      <p class="over-status" aria-live="polite"></p>
       <div class="over-actions">
-        <button class="btn btn--primary" type="button" data-act="again">
+        <button class="btn btn--primary" type="button" data-act="save">
+          <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-29,64.64-64,64.9a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"/></svg>
+          Guardar en el ranking
+        </button>
+        <p class="over-note">Tu nombre y foto de perfil aparecerán en el ranking.</p>
+        <button class="btn btn--primary" type="button" data-act="ranking" hidden>
+          <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-29,64.64-64,64.9a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"/></svg>
+          Ver ranking
+        </button>
+        <button class="btn btn--ghost" type="button" data-act="again">
           <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M224,128a96,96,0,0,1-94.71,96H128A95.38,95.38,0,0,1,62.1,197.8a8,8,0,0,1,11-11.63A80,80,0,1,0,71.43,71.39a3.07,3.07,0,0,1-.26.25L44.59,96H72a8,8,0,0,1,0,16H24a8,8,0,0,1-8-8V56a8,8,0,0,1,16,0V85.8L60.25,60A96,96,0,0,1,224,128Z"/></svg>
           Jugar otra vez
         </button>
-        <button class="btn btn--ghost" type="button" data-act="share">
-          <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg>
-          Retar a un amigo
-        </button>
-        <button class="btn btn--text" type="button" data-act="exit">Salir</button>
+        <div class="over-links">
+          <button class="btn btn--text" type="button" data-act="share">Retar a un amigo</button>
+          <button class="btn btn--text" type="button" data-act="exit">Salir</button>
+        </div>
       </div>
     </div>
     <p class="sr-only" id="game-live" aria-live="polite"></p>
@@ -913,6 +1066,68 @@
   </script>
 </main>
 
+<dialog class="sheet" id="rank-sheet" aria-labelledby="rank-title">
+  <div class="sheet-in">
+    <div class="sheet-head">
+      <h2 id="rank-title"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-29,64.64-64,64.9a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"/></svg>Ranking</h2>
+      <button class="sheet-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button>
+    </div>
+    <p class="sheet-sub">El mejor puntaje de cada jugador en el minijuego.</p>
+    <ol class="board" aria-live="polite"></ol>
+    <p class="board-me"></p>
+    <div class="sheet-foot">
+      <button class="btn btn--primary" type="button" data-act="play-from-rank">Jugar minijuego</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="sheet" id="login-sheet" aria-labelledby="login-title">
+  <div class="sheet-in">
+    <div class="sheet-head">
+      <h2 id="login-title">Guarda tu puntaje</h2>
+      <button class="sheet-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button>
+    </div>
+    <p class="sheet-sub">Entra con tu cuenta de CourtBit. Tu nombre y tu foto de perfil aparecerán en el ranking.</p>
+    <form class="auth" novalidate>
+      <div class="auth-step" data-step="email">
+        <label class="field">Correo
+          <input type="email" name="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="tu@correo.com" required>
+        </label>
+        <button class="btn btn--primary" type="submit">Continuar</button>
+      </div>
+      <div class="auth-step" data-step="login" hidden>
+        <p class="who">Entrando como <b class="who-email"></b> · <button class="link-btn" type="button" data-act="change-email">Cambiar</button></p>
+        <label class="field">Contraseña
+          <input type="password" name="password" autocomplete="current-password" required>
+        </label>
+        <button class="btn btn--primary" type="submit">Entrar y guardar</button>
+        <button class="btn btn--text" type="button" data-act="forgot">Olvidé mi contraseña</button>
+      </div>
+      <div class="auth-step" data-step="register" hidden>
+        <p class="who">Crea tu cuenta con <b class="who-email"></b> · <button class="link-btn" type="button" data-act="change-email">Cambiar</button></p>
+        <div class="two">
+          <label class="field">Nombre
+            <input type="text" name="first_name" autocomplete="given-name" required>
+          </label>
+          <label class="field">Apellido
+            <input type="text" name="last_name" autocomplete="family-name" required>
+          </label>
+        </div>
+        <label class="field">Contraseña
+          <input type="password" name="new_password" autocomplete="new-password" minlength="8" required>
+          <span class="hint">Mínimo 8 caracteres.</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" name="terms" required>
+          <span>Acepto los <a href="/terms/" target="_blank" rel="noopener">Términos y Condiciones</a> y el <a href="/privacy/" target="_blank" rel="noopener">Aviso de Privacidad</a>.</span>
+        </label>
+        <button class="btn btn--primary" type="submit">Crear cuenta y guardar</button>
+      </div>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</dialog>
+
 <noscript><style>.poster { display: block; }</style></noscript>
 
 <script>
@@ -998,7 +1213,9 @@
   };
 
   // ---------- Minijuego ----------
+  const actions = stage.querySelector('.stage-actions');
   const play = stage.querySelector('.play');
+  const rankBtn = stage.querySelector('.rank-btn');
   const hudNum = stage.querySelector('.hud-num');
   const hudBest = stage.querySelector('.hud-best');
   const lives = [...stage.querySelectorAll('.hud-lives i')];
@@ -1007,6 +1224,11 @@
   const overCard = stage.querySelector('.over');
   const overNum = overCard.querySelector('.over-num');
   const overBest = overCard.querySelector('.over-best');
+  const overStatus = overCard.querySelector('.over-status');
+  const saveBtn = overCard.querySelector('[data-act="save"]');
+  const viewRankBtn = overCard.querySelector('[data-act="ranking"]');
+  const againBtn = overCard.querySelector('[data-act="again"]');
+  const overNote = overCard.querySelector('.over-note');
   const live = document.getElementById('game-live');
   const wa = document.querySelector('.cta-wa');
   const WA_BASE = 'https://wa.me/526221471800?text=';
@@ -1014,10 +1236,76 @@
   const track = (name, params) => { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); };
   let api = null, lastScore = 0, tipTimer = 0, playShown = false;
 
+  // ---------- API de CourtBit (ranking y cuentas) ----------
+  // En courtbit.com.mx habla con producción; en cualquier otro origen (pruebas), con stage.
+  const API = /(^|\.)courtbit\.com\.mx$/.test(location.hostname)
+    ? 'https://api.courtbit.com.mx/api'
+    : 'https://api-stage.courtbit.com.mx/api';
+  // Mismas llaves que /auth.html: la sesión se comparte en todo courtbit.com.mx.
+  const TOKEN_KEY = 'courtbit_token';
+  const USER_KEY = 'courtbit_user';
+  const getToken = () => { try { return localStorage.getItem(TOKEN_KEY); } catch (e) { return null; } };
+  const setSession = (data) => {
+    try { localStorage.setItem(TOKEN_KEY, data.token); localStorage.setItem(USER_KEY, JSON.stringify(data.user || {})); } catch (e) { /* modo privado */ }
+  };
+  const clearSession = () => { try { localStorage.removeItem(TOKEN_KEY); localStorage.removeItem(USER_KEY); } catch (e) { /* nada */ } };
+
+  async function call(path, { method = 'GET', body, auth = false } = {}) {
+    const headers = { Accept: 'application/json' };
+    if (body) headers['Content-Type'] = 'application/json';
+    const token = auth ? getToken() : null;
+    if (token) headers.Authorization = 'Bearer ' + token;
+    try {
+      const res = await fetch(API + path, { method, headers, body: body ? JSON.stringify(body) : undefined });
+      let data = null;
+      try { data = await res.json(); } catch (e) { data = null; }
+      return { ok: res.ok, status: res.status, data };
+    } catch (e) {
+      return { ok: false, status: 0, data: null };
+    }
+  }
+  const errorText = (r, fallback) => {
+    if (r.status === 0) return 'Sin conexión. Revisa tu internet e intenta de nuevo.';
+    if (r.status === 429) return 'Demasiados intentos. Espera un minuto e intenta de nuevo.';
+    if (r.data && Array.isArray(r.data.errors) && r.data.errors.length) return r.data.errors.join(' ');
+    return (r.data && typeof r.data.error === 'string' && r.data.error) || fallback;
+  };
+
+  // Cada partida lleva un boleto del servidor, que lo usa para validarla al guardarla.
+  // Se pide por adelantado (al mostrar intención de jugar y al terminar cada partida)
+  // y con reintentos: si llega tarde en una red lenta, la partida no se podría validar.
+  const TICKET_MAX_AGE_MS = 90 * 60 * 1000;
+  let nextTicket = null; // { promise, at }
+  async function fetchTicket() {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const r = await call('/minigame/ticket', { method: 'POST' });
+      if (r.ok && r.data && r.data.ticket) return r.data.ticket;
+      if (r.status >= 400 && r.status < 500 && r.status !== 429) return null;
+      await new Promise((res) => setTimeout(res, 1200 * (attempt + 1)));
+    }
+    return null;
+  }
+  const prefetchTicket = () => {
+    if (!nextTicket || Date.now() - nextTicket.at > TICKET_MAX_AGE_MS) nextTicket = { promise: fetchTicket(), at: Date.now() };
+  };
+  const takeTicket = () => {
+    prefetchTicket();
+    const t = nextTicket.promise;
+    nextTicket = null;
+    return t;
+  };
+  let ticketReq = Promise.resolve(null);
+
+  let pending = null; // { stats, ticketReq, saving, saved }
+
   const prevOnTime = ui.onTime;
   ui.onTime = (t) => {
     prevOnTime(t);
-    if (!reduce && !playShown && t > 3.4) { play.hidden = false; requestAnimationFrame(() => play.classList.add('is-on')); playShown = true; }
+    if (!reduce && !playShown && t > 3.4) {
+      actions.hidden = false;
+      requestAnimationFrame(() => { play.classList.add('is-on'); rankBtn.classList.add('is-on'); });
+      playShown = true;
+    }
   };
 
   ui.onGame = ({ score, lives: n, best, phase }) => {
@@ -1042,14 +1330,34 @@
     anim.onfinish = () => el.remove();
   };
 
-  ui.onGameOver = ({ score, best, record }) => {
+  function setStatus(text, isError) {
+    overStatus.textContent = text || '';
+    overStatus.classList.toggle('is-error', !!isError);
+  }
+
+  // Qué botones muestra la tarjeta final según el estado de la partida
+  function renderOver() {
+    const canSave = !!pending && !pending.saved;
+    saveBtn.hidden = !canSave;
+    overNote.hidden = !canSave;
+    saveBtn.disabled = !!(pending && pending.saving);
+    viewRankBtn.hidden = !(pending && pending.saved);
+    againBtn.classList.toggle('btn--primary', !pending);
+    againBtn.classList.toggle('btn--ghost', !!pending);
+  }
+
+  ui.onGameOver = ({ score, best, record, stats }) => {
     lastScore = score;
     overNum.textContent = score;
     overBest.textContent = record && score > 0 ? '¡Nuevo récord!' : `Récord: ${best}`;
     overBest.classList.toggle('is-record', record && score > 0);
+    pending = score > 0 ? { stats, ticketReq, saving: false, saved: false } : null;
+    prefetchTicket(); // para "Jugar otra vez"
+    setStatus('');
+    renderOver();
     overCard.hidden = false;
     stage.classList.add('is-over');
-    overCard.querySelector('[data-act="again"]').focus({ preventScroll: true });
+    (pending ? saveBtn : againBtn).focus({ preventScroll: true });
     live.textContent = `Fin del juego. ${score} puntos. ${record && score > 0 ? 'Nuevo récord.' : 'Récord: ' + best + '.'}`;
     if (score > 0) {
       const msg = `Hola CourtBit, escaneé su tarjeta e hice ${score} puntos en el minijuego. Quiero más información.`;
@@ -1057,6 +1365,270 @@
     }
     track('game_over', { score });
   };
+
+  async function saveScore() {
+    const p = pending;
+    if (!p || p.saving || p.saved) return;
+    if (!getToken()) { openLogin(); return; }
+    // Si la persona empieza otra partida mientras esto corre, la UI ya es de esa otra:
+    // solo se toca la tarjeta si esta partida sigue siendo la actual.
+    const current = () => p === pending;
+    p.saving = true;
+    renderOver();
+    setStatus('Guardando…');
+    const ticket = await p.ticketReq;
+    if (!ticket) {
+      p.saving = false;
+      if (current()) { renderOver(); setStatus('No pudimos validar esta partida. Juega otra para guardarla.', true); }
+      return;
+    }
+    const st = p.stats;
+    const r = await call('/minigame/scores', {
+      method: 'POST',
+      auth: true,
+      body: { ticket, score: st.score, returns: st.returns, perfects: st.perfects, glass: st.glass, bits: st.bits, duration_ms: st.durationMs },
+    });
+    p.saving = false;
+    if (r.status === 401) {
+      clearSession();
+      if (current()) { renderOver(); setStatus(''); openLogin(); }
+      return;
+    }
+    if (r.ok && r.data) {
+      p.saved = true;
+      const d = r.data;
+      track('minigame_save', { status: 'ok', rank: d.rank || 0, score: d.score });
+      if (!current()) return;
+      renderOver();
+      const place = d.rank ? ` (lugar #${d.rank})` : '';
+      setStatus(d.is_best
+        ? (d.rank ? `¡Guardado! Vas en el lugar #${d.rank} del ranking.` : '¡Guardado en el ranking!')
+        : `Guardado. Tu mejor puntaje sigue siendo ${d.best}${place}.`);
+      viewRankBtn.focus({ preventScroll: true });
+      return;
+    }
+    if (r.status === 409) {
+      p.saved = true;
+      if (current()) { renderOver(); setStatus('Esta partida ya estaba guardada.'); }
+      return;
+    }
+    track('minigame_save', { status: String(r.status) });
+    if (current()) { renderOver(); setStatus(errorText(r, 'No se pudo guardar. Intenta de nuevo.'), true); }
+  }
+
+  // ---------- Hoja del ranking ----------
+  const rankSheet = document.getElementById('rank-sheet');
+  const board = rankSheet.querySelector('.board');
+  const boardMe = rankSheet.querySelector('.board-me');
+
+  function initials(name) {
+    return name.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase() || '?';
+  }
+
+  function boardMessage(text, retry) {
+    board.replaceChildren();
+    const li = document.createElement('li');
+    li.className = 'board-msg';
+    li.textContent = text;
+    if (retry) {
+      li.append(' ');
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'link-btn';
+      b.textContent = 'Reintentar';
+      b.addEventListener('click', loadRanking);
+      li.append(b);
+    }
+    board.append(li);
+  }
+
+  function renderBoard(data) {
+    const entries = (data && Array.isArray(data.entries)) ? data.entries : [];
+    boardMe.textContent = '';
+    if (!entries.length) {
+      boardMessage('Aún no hay puntajes guardados. Juega y sé el primero en el ranking.');
+      return;
+    }
+    const rows = entries.map((e) => {
+      const li = document.createElement('li');
+      li.className = 'board-row' + (e.rank <= 3 ? ' is-podium' : '') + (e.is_me ? ' is-me' : '');
+      const rank = document.createElement('span');
+      rank.className = 'b-rank';
+      rank.textContent = e.rank;
+      const av = document.createElement('span');
+      av.className = 'b-avatar';
+      if (typeof e.photo_url === 'string' && /^https:\/\//.test(e.photo_url)) {
+        const img = document.createElement('img');
+        img.src = e.photo_url;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.referrerPolicy = 'no-referrer';
+        img.width = 40;
+        img.height = 40;
+        img.addEventListener('error', () => { img.remove(); av.textContent = initials(e.name || ''); });
+        av.append(img);
+      } else {
+        av.textContent = initials(e.name || '');
+      }
+      const name = document.createElement('span');
+      name.className = 'b-name';
+      name.textContent = e.name || 'Jugador';
+      if (e.is_me) {
+        const tag = document.createElement('small');
+        tag.textContent = 'Tú';
+        name.append(tag);
+      }
+      const score = document.createElement('span');
+      score.className = 'b-score';
+      score.textContent = e.score;
+      li.append(rank, av, name, score);
+      return li;
+    });
+    board.replaceChildren(...rows);
+    const me = data.me;
+    if (me && !entries.some((e) => e.is_me)) {
+      boardMe.append('Tu lugar: ');
+      const b = document.createElement('b');
+      b.textContent = `#${me.rank}`;
+      boardMe.append(b, ` con ${me.score} puntos.`);
+    }
+  }
+
+  async function loadRanking() {
+    board.replaceChildren(...Array.from({ length: 5 }, () => {
+      const li = document.createElement('li');
+      li.className = 'board-skel';
+      li.setAttribute('aria-hidden', 'true');
+      return li;
+    }));
+    boardMe.textContent = '';
+    const r = await call('/minigame/leaderboard?limit=20', { auth: true });
+    if (!r.ok) { boardMessage('No se pudo cargar el ranking.', true); return; }
+    renderBoard(r.data);
+  }
+
+  function openRanking() {
+    if (!rankSheet.open) rankSheet.showModal();
+    loadRanking();
+    track('leaderboard_open');
+  }
+
+  // ---------- Hoja de inicio de sesión ----------
+  const loginSheet = document.getElementById('login-sheet');
+  const form = loginSheet.querySelector('form');
+  const formMsg = form.querySelector('.form-msg');
+  let authStep = 'email', authEmail = '', authBusy = false;
+
+  function setMsg(text, isError) {
+    formMsg.textContent = text || '';
+    formMsg.classList.toggle('is-error', !!isError);
+  }
+
+  function setStep(step) {
+    authStep = step;
+    form.querySelectorAll('.auth-step').forEach((el) => { el.hidden = el.dataset.step !== step; });
+    form.querySelectorAll('.who-email').forEach((el) => { el.textContent = authEmail; });
+    setMsg('');
+    const first = form.querySelector(`.auth-step[data-step="${step}"] input`);
+    if (first) requestAnimationFrame(() => first.focus());
+  }
+
+  function openLogin() {
+    setStep('email');
+    if (authEmail) form.elements.email.value = authEmail;
+    if (!loginSheet.open) loginSheet.showModal();
+    requestAnimationFrame(() => form.elements.email.focus());
+    track('minigame_login_open');
+  }
+
+  function busy(on) {
+    authBusy = on;
+    form.querySelectorAll('button[type="submit"]').forEach((b) => { b.disabled = on; });
+  }
+
+  async function afterAuth(data, method) {
+    setSession(data);
+    track(method === 'register' ? 'sign_up' : 'login', { method: 'business_card' });
+    loginSheet.close();
+    await saveScore();
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (authBusy) return;
+    const el = form.elements;
+
+    if (authStep === 'email') {
+      const email = el.email.value.trim().toLowerCase();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { setMsg('Escribe un correo válido.', true); el.email.focus(); return; }
+      authEmail = email;
+      busy(true);
+      const r = await call('/auth/check-email', { method: 'POST', body: { email } });
+      busy(false);
+      if (!r.ok || !r.data) { setMsg(errorText(r, 'No se pudo revisar el correo. Intenta de nuevo.'), true); return; }
+      setStep(r.data.exists ? 'login' : 'register');
+      return;
+    }
+
+    if (authStep === 'login') {
+      const password = el.password.value;
+      if (!password) { setMsg('Escribe tu contraseña.', true); el.password.focus(); return; }
+      busy(true);
+      const r = await call('/auth/login', { method: 'POST', body: { email: authEmail, password } });
+      busy(false);
+      if (r.ok && r.data && r.data.token) { el.password.value = ''; await afterAuth(r.data, 'login'); return; }
+      setMsg(r.status === 401 ? 'La contraseña no coincide. Intenta de nuevo o restablécela.' : errorText(r, 'No se pudo iniciar sesión.'), true);
+      return;
+    }
+
+    if (authStep === 'register') {
+      const firstName = el.first_name.value.trim();
+      const lastName = el.last_name.value.trim();
+      const password = el.new_password.value;
+      if (!firstName || !lastName) { setMsg('Escribe tu nombre y apellido.', true); (firstName ? el.last_name : el.first_name).focus(); return; }
+      if (password.length < 8) { setMsg('La contraseña necesita al menos 8 caracteres.', true); el.new_password.focus(); return; }
+      if (!el.terms.checked) { setMsg('Para crear tu cuenta, acepta los Términos y el Aviso de Privacidad.', true); el.terms.focus(); return; }
+      busy(true);
+      const r = await call('/auth/register', {
+        method: 'POST',
+        body: { email: authEmail, password, first_name: firstName, last_name: lastName, terms_accepted: true, privacy_accepted: true },
+      });
+      busy(false);
+      if (r.ok && r.data && r.data.token) { el.new_password.value = ''; await afterAuth(r.data, 'register'); return; }
+      if (r.status === 409) { setStep('login'); setMsg('Ese correo ya tiene cuenta. Entra con tu contraseña.', true); return; }
+      setMsg(errorText(r, 'No se pudo crear la cuenta.'), true);
+    }
+  });
+
+  form.addEventListener('click', async (e) => {
+    const act = e.target.closest('[data-act]');
+    if (!act) return;
+    if (act.dataset.act === 'change-email') { setStep('email'); return; }
+    if (act.dataset.act === 'forgot') {
+      if (authBusy) return;
+      busy(true);
+      await call('/auth/forgot-password', { method: 'POST', body: { email: authEmail } });
+      busy(false);
+      setMsg('Si el correo está registrado, te llegará un enlace para cambiar tu contraseña.');
+    }
+  });
+
+  // Cerrar las hojas: botón, tocar fuera o Escape (este último lo da <dialog>)
+  [rankSheet, loginSheet].forEach((dlg) => {
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg || e.target.closest('[data-close]')) dlg.close();
+    });
+  });
+  rankSheet.querySelector('[data-act="play-from-rank"]').addEventListener('click', () => {
+    rankSheet.close();
+    startGame();
+  });
+  loginSheet.addEventListener('close', () => {
+    if (pending && !pending.saved && !pending.saving && !overStatus.textContent) {
+      setStatus('Inicia sesión para guardar tu puntaje en el ranking.');
+    }
+  });
 
   function startGame() {
     if (!api) return;
@@ -1069,6 +1641,8 @@
     if (!window.matchMedia('(min-width: 960px)').matches) {
       stage.scrollIntoView({ block: 'start', behavior: 'smooth' });
     }
+    pending = null;
+    ticketReq = takeTicket();
     api.startGame();
     track('game_start');
   }
@@ -1092,16 +1666,21 @@
   }
 
   play.addEventListener('click', startGame);
+  // Intención de jugar: pedir el boleto antes del toque
+  ['pointerenter', 'pointerdown', 'focus'].forEach((ev) => play.addEventListener(ev, prefetchTicket, { passive: true }));
+  rankBtn.addEventListener('click', openRanking);
   stage.querySelector('.hud-exit').addEventListener('click', exitGame);
   overCard.addEventListener('click', (e) => {
     const act = e.target.closest('[data-act]');
     if (!act) return;
+    if (act.dataset.act === 'save') saveScore();
+    if (act.dataset.act === 'ranking') openRanking();
     if (act.dataset.act === 'again') startGame();
     if (act.dataset.act === 'share') share();
     if (act.dataset.act === 'exit') exitGame();
   });
   document.addEventListener('keydown', (e) => {
-    if (!stage.classList.contains('is-playing') || !overCard.hidden) return;
+    if (!stage.classList.contains('is-playing') || !overCard.hidden || document.querySelector('dialog[open]')) return;
     if (e.key === 'Escape') { exitGame(); return; }
     if ((e.key === ' ' || e.key === 'Enter') && !e.target.closest('button, a')) {
       e.preventDefault();
