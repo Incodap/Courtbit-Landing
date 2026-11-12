@@ -1,6 +1,6 @@
 {
   "demo": true,
-  "nota": "Muestra: las 12 canchas en juego (nombres ficticios). ?feed=./data/partidos.en-juego.json",
+  "nota": "Muestra: las 12 canchas en juego (nombres ficticios); cinco siguientes con prioridad 1 a 5 (lista de próximos partidos). ?feed=./data/partidos.en-juego.json",
   "canchas": [
     {
       "cancha": 1,
@@ -36,7 +36,8 @@
       "siguiente_categoria": "Mixto A",
       "siguiente_color_categoria": "#f59e0b",
       "siguiente_ronda": "Final",
-      "siguiente_hora": "18:00"
+      "siguiente_hora": "18:00",
+      "siguiente_prioridad": 2
     },
     {
       "cancha": 3,
@@ -72,7 +73,8 @@
       "siguiente_categoria": "Varonil +40",
       "siguiente_color_categoria": "#7c3aed",
       "siguiente_ronda": "Final",
-      "siguiente_hora": "19:00"
+      "siguiente_hora": "19:00",
+      "siguiente_prioridad": 5
     },
     {
       "cancha": 5,
@@ -108,7 +110,8 @@
       "siguiente_categoria": "Mixto B",
       "siguiente_color_categoria": "#ea580c",
       "siguiente_ronda": "Semifinal",
-      "siguiente_hora": "18:15"
+      "siguiente_hora": "18:15",
+      "siguiente_prioridad": 3
     },
     {
       "cancha": 7,
@@ -162,7 +165,8 @@
       "siguiente_categoria": "Femenil +35",
       "siguiente_color_categoria": "#e11d48",
       "siguiente_ronda": "Final",
-      "siguiente_hora": "19:15"
+      "siguiente_hora": "19:15",
+      "siguiente_prioridad": 1
     },
     {
       "cancha": 10,
@@ -198,7 +202,8 @@
       "siguiente_categoria": "Primera Varonil",
       "siguiente_color_categoria": "#2563eb",
       "siguiente_ronda": "Semifinal",
-      "siguiente_hora": "18:00"
+      "siguiente_hora": "18:00",
+      "siguiente_prioridad": 4
     },
     {
       "cancha": 12,
