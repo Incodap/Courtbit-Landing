@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Reglamento para jugadores | Torneo 2do Aniversario Pádel Factory</title>
+  <meta name="description" content="Reglamento para jugadores del Torneo 2do Aniversario Pádel Factory: tolerancia, formato de juego, sistema de competencia, mapa del club, lluvia, canchas averiadas y quejas.">
+  <link rel="canonical" href="https://www.courtbit.com.mx/factory-reglamento/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:title" content="Reglamento para jugadores | Torneo 2do Aniversario Pádel Factory">
+  <meta property="og:description" content="Tolerancia, formato de juego, mapa del club, lluvia y quejas. Todo lo que necesitas saber antes de tu partido.">
+  <meta property="og:url" content="https://www.courtbit.com.mx/factory-reglamento/">
+  <meta property="og:image" content="https://www.courtbit.com.mx/Assets/Logo-CB-icono.png">
+  <meta name="theme-color" content="#10302a">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,800&display=swap">
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fbfdfc;
+      --surface: #f1f8f3;
+      --surface-2: #e6f5eb;
+      --line: #dbe5e0;
+      --text: #10302a;
+      --text-soft: #3c4a45;
+      --text-muted: #5a6b65;
+      --green: #15803d;
+      --link: #116230;
+      --marker: #46a35f;
+      --band: #10302a;
+      --band-text: #f3f8f5;
+      --band-soft: #b9cdc5;
+      --band-line: rgba(255, 255, 255, .14);
+      --band-tile: rgba(255, 255, 255, .06);
+      --lime: #B8F02B;
+      --gold: #ffc94a;
+      --btn-bg: #10302a;
+      --btn-text: #ffffff;
+      --btn-hover: #1b4a40;
+      --chip-on-bg: #10302a;
+      --chip-on-text: #ffffff;
+      --roof-bg: #B8F02B;
+      --roof-text: #10302a;
+      --open-bg: #dcebf5;
+      --open-text: #173b54;
+      --drop: #3f8fc4;
+      --header-bg: #ffffff;
+      --focus: #15803d;
+      --shadow: 0 10px 30px -12px rgba(16, 48, 42, .28);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --nav-h: 56px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --bg: #071a16;
+        --surface: #0d2620;
+        --surface-2: #12322a;
+        --line: #1f3d35;
+        --text: #e9f2ee;
+        --text-soft: #cbd9d3;
+        --text-muted: #9db1a9;
+        --green: #7fd197;
+        --link: #a6e3b6;
+        --marker: #7fd197;
+        --band: #0d2620;
+        --band-line: rgba(255, 255, 255, .12);
+        --btn-bg: #B8F02B;
+        --btn-text: #10302a;
+        --btn-hover: #cbf761;
+        --chip-on-bg: #B8F02B;
+        --chip-on-text: #10302a;
+        --open-bg: #17384c;
+        --open-text: #d6e9f5;
+        --drop: #7cc0ea;
+        --header-bg: #f1f8f3;
+        --focus: #B8F02B;
+        --shadow: 0 10px 30px -12px rgba(0, 0, 0, .6);
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: rgba(21, 128, 61, .15);
+    }
+    ::selection { background: var(--lime); color: #10302a; }
+    a { color: var(--link); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding-inline: max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right)); }
+    .ic { width: 1em; height: 1em; display: block; flex: none; }
+
+    .skip {
+      position: absolute; left: 12px; top: -60px; z-index: 40;
+      background: var(--lime); color: #10302a; font-weight: 700;
+      padding: 10px 14px; border-radius: 8px; text-decoration: none;
+    }
+    .skip:focus { top: 12px; }
+
+    /* Avance de lectura: una pelota que recorre la parte alta de la pantalla */
+    .progress { display: none; }
+    @supports (animation-timeline: scroll()) {
+      @media (prefers-reduced-motion: no-preference) {
+        .progress {
+          display: block; position: fixed; inset: 0 0 auto 0; height: 4px; z-index: 35; pointer-events: none;
+        }
+        .progress i {
+          position: absolute; inset: 0; background: var(--lime); transform-origin: 0 50%;
+          animation: grow linear both; animation-timeline: scroll(root);
+        }
+        .progress b {
+          position: absolute; top: -3px; left: -5px; width: 10px; height: 10px; border-radius: 50%;
+          background: var(--lime); box-shadow: 0 0 0 2px var(--band);
+          animation: roll linear both; animation-timeline: scroll(root);
+        }
+      }
+    }
+    @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @keyframes roll { 0% { transform: translateX(0); opacity: 0; } 2% { opacity: 1; } 100% { transform: translateX(100vw); opacity: 1; } }
+
+    /* Encabezado de marca */
+    .brand { background: var(--header-bg); border-bottom: 1px solid var(--line); }
+    .brand .wrap { display: flex; align-items: center; min-height: 60px; }
+    .brand a { display: inline-flex; align-items: center; min-height: 44px; }
+    .brand img { height: 26px; width: auto; display: block; }
+
+    /* Portada */
+    .cover { position: relative; background: var(--band); color: var(--band-text); overflow: hidden; }
+    .cover .wrap { position: relative; padding-block: 36px 44px; display: grid; gap: 8px 48px; }
+    .cover h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 9vw, 4.25rem);
+      font-weight: 800;
+      font-style: italic;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+      max-width: 12ch;
+    }
+    .cover .event { margin: 14px 0 0; font-size: 1.1875rem; font-weight: 600; color: var(--lime); text-wrap: balance; }
+    .cover .updated { margin: 6px 0 0; font-size: .9375rem; color: var(--band-soft); }
+
+    /* Cancha animada */
+    .court3d { perspective: 1100px; display: grid; place-items: center; height: 200px; margin-block: 0 -4px; }
+    .court-tilt {
+      width: min(74%, 300px);
+      transform: rotateX(56deg) rotateZ(-26deg);
+      filter: drop-shadow(0 26px 22px rgba(0, 0, 0, .42));
+    }
+    .court { display: block; width: 100%; height: auto; overflow: visible; }
+    .court .ln { fill: none; stroke: #f5faf7; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; }
+    .court .px { transform-box: fill-box; transform-origin: center; }
+
+    /* Datos clave */
+    .facts { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .facts li {
+      display: grid; gap: 2px; align-content: start;
+      padding: 14px 14px 13px; border-radius: 18px;
+      background: var(--band-tile); border: 1px solid var(--band-line);
+    }
+    .facts .fig { height: 46px; display: flex; align-items: center; margin-bottom: 8px; }
+    .facts .k { color: var(--band-soft); font-size: .875rem; line-height: 1.3; }
+    .facts .v { font-weight: 800; font-size: 1.1875rem; line-height: 1.2; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+
+    .clock { width: 46px; height: 46px; }
+    .clock .track { fill: none; stroke: rgba(255, 255, 255, .18); stroke-width: 5; }
+    .clock .arc { fill: none; stroke: var(--lime); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 25 75; transform: rotate(-90deg); transform-origin: 50% 50%; }
+    .clock .hand { stroke: #fff; stroke-width: 3; stroke-linecap: round; transform-origin: 50% 50%; transform: rotate(90deg); }
+    .sets { display: flex; gap: 6px; }
+    .sets i { width: 18px; height: 34px; border-radius: 6px; background: var(--lime); }
+    .sets i:last-child { background: transparent; border: 2px dashed rgba(255, 255, 255, .45); }
+    .golden { position: relative; width: 38px; height: 38px; margin-left: 4px; }
+    .golden i { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 34% 30%, #fff3c4, var(--gold) 46%, #d99a12); }
+    .golden b { position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--gold); opacity: .45; }
+    .score { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+    .score i { font-style: normal; width: 30px; height: 38px; display: grid; place-items: center; border-radius: 8px; background: #f5faf7; color: #10302a; }
+    .score span { color: var(--band-soft); }
+
+    /* Borde de la portada que se deshace en pixeles, como el logo */
+    .dissolve {
+      height: 16px; background: var(--band); 
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='32'%3E%3Cpath d='M0 0h16v16H0zM32 0h32v16H32zM96 0h16v16H96zM128 0h32v16h-32zM176 0h16v16h-16zM48 16h16v16H48zM144 16h16v16h-16zM96 16h16v16H96z'/%3E%3C/svg%3E") repeat-x top left;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='32'%3E%3Cpath d='M0 0h16v16H0zM32 0h32v16H32zM96 0h16v16H96zM128 0h32v16h-32zM176 0h16v16h-16zM48 16h16v16H48zM144 16h16v16h-16zM96 16h16v16H96z'/%3E%3C/svg%3E") repeat-x top left;
+      -webkit-mask-size: 96px 16px; mask-size: 96px 16px;
+    }
+
+    /* Índice: fichas en celular, columna en escritorio */
+    .toc {
+      position: sticky; top: 0; z-index: 20;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    .toc ul {
+      list-style: none; margin: 0; padding: 8px max(20px, env(safe-area-inset-left));
+      display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+      overscroll-behavior-x: contain;
+    }
+    .toc ul::-webkit-scrollbar { display: none; }
+    .toc a {
+      display: inline-flex; align-items: center; min-height: 40px;
+      padding: 0 14px; border-radius: 999px; white-space: nowrap;
+      border: 1px solid var(--line);
+      color: var(--text-soft); font-size: .9375rem; font-weight: 600; text-decoration: none;
+      touch-action: manipulation;
+      transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out);
+    }
+    .toc a:active { transform: scale(.97); }
+    .toc a[aria-current="true"] { background: var(--chip-on-bg); border-color: var(--chip-on-bg); color: var(--chip-on-text); }
+    @media (hover: hover) and (pointer: fine) {
+      .toc a:not([aria-current="true"]):hover { border-color: var(--marker); color: var(--text); }
+    }
+
+    /* Contenido */
+    .layout { padding-block: 0 72px; }
+    main { min-width: 0; }
+    section { padding-top: 44px; scroll-margin-top: calc(var(--nav-h) + 4px); }
+    h2 {
+      margin: 0 0 16px;
+      display: flex; align-items: center; gap: 12px;
+      font-size: 1.5rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+    .badge {
+      flex: none; width: 46px; height: 46px; border-radius: 15px;
+      display: grid; place-items: center;
+      background: var(--surface-2); color: var(--green); font-size: 26px;
+    }
+    h3 { margin: 28px 0 10px; font-size: 1.125rem; font-weight: 700; line-height: 1.3; color: var(--green); }
+    .rules { list-style: none; margin: 0; padding: 0; max-width: 68ch; }
+    .rules > li {
+      position: relative; padding-left: 22px; color: var(--text-soft);
+      text-wrap: pretty; overflow-wrap: break-word;
+    }
+    .rules > li + li { margin-top: 12px; }
+    .rules > li::before {
+      content: ""; position: absolute; left: 0; top: .62em;
+      width: 8px; height: 8px; border-radius: 2px; background: var(--marker);
+    }
+    .rules strong { color: var(--text); font-weight: 700; }
+    .lead { margin: 0 0 16px; max-width: 68ch; color: var(--text-soft); text-wrap: pretty; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 22px; border-radius: 999px;
+      background: var(--btn-bg); color: var(--btn-text);
+      font-weight: 700; font-size: 1rem; text-decoration: none; white-space: nowrap;
+      border: 1.5px solid var(--btn-bg);
+      touch-action: manipulation;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out);
+    }
+    .btn:active { transform: scale(.97); }
+    .btn.ghost { background: transparent; color: var(--text); border-color: var(--text-muted); }
+    .btn.lime { background: var(--lime); border-color: var(--lime); color: #10302a; }
+    @media (hover: hover) and (pointer: fine) {
+      .btn:not(.ghost):not(.lime):hover { background: var(--btn-hover); border-color: var(--btn-hover); }
+      .btn.ghost:hover { border-color: var(--text); }
+      .btn.lime:hover { background: #cbf761; border-color: #cbf761; }
+    }
+
+    /* Mapa */
+    .map {
+      position: relative; display: block; max-width: 620px; border-radius: 22px; overflow: hidden;
+      background: var(--surface); box-shadow: var(--shadow);
+    }
+    .map img { display: block; width: 100%; height: auto; transition: transform 600ms var(--ease-out); }
+    .map span {
+      position: absolute; left: 12px; bottom: 12px;
+      display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px;
+      background: var(--lime); color: #10302a; font-weight: 700; font-size: .9375rem;
+    }
+    @media (hover: hover) and (pointer: fine) { .map:hover img { transform: scale(1.04); } }
+
+    /* Grupos a eliminatorias */
+    .bracket { display: block; width: 100%; max-width: 460px; height: auto; margin-top: 22px; }
+    .bracket .box { fill: var(--surface-2); }
+    .bracket .row { stroke: var(--marker); stroke-width: 3; stroke-linecap: round; }
+    .bracket .wire { fill: none; stroke: var(--marker); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; }
+    .bracket .final { fill: var(--lime); }
+    .bracket text { fill: var(--text-muted); font-size: 12px; font-weight: 600; font-family: inherit; }
+    .bracket .cup { color: #10302a; }
+
+    /* Plano de canchas con lluvia */
+    .courts { margin: 18px 0 6px; padding: 16px; border-radius: 22px; background: var(--surface); max-width: 460px; }
+    .courts p { margin: 0; text-align: center; font-size: .8125rem; font-weight: 600; color: var(--text-muted); }
+    .courts ul { list-style: none; margin: 10px 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .courts a {
+      position: relative; overflow: hidden;
+      display: grid; place-items: center; align-content: center; gap: 0;
+      aspect-ratio: 5 / 6; min-height: 64px; border-radius: 10px;
+      background: var(--open-bg); color: var(--open-text);
+      text-decoration: none; font-variant-numeric: tabular-nums;
+      touch-action: manipulation;
+      transition: transform 140ms var(--ease-out);
+    }
+    .courts a:active { transform: scale(.95); }
+    .courts a b { position: relative; font-size: 1.25rem; font-weight: 800; line-height: 1.1; }
+    .courts a small { position: relative; font-size: .625rem; font-weight: 700; letter-spacing: .02em; opacity: .85; }
+    .courts a.roofed { background: var(--roof-bg); color: var(--roof-text); border-radius: 26px 26px 10px 10px; }
+    .courts a i {
+      position: absolute; top: -14px; left: var(--x); width: 2px; height: 11px; border-radius: 2px;
+      background: var(--drop); opacity: .75; transform: translateY(34px) rotate(8deg);
+    }
+    @media (hover: hover) and (pointer: fine) { .courts a:hover { transform: translateY(-2px); } }
+    .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 12px 0 0; padding: 0; list-style: none; font-size: .875rem; color: var(--text-soft); max-width: 460px; }
+    .legend li { display: inline-flex; align-items: center; gap: 7px; }
+    .legend li::before { content: ""; width: 14px; height: 14px; border-radius: 4px; background: var(--open-bg); }
+    .legend li.r::before { background: var(--roof-bg); border-radius: 7px 7px 3px 3px; }
+
+    /* Reportes */
+    .report {
+      margin-top: 22px; padding: 22px; border-radius: 24px; max-width: 620px;
+      background: var(--band); color: var(--band-text);
+      display: grid; gap: 14px; justify-items: start;
+    }
+    .report p { margin: 0; font-size: 1.1875rem; font-weight: 700; line-height: 1.3; text-wrap: balance; }
+    .report small { display: block; margin-top: 4px; font-size: .9375rem; font-weight: 400; color: var(--band-soft); }
+
+    footer { border-top: 1px solid var(--line); }
+    footer .wrap { padding-block: 24px calc(28px + env(safe-area-inset-bottom)); color: var(--text-muted); font-size: .9375rem; }
+    footer p { margin: 0; }
+
+    /* Movimiento. El estado base es el final: sin animación todo se ve completo. */
+    @keyframes draw { from { stroke-dashoffset: 1; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+    @keyframes land { from { opacity: 0; transform: rotateX(56deg) rotateZ(-40deg) translate3d(0, 60px, 0) scale(.86); } }
+    @keyframes pop { from { opacity: 0; transform: scale(.3); } }
+    @keyframes twinkle { to { opacity: .35; } }
+    @keyframes sweep { from { stroke-dasharray: 0 100; } }
+    @keyframes tick { from { transform: rotate(0deg); } }
+    @keyframes ring { from { transform: scale(.7); opacity: .8; } to { transform: scale(1.35); opacity: 0; } }
+    @keyframes flip { from { transform: rotateX(90deg); opacity: 0; } }
+    @keyframes rain { from { transform: translateY(-4px) rotate(8deg); } to { transform: translateY(110px) rotate(8deg); } }
+    @keyframes badge { from { transform: scale(.6) rotate(-12deg); opacity: 0; } }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .js .cover h1, .js .cover .event, .js .cover .updated { animation: rise 700ms var(--ease-out) both; }
+      .js .cover .event { animation-delay: 80ms; }
+      .js .cover .updated { animation-delay: 140ms; }
+      .js .court-tilt { animation: land 1100ms var(--ease-out) 120ms both; }
+      .js .court .ln { animation: draw 900ms var(--ease-out) both; animation-delay: calc(var(--i) * 110ms + 700ms); }
+      .js .court .px { animation: pop 420ms var(--ease-out) both, twinkle 2.6s ease-in-out infinite alternate; animation-delay: calc(var(--i) * 45ms + 900ms), calc(var(--i) * 190ms + 2s); }
+      .js .facts li { animation: rise 600ms var(--ease-out) both; animation-delay: calc(var(--i) * 80ms + 500ms); }
+      .js .clock .arc { animation: sweep 1200ms var(--ease-out) 1100ms both; }
+      .js .clock .hand { animation: tick 1200ms var(--ease-out) 1100ms both; }
+      .js .sets i { animation: pop 420ms var(--ease-out) both; animation-delay: calc(var(--i) * 140ms + 1200ms); }
+      .js .golden b { animation: ring 1800ms var(--ease-out) 1300ms 4 both; }
+      .js .score i { animation: flip 520ms var(--ease-out) both; animation-delay: calc(var(--i) * 160ms + 1400ms); }
+
+      .js [data-anim] .badge { opacity: 0; }
+      .js [data-anim].in .badge { opacity: 1; animation: badge 520ms var(--ease-out) both; }
+      .js .bracket .wire { stroke-dashoffset: 1; }
+      .js .in .bracket .wire { stroke-dashoffset: 0; animation: draw 700ms var(--ease-out) both; animation-delay: calc(var(--i) * 140ms + 200ms); }
+      .js .bracket .final, .js .bracket .cup { opacity: 0; }
+      .js .in .bracket .final, .js .in .bracket .cup { opacity: 1; transform-box: fill-box; transform-origin: center; animation: pop 520ms var(--ease-out) 1100ms both; }
+      .js .courts.raining a i { animation: rain 900ms linear infinite; animation-delay: var(--d); }
+      .cover.paused .px, .cover.paused .golden b { animation-play-state: paused; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .toc a, .btn, .courts a, .map img { transition: none; }
+      .toc a:active, .btn:active, .courts a:active { transform: none; }
+    }
+
+    @media (min-width: 600px) {
+      .cover .wrap { padding-block: 52px 56px; }
+      .facts { grid-template-columns: repeat(4, 1fr); margin-top: 16px; }
+      .court3d { height: 280px; }
+      .court-tilt { width: 420px; }
+    }
+
+    @media (min-width: 960px) {
+      :root { --nav-h: 0px; }
+      .cover .wrap {
+        padding-block: 64px 64px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
+        grid-template-areas: "head court" "facts facts";
+        align-items: center;
+      }
+      .cover .head { grid-area: head; }
+      .court3d { grid-area: court; height: 330px; margin: 0; }
+      .court-tilt { width: 470px; }
+      .facts { grid-area: facts; margin-top: 28px; gap: 14px; }
+      .facts li { padding: 18px; }
+      .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); column-gap: 64px; align-items: start; }
+      .toc { top: 24px; margin-top: 44px; border-bottom: 0; background: transparent; }
+      .toc ul { flex-direction: column; gap: 2px; padding: 0; overflow: visible; }
+      .toc a {
+        display: flex; min-height: 40px; padding: 8px 12px; border-radius: 10px; border-color: transparent;
+        white-space: normal; line-height: 1.25;
+      }
+      .toc a[aria-current="true"] { background: var(--surface-2); border-color: transparent; color: var(--text); font-weight: 700; }
+      section { scroll-margin-top: 16px; }
+      h2 { font-size: 1.75rem; }
+    }
+
+    @media print {
+      :root { --bg: #fff; --text: #000; --text-soft: #111; --band: #fff; --band-text: #000; --band-soft: #333; --band-line: #999; --band-tile: #fff; --lime: #000; --green: #000; --marker: #000; --roof-bg: #fff; --roof-text: #000; --open-bg: #fff; --open-text: #000; --surface: #fff; --surface-2: #fff; }
+      .toc, .skip, .actions, .progress, .court3d, .dissolve, .fig, .map, .bracket, .badge, .report .btn { display: none !important; }
+      .layout { display: block; padding-bottom: 0; }
+      .cover .wrap { display: block; padding-block: 16px; }
+      .facts { grid-template-columns: repeat(4, 1fr); }
+      .facts li { border-color: #999; }
+      body { font-size: 11pt; }
+      section { padding-top: 18px; break-inside: avoid; }
+      .courts a { border: 1px solid #000; }
+      .courts a i { display: none; }
+      .report { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al reglamento</a>
+  <div class="progress" aria-hidden="true"><i></i><b></b></div>
+
+  <header class="brand">
+    <div class="wrap">
+      <a href="https://www.courtbit.com.mx/" aria-label="CourtBit, ir al inicio">
+        <img src="/Assets/courtbit-logo-header.svg" alt="CourtBit" width="151" height="26">
+      </a>
+    </div>
+  </header>
+
+  <div class="cover" id="portada">
+    <div class="wrap">
+      <div class="head">
+        <h1>Reglamento para jugadores</h1>
+        <p class="event">Torneo 2do Aniversario <span translate="no">Pádel Factory</span></p>
+        <p class="updated">Actualizado el <time datetime="2026-11-11">11 de noviembre de 2026</time></p>
+      </div>
+
+      <div class="court3d" aria-hidden="true">
+        <div class="court-tilt">
+          <svg class="court" viewBox="0 0 440 240" id="cancha">
+            <rect x="20" y="20" width="200" height="200" rx="6" fill="#1d7a45"/>
+            <rect x="220" y="20" width="200" height="200" rx="6" fill="#8cc63f"/>
+            <rect x="20" y="20" width="400" height="200" rx="6" fill="none" stroke="#0b241f" stroke-width="10" opacity=".55"/>
+            <rect class="ln" style="--i:0" pathLength="1" x="20" y="20" width="400" height="200" rx="4"/>
+            <line class="ln" style="--i:1" pathLength="1" x1="81" y1="20" x2="81" y2="220"/>
+            <line class="ln" style="--i:2" pathLength="1" x1="359" y1="220" x2="359" y2="20"/>
+            <line class="ln" style="--i:3" pathLength="1" x1="81" y1="120" x2="359" y2="120"/>
+            <line class="ln" style="--i:4; stroke-width:5; stroke:#10302a" pathLength="1" x1="220" y1="14" x2="220" y2="226"/>
+            <g>
+              <rect class="px" style="--i:0" x="228" y="28" width="16" height="16" fill="#ffffff"/>
+              <rect class="px" style="--i:5" x="244" y="60" width="16" height="16" fill="#10302a"/>
+              <rect class="px" style="--i:2" x="228" y="92" width="16" height="16" fill="#B8F02B"/>
+              <rect class="px" style="--i:8" x="260" y="44" width="16" height="16" fill="#B8F02B"/>
+              <rect class="px" style="--i:3" x="276" y="92" width="16" height="16" fill="#10302a"/>
+              <rect class="px" style="--i:10" x="244" y="140" width="16" height="16" fill="#ffffff"/>
+              <rect class="px" style="--i:1" x="228" y="172" width="16" height="16" fill="#10302a"/>
+              <rect class="px" style="--i:7" x="260" y="188" width="16" height="16" fill="#B8F02B"/>
+              <rect class="px" style="--i:4" x="292" y="156" width="16" height="16" fill="#ffffff"/>
+              <rect class="px" style="--i:9" x="276" y="140" width="16" height="16" fill="#46a35f"/>
+              <rect class="px" style="--i:6" x="308" y="60" width="16" height="16" fill="#10302a"/>
+              <rect class="px" style="--i:11" x="196" y="60" width="16" height="16" fill="#8cc63f"/>
+              <rect class="px" style="--i:12" x="180" y="156" width="16" height="16" fill="#B8F02B"/>
+              <rect class="px" style="--i:13" x="196" y="188" width="16" height="16" fill="#8cc63f"/>
+              <rect class="px" style="--i:14" x="324" y="188" width="16" height="16" fill="#B8F02B"/>
+              <rect class="px" style="--i:15" x="164" y="92" width="16" height="16" fill="#46a35f"/>
+            </g>
+            <g id="pelota" opacity="0">
+              <set attributeName="opacity" to="1" begin="1.6s" fill="freeze"/>
+              <circle r="8" cx="5" cy="7" fill="#06120f" opacity=".3"/>
+              <circle r="8" fill="#eaff8f" stroke="#10302a" stroke-width="1.5"/>
+              <animateMotion dur="5.4s" begin="1.6s" repeatCount="indefinite" calcMode="spline"
+                keyTimes="0;.22;.34;.5;.74;.86;1"
+                keySplines=".3 0 .6 1;.2 0 .8 1;.3 0 .6 1;.3 0 .6 1;.2 0 .8 1;.3 0 .6 1"
+                path="M70 172 Q190 70 300 92 Q372 104 414 132 Q372 142 330 150 Q200 34 82 70 Q40 62 26 92 Q44 128 70 172"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <ul class="facts" aria-label="Lo que más se pregunta">
+        <li style="--i:0">
+          <div class="fig" aria-hidden="true">
+            <svg class="clock" viewBox="0 0 46 46">
+              <circle class="track" cx="23" cy="23" r="18" pathLength="100"/>
+              <circle class="arc" cx="23" cy="23" r="18" pathLength="100"/>
+              <line class="hand" x1="23" y1="23" x2="23" y2="11"/>
+            </svg>
+          </div>
+          <span class="k">Tolerancia</span>
+          <strong class="v">15&nbsp;minutos</strong>
+        </li>
+        <li style="--i:1">
+          <div class="fig" aria-hidden="true"><div class="sets"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i></div></div>
+          <span class="k">Partidos al mejor de</span>
+          <strong class="v">3&nbsp;sets</strong>
+        </li>
+        <li style="--i:2">
+          <div class="fig" aria-hidden="true"><div class="golden"><b></b><i></i></div></div>
+          <span class="k">Se juega con</span>
+          <strong class="v">Punto de oro</strong>
+        </li>
+        <li style="--i:3">
+          <div class="fig" aria-hidden="true"><div class="score"><i style="--i:0">6</i><span>:</span><i style="--i:1">6</i></div></div>
+          <span class="k">En 6-6</span>
+          <strong class="v">Tie-break</strong>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="dissolve" aria-hidden="true"></div>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="Secciones del reglamento">
+      <ul id="toc">
+        <li><a href="#app">La app</a></li>
+        <li><a href="#mapa">Mapa del club</a></li>
+        <li><a href="#antes">Antes de tu partido</a></li>
+        <li><a href="#formato">Formato de juego</a></li>
+        <li><a href="#sistema">Sistema de competencia</a></li>
+        <li><a href="#durante">Durante y después</a></li>
+        <li><a href="#categoria">Fuera de categoría y lesiones</a></li>
+        <li><a href="#lluvia">Lluvia y canchas averiadas</a></li>
+        <li><a href="#quejas">Quejas y sugerencias</a></li>
+        <li><a href="#cambios">Decisiones y cambios</a></li>
+      </ul>
+    </nav>
+
+    <main id="contenido">
+      <section id="app" aria-labelledby="h-app" data-anim>
+        <h2 id="h-app"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M192,56V200H64V56Z" opacity="0.2"/><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg></span>La app de CourtBit</h2>
+        <ul class="rules">
+          <li>Descarga la app en <a href="https://courtbit.com.mx/apps">courtbit.com.mx/apps</a> o sigue el torneo desde <a href="https://app.courtbit.com.mx/torneo/2-torneo-aniversario-padel-factory-2026">app.courtbit.com.mx</a>.</li>
+          <li>Los partidos pueden cambiar. Activa las notificaciones para estar siempre informado.</li>
+          <li>Es responsabilidad de cada jugador revisar su cancha, su hora y sus resultados en la app.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn" href="https://courtbit.com.mx/apps">Descargar la app</a>
+          <a class="btn ghost" href="https://app.courtbit.com.mx/torneo/2-torneo-aniversario-padel-factory-2026">Ver el torneo</a>
+        </div>
+      </section>
+
+      <section id="mapa" aria-labelledby="h-mapa" data-anim>
+        <h2 id="h-mapa"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M160,72V216L96,184V40Z" opacity="0.2"/><path d="M228.92,49.69a8,8,0,0,0-6.86-1.45L160.93,63.52,99.58,32.84a8,8,0,0,0-5.52-.6l-64,16A8,8,0,0,0,24,56V200a8,8,0,0,0,9.94,7.76l61.13-15.28,61.35,30.68A8.15,8.15,0,0,0,160,224a8,8,0,0,0,1.94-.24l64-16A8,8,0,0,0,232,200V56A8,8,0,0,0,228.92,49.69ZM104,52.94l48,24V203.06l-48-24ZM40,62.25l48-12v127.5l-48,12Zm176,131.5-48,12V78.25l48-12Z"/></svg></span>Mapa del club</h2>
+        <p class="lead">Ubica tu cancha, el acceso y el estacionamiento antes de llegar. En el mapa interactivo puedes girar el club y acercarte a cada cancha.</p>
+        <a class="map" href="mapa/?vista=planta">
+          <img src="mapa-club.webp" width="1400" height="1190" loading="lazy" decoding="async"
+               alt="Plano del club visto desde arriba. Junto al estacionamiento están las canchas 7, 5, 1 y 3; en la fila de en medio la 8, 6, 2 y 4; al fondo la 9, 10, 11 y 12. La 4, la 8 y de la 9 a la 12 tienen techo.">
+          <span>Abrir mapa interactivo</span>
+        </a>
+      </section>
+
+      <section id="antes" aria-labelledby="h-antes" data-anim>
+        <h2 id="h-antes"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" opacity="0.2"/><path d="M232,136.66A104.12,104.12,0,1,1,119.34,24,8,8,0,0,1,120.66,40,88.12,88.12,0,1,0,216,135.34,8,8,0,0,1,232,136.66ZM120,72v56a8,8,0,0,0,8,8h56a8,8,0,0,0,0-16H136V72a8,8,0,0,0-16,0Zm40-24a12,12,0,1,0-12-12A12,12,0,0,0,160,48Zm36,24a12,12,0,1,0-12-12A12,12,0,0,0,196,72Zm24,36a12,12,0,1,0-12-12A12,12,0,0,0,220,108Z"/></svg></span>Antes de tu partido</h2>
+        <ul class="rules">
+          <li>Tu cancha y tu horario son los que aparecen en la app de CourtBit. Revísalos antes de llegar. Es tu responsabilidad consultar la información más actualizada en CourtBit; las capturas de pantalla no son válidas.</li>
+          <li>Toma precauciones en tu traslado al club y contempla el tráfico para llegar a tiempo.</li>
+          <li>Hay <strong>15&nbsp;minutos de tolerancia</strong>, que corren a partir de la hora programada del partido. Pasado ese tiempo se marca W.O.</li>
+          <li>Preséntate en mesa de control al llegar. Si te inscribieron manualmente y no ves el torneo en tu app, ahí vinculan tu usuario.</li>
+          <li>Mesa de control entrega pelotas nuevas para cada partido, cuando recibe las del partido anterior.</li>
+          <li>Si un partido previo se alarga y tu cancha se retrasa, es parte del juego. Te pedimos comprensión.</li>
+        </ul>
+      </section>
+
+      <section id="formato" aria-labelledby="h-formato" data-anim>
+        <h2 id="h-formato"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M60.12,60.09A95.74,95.74,0,0,1,127.83,32h0A95.94,95.94,0,0,1,32,127.75,95.64,95.64,0,0,1,60.12,60.09ZM32,127.92v-.17h0Zm124.28,28.26a95.54,95.54,0,0,0-28.11,67.65A96,96,0,0,0,224,128.08h0A95.79,95.79,0,0,0,156.28,156.18ZM128.17,224v-.17h0Z" opacity="0.2"/><path d="M201.57,54.46a104,104,0,1,0,0,147.08A103.4,103.4,0,0,0,201.57,54.46ZM65.75,65.77a87.63,87.63,0,0,1,53.66-25.31A87.31,87.31,0,0,1,94,94.06a87.42,87.42,0,0,1-53.62,25.35A87.58,87.58,0,0,1,65.75,65.77ZM40.33,135.48a103.29,103.29,0,0,0,65-30.11,103.24,103.24,0,0,0,30.13-65,87.78,87.78,0,0,1,80.18,80.14,104,104,0,0,0-95.16,95.1,87.78,87.78,0,0,1-80.18-80.14Zm149.92,54.75a87.69,87.69,0,0,1-53.66,25.31,88,88,0,0,1,79-78.95A87.58,87.58,0,0,1,190.25,190.23Z"/></svg></span>Formato de juego</h2>
+        <ul class="rules">
+          <li>Los partidos son al mejor de 3&nbsp;sets.</li>
+          <li>Se juega con punto de oro.</li>
+          <li>En 6-6 se juega tie-break, con diferencia de 2&nbsp;puntos.</li>
+          <li>El saque inicial se define con un volado.</li>
+        </ul>
+      </section>
+
+      <section id="sistema" aria-labelledby="h-sistema" data-anim>
+        <h2 id="h-sistema"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M64,112v32a8,8,0,0,1-8,8H24a8,8,0,0,1-8-8V112a8,8,0,0,1,8-8H56A8,8,0,0,1,64,112ZM208,40H160a8,8,0,0,0-8,8V96a8,8,0,0,0,8,8h48a8,8,0,0,0,8-8V48A8,8,0,0,0,208,40Zm0,112H160a8,8,0,0,0-8,8v48a8,8,0,0,0,8,8h48a8,8,0,0,0,8-8V160A8,8,0,0,0,208,152Z" opacity="0.2"/><path d="M160,112h48a16,16,0,0,0,16-16V48a16,16,0,0,0-16-16H160a16,16,0,0,0-16,16V64H128a24,24,0,0,0-24,24v32H72v-8A16,16,0,0,0,56,96H24A16,16,0,0,0,8,112v32a16,16,0,0,0,16,16H56a16,16,0,0,0,16-16v-8h32v32a24,24,0,0,0,24,24h16v16a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V160a16,16,0,0,0-16-16H160a16,16,0,0,0-16,16v16H128a8,8,0,0,1-8-8V88a8,8,0,0,1,8-8h16V96A16,16,0,0,0,160,112ZM56,144H24V112H56v32Zm104,16h48v48H160Zm0-112h48V96H160Z"/></svg></span>Sistema de competencia</h2>
+        <ul class="rules">
+          <li>El torneo se juega en fase de grupos y después eliminatorias.</li>
+          <li>Los grupos se crean de forma aleatoria y en el orden en que las parejas solicitaron sus horarios y días.</li>
+          <li>Los cuadros de eliminatoria se arman según la cantidad de grupos y de parejas. Por eso, en ciertas fases algunas parejas pueden recibir pase directo según el grupo en el que les tocó competir.</li>
+        </ul>
+        <svg class="bracket" viewBox="0 0 340 172" role="img" aria-label="Esquema: de la fase de grupos se pasa a las eliminatorias y de ahí a la final.">
+          <g>
+            <rect class="box" x="6" y="8" width="76" height="34" rx="9"/>
+            <rect class="box" x="6" y="58" width="76" height="34" rx="9"/>
+            <rect class="box" x="6" y="108" width="76" height="34" rx="9"/>
+            <path class="row" d="M18 19h36M18 31h24M18 69h36M18 81h24M18 119h36M18 131h24"/>
+            <rect class="box" x="150" y="33" width="64" height="30" rx="9"/>
+            <rect class="box" x="150" y="92" width="64" height="30" rx="9"/>
+            <path class="row" d="M162 48h30M162 107h30"/>
+          </g>
+          <path class="wire" style="--i:0" pathLength="1" d="M82 25H116V48H150"/>
+          <path class="wire" style="--i:1" pathLength="1" d="M82 75H116V48"/>
+          <path class="wire" style="--i:2" pathLength="1" d="M82 75H130V107H150"/>
+          <path class="wire" style="--i:3" pathLength="1" d="M82 125H130V107"/>
+          <path class="wire" style="--i:4" pathLength="1" d="M214 48H238V77H262"/>
+          <path class="wire" style="--i:5" pathLength="1" d="M214 107H238V77"/>
+          <rect class="final" x="262" y="57" width="70" height="40" rx="12"/>
+          <svg class="cup" x="285" y="65" width="24" height="24" viewBox="0 0 256 256" fill="currentColor"><path d="M200,48v63.1c0,39.7-31.75,72.6-71.45,72.9A72,72,0,0,1,56,112V48Z" opacity="0.2"/><path d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-29,64.64-64,64.9a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"/></svg>
+          <text x="44" y="164" text-anchor="middle">Grupos</text>
+          <text x="182" y="164" text-anchor="middle">Eliminatorias</text>
+          <text x="297" y="164" text-anchor="middle">Final</text>
+        </svg>
+      </section>
+
+      <section id="durante" aria-labelledby="h-durante" data-anim>
+        <h2 id="h-durante"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M200,152l-40,40L96,176,40,136,72.68,70.63,128,56l55.32,14.63L183.6,72H144L98.34,116.29a8,8,0,0,0,1.38,12.42C117.23,139.9,141,139.13,160,120Z" opacity="0.2"/><path d="M254.3,107.91,228.78,56.85a16,16,0,0,0-21.47-7.15L182.44,62.13,130.05,48.27a8.14,8.14,0,0,0-4.1,0L73.56,62.13,48.69,49.7a16,16,0,0,0-21.47,7.15L1.7,107.9a16,16,0,0,0,7.15,21.47l27,13.51,55.49,39.63a8.06,8.06,0,0,0,2.71,1.25l64,16a8,8,0,0,0,7.6-2.1l55.07-55.08,26.42-13.21a16,16,0,0,0,7.15-21.46Zm-54.89,33.37L165,113.72a8,8,0,0,0-10.68.61C136.51,132.27,116.66,130,104,122L147.24,80h31.81l27.21,54.41ZM41.53,64,62,74.22,36.43,125.27,16,115.06Zm116,119.13L99.42,168.61l-49.2-35.14,28-56L128,64.28l9.8,2.59-45,43.68-.08.09a16,16,0,0,0,2.72,24.81c20.56,13.13,45.37,11,64.91-5L188,152.66Zm62-57.87-25.52-51L214.47,64,240,115.06Zm-87.75,92.67a8,8,0,0,1-7.75,6.06,8.13,8.13,0,0,1-1.95-.24L80.41,213.33a7.89,7.89,0,0,1-2.71-1.25L51.35,193.26a8,8,0,0,1,9.3-13l25.11,17.94L126,208.24A8,8,0,0,1,131.82,217.94Z"/></svg></span>Durante y después del partido</h2>
+        <ul class="rules">
+          <li>No hay árbitros. Las decisiones dentro de la cancha las toman los jugadores.</li>
+          <li>El público no puede opinar sobre las jugadas.</li>
+          <li>Al terminar, la pareja ganadora entrega las pelotas en mesa de control y sube el resultado en la app.</li>
+          <li>El staff de CourtBit tomará una foto de cada partido al inicio para publicarla en redes.</li>
+        </ul>
+      </section>
+
+      <section id="categoria" aria-labelledby="h-categoria" data-anim>
+        <h2 id="h-categoria"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M224,72V200a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8H216A8,8,0,0,1,224,72Z" opacity="0.2"/><path d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,200H40V72H216V200Zm-56-64a8,8,0,0,1-8,8H136v16a8,8,0,0,1-16,0V144H104a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,160,136Z"/></svg></span>Jugadores fuera de categoría, lesiones y retiros</h2>
+        <ul class="rules">
+          <li><strong>Jugadores fuera de categoría (cachirules):</strong> si crees que una pareja juega en una categoría que no le corresponde, repórtalo en el <a href="https://courtbit.com.mx/factory-sugerencias">formulario de sugerencias</a>. La decisión es del club. Si hay evidencia suficiente, la pareja queda eliminada del torneo y no hay reembolso de la inscripción.</li>
+          <li><strong>Lesiones y retiros:</strong> se marcan conforme al reglamento de la FIP.</li>
+        </ul>
+      </section>
+
+      <section id="lluvia" aria-labelledby="h-lluvia" data-anim>
+        <h2 id="h-lluvia"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M224,92a68,68,0,0,1-68,68H76A44,44,0,1,1,90.2,74.34v.11A68.06,68.06,0,0,1,224,92Z" opacity="0.2"/><path d="M158.66,196.44l-32,48a8,8,0,1,1-13.32-8.88l32-48a8,8,0,0,1,13.32,8.88ZM232,92a76.08,76.08,0,0,1-76,76H132.28l-29.62,44.44a8,8,0,1,1-13.32-8.88L113.05,168H76A52,52,0,0,1,76,64a53.26,53.26,0,0,1,8.92.76A76.08,76.08,0,0,1,232,92Zm-16,0A60.06,60.06,0,0,0,96,88.46a8,8,0,0,1-16-.92q.21-3.66.77-7.23A38.11,38.11,0,0,0,76,80a36,36,0,0,0,0,72h80A60.07,60.07,0,0,0,216,92Z"/></svg></span>Lluvia y canchas averiadas</h2>
+
+        <h3>Lluvia o mal clima</h3>
+        <ul class="rules">
+          <li>El staff de CourtBit detiene el partido si hay riesgo para los jugadores.</li>
+          <li>Las canchas techadas son la 4, la 8 y de la 9 a la 12. Los partidos en ellas continúan normalmente.</li>
+        </ul>
+
+        <div class="courts" id="plano">
+          <p>Fondo del club</p>
+          <ul aria-label="Canchas del club. Toca una para verla en el mapa.">
+            <li><a class="roofed" href="mapa/?cancha=9" aria-label="Cancha 9, techada. Ver en el mapa"><b>9</b><small>Techada</small></a></li>
+            <li><a class="roofed" href="mapa/?cancha=10" aria-label="Cancha 10, techada. Ver en el mapa"><b>10</b><small>Techada</small></a></li>
+            <li><a class="roofed" href="mapa/?cancha=11" aria-label="Cancha 11, techada. Ver en el mapa"><b>11</b><small>Techada</small></a></li>
+            <li><a class="roofed" href="mapa/?cancha=12" aria-label="Cancha 12, techada. Ver en el mapa"><b>12</b><small>Techada</small></a></li>
+            <li><a class="roofed" href="mapa/?cancha=8" aria-label="Cancha 8, techada. Ver en el mapa"><b>8</b><small>Techada</small></a></li>
+            <li><a href="mapa/?cancha=6" aria-label="Cancha 6, al aire libre. Ver en el mapa"><i style="--x:18%;--d:-.1s"></i><i style="--x:52%;--d:-.55s"></i><i style="--x:80%;--d:-.3s"></i><b>6</b></a></li>
+            <li><a href="mapa/?cancha=2" aria-label="Cancha 2, al aire libre. Ver en el mapa"><i style="--x:26%;--d:-.7s"></i><i style="--x:60%;--d:-.2s"></i><i style="--x:86%;--d:-.45s"></i><b>2</b></a></li>
+            <li><a class="roofed" href="mapa/?cancha=4" aria-label="Cancha 4, techada. Ver en el mapa"><b>4</b><small>Techada</small></a></li>
+            <li><a href="mapa/?cancha=7" aria-label="Cancha 7, al aire libre. Ver en el mapa"><i style="--x:14%;--d:-.35s"></i><i style="--x:46%;--d:-.8s"></i><i style="--x:74%;--d:-.15s"></i><b>7</b></a></li>
+            <li><a href="mapa/?cancha=5" aria-label="Cancha 5, al aire libre. Ver en el mapa"><i style="--x:22%;--d:-.6s"></i><i style="--x:56%;--d:-.05s"></i><i style="--x:84%;--d:-.5s"></i><b>5</b></a></li>
+            <li><a href="mapa/?cancha=1" aria-label="Cancha 1, al aire libre. Ver en el mapa"><i style="--x:16%;--d:-.25s"></i><i style="--x:50%;--d:-.65s"></i><i style="--x:78%;--d:-.4s"></i><b>1</b></a></li>
+            <li><a href="mapa/?cancha=3" aria-label="Cancha 3, al aire libre. Ver en el mapa"><i style="--x:24%;--d:-.75s"></i><i style="--x:58%;--d:-.2s"></i><i style="--x:88%;--d:-.55s"></i><b>3</b></a></li>
+          </ul>
+          <p>Estacionamiento</p>
+        </div>
+        <ul class="legend">
+          <li class="r">Techada: se sigue jugando</li>
+          <li>Al aire libre: se detiene si hay riesgo</li>
+        </ul>
+
+        <ul class="rules" style="margin-top:20px">
+          <li>Los partidos interrumpidos en exteriores tienen prioridad para terminarse en las techadas conforme se liberen, sin interrumpir los que ya estén en juego.</li>
+          <li>Si las exteriores vuelven a estar en condiciones, se retoman. Si no, los partidos restantes se reacomodan en las techadas y los horarios pueden extenderse.</li>
+          <li>Puedes esperar para jugar ese día o acordar con la otra pareja otro horario disponible, incluso al día siguiente, sin desplazar partidos ya programados.</li>
+          <li>Los horarios disponibles no se publican: se revisan contigo en mesa de control, según los partidos programados del torneo, las clases y las reservas del club. Las parejas tienen <strong>30&nbsp;minutos</strong> desde la notificación para acordar uno en mesa de control. El cambio queda confirmado cuando la organización asigna la cancha.</li>
+          <li>Si no hay acuerdo, la organización busca una solución. No hay forfeit automático al terminar los 30&nbsp;minutos; es el último recurso.</li>
+          <li>Se busca completar la fase de grupos antes de las finales. Las finales pueden reacomodarse y terminar más tarde.</li>
+        </ul>
+
+        <h3>Cancha averiada</h3>
+        <ul class="rules">
+          <li>Si un cristal, la red, la superficie u otro desperfecto impide jugar, los partidos afectados se reagendan según disponibilidad.</li>
+          <li>Si tu partido ya había iniciado, tiene prioridad sobre la próxima cancha disponible.</li>
+          <li>Podría no ser posible conservar el horario original.</li>
+        </ul>
+      </section>
+
+      <section id="quejas" aria-labelledby="h-quejas" data-anim>
+        <h2 id="h-quejas"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128A96,96,0,0,1,79.93,211.11h0L42.54,223.58a8,8,0,0,1-10.12-10.12l12.47-37.39h0A96,96,0,1,1,224,128Z" opacity="0.2"/><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-4-1.08,7.85,7.85,0,0,0-2.53.42L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Zm12-88a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm-44,0a12,12,0,1,1-12-12A12,12,0,0,1,96,128Zm88,0a12,12,0,1,1-12-12A12,12,0,0,1,184,128Z"/></svg></span>Quejas y sugerencias</h2>
+        <ul class="rules">
+          <li>Reporta problemas, inconformidades y sugerencias en <a href="https://courtbit.com.mx/factory-sugerencias">courtbit.com.mx/factory-sugerencias</a>. Hay un QR en mesa de control.</li>
+          <li>El equipo de CourtBit revisa los reportes en tiempo real.</li>
+          <li>Mesa de control se dedica a llevar el orden de los partidos.</li>
+          <li>Cobros y kits de bienvenida se atienden con el club.</li>
+        </ul>
+        <div class="report">
+          <p>¿Algo no salió bien o tienes una idea?<small>El equipo de CourtBit revisa los reportes en tiempo real.</small></p>
+          <a class="btn lime" href="https://courtbit.com.mx/factory-sugerencias">Enviar un reporte</a>
+        </div>
+      </section>
+
+      <section id="cambios" aria-labelledby="h-cambios" data-anim>
+        <h2 id="h-cambios"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 256 256" fill="currentColor"><path d="M56,88l32,80c0,17.67-20,24-32,24s-32-6.33-32-24ZM200,56l-32,80c0,17.67,20,24,32,24s32-6.33,32-24Z" opacity="0.2"/><path d="M239.43,133l-32-80h0a8,8,0,0,0-9.16-4.84L136,62V40a8,8,0,0,0-16,0V65.58L54.26,80.19A8,8,0,0,0,48.57,85h0v.06L16.57,165a7.92,7.92,0,0,0-.57,3c0,23.31,24.54,32,40,32s40-8.69,40-32a7.92,7.92,0,0,0-.57-3L66.92,93.77,120,82V208H104a8,8,0,0,0,0,16h48a8,8,0,0,0,0-16H136V78.42L187,67.1,160.57,133a7.92,7.92,0,0,0-.57,3c0,23.31,24.54,32,40,32s40-8.69,40-32A7.92,7.92,0,0,0,239.43,133ZM56,184c-7.53,0-22.76-3.61-23.93-14.64L56,109.54l23.93,59.82C78.76,180.39,63.53,184,56,184Zm144-32c-7.53,0-22.76-3.61-23.93-14.64L200,77.54l23.93,59.82C222.76,148.39,207.53,152,200,152Z"/></svg></span>Decisiones y cambios al reglamento</h2>
+        <ul class="rules">
+          <li>Si hace falta una regla de juego que este reglamento no cubra, se consulta el reglamento de la FIP para tomar la decisión.</li>
+          <li>Las reglas no se aplican de forma retroactiva.</li>
+          <li>Una vez tomada una decisión, pasados 15&nbsp;minutos ya no se modifica.</li>
+          <li>Este reglamento puede cambiar. Los organizadores y el equipo de CourtBit pueden tomar decisiones ante situaciones extraordinarias que el reglamento no cubra, o cuando aplicarlo no sea lo justo para la competencia y los jugadores.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <p>Torneo 2do Aniversario <span translate="no">Pádel Factory</span>, operado con <a href="https://www.courtbit.com.mx/" translate="no">CourtBit</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var hasIO = 'IntersectionObserver' in window;
+
+      // Pelota de la portada: quieta si el usuario pidió menos movimiento, en pausa si no se ve.
+      var court = document.getElementById('cancha');
+      var cover = document.getElementById('portada');
+      var ball = document.getElementById('pelota');
+      if (reduce && ball) {
+        var motion = ball.querySelector('animateMotion');
+        if (motion) motion.remove();
+        var hold = ball.querySelector('set');
+        if (hold) hold.remove();
+        ball.setAttribute('opacity', '1');
+        ball.setAttribute('transform', 'translate(300 92)');
+      } else if (hasIO && court && court.pauseAnimations) {
+        new IntersectionObserver(function (entries) {
+          var on = entries[0].isIntersecting;
+          if (on) court.unpauseAnimations(); else court.pauseAnimations();
+          cover.classList.toggle('paused', !on);
+        }).observe(cover);
+      }
+
+      // Figuras que se animan al entrar en pantalla.
+      var animated = document.querySelectorAll('[data-anim]');
+      if (hasIO && !reduce) {
+        var reveal = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); reveal.unobserve(e.target); }
+          });
+        }, { rootMargin: '0px 0px -12% 0px' });
+        animated.forEach(function (el) { reveal.observe(el); });
+
+        var plan = document.getElementById('plano');
+        if (plan) {
+          new IntersectionObserver(function (entries) {
+            plan.classList.toggle('raining', entries[0].isIntersecting);
+          }).observe(plan);
+        }
+      } else {
+        animated.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      // Índice: marca la sección visible.
+      var list = document.getElementById('toc');
+      if (!list || !hasIO) return;
+      var links = {};
+      list.querySelectorAll('a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+      var current = null;
+      function setCurrent(id) {
+        if (id === current || !links[id]) return;
+        if (current) links[current].removeAttribute('aria-current');
+        current = id;
+        var a = links[id];
+        a.setAttribute('aria-current', 'true');
+        if (list.scrollWidth > list.clientWidth) {
+          var left = a.offsetLeft - (list.clientWidth - a.offsetWidth) / 2;
+          list.scrollTo({ left: Math.max(0, left), behavior: reduce ? 'auto' : 'smooth' });
+        }
+      }
+      var sections = document.querySelectorAll('main section');
+      var visible = {};
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+        for (var i = 0; i < sections.length; i++) {
+          if (visible[sections[i].id]) { setCurrent(sections[i].id); break; }
+        }
+      }, { rootMargin: '-80px 0px -55% 0px' });
+      sections.forEach(function (s) { spy.observe(s); });
+    })();
+  </script>
+</body>
+</html>
