@@ -1,0 +1,9 @@
+{
+  "actualizado": "",
+  "canchas": [
+    { "cancha": 1, "estado": "libre", "ronda": "", "categoria": "", "pareja1": "", "pareja2": "", "marcador": "", "saque": "", "hora": "", "siguiente_pareja1": "", "siguiente_pareja2": "", "siguiente_hora": "" },
+    { "cancha": 2, "estado": "libre", "ronda": "", "categoria": "", "pareja1": "", "pareja2": "", "marcador": "", "saque": "", "hora": "", "siguiente_pareja1": "", "siguiente_pareja2": "", "siguiente_hora": "" },
+    { "cancha": 3, "estado": "libre", "ronda": "", "categoria": "", "pareja1": "", "pareja2": "", "marcador": "", "saque": "", "hora": "", "siguiente_pareja1": "", "siguiente_pareja2": "", "siguiente_hora": "" },
+    { "cancha": 4, "estado": "libre", "ronda": "", "categoria": "", "pareja1": "", "pareja2": "", "marcador": "", "saque": "", "hora": "", "siguiente_pareja1": "", "siguiente_pareja2": "", "siguiente_hora": "" }
+  ]
+}
