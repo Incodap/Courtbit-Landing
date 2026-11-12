@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Quejas y sugerencias | Torneo 2do Aniversario Pádel Factory</title>
+  <meta name="description" content="Reporta un problema, una inconformidad o una sugerencia del Torneo 2do Aniversario Pádel Factory. Primero te mostramos lo que dice el reglamento.">
+  <link rel="canonical" href="https://www.courtbit.com.mx/factory-sugerencias/">
+  <meta name="robots" content="noindex">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:title" content="Quejas y sugerencias | Torneo 2do Aniversario Pádel Factory">
+  <meta property="og:description" content="Reporta un problema o deja una sugerencia. El equipo de CourtBit revisa los reportes en tiempo real.">
+  <meta property="og:url" content="https://www.courtbit.com.mx/factory-sugerencias/">
+  <meta property="og:image" content="https://www.courtbit.com.mx/Assets/Logo-CB-icono.png">
+  <meta name="theme-color" content="#10302a">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,800&display=swap">
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fbfdfc;
+      --surface: #f1f8f3;
+      --surface-2: #e6f5eb;
+      --line: #dbe5e0;
+      --line-strong: #b9c9c2;
+      --text: #10302a;
+      --text-soft: #3c4a45;
+      --text-muted: #5a6b65;
+      --green: #15803d;
+      --link: #116230;
+      --marker: #46a35f;
+      --band: #10302a;
+      --band-text: #f3f8f5;
+      --band-soft: #b9cdc5;
+      --band-line: rgba(255, 255, 255, .16);
+      --lime: #B8F02B;
+      --btn-bg: #10302a;
+      --btn-text: #ffffff;
+      --btn-hover: #1b4a40;
+      --field: #ffffff;
+      --danger: #b42318;
+      --danger-bg: #fdecea;
+      --header-bg: #ffffff;
+      --focus: #15803d;
+      --shadow: 0 10px 30px -14px rgba(16, 48, 42, .3);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --bg: #071a16;
+        --surface: #0d2620;
+        --surface-2: #12322a;
+        --line: #1f3d35;
+        --line-strong: #35584e;
+        --text: #e9f2ee;
+        --text-soft: #cbd9d3;
+        --text-muted: #9db1a9;
+        --green: #7fd197;
+        --link: #a6e3b6;
+        --marker: #7fd197;
+        --band: #0d2620;
+        --band-line: rgba(255, 255, 255, .12);
+        --btn-bg: #B8F02B;
+        --btn-text: #10302a;
+        --btn-hover: #cbf761;
+        --field: #0b211c;
+        --danger: #ff9b90;
+        --danger-bg: #3a1613;
+        --header-bg: #f1f8f3;
+        --focus: #B8F02B;
+        --shadow: 0 10px 30px -14px rgba(0, 0, 0, .7);
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; min-height: 100dvh; display: flex; flex-direction: column;
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.0625rem; line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: rgba(21, 128, 61, .15);
+    }
+    ::selection { background: var(--lime); color: #10302a; }
+    a { color: var(--link); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    :is(a, button, input, select, textarea):focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    a:focus-visible, button:focus-visible { border-radius: 10px; }
+    [hidden] { display: none !important; }
+    .wrap { width: 100%; max-width: 720px; margin: 0 auto; padding-inline: max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right)); }
+    .ic { width: 1em; height: 1em; display: block; flex: none; fill: currentColor; }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+    .skip {
+      position: absolute; left: 12px; top: -60px; z-index: 40;
+      background: var(--lime); color: #10302a; font-weight: 700;
+      padding: 10px 14px; border-radius: 8px; text-decoration: none;
+    }
+    .skip:focus { top: 12px; }
+
+    .brand { background: var(--header-bg); border-bottom: 1px solid var(--line); }
+    .brand .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; }
+    .brand a { display: inline-flex; align-items: center; min-height: 44px; }
+    .brand img { height: 26px; width: auto; display: block; }
+    .brand .back { color: #116230; font-size: .9375rem; font-weight: 600; }
+
+    .cover { background: var(--band); color: var(--band-text); }
+    .cover .wrap { padding-block: 28px 26px; }
+    .cover h1 {
+      margin: 0; font-size: clamp(2rem, 7.5vw, 2.75rem); font-weight: 800; font-style: italic;
+      line-height: 1.06; letter-spacing: -0.025em; text-wrap: balance;
+    }
+    .cover p { margin: 10px 0 0; font-weight: 600; color: var(--lime); text-wrap: balance; }
+
+    /* Pasos: es una secuencia real, por eso van numerados */
+    .steps { list-style: none; display: flex; gap: 8px; margin: 22px 0 0; padding: 0; }
+    .steps li {
+      flex: 1; display: grid; gap: 7px; font-size: .8125rem; font-weight: 600; color: var(--band-soft);
+    }
+    .steps li::before { content: ""; height: 5px; border-radius: 99px; background: var(--band-line); transition: background-color 240ms var(--ease-out); }
+    .steps li.past::before { background: rgba(184, 240, 43, .5); }
+    .steps li[aria-current="step"] { color: var(--band-text); }
+    .steps li[aria-current="step"]::before { background: var(--lime); }
+
+    .dissolve {
+      height: 16px; background: var(--band);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='32'%3E%3Cpath d='M0 0h16v16H0zM32 0h32v16H32zM96 0h16v16H96zM128 0h32v16h-32zM176 0h16v16h-16zM48 16h16v16H48zM144 16h16v16h-16zM96 16h16v16H96z'/%3E%3C/svg%3E") repeat-x top left;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='32'%3E%3Cpath d='M0 0h16v16H0zM32 0h32v16H32zM96 0h16v16H96zM128 0h32v16h-32zM176 0h16v16h-16zM48 16h16v16H48zM144 16h16v16h-16zM96 16h16v16H96z'/%3E%3C/svg%3E") repeat-x top left;
+      -webkit-mask-size: 96px 16px; mask-size: 96px 16px;
+    }
+
+    main { flex: 1; padding-block: 26px 56px; }
+    .view:focus { outline: none; }
+    h2 { margin: 0 0 6px; font-size: 1.5rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.015em; text-wrap: balance; }
+    .lead { margin: 0 0 20px; color: var(--text-soft); text-wrap: pretty; }
+
+    /* Paso 1: temas */
+    .topics { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .topics a {
+      display: grid; gap: 10px; align-content: start; height: 100%; min-height: 112px;
+      padding: 14px; border-radius: 18px;
+      background: var(--surface); border: 1.5px solid transparent; color: var(--text);
+      text-decoration: none; font-weight: 700; line-height: 1.25;
+      touch-action: manipulation;
+      transition: transform 140ms var(--ease-out), border-color 160ms var(--ease-out), background-color 160ms var(--ease-out);
+    }
+    .topics a:active { transform: scale(.97); }
+    .topics .badge { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; background: var(--surface-2); color: var(--green); font-size: 24px; }
+    .topics small { display: block; margin-top: 3px; font-size: .8125rem; font-weight: 400; color: var(--text-muted); line-height: 1.35; }
+    .topics li:last-child { grid-column: 1 / -1; }
+    .topics li:last-child a { min-height: 0; grid-template-columns: auto 1fr; align-items: center; }
+    @media (hover: hover) and (pointer: fine) {
+      .topics a:hover { border-color: var(--marker); background: var(--surface-2); }
+    }
+
+    /* Paso 2: respuestas del reglamento */
+    .crumb {
+      display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin: -8px 0 6px -4px; padding: 0 8px 0 4px;
+      font-size: .9375rem; font-weight: 600; text-decoration: none; color: var(--link);
+    }
+    .crumb .ic { font-size: 18px; }
+    .qa { margin: 0 0 22px; padding: 0; list-style: none; display: grid; gap: 10px; }
+    .qa li { padding: 16px 16px 15px; border-radius: 18px; background: var(--surface); }
+    .qa h3 { margin: 0 0 6px; font-size: 1.0625rem; font-weight: 700; line-height: 1.3; text-wrap: balance; }
+    .qa p { margin: 0; color: var(--text-soft); text-wrap: pretty; }
+    .qa p + p { margin-top: 8px; }
+    .source { margin: -8px 0 22px; font-size: .9375rem; color: var(--text-muted); }
+
+    .ask { padding: 18px; border-radius: 22px; border: 1.5px solid var(--line); display: grid; gap: 12px; }
+    .ask p { margin: 0; font-weight: 700; font-size: 1.125rem; line-height: 1.3; }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 50px; padding: 0 22px; border-radius: 999px;
+      background: var(--btn-bg); color: var(--btn-text); border: 1.5px solid var(--btn-bg);
+      font: inherit; font-weight: 700; font-size: 1rem; text-decoration: none; white-space: nowrap; cursor: pointer;
+      touch-action: manipulation;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out);
+    }
+    .btn:active { transform: scale(.97); }
+    .btn.ghost { background: transparent; color: var(--text); border-color: var(--line-strong); }
+    .btn[aria-busy="true"] { opacity: .75; cursor: progress; }
+    @media (hover: hover) and (pointer: fine) {
+      .btn:not(.ghost):hover { background: var(--btn-hover); border-color: var(--btn-hover); }
+      .btn.ghost:hover { border-color: var(--text); }
+    }
+    @media (max-width: 420px) { .row .btn { flex: 1 1 100%; } }
+
+    /* Paso 3: reporte */
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; padding: 6px 8px 6px 14px; border-radius: 999px;
+      background: var(--surface-2); font-size: .9375rem; font-weight: 700;
+    }
+    .chip a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 10px; border-radius: 999px; font-weight: 600; }
+    form { display: grid; gap: 18px; }
+    .field { display: grid; gap: 6px; }
+    .field label { font-weight: 700; font-size: .9375rem; }
+    .field label span { font-weight: 400; color: var(--text-muted); }
+    .field .hint { font-size: .875rem; color: var(--text-muted); }
+    input, select, textarea {
+      width: 100%; font: inherit; font-size: 1rem; color: var(--text);
+      background-color: var(--field); border: 1.5px solid var(--line-strong); border-radius: 14px;
+      padding: 13px 14px; min-height: 50px;
+      transition: border-color 160ms var(--ease-out);
+    }
+    textarea { min-height: 132px; resize: vertical; line-height: 1.5; }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%235a6b65' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+    ::placeholder { color: var(--text-muted); opacity: 1; }
+    :is(input, select, textarea):focus { border-color: var(--focus); }
+    [aria-invalid="true"] { border-color: var(--danger); }
+    .err { display: flex; gap: 6px; align-items: flex-start; font-size: .875rem; font-weight: 600; color: var(--danger); }
+    .two { display: grid; gap: 18px; }
+    @media (min-width: 560px) { .two { grid-template-columns: 1fr 1fr; } }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .alert { display: flex; gap: 10px; padding: 14px 16px; border-radius: 16px; background: var(--danger-bg); color: var(--danger); font-weight: 600; }
+    .alert .ic { font-size: 22px; margin-top: 1px; }
+    .fine { margin: 0; font-size: .875rem; color: var(--text-muted); }
+
+    /* Cierre */
+    .done { text-align: center; padding-top: 18px; display: grid; justify-items: center; gap: 4px; }
+    .done .mark { width: 84px; height: 84px; margin-bottom: 12px; }
+    .done .mark circle { fill: var(--lime); }
+    .done .mark path { fill: none; stroke: #10302a; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; }
+    .done .lead { max-width: 44ch; }
+    .done .row { justify-content: center; margin-top: 6px; }
+
+    footer { border-top: 1px solid var(--line); }
+    footer .wrap { padding-block: 22px calc(26px + env(safe-area-inset-bottom)); color: var(--text-muted); font-size: .9375rem; }
+    footer p { margin: 0; }
+
+    @keyframes viewin { from { opacity: 0; transform: translateY(10px); } }
+    @keyframes pop { from { opacity: 0; transform: scale(.5); } }
+    @keyframes draw { from { stroke-dashoffset: 1; } }
+    @media (prefers-reduced-motion: no-preference) {
+      .view.enter { animation: viewin 280ms var(--ease-out) both; }
+      .view.enter .topics li, .view.enter .qa li { animation: viewin 360ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 40ms + 60ms); }
+      .view.enter .mark circle { transform-box: fill-box; transform-origin: center; animation: pop 480ms var(--ease-out) both; }
+      .view.enter .mark path { animation: draw 520ms var(--ease-out) 320ms both; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn, .topics a, .steps li::before, input, select, textarea { transition: none; }
+      .btn:active, .topics a:active { transform: none; }
+    }
+    @media (min-width: 640px) {
+      .cover .wrap { padding-block: 40px 34px; }
+      main { padding-block: 34px 72px; }
+      .topics { grid-template-columns: repeat(3, 1fr); }
+      .topics li:last-child { grid-column: auto; }
+      .topics li:last-child a { min-height: 112px; grid-template-columns: none; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+
+  <svg hidden>
+    <symbol id="i-horario" viewBox="0 0 256 256"><path d="M216,48V88H40V48a8,8,0,0,1,8-8H208A8,8,0,0,1,216,48Z" opacity="0.2"/><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></symbol>
+    <symbol id="i-tolerancia" viewBox="0 0 256 256"><path d="M216,136a88,88,0,1,1-88-88A88,88,0,0,1,216,136Z" opacity="0.2"/><path d="M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,216ZM173.66,90.34a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32l40-40A8,8,0,0,1,173.66,90.34ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z"/></symbol>
+    <symbol id="i-lluvia" viewBox="0 0 256 256"><path d="M224,92a68,68,0,0,1-68,68H76A44,44,0,1,1,90.2,74.34v.11A68.06,68.06,0,0,1,224,92Z" opacity="0.2"/><path d="M158.66,196.44l-32,48a8,8,0,1,1-13.32-8.88l32-48a8,8,0,0,1,13.32,8.88ZM232,92a76.08,76.08,0,0,1-76,76H132.28l-29.62,44.44a8,8,0,1,1-13.32-8.88L113.05,168H76A52,52,0,0,1,76,64a53.26,53.26,0,0,1,8.92.76A76.08,76.08,0,0,1,232,92Zm-16,0A60.06,60.06,0,0,0,96,88.46a8,8,0,0,1-16-.92q.21-3.66.77-7.23A38.11,38.11,0,0,0,76,80a36,36,0,0,0,0,72h80A60.07,60.07,0,0,0,216,92Z"/></symbol>
+    <symbol id="i-categoria" viewBox="0 0 256 256"><path d="M168,144a40,40,0,1,1-40-40A40,40,0,0,1,168,144ZM64,56A32,32,0,1,0,96,88,32,32,0,0,0,64,56Zm128,0a32,32,0,1,0,32,32A32,32,0,0,0,192,56Z" opacity="0.2"/><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1,0-16,24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.85,8,57,57,0,0,0-98.15,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></symbol>
+    <symbol id="i-juego" viewBox="0 0 256 256"><path d="M60.12,60.09A95.74,95.74,0,0,1,127.83,32h0A95.94,95.94,0,0,1,32,127.75,95.64,95.64,0,0,1,60.12,60.09ZM32,127.92v-.17h0Zm124.28,28.26a95.54,95.54,0,0,0-28.11,67.65A96,96,0,0,0,224,128.08h0A95.79,95.79,0,0,0,156.28,156.18ZM128.17,224v-.17h0Z" opacity="0.2"/><path d="M201.57,54.46a104,104,0,1,0,0,147.08A103.4,103.4,0,0,0,201.57,54.46ZM65.75,65.77a87.63,87.63,0,0,1,53.66-25.31A87.31,87.31,0,0,1,94,94.06a87.42,87.42,0,0,1-53.62,25.35A87.58,87.58,0,0,1,65.75,65.77ZM40.33,135.48a103.29,103.29,0,0,0,65-30.11,103.24,103.24,0,0,0,30.13-65,87.78,87.78,0,0,1,80.18,80.14,104,104,0,0,0-95.16,95.1,87.78,87.78,0,0,1-80.18-80.14Zm149.92,54.75a87.69,87.69,0,0,1-53.66,25.31,88,88,0,0,1,79-78.95A87.58,87.58,0,0,1,190.25,190.23Z"/></symbol>
+    <symbol id="i-grupos" viewBox="0 0 256 256"><path d="M64,112v32a8,8,0,0,1-8,8H24a8,8,0,0,1-8-8V112a8,8,0,0,1,8-8H56A8,8,0,0,1,64,112ZM208,40H160a8,8,0,0,0-8,8V96a8,8,0,0,0,8,8h48a8,8,0,0,0,8-8V48A8,8,0,0,0,208,40Zm0,112H160a8,8,0,0,0-8,8v48a8,8,0,0,0,8,8h48a8,8,0,0,0,8-8V160A8,8,0,0,0,208,152Z" opacity="0.2"/><path d="M160,112h48a16,16,0,0,0,16-16V48a16,16,0,0,0-16-16H160a16,16,0,0,0-16,16V64H128a24,24,0,0,0-24,24v32H72v-8A16,16,0,0,0,56,96H24A16,16,0,0,0,8,112v32a16,16,0,0,0,16,16H56a16,16,0,0,0,16-16v-8h32v32a24,24,0,0,0,24,24h16v16a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V160a16,16,0,0,0-16-16H160a16,16,0,0,0-16,16v16H128a8,8,0,0,1-8-8V88a8,8,0,0,1,8-8h16V96A16,16,0,0,0,160,112ZM56,144H24V112H56v32Zm104,16h48v48H160Zm0-112h48V96H160Z"/></symbol>
+    <symbol id="i-cobros" viewBox="0 0 256 256"><path d="M224,56V208l-32-16-32,16-32-16L96,208,64,192,32,208V56a8,8,0,0,1,8-8H216A8,8,0,0,1,224,56Z" opacity="0.2"/><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></symbol>
+    <symbol id="i-app" viewBox="0 0 256 256"><path d="M192,56V200H64V56Z" opacity="0.2"/><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></symbol>
+    <symbol id="i-otro" viewBox="0 0 256 256"><path d="M208,104a79.86,79.86,0,0,1-30.59,62.92A24.29,24.29,0,0,0,168,186v6a8,8,0,0,1-8,8H96a8,8,0,0,1-8-8v-6a24.11,24.11,0,0,0-9.3-19A79.87,79.87,0,0,1,48,104.45C47.76,61.09,82.72,25,126.07,24A80,80,0,0,1,208,104Z" opacity="0.2"/><path d="M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a87.55,87.55,0,0,1-33.64,69.21A16.24,16.24,0,0,0,176,186v6a16,16,0,0,1-16,16H96a16,16,0,0,1-16-16v-6a16,16,0,0,0-6.23-12.66A87.59,87.59,0,0,1,40,104.49C39.74,56.83,78.26,17.14,125.88,16A88,88,0,0,1,216,104Zm-16,0a72,72,0,0,0-73.74-72c-39,.92-70.47,33.39-70.26,72.39a71.65,71.65,0,0,0,27.64,56.3A32,32,0,0,1,96,186v6h64v-6a32.15,32.15,0,0,1,12.47-25.35A71.65,71.65,0,0,0,200,104Zm-16.11-9.34a57.6,57.6,0,0,0-46.56-46.55,8,8,0,0,0-2.66,15.78c16.57,2.79,30.63,16.85,33.44,33.45A8,8,0,0,0,176,104a9,9,0,0,0,1.35-.11A8,8,0,0,0,183.89,94.66Z"/></symbol>
+    <symbol id="i-atras" viewBox="0 0 256 256"><path d="M112,56V200L40,128Z" opacity="0.2"/><path d="M216,120H120V56a8,8,0,0,0-13.66-5.66l-72,72a8,8,0,0,0,0,11.32l72,72A8,8,0,0,0,120,200V136h96a8,8,0,0,0,0-16ZM104,180.69,51.31,128,104,75.31Z"/></symbol>
+    <symbol id="i-alerta" viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" opacity="0.2"/><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"/></symbol>
+  </svg>
+
+  <header class="brand">
+    <div class="wrap">
+      <a href="https://www.courtbit.com.mx/" aria-label="CourtBit, ir al inicio">
+        <img src="/Assets/courtbit-logo-header.svg" alt="CourtBit" width="151" height="26">
+      </a>
+      <a class="back" href="/factory-reglamento/">Ver el reglamento</a>
+    </div>
+  </header>
+
+  <div class="cover">
+    <div class="wrap">
+      <h1>Quejas y sugerencias</h1>
+      <p>Torneo 2do Aniversario <span translate="no">Pádel Factory</span></p>
+      <ol class="steps" id="pasos" aria-label="Pasos">
+        <li>1. Tema</li>
+        <li>2. Reglamento</li>
+        <li>3. Reporte</li>
+      </ol>
+    </div>
+  </div>
+  <div class="dissolve" aria-hidden="true"></div>
+
+  <main id="contenido">
+    <div class="wrap">
+      <noscript>
+        <p class="lead">Esta página necesita JavaScript. Si no puedes activarlo, acude a mesa de control o consulta el <a href="/factory-reglamento/">reglamento</a>.</p>
+      </noscript>
+
+      <!-- Paso 1 -->
+      <section class="view" id="v-temas" tabindex="-1" aria-labelledby="t-temas" hidden>
+        <h2 id="t-temas">¿Sobre qué quieres escribirnos?</h2>
+        <p class="lead">Elige un tema. Primero te mostramos lo que dice el reglamento, porque muchas dudas se resuelven ahí.</p>
+        <ul class="topics" id="temas"></ul>
+      </section>
+
+      <!-- Paso 2 -->
+      <section class="view" id="v-faq" tabindex="-1" aria-labelledby="t-faq" hidden>
+        <a class="crumb" href="#/"><svg class="ic" aria-hidden="true"><use href="#i-atras"/></svg>Cambiar de tema</a>
+        <h2 id="t-faq"></h2>
+        <p class="lead">Esto dice el reglamento del torneo.</p>
+        <ul class="qa" id="respuestas"></ul>
+        <p class="source">¿Quieres leerlo completo? <a href="/factory-reglamento/">Abrir el reglamento</a>.</p>
+        <div class="ask">
+          <p id="pregunta-cierre">¿Con esto quedó resuelto?</p>
+          <div class="row">
+            <a class="btn ghost" href="#/resuelto">Sí, quedó resuelto</a>
+            <a class="btn" id="ir-reporte" href="#/">No, quiero reportarlo</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 3 -->
+      <section class="view" id="v-form" tabindex="-1" aria-labelledby="t-form" hidden>
+        <a class="crumb" id="volver-faq" href="#/"><svg class="ic" aria-hidden="true"><use href="#i-atras"/></svg>Volver a las respuestas</a>
+        <h2 id="t-form">Cuéntanos qué pasó</h2>
+        <p class="lead">El equipo de CourtBit revisa los reportes en tiempo real.</p>
+        <p class="chip"><span id="tema-elegido"></span><a href="#/">Cambiar</a></p>
+
+        <form id="reporte" novalidate>
+          <div class="field">
+            <label for="f-mensaje">Tu reporte o sugerencia</label>
+            <textarea id="f-mensaje" name="mensaje" maxlength="1500" required aria-describedby="e-mensaje"></textarea>
+            <p class="err" id="e-mensaje" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="f-cancha">Cancha <span>(opcional)</span></label>
+            <select id="f-cancha" name="cancha">
+              <option value="">No aplica</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-nombre">Tu nombre</label>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="name" maxlength="120" required aria-describedby="e-nombre">
+            <p class="err" id="e-nombre" hidden></p>
+          </div>
+
+          <div class="two">
+            <div class="field">
+              <label for="f-correo">Correo</label>
+              <input id="f-correo" name="correo" type="email" inputmode="email" autocomplete="email" spellcheck="false" autocapitalize="off" maxlength="200" required aria-describedby="e-correo h-correo">
+              <p class="hint" id="h-correo">Para avisarte qué pasó con tu reporte.</p>
+              <p class="err" id="e-correo" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-tel">WhatsApp <span>(opcional)</span></label>
+              <input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="10 dígitos…" aria-describedby="e-tel">
+              <p class="err" id="e-tel" hidden></p>
+            </div>
+          </div>
+
+          <div class="hp" aria-hidden="true">
+            <label for="f-web">No llenes este campo</label>
+            <input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="alert" id="fallo" role="alert" hidden>
+            <svg class="ic" aria-hidden="true"><use href="#i-alerta"/></svg>
+            <span id="fallo-texto"></span>
+          </div>
+
+          <div class="row">
+            <button class="btn" type="submit" id="enviar">Enviar reporte</button>
+          </div>
+          <p class="fine">Usamos tus datos solo para dar seguimiento a tu reporte. <a href="/privacy/">Aviso de privacidad</a>.</p>
+        </form>
+      </section>
+
+      <!-- Enviado -->
+      <section class="view done" id="v-enviado" tabindex="-1" aria-labelledby="t-enviado" hidden>
+        <svg class="mark" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="42"/><path pathLength="1" d="M25 43.5l11.5 11L60 31"/></svg>
+        <h2 id="t-enviado">Recibimos tu reporte</h2>
+        <p class="lead" id="enviado-texto">El equipo de CourtBit ya lo tiene. Si hace falta algún dato te escribimos.</p>
+        <div class="row">
+          <a class="btn" href="/factory-reglamento/">Volver al reglamento</a>
+          <a class="btn ghost" href="#/">Enviar otro reporte</a>
+        </div>
+      </section>
+
+      <!-- Resuelto con el reglamento -->
+      <section class="view done" id="v-resuelto" tabindex="-1" aria-labelledby="t-resuelto" hidden>
+        <svg class="mark" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="42"/><path pathLength="1" d="M25 43.5l11.5 11L60 31"/></svg>
+        <h2 id="t-resuelto">Qué bueno que se resolvió</h2>
+        <p class="lead">Si surge otra cosa durante el torneo, aquí estamos. Mucha suerte en tu partido.</p>
+        <div class="row">
+          <a class="btn" href="/factory-reglamento/">Volver al reglamento</a>
+          <a class="btn ghost" href="#/">Tengo otra duda</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Torneo 2do Aniversario <span translate="no">Pádel Factory</span>, operado con <a href="https://www.courtbit.com.mx/" translate="no">CourtBit</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // En el sitio publicado se guarda en producción; en pruebas locales, en stage.
+      var PROD = /(^|\.)courtbit\.com\.mx$/.test(location.hostname);
+      var ENDPOINT = (PROD ? 'https://api.courtbit.com.mx' : 'https://api-stage.courtbit.com.mx') + '/api/public/contact-messages';
+
+      // Respuestas tomadas del reglamento del torneo.
+      var TOPICS = [
+        {
+          id: 'horario', icon: 'horario', label: 'Mi cancha o mi horario', sub: 'Cambios, retrasos, no veo mi partido',
+          hint: 'Ejemplo: mi partido de las 18:00 no aparece en la app…',
+          faq: [
+            ['¿Dónde veo mi cancha y mi horario?', ['Tu cancha y tu horario son los que aparecen en la app de CourtBit. Revísalos antes de llegar. Es tu responsabilidad consultar la información más actualizada en CourtBit; las capturas de pantalla no son válidas.']],
+            ['¿Por qué cambió mi partido?', ['Los partidos pueden cambiar. Activa las notificaciones para estar siempre informado.']],
+            ['Mi cancha va retrasada', ['Si un partido previo se alarga y tu cancha se retrasa, es parte del juego. Te pedimos comprensión.']],
+            ['No veo el torneo en mi app', ['Preséntate en mesa de control al llegar. Si te inscribieron manualmente y no ves el torneo en tu app, ahí vinculan tu usuario.']]
+          ]
+        },
+        {
+          id: 'tolerancia', icon: 'tolerancia', label: 'Tolerancia y W.O.', sub: 'Llegadas tarde, partido perdido',
+          hint: 'Ejemplo: nos marcaron W.O. y llegamos a las…',
+          faq: [
+            ['¿Cuánta tolerancia hay?', ['Hay 15 minutos de tolerancia, que corren a partir de la hora programada del partido. Pasado ese tiempo se marca W.O.']],
+            ['Había tráfico para llegar al club', ['Toma precauciones en tu traslado al club y contempla el tráfico para llegar a tiempo.']],
+            ['¿Se puede cambiar una decisión ya tomada?', ['Una vez tomada una decisión, pasados 15 minutos ya no se modifica. Las reglas no se aplican de forma retroactiva.']]
+          ]
+        },
+        {
+          id: 'lluvia', icon: 'lluvia', label: 'Lluvia o cancha averiada', sub: 'Partidos detenidos o reagendados',
+          hint: 'Ejemplo: se detuvo nuestro partido en la cancha 5 y…',
+          faq: [
+            ['¿Quién detiene el partido si llueve?', ['El staff de CourtBit detiene el partido si hay riesgo para los jugadores.']],
+            ['¿Qué canchas siguen jugando?', ['Las canchas techadas son la 4, la 8 y de la 9 a la 12. Los partidos en ellas continúan normalmente.']],
+            ['Mi partido se interrumpió', ['Los partidos interrumpidos en exteriores tienen prioridad para terminarse en las techadas conforme se liberen, sin interrumpir los que ya estén en juego.', 'Si las exteriores vuelven a estar en condiciones, se retoman. Si no, los partidos restantes se reacomodan en las techadas y los horarios pueden extenderse.']],
+            ['¿Podemos jugarlo en otro horario?', ['Puedes esperar para jugar ese día o acordar con la otra pareja otro horario disponible, incluso al día siguiente, sin desplazar partidos ya programados.', 'Los horarios disponibles no se publican: se revisan contigo en mesa de control. Las parejas tienen 30 minutos desde la notificación para acordar uno en mesa de control. El cambio queda confirmado cuando la organización asigna la cancha.']],
+            ['¿Y si no nos ponemos de acuerdo?', ['Si no hay acuerdo, la organización busca una solución. No hay forfeit automático al terminar los 30 minutos; es el último recurso.']],
+            ['La cancha tiene un desperfecto', ['Si un cristal, la red, la superficie u otro desperfecto impide jugar, los partidos afectados se reagendan según disponibilidad. Si tu partido ya había iniciado, tiene prioridad sobre la próxima cancha disponible. Podría no ser posible conservar el horario original.']]
+          ]
+        },
+        {
+          id: 'categoria', icon: 'categoria', label: 'Jugador fuera de categoría', sub: 'Reportar un posible cachirul',
+          hint: 'Nombres de la pareja, categoría en la que juegan y por qué crees que no les corresponde…',
+          close: '¿Quieres reportar a una pareja?', yes: 'No, solo era una duda', no: 'Sí, reportar pareja',
+          faq: [
+            ['¿Qué pasa si una pareja juega en una categoría que no le corresponde?', ['Si crees que una pareja juega en una categoría que no le corresponde, repórtalo en este formulario. La decisión es del club.', 'Si hay evidencia suficiente, la pareja queda eliminada del torneo y no hay reembolso de la inscripción.']]
+          ]
+        },
+        {
+          id: 'juego', icon: 'juego', label: 'Jugadas, marcador o resultado', sub: 'Formato, puntos, lesiones',
+          hint: 'Ejemplo: el resultado que se subió a la app no es el correcto…',
+          faq: [
+            ['¿Quién decide una jugada dudosa?', ['No hay árbitros. Las decisiones dentro de la cancha las toman los jugadores. El público no puede opinar sobre las jugadas.']],
+            ['¿Cuál es el formato de juego?', ['Los partidos son al mejor de 3 sets y se juega con punto de oro. En 6-6 se juega tie-break, con diferencia de 2 puntos. El saque inicial se define con un volado.']],
+            ['¿Quién sube el resultado?', ['Al terminar, la pareja ganadora entrega las pelotas en mesa de control y sube el resultado en la app. Es responsabilidad de cada jugador revisar sus resultados en la app.']],
+            ['Hubo una lesión o un retiro', ['Las lesiones y los retiros se marcan conforme al reglamento de la FIP.']],
+            ['¿Y si el reglamento no cubre mi caso?', ['Si hace falta una regla de juego que este reglamento no cubra, se consulta el reglamento de la FIP para tomar la decisión.']]
+          ]
+        },
+        {
+          id: 'grupos', icon: 'grupos', label: 'Grupos y eliminatorias', sub: 'Cómo se arman, pases directos',
+          hint: 'Ejemplo: tengo una duda sobre cómo quedó mi grupo…',
+          faq: [
+            ['¿Cómo se juega el torneo?', ['El torneo se juega en fase de grupos y después eliminatorias.']],
+            ['¿Cómo se armaron los grupos?', ['Los grupos se crean de forma aleatoria y en el orden en que las parejas solicitaron sus horarios y días.']],
+            ['¿Por qué una pareja pasó directo?', ['Los cuadros de eliminatoria se arman según la cantidad de grupos y de parejas. Por eso, en ciertas fases algunas parejas pueden recibir pase directo según el grupo en el que les tocó competir.']]
+          ]
+        },
+        {
+          id: 'cobros', icon: 'cobros', label: 'Cobros, kits o pelotas', sub: 'Pagos, kit de bienvenida',
+          hint: 'Ejemplo: no recibimos pelotas nuevas para nuestro partido…',
+          faq: [
+            ['Tengo un tema de cobro o de mi kit', ['Cobros y kits de bienvenida se atienden con el club. Mesa de control se dedica a llevar el orden de los partidos.']],
+            ['¿Quién entrega las pelotas?', ['Mesa de control entrega pelotas nuevas para cada partido, cuando recibe las del partido anterior.']]
+          ]
+        },
+        {
+          id: 'app', icon: 'app', label: 'La app de CourtBit', sub: 'Descarga, notificaciones, mi usuario',
+          hint: 'Ejemplo: no me llegan las notificaciones en mi iPhone…',
+          faq: [
+            ['¿Dónde descargo la app?', ['Descarga la app en courtbit.com.mx/apps o sigue el torneo desde app.courtbit.com.mx.']],
+            ['No veo el torneo en mi app', ['Preséntate en mesa de control. Si te inscribieron manualmente y no ves el torneo en tu app, ahí vinculan tu usuario.']],
+            ['No me enteré de un cambio', ['Los partidos pueden cambiar. Activa las notificaciones para estar siempre informado. Es responsabilidad de cada jugador revisar su cancha, su hora y sus resultados en la app.']]
+          ]
+        },
+        {
+          id: 'otro', icon: 'otro', label: 'Otra cosa o una sugerencia', sub: 'Ideas para mejorar el torneo',
+          hint: 'Cuéntanos tu idea o lo que pasó…',
+          close: '¿Quieres escribirnos?', yes: 'No, ya quedó', no: 'Sí, escribir',
+          faq: [
+            ['¿Quién revisa lo que envío?', ['El equipo de CourtBit revisa los reportes en tiempo real. Mesa de control se dedica a llevar el orden de los partidos.']],
+            ['¿El reglamento puede cambiar?', ['Este reglamento puede cambiar. Los organizadores y el equipo de CourtBit pueden tomar decisiones ante situaciones extraordinarias que el reglamento no cubra, o cuando aplicarlo no sea lo justo para la competencia y los jugadores.']]
+          ]
+        }
+      ];
+
+      var byId = {};
+      TOPICS.forEach(function (t) { byId[t.id] = t; });
+      var $ = function (id) { return document.getElementById(id); };
+      var el = function (tag, text) { var n = document.createElement(tag); if (text != null) n.textContent = text; return n; };
+      var icon = function (name) {
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('class', 'ic'); svg.setAttribute('aria-hidden', 'true');
+        var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+        use.setAttribute('href', '#i-' + name); svg.appendChild(use);
+        return svg;
+      };
+
+      // Paso 1: lista de temas.
+      TOPICS.forEach(function (t, i) {
+        var li = el('li'); li.style.setProperty('--i', i);
+        var a = el('a'); a.href = '#/tema/' + t.id;
+        var badge = el('span'); badge.className = 'badge'; badge.appendChild(icon(t.icon));
+        var text = el('span', t.label); text.appendChild(el('small', t.sub));
+        a.appendChild(badge); a.appendChild(text); li.appendChild(a);
+        $('temas').appendChild(li);
+      });
+      for (var n = 1; n <= 12; n++) {
+        var o = el('option', 'Cancha ' + n); o.value = String(n);
+        $('f-cancha').appendChild(o);
+      }
+
+      var views = { temas: $('v-temas'), faq: $('v-faq'), form: $('v-form'), enviado: $('v-enviado'), resuelto: $('v-resuelto') };
+      var stepOf = { temas: 0, faq: 1, form: 2, enviado: 3, resuelto: 3 };
+      var seen = {};        // temas cuyas respuestas ya se mostraron en esta visita
+      var sent = false;
+      var first = true;
+
+      function show(name) {
+        Object.keys(views).forEach(function (k) { views[k].hidden = k !== name; views[k].classList.remove('enter'); });
+        var v = views[name];
+        void v.offsetWidth; v.classList.add('enter');
+        var steps = $('pasos').children, at = stepOf[name];
+        for (var i = 0; i < steps.length; i++) {
+          steps[i].classList.toggle('past', i < at);
+          if (i === at) steps[i].setAttribute('aria-current', 'step'); else steps[i].removeAttribute('aria-current');
+        }
+        if (!first) {
+          v.focus({ preventScroll: true });
+          var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        }
+        first = false;
+      }
+
+      function renderFaq(t) {
+        $('t-faq').textContent = t.label;
+        var list = $('respuestas'); list.textContent = '';
+        t.faq.forEach(function (item, i) {
+          var li = el('li'); li.style.setProperty('--i', i);
+          li.appendChild(el('h3', item[0]));
+          item[1].forEach(function (p) { li.appendChild(el('p', p)); });
+          list.appendChild(li);
+        });
+        $('pregunta-cierre').textContent = t.close || '¿Con esto quedó resuelto?';
+        var buttons = views.faq.querySelectorAll('.ask .btn');
+        buttons[0].textContent = t.yes || 'Sí, quedó resuelto';
+        buttons[1].textContent = t.no || 'No, quiero reportarlo';
+        buttons[1].href = '#/reporte/' + t.id;
+        seen[t.id] = true;
+      }
+
+      function renderForm(t) {
+        $('tema-elegido').textContent = t.label;
+        $('f-mensaje').placeholder = t.hint;
+        $('volver-faq').href = '#/tema/' + t.id;
+        $('reporte').dataset.tema = t.id;
+      }
+
+      function route() {
+        var parts = location.hash.replace(/^#\/?/, '').split('/');
+        var t = byId[parts[1]];
+        if (parts[0] === 'tema' && t) { renderFaq(t); return show('faq'); }
+        if (parts[0] === 'reporte' && t) {
+          // El reporte siempre pasa antes por las respuestas del reglamento.
+          if (!seen[t.id]) { location.replace('#/tema/' + t.id); return; }
+          renderForm(t); return show('form');
+        }
+        if (parts[0] === 'enviado' && sent) return show('enviado');
+        if (parts[0] === 'resuelto') return show('resuelto');
+        show('temas');
+      }
+      window.addEventListener('hashchange', route);
+      route();
+
+      // Paso 3: validación y envío.
+      var form = $('reporte'), submit = $('enviar');
+      function setError(id, message) {
+        var input = $('f-' + id), err = $('e-' + id);
+        if (message) { err.textContent = message; err.hidden = false; input.setAttribute('aria-invalid', 'true'); }
+        else { err.hidden = true; err.textContent = ''; input.removeAttribute('aria-invalid'); }
+        return !message;
+      }
+      function validate() {
+        var message = $('f-mensaje').value.trim(), name = $('f-nombre').value.trim();
+        var email = $('f-correo').value.trim(), phone = $('f-tel').value.replace(/\D/g, '');
+        var ok = [
+          setError('mensaje', message.length < 10 ? 'Cuéntanos un poco más, con al menos 10 caracteres.' : ''),
+          setError('nombre', name.length < 2 ? 'Escribe tu nombre para saber quién reporta.' : ''),
+          setError('correo', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? '' : 'Escribe un correo válido, por ejemplo nombre@correo.com.'),
+          setError('tel', phone && phone.length !== 10 && phone.length !== 12 ? 'Escribe los 10 dígitos de tu número, o déjalo vacío.' : '')
+        ];
+        var bad = ok.indexOf(false);
+        if (bad > -1) $(['f-mensaje', 'f-nombre', 'f-correo', 'f-tel'][bad]).focus();
+        return bad === -1;
+      }
+      ['mensaje', 'nombre', 'correo', 'tel'].forEach(function (id) {
+        $('f-' + id).addEventListener('input', function () { if ($('e-' + id).hidden === false) setError(id, ''); });
+      });
+
+      function fail(text) {
+        $('fallo-texto').textContent = text; $('fallo').hidden = false;
+        submit.removeAttribute('aria-busy'); submit.textContent = 'Reintentar envío';
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (submit.getAttribute('aria-busy') === 'true') return;
+        $('fallo').hidden = true;
+        if (!validate()) return;
+
+        var t = byId[form.dataset.tema] || byId.otro;
+        var court = $('f-cancha').value;
+        var email = $('f-correo').value.trim();
+        var payload = {
+          name: $('f-nombre').value.trim(),
+          email: email,
+          phone: $('f-tel').value.replace(/\D/g, '').slice(-10),
+          club: 'Pádel Factory, Torneo 2do Aniversario',
+          interests: t.label,
+          note: (court ? 'Cancha ' + court + '. ' : '') + $('f-mensaje').value.trim(),
+          source: 'factory-sugerencias',
+          fecha: new Date().toISOString(),
+          website: $('f-web').value
+        };
+
+        submit.setAttribute('aria-busy', 'true'); submit.textContent = 'Enviando…';
+        var abort = 'AbortController' in window ? new AbortController() : null;
+        var timer = setTimeout(function () { if (abort) abort.abort(); }, 15000);
+
+        fetch(ENDPOINT, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload), signal: abort ? abort.signal : undefined
+        }).then(function (res) {
+          clearTimeout(timer);
+          if (res.ok) {
+            sent = true;
+            $('enviado-texto').textContent = 'El equipo de CourtBit ya lo tiene. Si hace falta algún dato te escribimos a ' + email + '.';
+            form.reset(); submit.removeAttribute('aria-busy'); submit.textContent = 'Enviar reporte';
+            location.hash = '#/enviado';
+            return;
+          }
+          return res.json().catch(function () { return {}; }).then(function (body) {
+            if (res.status === 400 && /phone|tel|número|numero/i.test(body.error || '')) {
+              setError('tel', 'Ese número no parece válido. Corrígelo o déjalo vacío.');
+              submit.removeAttribute('aria-busy'); submit.textContent = 'Enviar reporte';
+              $('f-tel').focus();
+            } else {
+              fail('No pudimos guardar tu reporte. Inténtalo de nuevo; tu texto sigue aquí. Si urge, acude a mesa de control.');
+            }
+          });
+        }).catch(function () {
+          clearTimeout(timer);
+          fail('No hay conexión con el servidor. Revisa tu internet e inténtalo de nuevo; tu texto sigue aquí.');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
