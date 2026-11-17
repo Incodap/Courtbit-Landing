@@ -1,0 +1,53 @@
+{
+  "demo": true,
+  "canchas": [
+    {
+      "cancha": 1,
+      "estado": "en juego",
+      "ronda": "Dieciseisavos de final",
+      "categoria": "Femenino",
+      "pareja1": "María Guadalupe Villaseñor Ortiz (MEX) / Ana Sofía Castellanos Garza (MEX) [2]",
+      "pareja2": "Valentina Ruiz de la Fuente (ESP) / Lucía Fernanda Montenegro Salas (ARG)",
+      "marcador": "7-6 4-6 5-4 (40-30)",
+      "saque": 2,
+      "siguiente_pareja1": "Daniela Alejandra Moreno Treviño (MEX) / Paula Doménech Arregui (ESP)",
+      "siguiente_pareja2": "Camila Ortuño Bianchini (ARG) / Renata Isabel Villalobos Cruz (MEX) [7]",
+      "siguiente_ronda": "Dieciseisavos de final",
+      "siguiente_categoria": "Femenino",
+      "siguiente_hora": "A continuación"
+    },
+    {
+      "cancha": 2,
+      "estado": "en juego",
+      "ronda": "Dieciseisavos de final",
+      "categoria": "Masculino",
+      "pareja1": "José Emilio Paz de la Barrera (MEX) / Carlos Alberto Gutiérrez Soto (MEX)",
+      "pareja2": "Tomás Ignacio Larraín Echenique (CHI) / Bruno Castellanos (MEX) [3]",
+      "marcador": "6-4 3-2 (15-30)",
+      "saque": 1,
+      "siguiente_pareja1": "Juan Francisco Echeverría Ponce (MEX) / Rodrigo Altamirano Bustos (MEX) [5]",
+      "siguiente_pareja2": "Maximiliano Domínguez Iturralde (ARG) / Sebastián Fernández de Córdoba (ESP)",
+      "siguiente_ronda": "Dieciseisavos de final",
+      "siguiente_categoria": "Masculino",
+      "siguiente_hora": "No antes de 16:00"
+    },
+    {
+      "cancha": 3,
+      "estado": "calentamiento",
+      "ronda": "Dieciseisavos de final",
+      "categoria": "Masculino",
+      "pareja1": "Gonzalo Federico Iturbide Luna (MEX) / Íker Zubieta Aranguren (ESP) [4]",
+      "pareja2": "Thiago Ferraz Albuquerque (BRA) / Martín Aldana Rivadeneira (ARG)",
+      "hora": "13:15"
+    },
+    {
+      "cancha": 4,
+      "estado": "finalizado",
+      "ronda": "Dieciseisavos de final",
+      "categoria": "Femenino",
+      "pareja1": "Ximena Arriaga Santibáñez (MEX) / Carlota Esquivel de la Torre (ESP)",
+      "pareja2": "Giulia Marchetti Bellini (ITA) / Mariana Fernanda Lozano Treviño (MEX) [1]",
+      "marcador": "6-7 7-6 10-8"
+    }
+  ]
+}
