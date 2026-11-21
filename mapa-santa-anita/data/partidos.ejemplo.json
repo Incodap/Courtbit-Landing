@@ -1,0 +1,53 @@
+{
+  "demo": true,
+  "canchas": [
+    {
+      "cancha": 1,
+      "estado": "en juego",
+      "ronda": "Octavos de final",
+      "categoria": "Masculino",
+      "pareja1": "Martín Aldana (ARG) / Íker Zubieta (ESP) [3]",
+      "pareja2": "Bruno Castellanos (MEX) / Thiago Ferraz (BRA)",
+      "marcador": "6-4 3-2 (30-15)",
+      "saque": 1,
+      "siguiente_pareja1": "Lucía Navarrete (ESP) / Camila Ortuño (ARG) [1]",
+      "siguiente_pareja2": "Renata Villalobos (MEX) / Sofía Bianchini (ITA)",
+      "siguiente_ronda": "Octavos de final",
+      "siguiente_categoria": "Femenino",
+      "siguiente_hora": "A continuación"
+    },
+    {
+      "cancha": 2,
+      "estado": "en juego",
+      "ronda": "Octavos de final",
+      "categoria": "Femenino",
+      "pareja1": "Valeria Montalvo (MEX) / Julia Arregui (ESP)",
+      "pareja2": "Paula Doménech (ESP) / Agustina Leiva (ARG) [4]",
+      "marcador": "4-6 6-3 1-0",
+      "saque": 2,
+      "siguiente_pareja1": "Nicolás Barrientos (ARG) / Hugo Salvatierra (ESP)",
+      "siguiente_pareja2": "Emiliano Cárdenas (MEX) / Diego Altamira (MEX)",
+      "siguiente_ronda": "Octavos de final",
+      "siguiente_categoria": "Masculino",
+      "siguiente_hora": "No antes de 16:00"
+    },
+    {
+      "cancha": 3,
+      "estado": "calentamiento",
+      "ronda": "Octavos de final",
+      "categoria": "Masculino",
+      "pareja1": "Santiago Requena (ESP) / Franco Iturbe (ARG) [2]",
+      "pareja2": "Leonel Pizarro (CHI) / Mateo Anchorena (ARG)",
+      "hora": "13:15"
+    },
+    {
+      "cancha": 4,
+      "estado": "proximo",
+      "ronda": "Octavos de final",
+      "categoria": "Femenino",
+      "pareja1": "Ximena Arriaga (MEX) / Carlota Esquivel (ESP)",
+      "pareja2": "Giulia Marchetti (ITA) / Noa Lambrecht (BEL)",
+      "hora": "14:30"
+    }
+  ]
+}
